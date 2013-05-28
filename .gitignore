@@ -1,10 +1,18 @@
-/nbproject/
+# Ignore assets
 /drupal/sites/default/files
 
-.DS_Store
+# Ignore environment settings
+/drupal/sites/default/settings.php
+
+# Ignore NetBeans project
+/nbproject/
+
+# Ignore Sublime SFTP settings
+sftp-config.json
+
+# Ignore backup and meta files
 DEADJOE
+.DS_Store
 .AppleDouble
-.gitignore
 .idea
 
-sftp-config.json
