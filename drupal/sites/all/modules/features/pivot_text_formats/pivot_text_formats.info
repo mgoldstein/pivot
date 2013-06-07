@@ -1,0 +1,12 @@
+name = Pivot Text Formats
+description = Text format and wysiwyg profiles
+core = 7.x
+package = Admin Interface
+version = 7.x-1.0
+project = pivot_text_formats
+dependencies[] = features
+dependencies[] = filter
+features[features_api][] = api:2
+features[filter][] = filtered_html
+features[filter][] = full_html
+features[filter][] = plain_text
