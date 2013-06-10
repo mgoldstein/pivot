@@ -95,6 +95,9 @@ INSTALL_URL="mysql://$DB_UID:$DB_PW@$DB_HOST/$DB_NAME"
 # Enable Ad server support
 ../drush/drush pm-enable dfp --yes
 
+# Enable Longtail / Bits on the Run support
+../drush/drush pm-enable botr jw_player --yes
+
 # Enable frontend helper modules
 ../drush/drush pm-enable semantic_blocks --yes
 
