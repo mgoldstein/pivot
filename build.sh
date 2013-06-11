@@ -33,6 +33,11 @@ rm drush-7.x-5.9.tar.gz
 # Extra the installation profile
 tar xzf "./pivot.profile.tar.gz" -C "$PROFILES_DESTINATION"
 
+# Create the link for the participant core theme
+pushd drupal/sites/all/themes
+ln -s ../../../../../participant-core/participant_core .
+popd
+
 # Extract features
 mkdir -p "$FEATURES_DESTINATION"
 for FEATURE in $(ls -1 "./${FEATURES_SOURCE}")
