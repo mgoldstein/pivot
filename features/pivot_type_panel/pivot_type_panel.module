@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Pivot Panel feature.
+ */
+
+include_once 'pivot_type_panel.features.inc';

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Pivot Episode feature.
+ */
+
+include_once 'pivot_type_episode.features.inc';

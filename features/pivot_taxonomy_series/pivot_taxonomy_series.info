@@ -1,0 +1,13 @@
+name = Pivot Series Taxonomy
+description = Taxonomy for grouping episodes of a show into series or seasons
+core = 7.x
+package = Taxonomy
+php = 5.2.4
+version = 7.x-1.0
+project = pivot_taxonomy_series
+dependencies[] = features
+dependencies[] = metatag
+dependencies[] = taxonomy
+features[features_api][] = api:2
+features[field_base][] = field_series
+features[taxonomy][] = series

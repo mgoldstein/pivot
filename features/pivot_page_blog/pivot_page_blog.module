@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Pivot Page Blog feature.
+ */
+
+include_once 'pivot_page_blog.features.inc';

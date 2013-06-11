@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Pivot Gallery feature.
+ */
+
+include_once 'pivot_type_gallery.features.inc';

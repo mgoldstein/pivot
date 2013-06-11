@@ -16,8 +16,13 @@ ADMIN_PASSWORD="P@ssw0rd"
 
 SITE_NAME="Pivot.tv"
 
-INSTALL_PROFILE=pivot
+INSTALL_PROFILE="pivot"
+PROFILES_SOURCE="profiles"
 PROFILES_DESTINATION="./drupal/profiles"
+
+PIVOT_THEME="pivot1"
+THEMES_SOURCE="themes"
+THEMES_DESTINATION="./drupal/sites/all/themes"
 
 FEATURES_SOURCE="features"
 FEATURES_DESTINATION="./drupal/sites/all/modules/features"
@@ -30,8 +35,11 @@ rm drush-7.x-5.9.tar.gz
 # Download and extract Drupal and all contributed modules.
 ./drush/drush make pivot.make drupal
 
-# Extra the installation profile
-tar xzf "./pivot.profile.tar.gz" -C "$PROFILES_DESTINATION"
+# Copy in the installation profile
+cp -r "${PROFILES_SOURCE}/${INSTALL_PROFILE}" "${PROFILES_DESTINATION}"
+
+# Copy in the pivot theme
+cp -r "${THEMES_SOURCE}/${PIVOT_THEME}" "${THEMES_DESTINATION}"
 
 # Create the link for the participant core theme
 pushd drupal/sites/all/themes
@@ -42,7 +50,7 @@ popd
 mkdir -p "$FEATURES_DESTINATION"
 for FEATURE in $(ls -1 "./${FEATURES_SOURCE}")
 do
-  tar xf "./${FEATURES_SOURCE}/${FEATURE}" -C "$FEATURES_DESTINATION";
+  cp -r "./${FEATURES_SOURCE}/${FEATURE}" "$FEATURES_DESTINATION";
 done
 
 # Drush needs to be run from under the Drupal root, and the parameter was giving
