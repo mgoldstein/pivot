@@ -4,15 +4,24 @@ core = 7.x
 api = 2
 projects[drupal][version] = "7.22"
 
-; Modules
+; Modules (alphabetical order)
+projects[apachesolr][subdir] = "contrib"
+projects[apachesolr][version] = "1.2"
+
 projects[botr][subdir] = "contrib"
 projects[botr][version] = "1.2"
+
+projects[content_lock][subdir] = "contrib"
+projects[content_lock][version] = "1.4"
 
 projects[ctools][subdir] = "contrib"
 projects[ctools][version] = "1.3"
 
 projects[devel][subdir] = "contrib"
 projects[devel][version] = "1.3"
+
+projects[dfp][subdir] = "contrib"
+projects[dfp][version] = "1.0"
 
 projects[diff][subdir] = "contrib"
 projects[diff][version] = "3.2"
@@ -26,12 +35,6 @@ projects[features][version] = "2.0-rc1"
 projects[features_extra][subdir] = "contrib"
 projects[features_extra][version] = "1.0-beta1"
 
-projects[media][subdir] = "contrib"
-projects[media][version] = "1.3"
-
-projects[media_youtube][subdir] = "contrib"
-projects[media_youtube][version] = "2.0-rc3"
-
 projects[file_entity_inline][subdir] = "contrib"
 projects[file_entity_inline][version] = "1.0-beta1"
 
@@ -44,6 +47,12 @@ projects[libraries][version] = "2.1"
 projects[link][subdir] = "contrib"
 projects[link][version] = "1.1"
 
+projects[media][subdir] = "contrib"
+projects[media][version] = "1.3"
+
+projects[media_youtube][subdir] = "contrib"
+projects[media_youtube][version] = "2.0-rc3"
+
 projects[menu_attributes][subdir] = "contrib"
 projects[menu_attributes][version] = "1.0-rc2"
 
@@ -53,9 +62,6 @@ projects[metatag][version] = "1.0-beta7"
 projects[module_filter][subdir] = "contrib"
 projects[module_filter][version] = "1.7"
 
-projects[references][subdir] = "contrib"
-projects[references][version] = "2.1"
-
 projects[nodequeue][subdir] = "contrib"
 projects[nodequeue][version] = "2.0-beta1"
 
@@ -64,6 +70,21 @@ projects[panels][version] = "3.3"
 
 projects[pathauto][subdir] = "contrib"
 projects[pathauto][version] = "1.2"
+
+projects[publication_date][subdir] = "contrib"
+projects[publication_date][version] = "1.0"
+
+projects[references][subdir] = "contrib"
+projects[references][version] = "2.1"
+
+projects[scheduler][subdir] = "contrib"
+projects[scheduler][version] = "1.1"
+
+projects[semantic_blocks][subdir] = "contrib"
+projects[semantic_blocks][version] = "1.0"
+
+projects[strongarm][subdir] = "contrib"
+projects[strongarm][version] = "2.0"
 
 projects[token][subdir] = "contrib"
 projects[token][version] = "1.5"
@@ -76,18 +97,6 @@ projects[webform][version] = "3.19"
 
 projects[wysiwyg][subdir] = "contrib"
 projects[wysiwyg][version] = "2.2"
-
-projects[strongarm][subdir] = "contrib"
-projects[strongarm][version] = "2.0"
-
-projects[apachesolr][subdir] = "contrib"
-projects[apachesolr][version] = "1.2"
-
-projects[dfp][subdir] = "contrib"
-projects[dfp][version] = "1.0"
-
-projects[semantic_blocks][subdir] = "contrib"
-projects[semantic_blocks][version] = "1.0"
 
 ; Libraries
 libraries[ckeditor][download][type] = "get"

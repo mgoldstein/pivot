@@ -102,6 +102,9 @@ INSTALL_URL="mysql://$DB_UID:$DB_PW@$DB_HOST/$DB_NAME"
 # Enable node queues for manual curation of feed data
 ../drush/drush pm-enable nodequeue smartqueue --yes
 
+# Enable node editing and publishing workflow
+../drush/drush pm-enable publication_date scheduler content_lock --yes
+
 # Enable search
 ../drush/drush pm-enable apachesolr --yes
 
