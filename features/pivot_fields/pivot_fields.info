@@ -22,5 +22,6 @@ features[field_base][] = field_author_name
 features[field_base][] = field_expanded
 features[field_base][] = field_image
 features[field_base][] = field_longtail_video
+features[field_base][] = field_number
 features[field_base][] = field_related_shows
 no autodetect = 1

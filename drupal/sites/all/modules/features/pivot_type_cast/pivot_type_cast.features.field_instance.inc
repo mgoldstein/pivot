@@ -81,7 +81,7 @@ function pivot_type_cast_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -126,6 +126,58 @@ function pivot_type_cast_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-cast-field_image'
+  $field_instances['node-cast-field_image'] = array(
+    'bundle' => 'cast',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_image',
+    'label' => 'Image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 1,
+      'default_image' => 0,
+      'file_directory' => 'field/image/cast',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'file_entity_inline' => 1,
+        'file_entity_inline_fields' => array(),
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'node-cast-field_show'
   $field_instances['node-cast-field_show'] = array(
     'bundle' => 'cast',
@@ -158,7 +210,7 @@ function pivot_type_cast_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 0,
+      'weight' => 1,
     ),
   );
 
@@ -167,6 +219,7 @@ function pivot_type_cast_field_default_field_instances() {
   t('Author Name');
   t('Body');
   t('Comment');
+  t('Image');
   t('Show');
   t('The name of the content author. This is separate from the Drupal user used to enter the content.');
   t('The show to which this cast member belongs.');

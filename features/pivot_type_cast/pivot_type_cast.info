@@ -21,6 +21,7 @@ features[features_api][] = api:2
 features[field_instance][] = comment-comment_node_cast-comment_body
 features[field_instance][] = node-cast-body
 features[field_instance][] = node-cast-field_author_name
+features[field_instance][] = node-cast-field_image
 features[field_instance][] = node-cast-field_show
 features[node][] = cast
 features[variable][] = comment_anonymous_cast
