@@ -26,6 +26,7 @@ regions[right_rail] = Right Rail
 regions[footer] = Footer
 
 ; -- CSS --
+stylesheets[all][] = css/system.menus.css
 
 ; -- JS --
-
+scripts[] = js/script.js
