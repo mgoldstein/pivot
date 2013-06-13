@@ -40,68 +40,68 @@ INSTALL_URL="mysql://$DB_UID:$DB_PW@$DB_HOST/$DB_NAME"
   --account-mail="$ADMIN_MAIL" --account-name="$ADMIN_NAME" --account-pass="$ADMIN_PASSWORD"
 
 # Disable the abomination that is the overlay module.
-../drush/drush pm-disable overlay --yes
+#../drush/drush pm-disable overlay --yes
 
 # Enable Chaos Tool Suite and Strongarm
-../drush/drush pm-enable ctools strongarm page_manager --yes
+#../drush/drush pm-enable ctools strongarm page_manager --yes
 
 # Enable views modules
-../drush/drush pm-enable views views_ui --yes
+#../drush/drush pm-enable views views_ui --yes
 
 # Enable panels modules
-../drush/drush pm-enable panels_mini panels_node panels --yes
+#../drush/drush pm-enable panels_mini panels_node panels --yes
 
 # Enable backend support modules
-../drush/drush pm-enable entity libraries pathauto token --yes
+#../drush/drush pm-enable entity libraries pathauto token --yes
 
 # Enable admin support modules
-../drush/drush pm-enable module_filter --yes
+#../drush/drush pm-enable module_filter --yes
 
 # Enable metatag modules
-../drush/drush pm-enable metatag metatag_opengraph metatag_panels --yes
+#../drush/drush pm-enable metatag metatag_opengraph metatag_panels --yes
 
 # Enable additional field type modules
-../drush/drush pm-enable link node_reference references --yes
+#../drush/drush pm-enable link node_reference references --yes
 
 # Enable the media modules
-../drush/drush pm-enable file_entity file_entity_inline media media_internet media_youtube --yes
+#../drush/drush pm-enable file_entity file_entity_inline media media_internet media_youtube --yes
 
 # Enable WYSIWYG modules
-../drush/drush pm-enable wysiwyg --yes
+#../drush/drush pm-enable wysiwyg --yes
 
 # Enable the content altering modules
-../drush/drush pm-enable menu_attributes menu_html --yes
+#../drush/drush pm-enable menu_attributes menu_html --yes
 
 # Enable the webforms module
-../drush/drush pm-enable webform --yes
+#../drush/drush pm-enable webform --yes
 
 # Enable node queues for manual curation of feed data
-../drush/drush pm-enable nodequeue smartqueue --yes
+#../drush/drush pm-enable nodequeue smartqueue --yes
 
 # Enable node editing and publishing workflow
-../drush/drush pm-enable publication_date scheduler content_lock --yes
+#../drush/drush pm-enable publication_date scheduler content_lock --yes
 
 # Enable search
-../drush/drush pm-enable apachesolr --yes
+#../drush/drush pm-enable apachesolr --yes
 
 # Enable Ad server support
-../drush/drush pm-enable dfp --yes
+#../drush/drush pm-enable dfp --yes
 
 # Enable Longtail / Bits on the Run support
-../drush/drush pm-enable botr jw_player --yes
+#../drush/drush pm-enable botr jw_player --yes
 
 # Enable the features module
-../drush/drush pm-enable features fe_nodequeue --yes
+#../drush/drush pm-enable features fe_nodequeue --yes
 
 # Enable the site features
-for FEATURE in $(ls -1 "../${FEATURES_LOCATION}" | awk -F- '{print $1}')
-do
-  ../drush/drush pm-enable $FEATURE --yes
-done
-for FEATURE in $(ls -1 "../${FEATURES_LOCATION}" | awk -F- '{print $1}')
-do
-  ../drush/drush features-revert $FEATURE --yes
-done
+#for FEATURE in $(ls -1 "../${FEATURES_LOCATION}" | awk -F- '{print $1}')
+#do
+#  ../drush/drush pm-enable $FEATURE --yes
+#done
+#for FEATURE in $(ls -1 "../${FEATURES_LOCATION}" | awk -F- '{print $1}')
+#do
+#  ../drush/drush features-revert $FEATURE --yes
+#done
 
 # Enable the devel modules
 ../drush/drush pm-enable devel devel_generate --yes
