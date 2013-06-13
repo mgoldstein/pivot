@@ -70,7 +70,7 @@ INSTALL_URL="mysql://$DB_UID:$DB_PW@$DB_HOST/$DB_NAME"
 ../drush/drush pm-enable wysiwyg --yes
 
 # Enable the content altering modules
-../drush/drush pm-enable menu_attributes --yes
+../drush/drush pm-enable menu_attributes menu_html --yes
 
 # Enable the webforms module
 ../drush/drush pm-enable webform --yes

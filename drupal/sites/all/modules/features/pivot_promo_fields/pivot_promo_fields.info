@@ -1,0 +1,14 @@
+name = Pivot Promo Fields
+description = Promo fields for content
+core = 7.x
+package = Content
+version = 7.x-1.0
+project = pivot_promo_fields
+dependencies[] = features
+dependencies[] = image
+dependencies[] = text
+features[features_api][] = api:2
+features[field_base][] = field_promo_headline
+features[field_base][] = field_promo_image
+features[field_base][] = field_promo_text
+no autodetect = 1
