@@ -10,7 +10,6 @@ an existing database.
 
 *Fresh installation (Debian base Linux only)*
 
-- Remove the drupal and drush directories
 - Run *./build.sh*
 
 *Existing database install*
