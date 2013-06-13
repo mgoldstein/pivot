@@ -80,9 +80,6 @@ projects[references][version] = "2.1"
 projects[scheduler][subdir] = "contrib"
 projects[scheduler][version] = "1.1"
 
-projects[semantic_blocks][subdir] = "contrib"
-projects[semantic_blocks][version] = "1.0"
-
 projects[strongarm][subdir] = "contrib"
 projects[strongarm][version] = "2.0"
 
