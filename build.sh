@@ -15,43 +15,19 @@ ADMIN_NAME="pivot"
 ADMIN_PASSWORD="P@ssw0rd"
 
 SITE_NAME="Pivot.tv"
-
 INSTALL_PROFILE="pivot"
-PROFILES_SOURCE="profiles"
-PROFILES_DESTINATION="./drupal/profiles"
 
-PIVOT_THEME="pivot1"
-THEMES_SOURCE="themes"
-THEMES_DESTINATION="./drupal/sites/all/themes"
+FEATURES_LOCATION="drupal/sites/all/modules/features"
 
-FEATURES_SOURCE="features"
-FEATURES_DESTINATION="./drupal/sites/all/modules/features"
-
-# Download and extract Drush.
-wget http://ftp.drupal.org/files/projects/drush-7.x-5.9.tar.gz
-tar xzf drush-7.x-5.9.tar.gz
-rm drush-7.x-5.9.tar.gz
-
-# Download and extract Drupal and all contributed modules.
-./drush/drush make pivot.make drupal
-
-# Copy in the installation profile
-cp -r "${PROFILES_SOURCE}/${INSTALL_PROFILE}" "${PROFILES_DESTINATION}"
-
-# Copy in the pivot theme
-cp -r "${THEMES_SOURCE}/${PIVOT_THEME}" "${THEMES_DESTINATION}"
+# Wipe out any existing installation settings and files
+sudo rm -rf drupal/sites/default/files
+chmod -R u+w drupal/sites/default
+rm -f drupal/sites/default/settings.php
 
 # Create the link for the participant core theme
 pushd drupal/sites/all/themes
-ln -s ../../../../../participant-core/participant_core .
+ln -sf ../../../../../participant-core/participant_core .
 popd
-
-# Extract features
-mkdir -p "$FEATURES_DESTINATION"
-for FEATURE in $(ls -1 "./${FEATURES_SOURCE}")
-do
-  cp -r "./${FEATURES_SOURCE}/${FEATURE}" "$FEATURES_DESTINATION";
-done
 
 # Drush needs to be run from under the Drupal root, and the parameter was giving
 # me guff.
@@ -118,11 +94,11 @@ INSTALL_URL="mysql://$DB_UID:$DB_PW@$DB_HOST/$DB_NAME"
 ../drush/drush pm-enable features fe_nodequeue --yes
 
 # Enable the site features
-for FEATURE in $(ls -1 "../${FEATURES_SOURCE}" | awk -F- '{print $1}')
+for FEATURE in $(ls -1 "../${FEATURES_LOCATION}" | awk -F- '{print $1}')
 do
   ../drush/drush pm-enable $FEATURE --yes
 done
-for FEATURE in $(ls -1 "../${FEATURES_SOURCE}" | awk -F- '{print $1}')
+for FEATURE in $(ls -1 "../${FEATURES_LOCATION}" | awk -F- '{print $1}')
 do
   ../drush/drush features-revert $FEATURE --yes
 done

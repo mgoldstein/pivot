@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Pivot Menus feature.
- */
-
-include_once 'pivot_menus.features.inc';
