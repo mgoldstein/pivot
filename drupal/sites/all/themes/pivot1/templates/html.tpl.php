@@ -11,30 +11,28 @@
   <![endif]-->
 </head>
 <body class="<?=$classes ?>" <?=$attributes ?>>
+  <? if (isset($page_top)): ?>
+      <?=$page_top ?>
+  <? endif ?>
 
-  <div id="wrapper">
-    <? if (isset($page_top)): ?>
-        <?=$page_top ?>
-    <? endif ?>
-
-    <? if (isset($page)): ?>
-        <?=$page ?>
-    <? endif ?>      
-
-    <?=$scripts ?>
-
-    <? if (isset($custom)): ?>
-        <?=$custom ?>
-    <? endif ?>        
+  <? if (isset($page)): ?>
+      <?=$page ?>
+  <? endif ?>      
 
 
-    <? if (isset($page_bottom)): ?>
-        <?=$page_bottom ?>
-    <? endif ?>
+  <? if (isset($custom)): ?>
+      <?=$custom ?>
+  <? endif ?>        
 
-    <? if (isset($tp_sysinfo_comment_tags)): ?>
-        <?=$tp_sysinfo_comment_tags ?>
-    <? endif ?>
-  </div>
+
+  <? if (isset($page_bottom)): ?>
+      <?=$page_bottom ?>
+  <? endif ?>
+
+  <? if (isset($tp_sysinfo_comment_tags)): ?>
+      <?=$tp_sysinfo_comment_tags ?>
+  <? endif ?>
+
+  <?=$scripts ?>
 </body>
 </html>

@@ -1,7 +1,11 @@
-<?=_smenu('menu-primary') ?>
+<header class="header">
+	<nav class="nav nav-primary">
+		<?=_smenu('menu-primary') ?>
+	</nav>
 
-<?=_smenu('menu-secondary') ?>
+	<nav class="nav nav-secondary">
+		<?=_smenu('menu-secondary') ?>
 
-<?=_smenu('menu-watch-live') ?>
-
-<?=render($elements['search_form']) ?>
+		<?=render($elements['search_form']) ?>
+	</nav>
+</header>
