@@ -1,29 +1,33 @@
 <?php
 /**
- * hook_form_alter
+ * @file
+ * Module to add HTML title option to menu item links.
  */
-function menu_html_form_alter(&$form, $form_state, $form_id) {
-  if ($form_id == 'menu_edit_item' || strpos($form_id, '_node_form') > 0) {
-    $item = $form['menu']['#item'];
-    $form['menu']['html'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Allow html'),
-      '#default_value' => isset($item['options']['html']) ? $item['options']['html'] : 0,
-      '#description' => t('If you want to add html tags to the title of a menu, enable this. This should only be accessible to trusted users.'),
-      );
-  }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function menu_html_form_menu_edit_item_alter(&$form, $form_state) {
+  $item = $form['original_item']['#value'];
+  $form['html_title'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('HTML Title'),
+    '#default_value' => isset($item['options']['html']) ? $item['options']['html'] : 0,
+    '#description' => t('Allow HTML in the menu link title.'),
+    '#weight' => -1,
+  );
+  $form['link_title']['#weight'] = -2;
 }
 
 /**
- * hook_menu_link_alter
- *
+ * Implements hook_menu_link_alter()
  */
 function menu_html_menu_link_alter(&$item) {
-  if (isset($item['html']) && $item['html']) {
-    $item['options']['html'] = $item['html'];
-  } else {
-    if(isset($item['options']['html'])) {
-        unset($item['options']['html']);
-    }
+  if (isset($item['html_title']) && $item['html_title']) {
+    $item['options']['html'] = $item['html_title'];
   }
+  else {
+    unset($item['options']['html']);
+  }
+  unset($item['html_title']);
 }
