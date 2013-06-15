@@ -95,3 +95,6 @@ dependencies[] = pivot_type_panel
 dependencies[] = pivot_type_show
 dependencies[] = pivot_type_video
 dependencies[] = pivot_type_webform
+
+; Custom modules
+dependencies[] = wordlet
