@@ -857,12 +857,6 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
         '#type' => 'select',
         // TODO: Get the list of forms from custom module hook.
         '#options' => array(
-          'newsletter_campaign_email_only_signup' => t('Email Only Signup'),
-          'newsletter_campaign_mobile_only_signup' => t('Mobile Only Signup'),
-          'newsletter_campaign_email_mobile_signup' => t('Email + Mobile Signup'),
-          'can_campaign_vote' => t('CAN Voting Form'),
-          'contest_intel_entry' => t('Intel Contest Entry'),
-          'contest_intel_vote' => t('Intel Contest Vote'),
         ),
         '#default_value' => $values['form']['name'],
         '#element_validate' => array('wordlet_validate_form'),
@@ -916,8 +910,6 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
       '#type' => 'select',
       // TODO: Get the list of modules from custom module hook.
       '#options' => array(
-        'boxes' => t('Boxes'),
-        'newsletter_campaign' => t('Newsletter Campaigns'),
         'views' => t('Views'),
       ),
       '#default_value' => $values['block']['module'],
