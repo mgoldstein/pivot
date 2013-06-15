@@ -10,15 +10,6 @@
 function pivot_permissions_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: add wordlet.
-  $permissions['add wordlet'] = array(
-    'name' => 'add wordlet',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'wordlet',
-  );
-
   // Exported permission: administer search.
   $permissions['administer search'] = array(
     'name' => 'administer search',
@@ -27,51 +18,6 @@ function pivot_permissions_user_default_permissions() {
       'layout editor' => 'layout editor',
     ),
     'module' => 'search',
-  );
-
-  // Exported permission: administer wordlet.
-  $permissions['administer wordlet'] = array(
-    'name' => 'administer wordlet',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'wordlet',
-  );
-
-  // Exported permission: administer wordlet page.
-  $permissions['administer wordlet page'] = array(
-    'name' => 'administer wordlet page',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'wordlet',
-  );
-
-  // Exported permission: delete wordlet.
-  $permissions['delete wordlet'] = array(
-    'name' => 'delete wordlet',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'wordlet',
-  );
-
-  // Exported permission: edit wordlet.
-  $permissions['edit wordlet'] = array(
-    'name' => 'edit wordlet',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'wordlet',
-  );
-
-  // Exported permission: preview wordlet page.
-  $permissions['preview wordlet page'] = array(
-    'name' => 'preview wordlet page',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'wordlet',
   );
 
   // Exported permission: search content.
@@ -92,17 +38,6 @@ function pivot_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'search',
-  );
-
-  // Exported permission: view wordlet page.
-  $permissions['view wordlet page'] = array(
-    'name' => 'view wordlet page',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'wordlet',
   );
 
   return $permissions;
