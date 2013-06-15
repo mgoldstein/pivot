@@ -7,7 +7,7 @@
   <?=$styles ?>
   <!--[if lt IE 9]>
       <? // TODO: move this to the new theme ?>
-      <script src="/sites/all/themes/participant_core/js/html5shiv.js"></script>
+      <script src="/sites/all/themes/participant_core/js/lib/html5shiv.js"></script>
   <![endif]-->
 </head>
 <body class="<?=$classes ?>" <?=$attributes ?>>
