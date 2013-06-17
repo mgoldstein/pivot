@@ -6,9 +6,11 @@
     echo drupal_render($variables['tos_link']);
   ?></p>
 </div>
+<?php if ($variables['follow_us_enabled']): ?>
 <h3><?= t('Follow Us') ?></h3>
 <ul>
 <?php foreach ($variables['social_links'] as $link): ?>
   <li><?php echo render($link); ?></li>
 <?php endforeach ?>
 </ul>
+<?php endif ?>

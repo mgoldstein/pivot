@@ -8,6 +8,12 @@ include_once dirname(__FILE__) . '/include/bsdapi/bsd.api.inc';
 include_once dirname(__FILE__) . '/include/bsdapi/bsd.service.inc';
 include_once dirname(__FILE__) . '/include/bsdapi/bsd.cache.inc';
 
+define('BLUESTATEDIGITAL_API_ID','takepart-com');
+define('BLUESTATEDIGITAL_API_SECRET','ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8');
+define('BLUESTATEDIGITAL_API_URL','http://secure.takepart.com/page/api/');
+define('BLUESTATEDIGITAL_API_SECURE_URL','https://secure.takepart.com/page/api/');
+define('BLUESTATEDIGITAL_CURL_REQUEST_TIMEOUT', 10);
+
 /**
  * Implements hook_help().
  */
@@ -79,26 +85,32 @@ function bluestatedigital_api_admin_form($form, &$form_state) {
   $form['bluestatedigital_api_id'] = array(
     '#type' => 'textfield',
     '#title' => t('API ID'),
-    '#required' => TRUE,
-    '#default_value' => variable_get('bluestatedigital_api_id',
-      'takepart-com'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('bluestatedigital_api_id', ''),
+    '#attributes' => array(
+      'placeholder' => BLUESTATEDIGITAL_API_ID,
+    ),
   );
 
   $form['bluestatedigital_api_secret'] = array(
     '#type' => 'textfield',
     '#title' => t('API Secret'),
-    '#required' => TRUE,
-    '#default_value' => variable_get('bluestatedigital_api_secret',
-      'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('bluestatedigital_api_secret', ''),
+    '#attributes' => array(
+      'placeholder' => BLUESTATEDIGITAL_API_SECRET,
+    ),
   );
 
   $form['bluestatedigital_api_url'] = array(
     '#type' => 'textfield',
     '#title' => t('Base URL'),
     '#description' => t('The base URL to use for all API requests that do not require a secure connection.'),
-    '#required' => TRUE,
-    '#default_value' => variable_get('bluestatedigital_api_url',
-      'http://secure.takepart.com/page/api/'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('bluestatedigital_api_url', ''),
+    '#attributes' => array(
+      'placeholder' => BLUESTATEDIGITAL_API_URL,
+    ),
     '#element_validate' => array('bluestatedigital_validate_url'),
     '#secure_only' => FALSE,
   );
@@ -107,9 +119,11 @@ function bluestatedigital_api_admin_form($form, &$form_state) {
     '#type' => 'textfield',
     '#title' => t('Secure URL'),
     '#description' => t('The base URL to use for all API requrests that require a secure connection.'),
-    '#required' => TRUE,
-    '#default_value' => variable_get('bluestatedigital_api_secure_url',
-      'https://secure.takepart.com/page/api/'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('bluestatedigital_api_secure_url', ''),
+    '#attributes' => array(
+      'placeholder' => BLUESTATEDIGITAL_API_SECURE_URL,
+    ),
     '#element_validate' => array('bluestatedigital_validate_url'),
     '#secure_only' => TRUE,
   );
@@ -131,8 +145,11 @@ function bluestatedigital_api_admin_form($form, &$form_state) {
     '#type' => 'textfield',
     '#title' => t('cURL Timeout'),
     '#description' => t('The maximum number of seconds to allow cURL functions to execute'),
-    '#required' => TRUE,
-    '#default_value' => variable_get('bluestatedigital_curl_request_timeout', 10),
+    '#required' => FALSE,
+    '#default_value' => variable_get('bluestatedigital_curl_request_timeout', ''),
+    '#attributes' => array(
+      'placeholder' => BLUESTATEDIGITAL_CURL_REQUEST_TIMEOUT,
+    ),
     '#element_validate' => array('_element_validate_integer_positive'),
   );
 
@@ -178,17 +195,18 @@ function bluestatedigital_get_api($api) {
   $values = &drupal_static(__FUNCTION__, array());
   if (!isset($values[$api])) {
 
-    $api_id = variable_get('bluestatedigital_api_id', 'takepart-com');
+    $api_id = variable_get('bluestatedigital_api_id',
+      BLUESTATEDIGITAL_API_ID);
     $api_secret = variable_get('bluestatedigital_api_secret',
-      'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8');
+      BLUESTATEDIGITAL_API_SECRET);
     $rest_method = variable_get('bluestatedigital_rest_method',
       BlueStateDigitalApi::REST_METHOD_CURL);
     $request_base = variable_get('bluestatedigital_api_url',
-      'http://secure.takepart.com/page/api/');
+      BLUESTATEDIGITAL_API_URL);
     $secure_base = variable_get('bluestatedigital_api_secure_url',
-      'https://secure.takepart.com/page/api/');
+      BLUESTATEDIGITAL_API_SECURE_URL);
     $request_timeout = variable_get('bluestatedigital_curl_request_timeout',
-      10);
+      BLUESTATEDIGITAL_CURL_REQUEST_TIMEOUT);
 
     if ($api == 'group') {
       $values[$api] = new BlueStateDigitalConstituentGroupApi($api_id,
@@ -223,17 +241,18 @@ function bluestatedigital_get_service($service) {
   $values = &drupal_static(__FUNCTION__, array());
   if (!isset($values[$service])) {
 
-    $api_id = variable_get('bluestatedigital_api_id', 'takepart-com');
+    $api_id = variable_get('bluestatedigital_api_id',
+      BLUESTATEDIGITAL_API_ID);
     $api_secret = variable_get('bluestatedigital_api_secret',
-      'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8');
+      BLUESTATEDIGITAL_API_SECRET);
     $rest_method = variable_get('bluestatedigital_rest_method',
       BlueStateDigitalApi::REST_METHOD_CURL);
     $request_base = variable_get('bluestatedigital_api_url',
-      'http://secure.takepart.com/page/api/');
+      BLUESTATEDIGITAL_API_URL);
     $secure_base = variable_get('bluestatedigital_api_secure_url',
-      'https://secure.takepart.com/page/api/');
+      BLUESTATEDIGITAL_API_SECURE_URL);
     $request_timeout = variable_get('bluestatedigital_curl_request_timeout',
-      10);
+      BLUESTATEDIGITAL_CURL_REQUEST_TIMEOUT);
 
     if ($service == 'voting') {
       $values[$service] = new BlueStateDigitalVoting($api_id,

@@ -1,288 +1,142 @@
 <?php
 
+define('WATERFALL_API_USER', 'TakePart');
+define('WATERFALL_API_PASS', 'sms4takepart');
+
 include(drupal_get_path('module', 'waterfallapi') . '/includes/waterfallapi.inc');
 
-function waterfallapi_block_info() {
-  $blocks = array();
-
-  $blocks['waterfallsubscription'] = array(
-    'info' => t('Waterfall Subscription Block')
+/**
+ * Implements hook_permission().
+ */
+function waterfallapi_permission() {
+  return array(
+    'waterfallapi configure api' => array(
+      'title' => t('Configure API'),
+      'description' => t('Configure the Waterfall API settings.'),
+      'restrict access' => TRUE,
+    ),
   );
-
-  return $blocks;
 }
-
-function waterfallapi_block_configure($delta = '') {
-
-  $form = array();
-  if ($delta == 'waterfallsubscription') {
-    $form['waterfallsubscriptioncelltitle'] = array(
-		'#type' => 'textfield',
-		'#title' => t('Cell Title'),
-		'#size' => 60,
-		'#description' => t('Title for cell field.'),
-		'#default_value' => variable_get('waterfallsubscriptioncelltitle',  ''),
-    );
-    $form['waterfallsubscriptionziptitle'] = array(
-		'#type' => 'textfield',
-		'#title' => t('ZIP Title'),
-		'#size' => 60,
-		'#description' => t('Title for ZIP field.'),
-		'#default_value' => variable_get('waterfallsubscriptionziptitle',  ''),
-    );
-     $form['waterfallsubscriptiontext'] = array(
-		'#type' => 'textarea',
-		'#title' => t('Block Contents'),
-		'#cols' => 60,
-		'#rows' => 5,
-		'#description' => t('This text will appear above the cellphone entry in the waterfall subscription block.'),
-		'#default_value' => variable_get('waterfallsubscriptiontext',  ''),
-    );
-    $form['waterfallsubscriptionsubtext'] = array(
-		'#type' => 'textarea',
-		'#title' => t('Block SubText Contents'),
-		'#cols' => 60,
-		'#rows' => 5,
-		'#description' => t('This text will appear below the zip entry in the waterfall subscription block.'),
-		'#default_value' => variable_get('waterfallsubscriptionsubtext',  ''),
-    );
-    $form['waterfallsubscriptionSMS'] = array(
-		'#type' => 'textarea',
-		'#title' => t('SMS Text'),
-		'#cols' => 60,
-		'#rows' => 5,
-		'#description' => t('Text to send in SMS message.'),
-		'#default_value' => variable_get('waterfallsubscriptionSMS',  ''),
-    );
-    $form['waterfallsubscriptionSMSConfirm'] = array(
-		'#type' => 'textarea',
-		'#title' => t('SMS Confirmation Message'),
-		'#cols' => 60,
-		'#rows' => 5,
-		'#description' => t('Confirmation message.'),
-		'#default_value' => variable_get('waterfallsubscriptionSMSConfirm',  ''),
-    );
-    $form['waterfallsubscriptionHappyMsg'] = array(
-		'#type' => 'textarea',
-		'#title' => t('Success Message'),
-		'#cols' => 60,
-		'#rows' => 3,
-		'#default_value' => variable_get('waterfallsubscriptionHappyMsg', 'This cell phone number is now registered'),
-    );
-    $form['waterfallsubscriptionUnHappyMsg'] = array(
-		'#type' => 'textarea',
-		'#title' => t('Success Message'),
-		'#cols' => 60,
-		'#rows' => 3,
-		'#default_value' => variable_get('waterfallsubscriptionUnHappyMsg', 'Invalid phone number'),
-    );
-
-  }
-  return $form;
-}
-
-function waterfallapi_block_save($delta = '', $edit = array()) {
-  if ($delta == 'waterfallsubscription') {
-    variable_set('waterfallsubscriptiontext', $edit['waterfallsubscriptiontext']);
-    variable_set('waterfallsubscriptioncelltitle', $edit['waterfallsubscriptioncelltitle']);
-    variable_set('waterfallsubscriptionziptitle', $edit['waterfallsubscriptionziptitle']);
-    variable_set('waterfallsubscriptionsubtext', $edit['waterfallsubscriptionsubtext']);
-    variable_set('waterfallsubscriptionSMS', $edit['waterfallsubscriptionSMS']);
-    variable_set('waterfallsubscriptionSMSConfirm', $edit['waterfallsubscriptionSMSConfirm']);
-    variable_set('waterfallsubscriptionHappyMsg', $edit['waterfallsubscriptionHappyMsg']);
-    variable_set('waterfallsubscriptionUnHappyMsg', $edit['waterfallsubscriptionUnHappyMsg']);
-  }
-  return;
-}
-
-
-function waterfallapi_block_view($delta = '') {
-  switch ($delta) {
-    case 'waterfallsubscription':
-	  drupal_add_css (drupal_get_path('module', 'waterfallapi') . '/waterfallapi.css');
-	  drupal_add_js (drupal_get_path('module', 'waterfallapi') .'/waterfallapi.js');
-	  $block['subject'] = t('Waterfall SMS Block');
-	  $block['content'] = waterfallapi_block_contents($delta);
-	  break;
-  }
-  return $block;
-}
-
-
-function waterfallapi_block_contents($which_block) {
-  switch ($which_block) {
-    case 'waterfallsubscription':
-      return array('waterfallsubscriptiontext' => array('#markup' => "<div class=\"waterfallsubscriptiontext\">" . variable_get('waterfallsubscriptiontext', '') . "</div>",),
-        	'form' => drupal_get_form('waterfallapi_form'),
-        	'waterfallsubscriptionsubtext' => array('#markup' => "<div class=\"waterfallsubscriptionsubtext\">" . variable_get('waterfallsubscriptionsubtext', '') . "</div>",),
-        	);
-
-  }
-}
-
 
 function waterfallapi_menu() {
-  $items['admin/reports/waterfallapi'] = array(
-    'page callback' => 'waterfallapi_page',
-    'access callback' => TRUE,
-    'title' => 'Waterfall API',
+  return array(
+    'admin/config/waterfallapi' => array(
+      'title' => 'Waterfall',
+      'description' => 'Configuration of Waterfall integration',
+      'position' => 'right',
+      'weight' => 0,
+      'page callback' => 'system_admin_menu_block_page',
+      'access arguments' => array('access administration pages'),
+      'file' => 'system.admin.inc',
+      'file path' => drupal_get_path('module', 'system'),
+    ),
+    'admin/config/waterfallapi/api' => array(
+      'title' => 'Waterfall API',
+      'description' => 'Configure Waterfall API support',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('waterfallapi_api_admin_form'),
+      'access callback' => 'user_access',
+      'access arguments' => array('waterfallapi configure api'),
+    ),
   );
-  return $items;
 }
 
-function waterfallapi_page() {
-  global $user; 
-  $nbr_records = db_query("SELECT count(msisdns) FROM {waterfallapi_signups}")->fetchField();
-  $title = "<h2>" . $nbr_records . " Records</h2>";
+function waterfallapi_api_admin_form($form, &$form_state) {
 
-  $page = array(
-    '#type' => 'markup',
-    '#markup' => $title . waterfallapi_generate_report(),
+  $form['waterfallapi_user'] = array(
+    '#type' => 'textfield',
+    '#title' => t('User'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('waterfallapi_user', ''),
+    '#attributes' => array(
+      'placeholder' => WATERFALL_API_USER,
+    ),
   );
-  //logged in only:
-  if($user->uid != 0) {
-  	return $page;
+
+  $form['waterfallapi_password'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Passsword'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('waterfallapi_password', ''),
+    '#attributes' => array(
+      'placeholder' => WATERFALL_API_PASS,
+    ),
+  );
+
+  $form['waterfallapi_us_short_code'] = array(
+    '#type' => 'textfield',
+    '#title' => t('US Short Code'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('waterfallapi_us_short_code', ''),
+    '#attributes' => array(
+      'placeholder' => PhoneCampaigns::US_SHORT_CODE,
+    ),
+  );
+
+  $form['waterfallapi_canadian_short_code'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Canadian Short Code'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('waterfallapi_canadian_short_code', ''),
+    '#attributes' => array(
+      'placeholder' => PhoneCampaigns::CANADIAN_SHORT_CODE,
+    ),
+  );
+
+  return system_settings_form($form);
+}
+
+function waterfallapi_authenticate() {
+  Waterfall::Api()->post('authenticate', array(
+    'username' => variable_get('waterfallapi_user', WATERFALL_API_USER),
+    'password' => variable_get('waterfallapi_password', WATERFALL_API_PASS),
+  ));
+}
+
+function waterfallapi_logout() {
+  Waterfall::Api()->post('authenticate/logout');
+}
+
+function waterfallapi_is_canadian_area_code($area_code) {
+  return PhoneCampaigns::IsCanadianAreaCode($area_code);
+}
+
+function waterfallapi_us_flows() {
+  $short_code = variable_get('waterfallapi_us_short_code',
+    PhoneCampaigns::US_SHORT_CODE);
+  waterfallapi_authenticate();
+  $us_flows = array('' => t('-- None --'));
+  foreach (PhoneCampaigns::ForShortCode($short_code)->flows() as $flow) {
+    $us_flows[$flow->id] = $flow->name;
   }
+  waterfallapi_logout();
+  return $us_flows;
 }
 
-function waterfallapi_generate_report() {
-  $query = db_select('waterfallapi_signups', 'entries')
-    ->extend('PagerDefault')
-    ->fields('entries', array('msisdns', 'zip', 'created'))
-    ->orderBy('created', 'DESC')
-    ->limit(20);
-
-  $result = $query->execute();
-  $output = '<table>';
-  foreach ($result as $row) {
-    $output .= '<tr><td>' . $row->msisdns .'</td><td>' . $row->zip .
-    '</td><td>' . date('Y-m-d h:i:s',$row->created) .'</td></tr>' ;
+function waterfallapi_canada_flows() {
+  $short_code = variable_get('waterfallapi_canadian_short_code',
+    PhoneCampaigns::CANADIAN_SHORT_CODE);
+  waterfallapi_authenticate();
+  $canada_flows = array('' => t('-- None --'));
+  foreach (PhoneCampaigns::ForShortCode($short_code)->flows() as $flow) {
+    $canada_flows[$flow->id] = $flow->name;
   }
-  $output .= '</table>';
-
-  $output .= theme('pager');
-  return $output;
+  waterfallapi_logout();
+  return $canada_flows;
 }
 
-function waterfallapi_form($form, &$form_state) {
-    $form = array();
-
-	$form['cellphone'] = array(
-		'#type' => 'fieldset',
-		'#title' => variable_get('waterfallsubscriptioncelltitle', t('Enter Your Cell Phone Number:')),
-		'#collapsible' => FALSE,
-		'#collapsed' => FALSE,
-		'#attributes' => array('class' => array('cellphone')),
-	);
-
-
-	$form['cellphone']['areacode'] = array(
-		'#type' => 'textfield',
-		'#size' => 3,
-		'#maxlength' => 3,
-		'#attributes' => array('class' => array('areacode')),
-	);
-
-	$form['cellphone']['phone1'] = array(
-		'#type' => 'textfield',
-		'#size' => 3,
-		'#maxlength' => 3,
-		'#attributes' => array('class' => array('phone1')),
-	);
-
-	$form['cellphone']['phone2'] = array(
-		'#type' => 'textfield',
-		'#size' => 4,
-		'#maxlength' => 4,
-		'#attributes' => array('class' => array('phone2')),
-	);
-
-	$form['zip'] = array(
-		'#type' => 'fieldset',
-		'#title' => variable_get('waterfallsubscriptionziptitle', t('Enter Your Zip Code to Get Local Tips:') . '<div>(Optional)</div>'),
-		'#collapsible' => FALSE,
-		'#collapsed' => FALSE,
-		'#attributes' => array('class' => array('zip')),
-	);
-
-	$form['zip']['zipcode'] = array(
-		'#type' => 'textfield',
-		'#size' => 5,
-		'#maxlength' => 5,
-		'#attributes' => array('class' => array('zipcode')),
-	);
-
-    $form['zip']['submit'] = array (
-        '#type' => 'submit',
-        '#value' => 'Subscribe',
-    );
-
-    $form['zip']['submit']['#ajax'] = array(
-      'callback' => 'waterfallapi_form_callback',
-      'wrapper' => 'waterfallapi-form',
-      'method' => 'replace',
-      'effect' => 'fade',
-    );
-
-    return $form;
+function waterfallapi_initiate_us_flow($flow_id, $phone) {
+  $short_code = variable_get('waterfallapi_us_short_code',
+    PhoneCampaigns::US_SHORT_CODE);
+  waterfallapi_authenticate();
+  PhoneCampaigns::ForShortCode($short_code)->initiateFlow($flow_id, $phone);
+  waterfallapi_logout();
 }
 
-function waterfallapi_form_callback($form, &$form_state) {
-	return $form;
-}
-
-function waterfallapi_form_validate($form, &$form_state) {
-	if(!is_numeric($form['cellphone']['areacode']['#value'])) form_set_error('Phone Number', t(variable_get('waterfallsubscriptionUnHappyMsg', 'Invalid phone number')));
-	if(!is_numeric($form['cellphone']['phone1']['#value'])) form_set_error('Phone Number', t(variable_get('waterfallsubscriptionUnHappyMsg', 'Invalid phone number')));
-	if(!is_numeric($form['cellphone']['phone2']['#value'])) form_set_error('Phone Number', t(variable_get('waterfallsubscriptionUnHappyMsg', 'Invalid phone number')));
-	if(($form['zip']['zipcode']['#value'] != '') && (!is_numeric($form['zip']['zipcode']['#value']))) {
-		form_set_error('Zip Code', t('The Zip code must be numeric.'));
-	}
-}
-
-function waterfallapi_form_submit($form, &$form_state) {
-	global $user; 
-	$canadian = false;
-	$areacode = $form['cellphone']['areacode']['#value'];
-	$prefix = $form['cellphone']['phone1']['#value'];
-	$line = $form['cellphone']['phone2']['#value'];
-	$zip = $form['zip']['zipcode']['#value'];
-	$waterFallAPI = new waterFallAPI;
-	$getCanadianAreaCodes = $waterFallAPI->getCanadianAreaCodes();
-	$canadian = in_array($areacode, $getCanadianAreaCodes);
-	$waterFallAPI->authenticate('TakePart','sms4takepart');
-	if($canadian) { //Canada:
-		$shortcode = '505b80e60364fb7d2e2f10e6';
-		$listid = '50b6b8fb0cf2d5cf4a820402';
-		$flowid = '50b6b92d0cf2d5cf4a82042a';
-		$waterFallAPI->setSessionShortCode($shortcode);
-	} else { //US:
-		$shortcode = '50ac121203644bd985ef24d4';
-		$listid = '50b6b8990cf2d5cf4a8203ad';
-		$flowid = '50b6ba030cf2d5cf4a820510';
-		$waterFallAPI->setSessionShortCode($shortcode);
-	}
-
-    //@todo: some of these fields are no longer needed:
-	$subinfo = $waterFallAPI->addSubscriber($listid, $areacode.$prefix.$line, 
-											array(
-			    								'50b4fbf80cf2d5cf4a7e15e5'  => $zip
-			    							),  
-			    							variable_get('waterfallsubscriptionSMS',  ''), 
-			    							variable_get('waterfallsubscriptionSMSConfirm',  ''),
-			    							$flowid, $shortcode);
-
-    $waterFallAPI->addMetadata(array('50b4fbf80cf2d5cf4a7e15e5'  => $zip), $areacode.$prefix.$line);
-	
-	$result = db_insert('waterfallapi_signups')->fields(array(
-		  'msisdns' => $areacode.$prefix.$line,
-		  'zip' => $zip,
-		  'uid' => $user->uid,
-		  'created' => time(),
-		))->execute();
-
-	drupal_set_message(t(variable_get('waterfallsubscriptionHappyMsg', 'This cell phone number is now registered')), 'status');
-
-	return $form;
-
+function waterfallapi_initiate_canada_flow($flow_id, $phone) {
+  $short_code = variable_get('waterfallapi_canadian_short_code',
+    PhoneCampaigns::CANADIAN_SHORT_CODE);
+  waterfallapi_authenticate();
+  PhoneCampaigns::ForShortCode($short_code)->initiateFlow($flow_id, $phone);
+  waterfallapi_logout();
 }

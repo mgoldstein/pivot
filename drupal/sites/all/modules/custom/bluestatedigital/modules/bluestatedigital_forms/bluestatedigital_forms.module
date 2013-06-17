@@ -128,7 +128,7 @@ function bluestatedigital_forms_signup_form_id($form_id, $add_none = TRUE) {
  */
 function bluestatedigital_forms_signup_field_id($form_id, $field_id,
   $add_none = FALSE) {
-  $values = &drupal_static(__FUNCTION__, array(), $reset);
+  $values = &drupal_static(__FUNCTION__, array());
 
   // Get the list of signup form fields only once.
   if (!empty($form_id) && !isset($values[$form_id])) {
