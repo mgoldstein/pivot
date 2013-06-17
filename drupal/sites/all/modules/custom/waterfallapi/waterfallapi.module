@@ -1,0 +1,142 @@
+<?php
+
+define('WATERFALL_API_USER', 'TakePart');
+define('WATERFALL_API_PASS', 'sms4takepart');
+
+include(drupal_get_path('module', 'waterfallapi') . '/includes/waterfallapi.inc');
+
+/**
+ * Implements hook_permission().
+ */
+function waterfallapi_permission() {
+  return array(
+    'waterfallapi configure api' => array(
+      'title' => t('Configure API'),
+      'description' => t('Configure the Waterfall API settings.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+function waterfallapi_menu() {
+  return array(
+    'admin/config/waterfallapi' => array(
+      'title' => 'Waterfall',
+      'description' => 'Configuration of Waterfall integration',
+      'position' => 'right',
+      'weight' => 0,
+      'page callback' => 'system_admin_menu_block_page',
+      'access arguments' => array('access administration pages'),
+      'file' => 'system.admin.inc',
+      'file path' => drupal_get_path('module', 'system'),
+    ),
+    'admin/config/waterfallapi/api' => array(
+      'title' => 'Waterfall API',
+      'description' => 'Configure Waterfall API support',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('waterfallapi_api_admin_form'),
+      'access callback' => 'user_access',
+      'access arguments' => array('waterfallapi configure api'),
+    ),
+  );
+}
+
+function waterfallapi_api_admin_form($form, &$form_state) {
+
+  $form['waterfallapi_user'] = array(
+    '#type' => 'textfield',
+    '#title' => t('User'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('waterfallapi_user', ''),
+    '#attributes' => array(
+      'placeholder' => WATERFALL_API_USER,
+    ),
+  );
+
+  $form['waterfallapi_password'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Passsword'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('waterfallapi_password', ''),
+    '#attributes' => array(
+      'placeholder' => WATERFALL_API_PASS,
+    ),
+  );
+
+  $form['waterfallapi_us_short_code'] = array(
+    '#type' => 'textfield',
+    '#title' => t('US Short Code'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('waterfallapi_us_short_code', ''),
+    '#attributes' => array(
+      'placeholder' => PhoneCampaigns::US_SHORT_CODE,
+    ),
+  );
+
+  $form['waterfallapi_canadian_short_code'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Canadian Short Code'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('waterfallapi_canadian_short_code', ''),
+    '#attributes' => array(
+      'placeholder' => PhoneCampaigns::CANADIAN_SHORT_CODE,
+    ),
+  );
+
+  return system_settings_form($form);
+}
+
+function waterfallapi_authenticate() {
+  Waterfall::Api()->post('authenticate', array(
+    'username' => variable_get('waterfallapi_user', WATERFALL_API_USER),
+    'password' => variable_get('waterfallapi_password', WATERFALL_API_PASS),
+  ));
+}
+
+function waterfallapi_logout() {
+  Waterfall::Api()->post('authenticate/logout');
+}
+
+function waterfallapi_is_canadian_area_code($area_code) {
+  return PhoneCampaigns::IsCanadianAreaCode($area_code);
+}
+
+function waterfallapi_us_flows() {
+  $short_code = variable_get('waterfallapi_us_short_code',
+    PhoneCampaigns::US_SHORT_CODE);
+  waterfallapi_authenticate();
+  $us_flows = array('' => t('-- None --'));
+  foreach (PhoneCampaigns::ForShortCode($short_code)->flows() as $flow) {
+    $us_flows[$flow->id] = $flow->name;
+  }
+  waterfallapi_logout();
+  return $us_flows;
+}
+
+function waterfallapi_canada_flows() {
+  $short_code = variable_get('waterfallapi_canadian_short_code',
+    PhoneCampaigns::CANADIAN_SHORT_CODE);
+  waterfallapi_authenticate();
+  $canada_flows = array('' => t('-- None --'));
+  foreach (PhoneCampaigns::ForShortCode($short_code)->flows() as $flow) {
+    $canada_flows[$flow->id] = $flow->name;
+  }
+  waterfallapi_logout();
+  return $canada_flows;
+}
+
+function waterfallapi_initiate_us_flow($flow_id, $phone) {
+  $short_code = variable_get('waterfallapi_us_short_code',
+    PhoneCampaigns::US_SHORT_CODE);
+  waterfallapi_authenticate();
+  PhoneCampaigns::ForShortCode($short_code)->initiateFlow($flow_id, $phone);
+  waterfallapi_logout();
+}
+
+function waterfallapi_initiate_canada_flow($flow_id, $phone) {
+  $short_code = variable_get('waterfallapi_canadian_short_code',
+    PhoneCampaigns::CANADIAN_SHORT_CODE);
+  waterfallapi_authenticate();
+  PhoneCampaigns::ForShortCode($short_code)->initiateFlow($flow_id, $phone);
+  waterfallapi_logout();
+}

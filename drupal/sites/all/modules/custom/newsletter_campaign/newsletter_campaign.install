@@ -1,0 +1,84 @@
+<?php
+/**
+ * @file
+ *
+ * Module schema, update and uninstall handlers.
+ *
+ * Removes variables used by the module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function newsletter_campaign_schema() {
+
+  $schema['newsletter_campaign'] = array(
+    'description' => 'The base table for newsletter campaign entities.',
+    'fields' => array(
+      'ncid' => array(
+        'description' => 'Primary key identifier for the newsletter campaign.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'title' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'The main title of the newsletter campaign.',
+      ),
+      'header' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Block header.',
+      ),
+      'promo_message' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'Message to display before a user submits their email .',
+      ),
+      'thankyou_message' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'Message to display after a user submits their email.',
+      ),
+      'campaign_id' => array(
+        'type' => 'varchar',
+        'length' => 60,
+  	    'not null' => TRUE,
+  	    'default' =>  '',
+        'description' => 'Campaign code generated from the BSD system.',
+      ),
+      'bsd_form_id' => array(
+        'type' => 'int',
+  	    'not null' => TRUE,
+  	    'default' =>  0,
+        'description' => 'ID code for BSD signup form serving this campaign.',
+      ),
+      'bsd_field_id' => array(
+        'type' => 'int',
+  	    'not null' => TRUE,
+  	    'default' =>  0,
+        'description' => 'ID code for BSD signup form field serving this campaign.',
+      ),
+      'follow_us_enabled' => array(
+        'description' => 'Show Follow Us box (0 = Hidden, 1 = Visible).',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'follow_us_configuration' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'Serialized Follow Us configuration.',
+        'serialize' => TRUE,
+      ),
+    ),
+    'primary key' => array('ncid'),
+  );
+
+  return $schema;
+}
