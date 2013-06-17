@@ -97,4 +97,7 @@ dependencies[] = pivot_type_video
 dependencies[] = pivot_type_webform
 
 ; Custom modules
+dependencies[] = bluestatedigital
+dependencies[] = newsletter_campaign
+dependencies[] = waterfallapi
 dependencies[] = wordlet
