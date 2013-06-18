@@ -73,6 +73,10 @@ dependencies[] = wysiwyg
 ; Features
 dependencies[] = pivot_fields
 dependencies[] = pivot_file_fields
+dependencies[] = pivot_taxonomy_series
+dependencies[] = pivot_taxonomy_show
+dependencies[] = pivot_text_formats
+
 dependencies[] = pivot_longtail
 dependencies[] = pivot_page_blog
 dependencies[] = pivot_page_home
@@ -81,10 +85,6 @@ dependencies[] = pivot_page_shows
 dependencies[] = pivot_page_videos
 dependencies[] = pivot_menus
 dependencies[] = pivot_permissions
-dependencies[] = pivot_promo_fields
-dependencies[] = pivot_taxonomy_series
-dependencies[] = pivot_taxonomy_show
-dependencies[] = pivot_text_formats
 dependencies[] = pivot_type_action
 dependencies[] = pivot_type_article
 dependencies[] = pivot_type_cast
