@@ -190,54 +190,6 @@ function pivot_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -48,
   );
-  // Exported menu link: menu-primary:movies
-  $menu_links['menu-primary:movies'] = array(
-    'menu_name' => 'menu-primary',
-    'link_path' => 'movies',
-    'router_path' => 'movies',
-    'link_title' => 'Movies',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
-  );
-  // Exported menu link: menu-primary:shows
-  $menu_links['menu-primary:shows'] = array(
-    'menu_name' => 'menu-primary',
-    'link_path' => 'shows',
-    'router_path' => 'shows',
-    'link_title' => 'Shows',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -50,
-  );
-  // Exported menu link: menu-primary:videos
-  $menu_links['menu-primary:videos'] = array(
-    'menu_name' => 'menu-primary',
-    'link_path' => 'videos',
-    'router_path' => 'videos',
-    'link_title' => 'Videos',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -47,
-  );
   // Exported menu link: menu-secondary:<front>
   $menu_links['menu-secondary:<front>'] = array(
     'menu_name' => 'menu-secondary',
@@ -250,38 +202,6 @@ function pivot_menus_menu_default_menu_links() {
     'module' => 'menu',
     'hidden' => 0,
     'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-  );
-  // Exported menu link: menu-secondary:movies
-  $menu_links['menu-secondary:movies'] = array(
-    'menu_name' => 'menu-secondary',
-    'link_path' => 'movies',
-    'router_path' => 'movies',
-    'link_title' => 'Our Blog',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-  );
-  // Exported menu link: menu-secondary:shows
-  $menu_links['menu-secondary:shows'] = array(
-    'menu_name' => 'menu-secondary',
-    'link_path' => 'shows',
-    'router_path' => 'shows',
-    'link_title' => 'Do I have Pivot on my TV?',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => 0,
@@ -310,17 +230,12 @@ function pivot_menus_menu_default_menu_links() {
   // Included for use with string extractors like potx.
   t('Android');
   t('Digital Media & Literacy');
-  t('Do I have Pivot on my TV?');
   t('Facebook');
-  t('Movies');
-  t('Our Blog');
   t('Participant Media');
   t('Pivot');
   t('Schedule');
-  t('Shows');
   t('TakePart');
   t('Twitter');
-  t('Videos');
   t('Watch Pivot Live >>');
   t('YouTube');
   t('iOS');

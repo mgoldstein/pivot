@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Pivot Page Shows feature.
- */
-
-include_once 'pivot_page_shows.features.inc';
