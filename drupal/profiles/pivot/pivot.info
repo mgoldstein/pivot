@@ -26,6 +26,7 @@ dependencies[] = file
 dependencies[] = rdf
 
 ; Contributed dependencies
+dependencies[] = advanced_help
 dependencies[] = apachesolr
 dependencies[] = botr
 dependencies[] = content_lock
