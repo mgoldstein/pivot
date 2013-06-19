@@ -107,13 +107,13 @@ function pivot_type_episode_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '10',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
       ),
       'display' => array(),
@@ -155,6 +155,48 @@ function pivot_type_episode_strongarm() {
   $strongarm->name = 'node_submitted_episode';
   $strongarm->value = 0;
   $export['node_submitted_episode'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_enable_episode';
+  $strongarm->value = 0;
+  $export['scheduler_publish_enable_episode'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_required_episode';
+  $strongarm->value = 0;
+  $export['scheduler_publish_required_episode'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_revision_episode';
+  $strongarm->value = 0;
+  $export['scheduler_publish_revision_episode'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_enable_episode';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_enable_episode'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_required_episode';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_required_episode'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_revision_episode';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_revision_episode'] = $strongarm;
 
   return $export;
 }

@@ -9,5 +9,4 @@ dependencies[] = features
 dependencies[] = metatag
 dependencies[] = taxonomy
 features[features_api][] = api:2
-features[field_base][] = field_series
 features[taxonomy][] = series

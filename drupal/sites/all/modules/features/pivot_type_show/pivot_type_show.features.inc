@@ -20,7 +20,7 @@ function pivot_type_show_ctools_plugin_api() {
 function pivot_type_show_node_info() {
   $items = array(
     'show' => array(
-      'name' => t('Show'),
+      'name' => t('Show Landing'),
       'base' => 'node_content',
       'description' => t('A show landing page.'),
       'has_title' => '1',
