@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * pivot_taxonomy_show.features.field_instance.inc
+ * pivot_taxonomy_show_fields.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function pivot_taxonomy_show_field_default_field_instances() {
+function pivot_taxonomy_show_fields_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'taxonomy_term-show-field_display_title'

@@ -76,13 +76,6 @@ function pivot_longtail_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'botr_target_panel';
-  $strongarm->value = '';
-  $export['botr_target_panel'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'botr_target_show';
   $strongarm->value = '';
   $export['botr_target_show'] = $strongarm;
@@ -93,6 +86,13 @@ function pivot_longtail_strongarm() {
   $strongarm->name = 'botr_target_video';
   $strongarm->value = 'field_longtail_video';
   $export['botr_target_video'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'botr_target_webform';
+  $strongarm->value = '';
+  $export['botr_target_webform'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -139,13 +139,6 @@ function pivot_longtail_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'botr_weight_panel';
-  $strongarm->value = '0';
-  $export['botr_weight_panel'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'botr_weight_show';
   $strongarm->value = '0';
   $export['botr_weight_show'] = $strongarm;
@@ -156,6 +149,13 @@ function pivot_longtail_strongarm() {
   $strongarm->name = 'botr_weight_video';
   $strongarm->value = '2';
   $export['botr_weight_video'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'botr_weight_webform';
+  $strongarm->value = '0';
+  $export['botr_weight_webform'] = $strongarm;
 
   return $export;
 }

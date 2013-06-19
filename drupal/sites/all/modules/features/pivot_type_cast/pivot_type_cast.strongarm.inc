@@ -107,13 +107,13 @@ function pivot_type_cast_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '8',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
       ),
       'display' => array(),
@@ -155,6 +155,48 @@ function pivot_type_cast_strongarm() {
   $strongarm->name = 'node_submitted_cast';
   $strongarm->value = 0;
   $export['node_submitted_cast'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_enable_cast';
+  $strongarm->value = 0;
+  $export['scheduler_publish_enable_cast'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_required_cast';
+  $strongarm->value = 0;
+  $export['scheduler_publish_required_cast'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_revision_cast';
+  $strongarm->value = 0;
+  $export['scheduler_publish_revision_cast'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_enable_cast';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_enable_cast'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_required_cast';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_required_cast'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_revision_cast';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_revision_cast'] = $strongarm;
 
   return $export;
 }
