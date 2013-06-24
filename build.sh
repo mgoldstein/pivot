@@ -3,16 +3,16 @@
 DB_NAME=pivot
 
 DB_SUID=root
-DB_SUPW=root
+DB_SUPW=yVo5zKN6
 
-DB_UID=root
-DB_PW=root
+DB_UID=pivot
+DB_PW=j09k2kdla
 
 DB_HOST=localhost
 
-ADMIN_MAIL="matt@wrathercreative.com"
+ADMIN_MAIL="support@pivot.tv"
 ADMIN_NAME="pivot"
-ADMIN_PASSWORD="pivot"
+ADMIN_PASSWORD="P@ssw0rd"
 
 SITE_NAME="Pivot.tv"
 INSTALL_PROFILE="pivot"
