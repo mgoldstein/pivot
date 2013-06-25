@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Action feature.
+ */
+
+include_once 'pivot_action.features.inc';

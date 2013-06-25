@@ -68,24 +68,23 @@ dependencies[] = webform
 dependencies[] = wysiwyg
 
 ; Features
-dependencies[] = pivot_fields
-dependencies[] = pivot_file_fields
 dependencies[] = pivot_longtail
 dependencies[] = pivot_menus
-dependencies[] = pivot_permissions
-dependencies[] = pivot_taxonomy_series
-dependencies[] = pivot_taxonomy_show
-dependencies[] = pivot_taxonomy_show_fields
 dependencies[] = pivot_text_formats
-dependencies[] = pivot_type_action
-dependencies[] = pivot_type_article
-dependencies[] = pivot_type_cast
-dependencies[] = pivot_type_episode
-dependencies[] = pivot_type_gallery
-dependencies[] = pivot_type_page
-dependencies[] = pivot_type_show
-dependencies[] = pivot_type_video
-dependencies[] = pivot_type_webform
+dependencies[] = pivot_permissions
+
+dependencies[] = pivot_field_bases
+dependencies[] = pivot_action
+dependencies[] = pivot_article
+dependencies[] = pivot_basic_page
+dependencies[] = pivot_campaign
+dependencies[] = pivot_dl_file
+dependencies[] = pivot_episode
+dependencies[] = pivot_gallery
+dependencies[] = pivot_movie
+dependencies[] = pivot_person
+dependencies[] = pivot_show
+dependencies[] = pivot_video
 
 ; Custom modules
 dependencies[] = bluestatedigital
