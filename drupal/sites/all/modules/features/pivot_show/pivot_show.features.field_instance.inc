@@ -168,6 +168,22 @@ function pivot_show_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
+        'file_entity_inline' => 1,
+        'file_entity_inline_fields' => array(),
+        'filefield_sources' => array(
+          'filefield_sources' => array(),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+          ),
+        ),
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
@@ -298,6 +314,22 @@ function pivot_show_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
+        'file_entity_inline' => 1,
+        'file_entity_inline_fields' => array(),
+        'filefield_sources' => array(
+          'filefield_sources' => array(),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+          ),
+        ),
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
