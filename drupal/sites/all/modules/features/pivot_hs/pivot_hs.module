@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Homepage Slide feature.
+ */
+
+include_once 'pivot_hs.features.inc';
