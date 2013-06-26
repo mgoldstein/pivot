@@ -1,6 +1,7 @@
 name = Contexts
 core = 7.x
 package = Contexts
+php = 5.2.4
 version = 7.x-1.0
 project = pivot_contexts
 dependencies[] = context
@@ -8,5 +9,6 @@ dependencies[] = ctools
 dependencies[] = menu
 dependencies[] = search
 features[context][] = global
+features[context][] = homepage
 features[ctools][] = context:context:3
 features[features_api][] = api:2
