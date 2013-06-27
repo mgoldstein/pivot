@@ -43,6 +43,7 @@
   </div><!-- /#main -->
   <?php print render($page['suffix']); ?>
 
+  <?php // footer will always render ?>
   <?php print render($page['footer']); ?>
 
 </div><!-- /#page -->
