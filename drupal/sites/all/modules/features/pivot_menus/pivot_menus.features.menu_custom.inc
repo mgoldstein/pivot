@@ -13,13 +13,13 @@ function pivot_menus_menu_default_menu_custom() {
   // Exported menu: menu-follow-us.
   $menus['menu-follow-us'] = array(
     'menu_name' => 'menu-follow-us',
-    'title' => 'Follow Us Footer Menu',
+    'title' => 'Follow Us',
     'description' => 'Social share icons shown in the page footer.',
   );
   // Exported menu: menu-get-our-app.
   $menus['menu-get-our-app'] = array(
     'menu_name' => 'menu-get-our-app',
-    'title' => 'Get Our App Footer Menu',
+    'title' => 'Get Our App',
     'description' => 'OTT app icon shown in the page footer.',
   );
   // Exported menu: menu-participant-media.
@@ -55,8 +55,8 @@ function pivot_menus_menu_default_menu_custom() {
   // Translatables
   // Included for use with string extractors like potx.
   t('First line menu links in the header.');
-  t('Follow Us Footer Menu');
-  t('Get Our App Footer Menu');
+  t('Follow Us');
+  t('Get Our App');
   t('Links to general pages on the Pivot site shown in the page footer.');
   t('Links to other Participant Media sites shown in the page footer.');
   t('OTT app icon shown in the page footer.');

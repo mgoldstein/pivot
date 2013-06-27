@@ -204,8 +204,6 @@ a:active {
 h1 {
   /* Sets the font-size and line-height while keeping a proper vertical rhythm. */
   @include adjust-font-size-to( $h1-font-size );
-
-  /* Sets 1 unit of vertical rhythm on the top and bottom margins. */
   @include leader(1, $h1-font-size);
   @include trailer(1, $h1-font-size);
 }
@@ -267,9 +265,17 @@ strong {
   font-weight: bold;
 }
 
+em,
+i {
+  font-style: italic;
+}
+
 blockquote {
   /* Sets 1 unit of vertical rhythm on the top and bottom margin. */
   margin: rhythm(1) $indent-amount;
+  border-left: solid 1px #000;
+  display: block;
+
 }
 
 /*
@@ -327,28 +333,21 @@ pre {
   word-wrap: break-word;
 }
 
-/*
- * 1. Addresses CSS quotes not supported in IE6/7
- * 2. Addresses quote property not supported in S4
- */
-
-/* 1 */
-
-q {
-  quotes: none;
+.cms q {
+    quotes: "\201C" "\201D" "\2018" "\2019";
 }
 
-/* 2 */
+.cms q:before {
+    content: open-quote;
+}
 
-q:before,
-q:after {
-  content: '';
-  content: none;
+.cms q:after {
+    content: close-quote;
 }
 
 /* @todo Determine how big element affects vertical rhythm. */
 small {
-  font-size: 75%;
+  font-size: 80%;
 }
 
 /*
@@ -387,7 +386,26 @@ ol,
 ul,
 .item-list ul /* Drupal override */ {
   /* Sets 1 unit of vertical rhythm on the top and bottom margin. */
-  margin: rhythm(1) 0;
+  // margin: rhythm(1) 0;
+  // gerald override
+  margin: 0 0 1em 0;
+}
+
+ul,
+ol {
+  list-style-position: outside;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+li {
+  margin: 0 0 .5em 0;
 }
 
 .item-list ul li { /* Drupal override */
@@ -401,6 +419,12 @@ dd {
 ul, ol, .item-list ul, .item-list ol {
   ul, ol {
     margin: 0; /* Turn off margins on nested lists. */
+  }
+  ul {
+    list-style-type: circle;
+  }
+  ol {
+    list-style-type: lower-latin;
   }
 }
 

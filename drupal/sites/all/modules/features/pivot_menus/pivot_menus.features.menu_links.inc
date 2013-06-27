@@ -174,6 +174,22 @@ function pivot_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -49,
   );
+  // Exported menu link: menu-pivot-footer:<front>
+  $menu_links['menu-pivot-footer:<front>'] = array(
+    'menu_name' => 'menu-pivot-footer',
+    'link_path' => '<front>',
+    'router_path' => '',
+    'link_title' => 'About Pivot',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+  );
   // Exported menu link: menu-primary:http://schedule.pivot.tv
   $menu_links['menu-primary:http://schedule.pivot.tv'] = array(
     'menu_name' => 'menu-primary',
@@ -228,6 +244,7 @@ function pivot_menus_menu_default_menu_links() {
   );
   // Translatables
   // Included for use with string extractors like potx.
+  t('About Pivot');
   t('Android');
   t('Digital Media & Literacy');
   t('Facebook');
