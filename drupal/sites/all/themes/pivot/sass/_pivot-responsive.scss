@@ -1,0 +1,27 @@
+@media (max-width: 979px) {
+	.upcoming .headline {
+		white-space: normal;
+	}
+
+	.upcoming .full-schedule .important {
+		white-space: normal;
+	}
+}
+
+/* iPad vertical */
+@media (max-width: 767px) {
+	.upcoming .headline {
+		display: none;
+	}
+}
+
+/* iPhone vertical */
+@media (max-width: 480px) {
+	.upcoming .times {
+		display: none;
+	}
+}
+
+/* iPhone vertical */
+@media (max-width: 320px) {
+}

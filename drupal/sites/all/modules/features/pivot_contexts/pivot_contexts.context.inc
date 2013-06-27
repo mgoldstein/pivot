@@ -50,35 +50,56 @@ function pivot_contexts_context_default_contexts() {
           'region' => 'header',
           'weight' => '-7',
         ),
+        'menu-menu-pivot-footer' => array(
+          'module' => 'menu',
+          'delta' => 'menu-pivot-footer',
+          'region' => 'footer',
+          'weight' => '-16',
+        ),
         'menu-menu-follow-us' => array(
           'module' => 'menu',
           'delta' => 'menu-follow-us',
           'region' => 'footer',
-          'weight' => '-10',
+          'weight' => '-15',
         ),
         'menu-menu-get-our-app' => array(
           'module' => 'menu',
           'delta' => 'menu-get-our-app',
           'region' => 'footer',
-          'weight' => '-9',
+          'weight' => '-14',
         ),
         'menu-menu-participant-media' => array(
           'module' => 'menu',
           'delta' => 'menu-participant-media',
           'region' => 'footer',
-          'weight' => '-8',
-        ),
-        'menu-menu-pivot-footer' => array(
-          'module' => 'menu',
-          'delta' => 'menu-pivot-footer',
-          'region' => 'footer',
-          'weight' => '-7',
+          'weight' => '-13',
         ),
       ),
     ),
   );
   $context->condition_mode = 0;
   $export['global'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'homepage';
+  $context->description = 'Context for the homepage';
+  $context->tag = '';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '<front>' => '<front>',
+      ),
+    ),
+  );
+  $context->reactions = array();
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Context for the homepage');
+  $export['homepage'] = $context;
 
   return $export;
 }
