@@ -8,6 +8,7 @@ dependencies[] = context
 dependencies[] = ctools
 dependencies[] = menu
 dependencies[] = search
+dependencies[] = views
 features[context][] = global
 features[context][] = homepage
 features[ctools][] = context:context:3

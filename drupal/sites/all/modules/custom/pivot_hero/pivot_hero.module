@@ -42,21 +42,18 @@ function pivot_hero_theme() {
     ),
   );
 }
+function pivot_hero_preprocess_page(&$variables) {
+  if($variables['is_front'] == TRUE) {
+    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpmodal.jquery.js');
+    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpslide.jquery.js');
+    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpselect.jquery.js');
+    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/pivot-hero-script.js');
+  }
+  
+}
 function pivot_hero_preprocess_node(&$variables) {
   if($variables['type'] == 'homepage_slide'){
-    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpmodal.jquery.js');
-    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpslide.jquery.js');
-    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpselect.jquery.js');
-    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/pivot-hero-script.js');
-  }
-}
 
-function pivot_hero_preprocess_region(&$variables) {
-  if(isset($variables['elements']['menu_menu-primary']) && isset($variables['elements']['menu_menu-secondary']) && isset($variables['elements']['menu_menu-watch-live']) ) {
-    unset($variables['elements']['menu_menu-primary']);
-    unset($variables['elements']['menu_menu-secondary']);
-    unset($variables['elements']['menu_menu-watch-live']);
-    dpm($variables, 'variables');
   }
 }
 

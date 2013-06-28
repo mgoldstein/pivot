@@ -93,7 +93,18 @@ function pivot_contexts_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array();
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-homepage_slider-block' => array(
+          'module' => 'views',
+          'delta' => 'homepage_slider-block',
+          'region' => 'preface',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
   $context->condition_mode = 1;
 
   // Translatables
