@@ -33,5 +33,5 @@
 	  <div id="copyright" class="copyright">
 	<p>&copy; 2013 Pivot TV, all rights reserved.</p>
 	  </div>
-  </footer><!-- region__footer -->
+  </footer><!-- /.footer -->
 <?php endif; ?>

@@ -60,27 +60,6 @@ a:active {
 	text-decoration: underline;
 }
 
-/* Main */
-#main {
-	padding: 1em;
-}
-
-/* Main content area */
-#content .primary {
-	width: 31em;
-	float: left;
-}
-
-/* Right Rail */
-#content .secondary {
-	width: 15em;
-	float: right;
-}
-
-#content .secondary .section {
-	margin-bottom: 1em;
-}
-
 /* Header */
 #site-header {
 	display: inline-block; *display: inline; zoom: 1;
@@ -156,10 +135,6 @@ a:active {
 				margin-bottom: 0;
 			}
 		}
-
-	p {
-		margin: 0;
-	}
 
 	}
 
@@ -268,37 +243,26 @@ a:active {
 ============================================================ */
 
 /* Skip link */
-.skip-link a {
-	position: absolute !important;
-	clip: rect(1px 1px 1px 1px);
-	clip: rect(1px, 1px, 1px, 1px);
-	overflow: hidden;
-	height: 1px;
-	text-decoration: underline;
-}
 
-.skip-link a:active,
-.skip-link a:focus {
-	position: static !important;
-	clip: auto;
-	overflow: visible;
-	height: auto;
-}
+// TODO mw
+// Removed this in favor of the native zen markup
 
-/* Site wrappers */
-.site-wrapper {
-	width: 49em;
-	position: relative;
-	margin: auto;
-	padding: 1em;
-	display: table;
-}
+// .skip-link a {
+// 	position: absolute !important;
+// 	clip: rect(1px 1px 1px 1px);
+// 	clip: rect(1px, 1px, 1px, 1px);
+// 	overflow: hidden;
+// 	height: 1px;
+// 	text-decoration: underline;
+// }
 
-/* Right Rail */
-.region-right-rail {
-	float: right;
-	margin-right: 1em;
-}
+// .skip-link a:active,
+// .skip-link a:focus {
+// 	position: static !important;
+// 	clip: auto;
+// 	overflow: visible;
+// 	height: auto;
+// }
 
 /* "Buttons" */
 a.important:link,
