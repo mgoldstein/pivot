@@ -205,6 +205,15 @@ function STARTERKIT_preprocess_region(&$variables, $hook) {
 // */
 
 /**
+ * Implements template_preprocess_region().
+ */
+function pivot_preprocess_region(&$variables, $hook) {
+  if ($variables['region'] == 'footer')  {
+    $variables['classes_array'][] = 'footer';
+  }
+}
+
+/**
  * Override or insert variables into the block templates.
  *
  * @param $variables
@@ -224,3 +233,10 @@ function STARTERKIT_preprocess_block(&$variables, $hook) {
   //}
 }
 // */
+
+function pivot_preprocess_block(&$variables) {
+  if ($variables['block_html_id'] == 'block-menu-menu-pivot-footer') {
+    $variables['classes_array'][] = 'nav';
+    $variables['classes_array'][] = 'footer-main-nav';
+  }
+}
