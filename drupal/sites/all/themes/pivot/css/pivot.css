@@ -77,30 +77,29 @@ a:active {
 /* line 64, ../sass/_pivot-global.scss */
 #main {
   padding: 1em;
-  background: #fff;
 }
 
 /* Main content area */
-/* line 70, ../sass/_pivot-global.scss */
+/* line 69, ../sass/_pivot-global.scss */
 #content .primary {
   width: 31em;
   float: left;
 }
 
 /* Right Rail */
-/* line 76, ../sass/_pivot-global.scss */
+/* line 75, ../sass/_pivot-global.scss */
 #content .secondary {
   width: 15em;
   float: right;
 }
 
-/* line 81, ../sass/_pivot-global.scss */
+/* line 80, ../sass/_pivot-global.scss */
 #content .secondary .section {
   margin-bottom: 1em;
 }
 
 /* Header */
-/* line 86, ../sass/_pivot-global.scss */
+/* line 85, ../sass/_pivot-global.scss */
 #site-header {
   display: inline-block;
   *display: inline;
@@ -109,31 +108,31 @@ a:active {
   width: 100%;
 }
 
-/* line 92, ../sass/_pivot-global.scss */
+/* line 91, ../sass/_pivot-global.scss */
 #site-header .nav {
   float: left;
   width: 100%;
 }
 
-/* line 97, ../sass/_pivot-global.scss */
+/* line 96, ../sass/_pivot-global.scss */
 #site-header .nav li {
   float: left;
 }
 
-/* line 101, ../sass/_pivot-global.scss */
+/* line 100, ../sass/_pivot-global.scss */
 #site-header .nav li a {
   font-size: 14px;
   display: block;
   padding: 1em;
 }
 
-/* line 107, ../sass/_pivot-global.scss */
+/* line 106, ../sass/_pivot-global.scss */
 #site-header .block-search {
   float: left;
 }
 
 /* Footer */
-/* line 112, ../sass/_pivot-global.scss */
+/* line 111, ../sass/_pivot-global.scss */
 #site-footer {
   background: #424242 url(../images/secondary-background.gif) left top repeat;
   color: #ccc;
@@ -144,70 +143,60 @@ a:active {
   overflow: hidden;
   box-shadow: inset 0px 10px 20px 0px rgba(0, 0, 0, 0.25);
 }
-
-/* line 123, ../sass/_pivot-global.scss */
+/* line 120, ../sass/_pivot-global.scss */
 #site-footer .site-wrapper {
   padding: 1em 0;
 }
-
-/* line 127, ../sass/_pivot-global.scss */
+/* line 124, ../sass/_pivot-global.scss */
 #site-footer a {
   color: #ccc;
 }
-
-/* line 131, ../sass/_pivot-global.scss */
-#site-footer .nav {
-  float: left;
-  display: table;
+/* line 128, ../sass/_pivot-global.scss */
+#site-footer .block {
+  font-size: 13px;
 }
-
-/* line 138, ../sass/_pivot-global.scss */
-#site-footer .nav .headline,
-#site-footer .nav .list,
-#site-footer .nav .item {
+/* line 133, ../sass/_pivot-global.scss */
+#site-footer .block h2,
+#site-footer .block .menu,
+#site-footer .block .menu li {
   float: left;
 }
-
-/* line 142, ../sass/_pivot-global.scss */
-#site-footer .nav .item {
+/* line 137, ../sass/_pivot-global.scss */
+#site-footer .block h2 {
+  font-size: 13px;
+}
+/* line 140, ../sass/_pivot-global.scss */
+#site-footer .block .menu li {
   margin-left: 12px;
 }
-
 /* line 146, ../sass/_pivot-global.scss */
 #site-footer .footer-main-nav {
+  float: left;
+  display: table;
   margin: 1em auto 2em auto;
   float: none;
 }
-
-/* line 151, ../sass/_pivot-global.scss */
-#site-footer .footer-main-nav .headline {
+/* line 152, ../sass/_pivot-global.scss */
+#site-footer .footer-main-nav h2 {
   display: none;
 }
-
-/* line 155, ../sass/_pivot-global.scss */
-#site-footer .footer-main-nav .item {
+/* line 153, ../sass/_pivot-global.scss */
+#site-footer .footer-main-nav .menu li {
   float: left;
   text-align: center;
   margin-left: 0;
 }
-
-/* line 161, ../sass/_pivot-global.scss */
-#site-footer .footer-main-nav .item a {
+/* line 158, ../sass/_pivot-global.scss */
+#site-footer .footer-main-nav .menu li a {
   padding: 0 32px;
 }
 
-/* line 165, ../sass/_pivot-global.scss */
-#site-footer .nav .headline {
-  font-size: 13px;
-  float: left;
-}
-
-/* line 170, ../sass/_pivot-global.scss */
+/* line 164, ../sass/_pivot-global.scss */
 #site-footer .nav .item a {
   font-size: 13px;
 }
 
-/* line 174, ../sass/_pivot-global.scss */
+/* line 168, ../sass/_pivot-global.scss */
 #site-footer .secondary {
   display: table;
   margin: 2em auto 2em auto;
@@ -215,13 +204,13 @@ a:active {
   font-family: "Apercu Mono Regular", monospace;
 }
 
-/* line 182, ../sass/_pivot-global.scss */
+/* line 176, ../sass/_pivot-global.scss */
 #site-footer .footer-follow-nav,
 #site-footer .footer-apps-nav {
   margin-right: 1.5em;
 }
 
-/* line 187, ../sass/_pivot-global.scss */
+/* line 181, ../sass/_pivot-global.scss */
 #site-footer .footer-follow-nav a,
 #site-footer .footer-apps-nav a {
   display: inline-block;
@@ -233,37 +222,37 @@ a:active {
   background-repeat: no-repeat;
 }
 
-/* line 197, ../sass/_pivot-global.scss */
+/* line 191, ../sass/_pivot-global.scss */
 #site-footer .footer-follow-nav .facebook a {
   background-image: url(../images/footer_social_facebook.png);
 }
 
-/* line 201, ../sass/_pivot-global.scss */
+/* line 195, ../sass/_pivot-global.scss */
 #site-footer .footer-follow-nav .twitter a {
   background-image: url(../images/footer_social_twitter.png);
 }
 
-/* line 205, ../sass/_pivot-global.scss */
+/* line 199, ../sass/_pivot-global.scss */
 #site-footer .footer-follow-nav .youtube a {
   background-image: url(../images/footer_social_youtube.png);
 }
 
-/* line 209, ../sass/_pivot-global.scss */
+/* line 203, ../sass/_pivot-global.scss */
 #site-footer .footer-follow-nav .googleplus a {
   background-image: url(../images/footer_social_googleplus.png);
 }
 
-/* line 213, ../sass/_pivot-global.scss */
+/* line 207, ../sass/_pivot-global.scss */
 #site-footer .footer-apps-nav .apple a {
   background-image: url(../images/footer_apps_apple.png);
 }
 
-/* line 217, ../sass/_pivot-global.scss */
+/* line 211, ../sass/_pivot-global.scss */
 #site-footer .footer-apps-nav .android a {
   background-image: url(../images/footer_apps_android.png);
 }
 
-/* line 221, ../sass/_pivot-global.scss */
+/* line 215, ../sass/_pivot-global.scss */
 #site-footer .footer-participant-nav a {
   display: inline-block;
   white-space: nowrap;
@@ -272,21 +261,21 @@ a:active {
   background-repeat: no-repeat;
 }
 
-/* line 229, ../sass/_pivot-global.scss */
+/* line 223, ../sass/_pivot-global.scss */
 #site-footer .footer-participant-nav .takepart a {
   background-image: url(../images/footer_participant_takepart.png);
   width: 45px;
   height: 45px;
 }
 
-/* line 235, ../sass/_pivot-global.scss */
+/* line 229, ../sass/_pivot-global.scss */
 #site-footer .footer-participant-nav .pivot a {
   background-image: url(../images/footer_participant_pivot.png);
   width: 48px;
   height: 16px;
 }
 
-/* line 241, ../sass/_pivot-global.scss */
+/* line 235, ../sass/_pivot-global.scss */
 #site-footer .footer-participant-nav .participant a {
   background-image: url(../images/footer_participant_participant.png);
   width: 113px;
@@ -294,12 +283,12 @@ a:active {
   vertical-align: middle;
 }
 
-/* line 248, ../sass/_pivot-global.scss */
+/* line 242, ../sass/_pivot-global.scss */
 #site-footer #copyright {
   margin-bottom: 1em;
 }
 
-/* line 252, ../sass/_pivot-global.scss */
+/* line 246, ../sass/_pivot-global.scss */
 #site-footer #copyright p {
   font-size: 12px;
   text-align: center;
@@ -310,7 +299,7 @@ a:active {
 || 2.) Reusables/Modules
 ============================================================ */
 /* Skip link */
-/* line 263, ../sass/_pivot-global.scss */
+/* line 257, ../sass/_pivot-global.scss */
 .skip-link a {
   position: absolute !important;
   clip: rect(1px 1px 1px 1px);
@@ -320,7 +309,7 @@ a:active {
   text-decoration: underline;
 }
 
-/* line 273, ../sass/_pivot-global.scss */
+/* line 267, ../sass/_pivot-global.scss */
 .skip-link a:active,
 .skip-link a:focus {
   position: static !important;
@@ -330,7 +319,7 @@ a:active {
 }
 
 /* Site wrappers */
-/* line 281, ../sass/_pivot-global.scss */
+/* line 275, ../sass/_pivot-global.scss */
 .site-wrapper {
   width: 49em;
   position: relative;
@@ -340,14 +329,14 @@ a:active {
 }
 
 /* Right Rail */
-/* line 290, ../sass/_pivot-global.scss */
+/* line 284, ../sass/_pivot-global.scss */
 .region-right-rail {
   float: right;
   margin-right: 1em;
 }
 
 /* "Buttons" */
-/* line 297, ../sass/_pivot-global.scss */
+/* line 291, ../sass/_pivot-global.scss */
 a.important:link,
 a.important:visited {
   text-decoration: none;
@@ -364,7 +353,7 @@ a.important:visited {
   box-shadow: 0 3px 0 rgba(50, 50, 50, 0.75);
 }
 
-/* line 312, ../sass/_pivot-global.scss */
+/* line 306, ../sass/_pivot-global.scss */
 a.important:after {
   content: " ";
   display: block;
@@ -380,12 +369,12 @@ a.important:after {
   transition: right .1s linear .1s;
 }
 
-/* line 327, ../sass/_pivot-global.scss */
+/* line 321, ../sass/_pivot-global.scss */
 a.important:hover:after {
   right: 10px;
 }
 
-/* line 331, ../sass/_pivot-global.scss */
+/* line 325, ../sass/_pivot-global.scss */
 a.important .pivot {
   display: inline-block;
   background-repeat: no-repeat;
@@ -399,7 +388,7 @@ a.important .pivot {
 }
 
 /* Top? Schedule */
-/* line 344, ../sass/_pivot-global.scss */
+/* line 338, ../sass/_pivot-global.scss */
 .upcoming {
   position: absolute;
   width: 100%;
@@ -411,17 +400,17 @@ a.important .pivot {
   box-shadow: inset 0px -10px 20px 0px rgba(0, 0, 0, 0.25);
 }
 
-/* line 356, ../sass/_pivot-global.scss */
+/* line 350, ../sass/_pivot-global.scss */
 .upcoming a {
   color: #01bf9e;
 }
 
-/* line 360, ../sass/_pivot-global.scss */
+/* line 354, ../sass/_pivot-global.scss */
 .upcoming .inner {
   display: table-row;
 }
 
-/* line 364, ../sass/_pivot-global.scss */
+/* line 358, ../sass/_pivot-global.scss */
 .upcoming .headline a {
   font-size: 24px;
   text-transform: uppercase;
@@ -434,7 +423,7 @@ a.important .pivot {
   color: #fff;
 }
 
-/* line 376, ../sass/_pivot-global.scss */
+/* line 370, ../sass/_pivot-global.scss */
 .upcoming .headline a:after {
   content: " ";
   display: block;
@@ -449,7 +438,7 @@ a.important .pivot {
   vertical-align: middle;
 }
 
-/* line 393, ../sass/_pivot-global.scss */
+/* line 387, ../sass/_pivot-global.scss */
 .upcoming .headline,
 .upcoming .times,
 .upcoming .full-schedule,
@@ -458,7 +447,7 @@ a.important .pivot {
   vertical-align: middle;
 }
 
-/* line 398, ../sass/_pivot-global.scss */
+/* line 392, ../sass/_pivot-global.scss */
 .upcoming .times .item {
   font-family: "Apercu Mono Regular", monospace, sans-serif;
   font-size: 14px;
@@ -467,13 +456,13 @@ a.important .pivot {
   padding: 0 5px;
 }
 
-/* line 406, ../sass/_pivot-global.scss */
+/* line 400, ../sass/_pivot-global.scss */
 .upcoming .times .inner {
   display: table;
   margin: auto;
 }
 
-/* line 411, ../sass/_pivot-global.scss */
+/* line 405, ../sass/_pivot-global.scss */
 .upcoming .times .item:before {
   content: " ";
   width: 1px;
@@ -488,12 +477,12 @@ a.important .pivot {
   /* W3C */
 }
 
-/* line 424, ../sass/_pivot-global.scss */
+/* line 418, ../sass/_pivot-global.scss */
 .upcoming .times .item:first-child:before {
   display: none;
 }
 
-/* line 428, ../sass/_pivot-global.scss */
+/* line 422, ../sass/_pivot-global.scss */
 .upcoming .times .item:after {
   content: " ";
   width: 1px;
@@ -508,19 +497,19 @@ a.important .pivot {
   /* W3C */
 }
 
-/* line 442, ../sass/_pivot-global.scss */
+/* line 436, ../sass/_pivot-global.scss */
 .upcoming .times .time,
 .upcoming .times .show {
   padding: 0 5px;
 }
 
-/* line 446, ../sass/_pivot-global.scss */
+/* line 440, ../sass/_pivot-global.scss */
 .upcoming .full-schedule {
   padding: 0 5px;
 }
 
 /* Pretty form selects */
-/* line 452, ../sass/_pivot-global.scss */
+/* line 446, ../sass/_pivot-global.scss */
 .tpselect_wrapper {
   display: inline-block;
   height: 30px;
@@ -531,19 +520,19 @@ a.important .pivot {
   vertical-align: bottom;
 }
 
-/* line 462, ../sass/_pivot-global.scss */
+/* line 456, ../sass/_pivot-global.scss */
 .tpselect_wrapper.tpselect_focus {
   background: #000;
   color: #fff;
 }
 
-/* line 467, ../sass/_pivot-global.scss */
+/* line 461, ../sass/_pivot-global.scss */
 .tpselect_wrapper select {
   height: 100%;
   width: 100%;
 }
 
-/* line 472, ../sass/_pivot-global.scss */
+/* line 466, ../sass/_pivot-global.scss */
 .tpselect_wrapper .tpselect_value {
   position: relative;
   display: block;
@@ -555,7 +544,7 @@ a.important .pivot {
   font-family: "Apercu Mono Regular", monospace;
 }
 
-/* line 483, ../sass/_pivot-global.scss */
+/* line 477, ../sass/_pivot-global.scss */
 .tpselect_wrapper .tpselect_value:after {
   display: block;
   content: " ";
@@ -568,104 +557,30 @@ a.important .pivot {
 }
 
 /* Find pivot right rail */
-/* line 496, ../sass/_pivot-global.scss */
-.find-pivot {
-  padding: 16px 10px;
-  background: #fff;
-  position: relative;
+/*
+ * DEV CSS RULES
+ */
+/* line 570, ../sass/_pivot-global.scss */
+#themer-toggle {
+  z-index: 99999;
 }
 
-/* line 502, ../sass/_pivot-global.scss */
-.find-pivot label {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 10px;
-  height: 16px;
-  white-space: nowrap;
-  text-indent: 100%;
-  overflow: hidden;
-}
-
-/* line 513, ../sass/_pivot-global.scss */
-.find-pivot .tpselect_value {
-  width: 130px;
-}
-
-/* line 517, ../sass/_pivot-global.scss */
-.find-pivot .headline {
-  color: #424242;
-  font-size: 1.05em;
-  text-transform: uppercase;
-  margin-bottom: 13px;
-}
-
-/* line 524, ../sass/_pivot-global.scss */
-.find-pivot .headline .pivot {
-  display: inline-block;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 64px;
-  height: 22px;
-  background-repeat: no-repeat;
-  background-image: url(../images/pivot_medium_black.png);
-  vertical-align: text-bottom;
-}
-
-/* line 536, ../sass/_pivot-global.scss */
-.find-pivot .text {
-  width: 100px;
-  height: 30px;
-  line-height: 30px;
-  font-size: 18px;
-  background: #f2f2f2;
-  border-radius: 3px;
-  border: none;
-  padding: 0 7px;
-  box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
-}
-
-/* line 548, ../sass/_pivot-global.scss */
-.find-pivot .submit {
-  display: inline-block;
-  text-indent: 200%;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 30px;
-  height: 30px;
-  background-repeat: no-repeat;
-  background-position: 11px 6px;
-  background-image: url(../images/rightarrow_small.png);
-  color: #666;
-  font-size: 13px;
-  position: relative;
-  border: none;
-  background-color: #01bf9e;
-  border-radius: 3px;
-  box-shadow: 0 3px 0 rgba(50, 50, 50, 0.75);
-  vertical-align: top;
-}
-
-/* ============================================================
-|| 3.) Section Specific
-============================================================ */
-/* ============================================================
-|| 4.) Page Specific
-============================================================ */
+/*
+ * Homepage Styles for Pivot.tv
+ */
 /* Home Page
 ------------------------------------------------------------ */
-/* line 580, ../sass/_pivot-global.scss */
+/* line 8, ../sass/_pivot-homepage.scss */
 body.home {
   height: 100%;
 }
 
-/* line 584, ../sass/_pivot-global.scss */
+/* line 12, ../sass/_pivot-homepage.scss */
 .home #site-header {
   display: none;
 }
 
-/* line 588, ../sass/_pivot-global.scss */
+/* line 16, ../sass/_pivot-homepage.scss */
 .home #home-header {
   position: absolute;
   left: 0;
@@ -676,7 +591,7 @@ body.home {
   width: 100%;
 }
 
-/* line 598, ../sass/_pivot-global.scss */
+/* line 26, ../sass/_pivot-homepage.scss */
 .home #home-header .pivot-headline {
   overflow: hidden;
   text-indent: 100%;
@@ -688,19 +603,19 @@ body.home {
   float: left;
 }
 
-/* line 609, ../sass/_pivot-global.scss */
+/* line 37, ../sass/_pivot-homepage.scss */
 .home #home-header .secondary {
   float: right;
 }
 
-/* line 613, ../sass/_pivot-global.scss */
+/* line 41, ../sass/_pivot-homepage.scss */
 .home #home-header .social {
   float: left;
   width: 100%;
   margin-bottom: 15px;
 }
 
-/* line 619, ../sass/_pivot-global.scss */
+/* line 47, ../sass/_pivot-homepage.scss */
 .home #home-header .social .item {
   float: left;
   text-indent: 100%;
@@ -712,46 +627,46 @@ body.home {
   margin-left: 11px;
 }
 
-/* line 630, ../sass/_pivot-global.scss */
+/* line 58, ../sass/_pivot-homepage.scss */
 .home #home-header .social .facebook {
   background-image: url(../images/home_social_facebook.png);
 }
 
-/* line 634, ../sass/_pivot-global.scss */
+/* line 62, ../sass/_pivot-homepage.scss */
 .home #home-header .social .googleplus {
   background-image: url(../images/home_social_googleplus.png);
 }
 
-/* line 638, ../sass/_pivot-global.scss */
+/* line 66, ../sass/_pivot-homepage.scss */
 .home #home-header .social .twitter {
   background-image: url(../images/home_social_twitter.png);
 }
 
-/* line 642, ../sass/_pivot-global.scss */
+/* line 70, ../sass/_pivot-homepage.scss */
 .home #home-header .social .item a {
   display: block;
   height: 100%;
 }
 
-/* line 647, ../sass/_pivot-global.scss */
+/* line 75, ../sass/_pivot-homepage.scss */
 .home #main {
   min-height: 100%;
   padding: 0;
   background: transparent;
 }
 
-/* line 653, ../sass/_pivot-global.scss */
+/* line 81, ../sass/_pivot-homepage.scss */
 .home #wrapper {
   width: auto;
   height: 100%;
 }
 
-/* line 658, ../sass/_pivot-global.scss */
+/* line 86, ../sass/_pivot-homepage.scss */
 .home #video {
   background: #000;
 }
 
-/* line 663, ../sass/_pivot-global.scss */
+/* line 91, ../sass/_pivot-homepage.scss */
 .home .video-player,
 .home .video-image {
   position: absolute;
@@ -760,36 +675,36 @@ body.home {
   opacity: 0;
 }
 
-/* line 670, ../sass/_pivot-global.scss */
+/* line 98, ../sass/_pivot-homepage.scss */
 .home .active .video-player {
   z-index: 2;
   opacity: 1;
 }
 
-/* line 675, ../sass/_pivot-global.scss */
+/* line 103, ../sass/_pivot-homepage.scss */
 .home .video-image.loaded {
   opacity: 1;
 }
 
-/* line 680, ../sass/_pivot-global.scss */
+/* line 108, ../sass/_pivot-homepage.scss */
 .home .video-player,
 .home .slide:first-child .video-image {
   -webkit-transition: opacity .1s linear .1s;
   transition: opacity .1s linear .1s;
 }
 
-/* line 685, ../sass/_pivot-global.scss */
+/* line 113, ../sass/_pivot-homepage.scss */
 .home .slide {
   white-space: normal;
 }
 
-/* line 689, ../sass/_pivot-global.scss */
+/* line 117, ../sass/_pivot-homepage.scss */
 .home .slide .active .video-image {
   opacity: 1;
   z-index: 1;
 }
 
-/* line 694, ../sass/_pivot-global.scss */
+/* line 122, ../sass/_pivot-homepage.scss */
 .home .video-content {
   z-index: 3;
   position: absolute;
@@ -799,37 +714,37 @@ body.home {
   width: 100%;
 }
 
-/* line 703, ../sass/_pivot-global.scss */
+/* line 131, ../sass/_pivot-homepage.scss */
 .home .video-content-inner {
   display: table-row;
 }
 
-/* line 707, ../sass/_pivot-global.scss */
+/* line 135, ../sass/_pivot-homepage.scss */
 .home .video-content img {
   display: block;
   box-shadow: 15px 14px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* line 713, ../sass/_pivot-global.scss */
+/* line 141, ../sass/_pivot-homepage.scss */
 .home .video-content .primary,
 .home .video-content .secondary {
   display: table-cell;
   vertical-align: top;
 }
 
-/* line 718, ../sass/_pivot-global.scss */
+/* line 146, ../sass/_pivot-homepage.scss */
 .home .video-content .primary {
   width: 1px;
 }
 
-/* line 722, ../sass/_pivot-global.scss */
+/* line 150, ../sass/_pivot-homepage.scss */
 .home .video-content .secondary {
   font-size: 24px;
   line-height: 1.6;
   padding: 0 10px 0 50px;
 }
 
-/* line 728, ../sass/_pivot-global.scss */
+/* line 156, ../sass/_pivot-homepage.scss */
 .home .video-content .secondary .headline {
   font-size: 60px;
   font-weight: bold;
@@ -837,26 +752,26 @@ body.home {
   white-space: nowrap;
 }
 
-/* line 735, ../sass/_pivot-global.scss */
+/* line 163, ../sass/_pivot-homepage.scss */
 .home .video-content .secondary .description {
   margin-bottom: 15px;
   font-family: "Apercu Mono Regular", monospace;
 }
 
 /* Top slide */
-/* line 742, ../sass/_pivot-global.scss */
+/* line 170, ../sass/_pivot-homepage.scss */
 .home #topslide {
   height: 100%;
   background: #000;
   position: relative;
 }
 
-/* line 748, ../sass/_pivot-global.scss */
+/* line 176, ../sass/_pivot-homepage.scss */
 .home #topslide a.important {
   background: #0084a9;
 }
 
-/* line 752, ../sass/_pivot-global.scss */
+/* line 180, ../sass/_pivot-homepage.scss */
 .home .slide-nav {
   position: absolute;
   bottom: 0;
@@ -868,12 +783,12 @@ body.home {
   color: #fff;
 }
 
-/* line 763, ../sass/_pivot-global.scss */
+/* line 191, ../sass/_pivot-homepage.scss */
 .home .slide-nav .headline {
   display: none;
 }
 
-/* line 767, ../sass/_pivot-global.scss */
+/* line 195, ../sass/_pivot-homepage.scss */
 .home .slide-nav a {
   display: block;
   position: relative;
@@ -882,14 +797,14 @@ body.home {
   color: #00b5cc;
 }
 
-/* line 776, ../sass/_pivot-global.scss */
+/* line 204, ../sass/_pivot-homepage.scss */
 .home .slide-nav .active a,
 .home .slide-nav a:hover {
   color: #fff;
   text-decoration: none;
 }
 
-/* line 781, ../sass/_pivot-global.scss */
+/* line 209, ../sass/_pivot-homepage.scss */
 .home .slide-nav a:before {
   content: " ";
   display: inline-block;
@@ -898,85 +813,85 @@ body.home {
   vertical-align: text-bottom;
 }
 
-/* line 789, ../sass/_pivot-global.scss */
+/* line 217, ../sass/_pivot-homepage.scss */
 .home .slide-nav .shows a:before {
   width: 28px;
   height: 27px;
   background-image: url(../images/home_shows_off.png);
 }
 
-/* line 796, ../sass/_pivot-global.scss */
+/* line 224, ../sass/_pivot-homepage.scss */
 .home .slide-nav .shows.active a:before,
 .home .slide-nav .shows a:hover:before {
   background-image: url(../images/home_shows_on.png);
 }
 
-/* line 800, ../sass/_pivot-global.scss */
+/* line 228, ../sass/_pivot-homepage.scss */
 .home .slide-nav .movies a:before {
   width: 29px;
   height: 28px;
   background-image: url(../images/home_movies_off.png);
 }
 
-/* line 807, ../sass/_pivot-global.scss */
+/* line 235, ../sass/_pivot-homepage.scss */
 .home .slide-nav .movies.active a:before,
 .home .slide-nav .movies a:hover:before {
   background-image: url(../images/home_movies_on.png);
 }
 
-/* line 811, ../sass/_pivot-global.scss */
+/* line 239, ../sass/_pivot-homepage.scss */
 .home .slide-nav .watch_now a:before {
   width: 27px;
   height: 28px;
   background-image: url(../images/home_watch_off.png);
 }
 
-/* line 818, ../sass/_pivot-global.scss */
+/* line 246, ../sass/_pivot-homepage.scss */
 .home .slide-nav .watch_now.active a:before,
 .home .slide-nav .watch_now a:hover:before {
   background-image: url(../images/home_watch_on.png);
 }
 
-/* line 822, ../sass/_pivot-global.scss */
+/* line 250, ../sass/_pivot-homepage.scss */
 .home .slide-nav .take_action a:before {
   width: 33px;
   height: 28px;
   background-image: url(../images/home_action_off.png);
 }
 
-/* line 829, ../sass/_pivot-global.scss */
+/* line 257, ../sass/_pivot-homepage.scss */
 .home .slide-nav .take_action.active a:before,
 .home .slide-nav .take_action a:hover:before {
   background-image: url(../images/home_action_on.png);
 }
 
-/* line 833, ../sass/_pivot-global.scss */
+/* line 261, ../sass/_pivot-homepage.scss */
 .home .slide-nav .schedule a:before {
   width: 29px;
   height: 28px;
   background-image: url(../images/home_schedule_off.png);
 }
 
-/* line 840, ../sass/_pivot-global.scss */
+/* line 268, ../sass/_pivot-homepage.scss */
 .home .slide-nav .schedule.active a:before,
 .home .slide-nav .schedule a:hover:before {
   background-image: url(../images/home_schedule_on.png);
 }
 
-/* line 844, ../sass/_pivot-global.scss */
+/* line 272, ../sass/_pivot-homepage.scss */
 .home .slide-nav .blog a:before {
   width: 22px;
   height: 28px;
   background-image: url(../images/home_blog_off.png);
 }
 
-/* line 851, ../sass/_pivot-global.scss */
+/* line 279, ../sass/_pivot-homepage.scss */
 .home .slide-nav .blog.active a:before,
 .home .slide-nav .blog a:hover:before {
   background-image: url(../images/home_blog_on.png);
 }
 
-/* line 854, ../sass/_pivot-global.scss */
+/* line 282, ../sass/_pivot-homepage.scss */
 .home .slide-nav .active-selector {
   position: absolute;
   width: 16.66%;
@@ -985,7 +900,7 @@ body.home {
   transition: all .2s ease-in-out;
 }
 
-/* line 861, ../sass/_pivot-global.scss */
+/* line 289, ../sass/_pivot-homepage.scss */
 .home .slide-nav .active-selector:after {
   display: block;
   content: " ";
@@ -1000,7 +915,7 @@ body.home {
   position: absolute;
 }
 
-/* line 875, ../sass/_pivot-global.scss */
+/* line 303, ../sass/_pivot-homepage.scss */
 .home .slide-nav .item {
   position: relative;
   text-align: center;
@@ -1008,7 +923,7 @@ body.home {
   float: left;
 }
 
-/* line 882, ../sass/_pivot-global.scss */
+/* line 310, ../sass/_pivot-homepage.scss */
 .home .slide-nav .item:after {
   display: block;
   position: absolute;
@@ -1024,12 +939,12 @@ body.home {
   /* W3C */
 }
 
-/* line 896, ../sass/_pivot-global.scss */
+/* line 324, ../sass/_pivot-homepage.scss */
 .home .slide-nav .list:last-child:after {
   display: none;
 }
 
-/* line 900, ../sass/_pivot-global.scss */
+/* line 328, ../sass/_pivot-homepage.scss */
 .home .slide-wrapper {
   white-space: nowrap;
   width: 100%;
@@ -1037,7 +952,7 @@ body.home {
   overflow: hidden;
 }
 
-/* line 907, ../sass/_pivot-global.scss */
+/* line 335, ../sass/_pivot-homepage.scss */
 .home .slide-wrapper .slide {
   display: inline-block;
   width: 100%;
@@ -1047,29 +962,29 @@ body.home {
   padding: 217px 0 0 0;
 }
 
-/* line 916, ../sass/_pivot-global.scss */
+/* line 344, ../sass/_pivot-homepage.scss */
 .home .tpslide_nav {
   display: none;
 }
 
-/* line 920, ../sass/_pivot-global.scss */
+/* line 348, ../sass/_pivot-homepage.scss */
 .home .tpslide_wrapper {
   display: block;
 }
 
-/* line 924, ../sass/_pivot-global.scss */
+/* line 352, ../sass/_pivot-homepage.scss */
 .home #what-is-pivot .video {
   margin-bottom: 10px;
 }
 
-/* line 928, ../sass/_pivot-global.scss */
+/* line 356, ../sass/_pivot-homepage.scss */
 .home #what-is-pivot > .headline {
   font-size: 1.2em;
   margin-bottom: 15px;
   text-transform: uppercase;
 }
 
-/* line 934, ../sass/_pivot-global.scss */
+/* line 362, ../sass/_pivot-homepage.scss */
 .home #what-is-pivot .headline .pivot {
   background-repeat: no-repeat;
   background-image: url(../images/pivot_medium_black_colored.png);
@@ -1082,34 +997,34 @@ body.home {
   vertical-align: text-bottom;
 }
 
-/* line 946, ../sass/_pivot-global.scss */
+/* line 374, ../sass/_pivot-homepage.scss */
 .home #what-is-pivot .cms {
   font-size: 14px;
 }
 
-/* line 950, ../sass/_pivot-global.scss */
+/* line 378, ../sass/_pivot-homepage.scss */
 .home #home-promos {
   margin: 1em 0;
 }
 
-/* line 954, ../sass/_pivot-global.scss */
+/* line 382, ../sass/_pivot-homepage.scss */
 .home #home-promos {
   margin: 1em 0;
 }
 
-/* line 958, ../sass/_pivot-global.scss */
+/* line 386, ../sass/_pivot-homepage.scss */
 .home #home-promos .promo {
   float: left;
   width: 15em;
   position: relative;
 }
 
-/* line 964, ../sass/_pivot-global.scss */
+/* line 392, ../sass/_pivot-homepage.scss */
 .home #home-promos .promo img {
   display: block;
 }
 
-/* line 968, ../sass/_pivot-global.scss */
+/* line 396, ../sass/_pivot-homepage.scss */
 .home #home-promos .promo .info {
   background-color: rgba(255, 255, 255, 0.8);
   width: 234px;
@@ -1121,7 +1036,7 @@ body.home {
   padding: 0 36px;
 }
 
-/* line 979, ../sass/_pivot-global.scss */
+/* line 407, ../sass/_pivot-homepage.scss */
 .home #home-promos .promo .info-inner {
   display: inline-block;
   *display: inline;
@@ -1130,7 +1045,7 @@ body.home {
   vertical-align: middle;
 }
 
-/* line 985, ../sass/_pivot-global.scss */
+/* line 413, ../sass/_pivot-homepage.scss */
 .home #home-promos .promo .headline {
   font-size: 1.2em;
   color: #0084a9;
@@ -1138,20 +1053,17 @@ body.home {
   font-weight: bold;
 }
 
-/* line 992, ../sass/_pivot-global.scss */
+/* line 420, ../sass/_pivot-homepage.scss */
 .home #home-promos .promo .time {
   font-size: 13px;
   font-family: "Apercu Mono Regular", monospace;
 }
 
-/* line 997, ../sass/_pivot-global.scss */
+/* line 425, ../sass/_pivot-homepage.scss */
 .home #home-promos .promo:nth-child(even) {
   float: right;
 }
 
-/*
- * Homepage Styles for Pivot.tv
- */
 @media (max-width: 979px) {
   /* line 2, ../sass/_pivot-responsive.scss */
   .upcoming .headline {
