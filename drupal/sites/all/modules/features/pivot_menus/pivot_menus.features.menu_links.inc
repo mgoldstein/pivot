@@ -10,6 +10,26 @@
 function pivot_menus_menu_default_menu_links() {
   $menu_links = array();
 
+  // Exported menu link: menu-follow-us:http://plus.google.com
+  $menu_links['menu-follow-us:http://plus.google.com'] = array(
+    'menu_name' => 'menu-follow-us',
+    'link_path' => 'http://plus.google.com',
+    'router_path' => '',
+    'link_title' => 'Google Plus',
+    'options' => array(
+      'attributes' => array(
+	'class' => array(
+	  0 => 'googleplus',
+	),
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => 1,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+  );
   // Exported menu link: menu-follow-us:http://www.facebook.com/takepart
   $menu_links['menu-follow-us:http://www.facebook.com/takepart'] = array(
     'menu_name' => 'menu-follow-us',
@@ -29,7 +49,7 @@ function pivot_menus_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -50,
   );
   // Exported menu link: menu-follow-us:http://www.twitter.com/TakePart
   $menu_links['menu-follow-us:http://www.twitter.com/TakePart'] = array(
@@ -50,7 +70,7 @@ function pivot_menus_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -49,
   );
   // Exported menu link: menu-follow-us:http://www.youtube.com/takepart
   $menu_links['menu-follow-us:http://www.youtube.com/takepart'] = array(
@@ -71,7 +91,7 @@ function pivot_menus_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -47,
   );
   // Exported menu link: menu-get-our-app:http://store.apple.com
   $menu_links['menu-get-our-app:http://store.apple.com'] = array(
@@ -248,6 +268,7 @@ function pivot_menus_menu_default_menu_links() {
   t('Android');
   t('Digital Media & Literacy');
   t('Facebook');
+  t('Google Plus');
   t('Participant Media');
   t('Pivot');
   t('Schedule');
