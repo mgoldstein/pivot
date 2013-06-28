@@ -208,7 +208,12 @@ function STARTERKIT_preprocess_region(&$variables, $hook) {
  * Implements template_preprocess_region().
  */
 function pivot_preprocess_region(&$variables, $hook) {
-  if ($variables['region'] == 'footer')  {
+
+  // apply additional classes to the various regions
+  if ($variables['region'] == 'right_sidebar')  {
+    $variables['classes_array'][] = 'secondary';
+  }
+  elseif ($variables['region'] == 'footer')  {
     $variables['classes_array'][] = 'footer';
   }
 }
