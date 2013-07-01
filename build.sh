@@ -17,8 +17,6 @@ ADMIN_PASSWORD="P@ssw0rd"
 SITE_NAME="Pivot.tv"
 INSTALL_PROFILE="pivot"
 
-FEATURES_LOCATION="drupal/sites/all/modules/features"
-
 # Wipe out any existing installation settings and files
 sudo rm -rf drupal/sites/default/files
 chmod -R u+w drupal/sites/default
