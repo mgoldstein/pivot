@@ -44,18 +44,44 @@ function pivot_hero_theme() {
 }
 function pivot_hero_preprocess_page(&$variables) {
   if($variables['is_front'] == TRUE) {
-    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpmodal.jquery.js');
-    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpslide.jquery.js');
-    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpselect.jquery.js');
-    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/pivot-hero-script.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpmodal.jquery.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpslide.jquery.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpselect.jquery.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/pivot-hero-script.js');
   }
-  
+}
+function pivot_hero_preprocess_html(&$variables) {
+  if($variables['is_front'] == TRUE) {
+    $variables['classes_array'][] = 'home';
+  }
+}
+function pivot_hero_preprocess_views_view(&$variables) {
+  $variables['classes_array'][] = 'slide-wrapper';
+}
+
+/**
+* For viewing custom code demo
+*/
+function pivot_hero_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['hero_display'] = array(
+    'label' => t('Hero Display'),
+    'custom settings' => TRUE,
+  );
 }
 function pivot_hero_preprocess_node(&$variables) {
-  if($variables['type'] == 'homepage_slide'){
-
+  if($variables['view_mode'] == 'hero_display') {
+    dpm($variables, 'variables');
   }
 }
 
+
+
+
+
+
+
+
+
+///FORMATTER NEEDED FOR CUSTOM VIDEO FIELD///
 
 

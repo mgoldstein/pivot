@@ -1,0 +1,4 @@
+name = Pivot Hero One
+description = Using idangero.us for the slider
+package = Pivot Custom
+core = 7.x
