@@ -1,3 +1,8 @@
+// use this partial to adjust the display and positioning
+// of elements within the page.
+// 
+// Put structural styling (columns, etc.) in _pivot-layout.scss
+
 @media (max-width: 979px) {
 	.upcoming .headline {
 		white-space: normal;

@@ -60,27 +60,6 @@ a:active {
 	text-decoration: underline;
 }
 
-/* Main */
-#main {
-	padding: 1em;
-}
-
-/* Main content area */
-#content .primary {
-	width: 31em;
-	float: left;
-}
-
-/* Right Rail */
-#content .secondary {
-	width: 15em;
-	float: right;
-}
-
-#content .secondary .section {
-	margin-bottom: 1em;
-}
-
 /* Header */
 #site-header {
 	display: inline-block; *display: inline; zoom: 1;
@@ -128,163 +107,162 @@ a:active {
 	.block {
 		font-size: 13px;
 
+		float: left;
+		margin-top: 2em;
+		margin-bottom: 2em;
+		margin-right: 1.5em;
+		line-height: 45px;
+
 		h2,
 		.menu,
 		.menu li {
 			float: left
 		}
 
-		h2 { font-size: 13px; }
+		h2 {
+			font-size: 13px;
+			line-height: 45px;
+			font-family: "Apercu Mono Regular", monospace;
+		}
 
 		.menu {
-			li { margin-left: 12px; }
+			margin: 0;
+			padding: 0;
+			li {
+				list-style-type: none;
+				list-style-image: none;
+				margin-left: 12px;
+				margin-bottom: 0;
+			}
 		}
 
 	}
-	
 
 	.footer-main-nav {
 		float: left;
-		display: table;
-		margin: 1em auto 2em auto;
-		float: none;
+		margin: 1em auto 0 auto;
+		line-height: 1.5em;
 
 		h2 { display: none; }
+		.menu { margin: 0; padding: 0 }
 		.menu li {
 			float: left;
 			text-align: center;
 			margin-left: 0;
 
-			a { padding: 0 32px; }
+			a { padding: 0 28px; }
+		}
+	}
+
+	#block-menu-menu-follow-us,
+	#block-menu-menu-get-our-app {
+		a {
+			display: inline-block;
+			margin: 0;
+			width: 38px;
+			height: 38px;
+			white-space: nowrap;
+			text-indent: 100%;
+			overflow: hidden;
+			background-repeat: no-repeat;
+		}
+	}
+
+	.facebook {
+		background-image: url(../images/footer_social_facebook.png);
+	}
+
+	.twitter {
+		background-image: url(../images/footer_social_twitter.png);
+	}
+
+	.youtube {
+		background-image: url(../images/footer_social_youtube.png);
+	}
+
+	.googleplus {
+		background-image: url(../images/footer_social_googleplus.png);
+	}
+
+	.ios-app {
+		background-image: url(../images/footer_apps_apple.png);
+	}
+
+	.android-app {
+		background-image: url(../images/footer_apps_android.png);
+	}
+
+
+	#block-menu-menu-participant-media {
+		a {
+			display: inline-block;
+			white-space: nowrap;
+			text-indent: 100%;
+			overflow: hidden;
+			background-repeat: no-repeat;
+		}
+
+		.participant-media {
+			background-image: url(../images/footer_participant_participant.png);
+			width: 113px;
+			height: 24px;
+			vertical-align: middle;
+		}
+
+		.takepart {
+			background-image: url(../images/footer_participant_takepart.png);
+			width: 45px;
+			height: 45px;
+		}
+
+		.pivot {
+			background-image: url(../images/footer_participant_pivot.png);
+			width: 48px;
+			height: 16px;
+		}
+	}
+
+	.copyright {
+		clear: both;
+		font-size: 13px;
+		margin-bottom: 1em;
+		p {
+			margin: 0;
+			text-align: center;
 		}
 	}
 }
 
 
-#site-footer .nav .item a {
-	font-size: 13px;
-}
 
-#site-footer .secondary {
-	display: table;
-	margin: 2em auto 2em auto;
-	line-height: 45px;
-	font-family: "Apercu Mono Regular", monospace;
-}
 
-#site-footer .footer-follow-nav,
-#site-footer .footer-apps-nav {
-	margin-right: 1.5em;
-}
 
-#site-footer .footer-follow-nav a,
-#site-footer .footer-apps-nav a {
-	display: inline-block;
-	width: 38px;
-	height: 38px;
-	white-space: nowrap;
-	text-indent: 100%;
-	overflow: hidden;
-	background-repeat: no-repeat;
-}
-
-#site-footer .footer-follow-nav .facebook a {
-	background-image: url(../images/footer_social_facebook.png);
-}
-
-#site-footer .footer-follow-nav .twitter a {
-	background-image: url(../images/footer_social_twitter.png);
-}
-
-#site-footer .footer-follow-nav .youtube a {
-	background-image: url(../images/footer_social_youtube.png);
-}
-
-#site-footer .footer-follow-nav .googleplus a {
-	background-image: url(../images/footer_social_googleplus.png);
-}
-
-#site-footer .footer-apps-nav .apple a {
-	background-image: url(../images/footer_apps_apple.png);
-}
-
-#site-footer .footer-apps-nav .android a {
-	background-image: url(../images/footer_apps_android.png);
-}
-
-#site-footer .footer-participant-nav a {
-	display: inline-block;
-	white-space: nowrap;
-	text-indent: 100%;
-	overflow: hidden;
-	background-repeat: no-repeat;
-}
-
-#site-footer .footer-participant-nav .takepart a {
-	background-image: url(../images/footer_participant_takepart.png);
-	width: 45px;
-	height: 45px;
-}
-
-#site-footer .footer-participant-nav .pivot a {
-	background-image: url(../images/footer_participant_pivot.png);
-	width: 48px;
-	height: 16px;
-}
-
-#site-footer .footer-participant-nav .participant a {
-	background-image: url(../images/footer_participant_participant.png);
-	width: 113px;
-	height: 24px;
-	vertical-align: middle;
-}
-
-#site-footer #copyright {
-	margin-bottom: 1em;
-}
-
-#site-footer #copyright p {
-	font-size: 12px;
-	text-align: center;
-	color: #999;
-}
 
 /* ============================================================
 || 2.) Reusables/Modules
 ============================================================ */
 
 /* Skip link */
-.skip-link a {
-	position: absolute !important;
-	clip: rect(1px 1px 1px 1px);
-	clip: rect(1px, 1px, 1px, 1px);
-	overflow: hidden;
-	height: 1px;
-	text-decoration: underline;
-}
 
-.skip-link a:active,
-.skip-link a:focus {
-	position: static !important;
-	clip: auto;
-	overflow: visible;
-	height: auto;
-}
+// TODO mw
+// Removed this in favor of the native zen markup
 
-/* Site wrappers */
-.site-wrapper {
-	width: 49em;
-	position: relative;
-	margin: auto;
-	padding: 1em;
-	display: table;
-}
+// .skip-link a {
+// 	position: absolute !important;
+// 	clip: rect(1px 1px 1px 1px);
+// 	clip: rect(1px, 1px, 1px, 1px);
+// 	overflow: hidden;
+// 	height: 1px;
+// 	text-decoration: underline;
+// }
 
-/* Right Rail */
-.region-right-rail {
-	float: right;
-	margin-right: 1em;
-}
+// .skip-link a:active,
+// .skip-link a:focus {
+// 	position: static !important;
+// 	clip: auto;
+// 	overflow: visible;
+// 	height: auto;
+// }
 
 /* "Buttons" */
 a.important:link,

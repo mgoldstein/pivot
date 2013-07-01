@@ -18,6 +18,7 @@ features[menu_custom][] = menu-pivot-footer
 features[menu_custom][] = menu-primary
 features[menu_custom][] = menu-secondary
 features[menu_custom][] = menu-watch-live
+features[menu_links][] = menu-follow-us:http://plus.google.com
 features[menu_links][] = menu-follow-us:http://www.facebook.com/takepart
 features[menu_links][] = menu-follow-us:http://www.twitter.com/TakePart
 features[menu_links][] = menu-follow-us:http://www.youtube.com/takepart
