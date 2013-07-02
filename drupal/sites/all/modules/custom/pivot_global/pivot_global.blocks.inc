@@ -55,7 +55,7 @@ function pivot_global_block_view($block_name) {
             $block['content'] .= '<div class="secondary">';
             $block['content'] .= '<section class="nav footer-follow-nav"><h3 class="headline">Follow</h3>' . drupal_render(menu_tree('menu-follow-us')) . '</section>';
             $block['content'] .= '<section class="nav footer-apps-nav"><h3 class="headline">Apps</h3>' . drupal_render(menu_tree('menu-get-our-app')) . '</section>';
-            $block['content'] .= '<section class="navfooter-participant-nav"><h3 class="headline">Pivot is part of Participant Media:</h3>' . drupal_render(menu_tree('menu-participant-media')) . '</section>';
+            $block['content'] .= '<section class="nav footer-participant-nav"><h3 class="headline">Pivot is part of Participant Media:</h3>' . drupal_render(menu_tree('menu-participant-media')) . '</section>';
             $block['content'] .= '</div><!-- /.secondary -->';
             $block['content'] .= '<div id="copyright"><p>&copy; 2013 Pivot TV, all rights reserved.</p></div>';
         break;
