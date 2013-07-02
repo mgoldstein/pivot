@@ -6,6 +6,7 @@
           <?php $node = node_load($tab->nid); ?>
           <?php $tab = $node->title; ?>
           <?php $title = str_replace(' ', '_', strtolower($tab)); ?>
+          <?php $title = str_replace('!', '', $title); ?>
            <li class="item <?php print $title; ?>">
               <a href='#<?php print $title; ?>'><?php print $tab; ?></a>
             </li>
@@ -19,6 +20,7 @@
       $node_tab = node_load($nid);
       $title_tab = $node_tab->title;
       $title_tab = str_replace(' ', '_', strtolower($title_tab));
+      $title_tab = str_replace('/!/', '', $title_tab);
       ?>
         <article id="<?php print $title_tab; ?>" class="slide" data-token="<?php print $title_tab; ?>">
           <div class="<?php print $classes_array[$id]; ?>">
