@@ -30,8 +30,6 @@
   <footer id="site-footer" class="<?php print $classes; ?>">
     <div id="footer-inner" class="site-wrapper">
       <?php print $content; ?>
-	  <div id="copyright" class="copyright">
-	<p>&copy; 2013 Pivot TV, all rights reserved.</p>
-	  </div>
+	</div>
   </footer><!-- /.footer -->
 <?php endif; ?>
