@@ -237,10 +237,3 @@ function STARTERKIT_preprocess_block(&$variables, $hook) {
   //}
 }
 // */
-
-function pivot_preprocess_block(&$variables) {
-  if ($variables['block_html_id'] == 'block-menu-menu-pivot-footer') {
-    $variables['classes_array'][] = 'nav';
-    $variables['classes_array'][] = 'footer-main-nav';
-  }
-}
