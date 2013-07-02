@@ -1,0 +1,6 @@
+name = Pivot Global
+description = Custom Functionality for the Pivot.tv website
+package = Pivot
+core = 7.x
+files[] = pivot_global.module
+files[] = pivot_global.blocks.inc

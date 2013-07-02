@@ -74,6 +74,12 @@ function pivot_contexts_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-13',
         ),
+        'dfp-pivot_ros_background_1x1' => array(
+          'module' => 'dfp',
+          'delta' => 'pivot_ros_background_1x1',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
@@ -93,7 +99,30 @@ function pivot_contexts_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array();
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'dfp-pivot_ros_rr_300x250' => array(
+          'module' => 'dfp',
+          'delta' => 'pivot_ros_rr_300x250',
+          'region' => 'right_sidebar',
+          'weight' => '-10',
+        ),
+        'pivot_global-find_pivot_sidebar' => array(
+          'module' => 'pivot_global',
+          'delta' => 'find_pivot_sidebar',
+          'region' => 'right_sidebar',
+          'weight' => '-9',
+        ),
+        'pivot_global-pivot_twitter_widget' => array(
+          'module' => 'pivot_global',
+          'delta' => 'pivot_twitter_widget',
+          'region' => 'right_sidebar',
+          'weight' => '-8',
+        ),
+      ),
+    ),
+  );
   $context->condition_mode = 1;
 
   // Translatables
