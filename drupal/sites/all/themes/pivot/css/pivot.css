@@ -559,17 +559,17 @@ a.important .pivot {
 /* Home Page
 ------------------------------------------------------------ */
 /* line 8, ../sass/_pivot-homepage.scss */
-body.home {
+body.front {
   height: 100%;
 }
 
 /* line 12, ../sass/_pivot-homepage.scss */
-.home #site-header {
+.front #site-header {
   display: none;
 }
 
 /* line 16, ../sass/_pivot-homepage.scss */
-.home #home-header {
+.front #home-header {
   position: absolute;
   left: 0;
   top: 0;
@@ -580,7 +580,7 @@ body.home {
 }
 
 /* line 26, ../sass/_pivot-homepage.scss */
-.home #home-header .pivot-headline {
+.front #home-header .pivot-headline {
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
@@ -592,19 +592,19 @@ body.home {
 }
 
 /* line 37, ../sass/_pivot-homepage.scss */
-.home #home-header .secondary {
+.front #home-header .secondary {
   float: right;
 }
 
 /* line 41, ../sass/_pivot-homepage.scss */
-.home #home-header .social {
+.front #home-header .social {
   float: left;
   width: 100%;
   margin-bottom: 15px;
 }
 
 /* line 47, ../sass/_pivot-homepage.scss */
-.home #home-header .social .item {
+.front #home-header .social .item {
   float: left;
   text-indent: 100%;
   overflow: hidden;
@@ -616,364 +616,53 @@ body.home {
 }
 
 /* line 58, ../sass/_pivot-homepage.scss */
-.home #home-header .social .facebook {
+.front #home-header .social .facebook {
   background-image: url(../images/home_social_facebook.png);
 }
 
 /* line 62, ../sass/_pivot-homepage.scss */
-.home #home-header .social .googleplus {
+.front #home-header .social .googleplus {
   background-image: url(../images/home_social_googleplus.png);
 }
 
 /* line 66, ../sass/_pivot-homepage.scss */
-.home #home-header .social .twitter {
+.front #home-header .social .twitter {
   background-image: url(../images/home_social_twitter.png);
 }
 
 /* line 70, ../sass/_pivot-homepage.scss */
-.home #home-header .social .item a {
+.front #home-header .social .item a {
   display: block;
   height: 100%;
 }
 
 /* line 75, ../sass/_pivot-homepage.scss */
-.home #main {
+.front #main {
   min-height: 100%;
   padding: 0;
   background: transparent;
 }
 
-/* line 81, ../sass/_pivot-homepage.scss */
-.home #wrapper {
+/* line 82, ../sass/_pivot-homepage.scss */
+.front #wrapper {
   width: auto;
   height: 100%;
 }
 
-/* line 86, ../sass/_pivot-homepage.scss */
-.home #video {
-  background: #000;
-}
-
-/* line 91, ../sass/_pivot-homepage.scss */
-.home .video-player,
-.home .video-image {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-}
-
-/* line 98, ../sass/_pivot-homepage.scss */
-.home .active .video-player {
-  z-index: 2;
-  opacity: 1;
-}
-
-/* line 103, ../sass/_pivot-homepage.scss */
-.home .video-image.loaded {
-  opacity: 1;
-}
-
-/* line 108, ../sass/_pivot-homepage.scss */
-.home .video-player,
-.home .slide:first-child .video-image {
-  -webkit-transition: opacity .1s linear .1s;
-  transition: opacity .1s linear .1s;
-}
-
-/* line 113, ../sass/_pivot-homepage.scss */
-.home .slide {
-  white-space: normal;
-}
-
-/* line 117, ../sass/_pivot-homepage.scss */
-.home .slide .active .video-image {
-  opacity: 1;
-  z-index: 1;
-}
-
-/* line 122, ../sass/_pivot-homepage.scss */
-.home .video-content {
-  z-index: 3;
-  position: absolute;
-  color: #fff;
-  bottom: 79px;
-  display: table;
-  width: 100%;
-}
-
-/* line 131, ../sass/_pivot-homepage.scss */
-.home .video-content-inner {
-  display: table-row;
-}
-
-/* line 135, ../sass/_pivot-homepage.scss */
-.home .video-content img {
-  display: block;
-  box-shadow: 15px 14px 20px rgba(0, 0, 0, 0.5);
-}
-
-/* line 141, ../sass/_pivot-homepage.scss */
-.home .video-content .primary,
-.home .video-content .secondary {
-  display: table-cell;
-  vertical-align: top;
-}
-
-/* line 146, ../sass/_pivot-homepage.scss */
-.home .video-content .primary {
-  width: 1px;
-}
-
-/* line 150, ../sass/_pivot-homepage.scss */
-.home .video-content .secondary {
-  font-size: 24px;
-  line-height: 1.6;
-  padding: 0 10px 0 50px;
-}
-
-/* line 156, ../sass/_pivot-homepage.scss */
-.home .video-content .secondary .headline {
-  font-size: 60px;
-  font-weight: bold;
-  font-style: italic;
-  white-space: nowrap;
-}
-
-/* line 163, ../sass/_pivot-homepage.scss */
-.home .video-content .secondary .description {
-  margin-bottom: 15px;
-  font-family: "Apercu Mono Regular", monospace;
-}
-
-/* Top slide */
-/* line 170, ../sass/_pivot-homepage.scss */
-.home #topslide {
-  height: 100%;
-  background: #000;
-  position: relative;
-}
-
-/* line 176, ../sass/_pivot-homepage.scss */
-.home #topslide a.important {
-  background: #0084a9;
-}
-
-/* line 180, ../sass/_pivot-homepage.scss */
-.home .slide-nav {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #000;
-  z-index: 99;
-  display: table;
-  color: #fff;
-}
-
-/* line 191, ../sass/_pivot-homepage.scss */
-.home .slide-nav .headline {
-  display: none;
-}
-
-/* line 195, ../sass/_pivot-homepage.scss */
-.home .slide-nav a {
-  display: block;
-  position: relative;
-  line-height: 79px;
-  white-space: nowrap;
-  color: #00b5cc;
-}
-
-/* line 204, ../sass/_pivot-homepage.scss */
-.home .slide-nav .active a,
-.home .slide-nav a:hover {
-  color: #fff;
-  text-decoration: none;
-}
-
-/* line 209, ../sass/_pivot-homepage.scss */
-.home .slide-nav a:before {
-  content: " ";
-  display: inline-block;
-  background-repeat: no-repeat;
-  margin-right: 11px;
-  vertical-align: text-bottom;
-}
-
-/* line 217, ../sass/_pivot-homepage.scss */
-.home .slide-nav .shows a:before {
-  width: 28px;
-  height: 27px;
-  background-image: url(../images/home_shows_off.png);
-}
-
-/* line 224, ../sass/_pivot-homepage.scss */
-.home .slide-nav .shows.active a:before,
-.home .slide-nav .shows a:hover:before {
-  background-image: url(../images/home_shows_on.png);
-}
-
-/* line 228, ../sass/_pivot-homepage.scss */
-.home .slide-nav .movies a:before {
-  width: 29px;
-  height: 28px;
-  background-image: url(../images/home_movies_off.png);
-}
-
-/* line 235, ../sass/_pivot-homepage.scss */
-.home .slide-nav .movies.active a:before,
-.home .slide-nav .movies a:hover:before {
-  background-image: url(../images/home_movies_on.png);
-}
-
-/* line 239, ../sass/_pivot-homepage.scss */
-.home .slide-nav .watch_now a:before {
-  width: 27px;
-  height: 28px;
-  background-image: url(../images/home_watch_off.png);
-}
-
-/* line 246, ../sass/_pivot-homepage.scss */
-.home .slide-nav .watch_now.active a:before,
-.home .slide-nav .watch_now a:hover:before {
-  background-image: url(../images/home_watch_on.png);
-}
-
-/* line 250, ../sass/_pivot-homepage.scss */
-.home .slide-nav .take_action a:before {
-  width: 33px;
-  height: 28px;
-  background-image: url(../images/home_action_off.png);
-}
-
-/* line 257, ../sass/_pivot-homepage.scss */
-.home .slide-nav .take_action.active a:before,
-.home .slide-nav .take_action a:hover:before {
-  background-image: url(../images/home_action_on.png);
-}
-
-/* line 261, ../sass/_pivot-homepage.scss */
-.home .slide-nav .schedule a:before {
-  width: 29px;
-  height: 28px;
-  background-image: url(../images/home_schedule_off.png);
-}
-
-/* line 268, ../sass/_pivot-homepage.scss */
-.home .slide-nav .schedule.active a:before,
-.home .slide-nav .schedule a:hover:before {
-  background-image: url(../images/home_schedule_on.png);
-}
-
-/* line 272, ../sass/_pivot-homepage.scss */
-.home .slide-nav .blog a:before {
-  width: 22px;
-  height: 28px;
-  background-image: url(../images/home_blog_off.png);
-}
-
-/* line 279, ../sass/_pivot-homepage.scss */
-.home .slide-nav .blog.active a:before,
-.home .slide-nav .blog a:hover:before {
-  background-image: url(../images/home_blog_on.png);
-}
-
-/* line 282, ../sass/_pivot-homepage.scss */
-.home .slide-nav .active-selector {
-  position: absolute;
-  width: 16.66%;
-  height: 100%;
-  -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
-}
-
-/* line 289, ../sass/_pivot-homepage.scss */
-.home .slide-nav .active-selector:after {
-  display: block;
-  content: " ";
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 10px solid white;
-  bottom: 0;
-  left: 50%;
-  margin-left: -3px;
-  position: absolute;
-}
-
-/* line 303, ../sass/_pivot-homepage.scss */
-.home .slide-nav .item {
-  position: relative;
-  text-align: center;
-  width: 16.66%;
-  float: left;
-}
-
-/* line 310, ../sass/_pivot-homepage.scss */
-.home .slide-nav .item:after {
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 1px;
-  height: 100%;
-  overflow: hidden;
-  content: " ";
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.25) 40%, rgba(255, 255, 255, 0.25) 60%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 0) 100%);
-  /* Chrome10+,Safari5.1+ */
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.25) 40%, rgba(255, 255, 255, 0.25) 60%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 0) 100%);
-  /* W3C */
-}
-
-/* line 324, ../sass/_pivot-homepage.scss */
-.home .slide-nav .list:last-child:after {
-  display: none;
-}
-
-/* line 328, ../sass/_pivot-homepage.scss */
-.home .slide-wrapper {
-  white-space: nowrap;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-/* line 335, ../sass/_pivot-homepage.scss */
-.home .slide-wrapper .slide {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  padding: 217px 0 0 0;
-}
-
-/* line 344, ../sass/_pivot-homepage.scss */
-.home .tpslide_nav {
-  display: none;
-}
-
-/* line 348, ../sass/_pivot-homepage.scss */
-.home .tpslide_wrapper {
-  display: block;
-}
-
-/* line 352, ../sass/_pivot-homepage.scss */
-.home #what-is-pivot .video {
+/* line 87, ../sass/_pivot-homepage.scss */
+.front #what-is-pivot .video {
   margin-bottom: 10px;
 }
 
-/* line 356, ../sass/_pivot-homepage.scss */
-.home #what-is-pivot > .headline {
+/* line 91, ../sass/_pivot-homepage.scss */
+.front #what-is-pivot > .headline {
   font-size: 1.2em;
   margin-bottom: 15px;
   text-transform: uppercase;
 }
 
-/* line 362, ../sass/_pivot-homepage.scss */
-.home #what-is-pivot .headline .pivot {
+/* line 97, ../sass/_pivot-homepage.scss */
+.front #what-is-pivot .headline .pivot {
   background-repeat: no-repeat;
   background-image: url(../images/pivot_medium_black_colored.png);
   width: 80px;
@@ -985,35 +674,35 @@ body.home {
   vertical-align: text-bottom;
 }
 
-/* line 374, ../sass/_pivot-homepage.scss */
-.home #what-is-pivot .cms {
+/* line 109, ../sass/_pivot-homepage.scss */
+.front #what-is-pivot .cms {
   font-size: 14px;
 }
 
-/* line 378, ../sass/_pivot-homepage.scss */
-.home #home-promos {
+/* line 113, ../sass/_pivot-homepage.scss */
+.front #home-promos {
   margin: 1em 0;
 }
 
-/* line 382, ../sass/_pivot-homepage.scss */
-.home #home-promos {
+/* line 117, ../sass/_pivot-homepage.scss */
+.front #home-promos {
   margin: 1em 0;
 }
 
-/* line 386, ../sass/_pivot-homepage.scss */
-.home #home-promos .promo {
+/* line 121, ../sass/_pivot-homepage.scss */
+.front #home-promos .promo {
   float: left;
   width: 15em;
   position: relative;
 }
 
-/* line 392, ../sass/_pivot-homepage.scss */
-.home #home-promos .promo img {
+/* line 127, ../sass/_pivot-homepage.scss */
+.front #home-promos .promo img {
   display: block;
 }
 
-/* line 396, ../sass/_pivot-homepage.scss */
-.home #home-promos .promo .info {
+/* line 131, ../sass/_pivot-homepage.scss */
+.front #home-promos .promo .info {
   background-color: rgba(255, 255, 255, 0.8);
   width: 234px;
   height: 98px;
@@ -1024,8 +713,8 @@ body.home {
   padding: 0 36px;
 }
 
-/* line 407, ../sass/_pivot-homepage.scss */
-.home #home-promos .promo .info-inner {
+/* line 142, ../sass/_pivot-homepage.scss */
+.front #home-promos .promo .info-inner {
   display: inline-block;
   *display: inline;
   zoom: 1;
@@ -1033,22 +722,22 @@ body.home {
   vertical-align: middle;
 }
 
-/* line 413, ../sass/_pivot-homepage.scss */
-.home #home-promos .promo .headline {
+/* line 148, ../sass/_pivot-homepage.scss */
+.front #home-promos .promo .headline {
   font-size: 1.2em;
   color: #0084a9;
   font-style: italic;
   font-weight: bold;
 }
 
-/* line 420, ../sass/_pivot-homepage.scss */
-.home #home-promos .promo .time {
+/* line 155, ../sass/_pivot-homepage.scss */
+.front #home-promos .promo .time {
   font-size: 13px;
   font-family: "Apercu Mono Regular", monospace;
 }
 
-/* line 425, ../sass/_pivot-homepage.scss */
-.home #home-promos .promo:nth-child(even) {
+/* line 160, ../sass/_pivot-homepage.scss */
+.front #home-promos .promo:nth-child(even) {
   float: right;
 }
 
