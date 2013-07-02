@@ -6,7 +6,8 @@
           <?php $node = node_load($tab->nid); ?>
           <?php $tab = $node->title; ?>
            <li class="item <?php print $node->title; ?>">
-              <a href='#<?php print $node->title; ?>'><?php print $tab; ?></a>
+              <?php $title = str_replace(' ', '_', strtolower($node->title)); ?>
+              <a href='#<?php print $title; ?>'><?php print $tab; ?></a>
             </li>
         <?php endforeach; ?>
       </ul>
