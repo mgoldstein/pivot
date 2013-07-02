@@ -130,7 +130,7 @@ function STARTERKIT_preprocess_maintenance_page(&$variables, $hook) {
  */
 function pivot_preprocess_html(&$variables, $hook) {
 
-  drupal_add_css('//f.fontdeck.com/s/css/ANxYhj9dllkYxm1NMwN3LihqgYU/' . $_SERVER['SERVER_NAME'] . '/34611.css', array('type' => external, 'group' => CSS_THEME, 'every_page' => TRUE));
+  drupal_add_css('//f.fontdeck.com/s/css/ANxYhj9dllkYxm1NMwN3LihqgYU/' . $_SERVER['SERVER_NAME'] . '/34611.css', array('type' => 'external', 'group' => CSS_THEME, 'every_page' => TRUE));
 
   // The body tag's classes are controlled by the $classes_array variable. To
   // remove a class from $classes_array, use array_diff().
@@ -237,10 +237,3 @@ function STARTERKIT_preprocess_block(&$variables, $hook) {
   //}
 }
 // */
-
-function pivot_preprocess_block(&$variables) {
-  if ($variables['block_html_id'] == 'block-menu-menu-pivot-footer') {
-    $variables['classes_array'][] = 'nav';
-    $variables['classes_array'][] = 'footer-main-nav';
-  }
-}
