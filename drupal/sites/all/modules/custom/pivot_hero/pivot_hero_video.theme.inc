@@ -1,8 +1,8 @@
 <?php
 
-function theme_pivot_hero1_video_format($variables) {
+function theme_pivot_hero_video_format($variables) {
   $poster = file_create_url($variables['entity_data']->field_hs_bg_image['und'][0]['uri']);
-  $output = '<video class="video-player" poster="'. $poster. '" width="960" height="540" loop="loop" autoplay>';
+  $output = '<video class="video-player" poster="'. $poster. '" width="960" height="540" loop="loop">';
   $video = file_create_url($variables['items'][0]['uri']);
   $output .= '<source src="'. $video. '" type="'. $variables['items'][0]['filemime']. '" />';
   $output .= '<object type="application/x-shockwave-flash" data="/other/flashfox.swf" width="960" height="540" style="position:relative;">

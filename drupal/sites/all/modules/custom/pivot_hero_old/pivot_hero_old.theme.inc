@@ -1,6 +1,6 @@
 <?php
 
-function theme_pivot_hero_format($variables) {
+function theme_pivot_hero_old_format($variables) {
   $poster = file_create_url($variables['entity_data']->field_hs_bg_image['und'][0]['uri']);
   $output = '<video class="video-player" poster="'. $poster. '" width="960" height="540" loop="loop" autoplay>';
   $video = file_create_url($variables['items'][0]['uri']);

@@ -2,7 +2,7 @@
 <?php
   $poster = file_create_url($variables['field_hs_bg_image']['und'][0]['uri']);
   $output = '<img class="video-image" src="'. $poster. '" width="960" height="540" />';
-  $image_path = $variables['field_hs_slider_image'][0]['uri'];
+  $image_path = file_create_url($variables['field_hs_slider_image'][0]['uri']);
   $output .= '<div class="video-content">
           <div class="video-content-inner">
             <div class="primary">
@@ -19,5 +19,10 @@
         </div>';
 
   print $output;
-
+    drupal_add_css(drupal_get_path('module', 'pivot_hero'). '/css/hero-swiper.css');
+    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/jquery.scrollTo.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpslide.jquery.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpmodal.jquery.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpselect.jquery.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/pivot-hero-script.js');
 ?>

@@ -1,0 +1,87 @@
+<?php
+
+function pivot_hero_old_field_formatter_info() {
+  return array(
+    'pivot_hs' => array(
+        'label' => t('Homepage Slider Formatter'),
+        'field types' => array('file'),
+    ),
+  );
+}
+
+function pivot_hero_old_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $settings = $display['settings'];
+  switch ($display['type']) {
+    case 'pivot_hs':
+      $element = array(
+      '#theme' => 'pivot_hero_old_format',
+      '#items' => $items,
+      '#list_style' => 'thumb',
+      '#entity_data' => $entity
+      );
+      break;
+  }
+  return $element;
+}
+function pivot_hero_old_node_view($node, $view_mode) {
+  if($node->type == 'homepage_slide' && $view_mode == 'teaser') {
+
+  }
+}
+
+function pivot_hero_old_theme() {
+  return array(
+    'pivot_hero_old_format' => array(
+        'variables' => array(
+            'items' => array(),
+            'list_style' => '',
+            'entity_data' => NULL
+        ),
+        'file' => 'pivot_hero_old.theme.inc'
+    ),
+  );
+}
+function pivot_hero_old_preprocess_page(&$variables) {
+  if($variables['is_front'] == TRUE) {
+    drupal_add_js(drupal_get_path('module', 'pivot_hero_old'). '/js/tpmodal.jquery.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_hero_old'). '/js/tpslide.jquery.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_hero_old'). '/js/tpselect.jquery.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_hero_old'). '/js/pivot-hero-script.js');
+  }
+}
+function pivot_hero_old_preprocess_html(&$variables) {
+  if($variables['is_front'] == TRUE) {
+    $variables['classes_array'][] = 'home';
+  }
+}
+function pivot_hero_old_preprocess_views_view(&$variables) {
+  $variables['classes_array'][] = 'slide-wrapper';
+}
+
+/**
+* For viewing custom code demo
+*/
+function pivot_hero_old_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['hero_display'] = array(
+    'label' => t('Hero Display'),
+    'custom settings' => TRUE,
+  );
+}
+function pivot_hero_old_preprocess_node(&$variables) {
+  if($variables['view_mode'] == 'hero_display') {
+    dpm($variables, 'variables');
+  }
+}
+
+
+
+
+
+
+
+
+
+///FORMATTER NEEDED FOR CUSTOM VIDEO FIELD///
+
+

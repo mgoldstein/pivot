@@ -1,4 +1,4 @@
 name = Pivot Hero
-description = Pivot Hero display for the front page
+description = Module for the homepage slider (hero)
 package = Pivot Custom
 core = 7.x

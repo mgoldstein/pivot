@@ -14,13 +14,11 @@ $body
 	;
 
 $(function() {
-
 	// Pretty selects
 	$('.find-pivot select').tpselect();
 
 	// Homepage
-	if ($('body').hasClass('front')) {
-
+	if ( $body.is('.front') ) {
 		// Slideshow
 		var vp_width = $(window).width();
 		var vp_height = $(window).height();
