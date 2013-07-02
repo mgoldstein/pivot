@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * A module defining custom functionality for the Pivot.tv website
+ *
+ */
+/**
+ * Implements hook_help();
+ */
+function pivot_blocks_help($path, $arg) {
+    if ($path == 'admin/help#pivot_global') {
+        return t('A module defining custom functionality for the Pivot.tv website');
+    }
+}
+
+include 'pivot_global.blocks.inc';
