@@ -5,12 +5,10 @@
   $image_path = file_create_url($variables['field_hs_slider_image'][0]['uri']);
   $output .= '<div class="video-content">
           <div class="video-content-inner">
-            <div class="primary">
-              <p>
+            <div class="secondary promo">
                 <img alt="PEOPLE" height="445" src="'. $image_path. '" width="793" />
-              </p>
-            </div>
-            <div class="secondary">
+            </div><!--
+            --><div class="primary">
               <h3 class="headline">'. $title. '</h3>
               <p class="description">'. $variables['field_hs_slider_text'][0]['value']. '</p>
               <p class="more">'. l($variables['field_hs_link'][0]['title'], $variables['field_hs_link'][0]['url']). '</p>
