@@ -237,3 +237,23 @@ function STARTERKIT_preprocess_block(&$variables, $hook) {
   //}
 }
 // */
+
+
+/**
+ * Implements theme_field().
+ *
+ * Output HTML for a Longtail Video Player
+ */
+function pivot_field__field_video_longtail_video_id__video($variables) {
+  $output = '';
+
+  // Render the item(s) -- there should only be one
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<script type="text/javascript" src="http://video.takepart.com/players/' . drupal_render($item) . '.js"></script>';
+  }
+
+  // Render the top-level DIV.
+  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+
+  return $output;
+}

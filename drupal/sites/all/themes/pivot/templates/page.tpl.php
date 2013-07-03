@@ -1,23 +1,28 @@
 <div id="page">
 
+  <?php
+    $header = render($page['header']);
+    if ($header):
+  ?>
+
   <header id="header" role="banner">
 
-    <?php if ($logo): ?>
+    <?php // no logo!
+     /* if ($logo):
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
-    <?php endif; ?>
-
-    <?php print render($page['header']); ?>
+    <?php // endif; */ ?>
 
   </header>
+  <?php endif; ?>
   <?php print render($page['preface']); ?>
   <main id="main">
-    <div class="site-wrapper">
+    <div id="content" class="site-wrapper">
 
       <?php
         $right_sidebar  = render($page['right_sidebar']);
       ?>
 
-      <div id="content" class="primary<?php print $right_sidebar ? ' with-sidebar' : '' ?>" role="main">
+      <div class="primary<?php print $right_sidebar ? ' with-sidebar' : '' ?>" role="main">
         <?php print $breadcrumb; ?>
         <a id="main-content"></a>
         <?php print render($title_prefix); ?>
