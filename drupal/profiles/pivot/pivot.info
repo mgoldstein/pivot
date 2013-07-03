@@ -19,15 +19,16 @@ dependencies[] = path
 dependencies[] = taxonomy
 dependencies[] = dblog
 dependencies[] = search
-dependencies[] = shortcut
-dependencies[] = toolbar
 dependencies[] = field_ui
 dependencies[] = file
 dependencies[] = rdf
 
 ; Contributed dependencies
+dependencies[] = admin_menu
+dependencies[] = admin_menu_toolbar
 dependencies[] = advanced_help
 dependencies[] = apachesolr
+dependencies[] = backup_migrate
 dependencies[] = botr
 dependencies[] = content_lock
 dependencies[] = ctools
@@ -35,10 +36,10 @@ dependencies[] = dfp
 dependencies[] = entity
 dependencies[] = fe_nodequeue
 dependencies[] = features
-dependencies[] = filefield_sources
-dependencies[] = filefield_sources_plupload
 dependencies[] = file_entity
 dependencies[] = file_entity_inline
+dependencies[] = filefield_sources
+dependencies[] = filefield_sources_plupload
 dependencies[] = jw_player
 dependencies[] = libraries
 dependencies[] = link
@@ -50,8 +51,11 @@ dependencies[] = menu_html
 dependencies[] = metatag
 dependencies[] = metatag_opengraph
 dependencies[] = module_filter
+dependencies[] = name
 dependencies[] = node_reference
 dependencies[] = nodequeue
+dependencies[] = panels
+dependencies[] = panels_ipe
 dependencies[] = pathauto
 dependencies[] = plupload
 dependencies[] = publication_date
@@ -67,27 +71,34 @@ dependencies[] = views_ui
 dependencies[] = webform
 dependencies[] = wysiwyg
 
-; Features
-dependencies[] = pivot_longtail
-dependencies[] = pivot_menus
-dependencies[] = pivot_text_formats
-dependencies[] = pivot_permissions
-
-dependencies[] = pivot_field_bases
-dependencies[] = pivot_action
-dependencies[] = pivot_article
-dependencies[] = pivot_basic_page
-dependencies[] = pivot_campaign
-dependencies[] = pivot_dl_file
-dependencies[] = pivot_episode
-dependencies[] = pivot_gallery
-dependencies[] = pivot_movie
-dependencies[] = pivot_person
-dependencies[] = pivot_show
-dependencies[] = pivot_video
-
 ; Custom modules
+dependencies[] = pivot_global
 dependencies[] = bluestatedigital
 dependencies[] = newsletter_campaign
 dependencies[] = waterfallapi
 dependencies[] = wordlet
+
+; Features
+dependencies[] = pivot_action
+dependencies[] = pivot_article
+dependencies[] = pivot_basic_page
+dependencies[] = pivot_campaign
+dependencies[] = pivot_contexts
+dependencies[] = pivot_dl_file
+dependencies[] = pivot_episode
+dependencies[] = pivot_field_bases
+dependencies[] = pivot_gallery
+dependencies[] = pivot_hs
+dependencies[] = pivot_longtail
+dependencies[] = pivot_menus
+dependencies[] = pivot_movie
+dependencies[] = pivot_panels_pages
+dependencies[] = pivot_permissions
+dependencies[] = pivot_person
+dependencies[] = pivot_show
+dependencies[] = pivot_taxonomy
+dependencies[] = pivot_text_formats
+dependencies[] = pivot_video
+dependencies[] = pivot_views
+
+
