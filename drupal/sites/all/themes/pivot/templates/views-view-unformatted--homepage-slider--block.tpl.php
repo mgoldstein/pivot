@@ -21,6 +21,7 @@
     </div>
   </div>
   <nav class="tabs slide-nav">
+    <h2 class="headline">Explore Pivot</h2>
     <ul class="list">
       <?php foreach ($view->result as $id => $tab): ?>
         <?php $node = node_load($tab->nid); ?>
@@ -44,9 +45,9 @@
       $title_tab = str_replace('/!/', '', $title_tab);
       ?><!--
       --><article id="<?php print $title_tab; ?>" class="slide" data-token="<?php print $title_tab; ?>">
-          <div class="<?php print $classes_array[$id]; ?>">
+
             <?php print $row; ?>
-          </div>
+
         </article><!--
         --><?php endforeach; ?>
     </div>
