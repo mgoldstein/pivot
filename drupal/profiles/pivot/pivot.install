@@ -24,6 +24,7 @@ function pivot_install() {
     ->execute();
   variable_set('admin_theme', $admin_theme);
   variable_set('node_admin_theme', '1');
+  variable_set('toggle_logo', '0');
 
   // Enable some standard blocks.
   $blocks = array(
