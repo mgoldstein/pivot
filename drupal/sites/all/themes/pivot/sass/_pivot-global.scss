@@ -13,7 +13,7 @@
 */
 
 /* ============================================================
-|| 1.) General Site Layout
+|| General
 ============================================================ */
 
 * {
@@ -60,33 +60,45 @@ a:active {
 	text-decoration: underline;
 }
 
+// TODO this doesn't appear in the homepage comp
+
 /* Header */
-#site-header {
-	display: inline-block; *display: inline; zoom: 1;
-	vertical-align: top;
-	width: 100%;
-}
+// #site-header {
+// 	display: inline-block; *display: inline; zoom: 1;
+// 	vertical-align: top;
+// 	width: 100%;
+// }
 
-#site-header .nav {
-	float: left;
-	width: 100%;
-}
+// #site-header .nav {
+// 	float: left;
+// 	width: 100%;
+// }
 
-#site-header .nav li {
-	float: left;
-}
+// #site-header .nav li {
+// 	float: left;
+// }
 
-#site-header .nav li a {
-	font-size: 14px;
-	display: block;
-	padding: 1em;
-}
+// #site-header .nav li a {
+// 	font-size: 14px;
+// 	display: block;
+// 	padding: 1em;
+// }
 
-#site-header .block-search {
-	float: left;
-}
+// #site-header .block-search {
+// 	float: left;
+// }
 
-/* Footer */
+/* ============================================================
+|| Main content area
+============================================================ */
+
+
+
+
+/* ============================================================
+|| Global Footer
+============================================================ */
+
 #site-footer {
 	background: #424242 url(../images/secondary-background.gif) left top repeat;
 	color: #ccc;
@@ -96,6 +108,9 @@ a:active {
 	z-index: 2;
 	overflow: hidden;
 	box-shadow: inset 0px 10px 20px 0px rgba(0, 0, 0, .25);
+	font-size: 13px;
+
+
 	.site-wrapper {
 		padding: 1em 0;
 	}
@@ -104,25 +119,27 @@ a:active {
 		color: #ccc;
 	}
 
-	.block {
-		font-size: 13px;
+	.nav {
 
 		float: left;
+		display: table;
+
 		margin-top: 2em;
 		margin-bottom: 2em;
 		margin-right: 1.5em;
 		line-height: 45px;
 
-		h2,
+		.headline,
 		.menu,
 		.menu li {
 			float: left
 		}
 
-		h2 {
+		.headline {
 			font-size: 13px;
 			line-height: 45px;
 			font-family: "Apercu Mono Regular", monospace;
+			margin: 0
 		}
 
 		.menu {
@@ -139,11 +156,11 @@ a:active {
 	}
 
 	.footer-main-nav {
-		float: left;
-		margin: 1em auto 0 auto;
+		float: none;
+		margin: 1em auto 2em auto;
 		line-height: 1.5em;
 
-		h2 { display: none; }
+		.headline { display: none; }
 		.menu { margin: 0; padding: 0 }
 		.menu li {
 			float: left;
@@ -154,8 +171,16 @@ a:active {
 		}
 	}
 
-	#block-menu-menu-follow-us,
-	#block-menu-menu-get-our-app {
+	.secondary {
+		display: table;
+		float: none;
+		width: auto;
+		margin: 2em auto;
+		line-height: 45px;
+	}
+
+	.footer-follow-nav,
+	.footer-apps-nav {
 		a {
 			display: inline-block;
 			margin: 0;
@@ -193,7 +218,7 @@ a:active {
 	}
 
 
-	#block-menu-menu-participant-media {
+	.footer-participant-nav {
 		a {
 			display: inline-block;
 			white-space: nowrap;
@@ -222,10 +247,11 @@ a:active {
 		}
 	}
 
-	.copyright {
+	#copyright {
 		clear: both;
 		font-size: 13px;
 		margin-bottom: 1em;
+
 		p {
 			margin: 0;
 			text-align: center;
@@ -234,12 +260,51 @@ a:active {
 }
 
 
+/* ============================================================
+|| Modules
+============================================================ */
 
 
+.promo {
+	position: relative;
+
+	img {
+		display: block;
+	}
+
+	.info {
+		background-color: rgba(255,255,255,.8);
+		width: 234px;
+		height: 98px;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		line-height: 98px;
+		padding: 0 36px;
+	}
+
+	.info-inner {
+		display: inline-block; *display: inline; zoom: 1;
+		line-height: 1;
+		vertical-align: middle;
+	}
+
+	.field-name-field-promo-headline {
+		font-size: 1.2em; // 24px
+		color: #0084a9;
+		font-style: italic;
+		font-weight: bold;
+	}
+
+	.field-name-field-promo-abstract {
+		font-size: 13px;
+		font-family: "Apercu Mono Regular", monospace;
+	}
+}
 
 
 /* ============================================================
-|| 2.) Reusables/Modules
+|| Modules
 ============================================================ */
 
 /* Skip link */
@@ -541,9 +606,9 @@ a.important .pivot {
 // 	vertical-align: top;
 // }
 
-/*
- * DEV CSS RULES
- */
+/* ============================================================
+|| Dev CSS Rules
+============================================================ */
 
 #themer-toggle {
 	z-index: 99999;

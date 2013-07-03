@@ -128,15 +128,14 @@ function STARTERKIT_preprocess_maintenance_page(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("html" in this case.)
  */
-/* -- Delete this line if you want to use this function
-function STARTERKIT_preprocess_html(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.');
+function pivot_preprocess_html(&$variables, $hook) {
+
+  drupal_add_css('//f.fontdeck.com/s/css/ANxYhj9dllkYxm1NMwN3LihqgYU/' . $_SERVER['SERVER_NAME'] . '/34611.css', array('type' => 'external', 'group' => CSS_THEME, 'every_page' => TRUE));
 
   // The body tag's classes are controlled by the $classes_array variable. To
   // remove a class from $classes_array, use array_diff().
   //$variables['classes_array'] = array_diff($variables['classes_array'], array('class-to-remove'));
 }
-// */
 
 /**
  * Override or insert variables into the page templates.
@@ -239,9 +238,22 @@ function STARTERKIT_preprocess_block(&$variables, $hook) {
 }
 // */
 
-function pivot_preprocess_block(&$variables) {
-  if ($variables['block_html_id'] == 'block-menu-menu-pivot-footer') {
-    $variables['classes_array'][] = 'nav';
-    $variables['classes_array'][] = 'footer-main-nav';
+
+/**
+ * Implements theme_field().
+ *
+ * Output HTML for a Longtail Video Player
+ */
+function pivot_field__field_video_longtail_video_id__video($variables) {
+  $output = '';
+
+  // Render the item(s) -- there should only be one
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<script type="text/javascript" src="http://video.takepart.com/players/' . drupal_render($item) . '.js"></script>';
   }
+
+  // Render the top-level DIV.
+  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+
+  return $output;
 }

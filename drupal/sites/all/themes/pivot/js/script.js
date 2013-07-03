@@ -11,9 +11,13 @@
 // - http://drupal.org/node/1446420
 // - http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth
 (function ($, Drupal, window, document, undefined) {
+	document.domain = "pivot.tv";
 
-
-// Place your code here.
-
+	window.kpiCFheight = function (height) {
+			var frameFoo = document.getElementById('kpiFrame');
+			var divFoo = document.getElementById('kpiDiv');
+			divFoo.style.height = ht;
+			frameFoo.style.height = ht;
+	};
 
 })(jQuery, Drupal, this, this.document);

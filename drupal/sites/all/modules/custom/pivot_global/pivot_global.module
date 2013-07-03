@@ -1,0 +1,42 @@
+<?php
+/**
+ * @file
+ * A module defining custom functionality for the Pivot.tv website
+ *
+ */
+/**
+ * Implements hook_help();
+ */
+function pivot_global_help($path, $arg) {
+    if ($path == 'admin/help#pivot_global') {
+        return t('A module defining custom functionality for the Pivot.tv website');
+    }
+}
+/**
+ * Define custom blocks for the Pivot.tv site
+ */
+include 'pivot_global.blocks.inc';
+
+/**
+* Implements hook_entity_info_alter().
+*/
+function pivot_global_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['promo'] = array(
+    'label' => t('Promo'),
+    'custom settings' => TRUE,
+  );
+}
+
+/**
+* Implements hook_preprocess_node().
+*/
+function pivot_global_preprocess_node(&$vars) {
+  if($vars['view_mode'] == 'promo') {
+    $vars['classes_array'][] = 'promo';
+    $vars['classes_array'][] = 'node-' . $vars['type'] . '-promo';
+    $vars['theme_hook_suggestions'][] = 'node__promo';
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__promo';
+  } else if ($vars['view_mode'] == 'teaser') {
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__teaser';
+  }
+}

@@ -302,7 +302,8 @@ mark {
 p,
 pre {
   /* Sets 1 unit of vertical rhythm on the top and bottom margin. */
-  margin: rhythm(1) 0;
+  // margin: rhythm(1) 0;
+  margin: 0 0 1em 0;
 }
 
 /*
