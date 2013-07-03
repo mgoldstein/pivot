@@ -1,0 +1,62 @@
+<?php
+
+function pivot_hero_field_formatter_info() {
+  return array(
+      'pivot_hs_video' => array(
+        'label' => t('Homepage Slider Video Formatter'),
+        'field types' => array('file'),
+    ),
+  );
+}
+
+function pivot_hero_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $settings = $display['settings'];
+  switch ($display['type']) {
+
+    case 'pivot_hs_video':
+      $element = array(
+      '#theme' => 'pivot_hero_video_format',
+      '#items' => $items,
+      '#list_style' => 'thumb',
+      '#entity_data' => $entity
+      );
+      break;
+  }
+  return $element;
+}
+
+function pivot_hero_theme() {
+  return array(
+    'pivot_hero_video_format' => array(
+        'variables' => array(
+            'items' => array(),
+            'list_style' => '',
+            'entity_data' => NULL
+        ),
+        'file' => 'pivot_hero_video.theme.inc'
+    ),
+  );
+}
+
+function pivot_hero_preprocess_node(&$variables) {
+  if($variables['view_mode'] == 'teaser' && $variables['type'] == 'homepage_slide') {
+    $variables['theme_hook_suggestion'] = 'node__hero';
+  }
+}
+
+function pivot_hero_preprocess_page(&$variables) {
+  if($variables['is_front'] == TRUE) {
+    $variables['classes_array'][] = 'home';
+    drupal_add_css(drupal_get_path('module', 'pivot_hero'). '/css/gerald.css');
+    // drupal_add_css(drupal_get_path('module', 'pivot_hero'). '/css/hero-swiper.css');
+    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpmodal.jquery.js');
+    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpslide.jquery.js');
+    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpselect.jquery.js');
+    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/pivot-hero-script.js');
+    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/script.js');
+  }
+}
+
+
+

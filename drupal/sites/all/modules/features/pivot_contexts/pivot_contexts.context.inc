@@ -102,6 +102,12 @@ function pivot_contexts_context_default_contexts() {
           'region' => 'right_sidebar',
           'weight' => '-8',
         ),
+        'views-homepage_slider-block' => array(
+          'module' => 'views',
+          'delta' => 'homepage_slider-block',
+          'region' => 'preface',
+          'weight' => '-10',
+        ),
       ),
     ),
   );

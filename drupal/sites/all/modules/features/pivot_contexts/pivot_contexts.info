@@ -10,6 +10,7 @@ dependencies[] = dfp
 dependencies[] = menu
 dependencies[] = pivot_global
 dependencies[] = search
+dependencies[] = views
 features[context][] = global
 features[context][] = homepage
 features[ctools][] = context:context:3
