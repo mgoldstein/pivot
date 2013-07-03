@@ -13,7 +13,7 @@
 */
 
 /* ============================================================
-|| 1.) General Site Layout
+|| General
 ============================================================ */
 
 * {
@@ -60,33 +60,45 @@ a:active {
 	text-decoration: underline;
 }
 
+// TODO this doesn't appear in the homepage comp
+
 /* Header */
-#site-header {
-	display: inline-block; *display: inline; zoom: 1;
-	vertical-align: top;
-	width: 100%;
-}
+// #site-header {
+// 	display: inline-block; *display: inline; zoom: 1;
+// 	vertical-align: top;
+// 	width: 100%;
+// }
 
-#site-header .nav {
-	float: left;
-	width: 100%;
-}
+// #site-header .nav {
+// 	float: left;
+// 	width: 100%;
+// }
 
-#site-header .nav li {
-	float: left;
-}
+// #site-header .nav li {
+// 	float: left;
+// }
 
-#site-header .nav li a {
-	font-size: 14px;
-	display: block;
-	padding: 1em;
-}
+// #site-header .nav li a {
+// 	font-size: 14px;
+// 	display: block;
+// 	padding: 1em;
+// }
 
-#site-header .block-search {
-	float: left;
-}
+// #site-header .block-search {
+// 	float: left;
+// }
 
-/* Footer */
+/* ============================================================
+|| Main content area
+============================================================ */
+
+
+
+
+/* ============================================================
+|| Global Footer
+============================================================ */
+
 #site-footer {
 	background: #424242 url(../images/secondary-background.gif) left top repeat;
 	color: #ccc;
@@ -248,12 +260,51 @@ a:active {
 }
 
 
+/* ============================================================
+|| Modules
+============================================================ */
 
 
+.promo {
+	position: relative;
+
+	img {
+		display: block;
+	}
+
+	.info {
+		background-color: rgba(255,255,255,.8);
+		width: 234px;
+		height: 98px;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		line-height: 98px;
+		padding: 0 36px;
+	}
+
+	.info-inner {
+		display: inline-block; *display: inline; zoom: 1;
+		line-height: 1;
+		vertical-align: middle;
+	}
+
+	.field-name-field-promo-headline {
+		font-size: 1.2em; // 24px
+		color: #0084a9;
+		font-style: italic;
+		font-weight: bold;
+	}
+
+	.field-name-field-promo-abstract {
+		font-size: 13px;
+		font-family: "Apercu Mono Regular", monospace;
+	}
+}
 
 
 /* ============================================================
-|| 2.) Reusables/Modules
+|| Modules
 ============================================================ */
 
 /* Skip link */
@@ -555,9 +606,9 @@ a.important .pivot {
 // 	vertical-align: top;
 // }
 
-/*
- * DEV CSS RULES
- */
+/* ============================================================
+|| Dev CSS Rules
+============================================================ */
 
 #themer-toggle {
 	z-index: 99999;

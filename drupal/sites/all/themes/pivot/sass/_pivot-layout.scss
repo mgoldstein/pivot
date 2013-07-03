@@ -2,23 +2,26 @@
 $zen-column-count: 12;
 $zen-gutter-width: 10px;
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 980px) {
 	.site-wrapper {
 		@include zen-grid-container;
-		max-width: 960px;
+		max-width: 980px;
 		margin: auto;
+		padding: 50px 10px 20px 10px;
 	}
 
-	// .primary is 2/3 width if there's no sidebar,
-	// full width if there is one
-	.primary {
-		@include zen-grid-item(12,1);
-		&.with-sidebar {
-			@include zen-grid-item(8,1);
+	#content {
+		// .primary is 2/3 width if there's no sidebar,
+		// full width if there is one
+		.primary {
+			@include zen-grid-item(12,1);
+			&.with-sidebar {
+				@include zen-grid-item(8,1);
+			}
+		}
+
+		.secondary {
+			@include zen-grid-item(4,9);
 		}
 	}
-
-	.secondary {
-		@include zen-grid-item(4,9);
-	}	
 }

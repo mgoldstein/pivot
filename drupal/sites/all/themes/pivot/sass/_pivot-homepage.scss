@@ -9,9 +9,10 @@ body.front {
 	height: 100%;
 }
 
-.front #site-header {
-	display: none;
-}
+// TODO This id doesn't appear in the markup
+// .front #site-header {
+// 	display: none;
+// }
 
 .front #main {
 	min-height: 100%;
@@ -20,84 +21,54 @@ body.front {
 }
 
 // TODO what is this?
-.front #wrapper {
-	width: auto;
-	height: 100%;
+// .front #wrapper {
+// 	width: auto;
+// 	height: 100%;
+// }
+
+.front {
+	.panel-col-top {
+		.node-video.node-teaser {
+
+			.field-name-field-video-longtail-video-id {
+				margin-bottom: 10px;
+			}
+
+			.headline {
+				font-size: 1.2em;
+				margin-bottom: 15px;
+				text-transform: uppercase;
+			}
+
+			.field-name-body {
+				font-size: 14px;
+				line-height: 1.5;
+			}
+		}
+	}
+
+	.secondary {
+		// TODO mw this is hacky
+		#block-pivot-global-find-pivot-sidebar {
+			height: 120px;
+			width: 300px;
+			overflow: hidden;
+		}
+	}
+
 }
 
-.front #what-is-pivot .video {
-	margin-bottom: 10px;
-}
+// TODO mw not using this
 
-.front #what-is-pivot > .headline {
-	font-size: 1.2em;
-	margin-bottom: 15px;
-	text-transform: uppercase;
-}
+// .front #what-is-pivot .headline .pivot {
+// 	background-repeat: no-repeat;
+// 	background-image: url(../images/pivot_medium_black_colored.png);
+// 	width: 80px;
+// 	height: 28px;
+// 	display: inline-block;
+// 	white-space: nowrap;
+// 	text-indent: 100%;
+// 	overflow: hidden;
+// 	vertical-align: text-bottom;
+// }
 
-.front #what-is-pivot .headline .pivot {
-	background-repeat: no-repeat;
-	background-image: url(../images/pivot_medium_black_colored.png);
-	width: 80px;
-	height: 28px;
-	display: inline-block;
-	white-space: nowrap;
-	text-indent: 100%;
-	overflow: hidden;
-	vertical-align: text-bottom;
-}
-
-.front #what-is-pivot .cms {
-	font-size: 14px;
-}
-
-.front #home-promos {
-	margin: 1em 0;
-}
-
-.front #home-promos  {
-	margin: 1em 0;
-}
-
-.front #home-promos .promo {
-	float: left;
-	width: 15em;
-	position: relative;
-}
-
-.front #home-promos .promo img {
-	display: block;
-}
-
-.front #home-promos .promo .info {
-	background-color: rgba(255,255,255,.8);
-	width: 234px;
-	height: 98px;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	line-height: 98px;
-	padding: 0 36px;
-}
-
-.front #home-promos .promo .info-inner {
-	display: inline-block; *display: inline; zoom: 1;
-	line-height: 1;
-	vertical-align: middle;
-}
-
-.front #home-promos .promo .headline {
-	font-size: 1.2em;
-	color: #0084a9;
-	font-style: italic;
-	font-weight: bold;
-}
-
-.front #home-promos .promo .time {
-	font-size: 13px;
-	font-family: "Apercu Mono Regular", monospace;
-}
-
-.front #home-promos .promo:nth-child(even) {
-	float: right;
-}
