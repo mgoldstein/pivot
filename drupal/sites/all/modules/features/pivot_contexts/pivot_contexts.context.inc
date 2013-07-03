@@ -26,41 +26,11 @@ function pivot_contexts_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'menu-menu-primary' => array(
-          'module' => 'menu',
-          'delta' => 'menu-primary',
-          'region' => 'header',
-          'weight' => '-10',
-        ),
-        'menu-menu-secondary' => array(
-          'module' => 'menu',
-          'delta' => 'menu-secondary',
-          'region' => 'header',
-          'weight' => '-9',
-        ),
-        'menu-menu-watch-live' => array(
-          'module' => 'menu',
-          'delta' => 'menu-watch-live',
-          'region' => 'header',
-          'weight' => '-8',
-        ),
-        'search-form' => array(
-          'module' => 'search',
-          'delta' => 'form',
-          'region' => 'header',
-          'weight' => '-7',
-        ),
         'pivot_global-pivot_global_footer' => array(
           'module' => 'pivot_global',
           'delta' => 'pivot_global_footer',
           'region' => 'footer',
           'weight' => '-10',
-        ),
-        'dfp-pivot_ros_background_1x1' => array(
-          'module' => 'dfp',
-          'delta' => 'pivot_ros_background_1x1',
-          'region' => 'footer',
-          'weight' => '-9',
         ),
       ),
     ),
