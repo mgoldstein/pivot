@@ -116,9 +116,9 @@ function pivot_hs_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'module' => 'file',
+        'module' => 'pivot_hero',
         'settings' => array(),
-        'type' => 'file_default',
+        'type' => 'pivot_hs_video',
         'weight' => 3,
       ),
     ),
