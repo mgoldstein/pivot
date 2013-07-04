@@ -97,15 +97,9 @@ function pivot_hs_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'mediaelement',
-        'settings' => array(
-          'controls' => 0,
-          'download_link' => 0,
-          'download_text' => 'Download',
-          'height' => 385,
-          'width' => 640,
-        ),
-        'type' => 'mediaelement_video',
+        'module' => 'pivot_hero',
+        'settings' => array(),
+        'type' => 'pivot_hs_video',
         'weight' => 1,
       ),
       'promo' => array(
