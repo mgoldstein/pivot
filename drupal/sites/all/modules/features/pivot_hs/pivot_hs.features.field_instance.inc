@@ -46,7 +46,7 @@ function pivot_hs_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
-      'file_directory' => 'homepage-video-image',
+      'file_directory' => 'homepage_slides/video_poster_images',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
@@ -122,8 +122,8 @@ function pivot_hs_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
-      'file_directory' => 'homepage-video',
-      'file_extensions' => 'mp4 ogg avi mov wmv flv ogv webm',
+      'file_directory' => 'homepage_slides/videos',
+      'file_extensions' => 'mp4 ogg avi mov wmv flv ogv webm m4v',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
@@ -272,7 +272,11 @@ function pivot_hs_field_default_field_instances() {
   // Exported field_instance: 'node-homepage_slide-field_hs_logo_color'
   $field_instances['node-homepage_slide-field_hs_logo_color'] = array(
     'bundle' => 'homepage_slide',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 2,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -352,7 +356,7 @@ function pivot_hs_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
-      'file_directory' => 'homepage-image',
+      'file_directory' => 'homepage_slides/slider_images',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
