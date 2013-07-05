@@ -46,7 +46,7 @@ function pivot_hs_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
-      'file_directory' => 'hs-background',
+      'file_directory' => 'homepage_slides/video_poster_images',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
@@ -93,19 +93,13 @@ function pivot_hs_field_default_field_instances() {
   $field_instances['node-homepage_slide-field_hs_bg_video'] = array(
     'bundle' => 'homepage_slide',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Upload one mp4 video and one webm video.  Order does not matter.',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'mediaelement',
-        'settings' => array(
-          'controls' => 0,
-          'download_link' => 0,
-          'download_text' => 'Download',
-          'height' => 385,
-          'width' => 640,
-        ),
-        'type' => 'mediaelement_video',
+        'module' => 'pivot_hero',
+        'settings' => array(),
+        'type' => 'pivot_hs_video',
         'weight' => 1,
       ),
       'promo' => array(
@@ -116,9 +110,9 @@ function pivot_hs_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'module' => 'file',
+        'module' => 'pivot_hero',
         'settings' => array(),
-        'type' => 'file_default',
+        'type' => 'pivot_hs_video',
         'weight' => 3,
       ),
     ),
@@ -128,8 +122,8 @@ function pivot_hs_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
-      'file_directory' => '',
-      'file_extensions' => 'mp4 ogg avi mov wmv flv ogv webm',
+      'file_directory' => 'homepage_slides/videos',
+      'file_extensions' => 'mp4 ogg avi mov wmv flv ogv webm m4v',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
@@ -275,19 +269,23 @@ function pivot_hs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-homepage_slide-field_hs_logo_ref'
-  $field_instances['node-homepage_slide-field_hs_logo_ref'] = array(
+  // Exported field_instance: 'node-homepage_slide-field_hs_logo_color'
+  $field_instances['node-homepage_slide-field_hs_logo_color'] = array(
     'bundle' => 'homepage_slide',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 2,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 6,
+        'type' => 'list_default',
+        'weight' => 8,
       ),
       'promo' => array(
         'label' => 'above',
@@ -296,14 +294,14 @@ function pivot_hs_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_hs_logo_ref',
+    'field_name' => 'field_hs_logo_color',
     'label' => 'Logo',
     'required' => 1,
     'settings' => array(
@@ -313,7 +311,7 @@ function pivot_hs_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(),
-      'type' => 'options_select',
+      'type' => 'options_buttons',
       'weight' => 7,
     ),
   );
@@ -358,7 +356,7 @@ function pivot_hs_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
-      'file_directory' => '',
+      'file_directory' => 'homepage_slides/slider_images',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
@@ -457,6 +455,7 @@ function pivot_hs_field_default_field_instances() {
   t('Logo');
   t('Slider Image');
   t('Slider Text');
+  t('Upload one mp4 video and one webm video.  Order does not matter.');
 
   return $field_instances;
 }

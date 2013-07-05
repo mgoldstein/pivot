@@ -12,10 +12,13 @@
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
     <?php // endif; */ ?>
 
+    <?php print $header; ?>
+
   </header>
   <?php endif; ?>
-  <?php print render($page['preface']); ?>
   <main id="main">
+  <?php print render($page['preface']); ?>
+  
     <div id="content" class="site-wrapper">
 
       <?php

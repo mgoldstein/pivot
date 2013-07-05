@@ -43,7 +43,7 @@ function pivot_hs_field_default_field_bases() {
   // Exported field_base: 'field_hs_bg_video'
   $field_bases['field_hs_bg_video'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => 2,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_hs_bg_video',
@@ -127,38 +127,30 @@ function pivot_hs_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_hs_logo_ref'
-  $field_bases['field_hs_logo_ref'] = array(
+  // Exported field_base: 'field_hs_logo_color'
+  $field_bases['field_hs_logo_color'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_hs_logo_ref',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
+    'field_name' => 'field_hs_logo_color',
+    'foreign keys' => array(),
     'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
+      'value' => array(
+        0 => 'value',
       ),
     ),
     'locked' => 0,
-    'module' => 'taxonomy',
+    'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'hs_logo',
-          'parent' => 0,
-        ),
+        2 => ' Light',
+        1 => ' Dark',
       ),
+      'allowed_values_function' => '',
     ),
     'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
+    'type' => 'list_integer',
   );
 
   // Exported field_base: 'field_hs_slider_image'
