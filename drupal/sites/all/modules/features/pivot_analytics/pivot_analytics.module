@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Pivot Analytics feature.
+ */
+
+include_once 'pivot_analytics.features.inc';
