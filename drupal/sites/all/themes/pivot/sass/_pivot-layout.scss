@@ -1,27 +1,71 @@
-// TODO mw consider moving these to base 
 $zen-column-count: 12;
-$zen-gutter-width: 10px;
+$zen-gutter-width: 20px;
 
-@media screen and (min-width: 980px) {
-	.site-wrapper {
-		@include zen-grid-container;
-		max-width: 980px;
-		margin: auto;
-		padding: 50px 10px 20px 10px;
-	}
-
-	#content {
-		// .primary is 2/3 width if there's no sidebar,
-		// full width if there is one
-		.primary {
+.site-wrapper {
+	@include zen-grid-container;
+	max-width: 980px;
+	margin: auto;
+	padding: 50px 10px 20px;
+}
+	
+#content {
+	// .primary is 2/3 width if there's no sidebar,
+	// full width if there is one
+	.primary {
+		max-width: 620px; // border-box includes padding
+		margin: 0 auto;
+		@media (min-width: 1000px) {
+			max-width: 960px; // border-box includes padding
 			@include zen-grid-item(12,1);
 			&.with-sidebar {
 				@include zen-grid-item(8,1);
-			}
+			}			
 		}
+	}
 
-		.secondary {
+	.secondary {
+		width: 300px;
+		margin: 0 auto;
+		text-align: center;
+		@media (min-width: 1000px) {
 			@include zen-grid-item(4,9);
 		}
+	}
+}
+
+/*
+ * Pivot curated content panel
+ */
+.panel-pivot-curated {
+	//  overflow: hidden;
+	margin-top: 0;
+	padding-top: 0;
+
+	.panel-col-top {
+		width: 99.9%;
+		clear: both;
+
+	}
+
+	.inside { // all 3 panel areas
+		margin-bottom: .5em;
+	}
+
+
+	// TODO mw breakpoints wtf?
+	@media (min-width: 681px) {
+		.panel-col-first {
+			float: left;
+			width: 48.3870968%;
+		}
+
+		.panel-col-last {
+			float: right;
+			width: 48.3870968%;
+		}
+	}
+
+	.panel-separator {
+	  margin: 0 0 1em 0;
 	}
 }

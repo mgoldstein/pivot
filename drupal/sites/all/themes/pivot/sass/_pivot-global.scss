@@ -270,17 +270,24 @@ a:active {
 
 	img {
 		display: block;
+		@media (max-width: 680px) {
+			display: none;
+		}
 	}
 
 	.info {
 		background-color: rgba(255,255,255,.8);
-		width: 234px;
-		height: 98px;
-		position: absolute;
-		left: 0;
-		bottom: 0;
 		line-height: 98px;
-		padding: 0 36px;
+		padding: 0 5%;
+
+		@media (min-width: 681px) {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 234px;
+			height: 98px;
+			padding: 0 36px;
+		}
 	}
 
 	.info-inner {
