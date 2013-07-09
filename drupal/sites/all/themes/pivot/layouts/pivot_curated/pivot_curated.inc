@@ -6,7 +6,8 @@ $plugin = array(
   'category' => t('Pivot Layouts'),
   'icon' => 'pivot_curated.png',
   'theme' => 'panels_pivot_curated',
-  'css' => 'pivot_curated.css',
+  // css has been moved to the _pivot-layout sass partial
+  // 'css' => 'pivot_curated.css',
   'regions' => array(
     'top' => t('Top'),
     'left' => t('Left side'),
