@@ -338,7 +338,7 @@ function pivot_show_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+	  'image_style' => 'promo_square',
         ),
         'type' => 'image',
         'weight' => 0,

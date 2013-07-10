@@ -44,6 +44,7 @@ html {
 body {
 	font-size: 20px;
 	background: #f1f3f4;
+	background-image: url(../images/bg.png);
 	font-family: Helvetica,Arial,sans-serif;
 	position: relative;
 	font-family: "Apercu Regular", sans-serif;
@@ -269,6 +270,7 @@ a:active {
 
 .promo {
 	position: relative;
+	margin-bottom: 1em;
 
 	img {
 		display: block;
