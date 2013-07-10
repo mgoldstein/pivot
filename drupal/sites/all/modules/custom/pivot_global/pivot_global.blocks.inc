@@ -51,11 +51,11 @@ function pivot_global_block_view($block_name) {
 
         case 'pivot_global_footer':
             $block['subject'] = ''; // no title
-            $block['content'] = '<nav class="nav footer-main-nav"><h2 class="headline">More on Pivot</h2>' . drupal_render(menu_tree('menu-pivot-footer')) . '</nav>';
+	    $block['content'] = '<nav class="nav footer-main-nav"><h1 class="headline">Secondary Site Navigation</h1>' . drupal_render(menu_tree('menu-pivot-footer')) . '</nav>';
             $block['content'] .= '<div class="secondary">';
-            $block['content'] .= '<section class="nav footer-follow-nav"><h3 class="headline">Follow</h3>' . drupal_render(menu_tree('menu-follow-us')) . '</section>';
-            $block['content'] .= '<section class="nav footer-apps-nav"><h3 class="headline">Apps</h3>' . drupal_render(menu_tree('menu-get-our-app')) . '</section>';
-            $block['content'] .= '<section class="nav footer-participant-nav"><h3 class="headline">Pivot is part of Participant Media:</h3>' . drupal_render(menu_tree('menu-participant-media')) . '</section>';
+	    $block['content'] .= '<div class="nav footer-follow-nav"><h3 class="headline">Follow</h3>' . drupal_render(menu_tree('menu-follow-us')) . '</div>';
+	    $block['content'] .= '<div class="nav footer-apps-nav"><h3 class="headline">Apps</h3>' . drupal_render(menu_tree('menu-get-our-app')) . '</div>';
+	    $block['content'] .= '<div class="nav footer-participant-nav"><h3 class="headline">Pivot is part of Participant Media:</h3>' . drupal_render(menu_tree('menu-participant-media')) . '</div>';
             $block['content'] .= '</div><!-- /.secondary -->';
             $block['content'] .= '<div id="copyright"><p>&copy; 2013 Pivot TV, all rights reserved.</p></div>';
         break;
