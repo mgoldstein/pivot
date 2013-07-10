@@ -16,10 +16,10 @@
 
   </header>
   <?php endif; ?>
-  <main id="main">
-  <?php print render($page['preface']); ?>
-  
+  <main id="main">  
     <div id="content" class="site-wrapper">
+
+      <?php print render($page['preface']); ?>
 
       <?php
         $right_sidebar  = render($page['right_sidebar']);
@@ -46,9 +46,10 @@
       <?php print $right_sidebar; ?>
       <?php endif; ?>
 
+      <?php print render($page['suffix']); ?>
+
     </div>
   </main><!-- /#main -->
-  <?php print render($page['suffix']); ?>
 
   <?php // footer will always render ?>
   <?php print render($page['footer']); ?>
