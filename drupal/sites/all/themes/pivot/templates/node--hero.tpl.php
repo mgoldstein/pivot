@@ -21,10 +21,9 @@
         </div>';
 
   print $output;
-    drupal_add_css(drupal_get_path('module', 'pivot_hero'). '/css/hero-swiper.css');
-    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/jquery.scrollTo.js');
-    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpslide.jquery.js');
-    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpmodal.jquery.js');
-    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpselect.jquery.js');
-    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/pivot-hero-script.js');
+    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/jquery.scrollTo.js');
+    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpslide.jquery.js');
+    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpmodal.jquery.js');
+    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/tpselect.jquery.js');
+    // drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/pivot-hero-script.js');
 ?>
