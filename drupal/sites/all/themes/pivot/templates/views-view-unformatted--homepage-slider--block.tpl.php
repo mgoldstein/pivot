@@ -29,7 +29,10 @@
         <?php $title = str_replace(' ', '_', strtolower($tab)); ?>
         <?php $title = str_replace('!', '', $title); ?>
          <li class="item <?php print $title; ?>">
-            <a href='#<?php print $title; ?>'><?php print $tab; ?></a>
+            <a class="item-link" href='#<?php print $title; ?>'>
+              <span class="item-title">
+                <?php print $tab; ?></a>
+              </span>
           </li>
       <?php endforeach; ?>
     </ul>
