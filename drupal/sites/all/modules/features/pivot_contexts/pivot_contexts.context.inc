@@ -54,6 +54,12 @@ function pivot_contexts_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'views-homepage_slider-block' => array(
+          'module' => 'views',
+          'delta' => 'homepage_slider-block',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
         'dfp-pivot_ros_rr_300x250' => array(
           'module' => 'dfp',
           'delta' => 'pivot_ros_rr_300x250',
@@ -71,12 +77,6 @@ function pivot_contexts_context_default_contexts() {
           'delta' => 'pivot_twitter_widget',
           'region' => 'right_sidebar',
           'weight' => '-8',
-        ),
-        'views-homepage_slider-block' => array(
-          'module' => 'views',
-          'delta' => 'homepage_slider-block',
-          'region' => 'preface',
-          'weight' => '-10',
         ),
       ),
     ),
