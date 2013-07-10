@@ -1,0 +1,10 @@
+name = Image Styles
+description = Image Styles
+core = 7.x
+package = Content Display
+version = 7.x-1.0
+project = pivot_image_styles
+dependencies[] = image
+features[features_api][] = api:2
+features[image][] = promo_square
+features[image][] = promo_widescreen
