@@ -14,13 +14,11 @@ $body
 	;
 
 $(function() {
-
 	// Pretty selects
 	$('.find-pivot select').tpselect();
 
 	// Homepage
 	if ($('body').hasClass('front')) {
-
 		// Slideshow
 		var vp_width = $(window).width();
 		var vp_height = $(window).height();
@@ -29,8 +27,8 @@ $(function() {
 		var $images = $('.slide-wrapper .video-image');
 		var $topslide = $('#topslide');
 		var $current = $slides.first();
-		var $video;
-		var $image;
+		var $video = $current.find('.video-player');
+		var $image = $current.find('.video-image');
 
 		$images.each(function() {
 			var $this = $(this);
@@ -62,7 +60,6 @@ $(function() {
 			$topslide.addClass($curr.data('token'));
 			$topslide.find('li').removeClass('active');
 			var $newnav = $topslide.find('.slide-nav .' + $curr.data('token')).addClass('active');
-			$('.active-selector').css({left: $newnav.offset().left});
 		}
 
 		var onafter = function($curr) {
@@ -70,6 +67,7 @@ $(function() {
 			$curr.addClass('active');
 
 			if ( $current ) $topslide.removeClass($current.data('token'));
+
 			if ( $video ) {
 				$video[0].pause();
 				$video[0].currentTime = 0;
@@ -93,8 +91,9 @@ $(function() {
 		}
 
 		var adjust = function() {
+			var maxFullscreenHeight = 690;
 			vp_width = $(window).width();
-			vp_height = $(window).height();
+			vp_height = $(window).height() < maxFullscreenHeight ? maxFullscreenHeight : $(window).height();
 			var viewportAspectRatio = vp_width / vp_height;
 			$slide_wrapper.css({width: vp_width});
 			$slide_wrapper.css({height: vp_height});

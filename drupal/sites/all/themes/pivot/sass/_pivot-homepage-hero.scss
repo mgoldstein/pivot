@@ -1,18 +1,3 @@
-/* undo CSS from Normalize */
-
-#block-views-homepage-slider-block {
-	margin-bottom: 0;
-}
-
-#block-views-homepage-slider-block ul {
-	margin: 0;
-	padding: 0;
-}
-
-#block-views-homepage-slider-block h3 {
-	margin: 0;
-}
-
 .front #home-header {
 	position: absolute;
 	left: 0;
@@ -54,7 +39,6 @@
 	height: 33px;
 	background-repeat: no-repeat;
 	margin-left: 11px;
-	margin-bottom: 0;
 }
 
 .front #home-header .social .facebook {
@@ -74,9 +58,8 @@
 	height: 100%;
 }
 
-.front #header {
+.front #main {
 	min-height: 100%;
-	padding: 0;
 	background: transparent;
 }
 
@@ -218,7 +201,8 @@
 }
 
 .front .slide-nav .active a,
-.front .slide-nav a:hover {
+.front .slide-nav a:hover,
+.front .slide-nav a:focus {
 	color: #fff;
 	text-decoration: none;
 }
@@ -238,7 +222,8 @@
 }
 
 .front .slide-nav .shows.active a:before,
-.front .slide-nav .shows a:hover:before {
+.front .slide-nav .shows a:hover:before,
+.front .slide-nav .shows a:focus:before {
 	background-image: url(../images/home_shows_on.png);
 }
 
@@ -249,7 +234,8 @@
 }
 
 .front .slide-nav .movies.active a:before,
-.front .slide-nav .movies a:hover:before {
+.front .slide-nav .movies a:hover:before,
+.front .slide-nav .movies a:focus:before {
 	background-image: url(../images/home_movies_on.png);
 }
 
@@ -260,7 +246,8 @@
 }
 
 .front .slide-nav .watch_now.active a:before,
-.front .slide-nav .watch_now a:hover:before {
+.front .slide-nav .watch_now a:hover:before,
+.front .slide-nav .watch_now a:focus:before {
 	background-image: url(../images/home_watch_on.png);
 }
 
@@ -271,7 +258,8 @@
 }
 
 .front .slide-nav .take_action.active a:before,
-.front .slide-nav .take_action a:hover:before {
+.front .slide-nav .take_action a:hover:before,
+.front .slide-nav .take_action a:focus:before {
 	background-image: url(../images/home_action_on.png);
 }
 
@@ -282,7 +270,8 @@
 }
 
 .front .slide-nav .schedule.active a:before,
-.front .slide-nav .schedule a:hover:before {
+.front .slide-nav .schedule a:hover:before,
+.front .slide-nav .schedule a:focus:before {
 	background-image: url(../images/home_schedule_on.png);
 }
 
@@ -293,7 +282,8 @@
 }
 
 .front .slide-nav .blog.active a:before,
-.front .slide-nav .blog a:hover:before {
+.front .slide-nav .blog a:hover:before,
+.front .slide-nav .blog a:focus:before {
 	background-image: url(../images/home_blog_on.png);
 }
 

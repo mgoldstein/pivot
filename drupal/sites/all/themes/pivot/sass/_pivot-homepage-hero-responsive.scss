@@ -15,19 +15,19 @@
 	}
 }
 
-/* ============================================================
-|| Global: Right Rail;
-============================================================ */
-@media (max-width: 360px) {
-	.find-pivot .text {
+/* Promo List */
+@media (max-width: 680px) {
+	.promo-list .half {
+		display: block;
 		width: 100%;
-		margin-bottom: 10px;
 	}
-	.find-pivot .tpselect_input {
-		width: 75%;
+	.promo-list .promo img {
+		display: none;
 	}
-	.find-pivot .tpselect_value {
+	.promo-list .promo .info {
+		position: relative;
 		width: 100%;
+		padding: 0 5%;
 	}
 }
 
@@ -89,6 +89,13 @@
 	}
 }
 
+/* Show */
+@media (max-width: 680px) {
+	.show .show-actions .half {
+		width: 100%;
+	}
+}
+
 /* Hero Nav */
 @media (max-width: 1100px) {
 	.home .slide-nav .item-title {
@@ -113,20 +120,5 @@
 @media (max-width: 480px) { /* iPhone vertical */
 	.upcoming .times {
 		display: none;
-	}
-}
-
-/* Content */
-@media (max-width: 680px) {
-	.home #home-promos .half {
-		display: block;
-	}
-	.home #home-promos .promo img {
-		display: none;
-	}
-	.home #home-promos .promo .info {
-		position: relative;
-		width: 100%;
-		padding: 0 5%;
 	}
 }
