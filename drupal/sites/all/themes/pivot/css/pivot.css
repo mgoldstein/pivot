@@ -199,37 +199,46 @@ a:active {
   z-index: 2;
   overflow: hidden;
   box-shadow: inset 0px 10px 20px 0px rgba(0, 0, 0, 0.25);
-  font-size: 13px;
 }
-/* line 114, ../sass/_pivot-global.scss */
+/* line 112, ../sass/_pivot-global.scss */
+#site-footer .block-pivot-global {
+  margin: 0;
+}
+/* line 116, ../sass/_pivot-global.scss */
 #site-footer .site-wrapper {
   padding: 1em 0;
+  text-align: center;
 }
-/* line 118, ../sass/_pivot-global.scss */
+/* line 121, ../sass/_pivot-global.scss */
 #site-footer a {
   color: #ccc;
 }
-/* line 122, ../sass/_pivot-global.scss */
+/* line 125, ../sass/_pivot-global.scss */
 #site-footer .nav {
-  float: left;
-  display: table;
-  margin-top: 2em;
-  margin-bottom: 2em;
-  margin-right: 1.5em;
-  line-height: 45px;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
 }
-/* line 134, ../sass/_pivot-global.scss */
+/* line 130, ../sass/_pivot-global.scss */
 #site-footer .nav .headline,
 #site-footer .nav .menu,
 #site-footer .nav .menu li {
-  float: left;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  font-size: 13px;
 }
-/* line 138, ../sass/_pivot-global.scss */
+/* line 136, ../sass/_pivot-global.scss */
 #site-footer .nav .headline {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  margin: 0;
   font-size: 13px;
   line-height: 45px;
   font-family: "Apercu Mono Regular", monospace;
-  margin: 0;
+  text-transform: uppercase;
 }
 /* line 145, ../sass/_pivot-global.scss */
 #site-footer .nav .menu {
@@ -246,8 +255,7 @@ a:active {
 /* line 158, ../sass/_pivot-global.scss */
 #site-footer .footer-main-nav {
   float: none;
-  margin: 1em auto 2em auto;
-  line-height: 1.5em;
+  margin: 1em auto 1.25em;
 }
 /* line 163, ../sass/_pivot-global.scss */
 #site-footer .footer-main-nav .headline {
@@ -260,23 +268,30 @@ a:active {
 }
 /* line 165, ../sass/_pivot-global.scss */
 #site-footer .footer-main-nav .menu li {
-  float: left;
-  text-align: center;
-  margin-left: 0;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: top;
+  margin: 0 10px 5px;
 }
 /* line 170, ../sass/_pivot-global.scss */
 #site-footer .footer-main-nav .menu li a {
-  padding: 0 28px;
+  padding: 5px;
 }
 /* line 174, ../sass/_pivot-global.scss */
 #site-footer .secondary {
   display: table;
   float: none;
   width: auto;
-  margin: 2em auto;
+  margin: 0 auto 1.5em;
   line-height: 45px;
 }
-/* line 184, ../sass/_pivot-global.scss */
+/* line 183, ../sass/_pivot-global.scss */
+#site-footer .footer-follow-nav,
+#site-footer .footer-apps-nav {
+  margin: 0 1.35em 5px 0;
+}
+/* line 186, ../sass/_pivot-global.scss */
 #site-footer .footer-follow-nav a,
 #site-footer .footer-apps-nav a {
   display: inline-block;
@@ -288,31 +303,35 @@ a:active {
   overflow: hidden;
   background-repeat: no-repeat;
 }
-/* line 196, ../sass/_pivot-global.scss */
+/* line 198, ../sass/_pivot-global.scss */
 #site-footer .facebook {
   background-image: url(../images/footer_social_facebook.png);
 }
-/* line 200, ../sass/_pivot-global.scss */
+/* line 202, ../sass/_pivot-global.scss */
 #site-footer .twitter {
   background-image: url(../images/footer_social_twitter.png);
 }
-/* line 204, ../sass/_pivot-global.scss */
+/* line 206, ../sass/_pivot-global.scss */
 #site-footer .youtube {
   background-image: url(../images/footer_social_youtube.png);
 }
-/* line 208, ../sass/_pivot-global.scss */
+/* line 210, ../sass/_pivot-global.scss */
 #site-footer .googleplus {
   background-image: url(../images/footer_social_googleplus.png);
 }
-/* line 212, ../sass/_pivot-global.scss */
+/* line 214, ../sass/_pivot-global.scss */
 #site-footer .ios-app {
   background-image: url(../images/footer_apps_apple.png);
 }
-/* line 216, ../sass/_pivot-global.scss */
+/* line 218, ../sass/_pivot-global.scss */
 #site-footer .android-app {
   background-image: url(../images/footer_apps_android.png);
 }
-/* line 222, ../sass/_pivot-global.scss */
+/* line 223, ../sass/_pivot-global.scss */
+#site-footer .footer-participant-nav {
+  display: block;
+}
+/* line 225, ../sass/_pivot-global.scss */
 #site-footer .footer-participant-nav a {
   display: inline-block;
   white-space: nowrap;
@@ -320,62 +339,61 @@ a:active {
   overflow: hidden;
   background-repeat: no-repeat;
 }
-/* line 230, ../sass/_pivot-global.scss */
+/* line 233, ../sass/_pivot-global.scss */
 #site-footer .footer-participant-nav .participant-media {
   background-image: url(../images/footer_participant_participant.png);
   width: 113px;
   height: 24px;
   vertical-align: middle;
 }
-/* line 237, ../sass/_pivot-global.scss */
+/* line 240, ../sass/_pivot-global.scss */
 #site-footer .footer-participant-nav .takepart {
   background-image: url(../images/footer_participant_takepart.png);
   width: 45px;
   height: 45px;
 }
-/* line 243, ../sass/_pivot-global.scss */
+/* line 246, ../sass/_pivot-global.scss */
 #site-footer .footer-participant-nav .pivot {
   background-image: url(../images/footer_participant_pivot.png);
   width: 48px;
   height: 16px;
 }
-/* line 250, ../sass/_pivot-global.scss */
+/* line 253, ../sass/_pivot-global.scss */
 #site-footer #copyright {
-  clear: both;
-  font-size: 13px;
   margin-bottom: 1em;
 }
-/* line 255, ../sass/_pivot-global.scss */
+/* line 256, ../sass/_pivot-global.scss */
 #site-footer #copyright p {
-  margin: 0;
+  font-size: 12px;
   text-align: center;
+  color: #999;
 }
 
 /* ============================================================
 || Modules
 ============================================================ */
-/* line 268, ../sass/_pivot-global.scss */
+/* line 270, ../sass/_pivot-global.scss */
 .promo {
   position: relative;
 }
-/* line 271, ../sass/_pivot-global.scss */
+/* line 273, ../sass/_pivot-global.scss */
 .promo img {
   display: block;
 }
 @media (max-width: 680px) {
-  /* line 271, ../sass/_pivot-global.scss */
+  /* line 273, ../sass/_pivot-global.scss */
   .promo img {
     display: none;
   }
 }
-/* line 278, ../sass/_pivot-global.scss */
+/* line 280, ../sass/_pivot-global.scss */
 .promo .info {
   background-color: rgba(255, 255, 255, 0.8);
   line-height: 98px;
   padding: 0 5%;
 }
 @media (min-width: 681px) {
-  /* line 278, ../sass/_pivot-global.scss */
+  /* line 280, ../sass/_pivot-global.scss */
   .promo .info {
     position: absolute;
     left: 0;
@@ -385,7 +403,7 @@ a:active {
     padding: 0 36px;
   }
 }
-/* line 293, ../sass/_pivot-global.scss */
+/* line 295, ../sass/_pivot-global.scss */
 .promo .info-inner {
   display: inline-block;
   *display: inline;
@@ -393,14 +411,14 @@ a:active {
   line-height: 1;
   vertical-align: middle;
 }
-/* line 299, ../sass/_pivot-global.scss */
+/* line 301, ../sass/_pivot-global.scss */
 .promo .field-name-field-promo-headline {
   font-size: 1.2em;
   color: #0084a9;
   font-style: italic;
   font-weight: bold;
 }
-/* line 306, ../sass/_pivot-global.scss */
+/* line 308, ../sass/_pivot-global.scss */
 .promo .field-name-field-promo-abstract {
   font-size: 13px;
   font-family: "Apercu Mono Regular", monospace;
@@ -411,7 +429,7 @@ a:active {
 ============================================================ */
 /* Skip link */
 /* "Buttons" */
-/* line 341, ../sass/_pivot-global.scss */
+/* line 343, ../sass/_pivot-global.scss */
 a.important:link,
 a.important:visited {
   text-decoration: none;
@@ -428,7 +446,7 @@ a.important:visited {
   box-shadow: 0 3px 0 rgba(50, 50, 50, 0.75);
 }
 
-/* line 356, ../sass/_pivot-global.scss */
+/* line 358, ../sass/_pivot-global.scss */
 a.important:after {
   content: " ";
   display: block;
@@ -444,12 +462,12 @@ a.important:after {
   transition: right .1s linear .1s;
 }
 
-/* line 371, ../sass/_pivot-global.scss */
+/* line 373, ../sass/_pivot-global.scss */
 a.important:hover:after {
   right: 10px;
 }
 
-/* line 375, ../sass/_pivot-global.scss */
+/* line 377, ../sass/_pivot-global.scss */
 a.important .pivot {
   display: inline-block;
   background-repeat: no-repeat;
@@ -463,7 +481,7 @@ a.important .pivot {
 }
 
 /* Top? Schedule */
-/* line 388, ../sass/_pivot-global.scss */
+/* line 390, ../sass/_pivot-global.scss */
 .upcoming {
   position: absolute;
   width: 100%;
@@ -475,17 +493,17 @@ a.important .pivot {
   box-shadow: inset 0px -10px 20px 0px rgba(0, 0, 0, 0.25);
 }
 
-/* line 400, ../sass/_pivot-global.scss */
+/* line 402, ../sass/_pivot-global.scss */
 .upcoming a {
   color: #01bf9e;
 }
 
-/* line 404, ../sass/_pivot-global.scss */
+/* line 406, ../sass/_pivot-global.scss */
 .upcoming .inner {
   display: table-row;
 }
 
-/* line 408, ../sass/_pivot-global.scss */
+/* line 410, ../sass/_pivot-global.scss */
 .upcoming .headline a {
   font-size: 24px;
   text-transform: uppercase;
@@ -498,7 +516,7 @@ a.important .pivot {
   color: #fff;
 }
 
-/* line 420, ../sass/_pivot-global.scss */
+/* line 422, ../sass/_pivot-global.scss */
 .upcoming .headline a:after {
   content: " ";
   display: block;
@@ -513,7 +531,7 @@ a.important .pivot {
   vertical-align: middle;
 }
 
-/* line 437, ../sass/_pivot-global.scss */
+/* line 439, ../sass/_pivot-global.scss */
 .upcoming .headline,
 .upcoming .times,
 .upcoming .full-schedule,
@@ -522,7 +540,7 @@ a.important .pivot {
   vertical-align: middle;
 }
 
-/* line 442, ../sass/_pivot-global.scss */
+/* line 444, ../sass/_pivot-global.scss */
 .upcoming .times .item {
   font-family: "Apercu Mono Regular", monospace, sans-serif;
   font-size: 14px;
@@ -531,13 +549,13 @@ a.important .pivot {
   padding: 0 5px;
 }
 
-/* line 450, ../sass/_pivot-global.scss */
+/* line 452, ../sass/_pivot-global.scss */
 .upcoming .times .inner {
   display: table;
   margin: auto;
 }
 
-/* line 455, ../sass/_pivot-global.scss */
+/* line 457, ../sass/_pivot-global.scss */
 .upcoming .times .item:before {
   content: " ";
   width: 1px;
@@ -552,12 +570,12 @@ a.important .pivot {
   /* W3C */
 }
 
-/* line 468, ../sass/_pivot-global.scss */
+/* line 470, ../sass/_pivot-global.scss */
 .upcoming .times .item:first-child:before {
   display: none;
 }
 
-/* line 472, ../sass/_pivot-global.scss */
+/* line 474, ../sass/_pivot-global.scss */
 .upcoming .times .item:after {
   content: " ";
   width: 1px;
@@ -572,19 +590,19 @@ a.important .pivot {
   /* W3C */
 }
 
-/* line 486, ../sass/_pivot-global.scss */
+/* line 488, ../sass/_pivot-global.scss */
 .upcoming .times .time,
 .upcoming .times .show {
   padding: 0 5px;
 }
 
-/* line 490, ../sass/_pivot-global.scss */
+/* line 492, ../sass/_pivot-global.scss */
 .upcoming .full-schedule {
   padding: 0 5px;
 }
 
 /* Pretty form selects */
-/* line 496, ../sass/_pivot-global.scss */
+/* line 498, ../sass/_pivot-global.scss */
 .tpselect_wrapper {
   display: inline-block;
   height: 30px;
@@ -595,19 +613,19 @@ a.important .pivot {
   vertical-align: bottom;
 }
 
-/* line 506, ../sass/_pivot-global.scss */
+/* line 508, ../sass/_pivot-global.scss */
 .tpselect_wrapper.tpselect_focus {
   background: #000;
   color: #fff;
 }
 
-/* line 511, ../sass/_pivot-global.scss */
+/* line 513, ../sass/_pivot-global.scss */
 .tpselect_wrapper select {
   height: 100%;
   width: 100%;
 }
 
-/* line 516, ../sass/_pivot-global.scss */
+/* line 518, ../sass/_pivot-global.scss */
 .tpselect_wrapper .tpselect_value {
   position: relative;
   display: block;
@@ -619,7 +637,7 @@ a.important .pivot {
   font-family: "Apercu Mono Regular", monospace;
 }
 
-/* line 527, ../sass/_pivot-global.scss */
+/* line 529, ../sass/_pivot-global.scss */
 .tpselect_wrapper .tpselect_value:after {
   display: block;
   content: " ";
@@ -635,7 +653,7 @@ a.important .pivot {
 /* ============================================================
 || Dev CSS Rules
 ============================================================ */
-/* line 620, ../sass/_pivot-global.scss */
+/* line 622, ../sass/_pivot-global.scss */
 #themer-toggle {
   z-index: 99999;
 }
