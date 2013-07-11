@@ -130,6 +130,16 @@ $(function() {
 			e.preventDefault();
 
 			$slide_wrapper.tpslide_to(this.href.replace(/^[^#]*/, ''));
+
+
+      //Separate JS from Static
+      $('.pivot-headline').removeClass('dark');
+      if($(this).attr('color') == 1){
+        $('.pivot-headline').addClass('dark');
+      }
+      //End JS addition
+      //TODO add this for on page load
+
 		});
 
 		adjust();

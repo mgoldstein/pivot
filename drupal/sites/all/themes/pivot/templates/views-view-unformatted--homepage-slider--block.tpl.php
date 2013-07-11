@@ -1,5 +1,6 @@
 <section id="topslide">
     <div id="home-header">
+
     <div class="pivot-headline">
       <h1 class="headline">Pivot</h1>
       <p class="tagline">It's your turn</p>
@@ -28,8 +29,9 @@
         <?php $tab = $node->title; ?>
         <?php $title = str_replace(' ', '_', strtolower($tab)); ?>
         <?php $title = str_replace('!', '', $title); ?>
+        <?php $color = (isset($node->field_hs_logo_color['und'][0]['value']) ? $node->field_hs_logo_color['und'][0]['value'] : ''); ?>
          <li class="item <?php print $title; ?>">
-            <a class="item-link" href='#<?php print $title; ?>'>
+            <a class="item-link" color="<?php print $color; ?>" href='#<?php print $title; ?>'>
               <span class="item-title">
                 <?php print $tab; ?></a>
               </span>

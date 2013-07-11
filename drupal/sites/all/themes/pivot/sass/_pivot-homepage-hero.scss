@@ -18,7 +18,16 @@
 	background-image: url(../images/logo.png);
 	float: left;
 }
-
+.front #home-header .pivot-headline-dark {
+	overflow: hidden;
+	text-indent: 100%;
+	white-space: nowrap;
+	width: 224px;
+	height: 82px;
+	background-repeat: no-repeat;
+	background-image: url(../images/logo.png);
+	float: left;
+}
 .front #home-header .secondary {
 	float: right;
 }
@@ -341,3 +350,15 @@
  * since CSS doesn't nest comments and it was messing up
  * LITERALLY EVERYTHING.
  */
+
+
+
+
+ /**
+ *
+ *Added CSS from static
+ *
+ */
+ .front #home-header .pivot-headline.dark {
+	background-image: url(../images/logo-dark.png);
+}
