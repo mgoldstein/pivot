@@ -723,7 +723,7 @@ body.front {
   position: absolute;
   left: 0;
   top: 0;
-  padding: 6em 4em 0 4em;
+  padding: 4em 4em 0 4em;
   z-index: 4;
   color: #fff;
   width: 100%;
@@ -806,55 +806,50 @@ body.front {
   background-image: url(../images/social_mono_white_youtube.png);
 }
 
-/* line 74, ../sass/_pivot-homepage-hero.scss */
-.front #home-header .social .facebook:hover {
-  background-image: url(../images/social_mono_blue_facebook.png);
-}
-
-/* line 78, ../sass/_pivot-homepage-hero.scss */
+/* line 77, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .googleplus:hover {
   background-image: url(../images/social_mono_blue_googleplus.png);
 }
 
-/* line 82, ../sass/_pivot-homepage-hero.scss */
+/* line 81, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .instagram:hover {
   background-image: url(../images/social_mono_blue_instagram.png);
 }
 
-/* line 85, ../sass/_pivot-homepage-hero.scss */
+/* line 84, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .twitter:hover {
   background-image: url(../images/social_mono_blue_twitter.png);
 }
 
-/* line 89, ../sass/_pivot-homepage-hero.scss */
+/* line 88, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .youtube:hover {
   background-image: url(../images/social_mono_blue_youtube.png);
 }
 
-/* line 94, ../sass/_pivot-homepage-hero.scss */
+/* line 93, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .item a {
   display: block;
   height: 100%;
 }
 
-/* line 99, ../sass/_pivot-homepage-hero.scss */
+/* line 98, ../sass/_pivot-homepage-hero.scss */
 .front #main {
   min-height: 100%;
   background: transparent;
 }
 
-/* line 104, ../sass/_pivot-homepage-hero.scss */
+/* line 103, ../sass/_pivot-homepage-hero.scss */
 .front #wrapper {
   width: auto;
   height: 100%;
 }
 
-/* line 109, ../sass/_pivot-homepage-hero.scss */
+/* line 108, ../sass/_pivot-homepage-hero.scss */
 .front #video {
   background: #000;
 }
 
-/* line 114, ../sass/_pivot-homepage-hero.scss */
+/* line 113, ../sass/_pivot-homepage-hero.scss */
 .front .video-player,
 .front .video-image {
   position: absolute;
@@ -863,36 +858,36 @@ body.front {
   opacity: 0;
 }
 
-/* line 121, ../sass/_pivot-homepage-hero.scss */
+/* line 120, ../sass/_pivot-homepage-hero.scss */
 .front .active .video-player {
   z-index: 2;
   opacity: 1;
 }
 
-/* line 126, ../sass/_pivot-homepage-hero.scss */
+/* line 125, ../sass/_pivot-homepage-hero.scss */
 .front .video-image.loaded {
   opacity: 1;
 }
 
-/* line 131, ../sass/_pivot-homepage-hero.scss */
+/* line 130, ../sass/_pivot-homepage-hero.scss */
 .front .video-player,
 .front .slide:first-child .video-image {
   -webkit-transition: opacity .1s linear .1s;
   transition: opacity .1s linear .1s;
 }
 
-/* line 136, ../sass/_pivot-homepage-hero.scss */
+/* line 135, ../sass/_pivot-homepage-hero.scss */
 .front .slide {
   white-space: normal;
 }
 
-/* line 140, ../sass/_pivot-homepage-hero.scss */
+/* line 139, ../sass/_pivot-homepage-hero.scss */
 .front .slide .active .video-image {
   opacity: 1;
   z-index: 1;
 }
 
-/* line 145, ../sass/_pivot-homepage-hero.scss */
+/* line 144, ../sass/_pivot-homepage-hero.scss */
 .front .video-content {
   position: relative;
   z-index: 3;
@@ -902,13 +897,13 @@ body.front {
   padding-top: 210px;
 }
 
-/* line 154, ../sass/_pivot-homepage-hero.scss */
+/* line 153, ../sass/_pivot-homepage-hero.scss */
 .front .video-content-inner {
   position: absolute;
   bottom: 0;
 }
 
-/* line 159, ../sass/_pivot-homepage-hero.scss */
+/* line 158, ../sass/_pivot-homepage-hero.scss */
 .front .video-content .promo img {
   display: block;
   box-shadow: 15px 14px 20px rgba(0, 0, 0, 0.5);
@@ -918,7 +913,7 @@ body.front {
   max-height: 100%;
 }
 
-/* line 169, ../sass/_pivot-homepage-hero.scss */
+/* line 168, ../sass/_pivot-homepage-hero.scss */
 .front .video-content .promo,
 .front .video-content .primary {
   display: inline-block;
@@ -927,13 +922,13 @@ body.front {
   vertical-align: top;
 }
 
-/* line 174, ../sass/_pivot-homepage-hero.scss */
+/* line 173, ../sass/_pivot-homepage-hero.scss */
 .front .video-content .promo {
   width: 50%;
   vertical-align: bottom;
 }
 
-/* line 179, ../sass/_pivot-homepage-hero.scss */
+/* line 178, ../sass/_pivot-homepage-hero.scss */
 .front .video-content .primary {
   width: 50%;
   font-size: 24px;
@@ -941,7 +936,7 @@ body.front {
   padding: 0 10px 5% 50px;
 }
 
-/* line 186, ../sass/_pivot-homepage-hero.scss */
+/* line 185, ../sass/_pivot-homepage-hero.scss */
 .front .video-content .primary .headline {
   font-size: 60px;
   font-weight: bold;
@@ -949,34 +944,34 @@ body.front {
   white-space: nowrap;
 }
 
-/* line 193, ../sass/_pivot-homepage-hero.scss */
+/* line 192, ../sass/_pivot-homepage-hero.scss */
 .front .video-content .primary .description {
   margin-bottom: 15px;
   font-family: "Apercu Mono Regular", monospace;
 }
 
 /* Top slide */
-/* line 200, ../sass/_pivot-homepage-hero.scss */
+/* line 199, ../sass/_pivot-homepage-hero.scss */
 .front #topslide {
   height: 100%;
   background: #000;
   position: relative;
 }
 
-/* line 206, ../sass/_pivot-homepage-hero.scss */
+/* line 205, ../sass/_pivot-homepage-hero.scss */
 .front #topslide a.important {
   background: #0084A9;
   -webkit-transition: background-color .1s linear .1s;
   transition: background-color .1s linear .1s;
 }
 
-/* line 213, ../sass/_pivot-homepage-hero.scss */
+/* line 212, ../sass/_pivot-homepage-hero.scss */
 .front #topslide a.important:hover,
 .front #topslide a.important:focus {
   background: #0090B8;
 }
 
-/* line 217, ../sass/_pivot-homepage-hero.scss */
+/* line 216, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav {
   position: absolute;
   bottom: 0;
@@ -989,12 +984,12 @@ body.front {
   height: 80px;
 }
 
-/* line 229, ../sass/_pivot-homepage-hero.scss */
+/* line 228, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .headline {
   display: none;
 }
 
-/* line 233, ../sass/_pivot-homepage-hero.scss */
+/* line 232, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav a {
   display: block;
   position: relative;
@@ -1003,7 +998,7 @@ body.front {
   color: #00b5cc;
 }
 
-/* line 243, ../sass/_pivot-homepage-hero.scss */
+/* line 242, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .active a,
 .front .slide-nav a:hover,
 .front .slide-nav a:focus {
@@ -1011,7 +1006,7 @@ body.front {
   text-decoration: none;
 }
 
-/* line 248, ../sass/_pivot-homepage-hero.scss */
+/* line 247, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav a:before {
   content: " ";
   display: inline-block;
@@ -1020,91 +1015,91 @@ body.front {
   vertical-align: text-bottom;
 }
 
-/* line 256, ../sass/_pivot-homepage-hero.scss */
+/* line 255, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .shows a:before {
   width: 28px;
   height: 27px;
   background-image: url(../images/home_shows_off.png);
 }
 
-/* line 264, ../sass/_pivot-homepage-hero.scss */
+/* line 263, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .shows.active a:before,
 .front .slide-nav .shows a:hover:before,
 .front .slide-nav .shows a:focus:before {
   background-image: url(../images/home_shows_on.png);
 }
 
-/* line 268, ../sass/_pivot-homepage-hero.scss */
+/* line 267, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .movies a:before {
   width: 29px;
   height: 28px;
   background-image: url(../images/home_movies_off.png);
 }
 
-/* line 276, ../sass/_pivot-homepage-hero.scss */
+/* line 275, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .movies.active a:before,
 .front .slide-nav .movies a:hover:before,
 .front .slide-nav .movies a:focus:before {
   background-image: url(../images/home_movies_on.png);
 }
 
-/* line 280, ../sass/_pivot-homepage-hero.scss */
+/* line 279, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .watch_now a:before {
   width: 27px;
   height: 28px;
   background-image: url(../images/home_watch_off.png);
 }
 
-/* line 288, ../sass/_pivot-homepage-hero.scss */
+/* line 287, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .watch_now.active a:before,
 .front .slide-nav .watch_now a:hover:before,
 .front .slide-nav .watch_now a:focus:before {
   background-image: url(../images/home_watch_on.png);
 }
 
-/* line 292, ../sass/_pivot-homepage-hero.scss */
+/* line 291, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .take_action a:before {
   width: 33px;
   height: 28px;
   background-image: url(../images/home_action_off.png);
 }
 
-/* line 300, ../sass/_pivot-homepage-hero.scss */
+/* line 299, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .take_action.active a:before,
 .front .slide-nav .take_action a:hover:before,
 .front .slide-nav .take_action a:focus:before {
   background-image: url(../images/home_action_on.png);
 }
 
-/* line 304, ../sass/_pivot-homepage-hero.scss */
+/* line 303, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .schedule a:before {
   width: 29px;
   height: 28px;
   background-image: url(../images/home_schedule_off.png);
 }
 
-/* line 312, ../sass/_pivot-homepage-hero.scss */
+/* line 311, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .schedule.active a:before,
 .front .slide-nav .schedule a:hover:before,
 .front .slide-nav .schedule a:focus:before {
   background-image: url(../images/home_schedule_on.png);
 }
 
-/* line 316, ../sass/_pivot-homepage-hero.scss */
+/* line 315, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .blog a:before {
   width: 22px;
   height: 28px;
   background-image: url(../images/home_blog_off.png);
 }
 
-/* line 324, ../sass/_pivot-homepage-hero.scss */
+/* line 323, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .blog.active a:before,
 .front .slide-nav .blog a:hover:before,
 .front .slide-nav .blog a:focus:before {
   background-image: url(../images/home_blog_on.png);
 }
 
-/* line 328, ../sass/_pivot-homepage-hero.scss */
+/* line 327, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .item {
   position: relative;
   text-align: center;
@@ -1112,7 +1107,7 @@ body.front {
   float: left;
 }
 
-/* line 335, ../sass/_pivot-homepage-hero.scss */
+/* line 334, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .item:after {
   display: block;
   position: absolute;
@@ -1128,12 +1123,12 @@ body.front {
   /* W3C */
 }
 
-/* line 349, ../sass/_pivot-homepage-hero.scss */
+/* line 348, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .list:last-child:after {
   display: none;
 }
 
-/* line 353, ../sass/_pivot-homepage-hero.scss */
+/* line 352, ../sass/_pivot-homepage-hero.scss */
 .front .slide-wrapper {
   white-space: nowrap;
   width: 100%;
@@ -1141,7 +1136,7 @@ body.front {
   overflow: hidden;
 }
 
-/* line 360, ../sass/_pivot-homepage-hero.scss */
+/* line 359, ../sass/_pivot-homepage-hero.scss */
 .front .slide-wrapper .slide {
   display: inline-block;
   width: 100%;
@@ -1151,12 +1146,12 @@ body.front {
   padding: 57px 0 80px 0;
 }
 
-/* line 369, ../sass/_pivot-homepage-hero.scss */
+/* line 368, ../sass/_pivot-homepage-hero.scss */
 .front .tpslide_nav {
   display: none;
 }
 
-/* line 373, ../sass/_pivot-homepage-hero.scss */
+/* line 372, ../sass/_pivot-homepage-hero.scss */
 .front .tpslide_wrapper {
   display: block;
 }
@@ -1171,7 +1166,7 @@ body.front {
 *Added CSS from static
 *
 */
-/* line 391, ../sass/_pivot-homepage-hero.scss */
+/* line 390, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .pivot-headline.dark {
   background-image: url(../images/logo-dark.png);
 }
