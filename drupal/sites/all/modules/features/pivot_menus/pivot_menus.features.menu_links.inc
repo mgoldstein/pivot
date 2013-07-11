@@ -10,17 +10,18 @@
 function pivot_menus_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: menu-follow-us:http://plus.google.com
-  $menu_links['menu-follow-us:http://plus.google.com'] = array(
+  // Exported menu link: menu-follow-us:http://instagram.com/pivottv
+  $menu_links['menu-follow-us:http://instagram.com/pivottv'] = array(
     'menu_name' => 'menu-follow-us',
-    'link_path' => 'http://plus.google.com',
+    'link_path' => 'http://instagram.com/pivottv',
     'router_path' => '',
-    'link_title' => 'Google Plus',
+    'link_title' => 'Instagram',
     'options' => array(
       'attributes' => array(
         'class' => array(
-          0 => 'googleplus',
+	  0 => 'isntagram',
         ),
+        'target' => '_blank',
       ),
     ),
     'module' => 'menu',
@@ -28,70 +29,7 @@ function pivot_menus_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -48,
-  );
-  // Exported menu link: menu-follow-us:http://www.facebook.com/takepart
-  $menu_links['menu-follow-us:http://www.facebook.com/takepart'] = array(
-    'menu_name' => 'menu-follow-us',
-    'link_path' => 'http://www.facebook.com/takepart',
-    'router_path' => '',
-    'link_title' => 'Facebook',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'facebook',
-        ),
-        'target' => '_blank',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -50,
-  );
-  // Exported menu link: menu-follow-us:http://www.twitter.com/TakePart
-  $menu_links['menu-follow-us:http://www.twitter.com/TakePart'] = array(
-    'menu_name' => 'menu-follow-us',
-    'link_path' => 'http://www.twitter.com/TakePart',
-    'router_path' => '',
-    'link_title' => 'Twitter',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'twitter',
-        ),
-        'target' => '_blank',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
-  );
-  // Exported menu link: menu-follow-us:http://www.youtube.com/takepart
-  $menu_links['menu-follow-us:http://www.youtube.com/takepart'] = array(
-    'menu_name' => 'menu-follow-us',
-    'link_path' => 'http://www.youtube.com/takepart',
-    'router_path' => '',
-    'link_title' => 'YouTube',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'youtube',
-        ),
-        'target' => '_blank',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -47,
+    'weight' => 0,
   );
   // Exported menu link: menu-get-our-app:http://store.apple.com
   $menu_links['menu-get-our-app:http://store.apple.com'] = array(
@@ -194,6 +132,118 @@ function pivot_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -49,
   );
+  // Exported menu link: menu-pivot-footer:node/11
+  $menu_links['menu-pivot-footer:node/11'] = array(
+    'menu_name' => 'menu-pivot-footer',
+    'link_path' => 'node/11',
+    'router_path' => 'node/%',
+    'link_title' => 'About Pivot',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+  );
+  // Exported menu link: menu-pivot-footer:node/12
+  $menu_links['menu-pivot-footer:node/12'] = array(
+    'menu_name' => 'menu-pivot-footer',
+    'link_path' => 'node/12',
+    'router_path' => 'node/%',
+    'link_title' => 'Advertise With Us',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+  );
+  // Exported menu link: menu-pivot-footer:node/13
+  $menu_links['menu-pivot-footer:node/13'] = array(
+    'menu_name' => 'menu-pivot-footer',
+    'link_path' => 'node/13',
+    'router_path' => 'node/%',
+    'link_title' => 'Contact Us',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+  );
+  // Exported menu link: menu-pivot-footer:node/14
+  $menu_links['menu-pivot-footer:node/14'] = array(
+    'menu_name' => 'menu-pivot-footer',
+    'link_path' => 'node/14',
+    'router_path' => 'node/%',
+    'link_title' => 'Privacy Policy',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -47,
+  );
+  // Exported menu link: menu-pivot-footer:node/15
+  $menu_links['menu-pivot-footer:node/15'] = array(
+    'menu_name' => 'menu-pivot-footer',
+    'link_path' => 'node/15',
+    'router_path' => 'node/%',
+    'link_title' => 'Digital Media Literacy',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -46,
+  );
+  // Exported menu link: menu-pivot-footer:node/16
+  $menu_links['menu-pivot-footer:node/16'] = array(
+    'menu_name' => 'menu-pivot-footer',
+    'link_path' => 'node/16',
+    'router_path' => 'node/%',
+    'link_title' => 'FAQ',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+  );
+  // Exported menu link: menu-pivot-footer:node/17
+  $menu_links['menu-pivot-footer:node/17'] = array(
+    'menu_name' => 'menu-pivot-footer',
+    'link_path' => 'node/17',
+    'router_path' => 'node/%',
+    'link_title' => 'Terms of Use',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+  );
   // Exported menu link: menu-primary:http://schedule.pivot.tv
   $menu_links['menu-primary:http://schedule.pivot.tv'] = array(
     'menu_name' => 'menu-primary',
@@ -248,17 +298,21 @@ function pivot_menus_menu_default_menu_links() {
   );
   // Translatables
   // Included for use with string extractors like potx.
+  t('About Pivot');
+  t('Advertise With Us');
   t('Android');
+  t('Contact Us');
   t('Digital Media & Literacy');
-  t('Facebook');
-  t('Google Plus');
+  t('Digital Media Literacy');
+  t('FAQ');
+  t('Instagram');
   t('Participant Media');
   t('Pivot');
+  t('Privacy Policy');
   t('Schedule');
   t('TakePart');
-  t('Twitter');
+  t('Terms of Use');
   t('Watch Pivot Live >>');
-  t('YouTube');
   t('iOS');
 
 
