@@ -98,6 +98,66 @@ function pivot_show_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-show-field_external_link'
+  $field_instances['node-show-field_external_link'] = array(
+    'bundle' => 'show',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 10,
+      ),
+      'promo' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_external_link',
+    'label' => 'External Link',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-show-field_gallery_ref'
   $field_instances['node-show-field_gallery_ref'] = array(
     'bundle' => 'show',
@@ -338,7 +398,7 @@ function pivot_show_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-	  'image_style' => 'promo_square',
+          'image_style' => 'promo_square',
         ),
         'type' => 'image',
         'weight' => 0,
@@ -456,6 +516,7 @@ function pivot_show_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Cast and Crew');
   t('Description');
+  t('External Link');
   t('For schedule feeds to relate to show content');
   t('Gallery');
   t('Header Image');

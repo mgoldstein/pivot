@@ -90,7 +90,10 @@ function pivot_show_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '9',
+          'weight' => '10',
+        ),
+        'metatags' => array(
+          'weight' => '11',
         ),
       ),
       'display' => array(),

@@ -17,6 +17,7 @@ features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_instance][] = node-show-field_cast_crew
 features[field_instance][] = node-show-field_description
+features[field_instance][] = node-show-field_external_link
 features[field_instance][] = node-show-field_gallery_ref
 features[field_instance][] = node-show-field_header_image
 features[field_instance][] = node-show-field_promo_abstract
