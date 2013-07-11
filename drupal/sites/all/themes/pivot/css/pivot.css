@@ -783,52 +783,52 @@ body.front {
 
 /* line 54, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .facebook {
-  background-image: url(../images/social_mono_blue_facebook.png);
+  background-image: url(../images/social_mono_white_facebook.png);
 }
 
 /* line 58, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .googleplus {
-  background-image: url(../images/social_mono_blue_googleplus.png);
+  background-image: url(../images/social_mono_white_googleplus.png);
 }
 
 /* line 62, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .instagram {
-  background-image: url(../images/social_mono_blue_instagram.png);
+  background-image: url(../images/social_mono_white_instagram.png);
 }
 
 /* line 65, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .twitter {
-  background-image: url(../images/social_mono_blue_twitter.png);
+  background-image: url(../images/social_mono_white_twitter.png);
 }
 
 /* line 69, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .youtube {
-  background-image: url(../images/social_mono_blue_youtube.png);
+  background-image: url(../images/social_mono_white_youtube.png);
 }
 
 /* line 74, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .facebook:hover {
-  background-image: url(../images/social_mono_white_facebook.png);
+  background-image: url(../images/social_mono_blue_facebook.png);
 }
 
 /* line 78, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .googleplus:hover {
-  background-image: url(../images/social_mono_white_googleplus.png);
+  background-image: url(../images/social_mono_blue_googleplus.png);
 }
 
 /* line 82, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .instagram:hover {
-  background-image: url(../images/social_mono_white_instagram.png);
+  background-image: url(../images/social_mono_blue_instagram.png);
 }
 
 /* line 85, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .twitter:hover {
-  background-image: url(../images/social_mono_white_twitter.png);
+  background-image: url(../images/social_mono_blue_twitter.png);
 }
 
 /* line 89, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .youtube:hover {
-  background-image: url(../images/social_mono_white_youtube.png);
+  background-image: url(../images/social_mono_blue_youtube.png);
 }
 
 /* line 94, ../sass/_pivot-homepage-hero.scss */
