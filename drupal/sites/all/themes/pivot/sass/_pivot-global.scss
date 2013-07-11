@@ -41,6 +41,13 @@ html {
 	overflow-y: scroll;
 }
 
+div,
+embed,
+object {
+	max-width: 100%;
+}
+
+
 body {
 	font-size: 20px;
 	background: #f1f3f4;
