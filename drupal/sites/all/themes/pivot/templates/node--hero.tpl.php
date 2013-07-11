@@ -15,10 +15,12 @@
             --><div class="primary">
               <h3 class="headline">'. $title. '</h3>
               <p class="description">'. $variables['field_hs_slider_text'][0]['value']. '</p>
-              <p class="more">' . $more_link . '</p>
+              
             </div>
           </div>
         </div>';
 
   print $output;
 ?>
+
+<!-- <p class="more">' . $more_link . '</p> -->  <!--after launch place back under description -->
