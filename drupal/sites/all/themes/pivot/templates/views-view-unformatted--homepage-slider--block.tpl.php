@@ -9,9 +9,11 @@
     <div class="secondary">
       <div class="social">
         <ul>
-          <li class="item facebook"><a href="#">Facebook</a></li>
-          <li class="item twitter"><a href="#">Twitter</a></li>
-          <li class="item googleplus"><a href="#">Google Plus</a></li>
+          <li class="item facebook"><a href="https://www.facebook.com/pivottelevision">Facebook</a></li>
+          <li class="item twitter"><a href="https://twitter.com/pivot_tv">Twitter</a></li>
+          <li class="item googleplus"><a href="https://plus.google.com/111033705523867169785/">Google Plus</a></li>
+          <li class="item youtube"><a href="https://www.youtube.com/user/PivotTVnetwork">Google Plus</a></li>
+          <li class="item instagram"><a href="http://instagram.com/pivottv">Google Plus</a></li>
         </ul>
       </div>
       <div class="find">

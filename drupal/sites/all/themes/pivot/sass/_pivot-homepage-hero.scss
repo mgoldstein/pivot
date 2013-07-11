@@ -44,23 +44,52 @@
 	text-indent: 100%;
 	overflow: hidden;
 	white-space: nowrap;
-	width: 30px;
-	height: 33px;
+	width: 32px;
+	height: 32px;
 	background-repeat: no-repeat;
+  background-size: 32px 32px;
 	margin-left: 11px;
 }
 
 .front #home-header .social .facebook {
-	background-image: url(../images/home_social_facebook.png);
+	background-image: url(../images/social_mono_blue_facebook.png);
 }
 
 .front #home-header .social .googleplus {
-	background-image: url(../images/home_social_googleplus.png);
+	background-image: url(../images/social_mono_blue_googleplus.png);
 }
 
-.front #home-header .social .twitter {
-	background-image: url(../images/home_social_twitter.png);
+.front #home-header .social .instagram {
+	background-image: url(../images/social_mono_blue_instagram.png);
 }
+.front #home-header .social .twitter {
+  background-image: url(../images/social_mono_blue_twitter.png);
+}
+
+.front #home-header .social .youtube {
+  background-image: url(../images/social_mono_blue_youtube.png);
+}
+
+
+.front #home-header .social .facebook:hover {
+  background-image: url(../images/social_mono_white_facebook.png);
+}
+
+.front #home-header .social .googleplus:hover {
+  background-image: url(../images/social_mono_white_googleplus.png);
+}
+
+.front #home-header .social .instagram:hover {
+  background-image: url(../images/social_mono_white_instagram.png);
+}
+.front #home-header .social .twitter:hover {
+  background-image: url(../images/social_mono_white_twitter.png);
+}
+
+.front #home-header .social .youtube:hover {
+  background-image: url(../images/social_mono_white_youtube.png);
+}
+
 
 .front #home-header .social .item a {
 	display: block;
