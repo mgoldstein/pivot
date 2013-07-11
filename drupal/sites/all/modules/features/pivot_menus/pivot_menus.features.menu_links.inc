@@ -19,13 +19,13 @@ function pivot_menus_menu_default_menu_links() {
     'options' => array(
       'attributes' => array(
         'class' => array(
-	  0 => 'isntagram',
+          0 => 'instagram',
         ),
         'target' => '_blank',
       ),
     ),
     'module' => 'menu',
-    'hidden' => 1,
+    'hidden' => 0,
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
@@ -49,7 +49,7 @@ function pivot_menus_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -50,
   );
   // Exported menu link: menu-get-our-app:http://www.android.com/apps
   $menu_links['menu-get-our-app:http://www.android.com/apps'] = array(
@@ -66,11 +66,11 @@ function pivot_menus_menu_default_menu_links() {
       ),
     ),
     'module' => 'menu',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -49,
   );
   // Exported menu link: menu-participant-media:http://pivot.tv
   $menu_links['menu-participant-media:http://pivot.tv'] = array(
