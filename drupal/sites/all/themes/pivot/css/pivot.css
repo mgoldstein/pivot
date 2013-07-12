@@ -703,12 +703,6 @@ body.front {
   font-size: 14px;
   line-height: 1.5;
 }
-/* line 52, ../sass/_pivot-homepage.scss */
-.front .secondary #block-pivot-global-find-pivot-sidebar {
-  height: 120px;
-  width: 300px;
-  overflow: hidden;
-}
 
 /* Content */
 @media (max-width: 680px) {

@@ -40,7 +40,7 @@ function pivot_global_block_view($block_name) {
         // find pivot in your area sidebar widget
         case 'find_pivot_sidebar':
             $block['subject'] = ''; // no title
-	    $block['content'] = '<a id="find-pivot"></a><div id="kpiDiv"><iframe src="http://find.pivot.tv/rrZipForm.asp" id="kpiFrame" style="width:395px; height:400px;" frameborder="0" scrolling="no" allowTransparency="true"></iframe></div>';
+	    $block['content'] = '<a id="find-pivot"></a><div id="kpiDivV2"><iframe src="http://find.pivot.tv/rrV2ZipForm.asp" id="kpiFrameV2" style="width:300px;height:100px;" frameborder="0" scrolling="no" allowTransparency="true"></iframe></div>';
         break;
 
         case 'pivot_twitter_widget':
