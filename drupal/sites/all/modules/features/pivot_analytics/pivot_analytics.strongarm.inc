@@ -133,11 +133,11 @@ if(\'[node:content-type:name]\'.length > 0) {
       'value' => '[node:field_series]',
     ),
     8 => array(
-      'name' => 's.eVar80',
+      'name' => 's.eVar70',
       'value' => '[node:field_show]',
     ),
     9 => array(
-      'name' => 's.prop80',
+      'name' => 's.prop70',
       'value' => '[node:field_show]',
     ),
   );
