@@ -756,7 +756,7 @@ body.front {
 
 /* line 42, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .item {
-  float: right;
+  display: inline-block;
   text-indent: 100%;
   overflow: hidden;
   white-space: nowrap;
@@ -767,80 +767,86 @@ body.front {
   margin-left: 11px;
 }
 
-/* line 54, ../sass/_pivot-homepage-hero.scss */
+/* line 53, ../sass/_pivot-homepage-hero.scss */
+.front #home-header .social ul {
+  float: right;
+  padding-left: 17px;
+}
+
+/* line 58, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .facebook {
   background-image: url(../images/social_mono_white_facebook.png);
 }
 
-/* line 58, ../sass/_pivot-homepage-hero.scss */
+/* line 62, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .googleplus {
   background-image: url(../images/social_mono_white_googleplus.png);
 }
 
-/* line 62, ../sass/_pivot-homepage-hero.scss */
+/* line 66, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .instagram {
   background-image: url(../images/social_mono_white_instagram.png);
 }
 
-/* line 65, ../sass/_pivot-homepage-hero.scss */
+/* line 69, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .twitter {
   background-image: url(../images/social_mono_white_twitter.png);
 }
 
-/* line 69, ../sass/_pivot-homepage-hero.scss */
+/* line 73, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .youtube {
   background-image: url(../images/social_mono_white_youtube.png);
 }
 
-/* line 74, ../sass/_pivot-homepage-hero.scss */
+/* line 78, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .facebook:hover {
   background-image: url(../images/social_mono_blue_facebook.png);
 }
 
-/* line 78, ../sass/_pivot-homepage-hero.scss */
+/* line 82, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .googleplus:hover {
   background-image: url(../images/social_mono_blue_googleplus.png);
 }
 
-/* line 82, ../sass/_pivot-homepage-hero.scss */
+/* line 86, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .instagram:hover {
   background-image: url(../images/social_mono_blue_instagram.png);
 }
 
-/* line 85, ../sass/_pivot-homepage-hero.scss */
+/* line 89, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .twitter:hover {
   background-image: url(../images/social_mono_blue_twitter.png);
 }
 
-/* line 89, ../sass/_pivot-homepage-hero.scss */
+/* line 93, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .youtube:hover {
   background-image: url(../images/social_mono_blue_youtube.png);
 }
 
-/* line 94, ../sass/_pivot-homepage-hero.scss */
+/* line 98, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social .item a {
   display: block;
   height: 100%;
 }
 
-/* line 99, ../sass/_pivot-homepage-hero.scss */
+/* line 103, ../sass/_pivot-homepage-hero.scss */
 .front #main {
   min-height: 100%;
   background: transparent;
 }
 
-/* line 104, ../sass/_pivot-homepage-hero.scss */
+/* line 108, ../sass/_pivot-homepage-hero.scss */
 .front #wrapper {
   width: auto;
   height: 100%;
 }
 
-/* line 109, ../sass/_pivot-homepage-hero.scss */
+/* line 113, ../sass/_pivot-homepage-hero.scss */
 .front #video {
   background: #000;
 }
 
-/* line 114, ../sass/_pivot-homepage-hero.scss */
+/* line 118, ../sass/_pivot-homepage-hero.scss */
 .front .video-player,
 .front .video-image {
   position: absolute;
@@ -849,36 +855,36 @@ body.front {
   opacity: 0;
 }
 
-/* line 121, ../sass/_pivot-homepage-hero.scss */
+/* line 125, ../sass/_pivot-homepage-hero.scss */
 .front .active .video-player {
   z-index: 2;
   opacity: 1;
 }
 
-/* line 126, ../sass/_pivot-homepage-hero.scss */
+/* line 130, ../sass/_pivot-homepage-hero.scss */
 .front .video-image.loaded {
   opacity: 1;
 }
 
-/* line 131, ../sass/_pivot-homepage-hero.scss */
+/* line 135, ../sass/_pivot-homepage-hero.scss */
 .front .video-player,
 .front .slide:first-child .video-image {
   -webkit-transition: opacity .1s linear .1s;
   transition: opacity .1s linear .1s;
 }
 
-/* line 136, ../sass/_pivot-homepage-hero.scss */
+/* line 140, ../sass/_pivot-homepage-hero.scss */
 .front .slide {
   white-space: normal;
 }
 
-/* line 140, ../sass/_pivot-homepage-hero.scss */
+/* line 144, ../sass/_pivot-homepage-hero.scss */
 .front .slide .active .video-image {
   opacity: 1;
   z-index: 1;
 }
 
-/* line 145, ../sass/_pivot-homepage-hero.scss */
+/* line 149, ../sass/_pivot-homepage-hero.scss */
 .front .video-content {
   position: relative;
   z-index: 3;
@@ -888,13 +894,13 @@ body.front {
   padding-top: 210px;
 }
 
-/* line 154, ../sass/_pivot-homepage-hero.scss */
+/* line 158, ../sass/_pivot-homepage-hero.scss */
 .front .video-content-inner {
   position: absolute;
   bottom: 0;
 }
 
-/* line 159, ../sass/_pivot-homepage-hero.scss */
+/* line 163, ../sass/_pivot-homepage-hero.scss */
 .front .video-content .promo img {
   display: block;
   box-shadow: 15px 14px 20px rgba(0, 0, 0, 0.5);
@@ -904,7 +910,7 @@ body.front {
   max-height: 100%;
 }
 
-/* line 169, ../sass/_pivot-homepage-hero.scss */
+/* line 173, ../sass/_pivot-homepage-hero.scss */
 .front .video-content .promo,
 .front .video-content .primary {
   display: inline-block;
@@ -913,13 +919,13 @@ body.front {
   vertical-align: top;
 }
 
-/* line 174, ../sass/_pivot-homepage-hero.scss */
+/* line 178, ../sass/_pivot-homepage-hero.scss */
 .front .video-content .promo {
   width: 50%;
   vertical-align: bottom;
 }
 
-/* line 179, ../sass/_pivot-homepage-hero.scss */
+/* line 183, ../sass/_pivot-homepage-hero.scss */
 .front .video-content .primary {
   width: 50%;
   font-size: 24px;
@@ -927,7 +933,7 @@ body.front {
   padding: 0 10px 5% 50px;
 }
 
-/* line 186, ../sass/_pivot-homepage-hero.scss */
+/* line 190, ../sass/_pivot-homepage-hero.scss */
 .front .video-content .primary .headline {
   font-size: 60px;
   font-weight: bold;
@@ -935,34 +941,34 @@ body.front {
   white-space: nowrap;
 }
 
-/* line 193, ../sass/_pivot-homepage-hero.scss */
+/* line 197, ../sass/_pivot-homepage-hero.scss */
 .front .video-content .primary .description {
   margin-bottom: 15px;
   font-family: "Apercu Mono Regular", monospace;
 }
 
 /* Top slide */
-/* line 200, ../sass/_pivot-homepage-hero.scss */
+/* line 204, ../sass/_pivot-homepage-hero.scss */
 .front #topslide {
   height: 100%;
   background: #000;
   position: relative;
 }
 
-/* line 206, ../sass/_pivot-homepage-hero.scss */
+/* line 210, ../sass/_pivot-homepage-hero.scss */
 .front #topslide a.important {
   background: #0084A9;
   -webkit-transition: background-color .1s linear .1s;
   transition: background-color .1s linear .1s;
 }
 
-/* line 213, ../sass/_pivot-homepage-hero.scss */
+/* line 217, ../sass/_pivot-homepage-hero.scss */
 .front #topslide a.important:hover,
 .front #topslide a.important:focus {
   background: #0090B8;
 }
 
-/* line 217, ../sass/_pivot-homepage-hero.scss */
+/* line 221, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav {
   position: absolute;
   bottom: 0;
@@ -975,12 +981,12 @@ body.front {
   height: 80px;
 }
 
-/* line 229, ../sass/_pivot-homepage-hero.scss */
+/* line 233, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .headline {
   display: none;
 }
 
-/* line 233, ../sass/_pivot-homepage-hero.scss */
+/* line 237, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav a {
   display: block;
   position: relative;
@@ -989,7 +995,7 @@ body.front {
   color: #00b5cc;
 }
 
-/* line 243, ../sass/_pivot-homepage-hero.scss */
+/* line 247, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .active a,
 .front .slide-nav a:hover,
 .front .slide-nav a:focus {
@@ -997,7 +1003,7 @@ body.front {
   text-decoration: none;
 }
 
-/* line 248, ../sass/_pivot-homepage-hero.scss */
+/* line 252, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav a:before {
   content: " ";
   display: inline-block;
@@ -1006,91 +1012,91 @@ body.front {
   vertical-align: text-bottom;
 }
 
-/* line 256, ../sass/_pivot-homepage-hero.scss */
+/* line 260, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .shows a:before {
   width: 28px;
   height: 27px;
   background-image: url(../images/home_shows_off.png);
 }
 
-/* line 264, ../sass/_pivot-homepage-hero.scss */
+/* line 268, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .shows.active a:before,
 .front .slide-nav .shows a:hover:before,
 .front .slide-nav .shows a:focus:before {
   background-image: url(../images/home_shows_on.png);
 }
 
-/* line 268, ../sass/_pivot-homepage-hero.scss */
+/* line 272, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .movies a:before {
   width: 29px;
   height: 28px;
   background-image: url(../images/home_movies_off.png);
 }
 
-/* line 276, ../sass/_pivot-homepage-hero.scss */
+/* line 280, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .movies.active a:before,
 .front .slide-nav .movies a:hover:before,
 .front .slide-nav .movies a:focus:before {
   background-image: url(../images/home_movies_on.png);
 }
 
-/* line 280, ../sass/_pivot-homepage-hero.scss */
+/* line 284, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .watch_now a:before {
   width: 27px;
   height: 28px;
   background-image: url(../images/home_watch_off.png);
 }
 
-/* line 288, ../sass/_pivot-homepage-hero.scss */
+/* line 292, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .watch_now.active a:before,
 .front .slide-nav .watch_now a:hover:before,
 .front .slide-nav .watch_now a:focus:before {
   background-image: url(../images/home_watch_on.png);
 }
 
-/* line 292, ../sass/_pivot-homepage-hero.scss */
+/* line 296, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .take_action a:before {
   width: 33px;
   height: 28px;
   background-image: url(../images/home_action_off.png);
 }
 
-/* line 300, ../sass/_pivot-homepage-hero.scss */
+/* line 304, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .take_action.active a:before,
 .front .slide-nav .take_action a:hover:before,
 .front .slide-nav .take_action a:focus:before {
   background-image: url(../images/home_action_on.png);
 }
 
-/* line 304, ../sass/_pivot-homepage-hero.scss */
+/* line 308, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .schedule a:before {
   width: 29px;
   height: 28px;
   background-image: url(../images/home_schedule_off.png);
 }
 
-/* line 312, ../sass/_pivot-homepage-hero.scss */
+/* line 316, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .schedule.active a:before,
 .front .slide-nav .schedule a:hover:before,
 .front .slide-nav .schedule a:focus:before {
   background-image: url(../images/home_schedule_on.png);
 }
 
-/* line 316, ../sass/_pivot-homepage-hero.scss */
+/* line 320, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .blog a:before {
   width: 22px;
   height: 28px;
   background-image: url(../images/home_blog_off.png);
 }
 
-/* line 324, ../sass/_pivot-homepage-hero.scss */
+/* line 328, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .blog.active a:before,
 .front .slide-nav .blog a:hover:before,
 .front .slide-nav .blog a:focus:before {
   background-image: url(../images/home_blog_on.png);
 }
 
-/* line 328, ../sass/_pivot-homepage-hero.scss */
+/* line 332, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .item {
   position: relative;
   text-align: center;
@@ -1098,7 +1104,7 @@ body.front {
   float: left;
 }
 
-/* line 335, ../sass/_pivot-homepage-hero.scss */
+/* line 339, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .item:after {
   display: block;
   position: absolute;
@@ -1114,12 +1120,12 @@ body.front {
   /* W3C */
 }
 
-/* line 349, ../sass/_pivot-homepage-hero.scss */
+/* line 353, ../sass/_pivot-homepage-hero.scss */
 .front .slide-nav .list:last-child:after {
   display: none;
 }
 
-/* line 353, ../sass/_pivot-homepage-hero.scss */
+/* line 357, ../sass/_pivot-homepage-hero.scss */
 .front .slide-wrapper {
   white-space: nowrap;
   width: 100%;
@@ -1127,7 +1133,7 @@ body.front {
   overflow: hidden;
 }
 
-/* line 360, ../sass/_pivot-homepage-hero.scss */
+/* line 364, ../sass/_pivot-homepage-hero.scss */
 .front .slide-wrapper .slide {
   display: inline-block;
   width: 100%;
@@ -1137,12 +1143,12 @@ body.front {
   padding: 57px 0 80px 0;
 }
 
-/* line 369, ../sass/_pivot-homepage-hero.scss */
+/* line 373, ../sass/_pivot-homepage-hero.scss */
 .front .tpslide_nav {
   display: none;
 }
 
-/* line 373, ../sass/_pivot-homepage-hero.scss */
+/* line 377, ../sass/_pivot-homepage-hero.scss */
 .front .tpslide_wrapper {
   display: block;
 }
@@ -1157,12 +1163,12 @@ body.front {
 *Added CSS from static
 *
 */
-/* line 391, ../sass/_pivot-homepage-hero.scss */
+/* line 395, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .pivot-headline.dark {
   background-image: url(../images/logo-dark.png);
 }
 
-/* line 394, ../sass/_pivot-homepage-hero.scss */
+/* line 398, ../sass/_pivot-homepage-hero.scss */
 a:focus, a::-moz-focus-inner {
   border: 0;
   outline: none;
@@ -1229,6 +1235,11 @@ a:focus, a::-moz-focus-inner {
   }
 
   /* line 50, ../sass/_pivot-homepage-hero-responsive.scss */
+  .front #home-header .secondary .social ul {
+    float: none;
+  }
+
+  /* line 53, ../sass/_pivot-homepage-hero-responsive.scss */
   .front #home-header .secondary .social .item {
     float: none;
     display: inline-block;
@@ -1237,47 +1248,47 @@ a:focus, a::-moz-focus-inner {
     vertical-align: middle;
   }
 
-  /* line 55, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 58, ../sass/_pivot-homepage-hero-responsive.scss */
   .front #home-header .secondary .find .important {
     white-space: normal;
   }
 }
 /* Hero Slides */
 @media (max-width: 1600px) {
-  /* line 61, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 64, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .promo {
     width: 60%;
   }
 
-  /* line 64, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 67, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .primary {
     width: 40%;
   }
 
-  /* line 67, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 70, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .primary .headline {
     font-size: 50px;
   }
 
-  /* line 70, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 73, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .primary .description {
     font-size: 20px;
   }
 }
 @media (max-width: 1100px) {
-  /* line 75, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 78, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .promo img {
     display: none;
   }
 
-  /* line 78, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 81, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .primary {
     margin-left: 40%;
     width: 60%;
   }
 }
 @media (max-width: 680px) {
-  /* line 84, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 87, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .primary {
     width: 100%;
     padding-left: 5%;
@@ -1287,40 +1298,40 @@ a:focus, a::-moz-focus-inner {
 }
 /* Show */
 @media (max-width: 680px) {
-  /* line 94, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 97, ../sass/_pivot-homepage-hero-responsive.scss */
   .show .show-actions .half {
     width: 100%;
   }
 }
 /* Hero Nav */
 @media (max-width: 1100px) {
-  /* line 101, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 104, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .slide-nav .item-title {
     display: none;
   }
 }
 /* Upcoming Bar */
 @media (max-width: 979px) {
-  /* line 107, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 110, ../sass/_pivot-homepage-hero-responsive.scss */
   .upcoming .headline {
     white-space: normal;
   }
 
-  /* line 111, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 114, ../sass/_pivot-homepage-hero-responsive.scss */
   .upcoming .full-schedule .important {
     white-space: normal;
   }
 }
 @media (max-width: 767px) {
   /* iPad vertical */
-  /* line 116, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 119, ../sass/_pivot-homepage-hero-responsive.scss */
   .upcoming .headline {
     display: none;
   }
 }
 @media (max-width: 480px) {
   /* iPhone vertical */
-  /* line 121, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 124, ../sass/_pivot-homepage-hero-responsive.scss */
   .upcoming .times {
     display: none;
   }

@@ -38,9 +38,9 @@
 	display: inline-block; *display: inline; *zoom: 1;
 	vertical-align: top;
 }
-
+// Made edits
 .front #home-header .social .item {
-	float: right;
+	display: inline-block;
 	text-indent: 100%;
 	overflow: hidden;
 	white-space: nowrap;
@@ -50,7 +50,11 @@
   background-size: 32px 32px;
 	margin-left: 11px;
 }
-
+.front #home-header .social ul{
+  float: right;
+  padding-left:17px;
+}
+// End edits
 .front #home-header .social .facebook {
 	background-image: url(../images/social_mono_white_facebook.png);
 }
