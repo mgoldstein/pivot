@@ -84,11 +84,13 @@
  */
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-  <?php print render($content['field_promo_image']);?>
-  <div class="info">
-	<div class="info-inner">
+  <?php print $promo_external_anchor_tag; ?>
+    <?php print render($content['field_promo_image']);?>
+    <div class="info">
+    <div class="info-inner">
       <?php print render($content['field_promo_headline']);?>
       <?php print render($content['field_promo_abstract']);?>
-	</div>
+    </div>
+    <?php print ($promo_external_anchor_tag) ? '</a>' : ''; ?>
   </div>
 </article><!-- /.node.promo -->

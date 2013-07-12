@@ -386,23 +386,27 @@ a:active {
   margin-bottom: 1em;
 }
 /* line 286, ../sass/_pivot-global.scss */
+.promo a {
+  color: black;
+}
+/* line 288, ../sass/_pivot-global.scss */
 .promo img {
   display: block;
 }
 @media (max-width: 680px) {
-  /* line 286, ../sass/_pivot-global.scss */
+  /* line 288, ../sass/_pivot-global.scss */
   .promo img {
     display: none;
   }
 }
-/* line 293, ../sass/_pivot-global.scss */
+/* line 295, ../sass/_pivot-global.scss */
 .promo .info {
   background-color: rgba(255, 255, 255, 0.8);
   line-height: 98px;
   padding: 0 5%;
 }
 @media (min-width: 681px) {
-  /* line 293, ../sass/_pivot-global.scss */
+  /* line 295, ../sass/_pivot-global.scss */
   .promo .info {
     position: absolute;
     left: 0;
@@ -412,7 +416,7 @@ a:active {
     padding: 0 36px;
   }
 }
-/* line 308, ../sass/_pivot-global.scss */
+/* line 310, ../sass/_pivot-global.scss */
 .promo .info-inner {
   display: inline-block;
   *display: inline;
@@ -420,14 +424,14 @@ a:active {
   line-height: 1;
   vertical-align: middle;
 }
-/* line 314, ../sass/_pivot-global.scss */
+/* line 316, ../sass/_pivot-global.scss */
 .promo .field-name-field-promo-headline {
   font-size: 1.2em;
   color: #0084a9;
   font-style: italic;
   font-weight: bold;
 }
-/* line 321, ../sass/_pivot-global.scss */
+/* line 323, ../sass/_pivot-global.scss */
 .promo .field-name-field-promo-abstract {
   font-size: 13px;
   font-family: "Apercu Mono Regular", monospace;
@@ -438,7 +442,7 @@ a:active {
 ============================================================ */
 /* Skip link */
 /* "Buttons" */
-/* line 356, ../sass/_pivot-global.scss */
+/* line 358, ../sass/_pivot-global.scss */
 a.important:link,
 a.important:visited {
   text-decoration: none;
@@ -455,7 +459,7 @@ a.important:visited {
   box-shadow: 0 3px 0 rgba(50, 50, 50, 0.75);
 }
 
-/* line 371, ../sass/_pivot-global.scss */
+/* line 373, ../sass/_pivot-global.scss */
 a.important:after {
   content: " ";
   display: block;
@@ -471,12 +475,12 @@ a.important:after {
   transition: right .1s linear .1s;
 }
 
-/* line 386, ../sass/_pivot-global.scss */
+/* line 388, ../sass/_pivot-global.scss */
 a.important:hover:after {
   right: 10px;
 }
 
-/* line 390, ../sass/_pivot-global.scss */
+/* line 392, ../sass/_pivot-global.scss */
 a.important .pivot {
   display: inline-block;
   background-repeat: no-repeat;
@@ -490,7 +494,7 @@ a.important .pivot {
 }
 
 /* Top? Schedule */
-/* line 403, ../sass/_pivot-global.scss */
+/* line 405, ../sass/_pivot-global.scss */
 .upcoming {
   position: absolute;
   width: 100%;
@@ -502,17 +506,17 @@ a.important .pivot {
   box-shadow: inset 0px -10px 20px 0px rgba(0, 0, 0, 0.25);
 }
 
-/* line 415, ../sass/_pivot-global.scss */
+/* line 417, ../sass/_pivot-global.scss */
 .upcoming a {
   color: #01bf9e;
 }
 
-/* line 419, ../sass/_pivot-global.scss */
+/* line 421, ../sass/_pivot-global.scss */
 .upcoming .inner {
   display: table-row;
 }
 
-/* line 423, ../sass/_pivot-global.scss */
+/* line 425, ../sass/_pivot-global.scss */
 .upcoming .headline a {
   font-size: 24px;
   text-transform: uppercase;
@@ -525,7 +529,7 @@ a.important .pivot {
   color: #fff;
 }
 
-/* line 435, ../sass/_pivot-global.scss */
+/* line 437, ../sass/_pivot-global.scss */
 .upcoming .headline a:after {
   content: " ";
   display: block;
@@ -540,7 +544,7 @@ a.important .pivot {
   vertical-align: middle;
 }
 
-/* line 452, ../sass/_pivot-global.scss */
+/* line 454, ../sass/_pivot-global.scss */
 .upcoming .headline,
 .upcoming .times,
 .upcoming .full-schedule,
@@ -549,7 +553,7 @@ a.important .pivot {
   vertical-align: middle;
 }
 
-/* line 457, ../sass/_pivot-global.scss */
+/* line 459, ../sass/_pivot-global.scss */
 .upcoming .times .item {
   font-family: "Apercu Mono Regular", monospace, sans-serif;
   font-size: 14px;
@@ -558,13 +562,13 @@ a.important .pivot {
   padding: 0 5px;
 }
 
-/* line 465, ../sass/_pivot-global.scss */
+/* line 467, ../sass/_pivot-global.scss */
 .upcoming .times .inner {
   display: table;
   margin: auto;
 }
 
-/* line 470, ../sass/_pivot-global.scss */
+/* line 472, ../sass/_pivot-global.scss */
 .upcoming .times .item:before {
   content: " ";
   width: 1px;
@@ -579,12 +583,12 @@ a.important .pivot {
   /* W3C */
 }
 
-/* line 483, ../sass/_pivot-global.scss */
+/* line 485, ../sass/_pivot-global.scss */
 .upcoming .times .item:first-child:before {
   display: none;
 }
 
-/* line 487, ../sass/_pivot-global.scss */
+/* line 489, ../sass/_pivot-global.scss */
 .upcoming .times .item:after {
   content: " ";
   width: 1px;
@@ -599,19 +603,19 @@ a.important .pivot {
   /* W3C */
 }
 
-/* line 501, ../sass/_pivot-global.scss */
+/* line 503, ../sass/_pivot-global.scss */
 .upcoming .times .time,
 .upcoming .times .show {
   padding: 0 5px;
 }
 
-/* line 505, ../sass/_pivot-global.scss */
+/* line 507, ../sass/_pivot-global.scss */
 .upcoming .full-schedule {
   padding: 0 5px;
 }
 
 /* Pretty form selects */
-/* line 511, ../sass/_pivot-global.scss */
+/* line 513, ../sass/_pivot-global.scss */
 .tpselect_wrapper {
   display: inline-block;
   height: 30px;
@@ -622,19 +626,19 @@ a.important .pivot {
   vertical-align: bottom;
 }
 
-/* line 521, ../sass/_pivot-global.scss */
+/* line 523, ../sass/_pivot-global.scss */
 .tpselect_wrapper.tpselect_focus {
   background: #000;
   color: #fff;
 }
 
-/* line 526, ../sass/_pivot-global.scss */
+/* line 528, ../sass/_pivot-global.scss */
 .tpselect_wrapper select {
   height: 100%;
   width: 100%;
 }
 
-/* line 531, ../sass/_pivot-global.scss */
+/* line 533, ../sass/_pivot-global.scss */
 .tpselect_wrapper .tpselect_value {
   position: relative;
   display: block;
@@ -646,7 +650,7 @@ a.important .pivot {
   font-family: "Apercu Mono Regular", monospace;
 }
 
-/* line 542, ../sass/_pivot-global.scss */
+/* line 544, ../sass/_pivot-global.scss */
 .tpselect_wrapper .tpselect_value:after {
   display: block;
   content: " ";
@@ -662,7 +666,7 @@ a.important .pivot {
 /* ============================================================
 || Dev CSS Rules
 ============================================================ */
-/* line 635, ../sass/_pivot-global.scss */
+/* line 637, ../sass/_pivot-global.scss */
 #themer-toggle {
   z-index: 99999;
 }

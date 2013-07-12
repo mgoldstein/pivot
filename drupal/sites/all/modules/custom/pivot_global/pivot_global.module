@@ -32,10 +32,23 @@ function pivot_global_entity_info_alter(&$entity_info) {
 */
 function pivot_global_preprocess_node(&$vars) {
   if($vars['view_mode'] == 'promo') {
+    // add classes to promo <article>s
     $vars['classes_array'][] = 'promo';
     $vars['classes_array'][] = 'node-' . $vars['type'] . '-promo';
+
+    // use our custom templates for easy overridability
     $vars['theme_hook_suggestions'][] = 'node__promo';
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__promo';
+
+    // write an external link tag if any
+    $vars['promo_external_anchor_tag'] = '';
+    if ($vars['field_external_link'] && $vars['field_external_link']['und'][0]['url']) {
+      $vars['promo_external_anchor_tag'] .= '<a href="' . $vars['field_external_link']['und'][0]['url'] . '"';
+      if ($vars['field_external_link']['und'][0]['title']) {
+	$vars['promo_external_anchor_tag'] .= ' title="' . $vars['field_external_link']['und'][0]['title'] .'"';
+      }
+      $vars['promo_external_anchor_tag'] .= '>';
+    }
   } else if ($vars['view_mode'] == 'teaser') {
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__teaser';
   }

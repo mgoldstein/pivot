@@ -283,6 +283,8 @@ a:active {
 	position: relative;
 	margin-bottom: 1em;
 
+	a { color: black; }
+
 	img {
 		display: block;
 		@media (max-width: 680px) {
