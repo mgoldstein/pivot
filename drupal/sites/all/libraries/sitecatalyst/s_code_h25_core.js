@@ -4,7 +4,7 @@ More info available at http://www.omniture.com */
 if((location.hostname == "pivot.tv") || (location.hostname == "www.pivot.tv")) {
     s_account="takepartpivot";
 } else {
-    s_account="takepartpivotdev";
+    s_account="takepart-pivot-dev";
 }
 var s=s_gi(s_account)
 /************************** CONFIG SECTION **************************/
@@ -22,13 +22,22 @@ s.linkLeaveQueryString=false
 s.linkTrackVars="None"
 s.linkTrackEvents="None"
 
-/* campaign ID tracking */
-if (!s.campaign) {
-    s.campaign = s.getQueryParam('cmpid').toLowerCase();
-    s.campaign = s.getValOnce(s.campaign.toLowerCase(), 's_campaign', 0)
-} else {
-    s.campaign = s.campaign.toLowerCase();
-}
+/* Plugin Config */ 
+s.usePlugins=true 
+
+function s_doPlugins(s) { 
+/* Add calls to plugins here */ 
+  /* campaign ID tracking */
+  if (!s.campaign) {
+      s.campaign = s.getQueryParam('cmpid').toLowerCase();
+      s.campaign = s.getValOnce(s.campaign.toLowerCase(), 's_campaign', 0)
+  } else {
+      s.campaign = s.campaign.toLowerCase();
+  }
+
+} 
+s.doPlugins=s_doPlugins
+
 
 /************************** PLUGINS SECTION *************************/
 
