@@ -1178,6 +1178,12 @@ body.front {
   background-image: url(../images/logo-dark.png);
 }
 
+/* line 393, ../sass/_pivot-homepage-hero.scss */
+a:focus, a::-moz-focus-inner {
+  border: 0;
+  outline: none;
+}
+
 /* ============================================================
 || Global;
 ============================================================ */

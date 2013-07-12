@@ -390,3 +390,7 @@
  .front #home-header .pivot-headline.dark {
 	background-image: url(../images/logo-dark.png);
 }
+a:focus, a::-moz-focus-inner {
+  border: 0;
+  outline: none;
+}
