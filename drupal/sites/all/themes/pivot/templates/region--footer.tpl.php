@@ -30,6 +30,12 @@
   <footer id="site-footer" class="<?php print $classes; ?>">
     <div id="footer-inner" class="site-wrapper">
       <?php print $content; ?>
-	</div>
+		  <!-- tribal fusion -->
+      <?php if($is_front == TRUE): ?>
+		  <img src='http://a.tribalfusion.com/i.cid?c=555033&d=30' width='1' height='1' border='0'>
+      <!-- adotube -->
+		  <img border="0" width="1" height="1" src="http://stats.adotube.com/pixel/pixel.php?c=432818b92ff417b5b54da6b48dbea696&t=ret&s_id=0&e=30&o=i" />
+    <?php endif; ?>
+	 </div>
   </footer><!-- /.footer -->
 <?php endif; ?>
