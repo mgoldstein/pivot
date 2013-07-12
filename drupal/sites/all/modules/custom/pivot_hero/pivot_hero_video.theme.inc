@@ -7,7 +7,7 @@ function theme_pivot_hero_video_format($variables) {
     $video0 = file_create_url($variables['items'][0]['uri']);
     $video1 = file_create_url($variables['items'][1]['uri']);
     $output .= '<source src="'. $video0. '" type="'. $variables['items'][0]['filemime']. '" />';
-    $output .= '<source src="'. $video1. '" type="'. $variables['items'][0]['filemime']. '" />';
+    $output .= '<source src="'. $video1. '" type="'. $variables['items'][1]['filemime']. '" />';
     $output .= '<object type="application/x-shockwave-flash" data="'. drupal_get_path('module', 'pivot_hero'). '/flashfox.swf" width="960" height="540" style="position:relative;">
       <param name="movie" value="'. drupal_get_path('module', 'pivot_hero'). '" />
       <param name="allowFullScreen" value="true" />
