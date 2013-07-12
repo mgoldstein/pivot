@@ -464,7 +464,6 @@ img {
   /* Suppress the space beneath the baseline */
   /* Responsive images */
   /* @todo Add responsive embedded video. */
-  max-width: 100%;
   height: auto;
 }
 
