@@ -1234,12 +1234,12 @@ a:focus, a::-moz-focus-inner {
     text-align: center;
   }
 
-  /* line 50, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 51, ../sass/_pivot-homepage-hero-responsive.scss */
   .front #home-header .secondary .social ul {
     float: none;
   }
 
-  /* line 53, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 55, ../sass/_pivot-homepage-hero-responsive.scss */
   .front #home-header .secondary .social .item {
     float: none;
     display: inline-block;
@@ -1248,47 +1248,47 @@ a:focus, a::-moz-focus-inner {
     vertical-align: middle;
   }
 
-  /* line 58, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 60, ../sass/_pivot-homepage-hero-responsive.scss */
   .front #home-header .secondary .find .important {
     white-space: normal;
   }
 }
 /* Hero Slides */
 @media (max-width: 1600px) {
-  /* line 64, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 66, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .promo {
     width: 60%;
   }
 
-  /* line 67, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 69, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .primary {
     width: 40%;
   }
 
-  /* line 70, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 72, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .primary .headline {
     font-size: 50px;
   }
 
-  /* line 73, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 75, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .primary .description {
     font-size: 20px;
   }
 }
 @media (max-width: 1100px) {
-  /* line 78, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 80, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .promo img {
     display: none;
   }
 
-  /* line 81, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 83, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .primary {
     margin-left: 40%;
     width: 60%;
   }
 }
 @media (max-width: 680px) {
-  /* line 87, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 89, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .primary {
     width: 100%;
     padding-left: 5%;
@@ -1298,40 +1298,46 @@ a:focus, a::-moz-focus-inner {
 }
 /* Show */
 @media (max-width: 680px) {
-  /* line 97, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 99, ../sass/_pivot-homepage-hero-responsive.scss */
   .show .show-actions .half {
     width: 100%;
   }
 }
 /* Hero Nav */
 @media (max-width: 1100px) {
-  /* line 104, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 106, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .slide-nav .item-title {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  /* line 111, ../sass/_pivot-homepage-hero-responsive.scss */
+  .home .slide-wrapper .video-player {
     display: none;
   }
 }
 /* Upcoming Bar */
 @media (max-width: 979px) {
-  /* line 110, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 118, ../sass/_pivot-homepage-hero-responsive.scss */
   .upcoming .headline {
     white-space: normal;
   }
 
-  /* line 114, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 122, ../sass/_pivot-homepage-hero-responsive.scss */
   .upcoming .full-schedule .important {
     white-space: normal;
   }
 }
 @media (max-width: 767px) {
   /* iPad vertical */
-  /* line 119, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 127, ../sass/_pivot-homepage-hero-responsive.scss */
   .upcoming .headline {
     display: none;
   }
 }
 @media (max-width: 480px) {
   /* iPhone vertical */
-  /* line 124, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 132, ../sass/_pivot-homepage-hero-responsive.scss */
   .upcoming .times {
     display: none;
   }
