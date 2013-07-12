@@ -47,17 +47,19 @@ $zen-gutter-width: 20px;
 
 	}
 
-	// TODO mw breakpoints wtf?
-	@media (min-width: 681px) {
-		.panel-col-first {
-			float: left;
-			width: 48.3870968%;
-		}
+	.panel-col-first,
+	.panel-col-last {
+		width: 300px;
+		margin: 0 auto;
 
-		.panel-col-last {
-			float: right;
-			width: 48.3870968%;
+		@media (min-width: 681px) {
+			margin: 0;
 		}
+	}
+
+	@media (min-width: 681px) {
+		.panel-col-first { float: left; }		
+		.panel-col-last { float: right; }
 	}
 
 	.panel-separator {

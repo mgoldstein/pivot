@@ -1,16 +1,2 @@
 // nothing
-
-/* Content */
-@media (max-width: 680px) {
-	.front #home-promos .half {
-		display: block;
-	}
-	.front #home-promos .promo img {
-		display: none;
-	}
-	.front #home-promos .promo .info {
-		position: relative;
-		width: 100%;
-		padding: 0 5%;
-	}
-}
+// promos are in the global partial
