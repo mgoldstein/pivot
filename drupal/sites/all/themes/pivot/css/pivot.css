@@ -1342,7 +1342,7 @@ a:focus, a::-moz-focus-inner {
 }
 @media (max-width: 767px) {
   /* line 111, ../sass/_pivot-homepage-hero-responsive.scss */
-  .home .slide-wrapper .video-player {
+  .front .slide-wrapper .video-player {
     display: none;
   }
 }
