@@ -10,7 +10,9 @@
  */
 function pivot_global_block_info() {
     $blocks = array();
-
+    $blocks['pivot_global_header_nav'] = array(
+        'info' => t('Pivot Global Header Nav block'),
+    );
     $blocks['find_pivot_sidebar'] = array(
         'info' => t('Find Pivot in Your Area Block'),
     );
@@ -36,7 +38,11 @@ function pivot_global_block_view($block_name) {
     $block = array();
 
     switch ($block_name) {
-
+        // Global Header for non-homepage pages
+        case 'pivot_global_header_nav':
+            $block['subject'] = ''; // no title
+            $block['content'] = pivot_global_header();
+        break;
         // find pivot in your area sidebar widget
         case 'find_pivot_sidebar':
             $block['subject'] = ''; // no title
@@ -63,4 +69,20 @@ function pivot_global_block_view($block_name) {
     }
 
     return $block;    
+}
+
+
+function pivot_global_header() {
+  $output = ' <div class="primary">
+    <div class="site-wrapper">
+      <a class="logo" href="/"><p class="headline">Pivot</p></a>
+
+      <nav class="nav nav-primary">
+        <h1 class="headline">Site Navigation</h1>
+        <ul>
+        </ul>
+      </nav>
+    </div>
+  </div>';
+  return $output;
 }

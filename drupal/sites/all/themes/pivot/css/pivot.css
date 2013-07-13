@@ -662,11 +662,64 @@ a.important .pivot {
   top: 0;
 }
 
+/* line 553, ../sass/_pivot-global.scss */
+#site-header .primary {
+  background: #000;
+  padding: 10px;
+}
+
+/* line 557, ../sass/_pivot-global.scss */
+#site-header .secondary {
+  background: #0084a9;
+}
+
+/* line 560, ../sass/_pivot-global.scss */
+#site-header .logo {
+  margin-right: 19px;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  width: 128px;
+  height: 43px;
+  background-repeat: no-repeat;
+  background-image: url(../images/pivot_medium_white.png);
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+}
+
+/* line 572, ../sass/_pivot-global.scss */
+#site-header .primary .logo .headline {
+  margin-bottom: 0;
+}
+
+/* line 575, ../sass/_pivot-global.scss */
+#site-header .nav {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+}
+
+/* line 579, ../sass/_pivot-global.scss */
+#site-header .nav .headline {
+  display: none;
+}
+
+/* line 583, ../sass/_pivot-global.scss */
+#site-header .primary .site-wrapper,
+#site-header .secondary .site-wrapper {
+  padding-top: 0;
+  padding-bottom: 0;
+  display: block;
+}
+
 /* Find pivot right rail */
 /* ============================================================
 || Dev CSS Rules
 ============================================================ */
-/* line 635, ../sass/_pivot-global.scss */
+/* line 675, ../sass/_pivot-global.scss */
 #themer-toggle {
   z-index: 99999;
 }

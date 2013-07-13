@@ -5,7 +5,7 @@
     if ($header):
   ?>
 
-  <header id="header" role="banner">
+  <header id="site-header" role="banner" class="header">
 
     <?php // no logo!
      /* if ($logo):
