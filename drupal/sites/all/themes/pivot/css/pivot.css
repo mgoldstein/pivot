@@ -1371,56 +1371,76 @@ a:focus, a::-moz-focus-inner {
   }
 }
 @media (max-width: 680px) {
-  /* line 89, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 90, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .primary {
     width: 100%;
     padding-left: 5%;
     padding-right: 5%;
     margin-left: 0;
   }
+  /* line 97, ../sass/_pivot-homepage-hero-responsive.scss */
+  .front .tpslide_wrapper h3.headline {
+    text-align: center;
+  }
+  /* line 100, ../sass/_pivot-homepage-hero-responsive.scss */
+  .front .tpslide_wrapper p.description {
+    text-align: center;
+  }
+  /* line 104, ../sass/_pivot-homepage-hero-responsive.scss */
+  .front p.more {
+    float: left;
+    position: relative;
+    left: 50%;
+  }
+  /* line 108, ../sass/_pivot-homepage-hero-responsive.scss */
+  .front p.more a {
+    float: left;
+    position: relative;
+    left: -50%;
+  }
 }
 /* Show */
 @media (max-width: 680px) {
-  /* line 99, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 119, ../sass/_pivot-homepage-hero-responsive.scss */
   .show .show-actions .half {
     width: 100%;
   }
 }
 /* Hero Nav */
 @media (max-width: 1100px) {
-  /* line 106, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 126, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .slide-nav .item-title {
     display: none;
   }
 }
 @media (max-width: 767px) {
-  /* line 111, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 131, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .slide-wrapper .video-player {
     display: none;
   }
 }
 /* Upcoming Bar */
 @media (max-width: 979px) {
-  /* line 118, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 138, ../sass/_pivot-homepage-hero-responsive.scss */
   .upcoming .headline {
     white-space: normal;
   }
 
-  /* line 122, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 142, ../sass/_pivot-homepage-hero-responsive.scss */
   .upcoming .full-schedule .important {
     white-space: normal;
   }
 }
 @media (max-width: 767px) {
   /* iPad vertical */
-  /* line 127, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 147, ../sass/_pivot-homepage-hero-responsive.scss */
   .upcoming .headline {
     display: none;
   }
 }
 @media (max-width: 480px) {
   /* iPhone vertical */
-  /* line 132, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 152, ../sass/_pivot-homepage-hero-responsive.scss */
   .upcoming .times {
     display: none;
   }

@@ -86,12 +86,32 @@
 	}
 }
 @media (max-width: 680px) {
-	.front .video-content .primary {
-		width: 100%;
-		padding-left: 5%;
-		padding-right: 5%;
-		margin-left: 0;
-	}
+  .front {
+    .video-content .primary {
+  		width: 100%;
+  		padding-left: 5%;
+  		padding-right: 5%;
+  		margin-left: 0;
+  	}
+  	.tpslide_wrapper {
+      h3.headline {
+    		text-align: center;
+    	}
+    	p.description{
+    		text-align: center;
+    	}
+    }
+    p.more  {
+      float: left;
+      position: relative;
+      left: 50%;
+      a {
+        float: left;
+        position: relative;
+        left: -50%;
+      }
+    }
+  }
 }
 
 /* Show */
