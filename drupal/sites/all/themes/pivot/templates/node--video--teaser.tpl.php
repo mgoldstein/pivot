@@ -84,7 +84,9 @@
  */
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+  <?php print render($content['field_video_media']); ?>
+  <?php print render($content['field_video_media_test']); ?>
   <?php print render($content['field_video_longtail_video_id']); ?>
-  <h1 class="headline">What Is Pivot</h1>
+  <h1 class="headline"><?php print $video_title; ?></h1>
   <?php print render($content['body']); ?>
 </article><!-- /.node -->
