@@ -80,6 +80,7 @@ $(function() {
 				.animate({opacity: 1}, 'fast', function() {
 					$video[0].play();
 				});
+			$curr.find('.video-content').fadeIn('fast');
 
 		};
 
@@ -88,6 +89,7 @@ $(function() {
 			updateslidernav($curr);
 			$video = $current.find('.video-player');
 			$video[0].pause();
+			$curr.find('.video-content').hide();
 		}
 
 		var adjust = function() {
