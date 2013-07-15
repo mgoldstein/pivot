@@ -80,7 +80,7 @@ $(function() {
 				.animate({opacity: 1}, 'fast', function() {
 					$video[0].play();
 				});
-			$curr.find('.video-content').fadeIn('fast');
+			$curr.find('.video-content').show();
 
 		};
 
