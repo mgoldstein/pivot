@@ -64,10 +64,10 @@
 /* Hero Slides */
 @media (max-width: 1600px) {
 	.front .video-content .promo {
-		width: 60%;
+		width: 40%;  //originally 60%
 	}
 	.front .video-content .primary {
-		width: 40%;
+		width: 60%; //originally 40%
 	}
 	.front .video-content .primary .headline {
 		font-size: 50px;
