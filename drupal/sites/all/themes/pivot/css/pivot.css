@@ -724,6 +724,14 @@ a.important .pivot {
   z-index: 99999;
 }
 
+/* ============================================================
+|| ie8 theming
+============================================================ */
+/* line 682, ../sass/_pivot-global.scss */
+body.ie8 .video-player {
+  display: none;
+}
+
 /*
  * Homepage Styles for Pivot.tv
  */
@@ -993,7 +1001,7 @@ body.front {
   content: " ";
   display: block;
   height: 100%;
-  background: red;
+  background: #fff;
   width: 200%;
   position: absolute;
   top: 0;
