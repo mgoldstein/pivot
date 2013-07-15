@@ -54,59 +54,43 @@ DirectoryIndex index.php index.html index.htm
 
 # Various rewrite rules.
 <IfModule mod_rewrite.c>
+
   RewriteEngine on
 
-  # Set "protossl" to "s" if we were accessed via https://.  This is used later
-  # if you enable "www." stripping or enforcement, in order to ensure that
-  # you don't bounce between http and https.
+  # Select the correct robots.txt
+  RewriteCond %{HTTP_HOST} =www.pivot.tv [OR]
+  RewriteCond %{HTTP_HOST} =pivot.tv
+  RewriteRule robots.txt robots.prod.txt [L]
+  # ..else..
+  RewriteRule robots.txt robots.dev.txt [L]
+
+  # Check that the server is not being accessed by its IP address.
+  # The ELB health check uses the internal IP address of the webhead.
+  RewriteCond %{SERVER_ADDR} ^(10.28.207.242|10.28.193.19|10.159.36.144|10.157.31.224)$
+  RewriteCond %{HTTP_HOST} !=%{SERVER_ADDR}
+
+  # Check that the server is not being accessed by its webhead name
+  RewriteCond %{HTTP_HOST} !^web(1|2|3|4).prod.pivot.tv$
+
+  # Check that the server is not being accessed by the Akamai origin name
+  RewriteCond %{HTTP_HOST} !=origin.prod.pivot.tv
+
+  # Check that the server is not being accessed by the preferred name
+  RewriteCond %{HTTP_HOST} !=www.pivot.tv
+
+  # All other names for the server should redirect to the preferred name
+  RewriteRule (.*) http://www.pivot.tv/$1 [R=301,L,NC]
+
+  # Please like me campaign redirect (needs to be case-insensitive)
+  RewriteCond %{REQUEST_URI} /PleaseLikeMe [NC]
+  RewriteRule .* http://www.pleaselikeme.org/ [R=301,L] 
+
   RewriteRule ^ - [E=protossl]
   RewriteCond %{HTTPS} on
   RewriteRule ^ - [E=protossl:s]
 
-  # Block access to "hidden" directories whose names begin with a period. This
-  # includes directories used by version control systems such as Subversion or
-  # Git to store control files. Files whose names begin with a period, as well
-  # as the control files used by CVS, are protected by the FilesMatch directive
-  # above.
-  #
-  # NOTE: This only works when mod_rewrite is loaded. Without mod_rewrite, it is
-  # not possible to block access to entire directories from .htaccess, because
-  # <DirectoryMatch> is not allowed here.
-  #
-  # If you do not have mod_rewrite installed, you should remove these
-  # directories from your webroot or otherwise protect them from being
-  # downloaded.
   RewriteRule "(^|/)\." - [F]
 
-  # If your site can be accessed both with and without the 'www.' prefix, you
-  # can use one of the following settings to redirect users to your preferred
-  # URL, either WITH or WITHOUT the 'www.' prefix. Choose ONLY one option:
-  #
-  # To redirect all users to access the site WITH the 'www.' prefix,
-  # (http://example.com/... will be redirected to http://www.example.com/...)
-  # uncomment the following:
-  # RewriteCond %{HTTP_HOST} .
-  # RewriteCond %{HTTP_HOST} !^www\. [NC]
-  # RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-  #
-  # To redirect all users to access the site WITHOUT the 'www.' prefix,
-  # (http://www.example.com/... will be redirected to http://example.com/...)
-  # uncomment the following:
-  # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-  # RewriteRule ^ http%{ENV:protossl}://%1%{REQUEST_URI} [L,R=301]
-
-  # Modify the RewriteBase if you are using Drupal in a subdirectory or in a
-  # VirtualDocumentRoot and the rewrite rules are not working properly.
-  # For example if your site is at http://example.com/drupal uncomment and
-  # modify the following line:
-  # RewriteBase /drupal
-  #
-  # If your site is running in a VirtualDocumentRoot at http://example.com/,
-  # uncomment the following line:
-  # RewriteBase /
-
-  # Pass all requests not referring directly to files in the filesystem to
-  # index.php. Clean URLs are handled in drupal_environment_initialize().
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_URI} !=/favicon.ico
@@ -136,4 +120,14 @@ DirectoryIndex index.php index.html index.htm
       Header append Vary Accept-Encoding
     </FilesMatch>
   </IfModule>
+
 </IfModule>
+
+AddType video/ogg .ogm
+AddType video/ogg .ogv
+AddType video/ogg .ogg
+AddType video/webm .webm
+AddType audio/webm .weba
+
+AddType video/mp4 .mp4
+AddType video/x-m4v .m4v
