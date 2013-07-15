@@ -126,6 +126,7 @@ DirectoryIndex index.php index.html index.htm
 AddType video/ogg .ogm
 AddType video/ogg .ogv
 AddType video/ogg .ogg
+
 AddType video/webm .webm
 AddType audio/webm .weba
 
