@@ -60,6 +60,11 @@
 	.front #home-header .secondary .find .important {
 		white-space: normal;
 	}
+	.front .video-content-inner {
+	 position: absolute;
+	 bottom: 0;
+   width: auto;
+  }
 }
 /* Hero Slides */
 @media (max-width: 1600px) {
