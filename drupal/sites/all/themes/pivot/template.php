@@ -139,6 +139,19 @@ function pivot_preprocess_html(&$variables, $hook) {
 }
 
 /**
+ * Implements template_process_html().
+ *
+ * Perform final addition and modification of variables before passing
+ * them to the template.
+ *
+ */
+function pivot_process_html(&$variables, $hook) {
+  // customize the skip link behavior
+  $variables['skip_link_anchor'] = 'content';
+  $variables['skip_link_text'] = 'Jump to main content';
+}
+
+/**
  * Override or insert variables into the page templates.
  *
  * @param $variables
