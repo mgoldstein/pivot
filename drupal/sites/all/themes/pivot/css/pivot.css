@@ -663,13 +663,13 @@ a.important .pivot {
 }
 
 /* line 553, ../sass/_pivot-global.scss */
-#site-header .primary {
+.not-front #site-header .primary {
   background: #000;
   padding: 10px;
 }
 
 /* line 557, ../sass/_pivot-global.scss */
-#site-header .secondary {
+.not-front #site-header .secondary {
   background: #0084a9;
 }
 

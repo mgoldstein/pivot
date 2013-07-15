@@ -550,11 +550,11 @@ a.important .pivot {
 	top: 0;
 }
 
-#site-header .primary {
+.not-front #site-header .primary {
   background: #000;
   padding: 10px;
 }
-#site-header .secondary {
+.not-front #site-header .secondary {
   background: #0084a9;
 }
 #site-header .logo {
