@@ -187,7 +187,6 @@ function pivot_preprocess_node(&$variables, $hook) {
  */
 function pivot_preprocess_node__video(&$variables, $hook) {
   if($video_node = node_load($variables['nid'])) {
-    dpm($variables);
     $variables['video_title'] = check_plain($video_node->title);
   }
 }

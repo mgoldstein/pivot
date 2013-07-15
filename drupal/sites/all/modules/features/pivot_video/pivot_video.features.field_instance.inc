@@ -22,7 +22,7 @@ function pivot_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+	'weight' => 2,
       ),
       'promo' => array(
         'label' => 'above',
@@ -35,7 +35,7 @@ function pivot_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+	'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
@@ -55,7 +55,7 @@ function pivot_video_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 31,
+      'weight' => 2,
     ),
   );
 
@@ -73,7 +73,7 @@ function pivot_video_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 5,
+	'weight' => 7,
       ),
       'promo' => array(
         'label' => 'above',
@@ -85,7 +85,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+	'weight' => 7,
       ),
     ),
     'entity_type' => 'node',
@@ -108,7 +108,7 @@ function pivot_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 41,
+      'weight' => 8,
     ),
   );
 
@@ -124,7 +124,7 @@ function pivot_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+	'weight' => 5,
       ),
       'promo' => array(
         'label' => 'above',
@@ -136,7 +136,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+	'weight' => 6,
       ),
     ),
     'entity_type' => 'node',
@@ -154,7 +154,7 @@ function pivot_video_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 37,
+      'weight' => 5,
     ),
   );
 
@@ -170,7 +170,7 @@ function pivot_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+	'weight' => 4,
       ),
       'promo' => array(
         'label' => 'above',
@@ -182,7 +182,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+	'weight' => 5,
       ),
     ),
     'entity_type' => 'node',
@@ -200,7 +200,7 @@ function pivot_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 35,
+      'weight' => 4,
     ),
   );
 
@@ -218,7 +218,7 @@ function pivot_video_field_default_field_instances() {
           'image_style' => '',
         ),
         'type' => 'image',
-        'weight' => 1,
+	'weight' => 3,
       ),
       'promo' => array(
         'label' => 'above',
@@ -230,7 +230,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+	'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -272,7 +272,7 @@ function pivot_video_field_default_field_instances() {
         'progress_indicator' => 'bar',
       ),
       'type' => 'image_image',
-      'weight' => 33,
+      'weight' => 3,
     ),
   );
 
@@ -290,7 +290,7 @@ function pivot_video_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 4,
+	'weight' => 6,
       ),
       'promo' => array(
         'label' => 'above',
@@ -302,7 +302,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+	'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -325,7 +325,7 @@ function pivot_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 39,
+      'weight' => 6,
     ),
   );
 
@@ -337,11 +337,11 @@ function pivot_video_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+	'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+	'weight' => 0,
       ),
       'promo' => array(
         'label' => 'above',
@@ -354,7 +354,7 @@ function pivot_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+	'weight' => 1,
       ),
     ),
     'entity_type' => 'node',
@@ -372,12 +372,73 @@ function pivot_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 42,
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-video-field_video_youtube_media'
+  $field_instances['node-video-field_video_youtube_media'] = array(
+    'bundle' => 'video',
+    'deleted' => 0,
+    'description' => 'Add a YouTube video from the Web tab of the Media browser.',
+    'display' => array(
+      'default' => array(
+	'label' => 'hidden',
+	'module' => 'media',
+	'settings' => array(
+	  'file_view_mode' => 'default',
+	),
+	'type' => 'media',
+	'weight' => 1,
+      ),
+      'promo' => array(
+	'label' => 'above',
+	'settings' => array(),
+	'type' => 'hidden',
+	'weight' => 0,
+      ),
+      'teaser' => array(
+	'label' => 'hidden',
+	'module' => 'media',
+	'settings' => array(
+	  'file_view_mode' => 'default',
+	),
+	'type' => 'media',
+	'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_video_youtube_media',
+    'label' => 'YouTube Video',
+    'required' => 0,
+    'settings' => array(
+      'file_extensions' => 'noextension',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+	'allowed_schemes' => array(
+	  'public' => 0,
+	  'youtube' => 'youtube',
+	),
+	'allowed_types' => array(
+	  'audio' => 0,
+	  'default' => 0,
+	  'image' => 0,
+	  'video' => 'video',
+	),
+	'progress_indicator' => 'throbber',
+      ),
+      'type' => 'media_generic',
+      'weight' => 10,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Add a YouTube video from the Web tab of the Media browser.');
   t('Author');
   t('Description');
   t('Longtail Video ID');
@@ -385,6 +446,7 @@ function pivot_video_field_default_field_instances() {
   t('Promo Headline');
   t('Promo Image');
   t('Section Reference');
+  t('YouTube Video');
 
   return $field_instances;
 }
