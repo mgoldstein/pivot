@@ -736,6 +736,11 @@ body.ie8 .video-player {
   display: none;
 }
 
+/* line 690, ../sass/_pivot-global.scss */
+iframe.media-youtube-player {
+  max-width: 100%;
+}
+
 /*
  * Homepage Styles for Pivot.tv
  */
