@@ -89,8 +89,12 @@ $(function() {
 			if ( !$curr || $curr === $current ) return;
 			updateslidernav($curr);
 			$video = $current.find('.video-player');
-			$video[0].pause();
-			// $curr.find('.video-content').hide();
+			var isMSIE = /*@cc_on!@*/0;
+			if (isMSIE) {
+			  // do IE-specific things
+			} else {
+			  $video[0].pause();
+			}
 		}
 
 		var adjust = function() {
