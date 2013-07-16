@@ -72,7 +72,12 @@ $(function() {
 
 			if ( $video ) {
 				$video[0].pause();
-				$video[0].currentTime = 7;
+			var isMSIE = /*@cc_on!@*/0;
+			if (isMSIE) {
+			  // do IE-specific things
+			} else {
+			  $video[0].currentTime = 0;
+			}
 			}
 			$current = $curr;
 			$video = $current.find('.video-player');
