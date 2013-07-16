@@ -180,7 +180,7 @@ a:active {
 	}
 
 	.secondary {
-		display: table;
+		display: block;
 		float: none;
 		width: auto;
 		margin: 0 auto 1.5em;
@@ -192,7 +192,7 @@ a:active {
 		margin: 0 1.35em 5px 0;
 
 		a {
-			display: inline-block;
+			display: inline-block; *display: inline; *zoom: 1;
 			margin: 0;
 			width: 38px;
 			height: 38px;
