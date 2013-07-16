@@ -63,7 +63,7 @@ $(function() {
 		}
 
 		var onafter = function($curr) {
-			$curr.find('.video-content').show();
+			// $curr.find('.video-content').show();
 			$slides.not($curr).removeClass('active');
 			$curr.addClass('active');
 
@@ -89,7 +89,7 @@ $(function() {
 			updateslidernav($curr);
 			$video = $current.find('.video-player');
 			$video[0].pause();
-			$curr.find('.video-content').hide();
+			// $curr.find('.video-content').hide();
 		}
 
 		var adjust = function() {

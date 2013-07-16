@@ -224,6 +224,15 @@
 	margin-bottom: 15px;
 	font-family: "Apercu Mono Regular", monospace;
 }
+.front .slide-wrapper .tpslide_slide .video-content {
+	opacity: 0;
+	transition: opacity .3s ease-in 0;
+	-webkit-transition: opacity .3s ease-in 0;
+}
+
+.front .slide-wrapper .tpslide_slide.active .video-content {
+	opacity: 1;
+}
 
 
 /* Top slide */
