@@ -86,7 +86,13 @@ $(function() {
 
 			$video
 				.animate({opacity: 1}, 'fast', function() {
-					$video[0].play();
+					var isMSIE = /*@cc_on!@*/0;
+					if (isMSIE) {
+					  // do IE-specific things
+					}
+					else {
+					  	$video[0].play();
+					}
 				});
 
 		};
