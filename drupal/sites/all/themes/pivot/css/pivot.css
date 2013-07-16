@@ -1387,23 +1387,23 @@ a:focus, a::-moz-focus-inner {
     padding-right: 5%;
     margin-left: 0;
   }
-  /* line 97, ../sass/_pivot-homepage-hero-responsive.scss */
-  .front .tpslide_wrapper h3.headline {
+  /* line 95, ../sass/_pivot-homepage-hero-responsive.scss */
+  .front .video-content .primary h3.headline {
     text-align: center;
     font-size: 40px;
   }
-  /* line 101, ../sass/_pivot-homepage-hero-responsive.scss */
-  .front .tpslide_wrapper p.description {
+  /* line 99, ../sass/_pivot-homepage-hero-responsive.scss */
+  .front .video-content .primary p.description {
     text-align: center;
     font-size: 18px;
   }
-  /* line 106, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 104, ../sass/_pivot-homepage-hero-responsive.scss */
   .front p.more {
     float: left;
     position: relative;
     left: 50%;
   }
-  /* line 110, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 108, ../sass/_pivot-homepage-hero-responsive.scss */
   .front p.more a {
     float: left;
     position: relative;
@@ -1412,46 +1412,46 @@ a:focus, a::-moz-focus-inner {
 }
 /* Show */
 @media (max-width: 680px) {
-  /* line 121, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 119, ../sass/_pivot-homepage-hero-responsive.scss */
   .show .show-actions .half {
     width: 100%;
   }
 }
 /* Hero Nav */
 @media (max-width: 1100px) {
-  /* line 128, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 126, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .slide-nav .item-title {
     display: none;
   }
 }
 @media (max-width: 767px) {
-  /* line 133, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 131, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .slide-wrapper .video-player {
     display: none;
   }
 }
 /* Upcoming Bar */
 @media (max-width: 979px) {
-  /* line 140, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 138, ../sass/_pivot-homepage-hero-responsive.scss */
   .upcoming .headline {
     white-space: normal;
   }
 
-  /* line 144, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 142, ../sass/_pivot-homepage-hero-responsive.scss */
   .upcoming .full-schedule .important {
     white-space: normal;
   }
 }
 @media (max-width: 767px) {
   /* iPad vertical */
-  /* line 149, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 147, ../sass/_pivot-homepage-hero-responsive.scss */
   .upcoming .headline {
     display: none;
   }
 }
 @media (max-width: 480px) {
   /* iPhone vertical */
-  /* line 154, ../sass/_pivot-homepage-hero-responsive.scss */
+  /* line 152, ../sass/_pivot-homepage-hero-responsive.scss */
   .upcoming .times {
     display: none;
   }
