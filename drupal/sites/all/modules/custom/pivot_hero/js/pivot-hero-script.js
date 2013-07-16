@@ -71,11 +71,12 @@ $(function() {
 			if ( $current ) $topslide.removeClass($current.data('token'));
 
 			if ( $video ) {
-				if ($body.hasClass('ie8')) {
-				  // do IE-specific things
+				var isIE8 = $.browser.msie && +$.browser.version === 8;
+				if ( isIE8 ) {
+	    			// do stuff
 				}
-				else {
-				  	$video[0].pause();
+				else{
+					$video[0].pause();
 					$video[0].currentTime = 0;
 				}
 			}
@@ -86,24 +87,26 @@ $(function() {
 			$video
 				.animate({opacity: 1}, 'fast', function() {
 
-					if ($body.hasClass('ie8')) {
-					  // do IE-specific things
+					var isIE8 = $.browser.msie && +$.browser.version === 8;
+					if ( isIE8 ) {
+		    			// do stuff
 					}
-					else {
-					  	$video[0].play();
+					else{
+						$video[0].play();
 					}
 				});
-
 		};
 
 		var onslide = function($curr) {
 			if ( !$curr || $curr === $current ) return;
 			updateslidernav($curr);
 			$video = $current.find('.video-player');
-			if ($body.hasClass('ie8')) {
-			  // do IE-specific things
-			} else {
-			  $video[0].pause();
+			var isIE8 = $.browser.msie && +$.browser.version === 8;
+			if ( isIE8 ) {
+    			// do stuff
+			}
+			else{
+				$video[0].pause();
 			}
 		}
 
