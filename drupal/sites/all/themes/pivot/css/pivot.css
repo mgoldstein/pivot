@@ -15,13 +15,13 @@
 }
 
 /* line 14, ../sass/_pivot-layout.scss */
-#content .primary {
+#content > .primary {
   max-width: 620px;
   margin: 0 auto;
 }
 @media (min-width: 1000px) {
   /* line 14, ../sass/_pivot-layout.scss */
-  #content .primary {
+  #content > .primary {
     max-width: 960px;
     float: left;
     width: 100%;
@@ -36,7 +36,7 @@
     word-wrap: break-word;
   }
   /* line 20, ../sass/_pivot-layout.scss */
-  #content .primary.with-sidebar {
+  #content > .primary.with-sidebar {
     float: left;
     width: 66.66667%;
     margin-left: 0%;
@@ -51,14 +51,14 @@
   }
 }
 /* line 26, ../sass/_pivot-layout.scss */
-#content .secondary {
+#content > .secondary {
   width: 300px;
   margin: 0 auto;
   text-align: center;
 }
 @media (min-width: 1000px) {
   /* line 26, ../sass/_pivot-layout.scss */
-  #content .secondary {
+  #content > .secondary {
     float: left;
     width: 33.33333%;
     margin-left: 66.66667%;
