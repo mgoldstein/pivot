@@ -63,7 +63,7 @@ function pivot_global_block_view($block_name) {
 	    // $block['content'] .= '<div class="nav footer-apps-nav"><h3 class="headline">Apps</h3>' . drupal_render(menu_tree('menu-get-our-app')) . '</div>';
 	    $block['content'] .= '<div class="nav footer-participant-nav"><h3 class="headline">Pivot is part of Participant Media:</h3>' . drupal_render(menu_tree('menu-participant-media')) . '</div>';
             $block['content'] .= '</div><!-- /.secondary -->';
-            $block['content'] .= '<div id="copyright"><p>&copy; 2013 Pivot TV, all rights reserved.</p></div>';
+	    $block['content'] .= '<div id="copyright"><p>&copy; 2013 Participant Channel, Inc. All Rights Reserved.</p></div>';
         break;
 
     }
