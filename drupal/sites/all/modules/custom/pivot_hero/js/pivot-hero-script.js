@@ -71,8 +71,7 @@ $(function() {
 			if ( $current ) $topslide.removeClass($current.data('token'));
 
 			if ( $video ) {
-				var isMSIE = /*@cc_on!@*/0;
-				if (isMSIE) {
+				if ($body.hasClass('ie8')) {
 				  // do IE-specific things
 				}
 				else {
@@ -86,8 +85,8 @@ $(function() {
 
 			$video
 				.animate({opacity: 1}, 'fast', function() {
-					var isMSIE = /*@cc_on!@*/0;
-					if (isMSIE) {
+
+					if ($body.hasClass('ie8')) {
 					  // do IE-specific things
 					}
 					else {
@@ -101,8 +100,7 @@ $(function() {
 			if ( !$curr || $curr === $current ) return;
 			updateslidernav($curr);
 			$video = $current.find('.video-player');
-			var isMSIE = /*@cc_on!@*/0;
-			if (isMSIE) {
+			if ($body.hasClass('ie8')) {
 			  // do IE-specific things
 			} else {
 			  $video[0].pause();

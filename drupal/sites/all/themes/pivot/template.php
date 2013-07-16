@@ -132,14 +132,6 @@ function pivot_preprocess_html(&$variables, $hook) {
 
   drupal_add_js("WebFontConfig = { fontdeck: { id: '35228' } };", array('type' => 'inline', 'scope'=> 'footer', 'weight' => 10));
   drupal_add_js('//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js', array('type' => 'external', 'scope' => 'footer', 'weight' => 11));
-  if(preg_match('/(?i)msie [1-8]/',$_SERVER['HTTP_USER_AGENT']))  {
-    $variables['classes_array'][] = 'ie8';
-  }
-
-
-
-
-
 
   // The body tag's classes are controlled by the $classes_array variable. To
   // remove a class from $classes_array, use array_diff().
