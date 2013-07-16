@@ -26,7 +26,8 @@ $(function() {
 		var $slides = $slide_wrapper.find('.slide');
 		var $images = $('.slide-wrapper .video-image');
 		var $topslide = $('#topslide');
-		var $current = $slides.first();
+		// var $current = $slides.first();
+		var $current = $slides.first().addClass('active');
 		var $video = $current.find('.video-player');
 		var $image = $current.find('.video-image');
 
