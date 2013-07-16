@@ -144,8 +144,8 @@ function pivot_hs_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        2 => ' Light',
         1 => ' Dark',
+        2 => ' Light',
       ),
       'allowed_values_function' => '',
     ),

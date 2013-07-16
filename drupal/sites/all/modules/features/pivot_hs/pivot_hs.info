@@ -10,6 +10,7 @@ dependencies[] = file
 dependencies[] = image
 dependencies[] = link
 dependencies[] = list
+dependencies[] = maxlength
 dependencies[] = mediaelement
 dependencies[] = options
 dependencies[] = pivot_hero

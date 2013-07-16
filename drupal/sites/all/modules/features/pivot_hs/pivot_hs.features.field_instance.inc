@@ -404,7 +404,7 @@ function pivot_hs_field_default_field_instances() {
     'bundle' => 'homepage_slide',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Keep text under 100 characters.  A max length of 120 characters are set for certain use cases.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -439,6 +439,10 @@ function pivot_hs_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => 120,
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
         'rows' => 5,
       ),
       'type' => 'text_textarea',
@@ -452,6 +456,7 @@ function pivot_hs_field_default_field_instances() {
   t('Background Video');
   t('Call to Action');
   t('Image Placement');
+  t('Keep text under 100 characters.  A max length of 120 characters are set for certain use cases.');
   t('Logo');
   t('Slider Image');
   t('Slider Text');
