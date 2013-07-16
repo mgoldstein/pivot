@@ -5,7 +5,7 @@
   $image_path = file_create_url($variables['field_hs_slider_image'][0]['uri']);
   $more_link = '&nbsp;';
   if (isset($variables['field_hs_link'][0]['title']) && isset($variables['field_hs_link'][0]['url'])) {
-    $more_link = l($variables['field_hs_link'][0]['title'], $variables['field_hs_link'][0]['url'], array('attributes' => array('class' => 'important', 'target' => '_blank')));
+    $more_link = l($variables['field_hs_link'][0]['title'], $variables['field_hs_link'][0]['url'], array('attributes' => array('class' => 'important')));
   }
   $output .= '<div class="video-content">
           <div class="video-content-inner">
