@@ -26,3 +26,13 @@ function kpiCFheightV2(ht) {
 	frameFoo.style.height = ht;
 }
 
+(function($) {
+  $(document).ready(function() {
+		var isIE8 = $.browser.msie && +$.browser.version === 8;
+		if ( isIE8 ) {
+  		$('body').addClass('ie8');
+		}
+		else{
+		}
+ });
+})(jQuery);
