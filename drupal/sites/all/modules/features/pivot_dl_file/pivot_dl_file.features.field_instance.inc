@@ -157,7 +157,6 @@ function pivot_dl_file_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_section_ref',
     'label' => 'Section Reference',
-    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
