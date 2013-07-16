@@ -423,18 +423,19 @@ a:active {
 .promo .info-inner {
   display: inline-block;
   *display: inline;
-  zoom: 1;
+  *zoom: 1;
   line-height: 1;
   vertical-align: middle;
+  width: 100%;
 }
-/* line 315, ../sass/_pivot-global.scss */
+/* line 316, ../sass/_pivot-global.scss */
 .promo .field-name-field-promo-headline {
   font-size: 1.2em;
   color: #0084a9;
   font-style: italic;
   font-weight: bold;
 }
-/* line 322, ../sass/_pivot-global.scss */
+/* line 323, ../sass/_pivot-global.scss */
 .promo .field-name-field-promo-abstract {
   font-size: 13px;
   font-family: "Apercu Mono Regular", monospace;
@@ -445,7 +446,7 @@ a:active {
 ============================================================ */
 /* Skip link */
 /* "Buttons" */
-/* line 357, ../sass/_pivot-global.scss */
+/* line 358, ../sass/_pivot-global.scss */
 a.important:link,
 a.important:visited {
   text-decoration: none;
@@ -462,7 +463,7 @@ a.important:visited {
   box-shadow: 0 3px 0 rgba(50, 50, 50, 0.75);
 }
 
-/* line 372, ../sass/_pivot-global.scss */
+/* line 373, ../sass/_pivot-global.scss */
 a.important:after {
   content: " ";
   display: block;
@@ -478,12 +479,12 @@ a.important:after {
   transition: right .1s linear .1s;
 }
 
-/* line 387, ../sass/_pivot-global.scss */
+/* line 388, ../sass/_pivot-global.scss */
 a.important:hover:after {
   right: 10px;
 }
 
-/* line 391, ../sass/_pivot-global.scss */
+/* line 392, ../sass/_pivot-global.scss */
 a.important .pivot {
   display: inline-block;
   background-repeat: no-repeat;
@@ -497,7 +498,7 @@ a.important .pivot {
 }
 
 /* Top? Schedule */
-/* line 404, ../sass/_pivot-global.scss */
+/* line 405, ../sass/_pivot-global.scss */
 .upcoming {
   position: absolute;
   width: 100%;
@@ -509,17 +510,17 @@ a.important .pivot {
   box-shadow: inset 0px -10px 20px 0px rgba(0, 0, 0, 0.25);
 }
 
-/* line 416, ../sass/_pivot-global.scss */
+/* line 417, ../sass/_pivot-global.scss */
 .upcoming a {
   color: #01bf9e;
 }
 
-/* line 420, ../sass/_pivot-global.scss */
+/* line 421, ../sass/_pivot-global.scss */
 .upcoming .inner {
   display: table-row;
 }
 
-/* line 424, ../sass/_pivot-global.scss */
+/* line 425, ../sass/_pivot-global.scss */
 .upcoming .headline a {
   font-size: 24px;
   text-transform: uppercase;
@@ -532,7 +533,7 @@ a.important .pivot {
   color: #fff;
 }
 
-/* line 436, ../sass/_pivot-global.scss */
+/* line 437, ../sass/_pivot-global.scss */
 .upcoming .headline a:after {
   content: " ";
   display: block;
@@ -547,7 +548,7 @@ a.important .pivot {
   vertical-align: middle;
 }
 
-/* line 453, ../sass/_pivot-global.scss */
+/* line 454, ../sass/_pivot-global.scss */
 .upcoming .headline,
 .upcoming .times,
 .upcoming .full-schedule,
@@ -556,7 +557,7 @@ a.important .pivot {
   vertical-align: middle;
 }
 
-/* line 458, ../sass/_pivot-global.scss */
+/* line 459, ../sass/_pivot-global.scss */
 .upcoming .times .item {
   font-family: "Apercu Mono Regular", monospace, sans-serif;
   font-size: 14px;
@@ -565,13 +566,13 @@ a.important .pivot {
   padding: 0 5px;
 }
 
-/* line 466, ../sass/_pivot-global.scss */
+/* line 467, ../sass/_pivot-global.scss */
 .upcoming .times .inner {
   display: table;
   margin: auto;
 }
 
-/* line 471, ../sass/_pivot-global.scss */
+/* line 472, ../sass/_pivot-global.scss */
 .upcoming .times .item:before {
   content: " ";
   width: 1px;
@@ -586,12 +587,12 @@ a.important .pivot {
   /* W3C */
 }
 
-/* line 484, ../sass/_pivot-global.scss */
+/* line 485, ../sass/_pivot-global.scss */
 .upcoming .times .item:first-child:before {
   display: none;
 }
 
-/* line 488, ../sass/_pivot-global.scss */
+/* line 489, ../sass/_pivot-global.scss */
 .upcoming .times .item:after {
   content: " ";
   width: 1px;
@@ -606,19 +607,19 @@ a.important .pivot {
   /* W3C */
 }
 
-/* line 502, ../sass/_pivot-global.scss */
+/* line 503, ../sass/_pivot-global.scss */
 .upcoming .times .time,
 .upcoming .times .show {
   padding: 0 5px;
 }
 
-/* line 506, ../sass/_pivot-global.scss */
+/* line 507, ../sass/_pivot-global.scss */
 .upcoming .full-schedule {
   padding: 0 5px;
 }
 
 /* Pretty form selects */
-/* line 512, ../sass/_pivot-global.scss */
+/* line 513, ../sass/_pivot-global.scss */
 .tpselect_wrapper {
   display: inline-block;
   height: 30px;
@@ -629,19 +630,19 @@ a.important .pivot {
   vertical-align: bottom;
 }
 
-/* line 522, ../sass/_pivot-global.scss */
+/* line 523, ../sass/_pivot-global.scss */
 .tpselect_wrapper.tpselect_focus {
   background: #000;
   color: #fff;
 }
 
-/* line 527, ../sass/_pivot-global.scss */
+/* line 528, ../sass/_pivot-global.scss */
 .tpselect_wrapper select {
   height: 100%;
   width: 100%;
 }
 
-/* line 532, ../sass/_pivot-global.scss */
+/* line 533, ../sass/_pivot-global.scss */
 .tpselect_wrapper .tpselect_value {
   position: relative;
   display: block;
@@ -653,7 +654,7 @@ a.important .pivot {
   font-family: "Apercu Mono Regular", monospace;
 }
 
-/* line 543, ../sass/_pivot-global.scss */
+/* line 544, ../sass/_pivot-global.scss */
 .tpselect_wrapper .tpselect_value:after {
   display: block;
   content: " ";
@@ -665,18 +666,18 @@ a.important .pivot {
   top: 0;
 }
 
-/* line 554, ../sass/_pivot-global.scss */
+/* line 555, ../sass/_pivot-global.scss */
 .not-front #site-header .primary {
   background: #000;
   padding: 10px;
 }
 
-/* line 558, ../sass/_pivot-global.scss */
+/* line 559, ../sass/_pivot-global.scss */
 .not-front #site-header .secondary {
   background: #0084a9;
 }
 
-/* line 561, ../sass/_pivot-global.scss */
+/* line 562, ../sass/_pivot-global.scss */
 #site-header .logo {
   margin-right: 19px;
   overflow: hidden;
@@ -692,12 +693,12 @@ a.important .pivot {
   vertical-align: middle;
 }
 
-/* line 573, ../sass/_pivot-global.scss */
+/* line 574, ../sass/_pivot-global.scss */
 #site-header .primary .logo .headline {
   margin-bottom: 0;
 }
 
-/* line 576, ../sass/_pivot-global.scss */
+/* line 577, ../sass/_pivot-global.scss */
 #site-header .nav {
   display: inline-block;
   *display: inline;
@@ -705,12 +706,12 @@ a.important .pivot {
   vertical-align: middle;
 }
 
-/* line 580, ../sass/_pivot-global.scss */
+/* line 581, ../sass/_pivot-global.scss */
 #site-header .nav .headline {
   display: none;
 }
 
-/* line 584, ../sass/_pivot-global.scss */
+/* line 585, ../sass/_pivot-global.scss */
 #site-header .primary .site-wrapper,
 #site-header .secondary .site-wrapper {
   padding-top: 0;
@@ -722,7 +723,7 @@ a.important .pivot {
 /* ============================================================
 || Dev CSS Rules
 ============================================================ */
-/* line 676, ../sass/_pivot-global.scss */
+/* line 677, ../sass/_pivot-global.scss */
 #themer-toggle {
   z-index: 99999;
 }
@@ -730,7 +731,7 @@ a.important .pivot {
 /* ============================================================
 || ie8 theming
 ============================================================ */
-/* line 683, ../sass/_pivot-global.scss */
+/* line 684, ../sass/_pivot-global.scss */
 body.ie8 .video-player {
   display: none;
 }
