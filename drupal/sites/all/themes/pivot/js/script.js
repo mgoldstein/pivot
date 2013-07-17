@@ -12,7 +12,16 @@
 // - http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth
 (function ($, Drupal, window, document, undefined) {
 
-	// namespaced code here
+	Drupal.behaviors.globalNavigationResponsive = {
+		attach: function() {
+			$('body').delegate('#site-header .primary', 'click', function(event) {
+				if($(event.target).is("a,input") || $(event.target).parents().is("a,input")) {
+					return;
+				}
+				$(this).toggleClass('open');
+			});
+		}
+	};
 
 })(jQuery, Drupal, this, this.document);
 
