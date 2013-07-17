@@ -223,7 +223,7 @@ a:active {
 }
 /* line 100, ../sass/_pivot-global.scss */
 .not-front #site-header .logo {
-  margin-right: 19px;
+  margin: 8px 19px 9px 0;
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
