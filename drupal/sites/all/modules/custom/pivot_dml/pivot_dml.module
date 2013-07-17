@@ -1,59 +1,86 @@
 <?php
 
-define('DIGITAL_MEDIA_LITERACY_BASE_PATH', 'dml');
-define('DIGITAL_MEDIA_LITERACY_THEME_PATH', 'sites/all/themes/pivot/tempates/dml');
-
 function pivot_dml_menu() {
 
+  $items['admin/config/campaign/dml'] = array(
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('pivot_dml_config_view'),
+    'access arguments' => array('administer nodes'),
+  );
+  $path = variable_get('pivot_dml_path', '');
+  if(!empty($path)) {
+    $items[$path.'/about'] = array(
+      'page callback' => 'pivot_dml_about_view',
+      'access arguments' => array('access content'),
+    );
+    $items[$path.'/ad'] = array(
+      'page callback' => 'pivot_dml_ad_view',
+      'access arguments' => array('access content'),
+    );
+    $items[$path.'/news'] = array(
+      'page callback' => 'pivot_dml_news_view',
+      'access arguments' => array('access content'),
+    );
+    $items[$path.'/quiz'] = array(
+      'page callback' => 'pivot_dml_quiz_view',
+      'access arguments' => array('access content'),
+    );
+  }
+  return $items;
+}
+function pivot_dml_config_view(){
+  $form['pivot_dml_path'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Campaign Page Path'),
+    '#description' => t("Path with no leading or trailing slash.  Example 'campaign/dml"),
+    '#required' => TRUE,
+    '#default_value' => variable_get('pivot_dml_path', ''),
+  );
+
+  $form = system_settings_form($form);
+  return $form;
+}
+function pivot_dml_about_view(){
+  theme('pivot_dml_about', $args);
+}
+function pivot_dml_ad_view(){
+  theme('pivot_dml_ad', $args);
+}
+function pivot_dml_news_view(){
+  theme('pivot_dml_news', $args);
+}
+function pivot_dml_quiz_view(){
+  theme('pivot_dml_quiz', $args);
+}
+function pivot_dml_default_view(){
+  theme('pivot_dml_default', $args);
+}
+
+function pivot_dml_theme() {
   return array(
-    DIGITAL_MEDIA_LITERACY_BASE_PATH => array(
-      'title' => 'Digital Media Literacy',
-      'page callback' => 'pivot_dml_page_callback',
-      'access arguments' => array('access content'),
+    'pivot_dml_about' => array(
+      'arguments' => array(),
+      'template' => 'piv-dml-about'
     ),
-    DIGITAL_MEDIA_LITERACY_BASE_PATH . '/quiz' => array(
-      'title' => 'Digital Media Literacy - Quiz',
-      'page callback' => 'pivot_dml_page_callback',
-      'access arguments' => array('access content'),
+    'pivot_dml_ad' => array(
+      'arguments' => array(),
+      'template' => 'piv-dml-ad'
     ),
-    DIGITAL_MEDIA_LITERACY_BASE_PATH . '/ad' => array(
-      'title' => 'Digital Media Literacy - Ad',
-      'page callback' => 'pivot_dml_page_callback',
-      'access arguments' => array('access content'),
+    'pivot_dml_news' => array(
+      'arguments' => array(),
+      'template' => 'piv-dml-news'
     ),
-    DIGITAL_MEDIA_LITERACY_BASE_PATH . '/news' => array(
-      'title' => 'Digital Media Literacy - News',
-      'page callback' => 'pivot_dml_page_callback',
-      'access arguments' => array('access content'),
+    'pivot_dml_quiz' => array(
+      'arguments' => array(),
+      'template' => 'piv-dml-quiz'
     ),
-    DIGITAL_MEDIA_LITERACY_BASE_PATH . '/about' => array(
-      'title' => 'Digital Media Literacy - About',
-      'page callback' => 'pivot_dml_page_callback',
-      'access arguments' => array('access content'),
+    'pivot_dml_default' => array(
+      'arguments' => array(),
+      'template' => 'piv-dml-default'
     ),
   );
 }
 
-function pivot_dml_page_callback() {
-  // The template handles all the markup
-  return '';
-}
 
-function pivot_dml_get_path($item) {
 
-  switch ($item) {
 
-    case 'js':
-      return DIGITAL_MEDIA_LITERACY_THEME_PATH . '/js';
-    case 'css':
-      return DIGITAL_MEDIA_LITERACY_THEME_PATH . '/css';
-    case 'images':
-      return DIGITAL_MEDIA_LITERACY_THEME_PATH . '/images';
-    case 'templates':
-      return DIGITAL_MEDIA_LITERACY_THEME_PATH;
-  }
-}
-
-function pivot_dml_get_root_path() {
-  return '/pivot/pivot-tv/drupal';
-}
