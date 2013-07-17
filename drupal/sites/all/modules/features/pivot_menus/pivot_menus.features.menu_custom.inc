@@ -37,8 +37,8 @@ function pivot_menus_menu_default_menu_custom() {
   // Exported menu: menu-primary.
   $menus['menu-primary'] = array(
     'menu_name' => 'menu-primary',
-    'title' => 'Primary Menu',
-    'description' => 'First line menu links in the header.',
+    'title' => 'Pivot Global Navigation',
+    'description' => 'Pivot Global Nav for (almost) all pages on the site.',
   );
   // Exported menu: menu-secondary.
   $menus['menu-secondary'] = array(
@@ -54,7 +54,6 @@ function pivot_menus_menu_default_menu_custom() {
   );
   // Translatables
   // Included for use with string extractors like potx.
-  t('First line menu links in the header.');
   t('Follow Us');
   t('Get Our App');
   t('Links to general pages on the Pivot site shown in the page footer.');
@@ -62,7 +61,8 @@ function pivot_menus_menu_default_menu_custom() {
   t('OTT app icon shown in the page footer.');
   t('Participant Media Footer Menu');
   t('Pivot Footer Menu');
-  t('Primary Menu');
+  t('Pivot Global Nav for (almost) all pages on the site.');
+  t('Pivot Global Navigation');
   t('Second line menu links in the header.');
   t('Secondary Menu');
   t('Social share icons shown in the page footer.');
