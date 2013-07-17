@@ -68,38 +68,265 @@ a:active {
 	text-decoration: underline;
 }
 
-// TODO this doesn't appear in the homepage comp
-
-/* Header */
-// #site-header {
-// 	display: inline-block; *display: inline; zoom: 1;
-// 	vertical-align: top;
-// 	width: 100%;
-// }
-
-// #site-header .nav {
-// 	float: left;
-// 	width: 100%;
-// }
-
-// #site-header .nav li {
-// 	float: left;
-// }
-
-// #site-header .nav li a {
-// 	font-size: 14px;
-// 	display: block;
-// 	padding: 1em;
-// }
-
-// #site-header .block-search {
-// 	float: left;
-// }
-
 /* ============================================================
 || Main content area
 ============================================================ */
 
+
+/* ============================================================
+|| Global Header (not frontpage)
+============================================================ */
+
+.not-front #site-header {
+
+	.primary {
+		background: #000;
+
+		.site-wrapper {
+			padding: 0 20px;
+			display: block;
+		}
+		
+	}
+
+	.secondary {
+	  background: #0084a9;
+
+	  .site-wrapper {
+	  	padding: 0 20px;
+	  	display: block;
+	  }
+	}
+
+	.logo {
+	  margin-right: 19px;
+	  overflow: hidden;
+	  text-indent: 100%;
+	  white-space: nowrap;
+	  width: 128px;
+	  height: 43px;
+	  background-repeat: no-repeat;
+	  background-image: url(../images/pivot_medium_white.png);
+	  display: inline-block; *display: inline; *zoom: 1;
+	  vertical-align: middle;
+
+		.headline {
+		  margin-bottom: 0;
+		}
+	}
+
+	// general nav styles
+	.nav {
+	  display: inline-block; *display: inline; *zoom: 1;
+	  vertical-align: middle;
+
+		.headline {
+		  display: none;
+		}
+
+		ul {
+			display: inline-block; *display: inline; *zoom: 1;
+			vertical-align: top;
+			margin: 0;
+			padding: 0;
+
+			li {
+				float: left;
+
+				a {
+					display: block;
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
+
+	.nav-primary {
+		.menu {
+			height: 60px; //TODO mw this is a hack
+		}
+
+		a {
+			display: block;
+			position: relative;
+			white-space: nowrap;
+			color: #00b5cc;
+			font-size: 18px;
+			vertical-align: bottom;
+			padding: 20px 10px;
+
+			&.active,
+			&:hover,
+			&:focus {
+				color: white;
+				text-decoration: none;
+			}
+
+			&:before {
+				content: " ";
+				display: inline-block;
+				background-repeat: no-repeat;
+				margin-right: 11px;
+				vertical-align: text-bottom;
+			}
+		}
+
+		li {
+			position: relative;
+
+			&:after{
+				display: block;
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 1px;
+				height: 100%;
+				overflow: hidden;
+				content: " ";
+
+				background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 20%,rgba(255,255,255,0.25) 40%,rgba(255,255,255,0.25) 60%,rgba(255,255,255,0) 80%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+				background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 20%,rgba(255,255,255,0.25) 40%,rgba(255,255,255,0.25) 60%,rgba(255,255,255,0) 80%,rgba(255,255,255,0) 100%); /* W3C */
+			}
+
+			&:last-child:after {
+				display: none;
+			}
+		}
+
+		a.shows {
+			&:before {
+				width: 21px;
+				height: 21px;
+				background-image: url(../images/header_shows_off.png);
+			}
+			&.active:before,
+			&:hover:before,
+			&:focus:before {
+				background-image: url(../images/header_shows_on.png);
+			}
+		}
+
+		a.movies {
+			&:before {
+				width: 23px;
+				height: 21px;
+				background-image: url(../images/header_movies_off.png);
+			}
+			&.active:before,
+			&:hover:before,
+			&:focus:before {
+				background-image: url(../images/header_movies_on.png);
+			}
+		}
+
+		a.watch_now {
+			&:before {
+				width: 20px;
+				height: 20px;
+				background-image: url(../images/header_watch_off.png);
+			}
+			&.active:before,
+			&:hover:before,
+			&:focus:before {
+				background-image: url(../images/header_watch_on.png);
+			}
+		}
+
+		a.take_action {
+			&:before {
+				width: 25px;
+				height: 21px;
+				background-image: url(../images/header_action_off.png);
+			}
+			&.active:before,
+			&:hover:before,
+			&:focus:before {
+				background-image: url(../images/header_action_on.png);
+			}
+		}
+
+		a.schedule {
+			&:before {
+				width: 20px;
+				height: 21px;
+				background-image: url(../images/header_schedule_off.png);
+			}
+			&.active:before,
+			&:hover:before,
+			&:focus:before {
+				background-image: url(../images/header_schedule_on.png);
+			}
+		}
+
+		a.blog {
+			&:before {
+				width: 18px;
+				height: 20px;
+				background-image: url(../images/header_blog_off.png);
+			}
+			&.active:before,
+			&:hover:before,
+			&:focus:before {
+				background-image: url(../images/header_blog_on.png);
+			}
+		}
+	} // .nav-primary
+
+	.nav-secondary {
+		width: 100%;
+		.find-pivot {
+			display: inline-block; *display: inline; *zoom: 1;
+			vertical-align: middle;
+		}
+		a,
+		a:hover,
+		a:focus {
+			background-color: transparent;
+			box-shadow: none;
+			padding-left: 0;
+		}
+
+		.search {
+			float: right;
+			margin-top: 2px;
+			white-space: nowrap;
+			margin-bottom: 5px;
+
+			label {
+				display: none;
+			}
+
+			#search-text {
+				border: 0;
+				background: transparent;
+				color: #fff;
+				border-bottom: 1px solid #fff;
+				font-size: 18px;
+				box-shadow: none;
+				border-radius: 0;
+				line-height: 1em;
+
+				&::-webkit-input-placeholder {
+					color: #fff;
+				}
+			}
+
+			.submit {
+				background: url(../images/search.png) no-repeat;
+				border: 0;
+				cursor: pointer;
+				width: 19px;
+				height: 19px;
+
+				padding: 0;
+				text-indent: 100%;
+				white-space: nowrap;
+				overflow: hidden;
+				*text-indent: 0;
+			}
+		} // .search
+	} // .nav-secondary
+} // .not-front #site-header
 
 
 
@@ -550,42 +777,6 @@ a.important .pivot {
 	position: absolute;
 	right: 0;
 	top: 0;
-}
-
-.not-front #site-header .primary {
-  background: #000;
-  padding: 10px;
-}
-.not-front #site-header .secondary {
-  background: #0084a9;
-}
-#site-header .logo {
-  margin-right: 19px;
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
-  width: 128px;
-  height: 43px;
-  background-repeat: no-repeat;
-  background-image: url(../images/pivot_medium_white.png);
-  display: inline-block; *display: inline; *zoom: 1;
-  vertical-align: middle;
-}
-#site-header .primary .logo .headline {
-  margin-bottom: 0;
-}
-#site-header .nav {
-  display: inline-block; *display: inline; *zoom: 1;
-  vertical-align: middle;
-}
-#site-header .nav .headline {
-  display: none;
-}
-#site-header .primary .site-wrapper,
-#site-header .secondary .site-wrapper {
-  padding-top: 0;
-  padding-bottom: 0;
-  display: block;
 }
 
 
