@@ -86,7 +86,6 @@ a:active {
 			padding: 0 20px;
 			display: block;
 		}
-		
 	}
 
 	.secondary {
@@ -271,6 +270,80 @@ a:active {
 			}
 		}
 	} // .nav-primary
+
+	@media (max-width: 1000px) {
+		.primary {
+			position: relative;
+
+			.nav-primary {
+				height: 0;
+				overflow: hidden;
+				-webkit-transition: all 0.5s linear 0s;
+				transition: all 0.5s linear 0s;
+			}
+
+			&.open .nav-primary {
+				height: auto;
+				max-height: 500px; // why is this?
+			}
+
+			&:after {
+				content: " ";
+				display: block;
+				background-repeat: no-repeat;
+				background-image: url(../images/menu_btn_open.png);
+				width: 26px;
+				height: 21px;
+				position: absolute;
+				top: 24px;
+				right: 11%; // great code quality from front-end. Real geniuses.
+			}
+
+			&.open:after {
+				background-image: url(../images/menu_btn_close.png);
+			}
+
+			.site-wrapper {
+				padding: 0;
+			}
+		} // .primary
+
+		.logo {
+			margin: 12px auto 15px;
+			display: block;
+		}
+
+		.nav ul {
+			display: inline-block; *display: inline; *zoom: 1;
+			vertical-align: top;
+			width: 100%;
+		}
+
+		.nav-primary {
+			width: 100%;
+			display: block;
+			z-index: 99;
+			background: #1f1f1f;
+
+			.menu {
+				height: auto; // override height: 60px; above
+			}
+
+			li {
+				width: 50%;
+				text-align: center;
+
+				&:after {
+					background: transparent;
+				}
+
+				a {
+					display: block;
+				}
+			}
+		} // .nav-primary
+	} // @media (max-width: 1000px)
+
 
 	.nav-secondary {
 		width: 100%;
