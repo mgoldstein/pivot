@@ -1,0 +1,25 @@
+<?php
+
+
+function pivot_campaign_menu() {
+
+  $items['admin/config/campaign'] = array(
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('pivot_campaign_config'),
+    'access arguments' => array('administer nodes'),
+  );
+
+  return $items;
+}
+
+
+ function pivot_campaign_config(){
+  $form['pivot_campaign_path'] = array(
+    '#type' => 'form',
+    '#title' => t('Campaign Config'),
+    '#description' => t("Path with no leading or trailing slash.  Example 'campaign/dml"),
+  );
+
+  $form = system_settings_form($form);
+  return $form;
+}

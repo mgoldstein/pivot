@@ -1,0 +1,6 @@
+name = Pivot STARTER CAMPAIGN
+description = STARTER CAMPAIGN module for custom campaigns
+core = 7.x
+package = Pivot Campaign
+
+dependencies[] = pivot_campaign

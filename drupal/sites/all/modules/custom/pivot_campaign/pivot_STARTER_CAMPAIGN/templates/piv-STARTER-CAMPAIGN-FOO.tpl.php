@@ -1,3 +1,3 @@
-<div id="page">
+<div id="about-page">
   ABOUT
 </div><!-- /#page -->
