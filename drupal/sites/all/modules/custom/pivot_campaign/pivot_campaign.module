@@ -28,13 +28,13 @@ function pivot_campaign_menu() {
  function pivot_campaign_block_info(){
   $blocks = array();
   $blocks['pivot_campaign_hero'] = array(
-    'info' => t('Hero Menu')
+    'info' => t('Campaign Hero')
    );
   return $blocks;
  }
 
 
-function pivot_campaign_block_view(){
+function pivot_campaign_block_view($delta = ''){
   //The $delta parameter tells us which block is being requested.
   $block = array();
   switch ($delta) {
@@ -46,9 +46,32 @@ function pivot_campaign_block_view(){
   }
 
 function pivot_campaign_hero() {
-  // dpm(get_defined_vars(), 'defined vars');
+  $node = node_load(arg(1));
+  $hero_image = '<img src="'.file_create_url($node->field_header_image['und'][0]['uri']). '" alt="'. $node->field_promo_headline['und'][0]['value']. '">';
+  $ad_link = '';  //TODO figure out where this information is coming from
+  $ad_image = '<img src="/files/show-hero-ad.png" alt="Pepsi Ad">'; //TODO figure out where this information is coming from
+  $headline_link = l($node->title, 'node/'. $node->nid);
+  $hero_menu = ''; //create superfish menu
+
+  return theme('pivot_campaign_hero', array('node' => $node, 'hero_image' => $hero_image, 'ad_link' => $ad_link, 'ad_image' => $ad_image, 'headline_link' => $headline_link, 'hero_menu' => $hero_menu));
 }
 
+function pivot_campaign_theme() {
+  return array(
+    'pivot_campaign_hero' => array(
+      'variables' => array(
+        'node' => '',
+        'hero_image' => '',
+        'hero_menu' => '',
+        'ad_link' => '',
+        'ad_image' => '',
+        'headline_link' => '',
+      ),
+      'arguments' => array(),
+      'template' => 'pivot-campaign-hero'
+    ),
+  );
+}
 
 
 
