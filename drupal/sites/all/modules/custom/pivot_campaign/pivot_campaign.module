@@ -23,3 +23,38 @@ function pivot_campaign_menu() {
   $form = system_settings_form($form);
   return $form;
 }
+
+
+ function pivot_campaign_block_info(){
+  $blocks = array();
+  $blocks['pivot_campaign_hero'] = array(
+    'info' => t('Hero Menu')
+   );
+  return $blocks;
+ }
+
+
+function pivot_campaign_block_view(){
+  //The $delta parameter tells us which block is being requested.
+  $block = array();
+  switch ($delta) {
+    case 'pivot_campaign_hero':
+      $block['content'] = pivot_campaign_hero();
+      break;
+  }
+  return $block;
+  }
+
+function pivot_campaign_hero() {
+  // dpm(get_defined_vars(), 'defined vars');
+}
+
+
+
+
+
+
+
+
+
+
