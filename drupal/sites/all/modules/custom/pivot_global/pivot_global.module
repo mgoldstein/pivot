@@ -28,6 +28,15 @@ function pivot_global_entity_info_alter(&$entity_info) {
 }
 
 /**
+* Prevent Drupal from checking for updates on custom created modules
+**/
+function pivot_global_update_projects_alter(&$projects) {
+  unset($projects['pivot_global']);
+  unset($projects['pivot_campaign']);
+  unset($projects['pivot_hero']);
+  unset($projects['pivot_dml']);
+}
+/**
 * Implements hook_preprocess_node().
 */
 function pivot_global_preprocess_node(&$vars) {

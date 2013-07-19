@@ -11,7 +11,7 @@ $zen-gutter-width: 20px;
 #content {
 	// .primary is 2/3 width if there's no sidebar,
 	// full width if there is one
-	.primary {
+	> .primary {
 		max-width: 620px; // border-box includes padding
 		margin: 0 auto;
 		@media (min-width: 1000px) {
@@ -23,7 +23,7 @@ $zen-gutter-width: 20px;
 		}
 	}
 
-	.secondary {
+	> .secondary {
 		width: 300px;
 		margin: 0 auto;
 		text-align: center;

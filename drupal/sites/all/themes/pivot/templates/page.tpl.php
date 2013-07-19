@@ -40,7 +40,7 @@
           <ul class="action-links"><?php print render($action_links); ?></ul>
         <?php endif; ?>
         <?php print render($page['content']); ?>
-      </div><!-- /#content -->
+      </div>
 
       <?php if ($right_sidebar): ?>
       <?php print $right_sidebar; ?>
@@ -48,7 +48,7 @@
 
       <?php print render($page['suffix']); ?>
 
-    </div>
+    </div><!-- /#content -->
   </main><!-- /#main -->
 
   <?php // footer will always render ?>

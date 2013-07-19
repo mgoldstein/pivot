@@ -1,0 +1,111 @@
+<?php
+
+
+function pivot_campaign_menu() {
+
+  $items['admin/config/campaign'] = array(
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('pivot_campaign_config'),
+    'access arguments' => array('administer nodes'),
+  );
+
+  return $items;
+}
+
+
+ function pivot_campaign_config(){
+  $form['pivot_campaign_path'] = array(
+    '#type' => 'form',
+    '#title' => t('Campaign Config'),
+    '#description' => t("Path with no leading or trailing slash.  Example 'campaign/dml"),
+  );
+
+  $form = system_settings_form($form);
+  return $form;
+}
+
+
+ function pivot_campaign_block_info(){
+  $blocks = array();
+  $blocks['pivot_campaign_hero'] = array(
+    'info' => t('Campaign Hero')
+   );
+  return $blocks;
+ }
+
+
+function pivot_campaign_block_view($delta = ''){
+  //The $delta parameter tells us which block is being requested.
+  $block = array();
+  switch ($delta) {
+    case 'pivot_campaign_hero':
+      $block['content'] = pivot_campaign_hero();
+      break;
+  }
+  return $block;
+  }
+
+function pivot_campaign_hero() {
+  $node = node_load(arg(1));
+  $hero_image = '<img src="'.file_create_url($node->field_header_image['und'][0]['uri']). '" alt="'. $node->field_promo_headline['und'][0]['value']. '">';
+  $ad_link = '';  //TODO figure out where this information is coming from
+  $ad_image = '<img src="/files/show-hero-ad.png" alt="Pepsi Ad">'; //TODO figure out where this information is coming from
+  $headline_link = l($node->title, 'node/'. $node->nid);
+  $hero_menu = ''; //create superfish menu
+
+  return theme('pivot_campaign_hero', array('node' => $node, 'hero_image' => $hero_image, 'ad_link' => $ad_link, 'ad_image' => $ad_image, 'headline_link' => $headline_link, 'hero_menu' => $hero_menu));
+}
+
+function pivot_campaign_theme() {
+  return array(
+    'pivot_campaign_hero' => array(
+      'variables' => array(
+        'node' => '',
+        'hero_image' => '',
+        'hero_menu' => '',
+        'ad_link' => '',
+        'ad_image' => '',
+        'headline_link' => '',
+      ),
+      'arguments' => array(),
+      'template' => 'pivot-campaign-hero'
+    ),
+  );
+}
+
+function pivot_campaign_menu_title(&$title) {
+  $title = strtolower($title);
+  $title = preg_replace("/[^a-z0-9_\s-]/", "", $title);
+  $title = preg_replace("/[\s-]+/", " ", $title);
+  $title = preg_replace("/[\s_]/", "-", $title);
+}
+function pivot_campaign_node_presave($node) {
+  if($node->type == 'campaign'){
+    $title = $node->title;
+    pivot_campaign_menu_title($node->title);
+    $menu = array(
+     'menu_name' => $title,
+     'title' => $node->title,
+     'description' => 'Campaign Menu For'. $node->title,
+    );
+    menu_save($menu); //uncomment this line when ready and no longer testing
+    $node->field_header_menu['und'][0]['value'] = $title;
+  }
+}
+
+function pivot_campaign_form_alter(&$form, &$form_state, $form_id) {
+  if($form_id == 'campaign_node_form') {
+    $form['field_header_menu']['#type'] = 'hidden';
+  }
+}
+
+function pivot_campaign_node_submit($node, $form, &$form_state) {
+  $title = $node->title;
+  pivot_campaign_menu_title($title);
+  $form_state['redirect'] = 'admin/structure/menu/manage/'. $title; //THIS DOESN'T WORK.
+}
+
+
+
+
+

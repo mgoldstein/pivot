@@ -1,0 +1,46 @@
+<?php
+
+function pivot_STARTER_CAMPAIGN_menu() {
+
+  $path = variable_get('pivot_STARTER_CAMPAIGN_path', '');
+  if(!empty($path)) {
+    $items[$path.'/FOO'] = array(
+      'page callback' => 'pivot_STARTER_CAMPAIGN_FOO_view',
+      'access arguments' => array('access content'),
+    );
+  }
+  return $items;
+}
+
+function pivot_STARTER_CAMPAIGN_form_alter(&$form, &$form_state, $form_id) {
+  dpm($form_id, 'form_id');
+  switch ($form_id)  {
+    case 'pivot_campaign_config':
+      $form['pivot_STARTER_CAMPAIGN_path'] = array (
+        '#type' => 'textfield',
+        '#title' => t('STARTER_CAMPAIGN Path'),
+        '#description' => t("Path with no leading or trailing slash.  Example 'campaign/STARTER_CAMPAIGN"),
+        '#required' => TRUE,
+        '#default_value' => variable_get('pivot_STARTER_CAMPAIGN_path', ''),
+      );
+    break;
+  }
+}
+function pivot_STARTER_CAMPAIGN_FOO_view(){
+  $output = theme('pivot_STARTER_CAMPAIGN_FOO');
+  return $output;
+}
+
+
+function pivot_STARTER_CAMPAIGN_theme() {
+  return array(
+    'pivot_STARTER_CAMPAIGN_FOO' => array(
+      'arguments' => array(),
+      'template' => 'templates/piv-STARTER_CAMPAIGN-FOO'
+    ),
+  );
+}
+
+
+
+

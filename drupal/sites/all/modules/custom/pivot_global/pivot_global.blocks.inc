@@ -73,16 +73,37 @@ function pivot_global_block_view($block_name) {
 
 
 function pivot_global_header() {
-  $output = ' <div class="primary">
+  $output = '<div class="primary">
     <div class="site-wrapper">
       <a class="logo" href="/"><p class="headline">Pivot</p></a>
 
       <nav class="nav nav-primary">
         <h1 class="headline">Site Navigation</h1>
-        <ul>
-        </ul>
+        ' . drupal_render(menu_tree('menu-primary')) . '
       </nav>
     </div>
   </div>';
+
+  //TODO Integrate with Druapl and Search
+  // $output .= '<div class="secondary">
+  //     <nav class="nav nav-secondary site-wrapper">
+  //         <h1 class="headline">More Site Navigation</h1>
+  //         <div class="find-pivot">
+  //             <a class="important" href="#">Find <span class="pivot">Pivot</span> in your area</a>
+  //         </div>
+  //         <div class="search">
+  //             <form action="#">
+  //                 <label for="search-text">Search Pivot</label>
+  //                 <span class="input-text">
+  //                     <input type="text" results="5" placeholder="" name="search" id="search-text">
+  //                 </span>
+  //                 <span class="input-submit">
+  //                     <input type="submit" class="submit" value="Search">
+  //                 </span>
+  //             </form>
+  //         </div>
+  //     </nav>
+  //   </div>';
+
   return $output;
 }

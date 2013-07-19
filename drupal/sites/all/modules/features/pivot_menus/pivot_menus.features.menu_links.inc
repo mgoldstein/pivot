@@ -251,14 +251,18 @@ function pivot_menus_menu_default_menu_links() {
     'router_path' => '',
     'link_title' => 'Schedule',
     'options' => array(
-      'attributes' => array(),
+      'attributes' => array(
+        'class' => array(
+          0 => 'schedule',
+        ),
+      ),
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -48,
+    'weight' => -46,
   );
   // Exported menu link: menu-secondary:<front>
   $menu_links['menu-secondary:<front>'] = array(
