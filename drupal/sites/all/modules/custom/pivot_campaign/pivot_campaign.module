@@ -80,16 +80,16 @@ function pivot_campaign_menu_title(&$title) {
   $title = preg_replace("/[\s_]/", "-", $title);
 }
 function pivot_campaign_node_presave($node) {
-  if($node->type == 'campaign'){
+  if($node->type == 'campaign' && !isset($node->field_header_menu['und'][0]['value'])){
     $title = $node->title;
-    pivot_campaign_menu_title($node->title);
+    pivot_campaign_menu_title($title);
     $menu = array(
-     'menu_name' => $title,
+     'menu_name' => 'campaign-'. $title,
      'title' => $node->title,
      'description' => 'Campaign Menu For'. $node->title,
     );
     menu_save($menu); //uncomment this line when ready and no longer testing
-    $node->field_header_menu['und'][0]['value'] = $title;
+    $node->field_header_menu['und'][0]['value'] = 'campaign-'. $title;
   }
 }
 
@@ -102,7 +102,7 @@ function pivot_campaign_form_alter(&$form, &$form_state, $form_id) {
 function pivot_campaign_node_submit($node, $form, &$form_state) {
   $title = $node->title;
   pivot_campaign_menu_title($title);
-  $form_state['redirect'] = 'admin/structure/menu/manage/'. $title; //THIS DOESN'T WORK.
+  $form_state['redirect'] = 'admin/structure/menu/manage/campaign-'. $title; //THIS DOESN'T WORK.
 }
 
 
