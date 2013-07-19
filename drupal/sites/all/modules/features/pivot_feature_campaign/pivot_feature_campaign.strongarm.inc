@@ -144,5 +144,54 @@ function pivot_feature_campaign_strongarm() {
   $strongarm->value = 0;
   $export['node_submitted_campaign'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_enable_campaign';
+  $strongarm->value = 1;
+  $export['scheduler_publish_enable_campaign'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_required_campaign';
+  $strongarm->value = 0;
+  $export['scheduler_publish_required_campaign'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_revision_campaign';
+  $strongarm->value = 0;
+  $export['scheduler_publish_revision_campaign'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_touch_campaign';
+  $strongarm->value = 0;
+  $export['scheduler_publish_touch_campaign'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_enable_campaign';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_enable_campaign'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_required_campaign';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_required_campaign'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_revision_campaign';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_revision_campaign'] = $strongarm;
+
   return $export;
 }
