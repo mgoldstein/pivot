@@ -142,5 +142,54 @@ function pivot_hs_strongarm() {
   $strongarm->value = 0;
   $export['node_submitted_homepage_slide'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_enable_homepage_slide';
+  $strongarm->value = 0;
+  $export['scheduler_publish_enable_homepage_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_required_homepage_slide';
+  $strongarm->value = 0;
+  $export['scheduler_publish_required_homepage_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_revision_homepage_slide';
+  $strongarm->value = 0;
+  $export['scheduler_publish_revision_homepage_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_touch_homepage_slide';
+  $strongarm->value = 0;
+  $export['scheduler_publish_touch_homepage_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_enable_homepage_slide';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_enable_homepage_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_required_homepage_slide';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_required_homepage_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_revision_homepage_slide';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_revision_homepage_slide'] = $strongarm;
+
   return $export;
 }

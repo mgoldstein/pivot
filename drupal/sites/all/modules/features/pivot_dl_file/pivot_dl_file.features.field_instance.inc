@@ -105,7 +105,14 @@ function pivot_dl_file_field_default_field_instances() {
         'file_entity_inline' => 1,
         'file_entity_inline_fields' => array(),
         'filefield_sources' => array(
-          'filefield_sources' => array(),
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
           'source_attach' => array(
             'absolute' => 0,
             'attach_mode' => 'move',
@@ -118,6 +125,7 @@ function pivot_dl_file_field_default_field_instances() {
             'autocomplete' => 0,
           ),
         ),
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'progress_indicator' => 'bar',
       ),
       'type' => 'file_generic',
@@ -157,6 +165,7 @@ function pivot_dl_file_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_section_ref',
     'label' => 'Section Reference',
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -165,11 +174,8 @@ function pivot_dl_file_field_default_field_instances() {
       'module' => 'entityreference',
       'settings' => array(
         'match_operator' => 'CONTAINS',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
-        'references_dialog_add' => 0,
-        'references_dialog_edit' => 0,
-        'references_dialog_search' => 0,
-        'references_dialog_search_view' => '',
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
