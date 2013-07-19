@@ -1,7 +1,7 @@
 <?php
 
 define('DIGITAL_MEDIA_LITERACY_BASE_PATH', 'dml');
-define('DIGITAL_MEDIA_LITERACY_THEME_PATH', 'sites/all/themes/pivot/tempates/dml');
+define('DIGITAL_MEDIA_LITERACY_THEME_PATH', 'sites/all/themes/pivot/templates/dml');
 
 function pivot_dml_menu() {
 
@@ -44,11 +44,11 @@ function pivot_dml_get_path($item) {
   switch ($item) {
 
     case 'js':
-      return DIGITAL_MEDIA_LITERACY_THEME_PATH . '/js';
+      return DIGITAL_MEDIA_LITERACY_THEME_PATH . '/public/js';
     case 'css':
-      return DIGITAL_MEDIA_LITERACY_THEME_PATH . '/css';
+      return DIGITAL_MEDIA_LITERACY_THEME_PATH . '/public/css';
     case 'images':
-      return DIGITAL_MEDIA_LITERACY_THEME_PATH . '/images';
+      return DIGITAL_MEDIA_LITERACY_THEME_PATH . '/public/images';
     case 'templates':
       return DIGITAL_MEDIA_LITERACY_THEME_PATH;
   }
@@ -57,3 +57,4 @@ function pivot_dml_get_path($item) {
 function pivot_dml_get_root_path() {
   return '/pivot/pivot-tv/drupal';
 }
+

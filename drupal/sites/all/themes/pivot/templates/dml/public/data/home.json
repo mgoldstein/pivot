@@ -1,0 +1,36 @@
+{
+    "infographic": {
+        "img": "public/images/hero-fpo.png",
+        "imgLarge": "public/images/infographic-large.png",
+        "share": {
+            "facebook": {
+                "data_link": "?share=infographic",
+                "data_image": "/public/images/hero-fpo.png",
+                "data_name": "name",
+                "data_caption": "caption",
+                "data_description": "description"
+            },
+            "twitter": {
+                "link": "?share=infographic"
+            },
+            "gplus": {
+                "link": "?share=infographic"
+            },
+            "email": {
+                "subject": "share subject",
+                "body": "check out this site",
+                "link": "?share=infographic"
+            }
+        }
+    },
+    "videos": {
+        "video_one": {
+            "data_file": "public/data/video/demo.mp4",
+            "data_image": "public/data/video/demo-1.jpg"
+        },
+        "video_two": {
+            "data_file": "public/data/video/demo.mp4",
+            "data_image": "public/data/video/demo-2.jpg"
+        }
+    }
+}
