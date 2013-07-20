@@ -166,6 +166,19 @@ function STARTERKIT_preprocess_page(&$variables, $hook) {
 // */
 
 /**
+ * Render or hide final page variables.
+ *
+ * $param $variables
+ *   An array of variables to pass to the theme template.
+ */
+function pivot_process_page(&$variables) {
+  //unset title for nodes.
+  if ($variables['node']->type == 'article'){
+    unset($variables['title']);
+  }
+}
+
+/**
  * Override or insert variables into the node templates.
  *
  * @param $variables
@@ -189,6 +202,11 @@ function pivot_preprocess_node__video(&$variables, $hook) {
   if($video_node = node_load($variables['nid'])) {
     $variables['video_title'] = check_plain($video_node->title);
   }
+}
+
+function pivot_preprocess_node__article(&$variables, $hook) {
+  // TODO hard coding this is hacky
+  $variables['article_fb_comments_url'] = 'http://www.pivot.tv' . $variables['node_url'];
 }
 
 /**
@@ -273,6 +291,21 @@ function pivot_field__field_video_longtail_video_id__video($variables) {
 
   // Render the top-level DIV.
   $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+
+  return $output;
+}
+
+/**
+ * Implements theme_field().
+ *
+ * Output HTML for a person reference as the author of an article
+ */
+function pivot_field__field_person_ref__article($variables) {
+  $output = '';
+
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<span class="author">' . drupal_render($item) . '</span>';
+  }
 
   return $output;
 }
