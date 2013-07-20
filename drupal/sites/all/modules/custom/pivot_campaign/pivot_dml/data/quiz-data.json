@@ -112,7 +112,7 @@
                     "correct": false
                 }
             ],
-            "correct": "Yup, it’s true! Newspapers, radio and even TV are so yesterday. According to a <a target=\"_blank\" href=\"http://www.people-press.org/2011/01/04/internet-gains-on-television-as-publics-main-news-source/\">2011 study</a> an overwhelming 65% of people 18-29 \nprefer to get their news from a variety of digital platforms, including online, email, social media, podcasts and <a href=\"http://www.people-press.org/2012/09/27/section-1-watching-reading-and-listening-to-the-news-3/\" target=\"_blank\">more</a>.",
+            "correct": "Yup, it's true! Newspapers, radio and even TV are so yesterday. According to a 2012 study, over 60% of people 18-29 prefer to get their news from a variety of digital platforms, including online, email, social media, podcasts and <a href=\"http://www.people-press.org/2012/09/27/section-1-watching-reading-and-listening-to-the-news-3/\" target=\"_blank\">more</a>.",
             "incorrect": ""
         },
         {
@@ -142,7 +142,7 @@
                     "correct": false
                 }
             ],
-            "correct": "Yup, it’s true! Newspapers, radio and even TV are so yesterday. According to a 2012 study, over 60% of people 18-29 prefer to get their news from a variety of digital platforms, including online, email, social media, podcasts and <a href=\"http://www.people-press.org/2012/09/27/section-1-watching-reading-and-listening-to-the-news-3/\" target=\"_blank\">more</a>.",
+            "correct": "True! According to the <a target=\"_blank\" href=\"http://whomakesthenews.org\">Global Media Monitoring Project</a>, women are drastically underrepresented as newsmakers, experts, and even as subject matter in news stories. You can help mainstream media catch up to modern times <a href=\"http://www.womensmediacenter.com\" target=\"_blank\">here</a>",
             "incorrect": ""
         },
         {
@@ -157,7 +157,7 @@
                     "correct": true
                 }
             ],
-            "correct": "Seriously false. The company can and will. As <a target=\"_blank\" href=\"http://online.wsj.com/article/SB10001424127887324640104578165651354042798.html?mod=WSJ_WhatTheyKnowPrivacy_LeftTopNews\">this graphic</a> shows, some sites play pretty loose with their users’ info. A <a target=\"_blank\" href=\"http://online.wsj.com/article/SB10001424127887324784404578143144132736214.html?mod=WSJ_WhatTheyKnowPrivacy_LeftTopNews\">2011 study</a> found that 56% of 100 popular websites leaked personal data about their users to third parties (ever wonder why you’re starting to see ads for stuff you might actually want?).",
+            "correct": "Seriously false. As <a target=\"_blank\" href=\"http://online.wsj.com/article/SB10001424127887324640104578165651354042798.html?mod=WSJ_WhatTheyKnowPrivacy_LeftTopNews\">this graphic</a> shows, some sites play pretty loose with their users’ info. A <a target=\"_blank\" href=\"http://online.wsj.com/article/SB10001424127887324784404578143144132736214.html?mod=WSJ_WhatTheyKnowPrivacy_LeftTopNews\">2011 study</a> found that 56% of 100 popular websites leaked personal data about their users to third parties (ever wonder why you’re starting to see ads for stuff you might actually want?).",
             "incorrect": ""
         }
     ],
@@ -171,7 +171,7 @@
             "url": "https://www.eff.org/action"
         },
         {
-            "name": "Is it true? Confirm or deny internet rumors",
+            "name": "Confirm or deny internet rumors",
             "url": "http://factcheck.org/hot-topics"
         },
         {
@@ -179,7 +179,7 @@
             "url": "https://disconnect.me"
         },
         {
-            "name": "What Terms & Conditions really say",
+            "name": "What Terms & Conditions mean",
             "url": "http://tosdr.org"
         },
         {
@@ -191,7 +191,7 @@
             "url": "http://fair.org/take-action/action-alerts   "
         },
         {
-            "name": "See how your personal data is shared online ",
+            "name": "How your personal data is shared online ",
             "url": "http://online.wsj.com/article/SB10001424127887324640104578165651354042798.html?mod=WSJ_WhatTheyKnowPrivacy_LeftTopNews"
         },
         {
@@ -222,7 +222,7 @@
             "link": "/quiz"
         },
         "email": {
-            "subject": "share subject",
+            "subject": "Put Your Media & Privacy Smarts to the Test",
             "body": "check out this site",
             "link": "/quiz"
         }

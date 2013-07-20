@@ -84,7 +84,7 @@ function init_home() {
 		startSlide: 	0,
 		autoHover: 		true,
 		onSliderLoad: function() {
-			$('div.tweets ul').removeClass('hidden');
+			$('div.tweets ul').removeClass('start');
 		}
 	});
 	
@@ -102,37 +102,64 @@ function init_home() {
 
 	
 	// check URL and load lightbox
-	if (getURLParameter('share') == 'infographic') {			
-		// check cookie and load lightbox
-		if (document.cookie.indexOf('visited=true') === -1) {
-		    var expires = new Date();
-		    expires.setDate(expires.getDate()+1); //expire after 1 day
-		    document.cookie = "visited=true; expires="+expires.toUTCString();
-		    var url = $('a[rel="lightbox"]').attr('href');
-			$.colorbox({href:url});
+	var useCookie = false;
+	if (useCookie == true) {
+		if (getURLParameter('share') == 'infographic') {			
+			// check cookie and load lightbox
+			if (document.cookie.indexOf('visited=true') === -1) {
+			    var expires = new Date();
+			    expires.setDate(expires.getDate()+1); //expire after 1 day
+			    document.cookie = "visited=true; expires="+expires.toUTCString();
+			    $('a[rel="lightbox"]').magnificPopup('open');
+			}		
 		}
-		
-		
+	} else {
+		if (getURLParameter('share') == 'infographic') {			
+			$('a[rel="lightbox"]').magnificPopup('open');	
+		}
 	}
 	
-	// initialize video players
-	var v1File = $('#video-one').data('file');
-	var v1Image = $('#video-one').data('image');
-	jwplayer("video-one").setup({
-	        file: v1File,
-	        image: v1Image,
-			width: 437,
-			height: 246 
-	});
-	
-	var v2File = $('#video-two').data('file');
-	var v2Image = $('#video-two').data('image');
-	jwplayer("video-two").setup({
-	        file: v2File,
-	        image: v2Image,
-			width: 437,
-			height: 246 
-	});
+}
+
+function quizCallbacks(trigger, message) {
+	var messageObj = JSON.parse(message);
+
+	switch (trigger) {
+		case "quiz loaded":
+			s.linkTrackVars = 'prop68,eVar30,events';
+			s.linkTrackEvents = 'event80';
+			s.events = 'event80';
+			s.eVar30 = s.pageName;
+			s.tl(true, 'o', 'Quiz Loaded');
+			break;
+		case "question loaded":
+			s.linkTrackVars = 'prop68,eVar30,events';
+			s.linkTrackEvents = 'event81';
+			s.events = 'event81';
+			s.eVar68 = messageObj.message;
+			s.eVar30 = s.pageName;
+			s.tl(true, 'o', 'Clicks to View Quiz Question');
+			break;
+		case "response":
+			if (messageObj.response == 'correct') {
+				s.linkTrackVars = 'prop68,eVar30,events';
+				s.linkTrackEvents = 'event82,event83';
+				s.events = 'event82,event83';
+				s.eVar68 = messageObj.message;
+				s.eVar30 = s.pageName;
+				s.tl(true, 'o', 'Quiz Answer: Right');
+			} else {
+				s.linkTrackVars= 'prop68,eVar30,events';
+				s.linkTrackEvents = 'event82,event84';
+				s.events = 'event82,event84';
+				s.eVar68 = messageObj.message;
+				s.eVar30 = s.pageName;
+				s.tl(true, 'o', 'Quiz Answer: Wrong');
+			}
+			break;
+		default:
+			// do nothing
+	}
 }
 
 function init_quiz() {
@@ -150,12 +177,14 @@ function init_quiz() {
 					var messageObj = JSON.parse(message);
 					console.log('response: ' + messageObj.response + '\nindex: ' + messageObj.index + '\nmessage: ' + messageObj.message);
 					$('div.icons div').eq(messageObj.index).addClass(messageObj.response);
+					quizCallbacks(trigger, message);
 				} else if (trigger == 'question loaded') {
 					var messageObj = JSON.parse(message);
-					console.log('index: ' + messageObj.index + '\nmessage: ' + messageObj.message);
+					console.log("trigger: "+trigger+'\nindex: ' + messageObj.index + '\nmessage: ' + messageObj.message);
 					var index = parseInt(messageObj.index);
 					$('#quiz-container div.content').attr('class','content q'+ (index +1));
 					$('#quiz-container div.icons').attr('class','icons q'+ (index +1));
+					quizCallbacks(trigger, message);
 				} else if (trigger == 'quiz completed') {
 					$('#quiz-container div.content').attr('class','content results');
 					$('#quiz-container div.icons').attr('class','icons');

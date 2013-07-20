@@ -346,7 +346,7 @@ JSON.parse = JSON.parse || function (str) {
                         firstQuestion.fadeIn(500);
                     }
 					$('.quizName, .quizHeader').hide();
-					var questionText = $('#' + selector + ' .questions li:eq(0) h3').text();
+					var questionText = $('#' + selector + ' .questions li:eq(0) p').text();
 					questionText = questionText.substring(0,100);
 					var message = '{"index":"0", "message": "'+questionText+'"}';
 					doCallback('question loaded', message);
@@ -356,7 +356,7 @@ JSON.parse = JSON.parse || function (str) {
             // Validates the response selection(s), displays explanations & next question button
             checkAnswer: function(checkButton) {
                 var questionLI   = $($(checkButton).parents('li.question')[0]),
-					questionText = questionLI.find('h3').text().substring(0,100),
+					questionText = questionLI.find('p').text().substring(0,100),
                     answerInputs = questionLI.find('input:checked'),
                     answers      = questions[parseInt(questionLI.attr('id').replace(/(question)/, ''))].a;
 

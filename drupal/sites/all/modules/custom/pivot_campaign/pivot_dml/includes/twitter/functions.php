@@ -60,10 +60,10 @@ function create_cache() {
 	    fclose($fh);
 
 	    if (file_exists($file)) {
-	       global $feedResults;
-		   $feedResults = json_decode(file_get_contents(CACHE_PATH . TWITTER_USER . "-tweets.apicache"));
+	       //global $feedResults;
+		   //$feedResults = json_decode(file_get_contents(CACHE_PATH . TWITTER_USER . "-tweets.apicache"));
 	    } else {
-	       // echo "Error encountered. File could not be written.";
+	        echo "<script>console.log('Error encountered. File could not be written.');</script>";
 	    }
 	}
 	

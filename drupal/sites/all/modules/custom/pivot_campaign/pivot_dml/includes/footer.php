@@ -11,8 +11,6 @@
 		<![endif]-->
 
 		<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-		<script type="text/javascript" src="/<?php echo pivot_dml_get_path('templates'); ?>/public/js/vendor/jwplayer/jwplayer.js"></script>
-		<script type="text/javascript">jwplayer.key="uE125Rf0zDKwRVoRmVig28urRrJdVY/JN7afTA==";</script>
 		
 		<script type="text/javascript">
 			window.fbAsyncInit = function() {

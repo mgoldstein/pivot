@@ -75,7 +75,9 @@
 	       		</div>
 				<div class="right">
 					<div class="row video">
-						<div id="video-one" data-file="/<?php echo pivot_dml_get_path('templates'); ?>/<?php echo $homeData->videos->video_one->data_file; ?>" data-image="/<?php echo pivot_dml_get_path('templates'); ?>/<?php echo $homeData->videos->video_one->data_image; ?>">Loading video...</div>
+						<div id="video-one">
+							<script type="text/javascript" src="http://video.takepart.com/players/<?php echo $homeData->videos->video_one->video_code; ?>-n2uhTYdH.js"></script>
+						</div>
 					</div>
 					<div class="row cta">
 						<div class="left">
@@ -92,7 +94,9 @@
 						</div>
 					</div>
 					<div class="row video">
-						<div id="video-two" data-file="/<?php echo pivot_dml_get_path('templates'); ?>/<?php echo $homeData->videos->video_two->data_file; ?>" data-image="/<?php echo pivot_dml_get_path('templates'); ?>/<?php echo $homeData->videos->video_two->data_image; ?>">Loading video...</div>
+						<div id="video-two">
+							<script type="text/javascript" src="http://video.takepart.com/players/<?php echo $homeData->videos->video_two->video_code; ?>-n2uhTYdH.js"></script>
+						</div>
 					</div>
 					<div class="row bottom">
 						<div class="twitter-feed">
@@ -101,7 +105,7 @@
 								<a href="https://twitter.com/intent/user?screen_name=<?php if (TWITTER_USER != null) echo TWITTER_USER; ?>" class="btn follow">follow us</a>
 							</div>
 							<div class="tweets">
-							<ul class="hidden">
+							<ul class="start">
 							<?php include_once('includes/create-twitter-feed.php'); ?>
 							</ul>
 							</div>
