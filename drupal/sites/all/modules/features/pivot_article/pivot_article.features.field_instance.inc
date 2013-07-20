@@ -114,12 +114,12 @@ function pivot_article_field_default_field_instances() {
     'display' => array(
       'default' => array(
 	'label' => 'hidden',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
+	'module' => 'image',
+	'settings' => array(
+	  'image_link' => '',
+	  'image_style' => 'blog_article',
+	),
+	'type' => 'image',
 	'weight' => 2,
       ),
       'promo' => array(
