@@ -1,0 +1,10 @@
+name = Taxonomy
+description = Global taxonomies for the Pivot website
+core = 7.x
+package = Content Types
+version = 7.x-1.0
+project = pivot_taxonomy
+dependencies[] = features
+dependencies[] = taxonomy
+features[features_api][] = api:2
+features[taxonomy][] = global_tags

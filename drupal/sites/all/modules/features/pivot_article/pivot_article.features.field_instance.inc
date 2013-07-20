@@ -106,6 +106,52 @@ function pivot_article_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-article-field_global_tags'
+  $field_instances['node-article-field_global_tags'] = array(
+    'bundle' => 'article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Add as many tags as you like. The tags are "global" because they can be used to categorize any type of content on the site.',
+    'display' => array(
+      'default' => array(
+	'label' => 'above',
+	'settings' => array(),
+	'type' => 'hidden',
+	'weight' => 4,
+      ),
+      'promo' => array(
+	'label' => 'above',
+	'settings' => array(),
+	'type' => 'hidden',
+	'weight' => 0,
+      ),
+      'teaser' => array(
+	'label' => 'above',
+	'settings' => array(),
+	'type' => 'hidden',
+	'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_global_tags',
+    'label' => 'Tags',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+	'autocomplete_path' => 'taxonomy/autocomplete',
+	'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+	'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-article-field_main_image'
   $field_instances['node-article-field_main_image'] = array(
     'bundle' => 'article',
@@ -240,12 +286,12 @@ function pivot_article_field_default_field_instances() {
     'display' => array(
       'default' => array(
 	'label' => 'hidden',
-        'settings' => array(),
+	'settings' => array(),
 	'type' => 'hidden',
-	'weight' => 4,
+	'weight' => 5,
       ),
       'promo' => array(
-        'label' => 'above',
+	'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
@@ -285,12 +331,12 @@ function pivot_article_field_default_field_instances() {
     'display' => array(
       'default' => array(
 	'label' => 'hidden',
-        'settings' => array(),
+	'settings' => array(),
 	'type' => 'hidden',
-	'weight' => 6,
+	'weight' => 7,
       ),
       'promo' => array(
-        'label' => 'above',
+	'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
@@ -328,13 +374,13 @@ function pivot_article_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+	'label' => 'above',
 	'settings' => array(),
 	'type' => 'hidden',
-	'weight' => 5,
+	'weight' => 6,
       ),
       'promo' => array(
-        'label' => 'above',
+	'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
@@ -400,10 +446,10 @@ function pivot_article_field_default_field_instances() {
 	'label' => 'hidden',
 	'settings' => array(),
 	'type' => 'hidden',
-	'weight' => 7,
+	'weight' => 8,
       ),
       'promo' => array(
-        'label' => 'above',
+	'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
@@ -441,6 +487,7 @@ function pivot_article_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Add as many tags as you like. The tags are "global" because they can be used to categorize any type of content on the site.');
   t('Author');
   t('Body');
   t('Image');
@@ -449,6 +496,7 @@ function pivot_article_field_default_field_instances() {
   t('Promo Image');
   t('Section Reference');
   t('Subtitle');
+  t('Tags');
 
   return $field_instances;
 }

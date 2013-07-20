@@ -93,17 +93,17 @@ function pivot_article_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '0',
-        ),
-        'path' => array(
-	  'weight' => '9',
+	  'weight' => '0',
+	),
+	'path' => array(
+	  'weight' => '10',
 	),
 	'metatags' => array(
-	  'weight' => '11',
+	  'weight' => '12',
 	),
 	'redirect' => array(
-	  'weight' => '10',
-        ),
+	  'weight' => '11',
+	),
       ),
       'display' => array(),
     ),
