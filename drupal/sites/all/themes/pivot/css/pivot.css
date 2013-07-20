@@ -740,7 +740,7 @@ a:active {
   margin: 0 0 10px;
 }
 /* line 613, ../sass/_pivot-global.scss */
-.node-type-article #content .node-article .field-name-field-promo-abstract {
+.node-type-article #content .node-article .field-name-field-article-subtitle {
   color: #c40066;
   font-size: 13px;
   margin-bottom: 10px;

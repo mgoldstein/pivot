@@ -18,11 +18,11 @@ function pivot_article_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+	'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+	'weight' => 3,
       ),
       'promo' => array(
         'label' => 'above',
@@ -54,7 +54,55 @@ function pivot_article_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 7,
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-article-field_article_subtitle'
+  $field_instances['node-article-field_article_subtitle'] = array(
+    'bundle' => 'article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+	'label' => 'hidden',
+	'module' => 'text',
+	'settings' => array(),
+	'type' => 'text_default',
+	'weight' => 0,
+      ),
+      'promo' => array(
+	'label' => 'above',
+	'settings' => array(),
+	'type' => 'hidden',
+	'weight' => 0,
+      ),
+      'teaser' => array(
+	'label' => 'above',
+	'settings' => array(),
+	'type' => 'hidden',
+	'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_article_subtitle',
+    'label' => 'Subtitle',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+	'maxlength_js' => 0,
+	'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+	'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
     ),
   );
 
@@ -65,14 +113,14 @@ function pivot_article_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+	'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
           'image_style' => '',
         ),
         'type' => 'image',
-        'weight' => 3,
+	'weight' => 2,
       ),
       'promo' => array(
         'label' => 'above',
@@ -126,7 +174,7 @@ function pivot_article_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -138,13 +186,13 @@ function pivot_article_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+	'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+	  'link' => 0,
         ),
         'type' => 'entityreference_label',
-        'weight' => 4,
+	'weight' => 1,
       ),
       'promo' => array(
         'label' => 'above',
@@ -179,7 +227,7 @@ function pivot_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -191,11 +239,10 @@ function pivot_article_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'text',
+	'label' => 'hidden',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
+	'type' => 'hidden',
+	'weight' => 4,
       ),
       'promo' => array(
         'label' => 'above',
@@ -225,7 +272,7 @@ function pivot_article_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -237,11 +284,10 @@ function pivot_article_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'text',
+	'label' => 'hidden',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
+	'type' => 'hidden',
+	'weight' => 6,
       ),
       'promo' => array(
         'label' => 'above',
@@ -271,7 +317,7 @@ function pivot_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -283,13 +329,9 @@ function pivot_article_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 6,
+	'settings' => array(),
+	'type' => 'hidden',
+	'weight' => 5,
       ),
       'promo' => array(
         'label' => 'above',
@@ -343,7 +385,7 @@ function pivot_article_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -355,13 +397,10 @@ function pivot_article_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 0,
+	'label' => 'hidden',
+	'settings' => array(),
+	'type' => 'hidden',
+	'weight' => 7,
       ),
       'promo' => array(
         'label' => 'above',
@@ -396,7 +435,7 @@ function pivot_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -409,6 +448,7 @@ function pivot_article_field_default_field_instances() {
   t('Promo Headline');
   t('Promo Image');
   t('Section Reference');
+  t('Subtitle');
 
   return $field_instances;
 }

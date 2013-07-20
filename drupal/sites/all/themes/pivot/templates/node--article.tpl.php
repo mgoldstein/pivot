@@ -107,7 +107,7 @@
   <?php elseif ($page) : ?>
     <header class="header">
       <h1 class="main-headline"><?php print $title; ?></h1>
-      <?php print render($content['field_promo_abstract']); ?>
+      <?php print render($content['field_article_subtitle']); ?>
       <div class="header-secondary">
 	  <address class="authors">
 	    <span class="by">By</span>
