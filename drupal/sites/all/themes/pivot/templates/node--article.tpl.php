@@ -109,10 +109,12 @@
       <h1 class="main-headline"><?php print $title; ?></h1>
       <?php print render($content['field_article_subtitle']); ?>
       <div class="header-secondary">
+    <?php if ($byline = render($content['field_person_ref'])) : ?>
 	  <address class="authors">
 	    <span class="by">By</span>
-	    <?php print render($content['field_person_ref']); ?>
+	    <?php print $byline; ?>
 	  </address>
+    <?php endif; ?>
 	  <p class="pubdate"><?php print date("F j, Y" ,$published_at); ?></p>
 	  <p class="comment"><a href="#article-comments">Comment</a></p>
       </div>
