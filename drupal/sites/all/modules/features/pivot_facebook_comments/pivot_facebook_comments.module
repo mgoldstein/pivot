@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Facebook Comments feature.
+ */
+
+include_once 'pivot_facebook_comments.features.inc';
