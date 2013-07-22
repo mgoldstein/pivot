@@ -173,7 +173,7 @@ function STARTERKIT_preprocess_page(&$variables, $hook) {
  */
 function pivot_process_page(&$variables) {
   //unset title for nodes.
-  if ($variables['node']->type == 'article'){
+  if ($variables['node'] && $variables['node']->type == 'article'){
     unset($variables['title']);
   }
 }
@@ -205,8 +205,8 @@ function pivot_preprocess_node__video(&$variables, $hook) {
 }
 
 function pivot_preprocess_node__article(&$variables, $hook) {
-  // TODO hard coding this is hacky
-  $variables['article_fb_comments_url'] = 'http://www.pivot.tv' . $variables['node_url'];
+  global $base_url;
+  $variables['article_fb_comments_url'] = $base_url .'/'. drupal_get_path_alias($_GET['q']);
 }
 
 /**

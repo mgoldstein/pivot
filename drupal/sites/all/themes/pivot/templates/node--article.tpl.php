@@ -109,10 +109,12 @@
       <h1 class="main-headline"><?php print $title; ?></h1>
       <?php print render($content['field_article_subtitle']); ?>
       <div class="header-secondary">
+    <?php if ($byline = render($content['field_person_ref'])) : ?>
 	  <address class="authors">
 	    <span class="by">By</span>
-	    <?php print render($content['field_person_ref']); ?>
+	    <?php print $byline; ?>
 	  </address>
+    <?php endif; ?>
 	  <p class="pubdate"><?php print date("F j, Y" ,$published_at); ?></p>
 	  <p class="comment"><a href="#article-comments">Comment</a></p>
       </div>
@@ -140,6 +142,7 @@
     // We hide the comments and links now so that we can render them later.
     hide($content['comments']);
     hide($content['links']);
+    hide($content['facebook_comments']); // we print this later
     print render($content);
   ?>
 
@@ -160,14 +163,10 @@
     <section id="article-comments">
       <h3 class="headline">
 	Comments
-	<span class="comment-count"><fb:comments-count href="<?php print $article_fb_comments_url; ?>" fb-xfbml-state="rendered" class="fb_comments_count_zero"><span class="fb_comments_count">0</span></fb:comments-count></span>
+	<span class="comment-count"><fb:comments-count href="<?php print $article_fb_comments_url; ?>" class="fb_comments_count_zero"><span class="fb_comments_count">0</span></fb:comments-count></span>
       </h3>
       <div class="fb_comments">
-	<fb:comments href="<?php print $article_fb_comments_url; ?>"
-	  num_posts="15"
-	  width="580"
-	  mobile="auto-detect"
-	  colorscheme="light"></fb:comments>
+        <?php print render($content['facebook_comments']); ?>
       </div>
     </section>
   </footer>

@@ -50,5 +50,4 @@ features[field_base][] = field_show_ref
 features[field_base][] = field_show_uuid
 features[field_base][] = field_video_longtail_video_id
 features[field_base][] = field_video_youtube_media
-features[taxonomy][] = global_tags
 features[taxonomy][] = person_to_media_relationship
