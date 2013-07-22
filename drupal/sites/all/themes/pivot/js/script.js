@@ -12,32 +12,6 @@
 // - http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth
 (function ($, Drupal, window, document, undefined) {
 
-	/**
-	 * Add the Facebook JS SDK to the page.
-	 */
-	window.fbAsyncInit = function() {
-		// init the FB JS SDK
-		FB.init({
-			appId      : '247137505296280',                    // App ID from the app dashboard
-			channelUrl : '//gallery-redesign.dev.takepart.com/facebook/channel', // Channel file for x-domain comms
-			status     : true,                                 // Check Facebook Login status
-			cookie     : true,
-			xfbml      : true                                  // Look for social plugins on the page
-		});
-
-		// Additional initialization code such as adding Event Listeners goes here
-  };
-
-	// Load the SDK asynchronously
-	(function(d, s, id){
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) {return;}
-		js = d.createElement(s); js.id = id;
-		js.src = "//connect.facebook.net/en_US/all.js";
-		fjs.parentNode.insertBefore(js, fjs);
-	 }(document, 'script', 'facebook-jssdk'));
-
-
 	Drupal.behaviors.globalNavigationResponsive = {
 		attach: function() {
 			$('body').delegate('#site-header .primary', 'click', function(event) {
