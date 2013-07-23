@@ -6,6 +6,7 @@ $json_string = file_get_contents(drupal_get_path('module', 'pivot_dml'). '/data/
 # Parse data
 $headerData = json_decode($json_string);
 $path = variable_get('pivot_dml_path', '');
+global $base_url;
 ?>
 
 <div id="fb-root"></div>
@@ -13,7 +14,8 @@ $path = variable_get('pivot_dml_path', '');
 
 		<div class="dml-header">
 
-			<div class="logo"><a href="/homepage"><img src="/<?php echo drupal_get_path('module', 'pivot_dml'); ?>/images/nav-logo.png" width="172" height="42" alt="Nav Logo"></a></div>
+
+			<div class="logo"><?php print l('<img src="'. $base_url. '/'. drupal_get_path('module', 'pivot_dml'). '/images/nav-logo.png" width="172" height="42" alt="Nav Logo">', '<front>', array('html' => true)); ?></div>
 			<nav>
 				<ul>
 					<li class=""><?php print l('home', $path); ?></li>
