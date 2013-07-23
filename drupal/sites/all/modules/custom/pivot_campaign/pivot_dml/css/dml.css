@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -2001,3 +2001,26 @@ body.page-dml.page-dml-quiz div#content div.newsletter-signup form div:after {
    ========================================================================== */
 html.ie9 body.page-dml div#content div.dml-header nav li.current:after, html.ie10 body.page-dml div#content div.dml-header nav li.current:after {
   top: 5px; }
+
+
+
+
+
+
+
+/*
+* Fixes made by Pivot
+*/
+body.page-dml h1.title {
+  display: none;
+}
+body.page-dml nav.breadcrumb {
+  display: none;
+}
+@media (min-width: 1000px){
+  body.page-dml #content > .primary{
+    padding-right: 0px;
+    padding-left: 0px;
+    max-width: 980px;
+  }
+}

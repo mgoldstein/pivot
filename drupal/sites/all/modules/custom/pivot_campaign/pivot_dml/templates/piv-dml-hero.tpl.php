@@ -16,11 +16,11 @@ $headerData = json_decode($json_string);
 			<div class="logo"><a href="/pivot"><img src="/<?php echo drupal_get_path('module', 'pivot_dml'); ?>/images/nav-logo.png" width="172" height="42" alt="Nav Logo"></a></div>
 			<nav>
 				<ul>
-					<li class="<?php if ($dmlPage == "Home") echo "current"; ?>"><a href="<?php echo url('dml', array('absolute' => TRUE)); ?>">home</a></li>
-					<li class="<?php if ($dmlPage == "Quiz") echo "current"; ?>"><a href="<?php echo url('dml', array('absolute' => TRUE)); ?>/quiz">quiz</a></li>
-					<li class="<?php if ($dmlPage == "Ad Policy") echo "current"; ?>"><a href="<?php echo url('dml', array('absolute' => TRUE)); ?>/ad">ad policy</a></li>
-					<li class="<?php if ($dmlPage == "News Hub") echo "current"; ?>"><a href="<?php echo url('dml', array('absolute' => TRUE)); ?>/news">news hub</a></li>
-					<li class="last <?php if ($dmlPage == "About") echo "current"; ?>"><a href="<?php echo url('dml', array('absolute' => TRUE)); ?>/about">about</a></li>
+					<li class="<?php echo "current"; ?>"><a href="<?php echo url('dml', array('absolute' => TRUE)); ?>">home</a></li>
+					<li class=""><a href="<?php echo url('dml', array('absolute' => TRUE)); ?>/quiz">quiz</a></li>
+					<li class=""><a href="<?php echo url('dml', array('absolute' => TRUE)); ?>/ad">ad policy</a></li>
+					<li class=""><a href="<?php echo url('dml', array('absolute' => TRUE)); ?>/news">news hub</a></li>
+					<li class="last"><a href="<?php echo url('dml', array('absolute' => TRUE)); ?>/about">about</a></li>
 				</ul>
 
 			</nav>
