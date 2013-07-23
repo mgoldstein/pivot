@@ -14,7 +14,8 @@ function pivot_analytics_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'sitecatalyst_codesnippet';
-  $strongarm->value = 'if ("[current-page:url:path]" == "node") {
+  $strongarm->value = 's.trackingServer="metrics.pivot.tv";
+if ("[current-page:url:path]" == "node") {
   s.pageName = "homepage";
 } else {
   s.pageName = "[current-page:url:path]";
@@ -36,7 +37,7 @@ if(\'[node:content-type:name]\'.length > 0) {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'sitecatalyst_image_file_location';
-  $strongarm->value = 'http://takepart.122.2o7.net/b/ss/takepartpivot/1/H.25.4--NS/0';
+  $strongarm->value = 'http://metrics.pivot.tv/b/ss/takepartpivot/1/H.25.4--NS/0';
   $export['sitecatalyst_image_file_location'] = $strongarm;
 
   $strongarm = new stdClass();
