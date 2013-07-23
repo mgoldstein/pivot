@@ -636,18 +636,36 @@ a:active {
 			} // .header-secondary
 
 			.article-sidebar {
-				float: left;
-				width: 32px;
-				margin-right: 1em;
-				margin-bottom: 1em;
+				@media (min-width: 681px) {
+					float: left;
+					width: 32px;
+					margin-right: 1em;
+					margin-bottom: 1em;
+				}
+
 			}
 
 			.social {
 				padding-top: 1em;
-
 				a {
-					margin-bottom: 12px;
+					margin-right: 12px;
+
+					@media (min-width: 681px) {
+						margin-right: 0;
+						margin-bottom: 12px;
+					}
 				}
+
+				.tp-social {
+					@media (max-width: 681px) {
+						float: left;
+					}
+				}
+
+				@media (max-width: 681px) {
+					position: static !important;
+				}
+
 			}
 
 			.article-social-more {
@@ -669,8 +687,11 @@ a:active {
 
 			.article-content {
 				padding-top: 1em;
-				float: left;
-				width: 528px;
+
+				@media (min-width: 681px) {
+					float: left;
+					width: 528px;
+				}
 
 				.field-name-field-main-image {
 					margin-bottom: 1em;
