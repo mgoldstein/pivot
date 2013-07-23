@@ -1,31 +1,16 @@
-<div id="page">
-  <?php
-    $header = render($page['header']);
-    if ($header):
-  ?>
-  <header id="header" role="banner">
-    <?php print $header; ?>
-  </header>
-  <?php endif; ?>
-  <main id="main">
-    <div id="content" class="site-wrapper">
-
-
-
     <!-- CONTENT GOES HERE -->
 
 	<?php
-	$dmlPage = "Quiz";
-	require_once(DIRNAME(__FILE__) . '/includes/header.php');
 	# Load JSON
-	$json_string = file_get_contents(DIRNAME(__FILE__) . '/public/data/quiz-data.json');
+	$json_string = file_get_contents(drupal_get_path('module', 'pivot_dml'). '/data/quiz-data.json');
 	# Parse data
 	$quizData = json_decode($json_string);
+	$path = variable_get('pivot_dml_path', '');
 	?>
 
 	       <div class="row main">
 
-				<div id="quiz-container" data-file="/<?php echo pivot_dml_get_path('templates'); ?>/public/data/quiz-data.json">
+				<div id="quiz-container" data-file="/<?php echo drupal_get_path('module', 'pivot_dml'); ?>/data/quiz-data.json">
 			       <div class="content-wrapper">
 					<div class="content">
 					<h1 class="quizName"><!-- where the quiz name goes --></h1>
@@ -59,21 +44,21 @@
 						<span>share this quiz and find out!</span>
 						<ul>
 							<li>
-									<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo url('dml', array('absolute' => TRUE)).$quizData->share->facebook->data_link; ?>" class="share fb"
-										data-link="<?php echo url('dml', array('absolute' => TRUE)).$quizData->share->facebook->data_link; ?>"
-										data-image="<?php echo url('<front>', array('absolute' => TRUE)).pivot_dml_get_path('templates').$quizData->share->facebook->data_image; ?>"
+									<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo url($path, array('absolute' => TRUE)).$quizData->share->facebook->data_link; ?>" class="share fb"
+										data-link="<?php echo url($path, array('absolute' => TRUE)).$quizData->share->facebook->data_link; ?>"
+										data-image="<?php echo url('<front>', array('absolute' => TRUE)).drupal_get_path('module', 'pivot_dml').$quizData->share->facebook->data_image; ?>"
 										data-name="<?php echo $quizData->share->facebook->data_name; ?>"
 										data-caption="<?php echo $quizData->share->facebook->data_caption; ?>"
 										data-description="<?php echo $quizData->share->facebook->data_description; ?>"></a>
 							</li>
 							<li>
-								<a href="https://twitter.com/intent/tweet?url=<?php echo url('dml', array('absolute' => TRUE)).$quizData->share->twitter->link; ?>" class="twitter"></a>
+								<a href="https://twitter.com/intent/tweet?url=<?php echo url($path, array('absolute' => TRUE)).$quizData->share->twitter->link; ?>" class="twitter"></a>
 							</li>
 							<li>
-								<a href="https://plus.google.com/share?url=<?php echo url('dml', array('absolute' => TRUE)).$quizData->share->gplus->link; ?>" class="share gplus"></a>
+								<a href="https://plus.google.com/share?url=<?php echo url($path, array('absolute' => TRUE)).$quizData->share->gplus->link; ?>" class="share gplus"></a>
 							</li>
 						 	<li>
-								<a href="mailto:?subject=<?php echo urlencode($quizData->share->email->subject); ?>&amp;body=<?php echo urlencode($quizData->share->email->body); ?> <?php echo url('dml', array('absolute' => TRUE)).$quizData->share->email->link; ?>." target="_blank" class="email"></a>
+								<a href="mailto:?subject=<?php echo urlencode($quizData->share->email->subject); ?>&amp;body=<?php echo urlencode($quizData->share->email->body); ?> <?php echo url($path, array('absolute' => TRUE)).$quizData->share->email->link; ?>." target="_blank" class="email"></a>
 							</li>
 						</ul>
 						<div class="back"><a href="#">back to<br>results</a></div>
@@ -101,21 +86,10 @@
 					<form>
 						<div>
 							<input type="text" placeholder="Your email" />
-								<input type="image" src="/<?php echo pivot_dml_get_path('templates'); ?>/public/images/quiz/newsletter-submit.png"/>
+								<input type="image" src="/<?php echo drupal_get_path('module', 'pivot_dml'); ?>/images/quiz/newsletter-submit.png"/>
 						</div>
 					</form>
 				<div class="tos">	By submitting your email address above, you agree to our <a href="#" target="_blank">Terms of Use</a> and <a href="#" target="_blank">Privacy Policy</a>.</div>
 				</div>
 	       </div>
-
-
-	<?php require_once('includes/footer.php'); ?>
-
-
-
 	<!-- END CONTENT -->
-    </div>
-  </main><!-- /#main -->
-  <?php // footer will always render ?>
-  <?php print render($page['footer']); ?>
-</div><!-- /#page -->

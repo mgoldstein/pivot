@@ -1,9 +1,5 @@
     <!-- CONTENT GOES HERE -->
-
-
 	<?php
-	$dmlPage = "Home";
-
 	# Load JSON
 	$json_string = file_get_contents(drupal_get_path('module', 'pivot_dml'). '/data/home.json');
 
