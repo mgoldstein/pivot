@@ -9,7 +9,7 @@
 
 	# Parse data
 	$homeData = json_decode($json_string);
-
+	$path = variable_get('pivot_dml_path', '');
 
 	?>
 
@@ -40,21 +40,21 @@
 					</div> -->
 	<div class="share">
 		<span>share this:</span>
-		<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo url('dml', array('absolute' => TRUE)).$homeData->infographic->share->facebook->data_link; ?>" class="share fb"
-			data-link="<?php echo url('dml', array('absolute' => TRUE)).$homeData->infographic->share->facebook->data_link; ?>"
+		<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->facebook->data_link; ?>" class="share fb"
+			data-link="<?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->facebook->data_link; ?>"
 			data-image="<?php echo url('<front>', array('absolute' => TRUE)).drupal_get_path('module', 'pivot_dml').$homeData->infographic->share->facebook->data_image; ?>"
 			data-name="<?php echo $homeData->infographic->share->facebook->data_name; ?>"
 			data-caption="<?php echo $homeData->infographic->share->facebook->data_caption; ?>"
 			data-description="<?php echo $homeData->infographic->share->facebook->data_description; ?>"></a>
-		<a href="https://twitter.com/intent/tweet?url=<?php echo url('dml', array('absolute' => TRUE)).$homeData->infographic->share->twitter->link; ?>" class="twitter"></a>
-		<a href="https://plus.google.com/share?url=<?php echo url('dml', array('absolute' => TRUE)).$homeData->infographic->share->gplus->link; ?>" class="share gplus"></a>
-		<a href="mailto:?subject=<?php echo $homeData->infographic->share->email->subject; ?>&amp;body=<?php echo $homeData->infographic->share->email->body; ?> <?php echo url('dml', array('absolute' => TRUE)).$homeData->infographic->share->email->link; ?>." target="_blank" class="email"></a>
+		<a href="https://twitter.com/intent/tweet?url=<?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->twitter->link; ?>" class="twitter"></a>
+		<a href="https://plus.google.com/share?url=<?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->gplus->link; ?>" class="share gplus"></a>
+		<a href="mailto:?subject=<?php echo $homeData->infographic->share->email->subject; ?>&amp;body=<?php echo $homeData->infographic->share->email->body; ?> <?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->email->link; ?>." target="_blank" class="email"></a>
 	</div>
 </div>
 <div class="row bottom">
 	<div class="cta-quiz">
 
-		<a href="<?php echo url('dml', array('absolute' => TRUE)); ?>/quiz" class="btn">ultimate test</a>
+		<a href="<?php echo url($path, array('absolute' => TRUE)); ?>/quiz" class="btn">ultimate test</a>
 	</div>
 </div>
 		</div>
@@ -69,13 +69,13 @@
 		<h3>Hot Headlines</h3>
 		<span>NewsTrust: “A Story Can Cause You to Do Something Stupid”</span>
 		<p>Are you indulging in the “sweets and calories” entertainment news of The Daily Show, and neglecting your PBS News Hour “broccoli”?</p>
-		<a href="<?php echo url('dml', array('absolute' => TRUE)); ?>/news" class="btn">get the whole story</a>
+		<a href="<?php echo url($path, array('absolute' => TRUE)); ?>/news" class="btn">get the whole story</a>
 	</div>
 	<div class="right">
 		<p class="first">transparency</p>
 		<span>is the best</span>
 		<p class="last">ad<br>policy</p>
-		<a href="<?php echo url('dml', array('absolute' => TRUE)); ?>/ad" class="btn">get all the deets here</a>
+		<a href="<?php echo url($path, array('absolute' => TRUE)); ?>/ad" class="btn">get all the deets here</a>
 	</div>
 </div>
 <div class="row video">

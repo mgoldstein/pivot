@@ -5,7 +5,7 @@ include_once(drupal_get_path('module', 'pivot_dml'). '/includes/twitter/get-twee
 $json_string = file_get_contents(drupal_get_path('module', 'pivot_dml'). '/data/header.json');
 # Parse data
 $headerData = json_decode($json_string);
-
+$path = variable_get('pivot_dml_path', '');
 ?>
 
 <div id="fb-root"></div>
@@ -17,10 +17,10 @@ $headerData = json_decode($json_string);
 			<nav>
 				<ul>
 					<li class="<?php echo "current"; ?>"><a href="<?php echo url('dml', array('absolute' => TRUE)); ?>">home</a></li>
-					<li class=""><a href="<?php echo url('dml', array('absolute' => TRUE)); ?>/quiz">quiz</a></li>
-					<li class=""><a href="<?php echo url('dml', array('absolute' => TRUE)); ?>/ad">ad policy</a></li>
-					<li class=""><a href="<?php echo url('dml', array('absolute' => TRUE)); ?>/news">news hub</a></li>
-					<li class="last"><a href="<?php echo url('dml', array('absolute' => TRUE)); ?>/about">about</a></li>
+					<li class=""><a href="<?php echo url($path, array('absolute' => TRUE)); ?>/quiz">quiz</a></li>
+					<li class=""><a href="<?php echo url($path, array('absolute' => TRUE)); ?>/ad">ad policy</a></li>
+					<li class=""><a href="<?php echo url($path, array('absolute' => TRUE)); ?>/news">news hub</a></li>
+					<li class="last"><a href="<?php echo url($path, array('absolute' => TRUE)); ?>/about">about</a></li>
 				</ul>
 
 			</nav>
