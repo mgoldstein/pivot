@@ -23,6 +23,27 @@ function pivot_dml_menu() {
   }
   return $items;
 }
+ function pivot_dml_block_info(){
+  $blocks = array();
+  $blocks['pivot_dml_hero'] = array(
+    'info' => t('DML Hero')
+   );
+  return $blocks;
+ }
+
+
+function pivot_dml_block_view($delta = ''){
+  $block = array();
+  switch ($delta) {
+    case 'pivot_dml_hero':
+      $block['content'] = pivot_dml_hero();
+      break;
+  }
+  return $block;
+  }
+
+
+
 function pivot_dml_form_alter(&$form, &$form_state, $form_id) {
 
   switch ($form_id)  {
@@ -58,6 +79,10 @@ function pivot_dml_default_view(){
   $output = theme('pivot_dml_default');
   return $output;
 }
+function pivot_dml_hero() {
+  $output = theme('pivot_dml_hero');
+  return $output;
+}
 
 function pivot_dml_theme() {
   return array(
@@ -80,6 +105,10 @@ function pivot_dml_theme() {
     'pivot_dml_default' => array(
       'arguments' => array(),
       'template' => 'templates/piv-dml-default'
+    ),
+    'pivot_dml_hero' => array(
+      'arguments' => array(),
+      'template' => 'templates/piv-dml-hero'
     ),
   );
 }
