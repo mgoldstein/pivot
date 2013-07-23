@@ -78,6 +78,7 @@
 					<div class="user">&#xe000;<span class="correct">&#xe008;</span><span class="incorrect">&#xe006;</span></div>
 				</div>
 				</div><!-- /#quiz-container -->
+				<!--
 				<div class="newsletter-signup">
 					<div class="title">
 						<h2>sign up for <span>email</span> updates</h2>
@@ -91,5 +92,6 @@
 					</form>
 				<div class="tos">	By submitting your email address above, you agree to our <a href="#" target="_blank">Terms of Use</a> and <a href="#" target="_blank">Privacy Policy</a>.</div>
 				</div>
+				-->
 	       </div>
 	<!-- END CONTENT -->
