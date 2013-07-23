@@ -1,7 +1,12 @@
+jQuery(document).ready(function ($) {
+	$('a.active').parent().addClass('current');
+});
+
+
 function getInternetExplorerVersion()
 {
 	// Returns the version of Internet Explorer or a -1
-	// (indicating the use of another browser).  
+	// (indicating the use of another browser).
   var rv = -1; // Return value assumes failure.
   if (navigator.appName == 'Microsoft Internet Explorer')
   {
@@ -46,7 +51,7 @@ function postToFBFeed(link, image, name, caption, description) {
 }
 
 function socialShare() {
-	
+
 	$('a.share.fb').click(function(e){
 		e.preventDefault();
 		var link = $(this).data('link');
@@ -55,7 +60,7 @@ function socialShare() {
 		var caption = $(this).data('caption');
 		var description = $(this).data('description');
 		postToFBFeed(link, image, name, caption, description);
-	}); 
+	});
 	$('a.share.gplus').click(function(e){
 		e.preventDefault();
 		var href = $(this).attr('href');
@@ -68,11 +73,11 @@ function socialShare() {
 
 // page specific init methods
 
-function init_home() {	
-	
+function init_home() {
+
 	socialShare();
-	
-	// initialize tweet rotator 
+
+	// initialize tweet rotator
 	$('div.tweets ul').bxSlider({
 		mode: 			'vertical',
 		easing: 		'ease-out',
@@ -87,7 +92,7 @@ function init_home() {
 			$('div.tweets ul').removeClass('start');
 		}
 	});
-	
+
 	// initialize lightbox
 	$('a[rel="lightbox"]').magnificPopup({
 		type:'image',
@@ -100,25 +105,25 @@ function init_home() {
 		  }
 	});
 
-	
+
 	// check URL and load lightbox
 	var useCookie = false;
 	if (useCookie == true) {
-		if (getURLParameter('share') == 'infographic') {			
+		if (getURLParameter('share') == 'infographic') {
 			// check cookie and load lightbox
 			if (document.cookie.indexOf('visited=true') === -1) {
 			    var expires = new Date();
 			    expires.setDate(expires.getDate()+1); //expire after 1 day
 			    document.cookie = "visited=true; expires="+expires.toUTCString();
 			    $('a[rel="lightbox"]').magnificPopup('open');
-			}		
+			}
 		}
 	} else {
-		if (getURLParameter('share') == 'infographic') {			
-			$('a[rel="lightbox"]').magnificPopup('open');	
+		if (getURLParameter('share') == 'infographic') {
+			$('a[rel="lightbox"]').magnificPopup('open');
 		}
 	}
-	
+
 }
 
 function quizCallbacks(trigger, message) {
@@ -163,7 +168,7 @@ function quizCallbacks(trigger, message) {
 }
 
 function init_quiz() {
-	
+
 	socialShare();
 	var fileURL = $('#quiz-container').data('file');
 	$.getJSON(fileURL, function(data) { createQuiz(data); });
@@ -191,7 +196,7 @@ function init_quiz() {
 				} else {
 					console.log('trigger: ' + trigger + '\nmessage: ' + message);
 				}
-				
+
 			}
 		});
 		$('div.quizResults div.share a').click(function(e){
@@ -200,17 +205,17 @@ function init_quiz() {
 			$('div#quiz-container div.content').addClass('share');
 			$('div#quiz-container div.social-share').fadeIn(500);
 			$('div.social-share div.back').fadeIn(500);
-			
+
 		});
 		$('div.social-share div.back a').click(function(e){
 			e.preventDefault();
 			$('div#quiz-container div.social-share').hide();
 			$('div#quiz-container div.content').removeClass('share');
 			$('div#quiz-container div.quizResults').fadeIn(500);
-			
+
 		});
 	}
-	
+
 }
 
 
@@ -222,28 +227,23 @@ function init_quiz() {
      // Document load
      $(function() {
      var $body = $('body');
-     
+
 	// add IE 10 Class
 	if (getInternetExplorerVersion() == 10) {
 		$('html').addClass("ie10");
 	}
 	// Page specific
-	if ( $body.is('.page-dml-home')) { 
-		
+	if ( $body.is('.page-dml-home')) {
+
 		init_home();
-		
+
 	} // end .home
-	
-	if ( $body.is('.page-dml-quiz')) { 
-		
+
+	if ( $body.is('.page-dml-quiz')) {
+
 		init_quiz();
 	} // end .quiz
 
 
 });
 })(window, jQuery);
-
-
-
-
-
