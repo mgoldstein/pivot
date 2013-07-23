@@ -173,7 +173,7 @@ function STARTERKIT_preprocess_page(&$variables, $hook) {
  */
 function pivot_process_page(&$variables) {
   //unset title for nodes.
-  if ($variables['node'] && $variables['node']->type == 'article'){
+  if (isset($variables['node']) && $variables['node']->type == 'article'){
     unset($variables['title']);
   }
 }

@@ -1371,6 +1371,11 @@ iframe.media-youtube-player {
   max-width: 100%;
 }
 
+/* line 1334, ../sass/_pivot-global.scss */
+#block-pivot-global-pivot-global-header-nav.block {
+  margin-bottom: 0px;
+}
+
 /*
  * Homepage Styles for Pivot.tv
  */

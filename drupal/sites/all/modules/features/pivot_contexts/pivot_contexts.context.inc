@@ -48,6 +48,11 @@ function pivot_contexts_context_default_contexts() {
   $context->description = '';
   $context->tag = '';
   $context->conditions = array(
+    'error' => array(
+      'values' => array(
+        1 => '1',
+      ),
+    ),
     'path' => array(
       'values' => array(
         'campaign/digital-media-literacy' => 'campaign/digital-media-literacy',
@@ -67,7 +72,7 @@ function pivot_contexts_context_default_contexts() {
       ),
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
   $export['campaign_dml'] = $context;
 
   $context = new stdClass();
