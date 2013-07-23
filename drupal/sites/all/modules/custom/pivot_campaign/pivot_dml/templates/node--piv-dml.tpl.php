@@ -5,7 +5,7 @@
 	$dmlPage = "Home";
 
 	# Load JSON
-	$json_string = file_get_contents(drupal_get_path('module', 'pivot_dml'). '/public/data/home.json');
+	$json_string = file_get_contents(drupal_get_path('module', 'pivot_dml'). '/data/home.json');
 
 	# Parse data
 	$homeData = json_decode($json_string);
@@ -17,7 +17,8 @@
 		<div class="left">
 			<div class="row hero">
 	<div class="hero-single">
-		<a href="/<?php echo pivot_dml_get_path('templates');?>/<? echo $homeData->infographic->imgLarge; ?>" rel="lightbox"><img itemprop="image" src="/<?php echo pivot_dml_get_path('templates');?>/<? echo $homeData->infographic->img; ?>" width="540" height="733" alt="Hero Fpo"></a>
+
+		<a href="/<?php echo drupal_get_path('module', 'pivot_dml');?>/images/infographic-large.png" rel="lightbox"><img itemprop="image" src="/<?php echo drupal_get_path('module', 'pivot_dml');?>/images/infographic-large.png" width="540" height="733" alt="Hero Fpo"></a>
 	</div>
 	<!-- <div class="hero-one">
 						<h3>lorem ipsum</h3>
@@ -41,7 +42,7 @@
 		<span>share this:</span>
 		<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo url('dml', array('absolute' => TRUE)).$homeData->infographic->share->facebook->data_link; ?>" class="share fb"
 			data-link="<?php echo url('dml', array('absolute' => TRUE)).$homeData->infographic->share->facebook->data_link; ?>"
-			data-image="<?php echo url('<front>', array('absolute' => TRUE)).pivot_dml_get_path('templates').$homeData->infographic->share->facebook->data_image; ?>"
+			data-image="<?php echo url('<front>', array('absolute' => TRUE)).drupal_get_path('module', 'pivot_dml').$homeData->infographic->share->facebook->data_image; ?>"
 			data-name="<?php echo $homeData->infographic->share->facebook->data_name; ?>"
 			data-caption="<?php echo $homeData->infographic->share->facebook->data_caption; ?>"
 			data-description="<?php echo $homeData->infographic->share->facebook->data_description; ?>"></a>

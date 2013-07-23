@@ -83,12 +83,28 @@ function pivot_dml_theme() {
     ),
   );
 }
-
-
+function pivot_dml_preprocess_html(&$variables){
+  $current_path = drupal_get_path_alias(current_path());
+  if (strpos($current_path, variable_get('pivot_dml_path', '')) !== FALSE) {
+    $variables['classes_array'][] = 'page-dml';
+  }
+}
+function pivot_dml_preprocess_page(&$variables){
+  $current_path = drupal_get_path_alias(current_path());
+  if (strpos($current_path, variable_get('pivot_dml_path', '')) !== FALSE) {
+    $variables['classes_array'][] = 'page-dml';
+    drupal_add_css(drupal_get_path('module', 'pivot_dml'). '/css/dml.css');
+    drupal_add_js(drupal_get_path('module', 'pivot_dml'). '/js/vendor/modernizr-2.6.2.min.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_dml'). '/js/main.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_dml'). '/js/plugins.js');
+  }
+}
 
 
 function pivot_dml_preprocess_node(&$variables){
-  $variables['theme_hook_suggestions'][] = 'node__piv_dml';
+  if($variables['type'] == 'campaign') {
+    $variables['theme_hook_suggestions'][] = 'node__piv_dml';
+  }
 }
 
 /**
