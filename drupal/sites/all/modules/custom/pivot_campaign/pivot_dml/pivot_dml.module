@@ -87,3 +87,27 @@ function pivot_dml_theme() {
 
 
 
+function pivot_dml_preprocess_node(&$variables){
+  $variables['theme_hook_suggestions'][] = 'node__piv_dml';
+}
+
+/**
+ * Move node template file to module directory
+**/
+function pivot_dml_theme_registry_alter(&$theme_registry) {
+  $mod_path = drupal_get_path('module', 'pivot_dml');
+  $theme_registry_copy = $theme_registry;
+  _theme_process_registry($theme_registry_copy, 'phptemplate', 'theme_engine', 'pivot', $mod_path);
+  $theme_registry += array_diff_key($theme_registry_copy, $theme_registry);
+  $hooks = array('node');
+  foreach ($hooks as $h) {
+    _pivot_dml_insert_after_first_element($theme_registry[$h]['theme paths'], $mod_path);
+  }
+}
+function _pivot_dml_insert_after_first_element(&$a, $element) {
+  if(is_array($a)) {
+    $first_element = array_shift($a);
+    array_unshift($a, $first_element, $element);
+  }
+}
+
