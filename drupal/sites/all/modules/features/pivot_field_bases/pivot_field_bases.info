@@ -15,6 +15,7 @@ dependencies[] = list
 dependencies[] = media
 dependencies[] = number
 dependencies[] = pivot_article
+dependencies[] = pivot_taxonomy
 dependencies[] = taxonomy
 dependencies[] = text
 features[features_api][] = api:2

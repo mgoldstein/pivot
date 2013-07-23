@@ -207,6 +207,35 @@ function pivot_preprocess_node__video(&$variables, $hook) {
 function pivot_preprocess_node__article(&$variables, $hook) {
   global $base_url;
   $variables['article_fb_comments_url'] = $base_url .'/'. drupal_get_path_alias($_GET['q']);
+
+  // Get a list of articles in the same blog
+  $query = new EntityFieldQuery;
+  $result = $query
+    ->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'article')
+    ->propertyCondition('status', 1)
+    ->fieldCondition('field_section_ref', 'target_id', $variables['field_section_ref'][LANGUAGE_NONE][0]['target_id'], '=')
+    ->execute();
+
+  // find the immediatley previous node
+  // TODO this is terrible performance-wise
+  $nodes = node_load_multiple(array_keys($result['node']));
+
+  // loop through each one
+  $previous_article = reset($nodes);
+
+  foreach ($nodes as $node) {
+    if (($node->published_at < $variables['published_at']) && $node->published_at > $previous_article->published_at) {
+      $previous_article = $node;
+    }
+  }
+
+  // set the next article link, accounting for the first article in a blog
+  // where it will have itself as $previous_article
+  $variables['next_article_link'] = '';
+  if (isset($previous_article->nid) && $previous_article->nid != $variables['nid']) {
+    $variables['next_article_link'] = l($previous_article->title, 'node/' . $previous_article->nid);
+  }
 }
 
 /**
