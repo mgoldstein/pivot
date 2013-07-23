@@ -13,7 +13,7 @@ $path = variable_get('pivot_dml_path', '');
 
 		<div class="dml-header">
 
-			<div class="logo"><a href="/pivot"><img src="/<?php echo drupal_get_path('module', 'pivot_dml'); ?>/images/nav-logo.png" width="172" height="42" alt="Nav Logo"></a></div>
+			<div class="logo"><a href="/homepage"><img src="/<?php echo drupal_get_path('module', 'pivot_dml'); ?>/images/nav-logo.png" width="172" height="42" alt="Nav Logo"></a></div>
 			<nav>
 				<ul>
 					<li class="<?php echo "current"; ?>"><a href="<?php echo url('dml', array('absolute' => TRUE)); ?>">home</a></li>
