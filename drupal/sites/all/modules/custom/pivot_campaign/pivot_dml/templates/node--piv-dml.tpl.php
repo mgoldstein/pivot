@@ -3,11 +3,10 @@
 
 	<?php
 	$dmlPage = "Home";
-	require_once('includes/header.php');
-
 
 	# Load JSON
-	$json_string = file_get_contents(DIRNAME(__FILE__) . '/public/data/home.json');
+	$json_string = file_get_contents(drupal_get_path('module', 'pivot_dml'). '/public/data/home.json');
+
 	# Parse data
 	$homeData = json_decode($json_string);
 
@@ -91,7 +90,7 @@
 		</div>
 		<div class="tweets">
 		<ul class="start">
-		<?php include_once('includes/create-twitter-feed.php'); ?>
+		<?php include_once(drupal_get_path('module', 'pivot_dml'). '/includes/create-twitter-feed.php'); ?>
 		</ul>
 		</div>
 	</div>
