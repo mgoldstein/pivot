@@ -150,11 +150,13 @@
   </div>
 
   <footer class="article-footer">
-    <!--
+    <?php if ($next_article_link) : ?>
     <nav class="related next-article">
       <h3 class="headline">Next Article</h3>
-      <p>This is a link to the next article</p>
+      <p><?php print $next_article_link; ?></p>
     </nav>
+    <?php endif; ?>
+    <!--
     <nav class="page-tags">
       <h3 class="headline">Get More</h3>
       <ul><li>links</li><li>go</li><li>here</li></ul>

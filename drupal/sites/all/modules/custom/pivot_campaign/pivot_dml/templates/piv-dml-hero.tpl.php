@@ -16,11 +16,13 @@ $path = variable_get('pivot_dml_path', '');
 			<div class="logo"><a href="/homepage"><img src="/<?php echo drupal_get_path('module', 'pivot_dml'); ?>/images/nav-logo.png" width="172" height="42" alt="Nav Logo"></a></div>
 			<nav>
 				<ul>
-					<li class="<?php echo "current"; ?>"><a href="<?php echo url($path, array('absolute' => TRUE)); ?>">home</a></li>
-					<li class=""><a href="<?php echo url($path, array('absolute' => TRUE)); ?>/quiz">quiz</a></li>
-					<li class=""><a href="<?php echo url($path, array('absolute' => TRUE)); ?>/ad">ad policy</a></li>
-					<li class=""><a href="<?php echo url($path, array('absolute' => TRUE)); ?>/news">news hub</a></li>
-					<li class="last"><a href="<?php echo url($path, array('absolute' => TRUE)); ?>/about">about</a></li>
+					<li class=""><?php print l('home', $path); ?></li>
+					<li class=""><?php print l('quiz', $path. '/quiz'); ?></li>
+					<li class=""><?php print l('ad policy', $path. '/ad'); ?></li>
+					<li class=""><?php print l('news hub', $path. '/news'); ?></li>
+					<li class=""><?php print l('about', $path. '/about'); ?></li>
+
+
 				</ul>
 
 			</nav>
