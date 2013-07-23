@@ -1,23 +1,5 @@
-<div id="page">
-  <?php
-    $header = render($page['header']);
-    if ($header):
-  ?>
-  <header id="header" role="banner">
-    <?php print $header; ?>
-  </header>
-  <?php endif; ?>
-  <main id="main">
-    <div id="content" class="site-wrapper">
-
-
-
-    <!-- CONTENT GOES HERE -->
+<!-- CONTENT GOES HERE -->
     <pre>
-
-      // Place all of your code and assets in or under
-      // <?php print  pivot_dml_get_root_path()
-               . '/' . pivot_dml_get_path('templates') ?>
 
 
       // We are still working on the page header. The code is already in place
@@ -80,12 +62,3 @@
       drupal_add_css($css_inline, 'inline');
 
     </pre>
-
-
-
-
-    </div>
-  </main><!-- /#main -->
-  <?php // footer will always render ?>
-  <?php print render($page['footer']); ?>
-</div><!-- /#page -->
