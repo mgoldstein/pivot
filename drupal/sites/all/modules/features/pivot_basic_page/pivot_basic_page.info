@@ -16,6 +16,7 @@ features[field_instance][] = node-page-body
 features[field_instance][] = node-page-field_promo_abstract
 features[field_instance][] = node-page-field_promo_headline
 features[field_instance][] = node-page-field_promo_image
+features[field_instance][] = node-page-field_section_ref
 features[node][] = page
 features[variable][] = comment_anonymous_page
 features[variable][] = comment_default_mode_page
