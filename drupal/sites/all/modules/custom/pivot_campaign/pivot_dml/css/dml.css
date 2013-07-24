@@ -1740,3 +1740,16 @@ body.page-dml nav.breadcrumb {
     max-width: 980px;
   }
 }
+body.page-dml.node-type-page div#content{
+  color: #000;
+  font-family: "Apercu Regular", Calibri, sans-serif;
+  font-size: 14px;
+  padding: 10px;
+}
+body.page-dml.node-type-page div#content p{
+    font-size: 14px;
+    padding: 10px;
+}
+
+
+
