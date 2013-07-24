@@ -338,3 +338,18 @@ function pivot_field__field_person_ref__article($variables) {
 
   return $output;
 }
+
+/**
+ * Implements theme_field().
+ *
+ * Output HTML for a promo title.
+ */
+function pivot_field__field_promo_headline($variables) {
+  $output = '';
+
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<h3 class="' . $variables['classes'] . '">' . drupal_render($item) . '</h3>';
+  }
+
+  return $output;
+}

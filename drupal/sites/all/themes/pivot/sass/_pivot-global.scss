@@ -955,6 +955,7 @@ a:active {
 }
 
 .promo {
+	font-size: 20px;
 	position: relative;
 	margin-bottom: 1em;
 
@@ -993,6 +994,31 @@ a:active {
 		color: #0084a9;
 		font-style: italic;
 		font-weight: bold;
+		margin: 0;
+	}
+
+	.field-name-field-promo-abstract {
+		font-size: 13px;
+		font-family: "Apercu Mono Regular", monospace;
+	}
+}
+
+.promo-alt {
+	font-size: 20px;
+	margin-bottom: 1em;
+
+	a { color: black; }
+
+	img {
+		display: block;
+	}
+
+	.field-name-field-promo-headline {
+		font-size: 1.2em; // 24px
+		color: #0084a9;
+		font-style: italic;
+		font-weight: bold;
+		margin: 0;
 	}
 
 	.field-name-field-promo-abstract {

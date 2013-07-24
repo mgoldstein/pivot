@@ -18,7 +18,7 @@ global $base_url;
 			<div class="logo"><?php print l('<img src="'. $base_url. '/'. drupal_get_path('module', 'pivot_dml'). '/images/nav-logo.png" width="172" height="42" alt="Nav Logo">', '<front>', array('html' => true)); ?></div>
 			<nav>
 				<ul>
-					<li class=""><?php print l('home', $path); ?></li>
+					<li class=""><?php print l('home', drupal_lookup_path('source', $path)); ?></li>
 					<li class=""><?php print l('quiz', $path. '/quiz'); ?></li>
 					<li class=""><?php print l('ad policy', drupal_lookup_path('source', $path. '/ad_policy')); ?></li>
 					<li class=""><?php print l('about', drupal_lookup_path('source', $path. '/about')); ?></li>
