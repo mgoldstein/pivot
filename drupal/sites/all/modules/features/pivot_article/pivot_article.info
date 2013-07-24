@@ -37,6 +37,7 @@ features[variable][] = menu_parent_article
 features[variable][] = node_options_article
 features[variable][] = node_preview_article
 features[variable][] = node_submitted_article
+features[variable][] = pathauto_node_article_pattern
 features[variable][] = scheduler_publish_enable_article
 features[variable][] = scheduler_publish_required_article
 features[variable][] = scheduler_publish_revision_article
