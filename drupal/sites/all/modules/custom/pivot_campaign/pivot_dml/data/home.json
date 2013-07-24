@@ -1,11 +1,12 @@
 {
     "infographic": {
-        "img": "public/images/hero-fpo.png",
-        "imgLarge": "public/images/infographic-large.png",
+        "img": "public/images/infographic-thumb.png",
+        "imgLarge": "public/images/infographic-full.png",
+        "name":     "infographic name",
         "share": {
             "facebook": {
                 "data_link": "?share=infographic",
-                "data_image": "/public/images/hero-fpo.png",
+                "data_image": "/public/images/infographic-thumb.png",
                 "data_name": "name",
                 "data_caption": "caption",
                 "data_description": "description"
