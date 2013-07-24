@@ -48,9 +48,9 @@
 	}
 
 	function socialShare() {
-
 		$('a.share.fb').click(function(e){
 			e.preventDefault();
+			trackingEvents('fb','');
 			var link = $(this).data('link');
 			var image = $(this).data('image');
 			var name = $(this).data('name');
@@ -58,14 +58,126 @@
 			var description = $(this).data('description');
 			postToFBFeed(link, image, name, caption, description);
 		});
+		$('a.share.twitter').click(function(e){
+			trackingEvents('twitter', '');
+		});
 		$('a.share.gplus').click(function(e){
 			e.preventDefault();
+			trackingEvents('gplus','');
 			var href = $(this).attr('href');
 			popupwindow(href, 'Share on Facebook', 500, 500);
+		});
+		$('a.share.email').click(function(e){
+			trackingEvents('email', '');
 		});
 	}
 
 
+	// process triggers and fire tracking events
+	function trackingEvents(trigger, message) {
+
+		var s = window.s;
+
+		if (s) {
+			switch(trigger) {
+				case "fb":
+					s.linkTrackVars = 'prop68,eVar27,eVar30,events';
+					s.linkTrackEvents = 'event25,event86';
+					s.events = 'event25,event86';
+					s.eVar27 = 'Facebook';
+					s.eVar30 = s.pageName;
+					s.tl(true, 'o', 'Shares Content');
+					break;
+				case "twitter":
+					s.linkTrackVars = 'prop68,eVar27,eVar30,events';
+					s.linkTrackEvents = 'event25,event86';
+					s.events = 'event25,event86';
+					s.eVar27 = 'Twitter';
+					s.eVar30 = s.pageName;
+					s.tl(true, 'o', 'Shares Content');
+					break;
+				case "gplus":
+					s.linkTrackVars = 'prop68,eVar27,eVar30,events';
+					s.linkTrackEvents = 'event25,event86';
+					s.events = 'event25,event86';
+					s.eVar27 = 'GooglePlus';
+					s.eVar30 = s.pageName;
+					s.tl(true, 'o', 'Shares Content');
+					break;
+				case "email":
+					s.linkTrackVars = 'prop68,eVar27,eVar30,events';
+					s.linkTrackEvents = 'event25,event86';
+					s.events = 'event25,event86';
+					s.eVar27 = 'Email';
+					s.eVar30 = s.pageName;
+					s.tl(true, 'o', 'Shares Content');
+					break;
+				case "infographic":
+					s.linkTrackVars = 'prop68,eVar30,eVar45,events';
+					s.linkTrackEvents = 'event45,event87';
+					s.events = 'event45,event87';
+					s.eVar45 = message;
+					s.eVar30 = s.pageName;
+					s.tl(true, 'o', 'Clicks to View Infographic');
+					break;
+				default:
+					// do nothing
+			}
+		}
+	}
+
+	// process quiz callback triggers and fire tracking events
+	function quizCallbacks(trigger, message) {
+		var messageObj = JSON.parse(message);
+		var s = window.s;
+
+		if (s) {
+			switch (trigger) {
+				case "quiz loaded":
+					s.linkTrackVars = 'prop68,eVar30,events';
+					s.linkTrackEvents = 'event80';
+					s.events = 'event80';
+					s.eVar30 = s.pageName;
+					s.tl(true, 'o', 'Quiz Loaded');
+					break;
+				case "question loaded":
+					s.linkTrackVars = 'prop68,eVar30,eVar68,events';
+					s.linkTrackEvents = 'event81';
+					s.events = 'event81';
+					s.eVar68 = messageObj.message;
+					s.eVar30 = s.pageName;
+					s.tl(true, 'o', 'Clicks to View Quiz Question');
+					break;
+				case "response":
+					if (messageObj.response == 'correct') {
+						s.linkTrackVars = 'prop68,eVar30,eVar68,events';
+						s.linkTrackEvents = 'event82,event83';
+						s.events = 'event82,event83';
+						s.eVar68 = messageObj.message;
+						s.eVar30 = s.pageName;
+						s.tl(true, 'o', 'Quiz Answer: Right');
+					} else {
+						s.linkTrackVars= 'prop68,eVar30,eVar68,events';
+						s.linkTrackEvents = 'event82,event84';
+						s.events = 'event82,event84';
+						s.eVar68 = messageObj.message;
+						s.eVar30 = s.pageName;
+						s.tl(true, 'o', 'Quiz Answer: Wrong');
+					}
+					break;
+				case "quiz completed":
+					s.linkTrackVars = 'prop69,eVar30,events';
+					s.linkTrackEvents = 'event85';
+					s.events = 'event85';
+					s.eVar68 = messageObj.score;
+					s.eVar30 = s.pageName;
+					s.tl(true, 'o', 'Finishes Quiz');
+					break;
+				default:
+					// do nothing
+			}
+		}
+	}
 
 
 	// page specific init methods
@@ -91,17 +203,26 @@
 		});
 
 		// initialize lightbox
+		var infoName = $('a[rel="lightbox"] img').data('name');
 		$('a[rel="lightbox"]').magnificPopup({
 			type:'image',
-			verticalFit: false,
+			image: {
+				verticalFit: false
+			},
+			disableOn: function() {
+			  if( $(window).width() < 480 ) {
+			    return false;
+			  }
+			  return true;
+			},
 			closeOnContentClick: true,
 			callbacks: {
 			    open: function() {
-			      console.log('image loaded');
+			      //console.log('image loaded');
+				  trackingEvents('infographic',infoName);
 			    }
 			  }
 		});
-
 
 		// check URL and load lightbox
 		var useCookie = false;
@@ -121,53 +242,6 @@
 			}
 		}
 
-	}
-
-	function quizCallbacks(trigger, message) {
-		var messageObj = JSON.parse(message);
-
-		// grab a reference to SiteCatalyst if we have it
-		var s = window.s;
-
-		//only fire the tracking events if we have SiteCatalyst isntalled
-		if (s) {
-			switch (trigger) {
-				case "quiz loaded":
-					s.linkTrackVars = 'prop68,eVar30,events';
-					s.linkTrackEvents = 'event80';
-					s.events = 'event80';
-					s.eVar30 = s.pageName;
-					s.tl(true, 'o', 'Quiz Loaded');
-					break;
-				case "question loaded":
-					s.linkTrackVars = 'prop68,eVar30,events';
-					s.linkTrackEvents = 'event81';
-					s.events = 'event81';
-					s.eVar68 = messageObj.message;
-					s.eVar30 = s.pageName;
-					s.tl(true, 'o', 'Clicks to View Quiz Question');
-					break;
-				case "response":
-					if (messageObj.response == 'correct') {
-						s.linkTrackVars = 'prop68,eVar30,events';
-						s.linkTrackEvents = 'event82,event83';
-						s.events = 'event82,event83';
-						s.eVar68 = messageObj.message;
-						s.eVar30 = s.pageName;
-						s.tl(true, 'o', 'Quiz Answer: Right');
-					} else {
-						s.linkTrackVars= 'prop68,eVar30,events';
-						s.linkTrackEvents = 'event82,event84';
-						s.events = 'event82,event84';
-						s.eVar68 = messageObj.message;
-						s.eVar30 = s.pageName;
-						s.tl(true, 'o', 'Quiz Answer: Wrong');
-					}
-					break;
-				default:
-					// do nothing
-			}
-		}
 	}
 
 	function init_quiz() {
@@ -196,6 +270,8 @@
 					} else if (trigger == 'quiz completed') {
 						$('#quiz-container div.content').attr('class','content results');
 						$('#quiz-container div.icons').attr('class','icons');
+						var messageObj = JSON.parse(message);
+						console.log("trigger: "+trigger+'\nscore: ' + messageObj.score );
 					} else {
 						console.log('trigger: ' + trigger + '\nmessage: ' + message);
 					}
@@ -218,7 +294,6 @@
 
 			});
 		}
-
 	}
 
 
