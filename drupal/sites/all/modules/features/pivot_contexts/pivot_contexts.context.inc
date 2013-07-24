@@ -55,8 +55,8 @@ function pivot_contexts_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'eyes-wide-open' => 'eyes-wide-open',
-        'eyes-wide-open/*' => 'eyes-wide-open/*',
+        'campaigns/eyes-wide-open' => 'campaigns/eyes-wide-open',
+        'campaigns/eyes-wide-open/*' => 'campaigns/eyes-wide-open/*',
       ),
     ),
   );
