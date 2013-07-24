@@ -15,7 +15,7 @@ global $base_url;
 		<div class="dml-header">
 
 
-			<div class="logo"><?php print l('<img src="'. $base_url. '/'. drupal_get_path('module', 'pivot_dml'). '/images/nav-logo.png" width="172" height="42" alt="Nav Logo">', '<front>', array('html' => true)); ?></div>
+			<div class="logo"><?php print l('<img src="'. $base_url. '/'. drupal_get_path('module', 'pivot_dml'). '/images/nav-logo.png" width="172" height="42" alt="Nav Logo">', drupal_lookup_path('source', $path), array('html' => true)); ?></div>
 			<nav>
 				<ul>
 					<li class=""><?php print l('home', drupal_lookup_path('source', $path)); ?></li>
