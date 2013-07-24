@@ -20,8 +20,8 @@ global $base_url;
 				<ul>
 					<li class=""><?php print l('home', $path); ?></li>
 					<li class=""><?php print l('quiz', $path. '/quiz'); ?></li>
-					<li class=""><?php print l('ad policy', $path. '/ad_policy'); ?></li>
-					<li class=""><?php print l('about', $path. '/about'); ?></li>
+					<li class=""><?php print l('ad policy', drupal_lookup_path('source', $path. '/ad_policy')); ?></li>
+					<li class=""><?php print l('about', drupal_lookup_path('source', $path. '/about')); ?></li>
 
 
 				</ul>
