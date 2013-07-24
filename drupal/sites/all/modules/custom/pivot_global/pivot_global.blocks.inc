@@ -68,7 +68,7 @@ function pivot_global_block_view($block_name) {
 
     }
 
-    return $block;    
+    return $block;
 }
 
 
@@ -85,25 +85,28 @@ function pivot_global_header() {
   </div>';
 
   //TODO Integrate with Druapl and Search
-  // $output .= '<div class="secondary">
-  //     <nav class="nav nav-secondary site-wrapper">
-  //         <h1 class="headline">More Site Navigation</h1>
-  //         <div class="find-pivot">
-  //             <a class="important" href="#">Find <span class="pivot">Pivot</span> in your area</a>
-  //         </div>
-  //         <div class="search">
-  //             <form action="#">
-  //                 <label for="search-text">Search Pivot</label>
-  //                 <span class="input-text">
-  //                     <input type="text" results="5" placeholder="" name="search" id="search-text">
-  //                 </span>
-  //                 <span class="input-submit">
-  //                     <input type="submit" class="submit" value="Search">
-  //                 </span>
-  //             </form>
-  //         </div>
-  //     </nav>
-  //   </div>';
+  $output .= '<div class="secondary">
+      <nav class="nav nav-secondary site-wrapper">
+          <h1 class="headline">More Site Navigation</h1>
+          <div class="find-pivot">'.
+            l('Find <span class="pivot">Pivot</span> in your area', '<front>', array('fragment' => 'find-pivot', 'html' => TRUE, 'attributes' => array('class' => array('important')))).
+
+          '</div>
+
+      </nav>
+    </div>';
+          // TODO place after the closing find-pivot div
+          // <div class="search">
+          //     <form action="#">
+          //         <label for="search-text">Search Pivot</label>
+          //         <span class="input-text">
+          //             <input type="text" results="5" placeholder="" name="search" id="search-text">
+          //         </span>
+          //         <span class="input-submit">
+          //             <input type="submit" class="submit" value="Search">
+          //         </span>
+          //     </form>
+          // </div>
 
   return $output;
 }
