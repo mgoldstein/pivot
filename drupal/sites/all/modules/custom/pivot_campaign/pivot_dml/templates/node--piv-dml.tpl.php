@@ -63,9 +63,9 @@
 <div class="row cta">
 	<div class="left">
 		<h3>Hot Headlines</h3>
-		<span>NewsTrust: “A Story Can Cause You to Do Something Stupid”</span>
-		<p>Are you indulging in the “sweets and calories” entertainment news of The Daily Show, and neglecting your PBS News Hour “broccoli”?</p>
-		<a href="<?php echo url($path, array('absolute' => TRUE)); ?>/news" class="btn">get the whole story</a>
+		<span>Can This iPhone Accessory Really Stop the NSA? Yep.</span><br><br>
+		<p>Protect your privacy and stick it to The Man with the black case that renders your phone untraceable.</p>
+		<a href="http://www.takepart.com/article/2013/07/16/stop-nsa-stylish-iphone-cover" class="btn" target="_blank">get the whole story</a>
 	</div>
 	<div class="right">
 		<p class="first">transparency</p>

@@ -55,8 +55,8 @@ function pivot_contexts_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'campaign/digital-media-literacy' => 'campaign/digital-media-literacy',
-        'campaign/digital-media-literacy/*' => 'campaign/digital-media-literacy/*',
+        'campaigns/eyes-wide-open' => 'campaigns/eyes-wide-open',
+        'campaigns/eyes-wide-open/*' => 'campaigns/eyes-wide-open/*',
       ),
     ),
   );

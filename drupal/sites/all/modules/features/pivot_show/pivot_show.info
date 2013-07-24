@@ -39,6 +39,7 @@ features[variable][] = menu_parent_show
 features[variable][] = node_options_show
 features[variable][] = node_preview_show
 features[variable][] = node_submitted_show
+features[variable][] = pathauto_node_show_pattern
 features[variable][] = scheduler_publish_enable_show
 features[variable][] = scheduler_publish_required_show
 features[variable][] = scheduler_publish_revision_show
