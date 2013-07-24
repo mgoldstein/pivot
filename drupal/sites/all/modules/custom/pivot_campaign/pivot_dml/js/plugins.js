@@ -521,7 +521,7 @@ JSON.parse = JSON.parse || function (str) {
                 $(targets.quizScore + ' span').html(score + ' <span class="text">out of</span> ' + questionCount);
                 $(targets.quizLevel).html(levelText);
                 $(targets.quizLevel).addClass('level' + levelRank);
-				doCallback('quiz completed', score + '/' + questionCount);
+				doCallback('quiz completed', '{"score": "' + score + '"}');
 
                 $(targets.quizArea).fadeOut(300, function() {
                     // If response messaging is set to show upon quiz completion, show it
