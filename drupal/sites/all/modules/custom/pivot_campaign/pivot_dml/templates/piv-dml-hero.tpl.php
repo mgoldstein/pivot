@@ -20,8 +20,7 @@ global $base_url;
 				<ul>
 					<li class=""><?php print l('home', $path); ?></li>
 					<li class=""><?php print l('quiz', $path. '/quiz'); ?></li>
-					<li class=""><?php print l('ad policy', $path. '/ad'); ?></li>
-					<li class=""><?php print l('news hub', $path. '/news'); ?></li>
+					<li class=""><?php print l('ad policy', $path. '/ad_policy'); ?></li>
 					<li class=""><?php print l('about', $path. '/about'); ?></li>
 
 
