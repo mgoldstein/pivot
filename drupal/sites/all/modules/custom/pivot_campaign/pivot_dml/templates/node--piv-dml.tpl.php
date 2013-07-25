@@ -65,7 +65,7 @@
 		<h3>Hot Headlines</h3>
 		<span>Can This iPhone Accessory Really Stop the NSA? Yep.</span><br><br>
 		<p>Protect your privacy and stick it to The Man with the black case that renders your phone untraceable.</p>
-		<a href="http://www.takepart.com/article/2013/07/16/stop-nsa-stylish-iphone-cover" class="btn" target="_blank">get the whole story</a>
+		<a href="<?php print $path; ?>/news" class="btn" target="_blank">get the whole story</a>
 	</div>
 	<div class="right">
 		<p class="first">transparency</p>
