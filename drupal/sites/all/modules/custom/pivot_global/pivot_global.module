@@ -17,6 +17,23 @@ function pivot_global_help($path, $arg) {
  */
 include 'pivot_global.blocks.inc';
 
+
+/**
+ * Implements hook_menu();
+ */
+function pivot_global_menu() {
+  $items['iframe/header'] = array(
+    'page callback' => 'pivot_global_iframe_header',
+    'access arguments' => array('access content'),
+  );
+  $items['iframe/footer'] = array(
+    'page callback' => 'pivot_global_iframe_footer',
+    'access arguments' => array('access content'),
+  );
+  return $items;
+}
+
+
 /**
 * Implements hook_entity_info_alter().
 */
@@ -77,3 +94,13 @@ function pivot_global_preprocess_node(&$variables) {
     $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__teaser';
   }
 }
+
+function pivot_global_iframe_header(){
+  $output = 'something';
+  return $output;
+}
+function pivot_global_iframe_footer(){
+  $output = 'something';
+  return $output;
+}
+
