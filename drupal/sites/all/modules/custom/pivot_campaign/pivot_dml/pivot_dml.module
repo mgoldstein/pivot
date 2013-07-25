@@ -131,21 +131,27 @@ function pivot_dml_preprocess_page(&$variables){
     drupal_add_js(drupal_get_path('module', 'pivot_dml'). '/js/plugins.js');
     drupal_add_js('//platform.twitter.com/widgets.js', 'external');
     drupal_add_js("
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId: 545435132181638,
-          status: true,
-          cookie: true,
-          xfbml: true
-          });
+    (function ($, Drupal, window, document, undefined) {
+      Drupal.behaviors.facebookSDK = {
+        attach: function () {
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId: 545435132181638,
+              status: true,
+              cookie: true,
+              xfbml: true
+              });
+          };
+          //Load the SDK asynchronously
+          (function() {
+            var e = document.createElement('script');
+            e.async = true;
+            e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+            document.getElementById('fb-root').appendChild(e);
+          }());
+        }
       };
-      //Load the SDK asynchronously
-      (function() {
-        var e = document.createElement('script');
-        e.async = true;
-        e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
-        document.getElementById('fb-root').appendChild(e);
-      }());",
+    })(jQuery, Drupal, this, this.document);",
     'inline');
   }
 }
