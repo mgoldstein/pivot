@@ -1740,17 +1740,14 @@ body.page-dml nav.breadcrumb {
     max-width: 980px;
   }
 }
-body.page-dml.node-type-page .primary div#content .primary{
-  color: #000;
+body.page-dml.node-type-page div#content .node {
   font-family: "Apercu Regular", Calibri, sans-serif;
-  font-size: 14px;
-  padding: 10px;
+  color: black;
+  padding: 20px;
 }
-body.page-dml.node-type-page div#content .primary p{
-    font-size: 14px;
-    padding: 10px;
-    color: #000;
+body.page-dml.node-type-page div#content .node p,
+body.page-dml.node-type-page div#content .node ul,
+body.page-dml.node-type-page div#content .node li {
+  font-size: 20px;
+  line-height: 1.5;
 }
-
-
-
