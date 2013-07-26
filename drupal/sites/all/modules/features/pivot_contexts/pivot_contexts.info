@@ -19,6 +19,7 @@ features[context][] = campaign_dml
 features[context][] = global
 features[context][] = global_non_header
 features[context][] = homepage
+features[context][] = movies_landing
 features[ctools][] = context:context:3
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2

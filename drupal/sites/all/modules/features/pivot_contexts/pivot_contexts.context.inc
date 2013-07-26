@@ -181,5 +181,37 @@ function pivot_contexts_context_default_contexts() {
   t('Context for the homepage');
   $export['homepage'] = $context;
 
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'movies_landing';
+  $context->description = 'The Movies Landing Page';
+  $context->tag = '';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'movies' => 'movies',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'dfp-pivot_ros_rr_300x250' => array(
+          'module' => 'dfp',
+          'delta' => 'pivot_ros_rr_300x250',
+          'region' => 'right_sidebar',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('The Movies Landing Page');
+  $export['movies_landing'] = $context;
+
   return $export;
 }
