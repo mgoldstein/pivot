@@ -82,11 +82,17 @@ a:active {
 	}
 }
 
-.headline {
+.headline,
+.title {
 	font-size: 1.2em;
 	margin-bottom: 15px;
 	text-transform: uppercase;
+
+	&#page-title {
+		font-size: 36px;
+	}
 }
+
 
 /* ============================================================
 || Global Header (not frontpage)
@@ -1020,11 +1026,10 @@ a:active {
 	}
 
 	.field-name-field-promo-headline {
-		font-size: 1.2em; // 24px
+		font-size: 1.1em; // 22px
+		text-transform: capitalize;
 		color: #0084a9;
-		font-style: italic;
-		font-weight: bold;
-		margin: 0;
+		margin: 15px 0 10px;
 	}
 
 	.field-name-field-promo-abstract {
@@ -1032,6 +1037,44 @@ a:active {
 		font-family: "Apercu Mono Regular", monospace;
 	}
 }
+
+/* ============================================================
+|| Shows Landing
+============================================================ */
+
+.view-shows.view-display-id-page {
+	.view-content {
+		> div {
+			width: 300px; // border-box includes padding
+			margin: 0 20px 20px 0;
+			float: left;
+
+			&:nth-child(3n) {
+				margin-right: 0;
+			}
+
+		}
+	}
+}
+
+/* ============================================================
+|| Movies Landing
+============================================================ */
+
+.view-movies.view-display-id-page {
+	.view-content {
+		> div {
+			width: 300px; // border-box includes padding
+			margin: 0 20px 20px 0;
+			float: left;
+
+			&:nth-child(2n) {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
 
 /* ============================================================
 || Search Results
