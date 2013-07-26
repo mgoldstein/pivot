@@ -116,7 +116,9 @@ function pivot_dml_preprocess_html(&$variables){
   $current_path = drupal_get_path_alias(current_path());
   if (strpos($current_path, variable_get('pivot_dml_path', '')) !== FALSE) {
     $variables['classes_array'][] = 'page-dml';
-    $variables['classes_array'][] = 'page-dml-home';
+    if ($current_path == variable_get('pivot_dml_path', '')) {
+      $variables['classes_array'][] = 'page-dml-home';
+    }
     if (strpos($current_path, 'quiz') !== FALSE) {
       $variables['classes_array'][] = 'page-dml-quiz';
     }

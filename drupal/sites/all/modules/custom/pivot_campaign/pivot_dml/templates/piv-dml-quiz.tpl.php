@@ -44,7 +44,7 @@
 						<span>share this quiz and find out!</span>
 						<ul>
 							<li>
-									<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo url($path, array('absolute' => TRUE)).$quizData->share->facebook->data_link; ?>" class="share fb"
+									<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo url($path, array('absolute' => TRUE)).$quizData->share->facebook->data_link; ?>" class="share fb"
 										data-link="<?php echo url($path, array('absolute' => TRUE)).$quizData->share->facebook->data_link; ?>"
 										data-image="<?php echo url('<front>', array('absolute' => TRUE)).drupal_get_path('module', 'pivot_dml').$quizData->share->facebook->data_image; ?>"
 										data-name="<?php echo $quizData->share->facebook->data_name; ?>"
