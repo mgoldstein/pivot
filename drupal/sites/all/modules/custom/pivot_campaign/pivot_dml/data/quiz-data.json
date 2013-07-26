@@ -213,18 +213,18 @@
             "data_image": "/public/images/quiz/intro-copy.png",
             "data_name": "Eyes Wide Open - Media & Privacy Quiz",
             "data_caption": "Put Your Media & Privacy Smarts to the Test",
-            "data_description": "Do you know how safe you data is?  Take this quiz to find out!"
+            "data_description": "Do you know how safe your data is?  Take this quiz to find out!"
         },
         "twitter": {
             "link": "/quiz",
-            "share_copy": "Do you know how safe you data is?  Take this quiz to find out!"
+            "share_copy": "Do you know how safe your data is?  Take this quiz to find out!"
         },
         "gplus": {
             "link": "/quiz"
         },
         "email": {
             "subject": "Put Your Media & Privacy Smarts to the Test",
-            "body": "Do you know how safe you data is?  Take this quiz to find out!",
+            "body": "Do you know how safe your data is?  Take this quiz to find out!",
             "link": "/quiz"
         }
     }
