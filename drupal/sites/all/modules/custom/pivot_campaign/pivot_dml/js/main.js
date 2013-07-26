@@ -133,22 +133,28 @@
 
 		if (s) {
 			switch (trigger) {
-				case "quiz loaded":
+				case "quiz start":
 					s.linkTrackVars = 'prop68,eVar30,events';
-					s.linkTrackEvents = 'event80';
-					s.events = 'event80';
+					s.linkTrackEvents = 'event79';
+					s.events = 'event79';
 					s.eVar30 = s.pageName;
-					s.tl(true, 'o', 'Quiz Loaded');
+					s.prop68 = 'Quiz Start';
+					s.tl(true, 'o', 'Quiz Start');
 					break;
 				case "question loaded":
+					var qNum = (parseInt(messageObj.index) +1);
+					qNum = qNum.toString();
 					s.linkTrackVars = 'prop68,eVar30,eVar68,events';
 					s.linkTrackEvents = 'event81';
 					s.events = 'event81';
-					s.eVar68 = messageObj.message;
+					s.eVar68 = qNum + '. '+ messageObj.message;
 					s.eVar30 = s.pageName;
+					s.prop68 = 'Clicks to View Quiz Question';
 					s.tl(true, 'o', 'Clicks to View Quiz Question');
 					break;
 				case "response":
+					var qNum = (parseInt(messageObj.index) +1);
+					qNum = qNum.toString();
 					if (messageObj.response == 'correct') {
 						s.linkTrackVars = 'prop68,eVar30,eVar68,events';
 						s.linkTrackEvents = 'event82,event83';

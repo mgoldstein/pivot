@@ -1718,7 +1718,9 @@ body.page-dml.page-dml-quiz div#content div.newsletter-signup form div:after {
    IE Fixes
    ========================================================================== */
 html.ie9 body.page-dml div#content div.dml-header nav li.current:after, html.ie10 body.page-dml div#content div.dml-header nav li.current:after {
-  top: 5px; }
+  font-size:0;
+  line-height: 0;
+}
 
 /*
 * Fixes made by Pivot

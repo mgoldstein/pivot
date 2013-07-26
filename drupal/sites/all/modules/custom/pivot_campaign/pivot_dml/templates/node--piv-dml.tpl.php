@@ -42,9 +42,9 @@
 			data-name="<?php echo $homeData->infographic->share->facebook->data_name; ?>"
 			data-caption="<?php echo $homeData->infographic->share->facebook->data_caption; ?>"
 			data-description="<?php echo $homeData->infographic->share->facebook->data_description; ?>"></a>
-		<a target="_blank" href="https://twitter.com/intent/tweet?url=<?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->twitter->link; ?>" class="twitter"></a>
+		<a target="_blank" href="https://twitter.com/intent/tweet?url=<?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->twitter->link; ?>&text=<?php echo rawurlencode($homeData->infographic->share->twitter->share_copy); ?>" class="twitter"></a>
 		<a target="_blank" href="https://plus.google.com/share?url=<?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->gplus->link; ?>" class="share gplus"></a>
-		<a target="_blank" href="mailto:?subject=<?php echo $homeData->infographic->share->email->subject; ?>&amp;body=<?php echo $homeData->infographic->share->email->body; ?> <?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->email->link; ?>." target="_blank" class="email"></a>
+		<a target="_blank" href="mailto:?subject=<?php echo rawurlencode($homeData->infographic->share->email->subject); ?>&amp;body=<?php echo rawurlencode($homeData->infographic->share->email->body); ?> <?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->email->link; ?>." target="_blank" class="email"></a>
 	</div>
 </div>
 <div class="row bottom">

@@ -86,7 +86,7 @@ function pivot_campaign_node_presave($node) {
     $menu = array(
      'menu_name' => 'campaign-'. $title,
      'title' => $node->title,
-     'description' => 'Campaign Menu For'. $node->title,
+     'description' => 'Campaign Menu For '. $node->title,
     );
     menu_save($menu); //uncomment this line when ready and no longer testing
     $node->field_header_menu['und'][0]['value'] = 'campaign-'. $title;
