@@ -7,10 +7,6 @@
   Order allow,deny
 </FilesMatch>
 
-#Redirects
-Redirect 301 /show/please-like-me http://pleaselikeme.org/   
-Redirect 301 /report http://www.pivot.tv/sites/default/files/downloadable_content/pivotbroadbanders2013%20for%20NCTA%5B4%5D.pdf
-
 # Don't show directory listings for URLs which map to a directory.
 Options -Indexes
 
