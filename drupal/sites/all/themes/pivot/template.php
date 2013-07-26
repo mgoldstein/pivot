@@ -309,6 +309,14 @@ function STARTERKIT_preprocess_block(&$variables, $hook) {
 }
 // */
 
+/**
+ * Impelements template_preprocess_search_result().
+ */
+function pivot_preprocess_search_result(&$variables) {
+  // hide search result info info
+  $variables['info_split'] = array();
+  $variables['info'] = '';
+}
 
 /**
  * Implements theme_field().
