@@ -297,10 +297,6 @@ a:active {
 				transition: all 0.5s linear 0s;
 			}
 
-			&.open .nav-primary {
-				height: auto;
-				max-height: 500px; // why is this?
-			}
 
 			&:after {
 				content: " ";
@@ -312,10 +308,6 @@ a:active {
 				position: absolute;
 				top: 24px;
 				right: 11%; // great code quality from front-end. Real geniuses.
-			}
-
-			&.open:after {
-				background-image: url(../images/menu_btn_close.png);
 			}
 
 			.site-wrapper {
@@ -357,6 +349,7 @@ a:active {
 				}
 			}
 		} // .nav-primary
+
 	} // @media (max-width: 1000px)
 
 
@@ -415,6 +408,19 @@ a:active {
 		} // .search
 	} // .nav-secondary
 } // .not-front #site-header
+
+// Responsive View
+@media (max-width: 1000px) {
+	.not-front.clickedon #site-header .primary {
+		.nav-primary {
+				height: auto;
+				max-height: 500px; // why is this?
+		}
+		&:after {
+			background-image: url(../images/menu_btn_close.png);
+		}
+	}
+}
 
 
 
