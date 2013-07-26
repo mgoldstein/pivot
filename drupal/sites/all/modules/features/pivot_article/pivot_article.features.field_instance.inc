@@ -18,17 +18,23 @@ function pivot_article_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-	'label' => 'hidden',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-	'weight' => 3,
+        'weight' => 3,
       ),
       'promo' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 8,
+      ),
+      'promo_alt' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -66,23 +72,29 @@ function pivot_article_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-	'label' => 'hidden',
-	'module' => 'text',
-	'settings' => array(),
-	'type' => 'text_default',
-	'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
       ),
       'promo' => array(
-	'label' => 'above',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 0,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'promo_alt' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'teaser' => array(
-	'label' => 'above',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 0,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
@@ -97,9 +109,9 @@ function pivot_article_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-	'maxlength_js' => 0,
-	'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-	'size' => 60,
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
       ),
       'type' => 'text_textfield',
       'weight' => 1,
@@ -114,22 +126,28 @@ function pivot_article_field_default_field_instances() {
     'description' => 'Add as many tags as you like. The tags are "global" because they can be used to categorize any type of content on the site.',
     'display' => array(
       'default' => array(
-	'label' => 'above',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 4,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'promo' => array(
-	'label' => 'above',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 0,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'promo_alt' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'teaser' => array(
-	'label' => 'above',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 0,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
@@ -143,9 +161,9 @@ function pivot_article_field_default_field_instances() {
       'active' => 0,
       'module' => 'taxonomy',
       'settings' => array(
-	'autocomplete_path' => 'taxonomy/autocomplete',
-	'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-	'size' => 60,
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
       'weight' => 9,
@@ -159,20 +177,26 @@ function pivot_article_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-	'label' => 'hidden',
-	'module' => 'image',
-	'settings' => array(
-	  'image_link' => '',
-	  'image_style' => 'blog_article',
-	),
-	'type' => 'image',
-	'weight' => 2,
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'blog_article',
+        ),
+        'type' => 'image',
+        'weight' => 2,
       ),
       'promo' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 3,
+      ),
+      'promo_alt' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -232,19 +256,25 @@ function pivot_article_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-	'label' => 'hidden',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-	  'link' => 0,
+          'link' => 0,
         ),
         'type' => 'entityreference_label',
-	'weight' => 1,
+        'weight' => 1,
       ),
       'promo' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 7,
+      ),
+      'promo_alt' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -285,16 +315,24 @@ function pivot_article_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-	'label' => 'hidden',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 5,
-      ),
-      'promo' => array(
-	'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 5,
+      ),
+      'promo' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'promo_alt' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -330,16 +368,24 @@ function pivot_article_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-	'label' => 'hidden',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 7,
-      ),
-      'promo' => array(
-	'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 7,
+      ),
+      'promo' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'promo_alt' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -374,15 +420,29 @@ function pivot_article_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-	'label' => 'above',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 6,
-      ),
-      'promo' => array(
-	'label' => 'above',
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'promo' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'promo_square',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+      'promo_alt' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'promo_widescreen',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -443,16 +503,22 @@ function pivot_article_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-	'label' => 'hidden',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 8,
-      ),
-      'promo' => array(
-	'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 8,
+      ),
+      'promo' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'promo_alt' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -473,7 +539,7 @@ function pivot_article_field_default_field_instances() {
       'module' => 'entityreference',
       'settings' => array(
         'match_operator' => 'CONTAINS',
-	'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
