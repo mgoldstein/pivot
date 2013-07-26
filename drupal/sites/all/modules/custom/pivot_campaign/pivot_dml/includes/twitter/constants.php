@@ -7,7 +7,7 @@ define('ACCESSTOKEN', '1615622580-Cnp8EVv5zRELtioOTNkJ3fUyMjJ6aDygyl3IJs4');
 define('ACCESSTOKENSECRET', 'y4S2H4CoLmVqZQolZAwvLLbBlOrPmdFyW4d9CHUIo');
 
 // feed settings
-define('TWITTER_USER', 'pivot_tv');
+define('TWITTER_USER', 'EyesWideOpenDML');
 define('NUM_TWEETS', '11');
 
 // cache settings
