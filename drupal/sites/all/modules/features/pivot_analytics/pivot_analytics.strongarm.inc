@@ -44,7 +44,7 @@ if(\'[node:content-type:name]\'.length > 0) {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'sitecatalyst_js_file_location';
-  $strongarm->value = 'sites/all/libraries/sitecatalyst/s_code_h25_core.js';
+  $strongarm->value = '/sites/all/libraries/sitecatalyst/s_code_h25_core.js';
   $export['sitecatalyst_js_file_location'] = $strongarm;
 
   $strongarm = new stdClass();
