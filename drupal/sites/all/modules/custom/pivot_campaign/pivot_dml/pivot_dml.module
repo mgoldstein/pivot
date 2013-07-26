@@ -116,6 +116,7 @@ function pivot_dml_preprocess_html(&$variables){
   $current_path = drupal_get_path_alias(current_path());
   if (strpos($current_path, variable_get('pivot_dml_path', '')) !== FALSE) {
     $variables['classes_array'][] = 'page-dml';
+    $variables['classes_array'][] = 'page-dml-home';
     if (strpos($current_path, 'quiz') !== FALSE) {
       $variables['classes_array'][] = 'page-dml-quiz';
     }
@@ -158,7 +159,8 @@ function pivot_dml_preprocess_page(&$variables){
 
 
 function pivot_dml_preprocess_node(&$variables){
-  if($variables['type'] == 'campaign') {
+  $current_path = drupal_get_path_alias(current_path());
+  if($variables['type'] == 'campaign' && strpos($current_path, variable_get('pivot_dml_path', '')) !== FALSE) {
     $variables['theme_hook_suggestions'][] = 'node__piv_dml';
   }
 }
