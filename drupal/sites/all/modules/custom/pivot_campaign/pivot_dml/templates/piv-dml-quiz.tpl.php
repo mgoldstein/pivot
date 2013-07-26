@@ -58,7 +58,7 @@
 								<a href="https://plus.google.com/share?url=<?php echo url($path, array('absolute' => TRUE)).$quizData->share->gplus->link; ?>" class="share gplus"></a>
 							</li>
 						 	<li>
-								<a href="mailto:?subject=<?php echo rawurlencode($quizData->share->email->subject); ?>&amp;body=<?php echo urlencode($quizData->share->email->body); ?> <?php echo url($path, array('absolute' => TRUE)).$quizData->share->email->link; ?>." target="_blank" class="email"></a>
+								<a href="mailto:?subject=<?php echo rawurlencode($quizData->share->email->subject); ?>&amp;body=<?php echo rawurlencode($quizData->share->email->body); ?> <?php echo url($path, array('absolute' => TRUE)).$quizData->share->email->link; ?>." target="_blank" class="email"></a>
 							</li>
 						</ul>
 						<div class="back"><a href="#">back to<br>results</a></div>
