@@ -207,23 +207,24 @@
             "url": "http://www.propublica.org"
         }
     ],
-	"share": {
+    "share": {
         "facebook": {
             "data_link": "/quiz",
             "data_image": "/public/images/quiz/intro-copy.png",
-            "data_name": "name",
-            "data_caption": "caption",
-            "data_description": "description"
+            "data_name": "Eyes Wide Open - Media & Privacy Quiz",
+            "data_caption": "Put Your Media & Privacy Smarts to the Test",
+            "data_description": "Do you know how safe you data is?  Take this quiz to find out!"
         },
         "twitter": {
-            "link": "/quiz"
+            "link": "/quiz",
+            "share_copy": "Do you know how safe you data is?  Take this quiz to find out!"
         },
         "gplus": {
             "link": "/quiz"
         },
         "email": {
             "subject": "Put Your Media & Privacy Smarts to the Test",
-            "body": "check out this site",
+            "body": "Do you know how safe you data is?  Take this quiz to find out!",
             "link": "/quiz"
         }
     }

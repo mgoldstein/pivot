@@ -71,7 +71,7 @@
 		<p class="first">transparency</p>
 		<span>is the best</span>
 		<p class="last">ad<br>policy</p>
-		<a href="<?php echo url($path, array('absolute' => TRUE)); ?>/ad" class="btn">get all the deets here</a>
+		<a href="<?php echo url($path, array('absolute' => TRUE)); ?>/ad_policy" class="btn">get all the deets here</a>
 	</div>
 </div>
 <div class="row video">

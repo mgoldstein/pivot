@@ -1,10 +1,10 @@
 <?php
 
 // oauth API credentials
-define('CONSUMERKEY', 'Kt9Hy78RJpR31V1BMAdIrg');
-define('CONSUMERSECRET', 'iBVfWtt30n25fc8vfrPfhMXe2ZkebYx8Voo5BtGHE');
-define('ACCESSTOKEN', '1372841598-z1txnX5DiYdDbxnLw0O4C2l4ebJoXoWfaV2WPlg');
-define('ACCESSTOKENSECRET', 'hpChR3TXQ2cLi2KthSQIZdSWxSxJDz1Ov3WxU8ipGI');
+define('CONSUMERKEY', 'uFHgJye3eQpSD7QQpTqUZw');
+define('CONSUMERSECRET', 'rcZw4795s6GcVLtnQgDEj18VFShCHYaWff1XRwR1g');
+define('ACCESSTOKEN', '1615622580-Cnp8EVv5zRELtioOTNkJ3fUyMjJ6aDygyl3IJs4');
+define('ACCESSTOKENSECRET', 'y4S2H4CoLmVqZQolZAwvLLbBlOrPmdFyW4d9CHUIo');
 
 // feed settings
 define('TWITTER_USER', 'pivot_tv');
