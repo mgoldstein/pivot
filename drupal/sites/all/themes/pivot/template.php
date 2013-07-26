@@ -191,7 +191,30 @@ function pivot_process_page(&$variables) {
  * @param $hook
  *   The name of the template being rendered ("node" in this case.)
  */
+/**
+* Implements hook_preprocess_node().
+*/
 function pivot_preprocess_node(&$variables, $hook) {
+  if($variables['view_mode'] == 'promo') {
+    // add classes to promo <article>s
+    $variables['classes_array'][] = 'promo';
+    $variables['classes_array'][] = 'node-' . $variables['type'] . '-promo';
+
+    // use our custom templates for easy overridability
+    $variables['theme_hook_suggestions'][] = 'node__promo';
+    $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__promo';
+  } else if ($variables['view_mode'] == "promo_alt") {
+    // add classes to promo <article>s
+    $variables['classes_array'][] = 'promo-alt';
+    $variables['classes_array'][] = 'node-' . $variables['type'] . '-promo-alt';
+
+    // use our custom templates for easy overridability
+    $variables['theme_hook_suggestions'][] = 'node__promo_alt';
+    $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__promo_alt';
+  } else if ($variables['view_mode'] == 'teaser') {
+    $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__teaser';
+  }
+
   // Run node-type-specific preprocess functions, like
   // pivot_preprocess_node_video()
   $function = __FUNCTION__ . '__' . $variables['node']->type;
@@ -241,6 +264,27 @@ function pivot_preprocess_node__article(&$variables, $hook) {
   if (isset($previous_article->nid) && $previous_article->nid != $variables['nid']) {
     $variables['next_article_link'] = l($previous_article->title, 'node/' . $previous_article->nid);
   }
+}
+
+function pivot_preprocess_node__show(&$variables) {
+    // write an external link tag if any
+    $variables['promo_external_anchor_tag'] = '';
+    if ($variables['field_external_link'] && $variables['field_external_link']['und'][0]['url']) {
+      $variables['promo_external_anchor_tag'] .= '<a href="' . $variables['field_external_link']['und'][0]['url'] . '"';
+      if (isset($variables['field_external_link']['und'][0]['title'])) {
+        $variables['promo_external_anchor_tag'] .= ' title="' . $variables['field_external_link']['und'][0]['title'] .'"';
+      }
+      if (isset($variables['field_external_link']['und'][0]['attributes']['target'])) {
+        $variables['promo_external_anchor_tag'] .= ' target="' . $variables['field_external_link']['und'][0]['attributes']['target'] . '"';
+      }
+      $variables['promo_external_anchor_tag'] .= '>';
+    }
+}
+
+function pivot_preprocess_node__promo(&$variables) {
+  // link is required, so we know these exist
+  $variables['promo_external_link_url'] = $variables['field_external_link']['und'][0]['url'];
+  $variables['promo_external_link_attributes'] = $variables['field_external_link']['und'][0]['attributes'];
 }
 
 /**
