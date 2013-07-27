@@ -84,10 +84,10 @@
  */
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-    <?php print l(render($content['field_promo_image']), 'node/' . $node->nid, array('html' => TRUE));?>
+	<?php print l(render($content['field_promo_image']), $promo_external_link_url, array('html'=> TRUE, 'attributes' => $promo_external_link_attributes)); ?>
     <div class="info">
     <div class="info-inner">
-      <?php print l(render($content['field_promo_headline']), 'node/' . $node->nid, array('html' => TRUE));?>
+	  <?php print l(render($content['field_promo_headline']), $promo_external_link_url, array('html' => TRUE, 'attributes' => $promo_external_link_attributes));?>
       <?php print render($content['field_promo_abstract']);?>
     </div>
   </div>
