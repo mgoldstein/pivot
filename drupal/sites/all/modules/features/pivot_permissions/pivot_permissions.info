@@ -1,16 +1,13 @@
 name = Pivot Permissions
 description = Roles and permissions
 core = 7.x
-package = Permissions
+package = Config
 php = 5.2.4
 version = 7.x-1.0
 project = pivot_permissions
 dependencies[] = features
 dependencies[] = search
 features[features_api][] = api:2
-features[user_permission][] = administer search
-features[user_permission][] = search content
-features[user_permission][] = use advanced search
 features[user_role][] = administrator
 features[user_role][] = contributor
 features[user_role][] = editor

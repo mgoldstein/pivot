@@ -84,7 +84,7 @@
  */
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-  <?php print render($content['field_promo_image']);?>
+  <?php print l(render($content['field_promo_image']), 'node/' . $node->nid);?>
   <?php print render($content['field_promo_headline']);?>
-  <?php print render($content['field_promo_abstract']);?>
+  <?php print l(render($content['field_promo_abstract']), 'node/' . $node->nid);?>
 </article><!-- /.node.promo -->

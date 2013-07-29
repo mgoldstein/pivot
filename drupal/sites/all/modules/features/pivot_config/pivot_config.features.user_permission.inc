@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * pivot_permissions.features.user_permission.inc
+ * pivot_config.features.user_permission.inc
  */
 
 /**
  * Implements hook_user_default_permissions().
  */
-function pivot_permissions_user_default_permissions() {
+function pivot_config_user_default_permissions() {
   $permissions = array();
 
   // Exported permission: administer search.
@@ -15,7 +15,6 @@ function pivot_permissions_user_default_permissions() {
     'name' => 'administer search',
     'roles' => array(
       'administrator' => 'administrator',
-      'layout editor' => 'layout editor',
     ),
     'module' => 'search',
   );

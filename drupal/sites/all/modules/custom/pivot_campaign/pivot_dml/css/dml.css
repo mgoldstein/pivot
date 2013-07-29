@@ -1729,6 +1729,9 @@ html.ie9 body.page-dml div#content div.dml-header nav li.current:after, html.ie1
 #quiz-container ol {
   padding-left: 0;
 }
+body.page-dml{
+  width: 980px;
+}
 body.page-dml h1.title {
   display: none;
 }
@@ -1753,3 +1756,28 @@ body.page-dml.node-type-page div#content .node li {
   font-size: 20px;
   line-height: 1.5;
 }
+
+/*
+* Stuff to make it look decent on a phone
+ */
+
+body.page-dml{
+  width: 980px;
+  margin: 0 auto;
+}
+body.page-dml div#content {
+  width: 980px;
+  margin: 0 auto;
+}
+body.page-dml #content > .primary {
+  max-width: 980px;
+}
+@media (max-width: 1000px) {
+  body.not-front.page-dml #site-header .logo {
+    margin: 8px 0 9px 0 !important;
+  }
+}
+
+
+
+

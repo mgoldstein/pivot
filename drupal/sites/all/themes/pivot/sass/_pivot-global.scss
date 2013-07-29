@@ -82,11 +82,17 @@ a:active {
 	}
 }
 
-.headline {
+.headline,
+.title {
 	font-size: 1.2em;
 	margin-bottom: 15px;
 	text-transform: uppercase;
+
+	&#page-title {
+		font-size: 36px;
+	}
 }
+
 
 /* ============================================================
 || Global Header (not frontpage)
@@ -1020,11 +1026,10 @@ a:active {
 	}
 
 	.field-name-field-promo-headline {
-		font-size: 1.2em; // 24px
+		font-size: 1.1em; // 22px
+		text-transform: capitalize;
 		color: #0084a9;
-		font-style: italic;
-		font-weight: bold;
-		margin: 0;
+		margin: 15px 0 10px;
 	}
 
 	.field-name-field-promo-abstract {
@@ -1033,6 +1038,58 @@ a:active {
 	}
 }
 
+/* ============================================================
+|| Shows Landing
+============================================================ */
+
+.view-shows.view-display-id-page {
+	.view-content {
+		> div {
+			width: 300px; // border-box includes padding
+			margin: 0 20px 20px 0;
+			float: left;
+
+			&:nth-child(3n) {
+				margin-right: 0;
+			}
+
+		}
+	}
+}
+
+/* ============================================================
+|| Movies Landing
+============================================================ */
+
+.view-movies.view-display-id-page {
+	.view-content {
+		> div {
+			width: 300px; // border-box includes padding
+			margin: 0 20px 20px 0;
+			float: left;
+
+			&:nth-child(2n) {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+
+/* ============================================================
+|| Search Results
+============================================================ */
+
+.page-search {
+	.search-results {
+		font-size: 14px;
+		line-height: 20px;
+
+		.title {
+			line-height: 2;
+		}
+	}
+}
 
 /* ============================================================
 || Modules
@@ -1367,3 +1424,103 @@ iframe.media-youtube-player {
 	margin-bottom: 0px;
 }
 
+
+
+
+
+
+
+/* Hero Header; */
+.hero-header .show-hero {
+	position: relative;
+}
+.hero-header .show-hero img {
+	display: block;
+	max-width: 100%;
+	max-height: 100%;
+	height: auto;
+	width: auto;
+}
+.hero-header .show-hero .headline {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin-bottom: 0;
+}
+.hero-header .show-hero .headline a {
+	display: block;
+	padding: 1em 0.67em;
+	color: #000;
+	font-size: 30px;
+	background: #fff;
+	background: rgba(255, 255, 255, 0.9);
+	text-transform: capitalize;
+	font-weight: bold;
+	-webkit-transition: all .1s linear .1s;
+	transition: all .1s linear .1s;
+}
+.hero-header .show-hero .headline a:hover,
+.hero-header .show-hero .headline a:focus {
+	background-color: rgba(0, 132, 169, 0.9);
+	color: #fff;
+	text-decoration: none;
+}
+.hero-header .show-hero .hero-ad {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	background-color: #0084a9;
+	background: rgba(0, 132, 169, 0.5);
+	display: block;
+
+	-webkit-transition: all .1s linear .1s;
+	transition: all .1s linear .1s;
+}
+.hero-header .show-hero .hero-ad:hover,
+.hero-header .show-hero .hero-ad:focus {
+	background-color: #0084a9;
+	background-color: rgba(0, 132, 169, 0.7);
+}
+.hero-header .show-hero .hero-ad img {
+	padding: 0 10%;
+	position: relative;
+	top: 50%;
+	margin-top: -50%;
+}
+.hero-header .nav {
+	background: #424242;
+}
+.hero-header .nav .leaf {
+	display: inline-block; *display: inline; *zoom: 1;
+	vertical-align: top;
+}
+.hero-header .nav .leaf a {
+	display: block;
+	background: #424242;
+	color: #fff;
+	padding: 1em 1.618em;
+	text-transform: uppercase;
+	font-size: 18px;
+
+	-webkit-transition: all .1s linear .1s;
+	transition: all .1s linear .1s;
+}
+.hero-header .nav .leaf.active a,
+.hero-header .nav .leaf a:hover,
+.hero-header .nav .leaf a:focus {
+	background: #1a1a1a;
+	color: #00b5cc;
+	text-decoration: none;
+}
+.hero-header .nav .headline {
+	display: none;
+}
+.hero-header .nav ul {
+	padding: 0;
+	margin: 0;
+}
+.hero-header .nav li {
+	margin: 0;
+}

@@ -1,7 +1,7 @@
 name = Pivot Analytics
 description = Analytics settings such as SiteCatalyst.
 core = 7.x
-package = Analytics
+package = Config
 version = 7.x-1.0
 project = pivot_analytics
 dependencies[] = ctools
