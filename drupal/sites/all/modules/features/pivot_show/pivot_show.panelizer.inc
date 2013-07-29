@@ -485,8 +485,8 @@ function pivot_show_panelizer_defaults() {
       'delta_offset' => '0',
       'delta_reversed' => FALSE,
       'formatter_settings' => array(
-	'image_link' => '',
-	'image_style' => '',
+        'image_link' => '',
+        'image_style' => '',
       ),
       'context' => 'panelizer',
     );
@@ -540,10 +540,10 @@ function pivot_show_panelizer_defaults() {
       'delta_offset' => '0',
       'delta_reversed' => FALSE,
       'formatter_settings' => array(
-	'decimal_separator' => '.',
-	'prefix_suffix' => TRUE,
-	'scale' => 0,
-	'thousand_separator' => ' ',
+        'decimal_separator' => '.',
+        'prefix_suffix' => TRUE,
+        'scale' => 0,
+        'thousand_separator' => ' ',
       ),
       'context' => 'panelizer',
     );
