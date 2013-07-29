@@ -1,6 +1,4 @@
-name = Pivot Campaign
-description = Global Settings for Pivot Campaigns
+name = Pivot Shows
+description = Global Settings for Pivot Shows
 core = 7.x
 package = Pivot
-
-configure = admin/config/campaign
