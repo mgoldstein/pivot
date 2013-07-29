@@ -110,6 +110,15 @@ function pivot_person_strongarm() {
         'title' => array(
           'weight' => '0',
         ),
+        'metatags' => array(
+          'weight' => '6',
+        ),
+        'path' => array(
+          'weight' => '4',
+        ),
+        'redirect' => array(
+          'weight' => '5',
+        ),
       ),
       'display' => array(),
     ),

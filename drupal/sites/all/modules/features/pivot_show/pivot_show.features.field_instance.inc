@@ -43,8 +43,8 @@ function pivot_show_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_cast_crew-field_first_name'
-  $field_instances['field_collection_item-field_cast_crew-field_first_name'] = array(
+  // Exported field_instance: 'field_collection_item-field_cast_crew-field_character_name'
+  $field_instances['field_collection_item-field_cast_crew-field_character_name'] = array(
     'bundle' => 'field_cast_crew',
     'default_value' => NULL,
     'deleted' => 0,
@@ -55,12 +55,12 @@ function pivot_show_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'field_collection_item',
-    'field_name' => 'field_first_name',
-    'label' => 'First Name',
+    'field_name' => 'field_character_name',
+    'label' => 'Character name',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -75,43 +75,7 @@ function pivot_show_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'field_collection_item-field_cast_crew-field_last_name'
-  $field_instances['field_collection_item-field_cast_crew-field_last_name'] = array(
-    'bundle' => 'field_cast_crew',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_last_name',
-    'label' => 'Last Name',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 5,
     ),
   );
 
@@ -250,71 +214,6 @@ function pivot_show_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'node-show-field_external_link'
-  $field_instances['node-show-field_external_link'] = array(
-    'bundle' => 'show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-      'promo' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'promo_alt' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_external_link',
-    'label' => 'External Link',
-    'required' => 0,
-    'settings' => array(
-      'attributes' => array(
-        'class' => '',
-        'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'user',
-        'title' => '',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'rel_remove' => 'default',
-      'title' => 'optional',
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-      'user_register_form' => FALSE,
-      'validate_url' => 1,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'link',
-      'settings' => array(),
-      'type' => 'link_field',
-      'weight' => 10,
     ),
   );
 
@@ -758,14 +657,12 @@ function pivot_show_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Cast and Crew');
+  t('Character name');
   t('Description');
-  t('External Link');
-  t('First Name');
   t('For schedule feeds to relate to show content');
   t('Gallery');
   t('Header Image');
   t('Header Menu');
-  t('Last Name');
   t('Media Relationship');
   t('Person Reference');
   t('Promo Abstract');
