@@ -84,13 +84,13 @@ function pivot_show_strongarm() {
         'custom_settings' => FALSE,
       ),
       'promo' => array(
-        'custom_settings' => TRUE,
+	'custom_settings' => TRUE,
       ),
       'promo_alt' => array(
-        'custom_settings' => TRUE,
+	'custom_settings' => TRUE,
       ),
       'diff_standard' => array(
-        'custom_settings' => FALSE,
+	'custom_settings' => FALSE,
       ),
     ),
     'extra_fields' => array(
