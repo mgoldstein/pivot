@@ -235,6 +235,12 @@ function pivot_contexts_context_default_contexts() {
           'region' => 'preface',
           'weight' => '-10',
         ),
+	'dfp-pivot_ros_rr_300x250' => array(
+	  'module' => 'dfp',
+	  'delta' => 'pivot_ros_rr_300x250',
+	  'region' => 'right_sidebar',
+	  'weight' => '-10',
+	),
       ),
     ),
   );
@@ -244,6 +250,38 @@ function pivot_contexts_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('Show node pages');
   $export['shows'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'shows_landing';
+  $context->description = 'The Shows Landing Page';
+  $context->tag = '';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+	'shows' => 'shows',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+	'dfp-pivot_ros_rr_300x250' => array(
+	  'module' => 'dfp',
+	  'delta' => 'pivot_ros_rr_300x250',
+	  'region' => 'right_sidebar',
+	  'weight' => '-10',
+	),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('The Shows Landing Page');
+  $export['shows_landing'] = $context;
 
   return $export;
 }

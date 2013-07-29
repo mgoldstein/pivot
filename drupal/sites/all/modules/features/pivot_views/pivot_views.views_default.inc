@@ -32,13 +32,42 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_person_ref_field_collection_item']['id'] = 'reverse_field_person_ref_field_collection_item';
+  $handler->display->display_options['relationships']['reverse_field_person_ref_field_collection_item']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_person_ref_field_collection_item']['field'] = 'reverse_field_person_ref_field_collection_item';
+  $handler->display->display_options['relationships']['reverse_field_person_ref_field_collection_item']['required'] = TRUE;
+  /* Relationship: Field collection item: Entity with the Cast and Crew (field_cast_crew) */
+  $handler->display->display_options['relationships']['field_cast_crew_node']['id'] = 'field_cast_crew_node';
+  $handler->display->display_options['relationships']['field_cast_crew_node']['table'] = 'field_collection_item';
+  $handler->display->display_options['relationships']['field_cast_crew_node']['field'] = 'field_cast_crew_node';
+  $handler->display->display_options['relationships']['field_cast_crew_node']['relationship'] = 'reverse_field_person_ref_field_collection_item';
+  $handler->display->display_options['relationships']['field_cast_crew_node']['required'] = TRUE;
+  /* Field: Content: Name */
+  $handler->display->display_options['fields']['field_person_name']['id'] = 'field_person_name';
+  $handler->display->display_options['fields']['field_person_name']['table'] = 'field_data_field_person_name';
+  $handler->display->display_options['fields']['field_person_name']['field'] = 'field_person_name';
+  $handler->display->display_options['fields']['field_person_name']['label'] = '';
+  $handler->display->display_options['fields']['field_person_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_person_name']['click_sort_column'] = 'title';
+  $handler->display->display_options['fields']['field_person_name']['settings'] = array(
+    'format' => 'default',
+    'markup' => 0,
+    'output' => 'default',
+    'multiple' => 'default',
+    'multiple_delimiter' => ', ',
+    'multiple_and' => 'text',
+    'multiple_delimiter_precedes_last' => 'never',
+    'multiple_el_al_min' => '3',
+    'multiple_el_al_first' => '1',
+  );
+  /* Field: Field collection item: Media Relationship */
+  $handler->display->display_options['fields']['field_cast_role_ref']['id'] = 'field_cast_role_ref';
+  $handler->display->display_options['fields']['field_cast_role_ref']['table'] = 'field_data_field_cast_role_ref';
+  $handler->display->display_options['fields']['field_cast_role_ref']['field'] = 'field_cast_role_ref';
+  $handler->display->display_options['fields']['field_cast_role_ref']['relationship'] = 'reverse_field_person_ref_field_collection_item';
+  $handler->display->display_options['fields']['field_cast_role_ref']['label'] = '';
+  $handler->display->display_options['fields']['field_cast_role_ref']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -56,6 +85,7 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['arguments']['title']['id'] = 'title';
   $handler->display->display_options['arguments']['title']['table'] = 'node';
   $handler->display->display_options['arguments']['title']['field'] = 'title';
+  $handler->display->display_options['arguments']['title']['relationship'] = 'field_cast_crew_node';
   $handler->display->display_options['arguments']['title']['exception']['value'] = '';
   $handler->display->display_options['arguments']['title']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['title']['summary']['number_of_records'] = '0';
@@ -71,6 +101,13 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'person' => 'person',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -144,11 +181,10 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
-  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['view_mode'] = 'promo_alt';
   $handler->display->display_options['row_options']['links'] = FALSE;
@@ -202,11 +238,10 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
-  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['view_mode'] = 'promo_alt';
   $handler->display->display_options['row_options']['links'] = FALSE;
