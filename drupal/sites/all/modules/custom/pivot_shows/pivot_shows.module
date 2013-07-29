@@ -21,19 +21,16 @@ function pivot_shows_block_view($delta = ''){
   }
 
 function pivot_shows_hero() {
-  $current_path = current_path();
-  $pos = strrpos($current_path, '/', $offset = 1);
-  $alias = substr(current_path(), 0 , $pos);
-  dpm($alias, 'alias');
-  $path = drupal_lookup_path('source', $alias);
-  dpm($path, 'path');
-  $node = menu_get_object("node", 1, $path);
-  dpm($node, 'node');
-
-
-
-
-  $node = node_load(arg(1));
+  if(arg(0) == 'node'){
+    $node = node_load(arg(1));
+  }
+  else {
+    $current_path = current_path();
+    $pos = strrpos($current_path, '/', $offset = 1);
+    $alias = substr(current_path(), 0 , $pos);
+    $path = drupal_lookup_path('source', $alias);
+    $node = menu_get_object("node", 1, $path);
+  }
   $hero_image = '<img src="'.file_create_url($node->field_header_image['und'][0]['uri']). '" alt="'. (isset($node->field_promo_headline['und'][0]['value']) ? $node->field_promo_headline['und'][0]['value'] : ''). '">';
   $headline_link = l($node->title, 'node/'. $node->nid);
   $hero_menu = drupal_render(menu_tree_output(menu_tree_all_data($node->field_header_menu['und'][0]['value'])));
