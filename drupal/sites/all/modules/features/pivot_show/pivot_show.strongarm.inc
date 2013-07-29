@@ -83,15 +83,6 @@ function pivot_show_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
-      'promo' => array(
-        'custom_settings' => TRUE,
-      ),
-      'promo_alt' => array(
-        'custom_settings' => TRUE,
-      ),
-      'diff_standard' => array(
-        'custom_settings' => FALSE,
-      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -99,13 +90,10 @@ function pivot_show_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '11',
+	  'weight' => '10',
         ),
         'metatags' => array(
-          'weight' => '12',
-        ),
-        'redirect' => array(
-          'weight' => '13',
+	  'weight' => '11',
         ),
       ),
       'display' => array(),
@@ -154,7 +142,7 @@ function pivot_show_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_show_pattern';
-  $strongarm->value = 'show/[node:title]';
+  $strongarm->value = 'shows/[node:title]';
   $export['pathauto_node_show_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
