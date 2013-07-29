@@ -39,7 +39,7 @@ function pivot_show_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 4,
+      'weight' => 2,
     ),
   );
 
@@ -75,7 +75,7 @@ function pivot_show_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 3,
     ),
   );
 
@@ -113,7 +113,7 @@ function pivot_show_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 3,
+      'weight' => 1,
     ),
   );
 
@@ -140,7 +140,7 @@ function pivot_show_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-	'weight' => 9,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -174,8 +174,9 @@ function pivot_show_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-	'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 0,
       ),
       'promo' => array(
@@ -188,7 +189,7 @@ function pivot_show_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-	'weight' => 6,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -239,7 +240,7 @@ function pivot_show_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-	'weight' => 7,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -294,7 +295,7 @@ function pivot_show_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-	'weight' => 8,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -376,7 +377,7 @@ function pivot_show_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-	'weight' => 5,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -415,8 +416,9 @@ function pivot_show_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-	'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 3,
       ),
       'promo' => array(
@@ -427,11 +429,10 @@ function pivot_show_field_default_field_instances() {
         'weight' => 2,
       ),
       'promo_alt' => array(
-	'label' => 'hidden',
-	'module' => 'text',
+        'label' => 'above',
         'settings' => array(),
-	'type' => 'text_default',
-	'weight' => 2,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -468,8 +469,9 @@ function pivot_show_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-	'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 1,
       ),
       'promo' => array(
@@ -480,11 +482,10 @@ function pivot_show_field_default_field_instances() {
         'weight' => 1,
       ),
       'promo_alt' => array(
-	'label' => 'hidden',
-	'module' => 'text',
+        'label' => 'above',
         'settings' => array(),
-	'type' => 'text_default',
-	'weight' => 1,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -520,8 +521,12 @@ function pivot_show_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-	'settings' => array(),
-	'type' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
         'weight' => 2,
       ),
       'promo' => array(
@@ -535,13 +540,9 @@ function pivot_show_field_default_field_instances() {
         'weight' => 0,
       ),
       'promo_alt' => array(
-	'label' => 'hidden',
-	'module' => 'image',
-	'settings' => array(
-	  'image_link' => '',
-	  'image_style' => 'promo_widescreen',
-	),
-	'type' => 'image',
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -624,7 +625,7 @@ function pivot_show_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-	'weight' => 3,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',

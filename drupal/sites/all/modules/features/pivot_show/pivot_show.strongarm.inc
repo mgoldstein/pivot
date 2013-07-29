@@ -84,13 +84,13 @@ function pivot_show_strongarm() {
         'custom_settings' => FALSE,
       ),
       'promo' => array(
-	'custom_settings' => TRUE,
+        'custom_settings' => TRUE,
       ),
       'promo_alt' => array(
-	'custom_settings' => TRUE,
+        'custom_settings' => TRUE,
       ),
       'diff_standard' => array(
-	'custom_settings' => FALSE,
+        'custom_settings' => FALSE,
       ),
     ),
     'extra_fields' => array(
@@ -158,29 +158,29 @@ function pivot_show_strongarm() {
     'status' => 1,
     'view modes' => array(
       'page_manager' => array(
-	'status' => 0,
-	'default' => 0,
-	'choice' => 0,
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
       ),
       'default' => array(
-	'status' => 1,
-	'default' => 1,
-	'choice' => 0,
+        'status' => 1,
+        'default' => 1,
+        'choice' => 0,
       ),
       'teaser' => array(
-	'status' => 0,
-	'default' => 0,
-	'choice' => 0,
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
       ),
       'promo' => array(
-	'status' => 0,
-	'default' => 0,
-	'choice' => 0,
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
       ),
       'promo_alt' => array(
-	'status' => 0,
-	'default' => 0,
-	'choice' => 0,
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
       ),
     ),
   );
@@ -746,7 +746,7 @@ function pivot_show_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_show_pattern';
-  $strongarm->value = 'show/[node:title]';
+  $strongarm->value = 'shows/[node:title]';
   $export['pathauto_node_show_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
