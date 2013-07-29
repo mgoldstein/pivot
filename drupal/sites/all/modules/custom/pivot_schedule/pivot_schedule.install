@@ -1,0 +1,125 @@
+<?php
+/**
+ * @file
+ * Sets up the base table for the wordlet entity.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function pivot_schedule_schema() {
+  $schema = array();
+
+  $schema['pivot_schedule_import_file'] = array(
+    'description' => 'The table for show time entries.',
+    'fields' => array(
+      // Primary key
+      'id' => array(
+        'description' => 'Primary key identifier for the schedule.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'import_file' => array(
+        'description' => 'The path to the import file.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the entity was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),
+    'indexes' => array(
+      'element_name' => array('element_name'),
+    ),
+  );
+
+  $schema['pivot_schedule_show_time'] = array(
+    'description' => 'The table for show time entries.',
+    'fields' => array(
+      // Primary key
+      'id' => array(
+        'description' => 'Primary key identifier for the show time.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'file_id' => array(
+        'description' => 'The import file to which the show time belongs.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'broadcast_start_time' => array(
+        'description' => 'Unix timestamp of start date and time for the broadcast.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'broadcast_length' => array(
+        'description' => 'Duration of the broadcast in seconds.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'element_name' => array(
+        'description' => 'The name of the show.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'title_name' => array(
+        'description' => 'The name of the episode/content.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'title_synopsis' => array(
+        'description' => 'Synopsis of the episode/content.',
+        'type' => 'text',
+      ),
+      'title_premiere_indicator_current_schedule' => array(
+        'description' => 'Premiere broadcast of episode/conent',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'title_code_wo_series_prefix' => array(
+        'description' => 'Season and episode code.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the entity was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'changed' => array(
+        'description' => 'The Unix timestamp when the entity was last changed.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),
+    'indexes' => array(
+      'element_name' => array('element_name'),
+    ),
+  );
+
+  return $schema;
+}

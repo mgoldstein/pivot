@@ -1,0 +1,255 @@
+<?php
+/**
+ * @file
+ * Show times feed import module.
+ */
+
+/**
+ * PivotScheduleShowTime entity.
+ */
+class PivotScheduleShowTime extends Entity {
+
+  public function __construct($values = array()) {
+    parent::__construct($values, 'pivot_schedule_show_time');
+  }
+
+  protected function defaultLabel() {
+    return t('@name @time', array(
+      '@name' => $this->element_name,
+      '@time' => date('d M Y g:i A T', $this->broadcast_start_time),
+    ));
+  }
+
+  protected function defaultUri() {
+    return "<front>";
+  }
+}
+
+/**
+ * PivotScheduleShowTime Entity Controller.
+ */
+class PivotScheduleShowTimeController extends EntityApiController {
+
+  public function create(array $values = array()) {
+    $values += array(
+      'id' => 0,
+      'file_id' => 0,
+      'broadcast_start_time' => 0,
+      'broadcast_length' => 0,
+      'element_name' => '',
+      'title_name' => '',
+      'title_synopsis' => '',
+      'title_premiere_indicator_current_schedule' => 0,
+      'title_code_wo_series_prefix' => '',
+      'created' => 0,
+      'changed' => 0,
+    );
+    return parent::create($values);
+  }
+}
+
+/**
+ * Implements hook_permission().
+ */
+function pivot_schedule_permission() {
+  // Return permissions for the standard API Entity operations.
+  return array(
+    'administer pivot_schedule show_times' => array(
+      'title' => t('View schedule show times'),
+      'restrict access' => TRUE,
+    ),
+    'import pivot_schedule show_times' => array(
+      'title' => t('Import schedule show times'),
+      'restrict access' => TRUE,
+    ),
+    'view pivot_schedule show_times' => array(
+      'title' => t('View schedule show times'),
+    ),
+    'delete pivot_schedule show_times' => array(
+      'title' => t('Delete schedule show times'),
+      'restrict access' => TRUE,
+    ),
+    'purge pivot_schedule show_times' => array(
+      'title' => t('Purge schedule show imports'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Access callback.
+ */
+function pivot_schedule_access($op, $entity = NULL, $account = NULL) {
+  // Block unknown operations.
+  if (in_array($op, array('administer', 'import', 'view', 'delete', 'purge'))) {
+    return user_access("$op pivot_schedule show_times", $account)
+      || user_access("administer pivot_schedule show_times", $account);
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_entity_info().
+ */
+function pivot_schedule_entity_info() {
+  return array(
+    'pivot_schedule_show_time' => array(
+      'label' => t("Show Time"),
+      'entity class' => 'PivotScheduleShowTime',
+      'controller class' => 'PivotScheduleShowTimeController',
+      'base table' => 'pivot_schedule_show_time',
+      'fieldable' => FALSE,
+      'entity keys' => array(
+        'id' => 'id',
+      ),
+      'uri callback' => 'entity_class_uri',
+      'label callback' => 'entity_class_label',
+      'access callback' => 'pivot_schedule_access',
+      'module' => 'pivot_schedule',
+    ),
+  );
+}
+
+/**
+ * Implements hook_entity_property_info().
+ */
+function pivot_schedule_entity_property_info() {
+  $info = array('pivot_schedule_show_time' => array('properties' => array()));
+  $properties = &$info['pivot_schedule_show_time']['properties'];
+
+  $properties['id'] = array(
+    'label' => t('Show Time ID'),
+    'description' => t('The unique show time id.'),
+    'type' => 'integer',
+    'validation callback' => 'entity_property_validate_integer_positive',
+    'access callback' => 'pivot_schedule_access',
+    'schema field' => 'id',
+    'required' => TRUE,
+    'field' => FALSE,
+    'entity views field' => TRUE,
+  );
+  $properties['broadcast_start_time'] = array(
+    'label' => t('Broadcast Start Time'),
+    'description' => t('Start date and time of the episode/content broadcast.'),
+    'type' => 'date',
+    'validation callback' => 'entity_property_validate_integer_non_negative',
+    'access callback' => 'pivot_schedule_access',
+    'schema field' => 'broadcast_start_time',
+    'required' => TRUE,
+    'field' => FALSE,
+    'entity views field' => TRUE,
+  );
+  $properties['broadcast_length'] = array(
+    'label' => t('Broadcast length'),
+    'description' => t('Duration of the broadcast in seconds.'),
+    'type' => 'duration',
+    'validation callback' => 'entity_property_validate_integer_non_negative',
+    'access callback' => 'pivot_schedule_access',
+    'schema field' => 'broadcast_length',
+    'required' => TRUE,
+    'field' => FALSE,
+    'entity views field' => TRUE,
+  );
+  $properties['element_name'] = array(
+    'label' => t('Element Name'),
+    'description' => t('Name of the broadcast show/program.'),
+    'type' => 'text',
+    'access callback' => 'pivot_schedule_access',
+    'schema field' => 'element_name',
+    'required' => TRUE,
+    'field' => FALSE,
+    'entity views field' => TRUE,
+    'sanitized' => TRUE,
+    'sanitize' => FALSE,
+  );
+  $properties['title_name'] = array(
+    'label' => t('Title Name'),
+    'description' => t('Name of the broadcast episode/content.'),
+    'type' => 'text',
+    'access callback' => 'pivot_schedule_access',
+    'schema field' => 'title_name',
+    'required' => FALSE,
+    'field' => FALSE,
+    'entity views field' => TRUE,
+    'sanitized' => TRUE,
+    'sanitize' => FALSE,
+  );
+  $properties['title_synopsis'] = array(
+    'label' => t('Synopsis'),
+    'description' => t('Synopsis of the broadcast episode/content.'),
+    'type' => 'text',
+    'access callback' => 'pivot_schedule_access',
+    'schema field' => 'title_synopsis',
+    'required' => FALSE,
+    'field' => FALSE,
+    'entity views field' => TRUE,
+    'sanitized' => TRUE,
+    'sanitize' => FALSE,
+  );
+  $properties['title_premiere_indicator_current_schedule'] = array(
+    'label' => t('Premiere Indicator'),
+    'description' => t('Title premiere indicator current schedule.'),
+    'type' => 'boolean',
+    'access callback' => 'pivot_schedule_accesspivot_schedule_access',
+    'schema field' => 'title_premiere_indicator_current_schedule',
+    'required' => FALSE,
+    'field' => FALSE,
+    'entity views field' => TRUE,
+  );
+  $properties['title_code_wo_series_prefix'] = array(
+    'label' => t('Title Code w/o Series Prefix'),
+    'description' => t('Your guess is as good as mine.'),
+    'type' => 'text',
+    'access callback' => 'pivot_schedule_accesspivot_schedule_access',
+    'schema field' => 'title_code_wo_series_prefix',
+    'required' => TRUE,
+    'field' => FALSE,
+    'entity views field' => TRUE,
+    'sanitized' => TRUE,
+    'sanitize' => FALSE,
+  );
+  $properties['created'] = array(
+    'label' => t('Created'),
+    'description' => t('When the show time was created.'),
+    'type' => 'date',
+    'validation callback' => 'entity_property_validate_integer_non_negative',
+    'access callback' => 'pivot_schedule_access',
+    'schema field' => 'created',
+    'required' => TRUE,
+    'field' => FALSE,
+    'entity views field' => TRUE,
+  );
+  $properties['changed'] = array(
+    'label' => t('Last Changed'),
+    'description' => t('When the show time was last changed.'),
+    'type' => 'date',
+    'validation callback' => 'entity_property_validate_integer_non_negative',
+    'access callback' => 'pivot_schedule_access',
+    'schema field' => 'changed',
+    'required' => TRUE,
+    'field' => FALSE,
+    'entity views field' => TRUE,
+  );
+
+  return $info;
+}
+
+function pivot_schedule_show_time_create(array $values) {
+  return entity_create('pivot_schedule_show_time', $values);
+}
+
+function pivot_schedule_show_time_delete($id) {
+  return entity_delete('pivot_schedule_show_time', $id);
+}
+
+function pivot_schedule_show_time_delete_multiple(array $ids) {
+  return entity_delete_multiple('pivot_schedule_show_time', $ids);
+}
+
+function pivot_schedule_show_time_save($show_time) {
+  return entity_save('pivot_schedule_show_time', $show_time);
+}
+
+function pivot_schedule_show_time_view(array $show_times, $view_mode = 'full', $langcode = NULL, $page = NULL) {
+  return entity_view('pivot_schedule_show_time', $show_times, $view_mode, $langcode, $page);
+}

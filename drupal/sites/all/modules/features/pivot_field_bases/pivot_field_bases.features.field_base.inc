@@ -119,15 +119,15 @@ function pivot_field_bases_field_default_field_bases() {
     'field_name' => 'field_article_subtitle',
     'foreign keys' => array(
       'format' => array(
-	'columns' => array(
-	  'format' => 'format',
-	),
-	'table' => 'filter_format',
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
       ),
     ),
     'indexes' => array(
       'format' => array(
-	0 => 'format',
+        0 => 'format',
       ),
     ),
     'locked' => 0,
@@ -262,6 +262,40 @@ function pivot_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'field_collection',
+  );
+
+  // Exported field_base: 'field_cast_role_ref'
+  $field_bases['field_cast_role_ref'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cast_role_ref',
+    'foreign keys' => array(
+      'tid' => array(
+        'columns' => array(
+          'tid' => 'tid',
+        ),
+        'table' => 'taxonomy_term_data',
+      ),
+    ),
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'person_to_media_relationship',
+          'parent' => 0,
+        ),
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
   );
 
   // Exported field_base: 'field_description'
@@ -471,6 +505,35 @@ function pivot_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_first_name'
+  $field_bases['field_first_name'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_first_name',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_gallery_ref'
   $field_bases['field_gallery_ref'] = array(
     'active' => 1,
@@ -523,25 +586,25 @@ function pivot_field_bases_field_default_field_bases() {
     'field_name' => 'field_global_tags',
     'foreign keys' => array(
       'tid' => array(
-	'columns' => array(
-	  'tid' => 'tid',
-	),
-	'table' => 'taxonomy_term_data',
+        'columns' => array(
+          'tid' => 'tid',
+        ),
+        'table' => 'taxonomy_term_data',
       ),
     ),
     'indexes' => array(
       'tid' => array(
-	0 => 'tid',
+        0 => 'tid',
       ),
     ),
     'locked' => 0,
     'module' => 'taxonomy',
     'settings' => array(
       'allowed_values' => array(
-	0 => array(
-	  'vocabulary' => 'global_tags',
-	  'parent' => 0,
-	),
+        0 => array(
+          'vocabulary' => 'global_tags',
+          'parent' => 0,
+        ),
       ),
     ),
     'translatable' => 0,
@@ -576,6 +639,35 @@ function pivot_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'image',
+  );
+
+  // Exported field_base: 'field_last_name'
+  $field_bases['field_last_name'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_last_name',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_main_image'
@@ -935,15 +1027,15 @@ function pivot_field_bases_field_default_field_bases() {
     'field_name' => 'field_video_youtube_media',
     'foreign keys' => array(
       'file_managed' => array(
-	'columns' => array(
-	  'fid' => 'fid',
-	),
-	'table' => 'file_managed',
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
       ),
     ),
     'indexes' => array(
       'fid' => array(
-	0 => 'fid',
+        0 => 'fid',
       ),
     ),
     'locked' => 0,
