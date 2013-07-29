@@ -1,0 +1,76 @@
+<?php
+
+function pivot_shows_block_info(){
+  $blocks = array();
+  $blocks['pivot_shows_hero'] = array(
+    'info' => t('Shows Hero')
+   );
+  return $blocks;
+ }
+
+
+function pivot_shows_block_view($delta = ''){
+  //The $delta parameter tells us which block is being requested.
+  $block = array();
+  switch ($delta) {
+    case 'pivot_shows_hero':
+      $block['content'] = pivot_shows_hero();
+      break;
+  }
+  return $block;
+  }
+
+function pivot_shows_hero() {
+  $node = node_load(arg(1));
+  $hero_image = '<img src="'.file_create_url($node->field_header_image['und'][0]['uri']). '" alt="'. $node->field_promo_headline['und'][0]['value']. '">';
+  $headline_link = l($node->title, 'node/'. $node->nid);
+
+  return theme('pivot_shows_hero', array('node' => $node, 'hero_image' => $hero_image, 'ad_link' => $ad_link, 'ad_image' => $ad_image, 'headline_link' => $headline_link, 'hero_menu' => $hero_menu));
+}
+
+function pivot_shows_theme() {
+  return array(
+    'pivot_shows_hero' => array(
+      'variables' => array(
+        'node' => '',
+        'hero_image' => '',
+        'hero_menu' => '',
+        'headline_link' => '',
+      ),
+      'arguments' => array(),
+      'template' => 'pivot-shows-hero'
+    ),
+  );
+}
+
+function pivot_shows_menu_title(&$title) {
+  $title = strtolower($title);
+  $title = preg_replace("/[^a-z0-9_\s-]/", "", $title);
+  $title = preg_replace("/[\s-]+/", " ", $title);
+  $title = preg_replace("/[\s_]/", "-", $title);
+}
+function pivot_shows_node_presave($node) {
+  if($node->type == 'show' && !isset($node->field_header_menu['und'][0]['value'])){
+    $title = $node->title;
+    pivot_shows_menu_title($title);
+    $menu = array(
+     'menu_name' => 'show-'. $title,
+     'title' => $node->title,
+     'description' => 'Show Menu For '. $node->title,
+    );
+    menu_save($menu); //uncomment this line when ready and no longer testing
+    $node->field_header_menu['und'][0]['value'] = 'show-'. $title;
+  }
+}
+
+function pivot_shows_form_alter(&$form, &$form_state, $form_id) {
+  if($form_id =='show_node_form') {
+    $form['field_header_menu']['#type'] = 'hidden';
+  }
+}
+
+function pivot_shows_node_submit($node, $form, &$form_state) {
+  $title = $node->title;
+  pivot_shows_menu_title($title);
+  $form_state['redirect'] = 'admin/structure/menu/manage/show-'. $title; //THIS DOESN'T WORK.
+}
