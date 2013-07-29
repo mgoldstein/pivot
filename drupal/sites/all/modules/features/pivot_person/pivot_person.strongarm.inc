@@ -21,7 +21,7 @@ function pivot_person_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'auto_entitylabel_pattern_node_person';
-  $strongarm->value = '[node:field-first-name] [node:field-last-name] ';
+  $strongarm->value = '[node:name-field-person-name]';
   $export['auto_entitylabel_pattern_node_person'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -161,6 +161,13 @@ function pivot_person_strongarm() {
   $strongarm->name = 'node_submitted_person';
   $strongarm->value = 0;
   $export['node_submitted_person'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_person_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_person_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
