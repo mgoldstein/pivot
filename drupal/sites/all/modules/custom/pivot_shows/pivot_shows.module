@@ -22,11 +22,20 @@ function pivot_shows_block_view($delta = ''){
 
 function pivot_shows_hero() {
   if(arg(0) == 'node'){
-    $node = node_load(arg(1));
+    $path = drupal_get_path_alias(current_path());
+    $pos = strpos($path, '/', strpos($path, '/') + 1);
+    if($pos == NULL) {
+      $node = node_load(arg(1));
+    }
+    else{
+      $alias = substr($path, 0 , $pos);
+      $path = drupal_lookup_path('source', $alias);
+      $node = menu_get_object("node", 1, $path);
+    }
   }
   else {
     $current_path = current_path();
-    $pos = strrpos($current_path, '/', $offset = 1);
+    $pos = strpos($current_path, '/', strpos($current_path, '/') + 1);
     $alias = substr(current_path(), 0 , $pos);
     $path = drupal_lookup_path('source', $alias);
     $node = menu_get_object("node", 1, $path);
