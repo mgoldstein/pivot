@@ -1,0 +1,6 @@
+name = Pivot Schedule
+description = Import and management of Pivot schedule data.
+package = Pivot
+version = 7.x-1.0
+core = 7.x
+dependencies[] = entity
