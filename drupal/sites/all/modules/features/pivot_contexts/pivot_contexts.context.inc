@@ -213,5 +213,37 @@ function pivot_contexts_context_default_contexts() {
   t('The Movies Landing Page');
   $export['movies_landing'] = $context;
 
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'shows';
+  $context->description = 'Show node pages';
+  $context->tag = '';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'show/*' => 'show/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'pivot_shows-pivot_shows_hero' => array(
+          'module' => 'pivot_shows',
+          'delta' => 'pivot_shows_hero',
+          'region' => 'preface',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Show node pages');
+  $export['shows'] = $context;
+
   return $export;
 }
