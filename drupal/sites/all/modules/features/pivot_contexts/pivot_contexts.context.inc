@@ -222,7 +222,7 @@ function pivot_contexts_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'show/*' => 'show/*',
+        'shows/*' => 'shows/*',
       ),
     ),
   );
