@@ -4,6 +4,8 @@
  * Show times feed import module.
  */
 
+define('PIVOT_SCHEDULE_MAX_IMPORT_FILE_SIZE', 4194304);
+define('PIVOT_SHEDULE_IMPORT_FILE_DIRECTORY', 'public://schedule-imports');
 /**
  * PivotScheduleShowTime entity.
  */
@@ -55,7 +57,7 @@ function pivot_schedule_permission() {
   // Return permissions for the standard API Entity operations.
   return array(
     'administer pivot_schedule show_times' => array(
-      'title' => t('View schedule show times'),
+      'title' => t('Administer schedule show times'),
       'restrict access' => TRUE,
     ),
     'import pivot_schedule show_times' => array(
@@ -242,4 +244,174 @@ function pivot_schedule_show_time_save($show_time) {
 
 function pivot_schedule_show_time_view(array $show_times, $view_mode = 'full', $langcode = NULL, $page = NULL) {
   return entity_view('pivot_schedule_show_time', $show_times, $view_mode, $langcode, $page);
+}
+
+/**
+ * Implements hook_menu().
+ */
+function pivot_schedule_menu() {
+  return array(
+    'admin/config/schedule' => array(
+      'title' => 'Show Schedule',
+      'description' => 'Configuraion of the show schedule',
+      'page callback' => 'system_admin_menu_block_page',
+      'access arguments' => array('access administration pages'),
+      'file' => 'system.admin.inc',
+      'file path' => drupal_get_path('module', 'system'),
+    ),
+    'admin/config/schedule/import' => array(
+      'title' => 'Schedule Import',
+      'description' => 'Import show schedule data.',
+      'page callback' => 'pivot_schedule_import_page',
+      'access callback' => 'user_access',
+      'access arguments' => array('import pivot_schedule show_times'),
+    ),
+  );
+}
+
+function pivot_schedule_import_page() {
+
+  $content = array();
+
+  $content['import_form'] = drupal_get_form('pivot_schedule_import_form');
+
+  return $content;
+}
+
+function pivot_schedule_import_form($form, &$form_state) {
+
+  $form['file'] = array(
+    '#type' => 'file',
+    '#title' => t('Schedule Data File'),
+  );
+
+  $form['actions'] = array('#type' => 'actions');
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Import'),
+    '#weight' => 40,
+  );
+
+  return $form;
+}
+
+function pivot_schedule_validate_import_file(stdClass $file) {
+
+  $errors = array();
+
+  if ($file->filemime !== 'application/xml') {
+    // The file is not an XML file.
+    $errors[] = t('Schedule import must be an XML file.');
+  }
+  else {
+    $schedule = simplexml_load_file($file->uri);
+    if ($schedule === FALSE) {
+      // The file could not be parsed.
+      $errors[] = t('Schedule import must be a valid XML file.');
+    }
+  }
+
+  return $errors;
+}
+
+function pivot_schedule_import_form_validate($form, &$form_state) {
+
+  $file = file_save_upload('file', array(
+    'file_validate_size' => array(
+      PIVOT_SCHEDULE_MAX_IMPORT_FILE_SIZE,
+      PIVOT_SCHEDULE_MAX_IMPORT_FILE_SIZE,
+    ),
+    'file_validate_extensions' => array('xml'),
+    'pivot_schedule_validate_import_file' => array(),
+  ));
+
+  if ($file) {
+
+    // Make sure the schedule import file directory exists.
+    $directory = PIVOT_SHEDULE_IMPORT_FILE_DIRECTORY;
+    if (file_prepare_directory($directory)) {
+      if ($file = file_move($file, PIVOT_SHEDULE_IMPORT_FILE_DIRECTORY)) {
+        $form_state['storage']['file'] = $file;
+      }
+      else {
+        form_set_error('file', t('Failed to write file to schedule import directory.'));
+      }
+    }
+    else {
+      form_set_error('file', t('Schedule import directory does not exist or is not writable.'));
+    }
+  }
+  else {
+    form_set_error('file', t('No file was uploaded.'));
+  }
+}
+
+function pivot_schedule_import_form_submit($form, &$form_state) {
+
+  $file = $form_state['storage']['file'];
+  unset($form_state['storage']['file']);
+
+  try {
+
+    // Wipe out any previous schedule.
+    db_delete('pivot_schedule_show_time');
+
+    // Store the import file permanently.
+    $file->status = FILE_STATUS_PERMANENT;
+    file_save($file);
+
+    $schedule = simplexml_load_file($file->uri);
+    $imported = 0;
+    foreach ($schedule as $show) {
+
+      $values = array(
+        'file_id' => $file->fid,
+        'created' => REQUEST_TIME,
+        'changed' => REQUEST_TIME,
+      );
+
+      // Straight forward string values.
+      $values['element_name'] = (string) $show->ElementName;
+      $values['title_name'] =  (string) $show->TitleName;
+      $values['title_synopsis'] =  (string) $show->TitleSynopsis;
+      $values['title_code_wo_series_prefix']
+        = (string) $show->TitleCodeWOSeriesPrefix;
+
+      // Combine and convert the start date and time instead a Unix timestamp.
+      $start_date = (string) $show->StartDateBroadcast;
+      $start_time = (string) $show->StartTime;
+      $timezone = new DateTimeZone('EST');
+      $start_datetime = DateTime::createFromFormat("m/d/Y G:i:s",
+        $start_date . ' ' . $start_time, $timezone);
+      if ($start_datetime === FALSE) {
+        throw new Exception("Invalid start date time.");
+      }
+      $values['broadcast_start_time'] = $start_datetime->getTimestamp();
+
+      // Convert the broadcast length to seconds.
+      $duration = explode(':', (string) $show->Length);
+      $values['broadcast_length']
+        = ($duration[0] * 3600)
+        + ($duration[1] * 60)
+        +  $duration[2];
+
+      // Assume that only premieres will have a value for this field.
+      $premiere = (string) $show->TitlePremiereIndicatorCurrentSchedule;
+      $values['title_premiere_indicator_current_schedule'] = !empty($premiere);
+
+      // Create and save the schedule time.
+      $show_time = pivot_schedule_show_time_create($values);
+      $show_time->save();
+
+      // Tick
+      $imported += 1;
+    }
+
+    drupal_set_message(t('@count show times imported.', array(
+      '@count' => $imported,
+    )), 'status');
+  }
+  catch (Exception $e) {
+    drupal_set_message(t('An error occurred while importing the schedule, please verify the contents of the import file and try again.'), 'error');
+  }
 }

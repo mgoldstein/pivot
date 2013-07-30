@@ -10,33 +10,6 @@
 function pivot_schedule_schema() {
   $schema = array();
 
-  $schema['pivot_schedule_import_file'] = array(
-    'description' => 'The table for show time entries.',
-    'fields' => array(
-      // Primary key
-      'id' => array(
-        'description' => 'Primary key identifier for the schedule.',
-        'type' => 'serial',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-      ),
-      'import_file' => array(
-        'description' => 'The path to the import file.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'created' => array(
-        'description' => 'The Unix timestamp when the entity was created.',
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-    ),
-    'primary key' => array('id'),
-  );
-
   $schema['pivot_schedule_show_time'] = array(
     'description' => 'The table for show time entries.',
     'fields' => array(
@@ -119,4 +92,14 @@ function pivot_schedule_schema() {
   );
 
   return $schema;
+}
+
+/**
+ * Delete the import file table, we can just reference directly to Drupal's
+ * managed file table.
+ */
+function takeaction_update_7100(&$sandbox) {
+  if (db_table_exists('pivot_schedule_import_file')) {
+    db_drop_table('pivot_schedule_import_file');
+  }
 }
