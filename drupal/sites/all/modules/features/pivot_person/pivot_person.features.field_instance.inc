@@ -226,7 +226,7 @@ function pivot_person_field_default_field_instances() {
         'title' => 6,
       ),
       'title_display' => array(
-        'credentials' => 'description',
+	'credentials' => 'none',
         'family' => 'description',
         'generational' => 'description',
         'given' => 'description',

@@ -29,7 +29,7 @@ function pivot_person_field_default_field_bases() {
     'locked' => 0,
     'module' => 'name',
     'settings' => array(
-      'allow_family_or_given' => 0,
+      'allow_family_or_given' => 1,
       'autocomplete_separator' => array(
         'credentials' => ', ',
         'family' => ' -',
@@ -51,7 +51,7 @@ function pivot_person_field_default_field_bases() {
         ),
       ),
       'components' => array(
-        'credentials' => 'credentials',
+	'credentials' => 0,
         'family' => 'family',
         'generational' => 'generational',
         'given' => 'given',
