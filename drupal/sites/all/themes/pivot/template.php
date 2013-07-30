@@ -269,21 +269,6 @@ function pivot_preprocess_node__article(&$variables, $hook) {
   }
 }
 
-function pivot_preprocess_node__show(&$variables) {
-    // write an external link tag if any
-    $variables['promo_external_anchor_tag'] = '';
-    if ($variables['field_external_link'] && $variables['field_external_link']['und'][0]['url']) {
-      $variables['promo_external_anchor_tag'] .= '<a href="' . $variables['field_external_link']['und'][0]['url'] . '"';
-      if (isset($variables['field_external_link']['und'][0]['title'])) {
-        $variables['promo_external_anchor_tag'] .= ' title="' . $variables['field_external_link']['und'][0]['title'] .'"';
-      }
-      if (isset($variables['field_external_link']['und'][0]['attributes']['target'])) {
-        $variables['promo_external_anchor_tag'] .= ' target="' . $variables['field_external_link']['und'][0]['attributes']['target'] . '"';
-      }
-      $variables['promo_external_anchor_tag'] .= '>';
-    }
-}
-
 function pivot_preprocess_node__promo(&$variables) {
   // link is required, so we know these exist
   $variables['promo_external_link_url'] = $variables['field_external_link']['und'][0]['url'];
