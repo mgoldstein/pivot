@@ -59,6 +59,7 @@ function pivot_campaign_hero() {
     $pos = (strpos($path, '/', strpos($path, '/') + 1) == NULL ? strlen(current_path()) : strpos($path, '/', strpos($path, '/') + 1));
     $alias = substr($path, 0 , $pos);
     $subalias = substr($alias, 0, 9);
+    $subalias1 = substr($alias, 0, 5);
     if($node1->type == 'campaign'){
       $node = $node1;
     }
@@ -66,8 +67,12 @@ function pivot_campaign_hero() {
       $path = drupal_lookup_path('source', $alias);
       $node = menu_get_object("node", 1, $path);
     }
+    elseif($subalias1 == 'pivot'){
+      $path = drupal_lookup_path('source', $subalias1);
+      $node = menu_get_object("node", 1, $path);
+    }
   }
-  elseif(arg(0) == 'campaigns') {
+  elseif(arg(0) == 'campaigns' || arg(0) == 'pivot') {
     $current_path = current_path();
     $pos = strpos($current_path, '/', strpos($current_path, '/') + 1 );
     $alias = substr(current_path(), 0 , $pos);
