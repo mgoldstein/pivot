@@ -60,6 +60,7 @@ function pivot_facebook_comments_strongarm() {
     'homepage_slide' => 0,
     'movie' => 0,
     'person' => 0,
+    'promo' => 0,
     'show' => 0,
     'video' => 0,
     'webform' => 0,
