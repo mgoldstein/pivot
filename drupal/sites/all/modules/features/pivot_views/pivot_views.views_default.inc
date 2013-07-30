@@ -30,9 +30,9 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Relationship: Entity Reference: Referencing entity */
   $handler->display->display_options['relationships']['reverse_field_person_ref_field_collection_item']['id'] = 'reverse_field_person_ref_field_collection_item';
@@ -50,6 +50,8 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['fields']['field_person_image']['table'] = 'field_data_field_person_image';
   $handler->display->display_options['fields']['field_person_image']['field'] = 'field_person_image';
   $handler->display->display_options['fields']['field_person_image']['label'] = '';
+  $handler->display->display_options['fields']['field_person_image']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_person_image']['element_class'] = 'profile-image';
   $handler->display->display_options['fields']['field_person_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_person_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_person_image']['settings'] = array(
@@ -82,6 +84,8 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['fields']['field_cast_role_ref']['relationship'] = 'reverse_field_person_ref_field_collection_item';
   $handler->display->display_options['fields']['field_cast_role_ref']['label'] = '';
   $handler->display->display_options['fields']['field_cast_role_ref']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_cast_role_ref']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_cast_role_ref']['alter']['text'] = ' ([field_cast_role_ref])';
   $handler->display->display_options['fields']['field_cast_role_ref']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_cast_role_ref']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Bio */
@@ -90,7 +94,7 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['fields']['field_person_bio']['field'] = 'field_person_bio';
   $handler->display->display_options['fields']['field_person_bio']['label'] = '';
   $handler->display->display_options['fields']['field_person_bio']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_person_bio']['alter']['text'] = '<div class="person-info"><div class="name">[field_person_name] ([field_cast_role_ref]):</div> <div class="bio">[field_person_bio]</div></div>';
+  $handler->display->display_options['fields']['field_person_bio']['alter']['text'] = '<div class="person-info"><div class="name">[field_person_name][field_cast_role_ref]:</div> <div class="bio">[field_person_bio]</div></div>';
   $handler->display->display_options['fields']['field_person_bio']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';

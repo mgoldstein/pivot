@@ -8,5 +8,6 @@ project = pivot_image_styles
 dependencies[] = image
 features[features_api][] = api:2
 features[image][] = blog_article
+features[image][] = profile_image
 features[image][] = promo_square
 features[image][] = promo_widescreen

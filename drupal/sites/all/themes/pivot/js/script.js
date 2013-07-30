@@ -52,7 +52,7 @@
 		}
 	};
 
-	Drupal.behaviors.articleSocialShareButtons = {
+	Drupal.behaviors.populateSocialShareButtons = {
 		attach: function() {
 
 			var $body = $('body');
@@ -75,7 +75,14 @@
 
 				$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
-				var main_image = $('.field-name-field-main-image img').attr('src');
+				// setup main image
+				
+				if ($body.is('.node-type-article')) {
+					var main_image = $('.field-name-field-main-image img').attr('src');
+				} else if ($body.is('.page-shows')) {
+					var main_image = $('.show-hero .image img').attr('src');
+				}
+
 				var more_services = {
 					pinterest: {
 						name: 'pinterest',
@@ -107,6 +114,12 @@
 				$('.article-sidebar .social').tpsticky({
 					offsetNode: '.article-content'
 				});
+
+				// Sticky social nav on other page page
+				$('.show-sidebar .social').tpsticky({
+					offsetNode: '.view-content-content'
+				});
+
 
 				//takepart.analytics.skip_addthis = true;
 
