@@ -134,7 +134,7 @@ function pivot_views_views_default_views() {
   );
 
   /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
+  $handler = $view->new_display('page', 'Page', 'show_subpage');
   $handler->display->display_options['path'] = 'shows/%/cast';
   $export['cast'] = $view;
 
@@ -220,7 +220,7 @@ function pivot_views_views_default_views() {
   );
 
   /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
+  $handler = $view->new_display('page', 'Page', 'show_subpage');
   $handler->display->display_options['path'] = 'shows/%/downloads';
   $export['downloads'] = $view;
 
@@ -323,7 +323,7 @@ function pivot_views_views_default_views() {
   );
 
   /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
+  $handler = $view->new_display('page', 'Page', 'show_subpage');
   $handler->display->display_options['path'] = 'shows/%/episodes';
   $export['episodes'] = $view;
 

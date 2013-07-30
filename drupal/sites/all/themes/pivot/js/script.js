@@ -57,7 +57,7 @@
 
 			var $body = $('body');
 
-			if ($body.is('.node-type-article')) {
+			if ($body.is('.node-type-article') || $body.is('.page-shows')) {
 				// Social share buttons
 				var tp_social_config = {
 					services: [
