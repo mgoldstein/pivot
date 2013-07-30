@@ -103,3 +103,50 @@ function pivot_shows_node_submit($node, $form, &$form_state) {
   pivot_shows_menu_title($title);
   $form_state['redirect'] = 'admin/structure/menu/manage/show-'. $title; //THIS DOESN'T WORK.
 }
+
+/*
+ * PAGE TITLES FOR SHOWS
+ * '[show title]: [subnode title or view title]''
+ */
+function pivot_shows_page_title_alter(&$title) {
+  if(arg(0) == 'node'){
+    $node = node_load(arg(1));
+    $path = drupal_get_path_alias(current_path());
+    $pos = strpos($path, '/', strpos($path, '/') + 1);
+    if($node->type == 'show'){
+      $title = $node->title;
+    }
+    else{
+      $alias = substr($path, 0 , $pos);
+      $path = drupal_lookup_path('source', $alias);
+      $parent_node = menu_get_object("node", 1, $path);
+      $title = $parent_node->title. ': '. $node->title;
+    }
+  }
+  else {
+    $current_path = current_path();
+    $pos = strpos($current_path, '/', strpos($current_path, '/') + 1 );
+    $pos2 = strpos($current_path, '/', $pos + 1 );
+    $pos2 = ($pos2 == NULL ? strlen(current_path()) : $pos2);
+
+    $alias = substr(current_path(), 0 , $pos);
+    $path = drupal_lookup_path('source', $alias);
+    $node = menu_get_object("node", 1, $path);
+
+    $page_title = substr(current_path(), $pos +1, $pos2 - $pos);
+    $title = $node->title. ': '. ucfirst($page_title);
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
