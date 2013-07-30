@@ -19,6 +19,30 @@ function pivot_config_user_default_permissions() {
     'module' => 'search',
   );
 
+  // Exported permission: manipulate all queues.
+  $permissions['manipulate all queues'] = array(
+    'name' => 'manipulate all queues',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
+      'supervising editor' => 'supervising editor',
+    ),
+    'module' => 'nodequeue',
+  );
+
+  // Exported permission: manipulate queues.
+  $permissions['manipulate queues'] = array(
+    'name' => 'manipulate queues',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
+      'supervising editor' => 'supervising editor',
+    ),
+    'module' => 'nodequeue',
+  );
+
   // Exported permission: search content.
   $permissions['search content'] = array(
     'name' => 'search content',

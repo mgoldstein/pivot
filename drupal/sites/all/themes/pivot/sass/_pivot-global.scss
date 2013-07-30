@@ -1216,28 +1216,10 @@ a:active {
 }
 
 /* ============================================================
-|| Shows Landing
+|| Shows Landing, movies landing
 ============================================================ */
 
-.view-shows.view-display-id-page {
-	.view-content {
-		> div {
-			width: 300px; // border-box includes padding
-			margin: 0 20px 20px 0;
-			float: left;
-
-			&:nth-child(3n) {
-				margin-right: 0;
-			}
-
-		}
-	}
-}
-
-/* ============================================================
-|| Movies Landing
-============================================================ */
-
+.view-shows.view-display-id-page,
 .view-movies.view-display-id-page {
 	.view-content {
 		> div {
@@ -1245,13 +1227,13 @@ a:active {
 			margin: 0 20px 20px 0;
 			float: left;
 
-			&:nth-child(2n) {
+			&.views-row-even {
 				margin-right: 0;
 			}
+
 		}
 	}
 }
-
 
 /* ============================================================
 || Search Results
