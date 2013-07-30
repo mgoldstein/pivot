@@ -67,7 +67,7 @@ function pivot_movie_field_default_field_instances() {
     'bundle' => 'movie',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Enter an internal path (like <code>shows/please-like-me</code>) or an external URL.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -97,22 +97,22 @@ function pivot_movie_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_external_link',
-    'label' => 'Link',
+    'label' => 'Internal Path or External Link URL',
     'required' => 0,
     'settings' => array(
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'default',
+	'rel' => 'nofollow',
+	'target' => 'user',
         'title' => '',
       ),
       'display' => array(
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
-      'rel_remove' => 'default',
-      'title' => 'optional',
+      'rel_remove' => 'rel_remove_internal',
+      'title' => 'none',
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -127,59 +127,6 @@ function pivot_movie_field_default_field_instances() {
       ),
       'type' => 'link_field',
       'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'node-movie-field_external_url'
-  $field_instances['node-movie-field_external_url'] = array(
-    'bundle' => 'movie',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Relates content to content existing outside of Pivot.TV.
-Include "http://" in the URL.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 4,
-      ),
-      'promo' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-      'promo_alt' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_external_url',
-    'label' => 'External URL Reference',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 5,
     ),
   );
 
@@ -380,13 +327,11 @@ Include "http://" in the URL.',
   // Translatables
   // Included for use with string extractors like potx.
   t('Description');
-  t('External URL Reference');
-  t('Link');
+  t('Enter an internal path (like <code>shows/please-like-me</code>) or an external URL.');
+  t('Internal Path or External Link URL');
   t('Promo Abstract');
   t('Promo Headline');
   t('Promo Image');
-  t('Relates content to content existing outside of Pivot.TV.
-Include "http://" in the URL.');
 
   return $field_instances;
 }

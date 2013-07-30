@@ -275,6 +275,16 @@ function pivot_preprocess_node__promo(&$variables) {
   $variables['promo_external_link_attributes'] = $variables['field_external_link']['und'][0]['attributes'];
 }
 
+function pivot_preprocess_node__movie(&$variables) {
+  // link is NOT required, so we don't know these exist
+  if (isset($variables['field_external_link']['und'][0]['url'])) {
+    $variables['promo_external_link_url'] = $variables['field_external_link']['und'][0]['url'];
+    if ($variables['field_external_link']['und'][0]['attributes']) {
+      $variables['promo_external_link_attributes'] = $variables['field_external_link']['und'][0]['attributes'];
+    }
+  }
+}
+
 /**
  * Override or insert variables into the comment templates.
  *
