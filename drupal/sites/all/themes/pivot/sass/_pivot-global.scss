@@ -832,7 +832,6 @@ a:active {
 					margin-right: 1em;
 					margin-bottom: 1em;
 				}
-
 			}
 
 			.social {
@@ -1651,7 +1650,6 @@ iframe.media-youtube-player {
 			background-color: #0084a9;
 			background: rgba(0, 132, 169, 0.5);
 			display: block;
-
 			-webkit-transition: all .1s linear .1s;
 			transition: all .1s linear .1s;
 		}
@@ -1720,7 +1718,6 @@ iframe.media-youtube-player {
 || Show Blogs
 ============================================================ */
 
-
 .view-show-blog {
 
 	background-color: white;
@@ -1745,17 +1742,213 @@ iframe.media-youtube-player {
 }
 
 /* ============================================================
+|| Views with Social Shares
+============================================================ */
+.page-shows {
+
+	.show-sidebar {
+		@media (min-width: 681px) {
+			float: left;
+			width: 32px;
+			margin-right: 1em;
+			margin-bottom: 1em;
+		}
+	}
+
+	.view-content-content {
+		@media (min-width: 681px) {
+			float: left;
+			width: 528px;
+		}
+	}
+
+	.social {
+		margin-top: 1em;
+
+		a {
+			margin-right: 12px;
+
+			@media (min-width: 681px) {
+				margin-right: 0;
+				margin-bottom: 12px;
+			}
+		}
+
+		.tp-social {
+			@media (max-width: 681px) {
+				float: left;
+			}
+		}
+
+		@media (max-width: 681px) {
+			position: static !important;
+		}
+
+	}
+
+	.article-social-more {
+
+		.trigger {
+			margin: 0;
+		}
+
+		a {
+			background-color: #01bf9e;
+			background-image: url(../images/social_white_more.png);
+
+			&:focus,
+			&:hover {
+				background-color: #0090b8;
+			}
+		}
+	} // .article-social-more
+
+	#article-social-more {
+		position: relative;
+		overflow: hidden;
+
+		&.focusin {
+			position: relative;
+			overflow: visible;
+		}
+	}
+
+
+	#article-more-shares {
+		position: absolute;
+		bottom: 100%;
+		background: #fff;
+		border-radius: 5px;
+		border: 5px solid rgba(0,0,0,.5);
+		-webkit-background-clip: padding-box; /* for Safari */
+	    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+	    min-width: 250px;
+	    display: inline-block;
+
+		.headline {
+			font-size: 14px;
+			background: #f7f7f7;
+			border-bottom: 1px solid #e0e0e0;
+			padding: .25em;
+			white-space: nowrap;
+			margin: auto;
+
+			&:after {
+				display: block;
+				content: " ";
+				margin: 3px;
+				width: 7px;
+				height: 7px;
+				float: right;
+				background-repeat: no-repeat;
+				background-image: url(../images/social_more_close.png);
+			}
+		} // .headline
+
+		p {
+			padding: .25em;
+			float: left;
+			width: 100%;
+		}
+
+		a {
+			display: block;
+			font-size: 14px;
+			padding: .25em .25em .25em 20px;
+			line-height: 16px;
+			color: #000;
+			white-space: nowrap;
+			float: left;
+			width: 50%;
+			background-repeat: no-repeat;
+			background-color: transparent;
+			border-radius: 0;
+			text-indent: 0;
+			height: auto;
+			margin: auto;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+
+		.tp-social-myspace {
+			background-image: url(../images/social_more_myspace.png);
+		}
+
+		.tp-social-delicious {
+			background-image: url(../images/social_more_delicious.png);
+		}
+
+		.tp-social-linkedin {
+			background-image: url(../images/social_more_linkedin.png);
+		}
+
+		.tp-social-myaol {
+			background-image: url(../images/social_more_myaol.png);
+		}
+
+		.tp-social-live {
+			background-image: url(../images/social_more_live.png);
+		}
+
+		.tp-social-digg {
+			background-image: url(../images/social_more_digg.png);
+		}
+
+		.tp-social-stumbleupon {
+			background-image: url(../images/social_more_stumbleupon.png);
+		}
+
+		.tp-social-hyves {
+			background-image: url(../images/social_more_hyves.png);
+		}
+
+		.tp-social-pinterest {
+			background-image: url(../images/social_more_pinterest.png);
+		}
+
+		.tp-social-tumblr_link {
+			background-image: url(../images/social_more_tumblr.png);
+		}
+
+		.tp-social-gmail {
+			background-image: url(../images/social_more_gmail.png);
+		}
+
+		.tp-social-hotmail {
+			background-image: url(../images/social_more_hotmail.png);
+		}
+
+		.tp-social-yahoomail {
+			background-image: url(../images/social_more_yahoomail.png);
+		}
+
+		.tp-social-aolmail {
+			background-image: url(../images/social_more_aolmail.png);
+		}
+	} // #article-more-shares
+
+	.focusin #article-more-shares {
+		top: 100%;
+		bottom: auto;
+	}
+}
+
+/* ============================================================
 || Show Cast
 ============================================================ */
 
-.view-cast{
-	.views-row{
+.view-cast {
+	.views-row {
 		margin-bottom: 20px;
-		border-bottom: 1px solid #000;
-		padding-bottom: 10px;
-    &:last-child{
-      border-bottom: none;
-    }
+		font-size: 14px;
+		line-height: 20px;
+	}
+
+	.profile-image {
+		float: left;
+		margin-right: 1em;
 	}
 
 	.name {
@@ -1766,9 +1959,10 @@ iframe.media-youtube-player {
 	.bio {
 		display: inline;
 	}
-  .person-info {
-    margin-top: 10px;
-  }
+
+	.person-info {
+	  margin-top: 10px;
+	}
 }
 
 
