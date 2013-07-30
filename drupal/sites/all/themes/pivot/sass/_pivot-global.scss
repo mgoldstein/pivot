@@ -428,8 +428,6 @@ a:active {
 	}
 }
 
-
-
 /* ============================================================
 || Global Footer
 ============================================================ */
@@ -597,6 +595,38 @@ a:active {
 			text-align: center;
 			color: #999;
 		}
+	}
+}
+
+/* ============================================================
+|| Ads
+============================================================ */
+
+/* Leaderboard */
+
+#block-dfp-pivot-ros-leaderboard-728x90 {
+	margin: 0;
+	text-align: center;
+	background: #424242 url(../images/secondary-background.gif) left top repeat;
+	padding: 20px 0;
+
+	.dfp-tag-wrapper {
+		margin: auto;
+		width: 728px;
+	}
+}
+
+/* Pagewrap */
+.tp_ad_takeover{
+	#page {
+		width: 980px;
+		margin: auto;
+		position: relative;
+		z-index: 2;
+	}
+
+	#block-dfp-pivot-ros-leaderboard-728x90 {
+		background: transparent none;
 	}
 }
 
