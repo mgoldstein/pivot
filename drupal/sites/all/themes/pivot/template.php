@@ -181,6 +181,9 @@ function pivot_process_page(&$variables) {
   if (isset($variables['node']) && $variables['node']->type == 'article'){
     unset($variables['title']);
   }
+  if (isset($variables['node']) && $variables['node']->type == 'show'){
+    unset($variables['title']);
+  }
 }
 
 /**
