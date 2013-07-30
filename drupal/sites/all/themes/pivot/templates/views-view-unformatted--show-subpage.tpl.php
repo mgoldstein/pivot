@@ -29,4 +29,9 @@
       <?php print $row; ?>
     </div>
   <?php endforeach; ?>
+  <?php
+    if (function_exists('facebook_comments_display')) {
+      print facebook_comments_display('528', '15');
+    }
+  ?>
   </div>
