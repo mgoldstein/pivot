@@ -21,7 +21,9 @@ if ("[current-page:url:path]" == "node") {
   s.pageName = "[current-page:url:path]";
   s.channel = ("[current-page:url:path]").split( \'/\' )[0];
 }
-
+if ("[current-page:url:path]" == "404") {
+  s.pageType="errorPage";
+}
 if(\'[node:content-type:name]\'.length > 0) {
 	s.hier1 = "[node:content-type:name]";
 	if(\'[node:title]\'.length > 0) {
