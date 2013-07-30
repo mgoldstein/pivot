@@ -128,11 +128,12 @@
     <aside class="social tpsticky_main above"><div class="inner">
       <div class="tp-social"></div>
       <div id="article-social-more" class="article-social-more">
-	<h4 class="trigger"><a href="#article-more-shares">More</a></h4>
-	<section id="article-more-shares" class="article-more-shares">
-	  <h5 class="headline">Share with your friends</h5>
-	  <p></p>
-	</section>
+        <h4 class="trigger"><a href="#article-more-shares">More</a></h4>
+      	<section id="article-more-shares" class="article-more-shares">
+      	  <h5 class="headline">Share with your friends</h5>
+      	  <p></p>
+      	</section>
+      </div>
       </div>
     </aside>
   </div>
