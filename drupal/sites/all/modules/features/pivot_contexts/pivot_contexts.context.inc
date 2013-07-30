@@ -119,10 +119,22 @@ function pivot_contexts_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'dfp-pivot_ros_leaderboard_728x90' => array(
+          'module' => 'dfp',
+          'delta' => 'pivot_ros_leaderboard_728x90',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
         'pivot_global-pivot_global_header_nav' => array(
           'module' => 'pivot_global',
           'delta' => 'pivot_global_header_nav',
           'region' => 'header',
+          'weight' => '-9',
+        ),
+        'dfp-pivot_ros_background_1x1' => array(
+          'module' => 'dfp',
+          'delta' => 'pivot_ros_background_1x1',
+          'region' => 'footer',
           'weight' => '-10',
         ),
       ),
@@ -235,12 +247,12 @@ function pivot_contexts_context_default_contexts() {
           'region' => 'preface',
           'weight' => '-10',
         ),
-	'dfp-pivot_ros_rr_300x250' => array(
-	  'module' => 'dfp',
-	  'delta' => 'pivot_ros_rr_300x250',
-	  'region' => 'right_sidebar',
-	  'weight' => '-10',
-	),
+        'dfp-pivot_ros_rr_300x250' => array(
+          'module' => 'dfp',
+          'delta' => 'pivot_ros_rr_300x250',
+          'region' => 'right_sidebar',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
@@ -260,19 +272,19 @@ function pivot_contexts_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-	'shows' => 'shows',
+        'shows' => 'shows',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-	'dfp-pivot_ros_rr_300x250' => array(
-	  'module' => 'dfp',
-	  'delta' => 'pivot_ros_rr_300x250',
-	  'region' => 'right_sidebar',
-	  'weight' => '-10',
-	),
+        'dfp-pivot_ros_rr_300x250' => array(
+          'module' => 'dfp',
+          'delta' => 'pivot_ros_rr_300x250',
+          'region' => 'right_sidebar',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
