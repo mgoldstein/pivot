@@ -1759,6 +1759,33 @@ iframe.media-youtube-player {
   margin-right: 20px;
 }
 
+/* ============================================================
+|| Show Cast
+============================================================ */
+/* line 1708, ../sass/_pivot-global.scss */
+.view-cast .views-row {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 10px;
+}
+/* line 1712, ../sass/_pivot-global.scss */
+.view-cast .views-row:last-child {
+  border-bottom: none;
+}
+/* line 1717, ../sass/_pivot-global.scss */
+.view-cast .name {
+  display: inline-block;
+  font-weight: bold;
+}
+/* line 1722, ../sass/_pivot-global.scss */
+.view-cast .bio {
+  display: inline;
+}
+/* line 1725, ../sass/_pivot-global.scss */
+.view-cast .person-info {
+  margin-top: 10px;
+}
+
 /*
  * Homepage Styles for Pivot.tv
  */
