@@ -19,6 +19,37 @@ function pivot_show_ctools_plugin_api() {
 }
 
 /**
+ * Implements hook_fe_nodequeue_export_fields().
+ */
+function pivot_show_fe_nodequeue_export_fields() {
+  $nodequeues = array();
+
+  // Exported nodequeues: shows
+  $nodequeues['shows'] = array(
+    'name' => 'shows',
+    'title' => 'Shows',
+    'subqueue_title' => '',
+    'size' => 0,
+    'link' => 'Add to Shows Landing Page',
+    'link_remove' => 'Remove from Shows Landing Page',
+    'owner' => 'nodequeue',
+    'show_in_ui' => 1,
+    'show_in_tab' => 1,
+    'show_in_links' => 1,
+    'reference' => 0,
+    'reverse' => 0,
+    'i18n' => 0,
+    'types' => array(
+      0 => 'show',
+    ),
+    'roles' => array(),
+    'count' => 0,
+  );
+
+  return $nodequeues;
+}
+
+/**
  * Implements hook_node_info().
  */
 function pivot_show_node_info() {
