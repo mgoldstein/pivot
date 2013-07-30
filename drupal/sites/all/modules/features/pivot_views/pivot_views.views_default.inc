@@ -30,9 +30,9 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Relationship: Entity Reference: Referencing entity */
   $handler->display->display_options['relationships']['reverse_field_person_ref_field_collection_item']['id'] = 'reverse_field_person_ref_field_collection_item';
@@ -50,8 +50,6 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['fields']['field_person_image']['table'] = 'field_data_field_person_image';
   $handler->display->display_options['fields']['field_person_image']['field'] = 'field_person_image';
   $handler->display->display_options['fields']['field_person_image']['label'] = '';
-  $handler->display->display_options['fields']['field_person_image']['element_type'] = 'div';
-  $handler->display->display_options['fields']['field_person_image']['element_class'] = 'profile-image';
   $handler->display->display_options['fields']['field_person_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_person_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_person_image']['settings'] = array(
@@ -84,8 +82,6 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['fields']['field_cast_role_ref']['relationship'] = 'reverse_field_person_ref_field_collection_item';
   $handler->display->display_options['fields']['field_cast_role_ref']['label'] = '';
   $handler->display->display_options['fields']['field_cast_role_ref']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_cast_role_ref']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_cast_role_ref']['alter']['text'] = ' ([field_cast_role_ref])';
   $handler->display->display_options['fields']['field_cast_role_ref']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_cast_role_ref']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Bio */
@@ -94,21 +90,13 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['fields']['field_person_bio']['field'] = 'field_person_bio';
   $handler->display->display_options['fields']['field_person_bio']['label'] = '';
   $handler->display->display_options['fields']['field_person_bio']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_person_bio']['alter']['text'] = '<div class="person-info"><div class="name">[field_person_name][field_cast_role_ref]:</div> <div class="bio">[field_person_bio]</div></div>';
+  $handler->display->display_options['fields']['field_person_bio']['alter']['text'] = '<div class="person-info"><div class="name">[field_person_name] ([field_cast_role_ref]):</div> <div class="bio">[field_person_bio]</div></div>';
   $handler->display->display_options['fields']['field_person_bio']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Global: Null */
-  $handler->display->display_options['arguments']['null']['id'] = 'null';
-  $handler->display->display_options['arguments']['null']['table'] = 'views';
-  $handler->display->display_options['arguments']['null']['field'] = 'null';
-  $handler->display->display_options['arguments']['null']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
   /* Contextual filter: Content: Title */
   $handler->display->display_options['arguments']['title']['id'] = 'title';
   $handler->display->display_options['arguments']['title']['table'] = 'node';
@@ -273,14 +261,6 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Global: Null */
-  $handler->display->display_options['arguments']['null']['id'] = 'null';
-  $handler->display->display_options['arguments']['null']['table'] = 'views';
-  $handler->display->display_options['arguments']['null']['field'] = 'null';
-  $handler->display->display_options['arguments']['null']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
   /* Contextual filter: Content: Title */
   $handler->display->display_options['arguments']['title']['id'] = 'title';
   $handler->display->display_options['arguments']['title']['table'] = 'node';
@@ -294,14 +274,6 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['arguments']['title']['limit'] = '0';
   $handler->display->display_options['arguments']['title']['case'] = 'lower';
   $handler->display->display_options['arguments']['title']['transform_dash'] = TRUE;
-  /* Contextual filter: Global: Null */
-  $handler->display->display_options['arguments']['null_1']['id'] = 'null_1';
-  $handler->display->display_options['arguments']['null_1']['table'] = 'views';
-  $handler->display->display_options['arguments']['null_1']['field'] = 'null';
-  $handler->display->display_options['arguments']['null_1']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['null_1']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['null_1']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['null_1']['summary_options']['items_per_page'] = '25';
   /* Contextual filter: Content: Season (field_episode_season) */
   $handler->display->display_options['arguments']['field_episode_season_value']['id'] = 'field_episode_season_value';
   $handler->display->display_options['arguments']['field_episode_season_value']['table'] = 'field_data_field_episode_season';
@@ -328,7 +300,7 @@ function pivot_views_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'show_subpage');
-  $handler->display->display_options['path'] = 'shows/%/episodes';
+  $handler->display->display_options['path'] = 'shows/%/episodes/%';
   $export['episodes'] = $view;
 
   $view = new view();
