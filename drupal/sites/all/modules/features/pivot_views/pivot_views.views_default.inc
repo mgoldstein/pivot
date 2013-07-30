@@ -30,6 +30,8 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Relationship: Entity Reference: Referencing entity */
@@ -43,11 +45,23 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['relationships']['field_cast_crew_node']['field'] = 'field_cast_crew_node';
   $handler->display->display_options['relationships']['field_cast_crew_node']['relationship'] = 'reverse_field_person_ref_field_collection_item';
   $handler->display->display_options['relationships']['field_cast_crew_node']['required'] = TRUE;
+  /* Field: Content: Profile Image */
+  $handler->display->display_options['fields']['field_person_image']['id'] = 'field_person_image';
+  $handler->display->display_options['fields']['field_person_image']['table'] = 'field_data_field_person_image';
+  $handler->display->display_options['fields']['field_person_image']['field'] = 'field_person_image';
+  $handler->display->display_options['fields']['field_person_image']['label'] = '';
+  $handler->display->display_options['fields']['field_person_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_person_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_person_image']['settings'] = array(
+    'image_style' => 'profile_image',
+    'image_link' => '',
+  );
   /* Field: Content: Name */
   $handler->display->display_options['fields']['field_person_name']['id'] = 'field_person_name';
   $handler->display->display_options['fields']['field_person_name']['table'] = 'field_data_field_person_name';
   $handler->display->display_options['fields']['field_person_name']['field'] = 'field_person_name';
   $handler->display->display_options['fields']['field_person_name']['label'] = '';
+  $handler->display->display_options['fields']['field_person_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_person_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_person_name']['click_sort_column'] = 'title';
   $handler->display->display_options['fields']['field_person_name']['settings'] = array(
@@ -67,7 +81,17 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['fields']['field_cast_role_ref']['field'] = 'field_cast_role_ref';
   $handler->display->display_options['fields']['field_cast_role_ref']['relationship'] = 'reverse_field_person_ref_field_collection_item';
   $handler->display->display_options['fields']['field_cast_role_ref']['label'] = '';
+  $handler->display->display_options['fields']['field_cast_role_ref']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_cast_role_ref']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cast_role_ref']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Bio */
+  $handler->display->display_options['fields']['field_person_bio']['id'] = 'field_person_bio';
+  $handler->display->display_options['fields']['field_person_bio']['table'] = 'field_data_field_person_bio';
+  $handler->display->display_options['fields']['field_person_bio']['field'] = 'field_person_bio';
+  $handler->display->display_options['fields']['field_person_bio']['label'] = '';
+  $handler->display->display_options['fields']['field_person_bio']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_person_bio']['alter']['text'] = '<div class="person-info"><div class="name">[field_person_name] ([field_cast_role_ref]):</div> <div class="bio">[field_person_bio]</div></div>';
+  $handler->display->display_options['fields']['field_person_bio']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
