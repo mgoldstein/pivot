@@ -1,0 +1,114 @@
+<?php
+/**
+ * @file
+ * The TakeAction Button Integeration Module
+ */
+
+/**
+ * Implements hook_help().
+ */
+function takeaction_help($path, $arg) {
+  $output = '';
+  if ($path == 'admin/help#takeaction') {
+    $output .= '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t("The TakeAction Button Core module allows integration
+      with the TakePart TakeAction Button system.") . '</p>';
+  }
+  return $output;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function takeaction_menu() {
+  return array(
+    'admin/config/takeaction' => array(
+      'title' => 'TakeAction Button',
+      'description' => 'Configuraion of the TakeAction Button integration',
+      'position' => 'right',
+      'weight' => 0,
+      'page callback' => 'system_admin_menu_block_page',
+      'access arguments' => array('access administration pages'),
+      'file' => 'system.admin.inc',
+      'file path' => drupal_get_path('module', 'system'),
+    ),
+    'admin/config/takeaction/settings' => array(
+      'title' => 'TakeAction Button Settings',
+      'description' => 'Global settings for TakeAction Button integration',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('takeaction_admin_form'),
+      'access callback' => 'user_access',
+      'access arguments' => array('takeaction configure settings'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_permission().
+ */
+function takeaction_permission() {
+  return array(
+    'takeaction configure settings' => array(
+      'title' => t('Configure global settings'),
+      'description' => t('Configure the TakeAction Button global settings.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Admin form callback.
+ */
+function takeaction_admin_form($form, &$form_state) {
+
+  $form['urls'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Integration URLs and Pages'),
+    '#description' => t('Settings for integration URLs and pages.'),
+    '#tree' => FALSE,
+  );
+
+  $form['urls']['takeaction_button_js_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Button JavaScript URL'),
+    '#description' => t('The absolute URL to the TakeAction button JavaScript file.'),
+    '#required' => TRUE,
+    '#element_validate' => array('takeaction_validate_url'),
+    '#default_value' => variable_get('takeaction_button_js_url', 'd84909c52edcceb20c7bba62052b1b01'),
+  );
+
+  $form['urls']['takeaction_button_pub_id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Publisher ID'),
+    '#description' => t('The publisher ID passed through the button JS'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('takeaction_button_pub_id', ''),
+  );
+
+  $form['urls']['takeaction_button_js_location'] = array(
+    '#type' => 'select',
+    '#title' => t('Button JavaScript Location'),
+    '#description' => t('The location of the TakeAction button JavaScript file script tag.'),
+    '#required' => TRUE,
+    '#options' => array(
+      'header' => t('Header'),
+      'footer' => t('Footer'),
+    ),
+    '#default_value' => variable_get('takeaction_button_js_location', 'footer'),
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * URL form element validation callback.
+ */
+function takeaction_validate_url($element, &$form_state) {
+  if (!empty($element['#value'])) {
+    if (!valid_url($element['#value'], TRUE)) {
+      form_error($element, t('@title must be an absolute URL.', array(
+        '@title' => $element['#title'],
+      )));
+    }
+  }
+}
