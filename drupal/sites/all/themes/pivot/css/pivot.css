@@ -1606,13 +1606,16 @@ iframe.media-youtube-player {
   margin-bottom: 0px;
 }
 
+/* ============================================================
+|| Show Microsite
+============================================================ */
 /* Hero Header; */
-/* line 1582, ../sass/_pivot-global.scss */
+/* line 1581, ../sass/_pivot-global.scss */
 .hero-header .show-hero {
   position: relative;
 }
 
-/* line 1585, ../sass/_pivot-global.scss */
+/* line 1584, ../sass/_pivot-global.scss */
 .hero-header .show-hero img {
   display: block;
   max-width: 100%;
@@ -1621,7 +1624,7 @@ iframe.media-youtube-player {
   width: auto;
 }
 
-/* line 1592, ../sass/_pivot-global.scss */
+/* line 1591, ../sass/_pivot-global.scss */
 .hero-header .show-hero .headline {
   position: absolute;
   bottom: 0;
@@ -1629,7 +1632,7 @@ iframe.media-youtube-player {
   margin-bottom: 0;
 }
 
-/* line 1598, ../sass/_pivot-global.scss */
+/* line 1597, ../sass/_pivot-global.scss */
 .hero-header .show-hero .headline a {
   display: block;
   padding: 1em 0.67em;
@@ -1643,7 +1646,7 @@ iframe.media-youtube-player {
   transition: all .1s linear .1s;
 }
 
-/* line 1611, ../sass/_pivot-global.scss */
+/* line 1610, ../sass/_pivot-global.scss */
 .hero-header .show-hero .headline a:hover,
 .hero-header .show-hero .headline a:focus {
   background-color: rgba(0, 132, 169, 0.9);
@@ -1651,7 +1654,7 @@ iframe.media-youtube-player {
   text-decoration: none;
 }
 
-/* line 1616, ../sass/_pivot-global.scss */
+/* line 1615, ../sass/_pivot-global.scss */
 .hero-header .show-hero .hero-ad {
   display: block;
   position: absolute;
@@ -1665,14 +1668,14 @@ iframe.media-youtube-player {
   transition: all .1s linear .1s;
 }
 
-/* line 1630, ../sass/_pivot-global.scss */
+/* line 1629, ../sass/_pivot-global.scss */
 .hero-header .show-hero .hero-ad:hover,
 .hero-header .show-hero .hero-ad:focus {
   background-color: #0084a9;
   background-color: rgba(0, 132, 169, 0.7);
 }
 
-/* line 1634, ../sass/_pivot-global.scss */
+/* line 1633, ../sass/_pivot-global.scss */
 .hero-header .show-hero .hero-ad img {
   padding: 0 10%;
   position: relative;
@@ -1680,12 +1683,12 @@ iframe.media-youtube-player {
   margin-top: -50%;
 }
 
-/* line 1640, ../sass/_pivot-global.scss */
+/* line 1639, ../sass/_pivot-global.scss */
 .hero-header .nav {
   background: #424242;
 }
 
-/* line 1643, ../sass/_pivot-global.scss */
+/* line 1642, ../sass/_pivot-global.scss */
 .hero-header .nav .leaf {
   display: inline-block;
   *display: inline;
@@ -1693,7 +1696,7 @@ iframe.media-youtube-player {
   vertical-align: top;
 }
 
-/* line 1647, ../sass/_pivot-global.scss */
+/* line 1646, ../sass/_pivot-global.scss */
 .hero-header .nav .leaf a {
   display: block;
   background: #424242;
@@ -1705,7 +1708,7 @@ iframe.media-youtube-player {
   transition: all .1s linear .1s;
 }
 
-/* line 1660, ../sass/_pivot-global.scss */
+/* line 1659, ../sass/_pivot-global.scss */
 .hero-header .nav .leaf.active a,
 .hero-header .nav .leaf a:hover,
 .hero-header .nav .leaf a:focus {
@@ -1714,20 +1717,46 @@ iframe.media-youtube-player {
   text-decoration: none;
 }
 
-/* line 1665, ../sass/_pivot-global.scss */
+/* line 1664, ../sass/_pivot-global.scss */
 .hero-header .nav .headline {
   display: none;
 }
 
-/* line 1668, ../sass/_pivot-global.scss */
+/* line 1667, ../sass/_pivot-global.scss */
 .hero-header .nav ul {
   padding: 0;
   margin: 0;
 }
 
-/* line 1672, ../sass/_pivot-global.scss */
+/* line 1671, ../sass/_pivot-global.scss */
 .hero-header .nav li {
   margin: 0;
+}
+
+/* ============================================================
+|| Show Blogs
+============================================================ */
+/* line 1680, ../sass/_pivot-global.scss */
+.view-show-blog {
+  background-color: white;
+  padding: 20px;
+}
+/* line 1685, ../sass/_pivot-global.scss */
+.view-show-blog .view-content > div {
+  clear: both;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 20px;
+}
+/* line 1691, ../sass/_pivot-global.scss */
+.view-show-blog .view-content > div .headline {
+  text-transform: none;
+  margin-top: 0;
+}
+/* line 1695, ../sass/_pivot-global.scss */
+.view-show-blog .view-content > div .article-image {
+  float: left;
+  margin-right: 20px;
 }
 
 /*
