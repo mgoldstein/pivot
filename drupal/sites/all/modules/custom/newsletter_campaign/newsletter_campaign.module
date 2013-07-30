@@ -4,9 +4,10 @@ function newsletter_campaign_follow_us_service_names() {
   return array(
     'facebook' => t('Facebook'),
     'twitter' => t('Twitter'),
-    'google' => t('Google'),
+    'googleplus' => t('Google Plus'),
     'pinterest' => t('Pinterest'),
     'youtube' => t('YouTube'),
+    'instagram' => t('Instagram'),
     'tumblr' => t('Tumblr'),
   );
 }
@@ -567,6 +568,8 @@ function newsletter_campaign_block_view($delta) {
           );
         }
       }
+
+      $subject = filter_xss($newsletter->header, $allowed_tags);
 
       $content = theme('newsletter_social_block', array(
         'id' => (string) $newsletter->ncid,

@@ -601,6 +601,154 @@ a:active {
 }
 
 /* ============================================================
+|| Newsletter/Social sidebar block
+============================================================ */
+
+.block-newsletter-campaign {
+	text-align: center;
+	font-size: 14px;
+	background: #fff;
+	padding-top: 20px;
+	overflow: hidden;
+
+	.headline,
+	.block-title {
+		color: #01bf9e;
+		font-size: 22px;
+		line-height: 1;
+		text-transform: none;
+		margin: 0 30px 8px 30px;
+
+	}
+
+	.block-title {
+		text-transform: uppercase;
+	}
+
+	.subscribe,
+	.follow {
+		padding: 0 30px;
+	}
+
+	.subscribe {
+		box-shadow: 0px 6px 10px rgba(50, 50, 50, 0.3);
+		position: relative;
+
+			.headline {
+				font-size: 14px;
+				color: #424242;
+				margin: 0 0 8px;
+			}
+			label {
+				display: none;
+			}
+			.form-type-textfield { // wrapping div
+				margin: 0
+			}
+			.form-text {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+			.form-submit {
+				position: relative;
+				cursor: pointer;
+				border: 0;
+				background: #01bf9e;
+				display: block;
+				width: 100%;
+				font-size: 18px;
+				color: #fff;
+				border-radius: 3px;
+				line-height: 20px;
+				box-shadow: 0 2px 0 rgba(50, 50, 50, 0.25);
+				padding: 4px 0;
+				-webkit-transition: background-color .1s linear .1s;
+				transition: background-color .1s linear .1s;
+			}
+			.form-submit:after {
+				content: " ";
+				display: block;
+				position: absolute;
+				right: 19px;
+				top: 50%;
+				margin-top: -9px;
+				background-repeat: no-repeat;
+				background-image: url(../images/rightarrow_small.png);
+				width: 11px;
+				height: 18px;
+				-webkit-transition: right .1s linear .1s;
+				transition: right .1s linear .1s;
+			}
+			.form-submit:hover:after,
+			.form-submit:focus:after {
+				right: 10px;
+			}
+			.terms-link {
+				padding: 10px 0;
+				font-size: 10px;
+				text-align: left;
+				a {
+					color: #0083a9;
+				}
+			}
+	}
+
+	.follow {
+		margin-top: -10px;
+		padding-top: 20px;
+		background: #01bf9e;
+		padding-bottom: 20px;
+		color: #fff;
+
+		.headline {
+			margin: 0 0 8px;
+			color: #fff;
+			text-transform: uppercase;
+		}
+
+		.social {
+			li {
+				display: inline;
+
+				a {
+					background-color: #fff;
+					margin: 0 3px;
+				}
+
+				a:hover,
+				a:focus {
+					opacity: .8;
+				}
+
+				.facebook {
+					background-image: url(../images/social_green_facebook.png);
+				}
+
+				.twitter {
+					background-image: url(../images/social_green_twitter.png);
+				}
+
+				.facebook {
+					background-image: url(../images/social_green_facebook.png);
+				}
+
+				.googleplus {
+					background-image: url(../images/social_green_googleplus.png);
+				}
+
+				.youtube {
+					background-image: url(../images/social_green_youtube.png);
+				}
+
+				.instagram {
+					background-image: url(../images/social_green_instagram.png);
+				}
+			}
+		}
+	}
+}
+
+/* ============================================================
 || Article (Blog Post)
 ============================================================ */
 
