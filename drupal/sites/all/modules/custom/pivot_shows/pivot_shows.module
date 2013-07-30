@@ -112,30 +112,25 @@ function pivot_shows_page_title_alter(&$title) {
   if(arg(0) == 'node'){
     $node = node_load(arg(1));
     $path = drupal_get_path_alias(current_path());
-    $pos = strpos($path, '/', strpos($path, '/') + 1);
+    $pos = (strpos($path, '/', strpos($path, '/') + 1) == NULL ? strlen(current_path()) : strpos($path, '/', strpos($path, '/') + 1));
+    $alias = substr($path, 0 , $pos);
+    $subalias = substr($alias, 0, 5);
     if($node->type == 'show'){
       $title = $node->title;
     }
-    else{
-      $alias = substr($path, 0 , $pos);
+    elseif($subalias == 'shows'){
       $path = drupal_lookup_path('source', $alias);
       $parent_node = menu_get_object("node", 1, $path);
       $title = $parent_node->title. ': '. $node->title;
     }
   }
-  else {
+  elseif(arg(0) == 'shows') {
     $current_path = current_path();
     $pos = strpos($current_path, '/', strpos($current_path, '/') + 1 );
-    $pos2 = strpos($current_path, '/', $pos + 1 );
-    $pos2 = ($pos2 == NULL ? strlen(current_path()) : $pos2);
-
     $alias = substr(current_path(), 0 , $pos);
     $path = drupal_lookup_path('source', $alias);
     $node = menu_get_object("node", 1, $path);
-
-    $page_title = substr(current_path(), $pos +1, $pos2 - $pos);
-    $title = $node->title. ': '. ucfirst($page_title);
-
+    $title = $node->title. ': '. ucfirst(arg(2));
   }
 }
 
