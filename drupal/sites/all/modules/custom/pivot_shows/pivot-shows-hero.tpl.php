@@ -8,7 +8,8 @@
 		</div>
 		<nav class="nav">
 			<h2 class="headline">Show Navigation</h2>
-	    <?php print $hero_menu; ?>
+	      <?php print $hero_menu; ?>
+			</ul>
 		</nav>
 	</div>
 </header>

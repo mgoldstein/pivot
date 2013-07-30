@@ -1608,98 +1608,112 @@ iframe.media-youtube-player {
 ============================================================ */
 
 /* Hero Header; */
-.hero-header .show-hero {
-	position: relative;
-}
-.hero-header .show-hero img {
-	display: block;
-	max-width: 100%;
-	max-height: 100%;
-	height: auto;
-	width: auto;
-}
-.hero-header .show-hero .headline {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	margin-bottom: 0;
-}
-.hero-header .show-hero .headline a {
-	display: block;
-	padding: 1em 0.67em;
-	color: #000;
-	font-size: 30px;
-	background: #fff;
-	background: rgba(255, 255, 255, 0.9);
-	text-transform: capitalize;
-	font-weight: bold;
-	-webkit-transition: all .1s linear .1s;
-	transition: all .1s linear .1s;
-}
-.hero-header .show-hero .headline a:hover,
-.hero-header .show-hero .headline a:focus {
-	background-color: rgba(0, 132, 169, 0.9);
-	color: #fff;
-	text-decoration: none;
-}
-.hero-header .show-hero .hero-ad {
-	display: block;
-	position: absolute;
-	top: 0;
-	right: 0;
-	height: 100%;
-	background-color: #0084a9;
-	background: rgba(0, 132, 169, 0.5);
-	display: block;
+.hero-header {
+	.show-hero {
+		position: relative;
+		img {
+			display: block;
+			max-width: 100%;
+			max-height: 100%;
+			height: auto;
+			width: auto;
+		}
+		.headline {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			margin-bottom: 0;
+		}
+		.headline a {
+			display: block;
+			padding: 1em 0.67em;
+			color: #000;
+			font-size: 30px;
+			background: #fff;
+			background: rgba(255, 255, 255, 0.9);
+			text-transform: capitalize;
+			font-weight: bold;
+			-webkit-transition: all .1s linear .1s;
+			transition: all .1s linear .1s;
+		}
+		.headline a:hover,
+		.headline a:focus {
+			background-color: rgba(0, 132, 169, 0.9);
+			color: #fff;
+			text-decoration: none;
+		}
+		.hero-ad {
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 100%;
+			background-color: #0084a9;
+			background: rgba(0, 132, 169, 0.5);
+			display: block;
 
-	-webkit-transition: all .1s linear .1s;
-	transition: all .1s linear .1s;
-}
-.hero-header .show-hero .hero-ad:hover,
-.hero-header .show-hero .hero-ad:focus {
-	background-color: #0084a9;
-	background-color: rgba(0, 132, 169, 0.7);
-}
-.hero-header .show-hero .hero-ad img {
-	padding: 0 10%;
-	position: relative;
-	top: 50%;
-	margin-top: -50%;
-}
-.hero-header .nav {
-	background: #424242;
-}
-.hero-header .nav .leaf {
-	display: inline-block; *display: inline; *zoom: 1;
-	vertical-align: top;
-}
-.hero-header .nav .leaf a {
-	display: block;
-	background: #424242;
-	color: #fff;
-	padding: 1em 1.618em;
-	text-transform: uppercase;
-	font-size: 18px;
+			-webkit-transition: all .1s linear .1s;
+			transition: all .1s linear .1s;
+		}
+		.hero-ad:hover,
+		.hero-ad:focus {
+			background-color: #0084a9;
+			background-color: rgba(0, 132, 169, 0.7);
+		}
+		.hero-ad img {
+			padding: 0 10%;
+			position: relative;
+			top: 50%;
+			margin-top: -50%;
+		}
+	}
+	.nav {
+		background: #424242;
+	}
+	.nav ul.nice-menu li {
+		display: inline-block; *display: inline; *zoom: 1;
+		vertical-align: top;
+	}
+	.nav ul.nice-menu li a {
+		display: block;
+		background: #424242;
+		color: #fff;
+		padding: 1em 1.618em;
+		text-transform: uppercase;
+		font-size: 18px;
 
-	-webkit-transition: all .1s linear .1s;
-	transition: all .1s linear .1s;
-}
-.hero-header .nav .leaf.active a,
-.hero-header .nav .leaf a:hover,
-.hero-header .nav .leaf a:focus {
-	background: #1a1a1a;
-	color: #00b5cc;
-	text-decoration: none;
-}
-.hero-header .nav .headline {
-	display: none;
-}
-.hero-header .nav ul {
-	padding: 0;
-	margin: 0;
-}
-.hero-header .nav li {
-	margin: 0;
+		-webkit-transition: all .1s linear .1s;
+		transition: all .1s linear .1s;
+	}
+	.nav ul.nice-menu li.active a,
+	.nav ul.nice-menu li a:hover,
+	.nav ul.nice-menu li a:focus {
+		background: #1a1a1a;
+		color: #00b5cc;
+		text-decoration: none;
+	}
+	.nav .headline {
+		display: none;
+	}
+	.nav ul.nice-menu {
+		padding: 0;
+		margin: 0;
+	}
+	.nav ul.nice-menu li {
+		margin: 0;
+		border: none;
+	}
+	.nav ul.nice-menu ul {
+		margin-top: 18px;
+		border: none;
+		li a{
+			background: #666;
+		}
+	}
+	.nav ul.nice-menu-down {
+		border: none;
+		float: none;
+	}
 }
 
 /* ============================================================
