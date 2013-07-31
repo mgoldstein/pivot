@@ -638,10 +638,10 @@ a:active {
 	margin: 0;
 	text-align: center;
 	background: #424242 url(../images/secondary-background.gif) left top repeat;
-	padding: 20px 0;
+	padding: 1px 0;
 
 	.dfp-tag-wrapper {
-		margin: auto;
+		margin: 19px 0 21px 0;
 		width: 728px;
 	}
 
@@ -649,6 +649,18 @@ a:active {
 		display: none;
 	}
 }
+
+#block-pivot-global-pivot-global-header-nav {
+	margin-bottom: 0px;
+	position: relative;
+	margin-top: -2px;
+
+	@media (max-width: 1000px) {
+		position: static;
+		margin-top: 0;
+	}
+}
+
 
 /* Pagewrap */
 .tp_ad_takeover{
@@ -1610,11 +1622,6 @@ body.ie8 {
 
 iframe.media-youtube-player {
   max-width: 100%;
-}
-
-
-#block-pivot-global-pivot-global-header-nav.block {
-	margin-bottom: 0px;
 }
 
 
