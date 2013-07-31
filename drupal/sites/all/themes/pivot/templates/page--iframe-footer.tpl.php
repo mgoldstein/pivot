@@ -7,7 +7,6 @@
     Drupal.behaviors.iframeLinks = {
       attach: function () {
         $('a').attr('target', '_top');
-        alert('test');
       }
     };
   })(jQuery, Drupal, this, this.document);",
