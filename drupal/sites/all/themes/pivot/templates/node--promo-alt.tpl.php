@@ -85,6 +85,6 @@
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <?php print l(render($content['field_promo_image']), 'node/' . $node->nid, array('html' => TRUE));?>
-  <?php print render($content['field_promo_headline']);?>
-  <?php print l(render($content['field_promo_abstract']), 'node/' . $node->nid, array('html' => TRUE));?>
+  <?php print l(render($content['field_promo_headline']), 'node/' . $node->nid, array('html' => TRUE));?>
+  <?php print render($content['field_promo_abstract']);?>
 </article><!-- /.node.promo -->
