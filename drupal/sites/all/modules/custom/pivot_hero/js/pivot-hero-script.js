@@ -60,7 +60,6 @@ $(function() {
 			$curr = $curr || $current;
 			$topslide.addClass($curr.data('token'));
 			$topslide.find('li').removeClass('active');
-			var $newnav = $topslide.find('.slide-nav .' + $curr.data('token')).addClass('active');
 		}
 
 		var onafter = function($curr) {
@@ -147,10 +146,6 @@ $(function() {
 		};
 
 		$('.slide-nav a').bind('click', function(e) {
-			e.preventDefault();
-
-			$slide_wrapper.tpslide_to(this.href.replace(/^[^#]*/, ''));
-
 
       //Separate JS from Static
       $('.pivot-headline').removeClass('dark');
