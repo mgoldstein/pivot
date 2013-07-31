@@ -342,7 +342,7 @@ function pivot_schedule_import_form_submit($form, &$form_state) {
       );
 
       // Straight forward string values.
-      $values['element_name'] = (string) $show->ElementName;
+      $values['element_name'] = (string) $show->SeriesName;
       $values['title_name'] =  (string) $show->TitleName;
       $values['title_synopsis'] =  (string) $show->TitleSynopsis;
       $values['title_code_wo_series_prefix']
@@ -699,7 +699,12 @@ function pivot_schedule_load_listing($ids, $timezone) {
     $item->start->setTimestamp((int) $show_time->broadcast_start_time);
 
     // Use the show title as it appears in the feed.
-    $item->show_title = $show_time->element_name;
+    if ($show_time->element_name === 'Movie') {
+      $item->show_title = $show_time->title_name;
+    }
+    else {
+      $item->show_title = $show_time->element_name;
+    }
 
     // Check for a show page to link to.
     if (array_key_exists($show_time->element_name, $shows_by_schedule_name)) {
