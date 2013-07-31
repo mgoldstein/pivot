@@ -71,6 +71,13 @@ function pivot_global_block_view($block_name) {
     return $block;
 }
 
+/**
+ * Provide HTML for the Pivot global header.
+ *
+ * @return string an html string for the pivot global header
+ *
+ * @todo this should be in a template file
+ */
 function pivot_global_header() {
   $output = '<div class="primary">
     <div class="site-wrapper">
@@ -98,4 +105,16 @@ function pivot_global_header() {
     </div>';
 
   return $output;
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Add placeholder text to the search block.
+ */
+function pivot_global_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'search_block_form') {
+    // Add HTML5 placeholder attribute
+    $form['search_block_form']['#attributes']['placeholder'] = t('Search');
+  }
 }
