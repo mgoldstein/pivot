@@ -50,17 +50,11 @@ function newsletter_campaign_schema() {
   	    'default' =>  '',
         'description' => 'Campaign code generated from the BSD system.',
       ),
-      'bsd_form_id' => array(
-        'type' => 'int',
-  	    'not null' => TRUE,
-  	    'default' =>  0,
-        'description' => 'ID code for BSD signup form serving this campaign.',
-      ),
-      'bsd_field_id' => array(
-        'type' => 'int',
-  	    'not null' => TRUE,
-  	    'default' =>  0,
-        'description' => 'ID code for BSD signup form field serving this campaign.',
+      'signup_name' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Name of the signup.',
       ),
       'follow_us_enabled' => array(
         'description' => 'Show Follow Us box (0 = Hidden, 1 = Visible).',
@@ -81,4 +75,20 @@ function newsletter_campaign_schema() {
   );
 
   return $schema;
+}
+
+/**
+ * Replace BSD fields with generalized signup name.
+ */
+function newsletter_campaign_update_7202(&$sandbox) {
+  $schema = newsletter_campaign_schema();
+  $table = 'newsletter_campaign';
+  $add_fields = array('signup_name');
+  $drop_fields = array('bsd_form_id', 'bsd_field_id');
+  foreach ($add_fields as $field) {
+    db_add_field($table, $field, $schema[$table]['fields'][$field]);
+  }
+  foreach ($drop_fields as $field) {
+    db_drop_field($table, $field);
+  }
 }

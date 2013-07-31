@@ -1,9 +1,10 @@
 name = Newsletter Campaigns
-description = Provides newsletter signup blocks with support for sending the signup to Blue State Digital.
+description = Provides newsletter signup blocks with generalized signup support.
 package = TakePart
-version = 7.x-2.2
+version = 7.x-2.3
 core = 7.x
+
+files[] = newsletter_campaign.signup.inc
+
 dependencies[] = entity
-dependencies[] = bluestatedigital
-dependencies[] = bluestatedigital_forms
-dependencies[] = waterfallapi
+dependencies[] = pm_signup

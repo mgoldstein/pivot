@@ -6,6 +6,15 @@ define('WATERFALL_API_PASS', 'sms4takepart');
 include(drupal_get_path('module', 'waterfallapi') . '/includes/waterfallapi.inc');
 
 /**
+ * Implements hook_ctools_plugin_directory().
+ */
+function waterfallapi_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner === 'pm_signup' && $plugin_type === 'handler') {
+    return "plugins";
+  }
+}
+
+/**
  * Implements hook_permission().
  */
 function waterfallapi_permission() {
