@@ -15,37 +15,63 @@
 	Drupal.behaviors.globalNavigationResponsive = {
 		attach: function() {
 			// Responsive nav
-			var nav = '.not-front #site-header .primary';
-			var $nav = $(nav);
-			var $body = $('body');
+			var primaryNav = '#site-header .primary',
+				$primaryNav = $(primaryNav),
+				secondaryNav = '#site-header .secondary',
+				$secondaryNav = $(secondaryNav),
+				$body = $('body.not-front');
 
 			var click = 'click';
 			var is_touchmove = false;
 			if ( 'ontouchend' in document.documentElement ) click = 'touchend';
 
 			$body
-			     .delegate(nav, 'touchmove', function () {
+			     .delegate(primaryNav, 'touchmove', function () {
 				   is_touchmove = true;
 			     })
-			     .delegate(nav, click, function () {
+			     .delegate(primaryNav, click, function () {
 				   if ( click == 'touchend' && is_touchmove ) {
 					is_touchmove = false;
 					return true;
 				   }
 
-				   if ( $body.is('.clickedon') ) {
-					$body.removeClass('clickedon');
+				   if ( $primaryNav.is('.clickedon') ) {
+					$primaryNav.removeClass('clickedon');
 				   } else {
-					$body.addClass('clickedon');
+					$primaryNav.addClass('clickedon');
 				   }
 			     })
-			     .delegate(nav + ' a', click, function (e) {
+			     .delegate(primaryNav + ' a', click, function (e) {
 				   e.stopPropagation();
 			     })
-			     .delegate(nav, 'focusin', function (e) {
+			     .delegate(primaryNav, 'focusin', function (e) {
 				   $body.addClass('clickedon');
 			     })
-			     .delegate(nav, 'focusout', function (e) {
+			     .delegate(primaryNav, 'focusout', function (e) {
+				   $body.removeClass('clickedon');
+			     })
+			     .delegate(primaryNav, 'touchmove', function () {
+				   is_touchmove = true;
+			     })
+			     .delegate(secondaryNav, click, function () {
+				   if ( click == 'touchend' && is_touchmove ) {
+					is_touchmove = false;
+					return true;
+				   }
+
+				   if ( $secondaryNav.is('.clickedon') ) {
+					$secondaryNav.removeClass('clickedon');
+				   } else {
+					$secondaryNav.addClass('clickedon');
+				   }
+			     })
+			     .delegate(secondaryNav + ' a', click, function (e) {
+				   e.stopPropagation();
+			     })
+			     .delegate(secondaryNav, 'focusin', function (e) {
+				   $body.addClass('clickedon');
+			     })
+			     .delegate(secondaryNav, 'focusout', function (e) {
 				   $body.removeClass('clickedon');
 			     })
 			;
