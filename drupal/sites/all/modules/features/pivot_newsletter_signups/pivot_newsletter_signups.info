@@ -1,0 +1,9 @@
+name = Pivot Newsletter Signups
+description = Signup endpoints for newsletters on the site
+core = 7.x
+package = Signups
+version = 7.x-1.0
+project = pivot_newsletter_signups
+dependencies[] = pm_signup
+features[features_api][] = api:2
+features[pm_signup_endpoint][] = pivot_newsletter
