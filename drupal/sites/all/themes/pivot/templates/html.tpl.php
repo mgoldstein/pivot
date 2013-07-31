@@ -105,5 +105,12 @@
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
+  <?php if(arg(0) == 'iframe'): ?>
+      <script language="javascript" type="text/javascript">
+        var pxH;
+        pxH = $(document).height() + 2;
+        parent.kpiFrameSize(pxH);
+      </script>
+  <?php endif; ?>
 </body>
 </html>
