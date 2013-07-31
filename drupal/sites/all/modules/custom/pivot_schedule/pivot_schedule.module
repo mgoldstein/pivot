@@ -5,7 +5,12 @@
  */
 
 define('PIVOT_SCHEDULE_MAX_IMPORT_FILE_SIZE', 4194304);
-define('PIVOT_SHEDULE_IMPORT_FILE_DIRECTORY', 'public://schedule-imports');
+define('PIVOT_SCHEDULE_IMPORT_FILE_DIRECTORY', 'public://schedule-imports');
+
+define('PIVOT_SCHEDULE_PRIMETIME_START', '7:00pm');
+define('PIVOT_SCHEDULE_PRIMETIME_END', '11:00pm');
+define('PIVOT_SCHEDULE_REFERENCE_TZ', 'America/New_York');
+
 /**
  * PivotScheduleShowTime entity.
  */
@@ -64,17 +69,6 @@ function pivot_schedule_permission() {
       'title' => t('Import schedule show times'),
       'restrict access' => TRUE,
     ),
-    'view pivot_schedule show_times' => array(
-      'title' => t('View schedule show times'),
-    ),
-    'delete pivot_schedule show_times' => array(
-      'title' => t('Delete schedule show times'),
-      'restrict access' => TRUE,
-    ),
-    'purge pivot_schedule show_times' => array(
-      'title' => t('Purge schedule show imports'),
-      'restrict access' => TRUE,
-    ),
   );
 }
 
@@ -83,7 +77,7 @@ function pivot_schedule_permission() {
  */
 function pivot_schedule_access($op, $entity = NULL, $account = NULL) {
   // Block unknown operations.
-  if (in_array($op, array('administer', 'import', 'view', 'delete', 'purge'))) {
+  if (in_array($op, array('administer', 'import'))) {
     return user_access("$op pivot_schedule show_times", $account)
       || user_access("administer pivot_schedule show_times", $account);
   }
@@ -226,26 +220,6 @@ function pivot_schedule_entity_property_info() {
   return $info;
 }
 
-function pivot_schedule_show_time_create(array $values) {
-  return entity_create('pivot_schedule_show_time', $values);
-}
-
-function pivot_schedule_show_time_delete($id) {
-  return entity_delete('pivot_schedule_show_time', $id);
-}
-
-function pivot_schedule_show_time_delete_multiple(array $ids) {
-  return entity_delete_multiple('pivot_schedule_show_time', $ids);
-}
-
-function pivot_schedule_show_time_save($show_time) {
-  return entity_save('pivot_schedule_show_time', $show_time);
-}
-
-function pivot_schedule_show_time_view(array $show_times, $view_mode = 'full', $langcode = NULL, $page = NULL) {
-  return entity_view('pivot_schedule_show_time', $show_times, $view_mode, $langcode, $page);
-}
-
 /**
  * Implements hook_menu().
  */
@@ -270,11 +244,8 @@ function pivot_schedule_menu() {
 }
 
 function pivot_schedule_import_page() {
-
   $content = array();
-
   $content['import_form'] = drupal_get_form('pivot_schedule_import_form');
-
   return $content;
 }
 
@@ -328,9 +299,9 @@ function pivot_schedule_import_form_validate($form, &$form_state) {
   if ($file) {
 
     // Make sure the schedule import file directory exists.
-    $directory = PIVOT_SHEDULE_IMPORT_FILE_DIRECTORY;
+    $directory = PIVOT_SCHEDULE_IMPORT_FILE_DIRECTORY;
     if (file_prepare_directory($directory)) {
-      if ($file = file_move($file, PIVOT_SHEDULE_IMPORT_FILE_DIRECTORY)) {
+      if ($file = file_move($file, PIVOT_SCHEDULE_IMPORT_FILE_DIRECTORY)) {
         $form_state['storage']['file'] = $file;
       }
       else {
@@ -400,7 +371,7 @@ function pivot_schedule_import_form_submit($form, &$form_state) {
       $values['title_premiere_indicator_current_schedule'] = !empty($premiere);
 
       // Create and save the schedule time.
-      $show_time = pivot_schedule_show_time_create($values);
+      $show_time = entity_create('pivot_schedule_show_time', $values);
       $show_time->save();
 
       // Tick
@@ -414,4 +385,407 @@ function pivot_schedule_import_form_submit($form, &$form_state) {
   catch (Exception $e) {
     drupal_set_message(t('An error occurred while importing the schedule, please verify the contents of the import file and try again.'), 'error');
   }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function pivot_schedule_block_info() {
+  return array(
+    'primetime_listing' => array(
+      'info' => t('Schedule Primetime Listing'),
+      'cache' => DRUPAL_NO_CACHE,
+    ),
+    'show_listing' => array(
+      'info' => t('Schedule Show Listing'),
+      'cache' => DRUPAL_NO_CACHE,
+    ),
+  );
+}
+
+/**
+ * Get the settings for a block given the block's delta.
+ */
+function pivot_schedule_block_settings($delta) {
+  $values = FALSE;
+  if ($delta === 'primetime_listing') {
+    $values = variable_get('pivot_schedule_primetime_listing', array());
+    $values += array(
+      'headline_text' => t("What's On Tonight"),
+      'headline_link' => '#upcoming-times',
+      'full_schedule_text' => t('See Full Schedule'),
+      'full_schedule_link' => '#',
+      'start_time' => PIVOT_SCHEDULE_PRIMETIME_START,
+      'end_time' => PIVOT_SCHEDULE_PRIMETIME_END,
+      'timezone' => PIVOT_SCHEDULE_REFERENCE_TZ,
+    );
+  }
+  elseif ($delta === 'show_listing') {
+    $values = variable_get('pivot_schedule_show_listing', array());
+    $values += array(
+      'count' => 6,
+      'timezone' => PIVOT_SCHEDULE_REFERENCE_TZ,
+    );
+  }
+  return $values;
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function pivot_schedule_block_configure($delta = '') {
+  $form = array();
+
+  $settings = pivot_schedule_block_settings($delta);
+
+  if ($delta === 'primetime_listing') {
+
+    $form['pivot_schedule'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Schedule Settings'),
+      '#tree' => TRUE,
+    );
+
+    $form['pivot_schedule']['headline_text'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Headline Text'),
+      '#default_value' => $settings['headline_text'],
+    );
+
+    $form['pivot_schedule']['headline_link'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Headline Link'),
+      '#default_value' => $settings['headline_link'],
+    );
+
+    $form['pivot_schedule']['full_schedule_text'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Full Schedule Text'),
+      '#default_value' => $settings['full_schedule_text'],
+    );
+
+    $form['pivot_schedule']['full_schedule_link'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Full Schedule Link'),
+      '#default_value' => $settings['full_schedule_link'],
+    );
+
+    $form['pivot_schedule']['start_time'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Start Time'),
+      '#description' => t('Start time in 12 hour format (e.g. 7:00pm).'),
+      '#default_value' => $settings['start_time'],
+    );
+
+    $form['pivot_schedule']['end_time'] = array(
+      '#type' => 'textfield',
+      '#title' => t('End Time'),
+      '#description' => t('End time in 12 hour format (e.g. 11:00pm).'),
+      '#default_value' => $settings['end_time'],
+    );
+
+    $form['pivot_schedule']['timezone'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Timezone'),
+      '#description' => t('Timezone of start and end times. For a list of valid values see <a href="http://php.net/manual/en/timezones.php" target="_blank">PHP - List of Supported Timezones</a>'),
+      '#default_value' => $settings['timezone'],
+      '#element_validate' => array('pivot_schedule_element_valdiate_timezone'),
+    );
+  }
+  elseif ($delta === 'show_listing') {
+
+    $form['pivot_schedule'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Schedule Settings'),
+      '#tree' => TRUE,
+    );
+
+    $form['pivot_schedule']['count'] = array(
+      '#type' => 'textfield',
+      '#title' => t(''),
+      '#default_value' => $settings['count'],
+      '#element_validate' => array('element_validate_integer_positive'),
+    );
+
+    $form['pivot_schedule']['timezone'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Timezone'),
+      '#description' => t('Timezone of the show times. For a list of valid values see <a href="http://php.net/manual/en/timezones.php" target="_blank">PHP - List of Supported Timezones</a>'),
+      '#default_value' => $settings['timezone'],
+      '#element_validate' => array('pivot_schedule_element_valdiate_timezone'),
+    );
+  }
+
+  return $form;
+}
+
+function pivot_schedule_element_valdiate_timezone($element, &$form_state) {
+  try {
+    $tz = new DateTimeZone($element['#value']);
+  }
+  catch (Exception $e) {
+    form_error($element, t('%name must be a valid timezone.', array(
+      '%name' => $element['#title'],
+    )));
+  }
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function pivot_schedule_block_save($delta = '', $edit = array()) {
+  variable_set('pivot_schedule_' . $delta, $edit['pivot_schedule']);
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function pivot_schedule_block_view($delta = '') {
+
+  $block = array(
+    'subject' => '',
+    'content' => '',
+  );
+
+  $settings = pivot_schedule_block_settings($delta);
+
+  if ($delta === 'primetime_listing') {
+
+    // Get the prime time listing.
+    $show_times = pivot_schedule_get_primetime_listing($settings['start_time'],
+      $settings['end_time'], $settings['timezone']);
+
+    // Set the content from the theme template.
+    $block['content'] = array(
+      '#theme' => 'pivot_schedule_primetime_listing',
+      '#show_times' => $show_times,
+    );
+
+    // Pass the block settings to the template as well.
+    foreach ($settings as $name => $value) {
+      $block['content']["#{$name}"] = $value;
+    }
+  }
+  elseif ($delta === 'show_listing') {
+
+    // Get the node being shown.
+    $node = menu_get_object();
+    if ($node) {
+
+      // Check if the node has schedule name and listing title fields.
+      $schedule_name = FALSE;
+      $listing_title = FALSE;
+      $items = field_get_items('node', $node, 'field_schedule_name');
+      if ($items !== FALSE) {
+        $item = reset($items);
+        if ($item != FALSE && !empty($item['value'])) {
+          $schedule_name = $item['value'];
+        }
+      }
+      $items = field_get_items('node', $node, 'field_schedule_listing_title');
+      if ($items !== FALSE) {
+        $item = reset($items);
+        if ($item != FALSE && !empty($item['value'])) {
+          $listing_title = $item['value'];
+        }
+      }
+
+      if ($schedule_name !== FALSE && $listing_title !== FALSE) {
+
+        // Get the show listing for the named show.
+        $show_times = pivot_schedule_get_show_listing($schedule_name,
+          $settings['count'], $settings['timezone']);
+
+        // Set the content from the theme template.
+        $block['content'] = array(
+          '#theme' => 'pivot_schedule_show_listing',
+          '#show_times' => $show_times,
+          '#headline' => $listing_title,
+        );
+
+        // Pass the block settings to the template as well.
+        foreach ($settings as $name => $value) {
+          $block['content']["#{$name}"] = $value;
+        }
+      }
+    }
+  }
+  return $block;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function pivot_schedule_theme() {
+  return array(
+    'pivot_schedule_primetime_listing' => array(
+      'variables' => array(
+        'show_times' => array(),
+        'headline_text' => NULL,
+        'headline_link' => NULL,
+        'full_schedule_text' => NULL,
+        'full_schedule_link' => NULL,
+        'start_time' => NULL,
+        'end_time' => NULL,
+        'timezone' => NULL,
+      ),
+      'template' => 'pivot-schedule-primetime-listing',
+    ),
+    'pivot_schedule_show_listing' => array(
+      'variables' => array(
+        'show_times' => array(),
+        'headline' => NULL,
+        'count' => 6,
+        'timezone' => NULL,
+      ),
+      'template' => 'pivot-schedule-show-listing',
+    ),
+  );
+}
+
+function pivot_schedule_shows_by_schedule_name() {
+  // Static caching
+  static $shows_by_schedule_name = FALSE;
+
+  if ($shows_by_schedule_name === FALSE) {
+
+    $shows_by_schedule_name = array();
+
+    // Get the show type nodes.
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->propertyCondition('type', 'show');
+    $entities = $query->execute();
+
+    if (isset($entities['node'])) {
+
+      // Load the actual show nodes.
+      $ids = array_keys($entities['node']);
+      $shows = entity_load('node', $ids);
+
+      // Add all show's with a schedule name to the list.
+      foreach ($shows as $show) {
+        $items = field_get_items('node', $show, 'field_schedule_name');
+        if ($items !== FALSE) {
+          $item = reset($items);
+          if ($item != FALSE && !empty($item['value'])) {
+            $shows_by_schedule_name[$item['value']] = $show;
+          }
+        }
+      }
+    }
+  }
+
+  return $shows_by_schedule_name;
+}
+
+function pivot_schedule_load_listing($ids, $timezone) {
+
+  $listing = array();
+
+  // Load the actual show times.
+  $show_times = entity_load('pivot_schedule_show_time', $ids);
+
+  // Get a list of shows that may appear in the schedule.
+  $shows_by_schedule_name = pivot_schedule_shows_by_schedule_name();
+
+  // Build the listing.
+  foreach ($show_times as $show_time) {
+
+    $item = new StdClass();
+
+    // Adjust the start time to the reference timezone.
+    $item->start = new DateTime('now', $timezone);
+    $item->start->setTimestamp((int) $show_time->broadcast_start_time);
+
+    // Use the show title as it appears in the feed.
+    $item->show_title = $show_time->element_name;
+
+    // Check for a show page to link to.
+    if (array_key_exists($show_time->element_name, $shows_by_schedule_name)) {
+      $show = $shows_by_schedule_name[$show_time->element_name];
+      $uri = node_uri($show);
+      $item->show_path = url($uri['path']);
+    }
+    else {
+      $item->show_path = NULL;
+    }
+
+    // Add the show time to the listing.
+    $listing[] = $item;
+  }
+
+  return $listing;
+}
+
+function pivot_schedule_get_primetime_listing($start, $end, $tz) {
+
+  $listing = array();
+
+  // Initialize the reference timezone.
+  try {
+    $timezone = new DateTimeZone($tz);
+  }
+  catch (Exception $e) {
+    // The configured time zone is invalid, use the default until
+    // it can be changed
+    drupal_set_message(t('Invalid primetime schedule timezone'), 'warning');
+    $timezone = new DateTimeZone(PIVOT_SCHEDULE_REFERENCE_TZ);
+  }
+  // Convert the start and end times to actual date times.
+  $start_time = new DateTime($start, $timezone);
+  $end_time = new DateTime($end, $timezone);
+
+  // Get the show times during primetime.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'pivot_schedule_show_time')
+    ->propertyCondition('broadcast_start_time', $start_time->getTimestamp(), '>=')
+    ->propertyCondition('broadcast_start_time', $end_time->getTimestamp(), '<=')
+    ->propertyOrderBy('broadcast_start_time');
+  $entities = $query->execute();
+
+  if (isset($entities['pivot_schedule_show_time'])) {
+    $ids = array_keys($entities['pivot_schedule_show_time']);
+    $listing = pivot_schedule_load_listing($ids, $timezone);
+  }
+
+  return $listing;
+}
+
+function pivot_schedule_get_show_listing($schedule_name, $count, $tz) {
+
+  $listing = array();
+
+  // Initialize the reference timezone.
+  try {
+    $timezone = new DateTimeZone($tz);
+  }
+  catch (Exception $e) {
+    // The configured time zone is invalid, use the default until
+    // it can be changed
+    drupal_set_message(t('Invalid show schedule timezone'), 'warning');
+    $timezone = new DateTimeZone(PIVOT_SCHEDULE_REFERENCE_TZ);
+  }
+
+  // Get the current hour in the reference timezone.
+  $this_hour = new DateTime('now', $timezone);
+  $offset = $this_hour->format('i \m\i\n\u\t\e\s + s \s\e\c\o\n\d\s');
+  $interval = DateInterval::createFromDateString($offset);
+  $this_hour->sub($interval);
+
+  // Get the upcoming show times.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'pivot_schedule_show_time')
+    ->propertyCondition('broadcast_start_time', $this_hour->getTimestamp(), '>=')
+    ->propertyCondition('element_name', $schedule_name)
+    ->propertyOrderBy('broadcast_start_time')
+    ->range(0, $count);
+  $entities = $query->execute();
+
+  if (isset($entities['pivot_schedule_show_time'])) {
+    $ids = array_keys($entities['pivot_schedule_show_time']);
+    $listing = pivot_schedule_load_listing($ids, $timezone);
+  }
+
+  return $listing;
 }

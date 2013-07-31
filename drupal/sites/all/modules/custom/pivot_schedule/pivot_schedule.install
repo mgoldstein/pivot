@@ -98,7 +98,7 @@ function pivot_schedule_schema() {
  * Delete the import file table, we can just reference directly to Drupal's
  * managed file table.
  */
-function takeaction_update_7100(&$sandbox) {
+function pivot_schedule_update_7100(&$sandbox) {
   if (db_table_exists('pivot_schedule_import_file')) {
     db_drop_table('pivot_schedule_import_file');
   }
