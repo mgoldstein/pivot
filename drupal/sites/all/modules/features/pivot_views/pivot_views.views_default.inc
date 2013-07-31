@@ -23,6 +23,7 @@ function pivot_views_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Cast';
+  $handler->display->display_options['css_class'] = 'show-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -30,8 +31,6 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
-  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Relationship: Entity Reference: Referencing entity */
@@ -229,6 +228,7 @@ function pivot_views_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Episodes';
+  $handler->display->display_options['css_class'] = 'show-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -248,6 +248,8 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'h2';
+  $handler->display->display_options['fields']['title']['element_class'] = 'headline';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Description */
@@ -265,6 +267,7 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['arguments']['title']['table'] = 'node';
   $handler->display->display_options['arguments']['title']['field'] = 'title';
   $handler->display->display_options['arguments']['title']['relationship'] = 'field_show_ref_target_id';
+  $handler->display->display_options['arguments']['title']['default_action'] = 'not found';
   $handler->display->display_options['arguments']['title']['exception']['value'] = '';
   $handler->display->display_options['arguments']['title']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['title']['summary']['number_of_records'] = '0';
@@ -279,6 +282,8 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['arguments']['field_episode_season_value']['field'] = 'field_episode_season_value';
   $handler->display->display_options['arguments']['field_episode_season_value']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_episode_season_value']['exception']['value'] = '';
+  $handler->display->display_options['arguments']['field_episode_season_value']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['field_episode_season_value']['title'] = 'Episodes: Season %2';
   $handler->display->display_options['arguments']['field_episode_season_value']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['field_episode_season_value']['default_argument_options']['argument'] = '1';
   $handler->display->display_options['arguments']['field_episode_season_value']['summary']['number_of_records'] = '0';
@@ -451,6 +456,7 @@ function pivot_views_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['css_class'] = 'show-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -459,7 +465,6 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
