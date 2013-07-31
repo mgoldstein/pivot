@@ -2138,6 +2138,24 @@ body.front {
   line-height: 1.5;
 }
 
+@media (max-width: 767px) {
+  /* iPad vertical */
+  /* line 4, ../sass/_pivot-responsive.scss */
+  .hero-header .show-hero .headline {
+    position: static;
+  }
+
+  /* line 8, ../sass/_pivot-responsive.scss */
+  .hero-header .show-hero .headline a {
+    background: transparent;
+    padding: 0 0 .5em 0;
+  }
+
+  /* line 13, ../sass/_pivot-responsive.scss */
+  .hero-header .show-hero .image {
+    position: relative;
+  }
+}
 /* line 1, ../sass/_pivot-homepage-hero.scss */
 .front #home-header {
   position: absolute;
