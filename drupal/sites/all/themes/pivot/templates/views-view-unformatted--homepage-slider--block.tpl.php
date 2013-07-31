@@ -17,7 +17,7 @@
         </ul>
       </div>
       <div class="find">
-        <a href="#find-pivot" class="important">
+        <a href="http://find.pivot.tv" class="important">
           Find <span class="pivot">Pivot</span> in your area
         </a>
       </div>
