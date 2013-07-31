@@ -33,10 +33,10 @@ function pivot_hs_field_default_field_instances() {
         'weight' => 0,
       ),
       'promo_alt' => array(
-	'label' => 'above',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 0,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -115,10 +115,10 @@ function pivot_hs_field_default_field_instances() {
         'weight' => 0,
       ),
       'promo_alt' => array(
-	'label' => 'above',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 0,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -198,10 +198,10 @@ function pivot_hs_field_default_field_instances() {
         'weight' => 0,
       ),
       'promo_alt' => array(
-	'label' => 'above',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 0,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -247,10 +247,10 @@ function pivot_hs_field_default_field_instances() {
         'weight' => 0,
       ),
       'promo_alt' => array(
-	'label' => 'above',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 0,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -269,7 +269,7 @@ function pivot_hs_field_default_field_instances() {
         'class' => '',
         'configurable_title' => 0,
         'rel' => '',
-	'target' => 'user',
+        'target' => 'default',
         'title' => '',
       ),
       'display' => array(
@@ -287,9 +287,7 @@ function pivot_hs_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'link',
-      'settings' => array(
-	'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
+      'settings' => array(),
       'type' => 'link_field',
       'weight' => 5,
     ),
@@ -320,10 +318,10 @@ function pivot_hs_field_default_field_instances() {
         'weight' => 0,
       ),
       'promo_alt' => array(
-	'label' => 'above',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 0,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -371,10 +369,10 @@ function pivot_hs_field_default_field_instances() {
         'weight' => 0,
       ),
       'promo_alt' => array(
-	'label' => 'above',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 0,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -458,10 +456,10 @@ function pivot_hs_field_default_field_instances() {
         'weight' => 0,
       ),
       'promo_alt' => array(
-	'label' => 'above',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 0,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
