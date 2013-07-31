@@ -64,10 +64,10 @@
 /* Hero Slides */
 @media (max-width: 1600px) {
 	.front .video-content .promo {
-		width: 40%;  //originally 60%
+		width: 60%;
 	}
 	.front .video-content .primary {
-		width: 60%; //originally 40%
+		width: 40%;
 	}
 	.front .video-content .primary .headline {
 		font-size: 50px;
@@ -113,6 +113,21 @@
     }
   }
 }
+@media (max-width: 767px) {
+  .front .video-content .primary {
+    padding-bottom: 62px;
+  }
+  .front .tpslide_nav .tpslide_prev, .front .tpslide_nav .tpslide_next {
+    display: none;
+  }
+  .front .tpslide_nav {
+    width: 100%;
+    left: 0;
+    text-align: center;
+  }
+}
+
+
 
 /* Show */
 @media (max-width: 680px) {
