@@ -75,28 +75,28 @@ function pivot_views_views_default_views() {
     'multiple_el_al_min' => '3',
     'multiple_el_al_first' => '1',
   );
-  /* Field: Field collection item: Media Relationship */
-  $handler->display->display_options['fields']['field_cast_role_ref']['id'] = 'field_cast_role_ref';
-  $handler->display->display_options['fields']['field_cast_role_ref']['table'] = 'field_data_field_cast_role_ref';
-  $handler->display->display_options['fields']['field_cast_role_ref']['field'] = 'field_cast_role_ref';
-  $handler->display->display_options['fields']['field_cast_role_ref']['relationship'] = 'reverse_field_person_ref_field_collection_item';
-  $handler->display->display_options['fields']['field_cast_role_ref']['label'] = '';
-  $handler->display->display_options['fields']['field_cast_role_ref']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_cast_role_ref']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_cast_role_ref']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Field collection item: Character name */
+  $handler->display->display_options['fields']['field_character_name']['id'] = 'field_character_name';
+  $handler->display->display_options['fields']['field_character_name']['table'] = 'field_data_field_character_name';
+  $handler->display->display_options['fields']['field_character_name']['field'] = 'field_character_name';
+  $handler->display->display_options['fields']['field_character_name']['relationship'] = 'reverse_field_person_ref_field_collection_item';
+  $handler->display->display_options['fields']['field_character_name']['label'] = '';
+  $handler->display->display_options['fields']['field_character_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_character_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_character_name']['alter']['text'] = ' ([field_character_name])';
+  $handler->display->display_options['fields']['field_character_name']['element_label_colon'] = FALSE;
   /* Field: Content: Bio */
   $handler->display->display_options['fields']['field_person_bio']['id'] = 'field_person_bio';
   $handler->display->display_options['fields']['field_person_bio']['table'] = 'field_data_field_person_bio';
   $handler->display->display_options['fields']['field_person_bio']['field'] = 'field_person_bio';
   $handler->display->display_options['fields']['field_person_bio']['label'] = '';
   $handler->display->display_options['fields']['field_person_bio']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_person_bio']['alter']['text'] = '<div class="person-info"><div class="name">[field_person_name] ([field_cast_role_ref]):</div> <div class="bio">[field_person_bio]</div></div>';
+  $handler->display->display_options['fields']['field_person_bio']['alter']['text'] = '<div class="person-info"><div class="name">[field_person_name][field_character_name]:</div> <div class="bio">[field_person_bio]</div></div>';
   $handler->display->display_options['fields']['field_person_bio']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content: Cast and Crew (field_cast_crew:delta) */
+  $handler->display->display_options['sorts']['delta']['id'] = 'delta';
+  $handler->display->display_options['sorts']['delta']['table'] = 'field_data_field_cast_crew';
+  $handler->display->display_options['sorts']['delta']['field'] = 'delta';
   /* Contextual filter: Content: Title */
   $handler->display->display_options['arguments']['title']['id'] = 'title';
   $handler->display->display_options['arguments']['title']['table'] = 'node';
@@ -256,11 +256,10 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['label'] = '';
   $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content: Episode Number (field_episode_number) */
+  $handler->display->display_options['sorts']['field_episode_number_value']['id'] = 'field_episode_number_value';
+  $handler->display->display_options['sorts']['field_episode_number_value']['table'] = 'field_data_field_episode_number';
+  $handler->display->display_options['sorts']['field_episode_number_value']['field'] = 'field_episode_number_value';
   /* Contextual filter: Content: Title */
   $handler->display->display_options['arguments']['title']['id'] = 'title';
   $handler->display->display_options['arguments']['title']['table'] = 'node';
@@ -278,8 +277,10 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['arguments']['field_episode_season_value']['id'] = 'field_episode_season_value';
   $handler->display->display_options['arguments']['field_episode_season_value']['table'] = 'field_data_field_episode_season';
   $handler->display->display_options['arguments']['field_episode_season_value']['field'] = 'field_episode_season_value';
+  $handler->display->display_options['arguments']['field_episode_season_value']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_episode_season_value']['exception']['value'] = '';
   $handler->display->display_options['arguments']['field_episode_season_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_episode_season_value']['default_argument_options']['argument'] = '1';
   $handler->display->display_options['arguments']['field_episode_season_value']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_episode_season_value']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_episode_season_value']['summary_options']['items_per_page'] = '25';
@@ -300,7 +301,7 @@ function pivot_views_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'show_subpage');
-  $handler->display->display_options['path'] = 'shows/%/episodes/%';
+  $handler->display->display_options['path'] = 'shows/%/episodes';
   $export['episodes'] = $view;
 
   $view = new view();
