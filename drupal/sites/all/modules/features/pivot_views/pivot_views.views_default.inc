@@ -395,11 +395,11 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
   $handler->display->display_options['relationships']['nodequeue_rel']['label'] = 'Movies Queue';
-  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
   $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
   $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
     'movies' => 'movies',
     'shows' => 0,
+    'homepage_slider' => 0,
   );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -408,6 +408,12 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Sort criterion: Nodequeue: Queue ID */
+  $handler->display->display_options['sorts']['qid']['id'] = 'qid';
+  $handler->display->display_options['sorts']['qid']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['sorts']['qid']['field'] = 'qid';
+  $handler->display->display_options['sorts']['qid']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['sorts']['qid']['order'] = 'DESC';
   /* Sort criterion: Nodequeue: Position */
   $handler->display->display_options['sorts']['position']['id'] = 'position';
   $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
