@@ -29,6 +29,10 @@ $zen-gutter-width: 20px;
 		text-align: center;
 		@media (min-width: 1000px) {
 			@include zen-grid-item(4,9);
+
+			.page-views & {
+				margin-top: 54px;
+			}
 		}
 	}
 }
