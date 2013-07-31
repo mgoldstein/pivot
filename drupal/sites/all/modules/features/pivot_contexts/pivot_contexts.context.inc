@@ -84,20 +84,20 @@ function pivot_contexts_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-	'pivot/blog' => 'pivot/blog',
-	'pivot/blog/*' => 'pivot/blog/*',
+        'pivot/blog' => 'pivot/blog',
+        'pivot/blog/*' => 'pivot/blog/*',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-	'pivot_campaign-pivot_campaign_hero' => array(
-	  'module' => 'pivot_campaign',
-	  'delta' => 'pivot_campaign_hero',
-	  'region' => 'preface',
-	  'weight' => '-10',
-	),
+        'pivot_campaign-pivot_campaign_hero' => array(
+          'module' => 'pivot_campaign',
+          'delta' => 'pivot_campaign_hero',
+          'region' => 'preface',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
@@ -188,11 +188,17 @@ function pivot_contexts_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'pivot_schedule-primetime_listing' => array(
+          'module' => 'pivot_schedule',
+          'delta' => 'primetime_listing',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
         'views-homepage_slider-block' => array(
           'module' => 'views',
           'delta' => 'homepage_slider-block',
           'region' => 'header',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'dfp-pivot_ros_rr_300x250' => array(
           'module' => 'dfp',
