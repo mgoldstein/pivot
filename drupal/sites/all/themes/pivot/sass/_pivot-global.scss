@@ -1742,29 +1742,38 @@ iframe.media-youtube-player {
 }
 
 /* ============================================================
-|| Show Blogs
+|| Show views pages
 ============================================================ */
 
-.view-show-blog {
+.page-shows.page-views #page-title {
+	background: #fff none;
+	padding: 20px 20px 0;
+	line-height: 1;
+}
 
+.show-view {
 	background-color: white;
 	padding: 20px;
+	float: left;
 
-	.view-content > div {
+	.views-row {
 		clear: both;
 		font-size: 14px;
 		line-height: 20px;
 		margin-bottom: 20px;
 
 		.headline {
+			font-size: 18px;
+			line-height: 1.111111111; // 20px
 			text-transform: none;
-			margin-top: 0;
+			margin: 0
 		}
+		> img,
 		.article-image {
 			float: left;
 			margin-right: 20px;
+			margin-bottom: 20px;
 		}
-
 	}
 }
 
