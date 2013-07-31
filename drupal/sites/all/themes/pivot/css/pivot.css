@@ -2244,7 +2244,7 @@ body.front {
 /* line 53, ../sass/_pivot-homepage-hero.scss */
 .front #home-header .social ul {
   float: right;
-  padding-left: 17px;
+  padding-left: 0;
 }
 
 /* line 58, ../sass/_pivot-homepage-hero.scss */
