@@ -1333,7 +1333,7 @@ a:active {
   left: 0;
   bottom: 0;
   width: 234px;
-  padding: 20px;
+  padding: 30px 20px;
 }
 /* line 1210, ../sass/_pivot-global.scss */
 .promo .info-inner {
