@@ -408,3 +408,15 @@ function pivot_field__field_promo_headline($variables) {
 
   return $output;
 }
+
+
+/**
+* theme_menu_link()
+*/
+function pivot_menu_link(array $variables) {
+  $variables['element']['#attributes']['class'][] = 'item';
+  return theme_menu_link($variables);
+}
+
+
+

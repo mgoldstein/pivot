@@ -25,21 +25,9 @@
   </div>
   <nav class="tabs slide-nav">
     <h2 class="headline">Explore Pivot</h2>
-    <ul class="list">
-      <?php foreach ($view->result as $id => $tab): ?>
-        <?php $node = node_load($tab->nid); ?>
-        <?php $tab = $node->title; ?>
-        <?php $title = str_replace(' ', '_', strtolower($tab)); ?>
-        <?php $title = str_replace('!', '', $title); ?>
-        <?php $color = (isset($node->field_hs_logo_color['und'][0]['value']) ? $node->field_hs_logo_color['und'][0]['value'] : ''); ?>
-         <li class="item <?php print $title; ?>">
-            <a class="item-link" color="<?php print $color; ?>" href='#<?php print $title; ?>'>
-              <span class="item-title">
-                <?php print $tab; ?></a>
-              </span>
-          </li>
-      <?php endforeach; ?>
-    </ul>
+    <?php
+      print drupal_render(menu_tree_output(menu_tree_all_data('menu-primary')));
+    ?>
     <div class="active-selector"></div>
   </nav>
   <span class="tpslide_wrapper">

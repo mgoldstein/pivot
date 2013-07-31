@@ -1953,8 +1953,91 @@ iframe.media-youtube-player {
 }
 
 
+///////////////////////
+//
+//
+//
+.view-homepage-slider{
+	.slide-nav {
+		a.shows {
+			&:before {
+				width: 21px;
+				height: 21px;
+				background-image: url(../images/header_shows_off.png);
+			}
+			&.active:before,
+			&:hover:before,
+			&:focus:before {
+				background-image: url(../images/header_shows_on.png);
+			}
+		}
 
+		a.movies {
+			&:before {
+				width: 23px;
+				height: 21px;
+				background-image: url(../images/header_movies_off.png);
+			}
+			&.active:before,
+			&:hover:before,
+			&:focus:before {
+				background-image: url(../images/header_movies_on.png);
+			}
+		}
 
+		a.watch_now {
+			&:before {
+				width: 20px;
+				height: 20px;
+				background-image: url(../images/header_watch_off.png);
+			}
+			&.active:before,
+			&:hover:before,
+			&:focus:before {
+				background-image: url(../images/header_watch_on.png);
+			}
+		}
+
+		a.take_action {
+			&:before {
+				width: 25px;
+				height: 21px;
+				background-image: url(../images/header_action_off.png);
+			}
+			&.active:before,
+			&:hover:before,
+			&:focus:before {
+				background-image: url(../images/header_action_on.png);
+			}
+		}
+
+		a.schedule {
+			&:before {
+				width: 20px;
+				height: 21px;
+				background-image: url(../images/header_schedule_off.png);
+			}
+			&.active:before,
+			&:hover:before,
+			&:focus:before {
+				background-image: url(../images/header_schedule_on.png);
+			}
+		}
+
+		a.blog {
+			&:before {
+				width: 18px;
+				height: 20px;
+				background-image: url(../images/header_blog_off.png);
+			}
+			&.active:before,
+			&:hover:before,
+			&:focus:before {
+				background-image: url(../images/header_blog_on.png);
+			}
+		}
+	} // .nav-primary
+}
 
 
 
