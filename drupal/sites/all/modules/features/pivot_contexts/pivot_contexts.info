@@ -17,6 +17,7 @@ dependencies[] = search
 dependencies[] = views
 features[context][] = blog_post
 features[context][] = campaign_dml
+features[context][] = campaign_pivot
 features[context][] = global
 features[context][] = global_non_header
 features[context][] = homepage
