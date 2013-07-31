@@ -1699,10 +1699,10 @@ iframe.media-youtube-player {
   padding: 1em 0.67em;
   color: #000;
   font-size: 30px;
+  font-style: italic;
   background: #fff;
   background: rgba(255, 255, 255, 0.9);
   text-transform: capitalize;
-  font-weight: bold;
   -webkit-transition: all .1s linear .1s;
   transition: all .1s linear .1s;
 }
