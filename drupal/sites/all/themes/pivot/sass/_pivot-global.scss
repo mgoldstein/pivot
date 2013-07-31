@@ -614,6 +614,10 @@ a:active {
 		margin: auto;
 		width: 728px;
 	}
+
+	@media (max-width: 1000px) {
+		display: none;
+	}
 }
 
 /* Pagewrap */
