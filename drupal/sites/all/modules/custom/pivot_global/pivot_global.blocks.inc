@@ -88,7 +88,7 @@ function pivot_global_header() {
       <nav class="nav nav-secondary site-wrapper">
           <h1 class="headline">More Site Navigation</h1>
           <div class="find-pivot">'.
-            l('Find <span class="pivot">Pivot</span> in your area', 'http://find.pivot.tv', array('fragment' => 'find-pivot', 'html' => TRUE, 'attributes' => array('class' => array('important')))).
+            l('Find <span class="pivot">Pivot</span> in your area', 'http://find.pivot.tv', array('html' => TRUE, 'attributes' => array('class' => array('important')))).
 
           '</div>
           <div class="search">
