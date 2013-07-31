@@ -113,8 +113,9 @@ function pivot_global_header() {
  * Add placeholder text to the search block.
  */
 function pivot_global_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'search_block_form') {
-    // Add HTML5 placeholder attribute
-    $form['search_block_form']['#attributes']['placeholder'] = t('Search');
-  }
+  // removed per PIV-285, but left this here in case this comes back
+  // if ($form_id == 'search_block_form') {
+  //   // Add HTML5 placeholder attribute
+  //   $form['search_block_form']['#attributes']['placeholder'] = t('Search');
+  // }
 }
