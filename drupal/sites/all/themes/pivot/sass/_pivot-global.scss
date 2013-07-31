@@ -393,8 +393,37 @@ a:active {
 				border-radius: 0;
 				line-height: 1em;
 
+				// @see http://msdn.microsoft.com/en-us/library/ie/hh772745(v=vs.85).aspx
+				// @see https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-placeholder
 				&::-webkit-input-placeholder {
 					color: #fff;
+				}
+				&:-moz-placeholder { // FF 18-
+					color: #fff;
+				}
+				&::-moz-placeholder { // FF 19+
+					color: #fff;
+				}
+				&:-ms-input-placeholder {
+					color: #fff;
+				}
+
+				// fade out on focus
+				&:focus::-webkit-input-placeholder {
+					transition: opacity 0.5s 0.5s ease;
+					opacity: 0;
+				}
+				&:focus:-moz-placeholder { // FF 18-
+					transition: opacity 0.5s 0.5s ease;
+					opacity: 0;
+				}
+				&:focus::-moz-placeholder { // FF 19+
+					transition: opacity 0.5s 0.5s ease;
+					opacity: 0;
+				}
+				&:focus:-ms-input-placeholder {
+					transition: opacity 0.5s 0.5s ease;
+					opacity: 0;
 				}
 			}
 
