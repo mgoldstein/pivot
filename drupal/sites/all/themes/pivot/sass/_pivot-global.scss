@@ -1642,7 +1642,7 @@ iframe.media-youtube-player {
 		}
 		.headline {
 			position: absolute;
-			bottom: 0;
+			bottom: 54px;
 			left: 0;
 			margin-bottom: 0;
 		}
@@ -1689,7 +1689,11 @@ iframe.media-youtube-player {
 		}
 	}
 	.nav {
-		background: #424242;
+		background: #424242;  //TODO make background transparent
+		margin-top: -54px;
+		z-index: 9;
+		position: relative;
+		opacity:0.9;
 	}
 	.nav ul.nice-menu li {
 		display: inline-block; *display: inline; *zoom: 1;

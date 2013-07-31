@@ -3,6 +3,13 @@
 @media (max-width: 767px) { /* iPad vertical */
   .hero-header .show-hero .headline {
     position: static;
+    bottom: 0;
+  }
+  .hero-header .nav {
+    background: #424242;
+    margin-top: 0;
+    z-index: 0;
+    opacity:1;
   }
 
   .hero-header .show-hero .headline a {
