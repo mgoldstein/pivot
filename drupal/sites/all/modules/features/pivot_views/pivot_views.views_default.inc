@@ -75,28 +75,28 @@ function pivot_views_views_default_views() {
     'multiple_el_al_min' => '3',
     'multiple_el_al_first' => '1',
   );
-  /* Field: Field collection item: Media Relationship */
-  $handler->display->display_options['fields']['field_cast_role_ref']['id'] = 'field_cast_role_ref';
-  $handler->display->display_options['fields']['field_cast_role_ref']['table'] = 'field_data_field_cast_role_ref';
-  $handler->display->display_options['fields']['field_cast_role_ref']['field'] = 'field_cast_role_ref';
-  $handler->display->display_options['fields']['field_cast_role_ref']['relationship'] = 'reverse_field_person_ref_field_collection_item';
-  $handler->display->display_options['fields']['field_cast_role_ref']['label'] = '';
-  $handler->display->display_options['fields']['field_cast_role_ref']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_cast_role_ref']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_cast_role_ref']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Field collection item: Character name */
+  $handler->display->display_options['fields']['field_character_name']['id'] = 'field_character_name';
+  $handler->display->display_options['fields']['field_character_name']['table'] = 'field_data_field_character_name';
+  $handler->display->display_options['fields']['field_character_name']['field'] = 'field_character_name';
+  $handler->display->display_options['fields']['field_character_name']['relationship'] = 'reverse_field_person_ref_field_collection_item';
+  $handler->display->display_options['fields']['field_character_name']['label'] = '';
+  $handler->display->display_options['fields']['field_character_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_character_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_character_name']['alter']['text'] = ' ([field_character_name])';
+  $handler->display->display_options['fields']['field_character_name']['element_label_colon'] = FALSE;
   /* Field: Content: Bio */
   $handler->display->display_options['fields']['field_person_bio']['id'] = 'field_person_bio';
   $handler->display->display_options['fields']['field_person_bio']['table'] = 'field_data_field_person_bio';
   $handler->display->display_options['fields']['field_person_bio']['field'] = 'field_person_bio';
   $handler->display->display_options['fields']['field_person_bio']['label'] = '';
   $handler->display->display_options['fields']['field_person_bio']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_person_bio']['alter']['text'] = '<div class="person-info"><div class="name">[field_person_name] ([field_cast_role_ref]):</div> <div class="bio">[field_person_bio]</div></div>';
+  $handler->display->display_options['fields']['field_person_bio']['alter']['text'] = '<div class="person-info"><div class="name">[field_person_name][field_character_name]:</div> <div class="bio">[field_person_bio]</div></div>';
   $handler->display->display_options['fields']['field_person_bio']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content: Cast and Crew (field_cast_crew:delta) */
+  $handler->display->display_options['sorts']['delta']['id'] = 'delta';
+  $handler->display->display_options['sorts']['delta']['table'] = 'field_data_field_cast_crew';
+  $handler->display->display_options['sorts']['delta']['field'] = 'delta';
   /* Contextual filter: Content: Title */
   $handler->display->display_options['arguments']['title']['id'] = 'title';
   $handler->display->display_options['arguments']['title']['table'] = 'node';
