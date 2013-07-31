@@ -256,11 +256,10 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['label'] = '';
   $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content: Episode Number (field_episode_number) */
+  $handler->display->display_options['sorts']['field_episode_number_value']['id'] = 'field_episode_number_value';
+  $handler->display->display_options['sorts']['field_episode_number_value']['table'] = 'field_data_field_episode_number';
+  $handler->display->display_options['sorts']['field_episode_number_value']['field'] = 'field_episode_number_value';
   /* Contextual filter: Content: Title */
   $handler->display->display_options['arguments']['title']['id'] = 'title';
   $handler->display->display_options['arguments']['title']['table'] = 'node';
@@ -278,8 +277,10 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['arguments']['field_episode_season_value']['id'] = 'field_episode_season_value';
   $handler->display->display_options['arguments']['field_episode_season_value']['table'] = 'field_data_field_episode_season';
   $handler->display->display_options['arguments']['field_episode_season_value']['field'] = 'field_episode_season_value';
+  $handler->display->display_options['arguments']['field_episode_season_value']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_episode_season_value']['exception']['value'] = '';
   $handler->display->display_options['arguments']['field_episode_season_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_episode_season_value']['default_argument_options']['argument'] = '1';
   $handler->display->display_options['arguments']['field_episode_season_value']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_episode_season_value']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_episode_season_value']['summary_options']['items_per_page'] = '25';
@@ -300,7 +301,7 @@ function pivot_views_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'show_subpage');
-  $handler->display->display_options['path'] = 'shows/%/episodes/%';
+  $handler->display->display_options['path'] = 'shows/%/episodes';
   $export['episodes'] = $view;
 
   $view = new view();
