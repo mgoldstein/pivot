@@ -292,6 +292,7 @@ a:active {
 		}
 	} // .nav-primary
 
+	// Responsive Nav
 	@media (max-width: 1000px) {
 		.primary {
 			position: relative;
@@ -313,7 +314,7 @@ a:active {
 				height: 21px;
 				position: absolute;
 				top: 24px;
-				right: 11%; // great code quality from front-end. Real geniuses.
+				right: 11%;
 			}
 
 			.site-wrapper {
@@ -443,17 +444,60 @@ a:active {
 			}
 		} // .search
 	} // .nav-secondary
+
+	// Responsive Search Box
+	@media (max-width: 1000px) {
+		.secondary {
+			position: relative;
+
+			.search {
+				float: none;
+
+				height: 0;
+				overflow: hidden;
+				-webkit-transition: all 0.5s linear 0s;
+				transition: all 0.5s linear 0s;
+
+				&:after {
+					content: " ";
+					display: block;
+					background: url(../images/search.png) no-repeat;
+					width: 19px;
+					height: 19px;
+					position: absolute;
+					top: 8px;
+					right: 20px;
+				}
+			} //.search
+		} // .secondary
+	} // @media (max-width: 1000px)
 } // .not-front #site-header
 
 // Responsive View
 @media (max-width: 1000px) {
-	.not-front.clickedon #site-header .primary {
+
+	// main nav
+	.not-front #site-header .primary.clickedon {
 		.nav-primary {
 				height: auto;
 				max-height: 500px; // why is this?
 		}
 		&:after {
 			background-image: url(../images/menu_btn_close.png);
+		}
+	}
+
+	// search
+	.not-front #site-header .secondary.clickedon .search {
+		height: auto;
+
+		&:after {
+			color: white;
+			font-size: 34px;
+			line-height: 1;
+			content: "×";
+			top: 0;
+			background-image: none;
 		}
 	}
 }
