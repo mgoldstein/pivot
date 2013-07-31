@@ -12,6 +12,7 @@ dependencies[] = menu
 dependencies[] = pivot_article
 dependencies[] = pivot_dml
 dependencies[] = pivot_global
+dependencies[] = pivot_schedule
 dependencies[] = pivot_shows
 dependencies[] = search
 dependencies[] = views
