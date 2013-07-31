@@ -300,7 +300,7 @@ function pivot_schedule_import_form_validate($form, &$form_state) {
 
     // Make sure the schedule import file directory exists.
     $directory = PIVOT_SCHEDULE_IMPORT_FILE_DIRECTORY;
-    if (file_prepare_directory($directory)) {
+    if (file_prepare_directory($directory, FILE_MODIFY_PERMISSIONS | FILE_CREATE_DIRECTORY)) {
       if ($file = file_move($file, PIVOT_SCHEDULE_IMPORT_FILE_DIRECTORY)) {
         $form_state['storage']['file'] = $file;
       }
