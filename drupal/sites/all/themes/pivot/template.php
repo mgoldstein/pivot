@@ -415,7 +415,7 @@ function pivot_field__field_promo_headline($variables) {
 */
 function pivot_menu_link(array $variables) {
   $variables['element']['#attributes']['class'][] = 'item';
-  if($variables['element']['#theme'] == 'menu_link__menu_primary'){
+  if(isset($variables['element']['#theme']) && $variables['element']['#theme'] == 'menu_link__menu_primary'){
     $variables['element']['#title'] = '<span class="item-title">'. $variables['element']['#title']. '</span>';
     $variables['element']['#localized_options']['html'] = TRUE;
   }

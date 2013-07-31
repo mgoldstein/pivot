@@ -1,2 +1,16 @@
 // nothing
 // promos are in the global partial
+@media (max-width: 767px) { /* iPad vertical */
+  .hero-header .show-hero .headline {
+    position: static;
+  }
+
+  .hero-header .show-hero .headline a {
+    background: transparent;
+    padding: 0 0 .5em 0;
+  }
+
+  .hero-header .show-hero .image {
+    position: relative;
+  }
+}
