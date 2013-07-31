@@ -73,6 +73,27 @@ function pivot_config_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'takeaction_button_js_location';
+  $strongarm->value = 'footer';
+  $export['takeaction_button_js_location'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'takeaction_button_js_url';
+  $strongarm->value = 'http://tab.takepart.com/assets/publisher.js?v=3.7';
+  $export['takeaction_button_js_url'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'takeaction_button_pub_id';
+  $strongarm->value = '4d243fc45c4332cd8a6f28f6575765dd';
+  $export['takeaction_button_pub_id'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'xmlsitemap_settings_node_article';
   $strongarm->value = array(
     'status' => '1',
