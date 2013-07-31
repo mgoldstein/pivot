@@ -13,6 +13,7 @@ features[views_view][] = downloads
 features[views_view][] = episodes
 features[views_view][] = homepage_slider
 features[views_view][] = movies
+features[views_view][] = pivot_blog
 features[views_view][] = show_blog
 features[views_view][] = shows
 features_exclude[dependencies][ctools] = ctools
