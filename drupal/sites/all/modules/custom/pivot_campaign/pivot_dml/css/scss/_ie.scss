@@ -1,0 +1,14 @@
+html.ie, html.ie10 {
+	
+	body.page-dml div#content div.dml-header nav li.current:after, body.page-dml div#content div.dml-header nav li.current:after {
+	  top: 5px; 
+	}
+	body.page-dml.page-dml-quiz div#content div#quiz-container div.quizHeader p, body.page-dml.page-dml-quiz div#content div#quiz-container div.social-share h2 {
+		font-size:0;
+		line-height:0;
+	}
+	
+}
+
+
+

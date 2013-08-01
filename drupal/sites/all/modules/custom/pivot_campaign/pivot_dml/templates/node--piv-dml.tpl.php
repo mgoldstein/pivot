@@ -36,15 +36,15 @@
 					</div> -->
 	<div class="share">
 		<span>share this:</span>
-		<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->facebook->data_link; ?>" class="share fb"
+		<a href="#" class="share fb"
 			data-link="<?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->facebook->data_link; ?>"
 			data-image="<?php echo url('<front>', array('absolute' => TRUE)).drupal_get_path('module', 'pivot_dml').$homeData->infographic->share->facebook->data_image; ?>"
 			data-name="<?php echo $homeData->infographic->share->facebook->data_name; ?>"
 			data-caption="<?php echo $homeData->infographic->share->facebook->data_caption; ?>"
-			data-description="<?php echo $homeData->infographic->share->facebook->data_description; ?>"></a>
-		<a target="_blank" href="https://twitter.com/intent/tweet?url=<?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->twitter->link; ?>&text=<?php echo rawurlencode($homeData->infographic->share->twitter->share_copy); ?>" class="twitter"></a>
-		<a target="_blank" href="https://plus.google.com/share?url=<?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->gplus->link; ?>" class="share gplus"></a>
-		<a target="_blank" href="mailto:?subject=<?php echo rawurlencode($homeData->infographic->share->email->subject); ?>&amp;body=<?php echo rawurlencode($homeData->infographic->share->email->body); ?> <?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->email->link; ?>." target="_blank" class="email"></a>
+			data-description="<?php echo $homeData->infographic->share->facebook->data_description; ?>">&#xe00d;</a>
+		<a href="#" data-url="https://twitter.com/intent/tweet?url=<?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->twitter->link; ?>&text=<?php echo rawurlencode($homeData->infographic->share->twitter->share_copy); ?>" class="share twitter">&#xe00c;</a>
+		<a href="#" data-url="https://plus.google.com/share?url=<?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->gplus->link; ?>" class="share gplus">&#xe00e;</a>
+		<a href="#" data-url="mailto:?subject=<?php echo rawurlencode($homeData->infographic->share->email->subject); ?>&amp;body=<?php echo rawurlencode($homeData->infographic->share->email->body); ?> <?php echo url($path, array('absolute' => TRUE)).$homeData->infographic->share->email->link; ?>."  class="share email" >&#xe00a;</a>
 	</div>
 </div>
 <div class="row bottom">
