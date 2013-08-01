@@ -2253,6 +2253,11 @@ iframe.media-youtube-player {
   list-style: none;
 }
 
+/* line 2186, ../sass/_pivot-global.scss */
+.front .upcoming-times {
+  padding-top: 20px;
+}
+
 /*
  * Homepage Styles for Pivot.tv
  */
