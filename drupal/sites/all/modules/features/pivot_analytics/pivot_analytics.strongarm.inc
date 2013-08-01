@@ -35,6 +35,10 @@ if(\'[node:content-type:name]\'.length > 0) {
 }
 if("[current-page:url:args:first]" == "search") {
      s.eVar7 = "[current-page:url:args:last]";
+}
+if("[node:content-type:machine-name]" == "show") {
+     s.eVar70 = "[node:title]";
+     s.prop70 = "[node:title]";
 }';
   $export['sitecatalyst_codesnippet'] = $strongarm;
 
