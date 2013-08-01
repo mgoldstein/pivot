@@ -121,11 +121,11 @@ if(\'[node:content-type:name]\'.length > 0) {
     ),
     4 => array(
       'name' => 's.eVar17',
-      'value' => '[node:author:name]',
+      'value' => '[node:author:realname]',
     ),
     5 => array(
       'name' => 's.prop16',
-      'value' => '[node:author:name]',
+      'value' => '[node:author:realname]',
     ),
     6 => array(
       'name' => 's.eVar19',
