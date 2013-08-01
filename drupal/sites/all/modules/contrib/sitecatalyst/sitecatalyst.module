@@ -130,6 +130,9 @@ function sitecatalyst_page_alter(&$page) {
   if (arg(0) == 'admin' || $track <= 0) {
     return;
   }
+  elseif(arg(0) == 'iframe') {
+    return;
+  }
 
   // Like drupal_add_js, add a query string to the end of the js file location.
   $query_string = '?' . variable_get('css_js_query_string', '0');
