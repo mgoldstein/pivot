@@ -140,11 +140,11 @@ if("[current-page:url:args:first]" == "search") {
     ),
     8 => array(
       'name' => 's.eVar70',
-      'value' => '[node:field_show]',
+      'value' => '[node:field-show-ref:title]',
     ),
     9 => array(
       'name' => 's.prop70',
-      'value' => '[node:field_show]',
+      'value' => '[node:field-show-ref:title]',
     ),
   );
   $export['sitecatalyst_variables'] = $strongarm;
