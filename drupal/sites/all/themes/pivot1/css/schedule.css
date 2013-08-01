@@ -1,0 +1,14 @@
+#zc-wrapper-inner,
+#zc-wrapper,
+#aff_wrapper {
+	width: 100%;
+}
+#zc-footer-nav {
+	height: auto;
+}
+#zc-footer-nav-tvlistings {
+	position:
+	static; padding-right:
+	10px;
+	float: right;
+}
