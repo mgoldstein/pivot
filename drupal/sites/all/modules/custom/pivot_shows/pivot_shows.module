@@ -124,6 +124,9 @@ function pivot_shows_page_title_alter(&$title) {
       $title = $parent_node->title. ': '. $node->title;
     }
   }
+  elseif(arg(0) == 'shows' && arg(1) == NULL) {
+    $title = 'Shows';
+  }
   elseif(arg(0) == 'shows') {
     $current_path = current_path();
     $pos = strpos($current_path, '/', strpos($current_path, '/') + 1 );
