@@ -251,6 +251,14 @@ function pivot_schedule_import_page() {
 
 function pivot_schedule_import_form($form, &$form_state) {
 
+  $form['timezone'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Timezone of import data'),
+    '#description' => t('Timezone of start and end times. For a list of valid values see <a href="http://php.net/manual/en/timezones.php" target="_blank">PHP - List of Supported Timezones</a>'),
+    '#default_value' => PIVOT_SCHEDULE_REFERENCE_TZ,
+    '#element_validate' => array('pivot_schedule_element_valdiate_timezone'),
+  );
+
   $form['file'] = array(
     '#type' => 'file',
     '#title' => t('Schedule Data File'),
@@ -352,7 +360,7 @@ function pivot_schedule_import_form_submit($form, &$form_state) {
       // Combine and convert the start date and time instead a Unix timestamp.
       $start_date = (string) $show->StartDateBroadcast;
       $start_time = (string) $show->StartTime;
-      $timezone = new DateTimeZone('EST');
+      $timezone = new DateTimeZone($form_state['values']['timezone']);
       $start_datetime = DateTime::createFromFormat("m/d/Y G:i:s",
         $start_date . ' ' . $start_time, $timezone);
       if ($start_datetime === FALSE) {
