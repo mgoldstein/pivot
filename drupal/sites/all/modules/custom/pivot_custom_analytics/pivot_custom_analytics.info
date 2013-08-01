@@ -1,0 +1,7 @@
+name = Pivot Custom Analytics
+description = Custom tracking code.
+package = Pivot
+version = 7.x-2.2
+core = 7.x
+dependencies[] = googleanalytics
+dependencies[] = sitecatalyst
