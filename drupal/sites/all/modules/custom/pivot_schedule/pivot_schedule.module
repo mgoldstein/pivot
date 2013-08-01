@@ -325,7 +325,8 @@ function pivot_schedule_import_form_submit($form, &$form_state) {
   try {
 
     // Wipe out any previous schedule.
-    db_delete('pivot_schedule_show_time');
+    db_delete('pivot_schedule_show_time')
+      ->execute();
 
     // Store the import file permanently.
     $file->status = FILE_STATUS_PERMANENT;
