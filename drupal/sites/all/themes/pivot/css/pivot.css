@@ -2903,6 +2903,11 @@ a:focus, a::-moz-focus-inner {
   outline: none;
 }
 
+/* line 499, ../sass/_pivot-homepage-hero.scss */
+.jwplayer span.jwmain > div > div {
+  display: none;
+}
+
 /* ============================================================
 || Global;
 ============================================================ */
