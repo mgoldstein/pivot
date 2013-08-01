@@ -1,1 +1,2 @@
-includes/twitter/cache/pivot_tv-tweets.apicache
+includes/twitter/cache/*.apicache
+.DS_Store

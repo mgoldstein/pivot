@@ -59,66 +59,121 @@
 			postToFBFeed(link, image, name, caption, description);
 		});
 		$('a.share.twitter').click(function(e){
+			e.preventDefault();
 			trackingEvents('twitter', '');
+			var url = $(this).data('url');
+			popupwindow(url, 'Share on Twitter', 550, 450);
 		});
 		$('a.share.gplus').click(function(e){
 			e.preventDefault();
 			trackingEvents('gplus','');
-			var href = $(this).attr('href');
-			popupwindow(href, 'Share on Facebook', 500, 500);
+			var url = $(this).data('url');
+			popupwindow(url, 'Share on Google Plus', 500, 500);
 		});
 		$('a.share.email').click(function(e){
+			e.preventDefault();
 			trackingEvents('email', '');
+			var url = $(this).data('url');
+			if ($('html').hasClass('mobile')) {
+				window.location.href = url;
+			} else {
+				window.open(url);
+			}
 		});
 	}
 
 
 	// process triggers and fire tracking events
 	function trackingEvents(trigger, message) {
-
+		//console.log('function: trackingEvents');
 		var s = window.s;
 
 		if (s) {
 			switch(trigger) {
 				case "fb":
+					// cache the current s properties
+					var linkTrackVars = s.linkTrackVars;
+					var linkTrackEvents = s.linkTrackEvents;
+					
 					s.linkTrackVars = 'prop68,eVar27,eVar30,events';
 					s.linkTrackEvents = 'event25,event86';
 					s.events = 'event25,event86';
 					s.eVar27 = 'Facebook';
 					s.eVar30 = s.pageName;
+					s.prop68 = 'Shares Content';
 					s.tl(true, 'o', 'Shares Content');
+					
+					// reset the s properties
+					s.linkTrackVars = linkTrackVars;
+					s.linkTrackEvents = linkTrackEvents;
 					break;
 				case "twitter":
+					// cache the current s properties
+					var linkTrackVars = s.linkTrackVars;
+					var linkTrackEvents = s.linkTrackEvents;
+					
 					s.linkTrackVars = 'prop68,eVar27,eVar30,events';
 					s.linkTrackEvents = 'event25,event86';
 					s.events = 'event25,event86';
 					s.eVar27 = 'Twitter';
 					s.eVar30 = s.pageName;
+					s.prop68 = 'Shares Content';
 					s.tl(true, 'o', 'Shares Content');
+					
+					// reset the s properties
+					s.linkTrackVars = linkTrackVars;
+					s.linkTrackEvents = linkTrackEvents;
 					break;
 				case "gplus":
+					// cache the current s properties
+					var linkTrackVars = s.linkTrackVars;
+					var linkTrackEvents = s.linkTrackEvents;
+					
 					s.linkTrackVars = 'prop68,eVar27,eVar30,events';
 					s.linkTrackEvents = 'event25,event86';
 					s.events = 'event25,event86';
 					s.eVar27 = 'GooglePlus';
 					s.eVar30 = s.pageName;
+					s.prop68 = 'Shares Content';
 					s.tl(true, 'o', 'Shares Content');
+					
+					// reset the s properties
+					s.linkTrackVars = linkTrackVars;
+					s.linkTrackEvents = linkTrackEvents;
 					break;
 				case "email":
+					// cache the current s properties
+					var linkTrackVars = s.linkTrackVars;
+					var linkTrackEvents = s.linkTrackEvents;
+					
 					s.linkTrackVars = 'prop68,eVar27,eVar30,events';
 					s.linkTrackEvents = 'event25,event86';
 					s.events = 'event25,event86';
 					s.eVar27 = 'Email';
 					s.eVar30 = s.pageName;
+					s.prop68 = 'Shares Content';
 					s.tl(true, 'o', 'Shares Content');
+					
+					// reset the s properties
+					s.linkTrackVars = linkTrackVars;
+					s.linkTrackEvents = linkTrackEvents;
 					break;
 				case "infographic":
+					// cache the current s properties
+					var linkTrackVars = s.linkTrackVars;
+					var linkTrackEvents = s.linkTrackEvents;
+					
 					s.linkTrackVars = 'prop68,eVar30,eVar45,events';
 					s.linkTrackEvents = 'event45,event87';
 					s.events = 'event45,event87';
 					s.eVar45 = message;
 					s.eVar30 = s.pageName;
+					s.prop68 = 'Clicks to View Infographic';
 					s.tl(true, 'o', 'Clicks to View Infographic');
+					
+					// reset the s properties
+					s.linkTrackVars = linkTrackVars;
+					s.linkTrackEvents = linkTrackEvents;
 					break;
 				default:
 					// do nothing
@@ -134,16 +189,28 @@
 		if (s) {
 			switch (trigger) {
 				case "quiz start":
+					// cache the current s properties
+					var linkTrackVars = s.linkTrackVars;
+					var linkTrackEvents = s.linkTrackEvents;
+					
 					s.linkTrackVars = 'prop68,eVar30,events';
 					s.linkTrackEvents = 'event79';
 					s.events = 'event79';
 					s.eVar30 = s.pageName;
 					s.prop68 = 'Quiz Start';
 					s.tl(true, 'o', 'Quiz Start');
+					
+					// reset the s properties
+					s.linkTrackVars = linkTrackVars;
+					s.linkTrackEvents = linkTrackEvents;
 					break;
 				case "question loaded":
 					var qNum = (parseInt(messageObj.index) +1);
 					qNum = qNum.toString();
+					// cache the current s properties
+					var linkTrackVars = s.linkTrackVars;
+					var linkTrackEvents = s.linkTrackEvents;
+					
 					s.linkTrackVars = 'prop68,eVar30,eVar68,events';
 					s.linkTrackEvents = 'event81';
 					s.events = 'event81';
@@ -151,33 +218,64 @@
 					s.eVar30 = s.pageName;
 					s.prop68 = 'Clicks to View Quiz Question';
 					s.tl(true, 'o', 'Clicks to View Quiz Question');
+					
+					// reset the s properties
+					s.linkTrackVars = linkTrackVars;
+					s.linkTrackEvents = linkTrackEvents;
 					break;
 				case "response":
 					var qNum = (parseInt(messageObj.index) +1);
 					qNum = qNum.toString();
 					if (messageObj.response == 'correct') {
+						// cache the current s properties
+						var linkTrackVars = s.linkTrackVars;
+						var linkTrackEvents = s.linkTrackEvents;
+						
 						s.linkTrackVars = 'prop68,eVar30,eVar68,events';
 						s.linkTrackEvents = 'event82,event83';
 						s.events = 'event82,event83';
-						s.eVar68 = messageObj.message;
+						s.eVar68 = qNum + '. '+ messageObj.message;
 						s.eVar30 = s.pageName;
+						s.prop68 = 'Quiz Answer: Right';
 						s.tl(true, 'o', 'Quiz Answer: Right');
+						
+						// reset the s properties
+						s.linkTrackVars = linkTrackVars;
+						s.linkTrackEvents = linkTrackEvents;
 					} else {
+						// cache the current s properties
+						var linkTrackVars = s.linkTrackVars;
+						var linkTrackEvents = s.linkTrackEvents;
+						
 						s.linkTrackVars= 'prop68,eVar30,eVar68,events';
 						s.linkTrackEvents = 'event82,event84';
 						s.events = 'event82,event84';
-						s.eVar68 = messageObj.message;
+						s.eVar68 = qNum + '. '+ messageObj.message;
 						s.eVar30 = s.pageName;
+						s.prop68 = 'Quiz Answer: Wrong';
 						s.tl(true, 'o', 'Quiz Answer: Wrong');
+						
+						// reset the s properties
+						s.linkTrackVars = linkTrackVars;
+						s.linkTrackEvents = linkTrackEvents;
 					}
 					break;
 				case "quiz completed":
-					s.linkTrackVars = 'prop69,eVar30,events';
+					// cache the current s properties
+					var linkTrackVars = s.linkTrackVars;
+					var linkTrackEvents = s.linkTrackEvents;
+					
+					s.linkTrackVars = 'prop68,prop69,eVar30,events';
 					s.linkTrackEvents = 'event85';
 					s.events = 'event85';
-					s.eVar68 = messageObj.score;
+					s.prop69 = messageObj.score;
 					s.eVar30 = s.pageName;
+					s.prop68 = 'Finishes Quiz';
 					s.tl(true, 'o', 'Finishes Quiz');
+					
+					// reset the s properties
+					s.linkTrackVars = linkTrackVars;
+					s.linkTrackEvents = linkTrackEvents;
 					break;
 				default:
 					// do nothing
@@ -224,7 +322,7 @@
 			closeOnContentClick: true,
 			callbacks: {
 			    open: function() {
-			      //console.log('image loaded');
+			      ////console.log('image loaded');
 				  trackingEvents('infographic',infoName);
 			    }
 			  }
@@ -263,12 +361,12 @@
 				animationCallback: function(trigger, message) {
 					if (trigger == 'response') {
 						var messageObj = JSON.parse(message);
-						console.log('response: ' + messageObj.response + '\nindex: ' + messageObj.index + '\nmessage: ' + messageObj.message);
+						//console.log('response: ' + messageObj.response + '\nindex: ' + messageObj.index + '\nmessage: ' + messageObj.message);
 						$('div.icons div').eq(messageObj.index).addClass(messageObj.response);
 						quizCallbacks(trigger, message);
 					} else if (trigger == 'question loaded') {
 						var messageObj = JSON.parse(message);
-						console.log("trigger: "+trigger+'\nindex: ' + messageObj.index + '\nmessage: ' + messageObj.message);
+						//console.log("trigger: "+trigger+'\nindex: ' + messageObj.index + '\nmessage: ' + messageObj.message);
 						var index = parseInt(messageObj.index);
 						$('#quiz-container div.content').attr('class','content q'+ (index +1));
 						$('#quiz-container div.icons').attr('class','icons q'+ (index +1));
@@ -277,9 +375,11 @@
 						$('#quiz-container div.content').attr('class','content results');
 						$('#quiz-container div.icons').attr('class','icons');
 						var messageObj = JSON.parse(message);
-						console.log("trigger: "+trigger+'\nscore: ' + messageObj.score );
+						//console.log("trigger: "+trigger+'\nscore: ' + messageObj.score );
+						quizCallbacks(trigger, message);
 					} else {
-						console.log('trigger: ' + trigger + '\nmessage: ' + message);
+						quizCallbacks(trigger, message);
+						//console.log('else trigger: ' + trigger + '\nmessage: ' + message);
 					}
 
 				}
@@ -313,8 +413,16 @@
 			$('a.active').parent().addClass('current');
 
 			// add IE 10 Class
-			if (getInternetExplorerVersion() == 10) {
+			var ieVersion = getInternetExplorerVersion();
+			if (ieVersion == 10) {
 				$('html').addClass("ie10");
+			} else if (ieVersion == 9) {
+				$('html').addClass("ie9");
+			}
+			
+			// add mobile class
+			if (jQuery.browser.mobile == true) {
+				$('html').addClass('mobile');
 			}
 
 			// Page specific
