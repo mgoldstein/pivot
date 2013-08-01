@@ -18,6 +18,7 @@ function pivot_custom_analytics_form_alter(&$form, &$form_state, $form_id) {
      );
   }
   if ($form_id == 'search_block_form') {}
+  dpm($form, 'form');
 }
 
 /**
@@ -28,4 +29,10 @@ function _pivot_custom_analytics_newsletter_campaign(&$form, &$form_state) {
   $errors = form_get_errors();
   $ajax['#commands'][] = ajax_command_invoke(NULL, "analytics_ncs", array($errors));
   return $ajax;
+}
+
+function pivot_custom_analytics_js_alter(&$javascript) {
+  if(arg(0) == 'iframe'){
+    unset($javascript['sites/all/modules/custom/pivot_custom_analytics/js/global.js']);
+  }
 }
