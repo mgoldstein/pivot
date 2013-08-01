@@ -44,7 +44,7 @@
 						<span>share this quiz and find out!</span>
 						<ul>
 							<li>
-									<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo url($path, array('absolute' => TRUE)).$quizData->share->facebook->data_link; ?>" class="share fb"
+									<a href="#" class="share fb"
 										data-link="<?php echo url($path, array('absolute' => TRUE)).$quizData->share->facebook->data_link; ?>"
 										data-image="<?php echo url('<front>', array('absolute' => TRUE)).drupal_get_path('module', 'pivot_dml').$quizData->share->facebook->data_image; ?>"
 										data-name="<?php echo $quizData->share->facebook->data_name; ?>"
@@ -52,13 +52,13 @@
 										data-description="<?php echo $quizData->share->facebook->data_description; ?>"></a>
 							</li>
 							<li>
-								<a href="https://twitter.com/intent/tweet?url=<?php echo url($path, array('absolute' => TRUE)).$quizData->share->twitter->link; ?>&text=<?php echo rawurlencode($quizData->share->twitter->share_copy); ?>" class="twitter"></a>
+								<a href="#" data-url="https://twitter.com/intent/tweet?url=<?php echo url($path, array('absolute' => TRUE)).$quizData->share->twitter->link; ?>&text=<?php echo rawurlencode($quizData->share->twitter->share_copy); ?>" class="share twitter"></a>
 							</li>
 							<li>
-								<a href="https://plus.google.com/share?url=<?php echo url($path, array('absolute' => TRUE)).$quizData->share->gplus->link; ?>" class="share gplus"></a>
+								<a href="#" data-url="https://plus.google.com/share?url=<?php echo url($path, array('absolute' => TRUE)).$quizData->share->gplus->link; ?>" class="share gplus"></a>
 							</li>
 						 	<li>
-								<a href="mailto:?subject=<?php echo rawurlencode($quizData->share->email->subject); ?>&amp;body=<?php echo rawurlencode($quizData->share->email->body); ?> <?php echo url($path, array('absolute' => TRUE)).$quizData->share->email->link; ?>." target="_blank" class="email"></a>
+								<a href="#" data-url="mailto:?subject=<?php echo rawurlencode($quizData->share->email->subject); ?>&amp;body=<?php echo rawurlencode($quizData->share->email->body); ?> <?php echo url($path, array('absolute' => TRUE)).$quizData->share->email->link; ?>."  class="share email" ></a>
 							</li>
 						</ul>
 						<div class="back"><a href="#">back to<br>results</a></div>

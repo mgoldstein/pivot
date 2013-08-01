@@ -1,0 +1,384 @@
+body.page-dml div#content {
+	
+	div.two-column {
+		margin:0;
+
+		& > div.left {
+			width:540px;
+			@include breakpoint(480) {width:100%;}
+		}
+		& > div.right {
+			width:437px;
+			@include breakpoint(480) {width:100%;}
+		}
+	}
+
+	div.hero {
+		position:relative;
+		
+		h3 {margin:0 0 10px 0;}
+		& > div {
+			position:relative;
+			span {@extend .bold;}
+		}
+		& a.btn {
+			position:absolute;
+			bottom:30px;
+			left:30px;
+		}
+		div.hero-single {
+			width: 540px;
+			height: 733px;
+			@include breakpoint(480) {
+				width:100%;
+				height:auto;
+				& img {max-width:100%;height:auto;}
+			}
+		}
+		div.hero-one {
+			width:100%;
+			height:364px;
+			@extend .box-sizing;
+			padding:30px;
+			margin-bottom:4px;
+			background:$lightBlue;
+			img {margin-top:10px;}
+		}
+		div.hero-two {
+			width:100%;
+			height:365px;
+			@extend .box-sizing;
+			padding:30px;
+			background:$darkBlue;
+		}
+		div.images {
+			@extend .clearfix; 
+			padding:10px 0;
+			img {float:left;margin-right:3px;}
+		}
+		
+		div.share {
+			position:absolute;
+			bottom:5px;
+			right:15px;
+			@include breakpoint(480) {
+				position:relative;
+				text-align:center;
+				padding:10px 0;
+			}
+			
+			span {
+				color:$lightPink;
+				text-transform:uppercase;
+				position:relative;
+				top:1px;
+				@include breakpoint(480) {
+					font-size:24px;
+					top:6px;
+				}
+			}
+			a {
+				display:inline-block;
+				height: 18px;
+				margin-right:2px;
+				font-family: 'dml';
+				color:$lightPink;
+				text-decoration:none;
+				font-size:20px;
+				@include breakpoint(480) {
+					font-size:32px;
+					line-height:32px;
+					margin-right:25px;
+				}
+
+				&.fb {
+					
+				}
+				&.twitter {
+					font-size:24px;
+					line-height:21px;
+					@include breakpoint(480) {font-size:36px;line-height:32px;}
+				}
+				&.gplus {
+					font-size:24px;
+					line-height:21px;
+					@include breakpoint(480) {font-size:36px;line-height:34px;}
+				}
+				&.email {
+					margin-right:0;
+				}
+			}
+		}
+		
+	}
+
+	div.cta {
+		height: 233px;
+		font-size:14px;
+		@include breakpoint(480) {
+			width: 480px;
+			height: 256px;
+		}
+
+		h3{
+			margin:0 0 28px 0;
+			font-size: 24px;
+			text-transform: uppercase;
+			@extend .bold;
+		}
+		& > div {
+			position:relative;
+		}
+		p {margin:0;font-size:12px;}
+		a.btn {
+			position:absolute;
+			left:27px;
+			bottom:12px;
+			@include breakpoint(480) {
+				height: 25px;
+				line-height:25px;
+			}
+		}
+		div.left {
+			width: 254px;
+			height:100%;
+			box-sizing:border-box;
+			-moz-box-sizing:border-box;
+			padding:20px 20px 0 27px;
+			background:$darkBlue;
+			@include breakpoint(480) {
+				width:280px;
+			}
+			span {@extend .bold;}
+		}
+		div.right {
+			width:179px;
+			height:100%;
+			box-sizing:border-box;
+			-moz-box-sizing:border-box;
+			padding:16px 0 0 0;
+			background:$lightBlue;
+			text-align:center;
+			@include breakpoint(480) {
+				width:196px;
+			}
+
+			span {
+				font-size:20px;
+			}
+			p {
+				font-size: 22px;
+				text-transform: uppercase;
+				@extend .bold;
+			}
+			p.first {margin-bottom:10px;}
+			p.last {margin-top:10px;font-size:35px;line-height:35px;}
+			a {
+				width: 100px;
+				height: auto;
+				line-height: 14px;
+				font-size: 12px;
+				text-align: left;
+				padding: 8px;
+				left: 50%;
+				margin-left: -50px;
+			}
+		}
+	}
+
+	div.cta-quiz {
+		width: 540px;
+		height: 131px;
+		@extend .box-sizing;
+		padding:0;
+		background:$lightBlue url('../images/cta-quiz-bg.png') no-repeat;
+		background-position:20px 23px;
+		text-transform:uppercase;
+		overflow:auto;
+		@include breakpoint(480) {
+			width: 480px;
+			height: 124px;
+			position:relative;
+			background-position:10px 23px;
+			background-size:458px auto;
+		}
+
+		p span {
+			@extend .bold;
+			display:block;
+			font-size: 43px;
+			line-height: 34px;
+		}
+		p {
+			max-height:60px;
+			margin:0;
+			float:left;
+			text-align:justify;
+			font-size:22px;
+		}
+		p:after {
+		  content: "";
+		  display: inline-block;
+		  width: 100%;
+		}
+		a.btn {
+			width: 263px;
+			height: 40px;
+			margin:52px 0 0 248px;
+			font-size:31px;
+			line-height:41px;
+			&:after {
+				content: "";
+				display:inline-block;
+				width: 0px;
+				height: 0px;
+				border-style: solid;
+				border-width: 13px 0 13px 9px;
+				border-color: transparent transparent transparent #fff;
+				position:relative;
+				top:2px;
+			}
+			@include breakpoint(480) {
+				margin:0;
+				width: 245px;
+				height: 37px;
+				position:absolute;
+				top:51px;
+				left:223px;
+				font-size:26px;
+				line-height:37px;
+				&:after {
+					border-width: 9px 0 9px 7px;
+					top:0;
+				}
+			}
+		}
+	}
+
+	div.video {
+		width: 437px;
+		height: 246px;
+		@include breakpoint(480) {
+			width: 480px;
+			height: 270px;
+			& > div > div {
+				width:480px !important;
+				height:270px !important;
+			}
+		}
+	}
+
+
+	/* Twitter Feed */
+	div.twitter-feed {
+		width: 437px;
+		height: 131px;
+		@extend .box-sizing;
+		padding:10px 0 0 27px;
+		background:$darkBlue;
+		font-size:12px;
+		@include breakpoint(480) {
+			width: 480px;
+			height: 160px;
+		}
+
+		div.header {
+			margin-bottom:9px;
+			@extend .clearfix;
+
+			h3 {
+				float:left;
+				margin:0;
+				@extend .bold;
+				font-size:22px;
+				text-transform:uppercase;
+			}
+			a {
+				float:left;
+				background:$lightPink url('../images/btn-twitter.png') no-repeat;
+				background-position:88px -1px;
+				text-align:left;
+				padding-left:10px;
+				padding-right:22px;
+				margin:0 0 0 21px;
+				&:after {border:none;}
+				&:hover {
+					background:$darkPink url('../images/btn-twitter.png') no-repeat;
+					background-position:88px -1px;
+				}
+			}
+		}
+		ul {margin:0;padding:0;}
+		ul.start {
+			li:nth-child(n+2) {display:none;}
+		}
+		li {
+
+			list-style:none;
+			@extend .clearfix;
+
+			& > a, & > div {float:left;}
+		}
+		img.avatar {
+			margin-right:7px;
+		}
+		div.content {
+			max-width:336px;
+			color:#fff;
+			position:relative;
+			top:-1px;
+			a {color:$lightMint;text-decoration:none;}
+			@include breakpoint(480) {
+				width: 383px;
+			}
+		}
+		div.user, div.intents {float:left;}
+		div.user span {@extend .bold;}
+		div.user a {color:#fff;}
+		p {clear:both;}
+		div.intents {margin-left:14px;}
+		div.intents a {
+			display:inline-block;
+			margin-right:7px;
+		}
+		a.reply {
+			width: 13px;
+			height: 14px;
+			background:url('../images/twitter-intents-sprite.png') no-repeat;
+			background-position:0px 0px;
+			@extend .img-replace;
+			&:hover {background-position:-21px 0px;}
+		}
+		a.retweet {
+			width: 15px;
+			height: 14px;
+			background:url('../images/twitter-intents-sprite.png') no-repeat;
+			background-position:-40px 0px;
+			@extend .img-replace;
+			&:hover {background-position:-61px 0px;}
+		}
+		a.favorite {
+			width: 12px;
+			height: 14px;
+			background:url('../images/twitter-intents-sprite.png') no-repeat;
+			background-position:-82px 0px;
+			@extend .img-replace;
+			&:hover {background-position:-103px 0px;}
+		}
+		span.retweet-status {
+			font-size:10px;
+			
+			&:before {
+				content:"";
+				display:inline-block;
+				width: 15px;
+				height: 14px;
+				background:url('../images/twitter-intents-sprite.png') no-repeat;
+				background-position:-40px 0px;
+				margin-right: 5px;
+				position: relative;
+				top: 3px;
+			}
+		}
+	} /* END .twitter-feed */
+}
