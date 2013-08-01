@@ -130,8 +130,22 @@ function STARTERKIT_preprocess_maintenance_page(&$variables, $hook) {
  */
 function pivot_preprocess_html(&$variables, $hook) {
 
+  // webfonts config
   drupal_add_js("WebFontConfig = { fontdeck: { id: '35228' } };", array('type' => 'inline', 'scope'=> 'footer', 'weight' => 10));
   drupal_add_js('//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js', array('type' => 'external', 'scope' => 'footer', 'weight' => 11));
+
+  // fb init
+  drupal_add_js("
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '1395504993999657', // App ID
+    channelUrl : '//www.pivot.tv/channel.php',
+    status     : true, // check login status
+    cookie     : true, // enable cookies to allow the server to access the session
+    xfbml      : true  // parse XFBML
+  });
+};
+", array('type' => 'inline', 'scope'=> 'header'));
 
   // The body tag's classes are controlled by the $classes_array variable. To
   // remove a class from $classes_array, use array_diff().
