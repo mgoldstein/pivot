@@ -1482,6 +1482,11 @@ a.important .pivot {
 	vertical-align: middle;
 }
 
+.upcoming #upcoming-times ul {
+	margin: 0;
+	padding: 0;
+}
+
 .upcoming .times .item {
 	font-family: "Apercu Mono Regular", monospace, sans-serif;
 	font-size: 14px;
@@ -2186,10 +2191,4 @@ iframe.media-youtube-player {
 	padding: 0;
 	list-style: none;
 }
-
-.front #upcoming-times {
-	padding-top: 20px
-}
-
-
 
