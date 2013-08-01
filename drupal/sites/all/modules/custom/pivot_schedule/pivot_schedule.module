@@ -424,6 +424,7 @@ function pivot_schedule_block_settings($delta) {
       'headline_link' => '#upcoming-times',
       'full_schedule_text' => t('See Full Schedule'),
       'full_schedule_link' => '#',
+      'count' => 3,
       'start_time' => PIVOT_SCHEDULE_PRIMETIME_START,
       'end_time' => PIVOT_SCHEDULE_PRIMETIME_END,
       'timezone' => PIVOT_SCHEDULE_REFERENCE_TZ,
@@ -432,7 +433,7 @@ function pivot_schedule_block_settings($delta) {
   elseif ($delta === 'show_listing') {
     $values = variable_get('pivot_schedule_show_listing', array());
     $values += array(
-      'count' => 6,
+      'count' => 5,
       'timezone' => PIVOT_SCHEDULE_REFERENCE_TZ,
     );
   }
@@ -479,6 +480,13 @@ function pivot_schedule_block_configure($delta = '') {
       '#default_value' => $settings['full_schedule_link'],
     );
 
+    $form['pivot_schedule']['count'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Maximum number of show times to display'),
+      '#default_value' => $settings['count'],
+      '#element_validate' => array('element_validate_integer_positive'),
+    );
+
     $form['pivot_schedule']['start_time'] = array(
       '#type' => 'textfield',
       '#title' => t('Start Time'),
@@ -511,7 +519,7 @@ function pivot_schedule_block_configure($delta = '') {
 
     $form['pivot_schedule']['count'] = array(
       '#type' => 'textfield',
-      '#title' => t(''),
+      '#title' => t('Maximum number of show times to display'),
       '#default_value' => $settings['count'],
       '#element_validate' => array('element_validate_integer_positive'),
     );
@@ -561,8 +569,8 @@ function pivot_schedule_block_view($delta = '') {
   if ($delta === 'primetime_listing') {
 
     // Get the prime time listing.
-    $show_times = pivot_schedule_get_primetime_listing($settings['start_time'],
-      $settings['end_time'], $settings['timezone']);
+    $show_times = pivot_schedule_get_primetime_listing($settings['count'],
+      $settings['start_time'], $settings['end_time'], $settings['timezone']);
 
     // Set the content from the theme template.
     $block['content'] = array(
@@ -634,6 +642,7 @@ function pivot_schedule_theme() {
         'headline_link' => NULL,
         'full_schedule_text' => NULL,
         'full_schedule_link' => NULL,
+        'count' => 0,
         'start_time' => NULL,
         'end_time' => NULL,
         'timezone' => NULL,
@@ -644,7 +653,7 @@ function pivot_schedule_theme() {
       'variables' => array(
         'show_times' => array(),
         'headline' => NULL,
-        'count' => 6,
+        'count' => 0,
         'timezone' => NULL,
       ),
       'template' => 'pivot-schedule-show-listing',
@@ -732,7 +741,7 @@ function pivot_schedule_load_listing($ids, $timezone) {
   return $listing;
 }
 
-function pivot_schedule_get_primetime_listing($start, $end, $tz) {
+function pivot_schedule_get_primetime_listing($count, $start, $end, $tz) {
 
   $listing = array();
 
@@ -755,7 +764,8 @@ function pivot_schedule_get_primetime_listing($start, $end, $tz) {
   $query->entityCondition('entity_type', 'pivot_schedule_show_time')
     ->propertyCondition('broadcast_start_time', $start_time->getTimestamp(), '>=')
     ->propertyCondition('broadcast_start_time', $end_time->getTimestamp(), '<=')
-    ->propertyOrderBy('broadcast_start_time');
+    ->propertyOrderBy('broadcast_start_time')
+    ->range(0, $count);
   $entities = $query->execute();
 
   if (isset($entities['pivot_schedule_show_time'])) {
