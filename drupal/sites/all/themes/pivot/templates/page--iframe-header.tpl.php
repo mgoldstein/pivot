@@ -2,14 +2,40 @@
   drupal_add_js('document.domain = "pivot.tv";
   ', 'inline');
 
-  drupal_add_js("
+  drupal_add_js('
   (function ($, Drupal, window, document, undefined) {
     Drupal.behaviors.iframeLinks = {
       attach: function () {
-        $('a').attr('target', '_top');
+        $("a").attr("target", "_top");
       }
     };
-  })(jQuery, Drupal, this, this.document);",
+    Drupal.behaviors.resizeFrameOnClick = {
+      attach: function() {
+        var $siteHeader = $("#site-header"),
+            click = "click",
+            isTouchmove = false;
+
+        parent.pivotHeaderHeight = parent.pivotHeaderHeight || function() {};
+
+        if ( "ontouchend" in document.documentElement ) click = "touchend";
+
+        parent.pivotHeaderHeight($siteHeader.height() + " px");
+
+        $siteHeader
+          .on("touchmove", function() {
+            isTouchmove = true;
+          })
+          .on(click, function() {
+            if (click == "touchend" && isTouchmove) {
+              isTouchmove = false;
+              return true;
+            } else {
+              setTimeout(function() {parent.pivotHeaderHeight($("#site-header").height() + " px");}, 550);              
+            }
+        });
+      }
+    };
+  })(jQuery, Drupal, this, this.document);',
   'inline');
 ?>
 <header id="site-header" role="banner" class="header">
