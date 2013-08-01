@@ -32,6 +32,9 @@ if(\'[node:content-type:name]\'.length > 0) {
 			s.hier3 = "[node:content-type:name]:[node:title]:Episode [node:field_episode_number]";
 		}
 	}
+}
+if("[current-page:url:args:first]" == "search") {
+     s.eVar7 = "[current-page:url:args:last]";
 }';
   $export['sitecatalyst_codesnippet'] = $strongarm;
 
