@@ -2157,6 +2157,39 @@ iframe.media-youtube-player {
   background-image: url(../images/header_blog_on.png);
 }
 
+/* Right Rail: Schow Schedule; */
+/* line 2129, ../sass/_pivot-global.scss */
+.show-sched {
+  background: #424242;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  padding: 20px 40px 25px;
+}
+
+/* line 2136, ../sass/_pivot-global.scss */
+.show-sched .headline {
+  color: #01bf9e;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+/* line 2141, ../sass/_pivot-global.scss */
+.show-sched .schedule {
+  text-align: left;
+}
+
+/* line 2144, ../sass/_pivot-global.scss */
+.show-sched .schedule .item {
+  margin-bottom: 20px;
+}
+
+/* line 2147, ../sass/_pivot-global.scss */
+.show-sched ul {
+  padding: 0;
+  list-style: none;
+}
+
 /*
  * Homepage Styles for Pivot.tv
  */

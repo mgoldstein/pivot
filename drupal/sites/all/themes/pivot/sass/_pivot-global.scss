@@ -2125,8 +2125,29 @@ iframe.media-youtube-player {
 	} // .nav-primary
 }
 
-
-
+/* Right Rail: Schow Schedule; */
+.show-sched {
+	background: #424242;
+	text-align: center;
+	color: #fff;
+	font-size: 14px;
+	padding: 20px 40px 25px;
+}
+.show-sched .headline {
+	color: #01bf9e;
+	font-size: 22px;
+	margin-bottom: 20px;
+}
+.show-sched .schedule {
+	text-align: left;
+}
+.show-sched .schedule .item {
+	margin-bottom: 20px;
+}
+.show-sched ul {
+	padding: 0;
+	list-style: none;
+}
 
 
 

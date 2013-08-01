@@ -288,6 +288,12 @@ function pivot_contexts_context_default_contexts() {
           'region' => 'right_sidebar',
           'weight' => '-10',
         ),
+        'pivot_schedule-show_listing' => array(
+          'module' => 'pivot_schedule',
+          'delta' => 'show_listing',
+          'region' => 'right_sidebar',
+          'weight' => '-9',
+        ),
       ),
     ),
   );
