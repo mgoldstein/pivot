@@ -496,8 +496,8 @@ a:focus, a::-moz-focus-inner {
   outline: none;
 }
 
-.jwplayer span.jwmain > div > div {
-    display: none;
+.jwplayer span.jwmain div div {
+    display: none !important;
 }
 
 

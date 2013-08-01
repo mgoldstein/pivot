@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* line 4, ../sass/_pivot-layout.scss */
 .site-wrapper {
   max-width: 980px;
@@ -2903,8 +2904,8 @@ a:focus, a::-moz-focus-inner {
 }
 
 /* line 499, ../sass/_pivot-homepage-hero.scss */
-.jwplayer span.jwmain > div > div {
-  display: none;
+.jwplayer span.jwmain div div {
+  display: none !important;
 }
 
 /* ============================================================
