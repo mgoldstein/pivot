@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* line 4, ../sass/_pivot-layout.scss */
 .site-wrapper {
   max-width: 980px;
@@ -3026,7 +3027,7 @@ a:focus, a::-moz-focus-inner {
   /* line 95, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .primary h3.headline {
     text-align: center;
-    font-size: 40px;
+    font-size: 35px;
   }
   /* line 99, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .primary p.description {
@@ -3049,7 +3050,7 @@ a:focus, a::-moz-focus-inner {
 @media (max-width: 767px) {
   /* line 117, ../sass/_pivot-homepage-hero-responsive.scss */
   .front .video-content .primary {
-    padding-bottom: 62px;
+    padding-bottom: 40px;
   }
 
   /* line 120, ../sass/_pivot-homepage-hero-responsive.scss */
