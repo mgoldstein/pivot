@@ -297,9 +297,7 @@ function pivot_schedule_import_form_validate($form, &$form_state) {
 
   $file = file_save_upload('file', array(
     'file_validate_size' => array(
-      PIVOT_SCHEDULE_MAX_IMPORT_FILE_SIZE,
-      PIVOT_SCHEDULE_MAX_IMPORT_FILE_SIZE,
-    ),
+      PIVOT_SCHEDULE_MAX_IMPORT_FILE_SIZE, 0),
     'file_validate_extensions' => array('xml'),
     'pivot_schedule_validate_import_file' => array(),
   ));
@@ -356,6 +354,10 @@ function pivot_schedule_import_form_submit($form, &$form_state) {
       $values['title_synopsis'] =  (string) $show->TitleSynopsis;
       $values['title_code_wo_series_prefix']
         = (string) $show->TitleCodeWOSeriesPrefix;
+
+      if ($values['element_name'] == 'Please Like Me') {
+        $stop = TRUE;
+      }
 
       // Combine and convert the start date and time instead a Unix timestamp.
       $start_date = (string) $show->StartDateBroadcast;
