@@ -1,6 +1,9 @@
 <?php
 
 
+/**
+ * Implements hook_menu().
+ */
 function pivot_campaign_menu() {
 
   $items['admin/config/campaign'] = array(
@@ -12,8 +15,10 @@ function pivot_campaign_menu() {
   return $items;
 }
 
-
- function pivot_campaign_config(){
+/**
+ * Page arguments for drupal_get_form() for campaign config page.
+ */
+function pivot_campaign_config(){
   $form['pivot_campaign_path'] = array(
     '#type' => 'form',
     '#title' => t('Campaign Config'),
@@ -24,16 +29,20 @@ function pivot_campaign_menu() {
   return $form;
 }
 
-
- function pivot_campaign_block_info(){
+/**
+ * Implements hook_block_info().
+ */
+function pivot_campaign_block_info(){
   $blocks = array();
   $blocks['pivot_campaign_hero'] = array(
     'info' => t('Campaign Hero')
    );
   return $blocks;
- }
+}
 
-
+/**
+ * Implements hook_block_view().
+ */
 function pivot_campaign_block_view($delta = ''){
   //The $delta parameter tells us which block is being requested.
   $block = array();
@@ -43,8 +52,11 @@ function pivot_campaign_block_view($delta = ''){
       break;
   }
   return $block;
-  }
+}
 
+// TODO sk: Put your cursor at the end of each of these lines
+// and press backspace repeatedly.
+// 
 // function pivot_campaign_hero() {
 //   $node = node_load(arg(1));
 //   $hero_image = '<img src="'.file_create_url($node->field_header_image['und'][0]['uri']). '" alt="'. $node->field_promo_headline['und'][0]['value']. '">';
@@ -52,7 +64,14 @@ function pivot_campaign_block_view($delta = ''){
 
 //   return theme('pivot_campaign_hero', array('node' => $node, 'hero_image' => $hero_image, 'headline_link' => $headline_link, 'hero_menu' => $hero_menu));
 // }
+
+/**
+ * Output campaign hero block.
+ */
 function pivot_campaign_hero() {
+
+  $hero_theme_hook = 'pivot_campaign_hero';
+
   if(arg(0) == 'node'){
     $node1 = node_load(arg(1));
     $path = drupal_get_path_alias(current_path());
@@ -67,17 +86,25 @@ function pivot_campaign_hero() {
       $path = drupal_lookup_path('source', $alias);
       $node = menu_get_object("node", 1, $path);
     }
+    // pivot blog entry
     elseif($subalias1 == 'pivot'){
       $path = drupal_lookup_path('source', $subalias1);
       $node = menu_get_object("node", 1, $path);
+      $hero_theme_hook = 'pivot_site_blog_hero';
     }
   }
-  elseif(arg(0) == 'campaigns' || arg(0) == 'pivot') {
+  elseif (arg(0) == 'campaigns' ) {
     $current_path = current_path();
     $pos = strpos($current_path, '/', strpos($current_path, '/') + 1 );
-    $alias = substr(current_path(), 0 , $pos);
+    $alias = substr($current_path, 0 , $pos);
     $path = drupal_lookup_path('source', $alias);
     $node = menu_get_object("node", 1, $path);
+  }
+  // pivot blog page
+  elseif (arg(0) == 'pivot') {
+    $path = drupal_lookup_path('source', arg(0));
+    $node = menu_get_object("node", 1, $path);
+    $hero_theme_hook = 'pivot_site_blog_hero';
   }
 
   $hero_image = '<img src="'.file_create_url($node->field_header_image['und'][0]['uri']). '" alt="'. (isset($node->field_promo_headline['und'][0]['value']) ? $node->field_promo_headline['und'][0]['value'] : ''). '">';
@@ -90,7 +117,7 @@ function pivot_campaign_hero() {
     'depth' => '-1',
     'respect_expanded' => FALSE
   ));
-  return theme('pivot_shows_hero', array('node' => $node, 'hero_image' => $hero_image, 'headline_link' => $headline_link, 'hero_menu' => $nice_menus['content']));
+  return theme($hero_theme_hook, array('node' => $node, 'hero_image' => $hero_image, 'headline_link' => $headline_link, 'hero_menu' => $nice_menus['content']));
 }
 
 function pivot_campaign_theme() {
@@ -104,6 +131,16 @@ function pivot_campaign_theme() {
       ),
       'arguments' => array(),
       'template' => 'pivot-campaign-hero'
+    ),
+    'pivot_site_blog_hero' => array(
+      'variables' => array(
+        'node' => '',
+        'hero_image' => '',
+        'hero_menu' => '',
+        'headline_link' => '',
+      ),
+      'arguments' => array(),
+      'template' => 'pivot-site-blog-hero'
     ),
   );
 }
