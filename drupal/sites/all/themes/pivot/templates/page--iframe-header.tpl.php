@@ -14,6 +14,7 @@
 ?>
 <header id="site-header" role="banner" class="header">
   <?php
+  dpm($page['header'], 'header');
   unset($page['header']['dfp-ad-pivot_ros_leaderboard_728x90']);
   print render($page['header']); ?>
 </header>
