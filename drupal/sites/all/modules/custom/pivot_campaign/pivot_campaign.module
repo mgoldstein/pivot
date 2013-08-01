@@ -56,7 +56,7 @@ function pivot_campaign_block_view($delta = ''){
 
 // TODO sk: Put your cursor at the end of each of these lines
 // and press backspace repeatedly.
-// 
+//
 // function pivot_campaign_hero() {
 //   $node = node_load(arg(1));
 //   $hero_image = '<img src="'.file_create_url($node->field_header_image['und'][0]['uri']). '" alt="'. $node->field_promo_headline['und'][0]['value']. '">';
@@ -177,7 +177,34 @@ function pivot_campaign_node_submit($node, $form, &$form_state) {
   $form_state['redirect'] = 'admin/structure/menu/manage/campaign-'. $title; //THIS DOESN'T WORK.
 }
 
-
+function pivot_campaign_page_title_alter(&$title) {
+  if(arg(0) == 'node'){
+    $node = node_load(arg(1));
+    $path = drupal_get_path_alias(current_path());
+    $pos = (strpos($path, '/', strpos($path, '/') + 1) == NULL ? strlen(current_path()) : strpos($path, '/', strpos($path, '/') + 1));
+    $alias = substr($path, 0 , $pos);
+    $subalias = substr($alias, 0, 5);
+    if(isset($node->type) && $node->type == 'campaign'){
+      $title = $node->title;
+    }
+    elseif($subalias == 'campaigns'){
+      $path = drupal_lookup_path('source', $alias);
+      $parent_node = menu_get_object("node", 1, $path);
+      $title = $parent_node->title. ': '. $node->title;
+    }
+  }
+  elseif(arg(0) == 'campaigns' && arg(1) == NULL) {
+    $title = 'Shows';
+  }
+  elseif(arg(0) == 'campaigns') {
+    $current_path = current_path();
+    $pos = strpos($current_path, '/', strpos($current_path, '/') + 1 );
+    $alias = substr(current_path(), 0 , $pos);
+    $path = drupal_lookup_path('source', $alias);
+    $node = menu_get_object("node", 1, $path);
+    $title = $node->title. ': '. ucfirst(arg(2));
+  }
+}
 
 
 
