@@ -132,11 +132,11 @@ if("[current-page:url:args:first]" == "search") {
     ),
     6 => array(
       'name' => 's.eVar19',
-      'value' => '[node:field_series]',
+      'value' => '[node:field-section-ref:title]',
     ),
     7 => array(
       'name' => 's.prop18',
-      'value' => '[node:field_series]',
+      'value' => '[node:field-section-ref:title]',
     ),
     8 => array(
       'name' => 's.eVar70',
