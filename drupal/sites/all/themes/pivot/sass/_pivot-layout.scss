@@ -9,9 +9,15 @@ $zen-gutter-width: 20px;
 }
 	
 #content {
+	.region-preface {
+		@include zen-clear();
+		@include zen-grid-item(12,1);
+	}
+
 	// .primary is 2/3 width if there's no sidebar,
 	// full width if there is one
 	> .primary {
+		@include zen-clear();
 		max-width: 620px; // border-box includes padding
 		margin: 0 auto;
 		@media (min-width: 1000px) {
