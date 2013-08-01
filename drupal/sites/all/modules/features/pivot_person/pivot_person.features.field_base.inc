@@ -51,7 +51,7 @@ function pivot_person_field_default_field_bases() {
         ),
       ),
       'components' => array(
-	'credentials' => 0,
+        'credentials' => 0,
         'family' => 'family',
         'generational' => 'generational',
         'given' => 'given',
