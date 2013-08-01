@@ -18,8 +18,8 @@ function pivot_analytics_strongarm() {
 if ("[current-page:url:path]" == "node") {
   s.pageName = "homepage";
 } else {
-  s.pageName = "[current-page:url:path]";
-  s.channel = ("[current-page:url:path]").split( \'/\' )[0];
+  s.pageName = (window.location.pathname.replace(/^\//, ""));
+  s.channel = (window.location.pathname.replace(/^\//, "")).split( \'/\' )[0];
 }
 if ("[current-page:url:path]" == "404") {
   s.pageType="errorPage";
