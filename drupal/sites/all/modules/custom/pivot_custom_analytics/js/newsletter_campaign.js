@@ -5,7 +5,7 @@
         s.linkTrackEvents = "event39";
         s.events = "event39";
         s.eVar22 = "Right Rail Signup";
-	s.tl(this, "o", s.eVar27);
+	s.tl(this, "o", s.eVar22);
 	_gaq.push(['_trackEvent', 'Social Shares', 'Click', s.eVar22]);
     }
   };
