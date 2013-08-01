@@ -1423,7 +1423,9 @@ a.important .pivot {
 
 /* Top? Schedule */
 .upcoming {
-	position: absolute;
+	.front & {
+		position: absolute;
+	}
 	width: 100%;
 	z-index: 5;
 	background: #000 url(../images/secondary-background.gif) left top repeat;
@@ -1526,6 +1528,30 @@ a.important .pivot {
 
 .upcoming .full-schedule {
 	padding: 0 5px;
+}
+
+/* Upcoming Bar */
+@media (max-width: 979px) {
+	.upcoming .headline {
+		white-space: normal;
+	}
+
+	.upcoming .full-schedule .important {
+		white-space: normal;
+	}
+}
+@media (max-width: 767px) { /* iPad vertical */
+	.upcoming .headline {
+		display: none;
+	}
+}
+@media (max-width: 480px) { /* iPhone vertical */
+	.upcoming .full-schedule .important {
+		text-align: center;
+	}
+	.upcoming .times {
+		display: none;
+	}
 }
 
 /* Pretty form selects */
