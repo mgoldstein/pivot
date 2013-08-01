@@ -1,0 +1,31 @@
+<?php
+/**
+ * Implements hook_init().
+ */
+function pivot_custom_analytics_init() {
+   drupal_add_js(drupal_get_path('module', 'pivot_custom_analytics') . '/js/global.js');
+}
+
+/**
+* Implements hook_form_alter().
+*/
+function pivot_custom_analytics_form_alter(&$form, &$form_state, $form_id) {
+ if ($form_id == 'newsletter_campaign_social_form') {
+     drupal_add_js(drupal_get_path('module', 'pivot_custom_analytics') . '/js/newsletter_campaign.js');
+     $form_state['#callbackstash'] = $form['submit']['#ajax']['callback'];
+     $form['submit']['#ajax'] = array(
+             'callback' => '_pivot_custom_analytics_newsletter_campaign',
+     );
+  }
+  if ($form_id == 'search_block_form') {}
+}
+
+/**
+* Custom form handler for newsletter campaign signups.
+*/
+function _pivot_custom_analytics_newsletter_campaign(&$form, &$form_state) {
+  $ajax = call_user_func($form_state['#callbackstash'], $form, $form_state);
+  $errors = form_get_errors();
+  $ajax['#commands'][] = ajax_command_invoke(NULL, "analytics_ncs", array($errors));
+  return $ajax;
+}
