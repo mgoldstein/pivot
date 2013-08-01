@@ -1259,7 +1259,7 @@ a:active {
 		left: 0;
 		bottom: 0;
 		width: 234px;
-		padding: 30px 20px;
+		padding: 15px;
 	}
 
 	.info-inner {
@@ -1422,6 +1422,10 @@ a.important .pivot {
 }
 
 /* Top? Schedule */
+.front .block-pivot-schedule {
+	margin: 0;
+}
+
 .upcoming {
 	.front & {
 		position: absolute;
@@ -1725,7 +1729,7 @@ iframe.media-youtube-player {
 		}
 		.headline a {
 			display: block;
-			padding: 1em 0.67em;
+			padding: 15px;
 			color: #000;
 			font-size: 30px;
 			font-style: italic;
@@ -2183,7 +2187,9 @@ iframe.media-youtube-player {
 	list-style: none;
 }
 
-
+.front .upcoming-times {
+	padding-top: 20px
+}
 
 
 
