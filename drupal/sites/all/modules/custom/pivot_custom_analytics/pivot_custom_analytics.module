@@ -18,7 +18,6 @@ function pivot_custom_analytics_form_alter(&$form, &$form_state, $form_id) {
      );
   }
   if ($form_id == 'search_block_form') {}
-  dpm($form, 'form');
 }
 
 /**
