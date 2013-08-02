@@ -1,5 +1,12 @@
 // nothing
 // promos are in the global partial
+//
+@media (max-width: 1000px) {
+  #content .video {
+    overflow: hidden;
+  }
+}
+
 @media (max-width: 767px) { /* iPad vertical */
   .hero-header .show-hero .headline {
     position: static;
