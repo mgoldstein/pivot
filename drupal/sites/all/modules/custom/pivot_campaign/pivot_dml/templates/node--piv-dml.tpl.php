@@ -63,15 +63,12 @@
 <div class="row cta">
 	<div class="left">
 		<h3>Hot Headlines</h3>
-		<span>Can This iPhone Accessory Really Stop the NSA? Yep.</span><br><br>
+		<span>10 Actions You Should Take to Ensure Your Digital Privacy.</span><br><br>
 		<p>Protect your privacy and stick it to The Man with the black case that renders your phone untraceable.</p>
-		<a href="<?php echo url($path, array('absolute' => TRUE)); ?>/news" class="btn" target="_blank">get the whole story</a>
+		<a href="http://www.takepart.com/article/2013/07/26/10-important-actions-ensure-your-digital-privacy" class="btn" target="_blank">get the whole story</a>
 	</div>
 	<div class="right">
-		<p class="first">transparency</p>
-		<span>is the best</span>
-		<p class="last">ad<br>policy</p>
-		<a href="<?php echo url($path, array('absolute' => TRUE)); ?>/ad_policy" class="btn">get all the deets here</a>
+		<a href="http://takeaction.takepart.com/actions/inform-yourself-and-lawmakers-about-online-privacy"><img src="/<?php print drupal_get_path('module', 'pivot_dml'); ?>/images/tacma.jpg" style="float:right; height:100%;"</a>
 	</div>
 </div>
 <div class="row video">

@@ -801,8 +801,8 @@ body.page-dml div#content {
       height: 100%;
       box-sizing: border-box;
       -moz-box-sizing: border-box;
-      padding: 16px 0 0 0;
-      background: #00b5cc;
+      padding: 0 0 0 0;
+/*      background: #00b5cc;*/
       text-align: center; }
       @media screen and (max-width: 480px) {
         body.page-dml div#content div.cta div.right {
