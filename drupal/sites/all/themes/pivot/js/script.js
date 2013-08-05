@@ -65,7 +65,7 @@
 					$secondaryNav.addClass('clickedon');
 				   }
 			     })
-			     .delegate(secondaryNav + ' a', click, function (e) {
+			     .delegate(secondaryNav + ' a, ' + secondaryNav + ' input', click, function (e) {
 				   e.stopPropagation();
 			     })
 			     .delegate(secondaryNav, 'focusin', function (e) {
