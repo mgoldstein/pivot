@@ -33,6 +33,17 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  /* No results behavior: Entity: Rendered entity */
+  $handler->display->display_options['empty']['entity']['id'] = 'entity';
+  $handler->display->display_options['empty']['entity']['table'] = 'entity__global';
+  $handler->display->display_options['empty']['entity']['field'] = 'entity';
+  /* No results behavior: Entity: Rendered entity */
+  $handler->display->display_options['empty']['entity_1']['id'] = 'entity_1';
+  $handler->display->display_options['empty']['entity_1']['table'] = 'entity__global';
+  $handler->display->display_options['empty']['entity_1']['field'] = 'entity';
+  $handler->display->display_options['empty']['entity_1']['label'] = 'Display 404 Page';
+  $handler->display->display_options['empty']['entity_1']['empty'] = TRUE;
+  $handler->display->display_options['empty']['entity_1']['entity_id'] = '404';
   /* Relationship: Entity Reference: Referencing entity */
   $handler->display->display_options['relationships']['reverse_field_person_ref_field_collection_item']['id'] = 'reverse_field_person_ref_field_collection_item';
   $handler->display->display_options['relationships']['reverse_field_person_ref_field_collection_item']['table'] = 'node';
@@ -101,11 +112,15 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['arguments']['title']['table'] = 'node';
   $handler->display->display_options['arguments']['title']['field'] = 'title';
   $handler->display->display_options['arguments']['title']['relationship'] = 'field_cast_crew_node';
+  $handler->display->display_options['arguments']['title']['default_action'] = 'not found';
   $handler->display->display_options['arguments']['title']['exception']['value'] = '';
   $handler->display->display_options['arguments']['title']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['title']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['title']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['title']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['title']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['title']['validate']['type'] = 'php';
+  $handler->display->display_options['arguments']['title']['validate_options']['code'] = 'return isset($this->view->args[0]) && drupal_lookup_path(\'source\', \'shows/\' . $this->view->args[0]);';
   $handler->display->display_options['arguments']['title']['limit'] = '0';
   $handler->display->display_options['arguments']['title']['case'] = 'lower';
   $handler->display->display_options['arguments']['title']['transform_dash'] = TRUE;
@@ -123,6 +138,17 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'person' => 'person',
   );
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
+  $handler->display->display_options['filters']['status_1']['table'] = 'node';
+  $handler->display->display_options['filters']['status_1']['field'] = 'status';
+  $handler->display->display_options['filters']['status_1']['relationship'] = 'field_cast_crew_node';
+  $handler->display->display_options['filters']['status_1']['value'] = '1';
+  $handler->display->display_options['filters']['status_1']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['status_1']['expose']['label'] = 'Published';
+  $handler->display->display_options['filters']['status_1']['expose']['operator'] = 'status_1_op';
+  $handler->display->display_options['filters']['status_1']['expose']['identifier'] = 'status_1';
+  $handler->display->display_options['filters']['status_1']['expose']['required'] = TRUE;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'show_subpage');
@@ -175,23 +201,19 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Global: Null */
-  $handler->display->display_options['arguments']['null']['id'] = 'null';
-  $handler->display->display_options['arguments']['null']['table'] = 'views';
-  $handler->display->display_options['arguments']['null']['field'] = 'null';
-  $handler->display->display_options['arguments']['null']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
   /* Contextual filter: Content: Title */
   $handler->display->display_options['arguments']['title']['id'] = 'title';
   $handler->display->display_options['arguments']['title']['table'] = 'node';
   $handler->display->display_options['arguments']['title']['field'] = 'title';
   $handler->display->display_options['arguments']['title']['relationship'] = 'field_section_ref_target_id';
+  $handler->display->display_options['arguments']['title']['default_action'] = 'not found';
   $handler->display->display_options['arguments']['title']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['title']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['title']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['title']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['title']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['title']['validate']['type'] = 'php';
+  $handler->display->display_options['arguments']['title']['validate_options']['code'] = 'return isset($this->view->args[0]) && drupal_lookup_path(\'source\', \'shows/\' . $this->view->args[0]);';
   $handler->display->display_options['arguments']['title']['limit'] = '0';
   $handler->display->display_options['arguments']['title']['case'] = 'lower';
   $handler->display->display_options['arguments']['title']['transform_dash'] = TRUE;
@@ -273,6 +295,10 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['arguments']['title']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['title']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['title']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['title']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['title']['validate']['type'] = 'php';
+  $handler->display->display_options['arguments']['title']['validate_options']['code'] = '
+return isset($this->view->args[0]) && drupal_lookup_path(\'source\', \'shows/\' . $this->view->args[0]);';
   $handler->display->display_options['arguments']['title']['limit'] = '0';
   $handler->display->display_options['arguments']['title']['case'] = 'lower';
   $handler->display->display_options['arguments']['title']['transform_dash'] = TRUE;
@@ -616,6 +642,9 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['arguments']['title']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['title']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['title']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['title']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['title']['validate']['type'] = 'php';
+  $handler->display->display_options['arguments']['title']['validate_options']['code'] = 'return isset($this->view->args[0]) && drupal_lookup_path(\'source\', \'shows/\' . $this->view->args[0]);';
   $handler->display->display_options['arguments']['title']['limit'] = '0';
   $handler->display->display_options['arguments']['title']['case'] = 'lower';
   $handler->display->display_options['arguments']['title']['transform_dash'] = TRUE;
