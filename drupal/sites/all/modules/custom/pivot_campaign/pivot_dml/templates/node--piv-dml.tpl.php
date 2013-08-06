@@ -68,7 +68,7 @@
 		<a href="http://www.takepart.com/article/2013/07/26/10-important-actions-ensure-your-digital-privacy" class="btn" target="_blank">get the whole story</a>
 	</div>
 	<div class="right">
-		<a href="http://takeaction.takepart.com/actions/inform-yourself-and-lawmakers-about-online-privacy"><img src="/<?php print drupal_get_path('module', 'pivot_dml'); ?>/images/tacma.jpg" style="float:right; height:100%;"</a>
+		<a href="http://takeaction.takepart.com/actions/inform-yourself-and-lawmakers-about-online-privacy"><img src="/<?php print drupal_get_path('module', 'pivot_dml'); ?>/images/tacma.jpg" style="float:right; height:100%;"></a>
 	</div>
 </div>
 <div class="row video">
