@@ -72,6 +72,20 @@ function pivot_schedule_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
+      'year_released' => array(
+        'description' => 'Year the episode or movie was released.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'fcc_rating_v_chip_codes' => array(
+        'description' => 'FCC rating V-Chip codes.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
       'created' => array(
         'description' => 'The Unix timestamp when the entity was created.',
         'type' => 'int',
@@ -102,4 +116,15 @@ function pivot_schedule_update_7100(&$sandbox) {
   if (db_table_exists('pivot_schedule_import_file')) {
     db_drop_table('pivot_schedule_import_file');
   }
+}
+
+/**
+ * Add year released and FCC V-Chip code fields.
+ */
+function pivot_schedule_update_7101(&$sandbox) {
+  $schema = pivot_schedule_schema();
+  db_add_field('pivot_schedule_show_time', 'year_released',
+    $schema['pivot_schedule_show_time']['fields']['year_released']);
+  db_add_field('pivot_schedule_show_time', 'fcc_rating_v_chip_codes',
+    $schema['pivot_schedule_show_time']['fields']['fcc_rating_v_chip_codes']);
 }
