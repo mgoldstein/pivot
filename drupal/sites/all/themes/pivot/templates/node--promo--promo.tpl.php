@@ -84,11 +84,39 @@
  */
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-	<?php print l(render($content['field_promo_image']), $promo_external_link_url, array('html'=> TRUE, 'attributes' => $promo_external_link_attributes)); ?>
+	<?php
+    if(isset($promo_external_link_url)) {
+      print l(render($content['field_promo_image']), $promo_external_link_url, array('html'=> TRUE, 'attributes' => $promo_external_link_attributes));
+    }
+    else{
+      print render($content['field_promo_image']);
+    }
+  ?>
     <div class="info">
     <div class="info-inner">
-	  <?php print l(render($content['field_promo_headline']), $promo_external_link_url, array('html' => TRUE, 'attributes' => $promo_external_link_attributes));?>
-      <?php print render($content['field_promo_abstract']);?>
+      <?php
+      if(isset($promo_external_link_url)) {
+        print l(render($content['field_promo_headline']), $promo_external_link_url, array('html' => TRUE, 'attributes' => $promo_external_link_attributes));
+        print render($content['field_promo_abstract']);
+      }
+      else{
+        print render($content['field_promo_headline']);
+        print render($content['field_promo_abstract']);
+      }
+      ?>
     </div>
   </div>
 </article><!-- /.node.promo -->
+
+
+
+
+
+
+
+
+
+
+
+
+
