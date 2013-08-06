@@ -4,7 +4,6 @@
  * Schedule primetime listing block.
  *
  * $headline_text - Block headline text.
- * $headline_link - Block headline link href.
  * $show_times - Array of show times objects that fall within primetime.
  *    $show_time->start - The start time of the show as a Unix timestamp.
  *    $show_time->show_title - Title of the show
@@ -18,7 +17,7 @@
 ?>
 <nav class="upcoming">
   <div class="inner">
-    <h1 class="headline"><a href="<?php echo $headline_link ?>"><?php echo $headline_text ?></a></h1>
+    <h1 class="headline"><?php echo $headline_text ?></h1>
     <div id="upcoming-times" class="times">
       <div class="inner">
         <ul class="list">
