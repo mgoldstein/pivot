@@ -46,7 +46,7 @@ function pivot_promo_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_external_link',
     'label' => 'Link',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'attributes' => array(
         'class' => '',
