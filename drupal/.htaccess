@@ -58,6 +58,9 @@ DirectoryIndex index.php index.html index.htm
 
   RewriteEngine on
 
+  RewriteCond %{HTTP_HOST} ^pivot\.tv$ [NC]
+  RewriteRule ^(.*)$ http://www.pivot.tv/$1 [L,R=301]
+
   # Select the correct robots.txt
   RewriteCond %{HTTP_HOST} =www.pivot.tv [OR]
   RewriteCond %{HTTP_HOST} =pivot.tv
