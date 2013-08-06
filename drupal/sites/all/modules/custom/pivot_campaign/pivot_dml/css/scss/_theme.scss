@@ -5,7 +5,7 @@ body.page-dml {
 	}
 }
 body.page-dml div#content {
-	
+
 	width:980px;
 	margin:0 auto;
 	background:#fff;
@@ -74,7 +74,7 @@ body.page-dml div#content {
 
 		nav {
 			float:left;
-			width:595px;
+			width:570px;
 			height:100%;
 			text-align:center;
 			@include breakpoint(480) {
@@ -206,11 +206,11 @@ body.page-dml div#content {
 
 
 	a:active{
-	    background-color: transparent; 
+	    background-color: transparent;
 	}
 
 
 
 
-	
+
 }
