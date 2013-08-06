@@ -48,6 +48,8 @@ class PivotScheduleShowTimeController extends EntityApiController {
       'title_synopsis' => '',
       'title_premiere_indicator_current_schedule' => 0,
       'title_code_wo_series_prefix' => '',
+      'year_released' => '',
+      'fcc_rating_v_chip_codes' => '',
       'created' => 0,
       'changed' => 0,
     );
@@ -191,6 +193,27 @@ function pivot_schedule_entity_property_info() {
     'type' => 'text',
     'access callback' => 'pivot_schedule_accesspivot_schedule_access',
     'schema field' => 'title_code_wo_series_prefix',
+    'required' => TRUE,
+    'field' => FALSE,
+    'sanitized' => TRUE,
+    'sanitize' => FALSE,
+  );
+  $properties['year_released'] = array(
+    'label' => t('Year released'),
+    'description' => t('Year the content was released.'),
+    'type' => 'integer',
+    'validation callback' => 'entity_property_validate_integer_non_negative',
+    'access callback' => 'pivot_schedule_access',
+    'schema field' => 'year_released',
+    'required' => TRUE,
+    'field' => FALSE,
+  );
+  $properties['fcc_rating_v_chip_codes'] = array(
+    'label' => t('Rating'),
+    'description' => t('FCC rating V-Chip codes.'),
+    'type' => 'text',
+    'access callback' => 'pivot_schedule_access',
+    'schema field' => 'fcc_rating_v_chip_codes',
     'required' => TRUE,
     'field' => FALSE,
     'sanitized' => TRUE,
@@ -346,21 +369,34 @@ function pivot_schedule_import_form_submit($form, &$form_state) {
         'file_id' => $file->fid,
         'created' => REQUEST_TIME,
         'changed' => REQUEST_TIME,
+        'title_synopsis' => '',
+        'title_code_wo_series_prefix' => '',
+        'title_premiere_indicator_current_schedule' => FALSE,
+        'fcc_rating_v_chip_codes' => '',
       );
 
       // Straight forward string values.
       $values['element_name'] = (string) $show->SeriesName;
       $values['title_name'] =  (string) $show->TitleName;
-      $values['title_synopsis'] =  (string) $show->TitleSynopsis;
-      $values['title_code_wo_series_prefix']
-        = (string) $show->TitleCodeWOSeriesPrefix;
+      $values['year_released'] = (int) $show->YearReleased;
 
-      if ($values['element_name'] == 'Please Like Me') {
-        $stop = TRUE;
+      if (isset($show->TitleSynopsis)) {
+        $values['title_synopsis'] =  (string) $show->TitleSynopsis;
+      }
+      if (isset($show->TitleCodeWOSeriesPrefix)) {
+        $values['title_code_wo_series_prefix']
+          = (string) $show->TitleCodeWOSeriesPrefix;
+      }
+      if (isset($show->{'FCCRatingV-ChipCodes'})) {
+        $values['fcc_rating_v_chip_codes']
+          =  (string) $show->{'FCCRatingV-ChipCodes'};
       }
 
       // Combine and convert the start date and time instead a Unix timestamp.
-      $start_date = (string) $show->StartDateBroadcast;
+      // NOTE: StartDateStandard is the start date with a broadcast day start of
+      //   midnight. StartDateBroadcast is the start date with a broadcast day
+      //   start of 6:00am.
+      $start_date = (string) $show->StartDateStandard;
       $start_time = (string) $show->StartTime;
       $timezone = new DateTimeZone($form_state['values']['timezone']);
       $start_datetime = DateTime::createFromFormat("m/d/Y G:i:s",
@@ -377,9 +413,12 @@ function pivot_schedule_import_form_submit($form, &$form_state) {
         + ($duration[1] * 60)
         +  $duration[2];
 
-      // Assume that only premieres will have a value for this field.
-      $premiere = (string) $show->TitlePremiereIndicatorCurrentSchedule;
-      $values['title_premiere_indicator_current_schedule'] = !empty($premiere);
+      // Only premieres will have a value (P) for this field.
+      if (isset($show->TitlePremiereIndicatorCurrentSchedule)) {
+        $premiere = (string) $show->TitlePremiereIndicatorCurrentSchedule;
+        $values['title_premiere_indicator_current_schedule']
+          = ($premiere === 'P');
+      }
 
       // Create and save the schedule time.
       $show_time = entity_create('pivot_schedule_show_time', $values);
