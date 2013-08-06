@@ -12,6 +12,8 @@
 // - http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth
 (function ($, Drupal, window, document, undefined) {
 
+	Drupal.settings.touchEnabled = ( 'ontouchend' in document.documentElement ) ? true : false;
+
 	Drupal.behaviors.globalNavigationResponsive = {
 		attach: function() {
 			// Responsive nav
@@ -75,6 +77,27 @@
 				   $body.removeClass('clickedon');
 			     })
 			;
+		}
+	};
+
+	Drupal.behaviors.superfishTouch = {
+		attach: function() {
+
+			if (Drupal.settings.touchEnabled) {
+				$('ul.nice-menu')
+					.find('li.menuparent > a')
+						.on('touchend', function(e) {
+							var $this = $(this);
+							e.preventDefault();
+							$this.toggleClass('clickedon');
+							if ($this.hasClass('clickedon')) {
+								$this.focus();
+							} else {
+								$this.blur();
+							}
+						})
+				;
+			}
 		}
 	};
 
