@@ -35,7 +35,6 @@ features[field_base][] = field_download_file
 features[field_base][] = field_episode_number
 features[field_base][] = field_episode_season
 features[field_base][] = field_external_link
-features[field_base][] = field_external_url
 features[field_base][] = field_file_image_alt_text
 features[field_base][] = field_file_image_title_text
 features[field_base][] = field_gallery_ref
