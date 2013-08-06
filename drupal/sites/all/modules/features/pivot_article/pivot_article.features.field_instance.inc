@@ -500,7 +500,7 @@ function pivot_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Enter one or more blogs that this article will be a part of. The branding and "Next Article" will come from the blog at the top of this list.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -553,6 +553,7 @@ function pivot_article_field_default_field_instances() {
   t('Add as many tags as you like. The tags are "global" because they can be used to categorize any type of content on the site.');
   t('Author');
   t('Body');
+  t('Enter one or more blogs that this article will be a part of. The branding and "Next Article" will come from the blog at the top of this list.');
   t('Image');
   t('Promo Abstract');
   t('Promo Headline');

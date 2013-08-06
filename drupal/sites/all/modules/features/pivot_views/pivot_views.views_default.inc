@@ -103,10 +103,6 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['fields']['field_person_bio']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_person_bio']['alter']['text'] = '<div class="person-info"><div class="name">[field_person_name][field_character_name]:</div> <div class="bio">[field_person_bio]</div></div>';
   $handler->display->display_options['fields']['field_person_bio']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Cast and Crew (field_cast_crew:delta) */
-  $handler->display->display_options['sorts']['delta']['id'] = 'delta';
-  $handler->display->display_options['sorts']['delta']['table'] = 'field_data_field_cast_crew';
-  $handler->display->display_options['sorts']['delta']['field'] = 'delta';
   /* Contextual filter: Content: Title */
   $handler->display->display_options['arguments']['title']['id'] = 'title';
   $handler->display->display_options['arguments']['title']['table'] = 'node';
@@ -114,15 +110,18 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['arguments']['title']['relationship'] = 'field_cast_crew_node';
   $handler->display->display_options['arguments']['title']['default_action'] = 'not found';
   $handler->display->display_options['arguments']['title']['exception']['value'] = '';
+  $handler->display->display_options['arguments']['title']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['title']['title'] = '%1: Cast';
   $handler->display->display_options['arguments']['title']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['title']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['title']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['title']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['title']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['title']['validate']['type'] = 'php';
-  $handler->display->display_options['arguments']['title']['validate_options']['code'] = 'return isset($this->view->args[0]) && drupal_lookup_path(\'source\', \'shows/\' . $this->view->args[0]);';
+  $handler->display->display_options['arguments']['title']['validate_options']['code'] = 'return drupal_lookup_path("source", "shows/" . $argument);';
   $handler->display->display_options['arguments']['title']['limit'] = '0';
-  $handler->display->display_options['arguments']['title']['case'] = 'lower';
+  $handler->display->display_options['arguments']['title']['case'] = 'ucwords';
+  $handler->display->display_options['arguments']['title']['path_case'] = 'lower';
   $handler->display->display_options['arguments']['title']['transform_dash'] = TRUE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -213,9 +212,10 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['arguments']['title']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['title']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['title']['validate']['type'] = 'php';
-  $handler->display->display_options['arguments']['title']['validate_options']['code'] = 'return isset($this->view->args[0]) && drupal_lookup_path(\'source\', \'shows/\' . $this->view->args[0]);';
+  $handler->display->display_options['arguments']['title']['validate_options']['code'] = 'return drupal_lookup_path("source", "shows/" . $argument);';
   $handler->display->display_options['arguments']['title']['limit'] = '0';
-  $handler->display->display_options['arguments']['title']['case'] = 'lower';
+  $handler->display->display_options['arguments']['title']['case'] = 'ucwords';
+  $handler->display->display_options['arguments']['title']['path_case'] = 'lower';
   $handler->display->display_options['arguments']['title']['transform_dash'] = TRUE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -297,10 +297,10 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['arguments']['title']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['title']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['title']['validate']['type'] = 'php';
-  $handler->display->display_options['arguments']['title']['validate_options']['code'] = '
-return isset($this->view->args[0]) && drupal_lookup_path(\'source\', \'shows/\' . $this->view->args[0]);';
+  $handler->display->display_options['arguments']['title']['validate_options']['code'] = 'return drupal_lookup_path("source", "shows/" . $argument);';
   $handler->display->display_options['arguments']['title']['limit'] = '0';
-  $handler->display->display_options['arguments']['title']['case'] = 'lower';
+  $handler->display->display_options['arguments']['title']['case'] = 'ucwords';
+  $handler->display->display_options['arguments']['title']['path_case'] = 'lower';
   $handler->display->display_options['arguments']['title']['transform_dash'] = TRUE;
   /* Contextual filter: Content: Season (field_episode_season) */
   $handler->display->display_options['arguments']['field_episode_season_value']['id'] = 'field_episode_season_value';
@@ -309,12 +309,14 @@ return isset($this->view->args[0]) && drupal_lookup_path(\'source\', \'shows/\' 
   $handler->display->display_options['arguments']['field_episode_season_value']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_episode_season_value']['exception']['value'] = '';
   $handler->display->display_options['arguments']['field_episode_season_value']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['field_episode_season_value']['title'] = 'Episodes: Season %2';
+  $handler->display->display_options['arguments']['field_episode_season_value']['title'] = '%1 Season %2: Episodes';
   $handler->display->display_options['arguments']['field_episode_season_value']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['field_episode_season_value']['default_argument_options']['argument'] = '1';
   $handler->display->display_options['arguments']['field_episode_season_value']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_episode_season_value']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_episode_season_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_episode_season_value']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_episode_season_value']['validate']['type'] = 'numeric';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -644,9 +646,10 @@ return isset($this->view->args[0]) && drupal_lookup_path(\'source\', \'shows/\' 
   $handler->display->display_options['arguments']['title']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['title']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['title']['validate']['type'] = 'php';
-  $handler->display->display_options['arguments']['title']['validate_options']['code'] = 'return isset($this->view->args[0]) && drupal_lookup_path(\'source\', \'shows/\' . $this->view->args[0]);';
+  $handler->display->display_options['arguments']['title']['validate_options']['code'] = 'return drupal_lookup_path("source", "shows/" . $argument);';
   $handler->display->display_options['arguments']['title']['limit'] = '0';
-  $handler->display->display_options['arguments']['title']['case'] = 'lower';
+  $handler->display->display_options['arguments']['title']['case'] = 'ucwords';
+  $handler->display->display_options['arguments']['title']['path_case'] = 'lower';
   $handler->display->display_options['arguments']['title']['transform_dash'] = TRUE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
