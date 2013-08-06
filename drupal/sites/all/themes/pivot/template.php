@@ -284,9 +284,10 @@ function pivot_preprocess_node__article(&$variables, $hook) {
 }
 
 function pivot_preprocess_node__promo(&$variables) {
-  // link is required, so we know these exist
-  $variables['promo_external_link_url'] = $variables['field_external_link']['und'][0]['url'];
-  $variables['promo_external_link_attributes'] = $variables['field_external_link']['und'][0]['attributes'];
+  if(isset($variables['field_external_link']['und'][0]['url'])){
+    $variables['promo_external_link_url'] = $variables['field_external_link']['und'][0]['url'];
+    $variables['promo_external_link_attributes'] = $variables['field_external_link']['und'][0]['attributes'];
+  }
 }
 
 function pivot_preprocess_node__movie(&$variables) {
