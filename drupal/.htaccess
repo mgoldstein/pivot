@@ -33,6 +33,8 @@ DirectoryIndex index.php index.html index.htm
   php_value mbstring.http_input             pass
   php_value mbstring.http_output            pass
   php_flag mbstring.encoding_translation    off
+  php_value upload_max_filesize             16M
+  php_value post_max_size                   16M
 </IfModule>
 
 # Requires mod_expires to be enabled.
@@ -58,8 +60,8 @@ DirectoryIndex index.php index.html index.htm
 
   RewriteEngine on
 
-  RewriteCond %{HTTP_HOST} ^pivot\.tv$ [NC]
-  RewriteRule ^(.*)$ http://www.pivot.tv/$1 [L,R=301]
+  #RewriteCond %{HTTP_HOST} ^pivot\.tv$ [NC]
+  #RewriteRule ^(.*)$ http://www.pivot.tv/$1 [L,R=301]
 
   # Select the correct robots.txt
   RewriteCond %{HTTP_HOST} =www.pivot.tv [OR]
@@ -70,20 +72,23 @@ DirectoryIndex index.php index.html index.htm
 
   # Check that the server is not being accessed by its IP address.
   # The ELB health check uses the internal IP address of the webhead.
-  RewriteCond %{SERVER_ADDR} ^(10.28.207.242|10.28.193.19|10.159.36.144|10.157.31.224)$
-  RewriteCond %{HTTP_HOST} !^(10.28.207.242|10.28.193.19|10.159.36.144|10.157.31.224)$
+  #RewriteCond %{SERVER_ADDR} ^(10.28.207.242|10.28.193.19|10.159.36.144|10.157.31.224)$
+  #RewriteCond %{HTTP_HOST} !^(10.28.207.242|10.28.193.19|10.159.36.144|10.157.31.224)$
   
   # Check that the server is not being accessed by its webhead name
-  RewriteCond %{HTTP_HOST} !^web(1|2|3|4).prod.pivot.tv$
+  #RewriteCond %{HTTP_HOST} !^web(1|2|3|4).prod.pivot.tv$
 
   # Check that the server is not being accessed by the Akamai origin name
-  RewriteCond %{HTTP_HOST} !=origin.prod.pivot.tv
+  #RewriteCond %{HTTP_HOST} !=origin.prod.pivot.tv
+
+  # Check allowed subdomains
+  #RewriteCond %{HTTP_HOST} !=get.pivot.tv
 
   # Check that the server is not being accessed by the preferred name
-  RewriteCond %{HTTP_HOST} !=www.pivot.tv
+  #RewriteCond %{HTTP_HOST} !=www.pivot.tv
 
   # All other names for the server should redirect to the preferred name
-  RewriteRule (.*) http://www.pivot.tv/$1 [R=301,L,NC]
+  #RewriteRule (.*) http://www.pivot.tv/$1 [R=301,L,NC]
 
   # Please like me campaign redirect (needs to be case-insensitive)
   RewriteCond %{REQUEST_URI} /PleaseLikeMe [NC]
