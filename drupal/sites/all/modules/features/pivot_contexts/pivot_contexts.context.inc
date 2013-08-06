@@ -244,12 +244,12 @@ function pivot_contexts_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-	'pivot_schedule-primetime_listing' => array(
-	  'module' => 'pivot_schedule',
-	  'delta' => 'primetime_listing',
-	  'region' => 'preface',
-	  'weight' => '-10',
-	),
+        'pivot_schedule-primetime_listing' => array(
+          'module' => 'pivot_schedule',
+          'delta' => 'primetime_listing',
+          'region' => 'preface',
+          'weight' => '-10',
+        ),
         'dfp-pivot_ros_rr_300x250' => array(
           'module' => 'dfp',
           'delta' => 'pivot_ros_rr_300x250',
@@ -273,6 +273,11 @@ function pivot_contexts_context_default_contexts() {
   $context->description = 'Show node pages';
   $context->tag = '';
   $context->conditions = array(
+    'error' => array(
+      'values' => array(
+        1 => '1',
+      ),
+    ),
     'path' => array(
       'values' => array(
         'shows/*' => 'shows/*',
@@ -326,12 +331,12 @@ function pivot_contexts_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-	'pivot_schedule-primetime_listing' => array(
-	  'module' => 'pivot_schedule',
-	  'delta' => 'primetime_listing',
-	  'region' => 'preface',
-	  'weight' => '-10',
-	),
+        'pivot_schedule-primetime_listing' => array(
+          'module' => 'pivot_schedule',
+          'delta' => 'primetime_listing',
+          'region' => 'preface',
+          'weight' => '-10',
+        ),
         'dfp-pivot_ros_rr_300x250' => array(
           'module' => 'dfp',
           'delta' => 'pivot_ros_rr_300x250',
