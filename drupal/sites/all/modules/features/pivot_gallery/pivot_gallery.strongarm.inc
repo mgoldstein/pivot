@@ -64,14 +64,51 @@ function pivot_gallery_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__gallery';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'teaser' => array(
+	'custom_settings' => TRUE,
+      ),
+      'promo' => array(
+	'custom_settings' => TRUE,
+      ),
+      'promo_alt' => array(
+	'custom_settings' => TRUE,
+      ),
+      'full' => array(
+	'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+	'custom_settings' => FALSE,
+      ),
+      'search_index' => array(
+	'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+	'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+	'custom_settings' => FALSE,
+      ),
+      'token' => array(
+	'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '6',
+	  'weight' => '9',
+	),
+	'metatags' => array(
+	  'weight' => '12',
+	),
+	'redirect' => array(
+	  'weight' => '10',
+	),
+	'xmlsitemap' => array(
+	  'weight' => '11',
         ),
       ),
       'display' => array(),
@@ -115,6 +152,13 @@ function pivot_gallery_strongarm() {
   $strongarm->name = 'node_submitted_gallery';
   $strongarm->value = 0;
   $export['node_submitted_gallery'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_gallery_pattern';
+  $strongarm->value = '[node:field-show-ref:url:path]/gallery/[node:title]';
+  $export['pathauto_node_gallery_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
