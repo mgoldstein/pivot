@@ -1,0 +1,189 @@
+<?php
+
+function pivot_dml_menu() {
+
+  $path = variable_get('pivot_dml_path', '');
+  if(!empty($path)) {
+    // $items[$path.'/about'] = array(
+    //   'page callback' => 'pivot_dml_about_view',
+    //   'access arguments' => array('access content'),
+    // );
+    // $items[$path.'/ad'] = array(
+    //   'page callback' => 'pivot_dml_ad_view',
+    //   'access arguments' => array('access content'),
+    // );
+    // $items[$path.'/news'] = array(
+    //   'page callback' => 'pivot_dml_news_view',
+    //   'access arguments' => array('access content'),
+    // );
+    $items[$path.'/quiz'] = array(
+      'page callback' => 'pivot_dml_quiz_view',
+      'access arguments' => array('access content'),
+    );
+  }
+  return $items;
+}
+ function pivot_dml_block_info(){
+  $blocks = array();
+  $blocks['pivot_dml_hero'] = array(
+    'info' => t('DML Hero')
+   );
+  return $blocks;
+ }
+
+
+function pivot_dml_block_view($delta = ''){
+  $block = array();
+  switch ($delta) {
+    case 'pivot_dml_hero':
+      $block['content'] = pivot_dml_hero();
+      break;
+  }
+  return $block;
+  }
+
+
+
+function pivot_dml_form_alter(&$form, &$form_state, $form_id) {
+
+  switch ($form_id)  {
+    case 'pivot_campaign_config':
+      $form['pivot_dml_path'] = array (
+        '#type' => 'textfield',
+        '#title' => t('DML Path'),
+        '#description' => t("Path with no leading or trailing slash.  Example 'campaign/dml"),
+        '#required' => TRUE,
+        '#default_value' => variable_get('pivot_dml_path', ''),
+      );
+    break;
+  }
+}
+
+// function pivot_dml_about_view(){
+//   $output = theme('pivot_dml_about');
+//   return $output;
+// }
+// function pivot_dml_ad_view(){
+//   $output = theme('pivot_dml_ad');
+//   return $output;
+// }
+// function pivot_dml_news_view(){
+//   $output = theme('pivot_dml_news');
+//   return $output;
+// }
+function pivot_dml_quiz_view(){
+  $output = theme('pivot_dml_quiz');
+  return $output;
+}
+function pivot_dml_default_view(){
+  $output = theme('pivot_dml_default');
+  return $output;
+}
+function pivot_dml_hero() {
+  $output = theme('pivot_dml_hero');
+  return $output;
+}
+
+function pivot_dml_theme() {
+  return array(
+    // 'pivot_dml_about' => array(
+    //   'arguments' => array(),
+    //   'template' => 'templates/piv-dml-about'
+    // ),
+    // 'pivot_dml_ad' => array(
+    //   'arguments' => array(),
+    //   'template' => 'templates/piv-dml-ad'
+    // ),
+    // 'pivot_dml_news' => array(
+    //   'arguments' => array(),
+    //   'template' => 'templates/piv-dml-news'
+    // ),
+    'pivot_dml_quiz' => array(
+      'arguments' => array(),
+      'template' => 'templates/piv-dml-quiz'
+    ),
+    'pivot_dml_default' => array(
+      'arguments' => array(),
+      'template' => 'templates/piv-dml-default'
+    ),
+    'pivot_dml_hero' => array(
+      'arguments' => array(),
+      'template' => 'templates/piv-dml-hero'
+    ),
+  );
+}
+function pivot_dml_preprocess_html(&$variables){
+  $current_path = drupal_get_path_alias(current_path());
+  if (strpos($current_path, variable_get('pivot_dml_path', '')) !== FALSE) {
+    $variables['classes_array'][] = 'page-dml';
+    if ($current_path == variable_get('pivot_dml_path', '')) {
+      $variables['classes_array'][] = 'page-dml-home';
+    }
+    if (strpos($current_path, 'quiz') !== FALSE) {
+      $variables['classes_array'][] = 'page-dml-quiz';
+    }
+  }
+}
+function pivot_dml_preprocess_page(&$variables){
+  $current_path = drupal_get_path_alias(current_path());
+  if (strpos($current_path, variable_get('pivot_dml_path', '')) !== FALSE) {
+    $variables['classes_array'][] = 'page-dml';
+    drupal_add_css(drupal_get_path('module', 'pivot_dml'). '/css/dml.css');
+    drupal_add_js(drupal_get_path('module', 'pivot_dml'). '/js/vendor/modernizr-2.6.2.min.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_dml'). '/js/main.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_dml'). '/js/plugins.js');
+    drupal_add_js('//platform.twitter.com/widgets.js', 'external');
+    drupal_add_js("
+    (function ($, Drupal, window, document, undefined) {
+      Drupal.behaviors.facebookSDK = {
+        attach: function () {
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId: 545435132181638,
+              status: true,
+              cookie: true,
+              xfbml: true
+              });
+          };
+          //Load the SDK asynchronously
+          (function() {
+            var e = document.createElement('script');
+            e.async = true;
+            e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+            document.getElementById('fb-root').appendChild(e);
+          }());
+        }
+      };
+    })(jQuery, Drupal, this, this.document);",
+    'inline');
+  }
+}
+
+
+function pivot_dml_preprocess_node(&$variables){
+  $current_path = drupal_get_path_alias(current_path());
+  if($variables['type'] == 'campaign' && strpos($current_path, variable_get('pivot_dml_path', '')) !== FALSE) {
+    $variables['theme_hook_suggestions'][] = 'node__piv_dml';
+  }
+}
+
+/**
+ * Move node template file to module directory
+**/
+function pivot_dml_theme_registry_alter(&$theme_registry) {
+  $mod_path = drupal_get_path('module', 'pivot_dml');
+  $theme_registry_copy = $theme_registry;
+  _theme_process_registry($theme_registry_copy, 'phptemplate', 'theme_engine', 'pivot', $mod_path);
+  $theme_registry += array_diff_key($theme_registry_copy, $theme_registry);
+  $hooks = array('node');
+  foreach ($hooks as $h) {
+    _pivot_dml_insert_after_first_element($theme_registry[$h]['theme paths'], $mod_path);
+  }
+}
+function _pivot_dml_insert_after_first_element(&$a, $element) {
+  if(is_array($a)) {
+    $first_element = array_shift($a);
+    array_unshift($a, $first_element, $element);
+  }
+}
+
