@@ -488,6 +488,7 @@ body.page-dml-home div#content, body.page-dml-quiz div#content {
 body.page-dml div#content {
   width: 980px;
   margin: 0 auto;
+  background: #fff;
   /* Modules and Items */ }
   body.page-dml div#content.site-wrapper {
     padding: 0 !important; }
