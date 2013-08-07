@@ -15,11 +15,11 @@ function pivot_analytics_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'sitecatalyst_codesnippet';
   $strongarm->value = 's.trackingServer="metrics.pivot.tv";
-if ("[current-page:url:path]" == "node") {
+if (("[current-page:url:path]" == "node") || ("[current-page:url:path]" == "homepage")) {
   s.pageName = "homepage";
-} else {
-  s.pageName = (window.location.pathname.replace(/^\//, ""));
-  s.channel = (window.location.pathname.replace(/^\//, "")).split( \'/\' )[0];
+} else if ("[current-page:url:path]" != "404") {
+  s.pageName = (window.location.pathname.replace(/^\\//, ""));
+  s.channel = (window.location.pathname.replace(/^\\//, "")).split( \'/\' )[0];
 }
 if ("[current-page:url:path]" == "404") {
   s.pageType="errorPage";
