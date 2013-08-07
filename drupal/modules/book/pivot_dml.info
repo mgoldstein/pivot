@@ -1,0 +1,6 @@
+name = Pivot DML
+description = Digital Media Literacy Pages
+core = 7.x
+package = Pivot Campaign
+
+dependencies[] = pivot_campaign
