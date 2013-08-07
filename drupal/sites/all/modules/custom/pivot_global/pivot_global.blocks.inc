@@ -51,8 +51,8 @@ function pivot_global_block_view($block_name) {
 
         case 'pivot_twitter_widget':
             $block['subject'] = ''; // no title
-            $block['content'] = '<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/pivot_tv" data-widget-id="349311679672221697">Tweets by @pivot_tv</a>';
-            $block['content'] .= '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
+            $block['content'] = '<a class="twitter-timeline" href="https://twitter.com/pivot_tv" data-widget-id="329027240346128386">Tweets by @pivot_tv</a>';
+            $block['content'] .= '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
         break;
 
         case 'pivot_global_footer':
