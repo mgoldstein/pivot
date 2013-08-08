@@ -1,4 +1,4 @@
-<header id="show-header" class="hero-header">
+<header id="show-header" class="hero-header" data-show-title="<?php print $node->title; ?>">
 	<div class="show-hero">
 		<h1 class="headline"><?php print $headline_link; ?></h1>
 		<div class="image">
