@@ -7,6 +7,7 @@ project = pivot_video
 dependencies[] = ctools
 dependencies[] = entityreference
 dependencies[] = features
+dependencies[] = filefield_paths
 dependencies[] = image
 dependencies[] = media
 dependencies[] = pivot_field_bases

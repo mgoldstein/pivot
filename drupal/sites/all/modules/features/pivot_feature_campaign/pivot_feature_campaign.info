@@ -8,6 +8,7 @@ dependencies[] = ctools
 dependencies[] = entityreference
 dependencies[] = features
 dependencies[] = field_collection
+dependencies[] = filefield_paths
 dependencies[] = image
 dependencies[] = link
 dependencies[] = number

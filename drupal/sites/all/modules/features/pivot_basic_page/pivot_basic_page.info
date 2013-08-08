@@ -6,6 +6,7 @@ version = 7.x-1.1
 project = pivot_basic_page
 dependencies[] = ctools
 dependencies[] = features
+dependencies[] = filefield_paths
 dependencies[] = image
 dependencies[] = pivot_field_bases
 dependencies[] = strongarm

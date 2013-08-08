@@ -4,6 +4,7 @@ package = Content Types
 php = 5.2.4
 version = 7.x-1.1
 project = pivot_dl_file
+dependencies[] = filefield_paths
 dependencies[] = pivot_field_bases
 dependencies[] = pivot_show
 dependencies[] = strongarm
