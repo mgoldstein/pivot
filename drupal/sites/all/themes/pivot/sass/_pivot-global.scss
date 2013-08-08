@@ -68,6 +68,18 @@ a:active {
 	text-decoration: underline;
 }
 
+input[type=text],
+input[type=email] {
+	line-height: 30px;
+	height: 30px;
+    font-size: 18px;
+    background: #f2f2f2;
+    border-radius: 3px;
+    border: none;
+    padding: 0 4px;
+    box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, .1);
+}
+
 /* ============================================================
 || Node Normalize Styles
 ============================================================ */
