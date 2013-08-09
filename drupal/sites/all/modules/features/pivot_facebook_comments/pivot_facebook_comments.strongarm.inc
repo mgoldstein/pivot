@@ -51,12 +51,12 @@ function pivot_facebook_comments_strongarm() {
   $strongarm->name = 'facebook_comments_types';
   $strongarm->value = array(
     'article' => 'article',
+    'gallery' => 'gallery',
     'action' => 0,
     'page' => 0,
     'download' => 0,
     'episode' => 0,
     'campaign' => 0,
-    'gallery' => 0,
     'homepage_slide' => 0,
     'movie' => 0,
     'person' => 0,

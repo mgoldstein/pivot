@@ -8,6 +8,7 @@ dependencies[] = ctools
 dependencies[] = fe_nodequeue
 dependencies[] = features
 dependencies[] = file
+dependencies[] = filefield_paths
 dependencies[] = image
 dependencies[] = link
 dependencies[] = list

@@ -7,6 +7,7 @@ project = pivot_movie
 dependencies[] = ctools
 dependencies[] = fe_nodequeue
 dependencies[] = features
+dependencies[] = filefield_paths
 dependencies[] = image
 dependencies[] = link
 dependencies[] = pivot_field_bases

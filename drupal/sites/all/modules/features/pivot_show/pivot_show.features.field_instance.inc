@@ -315,8 +315,27 @@ function pivot_show_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
-      'file_directory' => 'shows/header-images',
+      'file_directory' => 'header_images/show',
       'file_extensions' => 'png gif jpg jpeg',
+      'filefield_paths' => array(
+	'active_updating' => 0,
+	'file_name' => array(
+	  'options' => array(
+	    'pathauto' => 0,
+	    'transliterate' => 0,
+	  ),
+	  'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
+	),
+	'file_path' => array(
+	  'options' => array(
+	    'pathauto' => 0,
+	    'transliterate' => 0,
+	  ),
+	  'value' => '',
+	),
+	'retroactive_update' => 0,
+      ),
+      'filefield_paths_enabled' => 0,
       'max_filesize' => '',
       'max_resolution' => '',
       'min_resolution' => '',
@@ -327,7 +346,7 @@ function pivot_show_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-        'file_entity_inline' => 1,
+	'file_entity_inline' => 0,
         'file_entity_inline_fields' => array(),
         'filefield_sources' => array(
           'filefield_sources' => array(
@@ -350,6 +369,7 @@ function pivot_show_field_default_field_instances() {
             'autocomplete' => 0,
           ),
         ),
+	'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
@@ -569,8 +589,27 @@ function pivot_show_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
-      'file_directory' => 'shows/promo_images',
+      'file_directory' => 'promo_images/show',
       'file_extensions' => 'png gif jpg jpeg',
+      'filefield_paths' => array(
+	'active_updating' => 0,
+	'file_name' => array(
+	  'options' => array(
+	    'pathauto' => 0,
+	    'transliterate' => 0,
+	  ),
+	  'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
+	),
+	'file_path' => array(
+	  'options' => array(
+	    'pathauto' => 0,
+	    'transliterate' => 0,
+	  ),
+	  'value' => '',
+	),
+	'retroactive_update' => 0,
+      ),
+      'filefield_paths_enabled' => 0,
       'max_filesize' => '',
       'max_resolution' => '',
       'min_resolution' => '',
@@ -581,7 +620,7 @@ function pivot_show_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-        'file_entity_inline' => 1,
+	'file_entity_inline' => 0,
         'file_entity_inline_fields' => array(),
         'filefield_sources' => array(
           'filefield_sources' => array(
@@ -604,6 +643,7 @@ function pivot_show_field_default_field_instances() {
             'autocomplete' => 0,
           ),
         ),
+	'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),

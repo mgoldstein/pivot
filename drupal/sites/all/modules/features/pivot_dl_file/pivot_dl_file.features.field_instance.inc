@@ -107,6 +107,25 @@ function pivot_dl_file_field_default_field_instances() {
       'description_field' => 0,
       'file_directory' => 'downloadable_content',
       'file_extensions' => 'jpg jpeg pdf mp3 zip',
+      'filefield_paths' => array(
+	'active_updating' => 0,
+	'file_name' => array(
+	  'options' => array(
+	    'pathauto' => 0,
+	    'transliterate' => 0,
+	  ),
+	  'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
+	),
+	'file_path' => array(
+	  'options' => array(
+	    'pathauto' => 0,
+	    'transliterate' => 0,
+	  ),
+	  'value' => '',
+	),
+	'retroactive_update' => 0,
+      ),
+      'filefield_paths_enabled' => 1,
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
@@ -114,7 +133,7 @@ function pivot_dl_file_field_default_field_instances() {
       'active' => 1,
       'module' => 'file',
       'settings' => array(
-        'file_entity_inline' => 1,
+	'file_entity_inline' => 0,
         'file_entity_inline_fields' => array(),
         'filefield_sources' => array(
           'filefield_sources' => array(
