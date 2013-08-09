@@ -78,20 +78,16 @@
 					<div class="user">&#xe000;<span class="correct">&#xe008;</span><span class="incorrect">&#xe006;</span></div>
 				</div>
 				</div><!-- /#quiz-container -->
-				<!--
-				<div class="newsletter-signup">
-					<div class="title">
-						<h2>sign up for <span>email</span> updates</h2>
-					</div>
-					<p>We know your time and information is valuable, so we won't spam you or share your data with marketers without your consent. But we'd love to stay in touch and share with you updates, web exclusives, special events and more.</p>
-					<form>
-						<div>
-							<input type="text" placeholder="Your email" />
-								<input type="image" src="/<?php echo drupal_get_path('module', 'pivot_dml'); ?>/images/quiz/newsletter-submit.png"/>
-						</div>
-					</form>
-				<div class="tos">	By submitting your email address above, you agree to our <a href="#" target="_blank">Terms of Use</a> and <a href="#" target="_blank">Privacy Policy</a>.</div>
-				</div>
-				-->
+				<?php
+					$block = module_invoke('newsletter_campaign', 'block_view', 2);
+					print '<div id="block-newsletter-campaign-2" class="block-newsletter-campaign">'. render($block['content']). '</div>';
+				?>
 	       </div>
 	<!-- END CONTENT -->
+
+
+
+
+
+
+
