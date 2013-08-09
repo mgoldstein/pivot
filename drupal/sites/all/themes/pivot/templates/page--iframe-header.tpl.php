@@ -3,7 +3,7 @@
   ', 'inline');
 
   drupal_add_js('
-  (function ($, Drupal, window, document, undefined) {
+  (function ($, Drupal, undefined) {
     Drupal.behaviors.iframeLinks = {
       attach: function () {
         $("a").attr("target", "_top");
@@ -17,7 +17,7 @@
 
         if ( "ontouchend" in document.documentElement ) click = "touchend";
 
-        parent.pivotHeaderHeight($siteHeader.height() + " px");
+        window.parent.pivotHeaderHeight($siteHeader.height() + " px");
 
         $siteHeader
           .on("touchmove", function() {
@@ -28,12 +28,12 @@
               isTouchmove = false;
               return true;
             } else {
-              setTimeout(function() {parent.pivotHeaderHeight($("#site-header").height() + " px");}, 550);              
+              setTimeout(function() {window.parent.pivotHeaderHeight($("#site-header").height() + " px");}, 550);              
             }
         });
       }
     };
-  })(jQuery, Drupal, this, this.document);',
+  })(jQuery, Drupal);',
   'inline');
 ?>
 <header id="site-header" role="banner" class="header">
