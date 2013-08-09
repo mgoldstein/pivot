@@ -17,7 +17,7 @@
 ?>
 <nav class="upcoming">
   <div class="inner">
-    <h1 class="headline"><?php echo $headline_text ?></h1>
+    <h1 class="headline"><div class="extra"><?php echo $headline_text ?></div></h1>
     <div id="upcoming-times" class="times">
       <div class="inner">
         <ul class="list">
