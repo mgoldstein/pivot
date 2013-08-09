@@ -181,13 +181,15 @@ function pivot_preprocess_page(&$variables, $hook) {
   if(current_path() == 'iframe/footer'){
     $variables['theme_hook_suggestions'][] = 'page__iframe_footer';
   }
+  if (isset($variables['node']) && $variables['node']->type == 'gallery') {
+    $variables['theme_hook_suggestions'][] = 'page__gallery_page';
+  }
 }
-
 
 /**
  * Render or hide final page variables.
  *
- * $param $variables
+ * @param $variables
  *   An array of variables to pass to the theme template.
  */
 function pivot_process_page(&$variables) {
@@ -376,6 +378,35 @@ function pivot_preprocess_search_result(&$variables) {
 }
 
 /**
+ * Implements template_preprocess_field().
+ */
+function pivot_preprocess_field(&$variables) {
+  if ($variables['element']['#field_name'] == 'field_gallery_images') {
+
+    // for the content-wrapping ul
+    $variables['content_attributes_array'] = array();
+    $variables['content_attributes_array']['data-tpslide_separator'] = ' of ';
+    $variables['content_attributes_array']['data-tpslide_previous'] = 'Previous Slide';
+    $variables['content_attributes_array']['data-tpslide_next'] = 'Next Slide';
+
+    // put url fragments into data elements for each slide
+    $variables['item_attributes_array'] = array();
+
+    foreach ($variables['items'] as $delta => $item) {
+      $atts = array();
+
+      $token = $item['field_image_title']['#items'][0]['safe_value'];
+      $token = strtolower($token);
+      $token = str_replace(' ', '-', $token);
+
+      $atts['data-token'] = $token;
+
+      $variables['item_attributes_array'][$delta] = $atts;
+    }
+  }
+}
+
+/**
  * Implements theme_field().
  *
  * Output HTML for a Longtail Video Player
@@ -412,6 +443,22 @@ function pivot_field__field_person_ref__article($variables) {
 /**
  * Implements theme_field().
  *
+ * Output HTML for a person reference as the author of an article
+ */
+function pivot_field__field_person_ref__gallery($variables) {
+  $output = '';
+
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<span class="author">' . drupal_render($item) . '</span>';
+  }
+
+  return $output;
+}
+
+
+/**
+ * Implements theme_field().
+ *
  * Output HTML for a promo title.
  */
 function pivot_field__field_promo_headline($variables) {
@@ -422,6 +469,66 @@ function pivot_field__field_promo_headline($variables) {
   }
 
   return $output;
+}
+
+/**
+ * Implements theme_field().
+ *
+ * Output HTML for gallery images
+ */
+function pivot_field__field_gallery_images($variables) {
+
+  $output = '';
+
+  $output .= '<div id="gallery-content"' . $variables['attributes'] . '>';
+  $output .= '<ul class="' . $variables['classes'] . '"' . $variables['content_attributes'] . '>';
+
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<li class="slide' . $delta . ' gallery-slide"' . $variables['item_attributes'][$delta] . '>';
+    $output .= '<figure>';
+    $output .= '<div class="image-content-wrapper"><div class="image">'. drupal_render($item['file']) . '</div></div>';
+    $output .= '<figcaption class="photo-caption">';
+    $output .= drupal_render($item);
+    $output .= '</figcaption>';
+    $output .= '</figure>';
+    $output .= '</li>';
+  }
+
+  $output .= '</ul></div>';
+
+  return $output;
+}
+
+/**
+ * Implements theme_field().
+ *
+ * Output HTML for gallery image headlines
+ */
+function pivot_field__field_image_title($variables) {
+  $output = '';
+
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<h2 class="headline ' . $variables['classes'] . '"' . $variables['attributes'] . '>' . drupal_render($item) . '</h2>';
+  }
+
+  return $output;
+
+}
+
+/**
+ * Implements theme_field().
+ *
+ * Output HTML for gallery image descriptions
+ */
+function pivot_field__field_image_description($variables) {
+  $output = '';
+
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<div class="caption ' . $variables['classes'] . '"' . $variables['attributes'] . '>' . drupal_render($item) . '</h2>';
+  }
+
+  return $output;
+
 }
 
 
