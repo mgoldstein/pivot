@@ -14,32 +14,77 @@ function pivot_analytics_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'sitecatalyst_codesnippet';
-  $strongarm->value = 's.trackingServer="metrics.pivot.tv";
-if (("[current-page:url:path]" == "node") || ("[current-page:url:path]" == "homepage")) {
-  s.pageName = "homepage";
-} else if ("[current-page:url:path]" != "404") {
-  s.pageName = (window.location.pathname.replace(/^\\//, ""));
-  s.channel = (window.location.pathname.replace(/^\\//, "")).split( \'/\' )[0];
-}
-if ("[current-page:url:path]" == "404") {
-  s.pageType="errorPage";
-}
-if(\'[node:content-type:name]\'.length > 0) {
-	s.hier1 = "[node:content-type:name]";
-	if(\'[node:title]\'.length > 0) {
-		s.hier2 = "[node:content-type:name]:[node:title]";
-		if(\'[node:field_episode_number]\'.length > 0) {
-			s.hier3 = "[node:content-type:name]:[node:title]:Episode [node:field_episode_number]";
-		}
-	}
-}
-if("[current-page:url:args:first]" == "search") {
-     s.eVar7 = "[current-page:url:args:last]";
-}
-if("[node:content-type:machine-name]" == "show") {
-     s.eVar70 = "[node:title]";
-     s.prop70 = "[node:title]";
-}';
+  $strongarm->value = '(function ($, Drupal, window, document, s, undefined) {
+  s.trackingServer = "metrics.pivot.tv";
+  var url_path = "[current-page:url:path]";
+  if (url_path == "node" || url_path == "homepage") {
+    s.pageName = s.channel = "homepage";
+  } else if (url_path == "404") {
+    s.pageType = "errorPage";
+  }
+  else {
+    s.pageName = (window.location.pathname.replace(/^\\//, ""));
+    s.channel = (window.location.pathname.replace(/^\\//, "")).split( \'/\' )[0];
+  }
+  s.eVar30 = url_path;
+  if (window.location.pathname == "/") {
+    s.eVar12 = s.prop12 = (window.location.href.replace(/\\/$/, ""));
+  }
+  else {
+    s.eVar12 = s.prop12 = window.location.href;
+  }
+  var published_date = "[node:published:custom:Y-m-d]";
+  if (published_date.length > 0) {
+    s.eVar20 = s.prop19 = published_date;
+  }
+  var author_name = "[node:field-person-ref:name-field-person-name]";
+  if (author_name.length > 0) {
+    s.eVar17 = s.prop16 = author_name;
+  }
+  var url_parts = url_path.split("/");
+  if (url_parts.length > 1 && url_parts[0] == "search") {
+    s.eVar7 = "[current-page:url:args:last]";
+  }
+  var node_type = "[node:content-type:name]";
+  var node_title = "[node:title]";
+  if (node_type.length > 0) {
+    s.hier1 = node_type;
+    if(node_title.length > 0) {
+      s.hier2 = [node_type, node_title].join(":");
+    }
+    s.eVar4 = s.prop4 = node_type;
+  }
+  var sections = ["pivot/blog","movies","shows"];
+  var machine_name = "[node:content-type:machine-name]";
+  if (sections.indexOf(url_path) != -1) {
+    s.eVar4 = s.prop4 = "Section Landing";
+  }
+  else if (machine_name == "webform") {
+    s.eVar4 = s.prop4 = "Contact Us";
+  }
+  else if (url_parts.length >= 3) {
+    if (url_parts[0] == \'shows\' && url_parts[2] == \'episodes\') {
+      s.eVar4 = s.prop4 = "Episode List";
+    }
+    else if (url_parts[0] == \'shows\' && url_parts[2] == \'cast\') {
+      s.eVar4 = s.prop4 = "Cast List";
+    }
+  }
+  var now = new Date();
+  var weekdays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday",
+    "Saturday"];
+  var mins = now.getMinutes() < 30 ? "00" : "30";
+  var meridiem  = now.getHours() < 12 ? "AM" : "PM";
+  var hour = now.getHours();
+  if (hour == 0) { hour = 12; } else if (hour > 12) { hour = hour - 12; }
+  s.eVar8 = s.prop8 = hour.toString() + ":" + mins + " " + meridiem;
+  s.eVar9 = s.prop9 = weekdays[now.getDay()];
+  var show_title = $(\'#show-header\').data(\'show-title\');
+  if (show_title && show_title.length > 0) {
+    s.eVar70 = s.prop70 = show_title;
+  }
+})(jQuery, Drupal, this, this.document, window.s);
+';
   $export['sitecatalyst_codesnippet'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -109,48 +154,7 @@ if("[node:content-type:machine-name]" == "show") {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'sitecatalyst_variables';
-  $strongarm->value = array(
-    0 => array(
-      'name' => 's.prop4',
-      'value' => '[node:content-type:name]',
-    ),
-    1 => array(
-      'name' => 's.eVar4',
-      'value' => '[node:content-type:name]',
-    ),
-    2 => array(
-      'name' => 's.eVar20',
-      'value' => '[node:published:custom:Y-m-d]',
-    ),
-    3 => array(
-      'name' => 's.prop19',
-      'value' => '[node:published:custom:Y-m-d]',
-    ),
-    4 => array(
-      'name' => 's.eVar17',
-      'value' => '[node:field-person-ref:field_person_name]',
-    ),
-    5 => array(
-      'name' => 's.prop16',
-      'value' => '[node:field-person-ref:field_person_name]',
-    ),
-    6 => array(
-      'name' => 's.eVar19',
-      'value' => '[node:field-section-ref:title]',
-    ),
-    7 => array(
-      'name' => 's.prop18',
-      'value' => '[node:field-section-ref:title]',
-    ),
-    8 => array(
-      'name' => 's.eVar70',
-      'value' => '[node:field-show-ref:title]',
-    ),
-    9 => array(
-      'name' => 's.prop70',
-      'value' => '[node:field-show-ref:title]',
-    ),
-  );
+  $strongarm->value = array();
   $export['sitecatalyst_variables'] = $strongarm;
 
   $strongarm = new stdClass();
