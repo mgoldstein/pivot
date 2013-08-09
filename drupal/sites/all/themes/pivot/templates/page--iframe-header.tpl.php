@@ -15,8 +15,6 @@
             click = "click",
             isTouchmove = false;
 
-        parent.pivotHeaderHeight = parent.pivotHeaderHeight || function() {};
-
         if ( "ontouchend" in document.documentElement ) click = "touchend";
 
         parent.pivotHeaderHeight($siteHeader.height() + " px");
