@@ -13,10 +13,13 @@
   font-weight: normal;
   font-style: normal; }
 
+body.page-dml-home div#content, body.page-dml-quiz div#content {
+  color: #fff;
+}
 body.page-dml div#content {
   font-family: "Apercu Regular", Calibri, sans-serif;
   font-size-adjust: 0.508;
-  color: #fff; }
+  }
   body.page-dml div#content .italic, body.page-dml.page-dml-quiz div#content div#quiz-container div.quizResultsCopy a {
     font-family: "Apercu Italic", Calibri, sans-serif;
     font-size-adjust: 0.508;
