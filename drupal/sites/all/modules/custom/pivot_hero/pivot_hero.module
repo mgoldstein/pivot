@@ -48,6 +48,7 @@ function pivot_hero_preprocess_node(&$variables) {
 function pivot_hero_preprocess_page(&$variables) {
   if($variables['is_front'] == TRUE) {
     $variables['classes_array'][] = 'home';
+    drupal_add_js(drupal_get_path('module', 'pivot_hero'). '/js/pivot-hero-script.js');
   }
 }
 
