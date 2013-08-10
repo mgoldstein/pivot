@@ -14,6 +14,63 @@
 
 	Drupal.settings.touchEnabled = ( 'ontouchend' in document.documentElement ) ? true : false;
 
+	// define global settings for tpsocial
+	var tp_social_config = {
+		services: {
+			facebook: {
+				name: 'facebook',
+				url: '{current}'
+			},
+			twitter: {
+				name: 'twitter',
+				text: '{{title}}',
+				via: 'PivotTV',
+				url: '{current}'
+			},
+			googleplus: {
+				name: 'googleplus',
+				url: '{current}'
+			},
+			// pinterest: {
+			// 	name: 'pinterest',
+			// 	url: '{current}',
+			// 	media: first_image,
+			// 	description: first_description
+			// },
+			// tumblr: {
+			// 	name: 'tumblr',
+			// 	url: '{current}',
+			// 	source: first_image,
+			// 	caption: first_description
+			// },
+			email: {
+				name: 'email',
+				url: '{current}'
+			}
+		}
+	};
+
+	var more_services = {
+		pinterest: {
+			name: 'pinterest',
+			// media: main_image // define this per share type
+		},
+		tumblr_link: {name: 'tumblr_link'},
+		gmail: {name: 'gmail'},
+		hotmail: {name: 'hotmail'},
+		yahoomail: {name: 'yahoomail'},
+		aolmail: {name: 'aolmail'},
+
+		//{name: 'myspace'},
+		//{name: 'delicious'},
+		linkedin: {name: 'linkedin'},
+		//{name: 'myaol'},
+		//{name: 'live'},
+		digg: {name: 'digg'},
+		stumbleupon: {name: 'stumbleupon'},
+		//{name: 'hyves'}
+	};
+
 	Drupal.behaviors.globalNavigationResponsive = {
 		attach: function() {
 			// Responsive nav
@@ -106,21 +163,12 @@
 
 			var $body = $('body');
 
-			if ($body.is('.node-type-article') || $body.is('.page-shows')) {
+			if (
+				$body.is('.node-type-article') ||
+				$body.is('.page-shows') ||
+				$body.is('.node-type-gallery')
+			) {
 				// Social share buttons
-				var tp_social_config = {
-					services: [
-						{name: 'facebook'},
-						{
-							name: 'twitter',
-							text: '{{title}}',
-							via: 'PivotTV'
-						},
-						{name: 'googleplus'},
-						//{name: 'reddit'},
-						{name: 'email'}
-					]
-				};
 
 				$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
@@ -130,30 +178,15 @@
 					var main_image = $('.field-name-field-main-image img').attr('src');
 				} else if ($body.is('.page-shows')) {
 					var main_image = $('.show-hero .image img').attr('src');
+				} else if ($body.is('.node-type-gallery')) {
+					var main_image = false; // TODO add a gallery image
 				}
 
-				var more_services = {
-					pinterest: {
-						name: 'pinterest',
-						media: main_image
-					},
-					tumblr_link: {name: 'tumblr_link'},
-					gmail: {name: 'gmail'},
-					hotmail: {name: 'hotmail'},
-					yahoomail: {name: 'yahoomail'},
-					aolmail: {name: 'aolmail'},
-
-					//{name: 'myspace'},
-					//{name: 'delicious'},
-					linkedin: {name: 'linkedin'},
-					//{name: 'myaol'},
-					//{name: 'live'},
-					digg: {name: 'digg'},
-					stumbleupon: {name: 'stumbleupon'},
-					//{name: 'hyves'}
-				};
-
-				if ( !main_image ) delete more_services.pinterest;
+				if ( !main_image ) {
+					delete more_services.pinterest;
+				} else {
+					more_services.pinterest.media = main_image;
+				}
 
 				$('.article-more-shares p').tpsocial({
 					services: more_services
@@ -169,7 +202,7 @@
 					offsetNode: '.view-content-content'
 				});
 
-
+				// TODO: Restore analytics when someone explains them to me
 				//takepart.analytics.skip_addthis = true;
 
 				// Social more box
@@ -195,6 +228,244 @@
 						e.preventDefault();
 					})
 					;
+			}
+		}
+	};
+
+	Drupal.behaviors.gallerySetup = {
+		attach: function() {
+			var $body = $('body'),
+				$window = $(window);
+
+			if ($body.is('.page-node.node-type-gallery')) {
+
+				// For html5 history, change this to the number the sub-dir index of your root photo gallery url
+				// Example http://participant-static.local/pivot/pages/show_photos.php = 3
+				var gallery_root_index = window.location.pathname.substr(1).split('/').length;
+
+				// Tracking for "Next gallery" clicks
+				// $body
+				// 	.delegate('#next-gallery a, .forward-to-gallery a', 'click', function() {
+				// 		takepart.analytics.track('gallery-next-gallery-click', {
+				// 			headline: next_gallery_headline,
+				// 			topic: next_gallery_topic,
+				// 			a: this
+				// 		});
+				// 	});
+
+				var $gallery_main = $('#gallery-main');
+				var $slides = $('#gallery-content > ul');
+				var base_url = document.location.href.split(/\/|#/).slice(0,gallery_root_index + 3).join('/');
+				var $fb_comment = $('.fb-comments');
+				var fb_comment_el = $fb_comment[0];
+
+				var $first_slide = $slides.find('> li:first-child');
+				var first_image = $first_slide.find('img').attr('src');
+				var first_description = $first_slide.find('.photo-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
+				var skip_next_pageview = false;
+
+				// Update ads/fb comments etc per slide load
+				var update_to = null;
+				var update_page = function(token) {
+					clearTimeout(update_to);
+
+					// TODO: Restore gallery analytics when I understand the requirements
+					// if ( !skip_next_pageview ) {
+					// 	setTimeout((function(token, skip_next_pageview) {
+					// 		return function() {
+					// 			takepart.analytics.track('gallery-track-slide', {
+					// 				token: token,
+					// 				skip_pageview: skip_next_pageview,
+					// 				next_gallery_headline: next_gallery_headline,
+					// 				next_gallery_topic: next_gallery_topic
+					// 			});
+					// 		}
+					// 	})(token, skip_next_pageview), 500);
+					// } else {
+					// 	skip_next_pageview = false;
+					// }
+
+					update_to = setTimeout(function() {
+						var token = get_curtoken();
+
+						if ( token == 'next-gallery' ) {
+							$fb_comment.hide();
+						} else {
+							$fb_comment.show();
+						}
+
+						// show_fb_comments(fb_comment_el, base_url + '#' + token);
+
+						if ( googletag != undefined ) {
+							googletag.pubads().refresh();
+						}
+					}, 500);
+				};
+
+				// TODO: Restore gallery analytics when I understand the requirements
+				// prevent 2 email calls from firing
+				// takepart.analytics.skip_addthis = true;
+
+				// Get current "token" from last folder of URL
+				var get_curtoken = function() {
+					var token = document.location.href.split(/\/|#/).slice(gallery_root_index + 3,gallery_root_index + 4) + '';
+					// Allow for back buttoning to #first-slide cover page
+					return token;
+				};
+
+				// Update slideshow based on url
+				var goto_slide = function() {
+					var token = get_curtoken();
+					var $slide = $slides.find('[data-token="' + token + '"]');
+					$slides.tpslide_to($slide);
+				};
+
+				// Return history functionality in browser
+				var has_history = function() {
+					return (typeof history != 'undefined');
+				};
+
+				// Update html5 history if token is new
+				var hpush = function(token, title, replace) {
+					var curtoken = get_curtoken();
+					var replace = replace || false;
+					if ( curtoken == token ) return;
+					update_page(token);
+
+					if ( !has_history() ) return;
+					if ( replace ) {
+						history.replaceState(null, title, base_url + '#' + token);
+					} else {
+						history.pushState(null, title, base_url + '#' + token);
+					}
+				};
+
+				// Callback for slideshow sliding a slide
+				var $current_slide = null;
+				var slide_callback = function($current) {
+					var old_token = ( $current_slide ) ? $current_slide.data('token') : null;
+					$current_slide = $current;
+
+					if ( !$current_slide.prev().length ) {
+						$gallery_main.addClass('on-first');
+					} else {
+						$gallery_main.removeClass('on-first');
+					}
+
+					if ( !$current_slide.next().length ) {
+						$gallery_main.addClass('on-last');
+					} else {
+						$gallery_main.removeClass('on-last');
+					}
+
+					var current_image = $current_slide.find('img').attr('src');
+					// more_services.pinterest.media = current_image;
+					// tp_social_config.services.tumblr.source = current_image;
+
+					var current_description = $current_slide.find('.photo-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
+					// more_services.pinterest.description = current_description;
+					// tp_social_config.services.tumblr.caption = current_description;
+
+					var token = $current.data('token');
+					if ( token == 'next-gallery' ) {
+						$('#gallery-header-main .social').css({visibility: 'hidden', display: 'none'});
+					} else {
+						$('#gallery-header-main .social').css({visibility: 'visible', display: 'block'});
+					}
+
+					$slides.height($current_slide.height());
+
+					if ( !gallery_showing ) return;
+					hpush(token, $current.find('.headline').text());
+				}
+
+				var gallery_showing = false;
+				var show_gallery = function(replace) {
+					if ( gallery_showing ) return;
+					gallery_showing = true;
+					$gallery_main.removeClass('hide_gallery').addClass('show_gallery');
+					hpush($current_slide.data('token'), $current_slide.find('.headline').text(), replace);
+				};
+
+				var hide_gallery = function() {
+					$gallery_cover.show();
+					$gallery_main.removeClass('show_gallery').addClass('hide_gallery');
+
+					var current_image = $gallery_cover.find('img').attr('src');
+					tp_social_config.services.pinterest.media = current_image;
+					// tp_social_config.services.tumblr.source = current_image;
+
+					var current_description = $gallery_cover.find('.headline').text();
+					tp_social_config.services.pinterest.description = current_description;
+					// tp_social_config.services.tumblr.caption = current_description;
+
+					gallery_showing = false;
+				};
+
+				// Make slideshow
+				$slides.tpslide({
+					onslide: slide_callback,
+					threshold: 75,
+					swipeTarget: 'img'
+				});
+
+				// Make img clicks forward gallery
+				$slides
+					.delegate('.gallery-slide img, .image-content-wrapper', 'mouseover', function() {
+						$gallery_main.addClass('image-hover');
+					})
+					.delegate('.gallery-slide img, .image-content-wrapper', 'mouseout', function() {
+						$gallery_main.removeClass('image-hover');
+					})
+					.delegate('.gallery-slide img', 'click', function() {
+						$slides.tpslide_next(false);
+					})
+					;
+
+				// Fix heights for responsive
+				$window.bind('resize', function () {
+					$slides.height($current_slide.height());
+				});
+
+				// Event for fake back button to go to cover page
+				$('.back-to-cover a').bind('click', function(e) {
+					e.preventDefault();
+					if ( !gallery_showing ) return;
+					hide_gallery();
+					hpush('', $('#gallery-cover-main').find('.headline').text());
+				});
+
+				// Initialize page based on URL
+				if ( get_curtoken() && get_curtoken() != 'first-slide' ) {
+					goto_slide();
+					show_gallery();
+				} else if ( get_curtoken() == 'first-slide' ) {
+					skip_next_pageview = true;
+					show_gallery(true);
+				} else {
+					skip_next_pageview = true;
+					show_gallery(true);
+				}
+
+				var first_pop = true;
+				// Listen for html5 history updates/back button
+				window.addEventListener('popstate', function(e) {
+					if ( first_pop ) {
+						first_pop = false;
+						return;
+					}
+
+					var token = get_curtoken();
+
+					if ( token ) {
+						goto_slide();
+						show_gallery();
+					} else if ( $gallery_cover.length ) {
+						hide_gallery();
+					}
+
+					update_page(token);
+				});
 			}
 		}
 	};
