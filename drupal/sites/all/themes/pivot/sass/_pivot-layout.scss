@@ -33,6 +33,9 @@ $zen-gutter-width: 20px;
 		width: 300px;
 		margin: 0 auto;
 		text-align: center;
+		@media (max-width: 999px) {
+			clear: both;
+		}
 		@media (min-width: 1000px) {
 			@include zen-grid-item(4,9);
 
