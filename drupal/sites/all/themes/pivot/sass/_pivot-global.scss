@@ -1022,27 +1022,6 @@ input[type=email] {
 				}
 			} // .article-footer
 
-			#article-comments {
-				margin-top: 40px;
-
-				.headline {
-
-				}
-
-				.fb_comments_count {
-					background-image: url(../images/comments_counter.png);
-					background-repeat: no-repeat;
-					width: 27px;
-					height: 21px;
-					line-height: 18px;
-					font-size: 13px;
-					font-family: "Apercu Mono Regular", monospace;
-					text-align: center;
-					display: inline-block;
-					color: #fff;
-					vertical-align: bottom;
-				}
-			} // #article-comments
 		} // .node-article
 	} // #content
 } // .node-type-article
@@ -1373,11 +1352,16 @@ input[type=email] {
 		cursor: default;
 	}
 
-	#gallery-related {
-		@media (min-width: 1000px) {
+	@media (min-width: 1000px) {
+		#gallery-related {
 			@include zen-clear();
 			@include zen-grid-item(8,1);
 		}
+	}
+
+	#gallery-related {
+		background-color: #fff;
+		padding: 20px;
 	}
 
 	// not implemented yet
@@ -1674,6 +1658,30 @@ input[type=email] {
 		font-family: "Apercu Mono Regular", monospace;
 	}
 }
+
+#article-comments {
+	margin-top: 40px;
+
+	.headline {
+
+	}
+
+	.fb_comments_count {
+		background-image: url(../images/comments_counter.png);
+		background-repeat: no-repeat;
+		width: 27px;
+		height: 21px;
+		line-height: 18px;
+		font-size: 13px;
+		font-family: "Apercu Mono Regular", monospace;
+		text-align: center;
+		display: inline-block;
+		color: #fff;
+		vertical-align: bottom;
+	}
+} // #article-comments
+
+
 
 /* ============================================================
 || Main site blog
