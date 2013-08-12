@@ -1055,8 +1055,6 @@ input[type=email] {
 
 	// node styles
 	#gallery-main {
-		width: 940px;
-		margin: 0 auto;
 
 		.social {
 			float: right;
@@ -1083,18 +1081,30 @@ input[type=email] {
 				margin-left: 12px;
 			}
 
-			//override 
-			.focusin #article-more-shares {
-				z-index: 1;
+			#article-social-more {
+				&.focusin {
+					position: static;
+					#article-more-shares {
+						z-index: 1;
+						left: 0;
+						right: auto;
+						@media (min-width: 1000px) {
+							max-width: 260px;
+						}
+					}
+				}
 			}
 		}
 
 		// the top, full-width block
 		#gallery-photos {
+			@include zen-clear();
+			@include zen-grid-item(12,1);
 			position: relative;
 			background: #fff;
+			width: 940px;
 			padding: 20px 20px 1px;
-			margin-bottom: 20px;
+			margin: 0 10px 20px;
 		}
 
 
@@ -1200,142 +1210,52 @@ input[type=email] {
 	}
 
 
-	#gallery-main .image-content-wrapper {
-		float: left;
-		line-height: 335px;
-		height: 335px;
-		background: #000;
-		width: 600px;
-		text-align: center;
-	}
+	#gallery-photos {
+		.image-area-inner {
+			position: relative;
+		}
 
-	#gallery-main .image-content-wrapper .image {
-		font-size: 0;
-	}
+		.gallery-slide img {
+			display: inline-block;
+			vertical-align: middle;
+			cursor: pointer;
+		}
 
-	#gallery-photos .image-area-inner {
-		position: relative;
-	}
+		#gallery-header-main {
+			> .headline {
+				font-size: 32px;
+				font-weight: bold;
+				margin-bottom: 12px;
+			}
 
-	#gallery-photos .gallery-slide img {
-		display: inline-block;
-		vertical-align: middle;
-		cursor: pointer;
-	}
+			.secondary {
+				font-size: 13px;
+				color: #777;
 
-	#gallery-cover-main {
-		width: 31em;
-		margin: auto;
-		margin-bottom: 1.5em;
-		text-align: center;
-	}
-
-	#gallery-cover-main .enter-link,
-	#next-gallery .enter-link {
-		position: relative;
-		display: inline-block;
-	}
-
-	.enter-link .image {
-		clear: both;
-		text-align: center;
-	}
-
-	.enter-link .image img {
-		line-height: 1;
-		vertical-align: middle;
-		cursor: pointer;
-	}
-
-	.enter-link .content {
-		position: absolute;
-		left: 0;
-		bottom: 0;
-		width: 100%;
-		padding: 1em 200px 1em 1em;
-		color: #fff;
-		white-space: normal;
-		text-align: left;
-		line-height: 1;
-
-		background: -moz-linear-gradient(left,  rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.7) 69%, rgba(0,0,0,0) 91%, rgba(0,0,0,0) 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.7)), color-stop(69%,rgba(0,0,0,0.7)), color-stop(91%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(left,  rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.7) 69%,rgba(0,0,0,0) 91%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(left,  rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.7) 69%,rgba(0,0,0,0) 91%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(left,  rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.7) 69%,rgba(0,0,0,0) 91%,rgba(0,0,0,0) 100%); /* IE10+ */
-		background: linear-gradient(to right,  rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.7) 69%,rgba(0,0,0,0) 91%,rgba(0,0,0,0) 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
-	}
-
-	.enter-link .content .description {
-		font-size: 12px;
-		text-transform: uppercase;
-		padding-bottom: 2px;
-	}
-
-	.enter-link .content .enter {
-		background: rgba(28, 169, 231, .8);
-		font-size: 13px;
-		display: block;
-		padding: 15px;
-		position: absolute;
-		right: 0;
-		height: 45px;
-		top: 50%;
-		margin-top: -23px;
-		color: #fff;
-		text-decoration: none;
-		line-height: 14px;
-	}
-
-	.enter-link .content .enter:hover {
-		background: rgba(0, 0, 0, .8);
-	}
-
-	.enter-link .content .enter:after {
-		display: inline-block;
-		content: " ";
-		width: 9px;
-		height: 14px;
-		background-repeat: no-repeat;
-		background-image: url(../images/gallery_enter.png); /** sprite-ref: mysprite; */
-		vertical-align: middle;
-		margin-left: 5px;
-	}
-
-	.enter-link .content .headline {
-		font-size: 32px;
-		font-weight: bold;
-	}
-
-	/* Slideshow section */
-
-	#gallery-photos #gallery-header-main > .headline {
-		font-size: 32px;
-		font-weight: bold;
-		margin-bottom: 12px;
-	}
-
-	#gallery-photos #gallery-header-main .secondary {
-		font-size: 13px;
-		color: #777;
-	}
-
-	#gallery-photos #gallery-header-main .secondary a {
-		color: #777;
-	}
-
-	#gallery-photos #gallery-header-main .secondary a:hover {
-		color: #1CA9E7;
-		text-decoration: none;
+				a {
+					color: #777;
+					&:hover {
+						color: #1CA9E7;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+		.image-content-wrapper {
+			float: left;
+			line-height: 335px;
+			height: 335px;
+			background: #000;
+			width: 600px;
+			text-align: center;
+			.image {
+				font-size: 0;
+			}
+		}
 	}
 
 	#gallery-content .tpslide_slide {
 		position: relative;
-	}
-
-	#gallery-photos .enter-link {
-		display: block;
 	}
 
 
@@ -1350,47 +1270,6 @@ input[type=email] {
 
 	.on-last .tpslide_next {
 		display: none;
-	}
-
-	/* related stuff */
-
-	#gallery-related {
-		float: left;
-		width: 31em;
-		padding-left: 6em;
-		padding-left: 0;
-		margin-top: 1em;
-	}
-
-	#related-galleries ul {
-		float: left;
-		width: 100%;
-	}
-
-	#related-galleries li {
-		float: left;
-		width: 300px;
-	}
-
-	#related-galleries img {
-		display: block;
-		margin-bottom: 5px;
-	}
-
-	#related-galleries a {
-		color: #000;
-		font-weight: bold;
-		font-size: 16px;
-		line-height: 1.5;
-	}
-
-	#related-galleries a:hover {
-		color: #1CA9E7;
-		text-decoration: none;
-	}
-
-	#related-galleries li:first-child {
-		margin-right: 20px;
 	}
 
 	/* TP Slide plugin */
@@ -1492,16 +1371,12 @@ input[type=email] {
 		cursor: default;
 	}
 
-
-	/* new photo stuff */
 	#gallery-related {
-		margin-right: 20px;
-		width: 30em;
+		@include zen-clear();
+		@include zen-grid-item(8,1);
 	}
 
-	.takepart-take-action-widget {
-		margin-bottom: 20px;
-	}
+	// not implemented yet
 	.page-tags,
 	.comment-wrapper {
 		background: #fff;
@@ -1523,9 +1398,6 @@ input[type=email] {
 	}
 	.page-tags .tag:last-child:after {
 		display: none;
-	}
-	.comment-wrapper {
-		padding-bottom: 0;
 	}
 }
 
