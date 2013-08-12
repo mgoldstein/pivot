@@ -257,14 +257,12 @@
 				var $slides = $('#gallery-content > ul');
 				var base_url = document.location.href.split(/\/|#/).slice(0,gallery_root_index + 3).join('/');
 				var $fb_comment = $('.fb-comments');
-				var fb_comment_el = $fb_comment[0];
 
 				var $first_slide = $slides.find('> li:first-child');
 				var first_image = $first_slide.find('img').attr('src');
 				var first_description = $first_slide.find('.photo-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
 				var skip_next_pageview = false;
 
-				// Update ads/fb comments etc per slide load
 				var update_to = null;
 				var update_page = function(token) {
 					clearTimeout(update_to);
@@ -286,18 +284,19 @@
 					// }
 
 					update_to = setTimeout(function() {
-						var token = get_curtoken();
+						var token = base_url + "#" + get_curtoken();
 
-						if ( token == 'next-gallery' ) {
-							$fb_comment.hide();
-						} else {
-							$fb_comment.show();
-						}
+						// We never hide this
+						$fb_comment
+							.empty()
+							.removeClass('fb_iframe_widget')
+							.removeAttr('fb-xfbml-state')
+							.attr('data-href', token)
+						;
+						FB.XFBML.parse();
 
-						// show_fb_comments(fb_comment_el, base_url + '#' + token);
-
-						if ( googletag != undefined ) {
-							googletag.pubads().refresh();
+						if ( window.googletag != undefined ) {
+							window.googletag.pubads().refresh();
 						}
 					}, 500);
 				};
@@ -477,7 +476,6 @@
 			}
 		}
 	}
-
 })(jQuery, Drupal, this, this.document);
 
 
