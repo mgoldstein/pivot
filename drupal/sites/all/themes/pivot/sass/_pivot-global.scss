@@ -1088,9 +1088,7 @@ input[type=email] {
 						z-index: 1;
 						left: 0;
 						right: auto;
-						@media (min-width: 1000px) {
-							max-width: 260px;
-						}
+						max-width: 260px;
 					}
 				}
 			}
@@ -1099,12 +1097,11 @@ input[type=email] {
 		// the top, full-width block
 		#gallery-photos {
 			@include zen-clear();
-			@include zen-grid-item(12,1);
 			position: relative;
 			background: #fff;
-			width: 940px;
 			padding: 20px 20px 1px;
-			margin: 0 10px 20px;
+			margin: 0 auto 20px;
+			width: 100%;
 		}
 
 
@@ -1155,7 +1152,11 @@ input[type=email] {
 		}
 
 		.photo-caption {
-			width: 300px;
+			height: 10em;
+			@media (min-width: 1000px) {
+				width: 300px;
+				height: 335px;
+			}
 			float: right;
 			padding: 1em;
 			white-space: normal;
@@ -1163,7 +1164,6 @@ input[type=email] {
 			background: #f6f8f9;
 			border: 1px solid #e5e5e5;
 			border-left: none;
-			height: 335px;
 			overflow: auto;
 			color: #333;
 
@@ -1243,21 +1243,25 @@ input[type=email] {
 		}
 		.image-content-wrapper {
 			float: left;
-			line-height: 335px;
-			height: 335px;
-			background: #000;
-			width: 600px;
+			// line-height: 335px;
 			text-align: center;
+			background: #000;
+			width: 100%;
+			@media (min-width: 1000px) {
+				width: 600px;
+				height: 335px;
+			}
+
 			.image {
 				font-size: 0;
+
+				img {
+					max-width: 100% !important;
+					height: auto !important;
+				}
 			}
 		}
 	}
-
-	#gallery-content .tpslide_slide {
-		position: relative;
-	}
-
 
 	.forward-to-gallery,
 	.back-to-cover {
@@ -1285,17 +1289,16 @@ input[type=email] {
 		overflow: hidden;
 	}
 
-	.on-first .back-to-cover,
-	.on-last .forward-to-gallery,
 	.tpslide_nav {
 		display: block;
 		position: absolute;
 		bottom: -45px;
-		width: 620px;
+		width: 100%;
+		@media (min-width: 1000px) {
+			width: 620px;			
+		}
 	}
 
-	.forward-to-gallery a,
-	.back-to-cover a,
 	.tpslide_prev,
 	.tpslide_next {
 		width: 22px;
@@ -1310,26 +1313,21 @@ input[type=email] {
 		bottom: 0;
 	}
 
-	.forward-to-gallery a,
 	.tpslide_next {
-		background-image: url(../images/gallery_next_rollover.png); /** sprite-ref: mysprite; */
-		left: 56%;
+		background-image: url(../images/gallery_next_rollover.png);
+		left: 60%;
 	}
 
-	.back-to-cover a,
 	.tpslide_prev {
-		background-image: url(../images/gallery_prev_rollover.png); /** sprite-ref: mysprite; */
-		right: 56%;
+		background-image: url(../images/gallery_prev_rollover.png);
+		right: 60%;
 	}
 
-	.image-hover .forward-to-gallery a,
 	.image-hover .tpslide_next,
-	.forward-to-gallery a:hover,
 	.tpslide_next:hover {
 		background-image: url(../images/gallery_next.png); /** sprite-ref: mysprite; */
 	}
 
-	.back-to-cover a:hover,
 	.tpslide_prev:hover {
 		background-image: url(../images/gallery_prev.png); /** sprite-ref: mysprite; */
 	}
@@ -1344,7 +1342,6 @@ input[type=email] {
 
 	.tpslide_wrapper .tpslide_active {
 		display: block;
-		width: 620px;
 		text-align: center;
 		line-height: 35px;
 		position: absolute;
@@ -1354,6 +1351,10 @@ input[type=email] {
 		color: #777;
 		text-decoration: none;
 		z-index: 1;
+		width: 100%;
+		@media (min-width: 1000px) {
+			width: 620px;			
+		}
 	}
 
 	#gallery-content > ul > li {
@@ -1364,7 +1365,8 @@ input[type=email] {
 	.tpslide_slide {
 		display: inline-block; *display: inline; zoom: 1;
 		vertical-align: top;
-		height: 335px;
+		position: relative;
+		// height: 335px;
 	}
 
 	.tpslide_nav_slides a {
@@ -1372,8 +1374,10 @@ input[type=email] {
 	}
 
 	#gallery-related {
-		@include zen-clear();
-		@include zen-grid-item(8,1);
+		@media (min-width: 1000px) {
+			@include zen-clear();
+			@include zen-grid-item(8,1);
+		}
 	}
 
 	// not implemented yet
