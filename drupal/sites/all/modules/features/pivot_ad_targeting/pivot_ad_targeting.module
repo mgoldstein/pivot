@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Pivot Ad Targeting feature.
+ */
+
+include_once 'pivot_ad_targeting.features.inc';

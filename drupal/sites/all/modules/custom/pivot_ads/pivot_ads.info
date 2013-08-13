@@ -1,0 +1,6 @@
+name = Pivot Ads
+description = Provides custom ad targeting for the Pivot.tv website
+package = Pivot
+core = 7.x
+files[] = pivot_ads.module
+dependencies[] = dfp
