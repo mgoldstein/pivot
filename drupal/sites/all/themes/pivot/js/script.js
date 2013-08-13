@@ -166,7 +166,16 @@
 			if (!$article_comments.length) return;
 
 			var $comments = $article_comments.find('.fb_comments'),
-				width = $comments.data('width');
+				width = $comments.data('width'),
+				loadFacebookTimeout = false,
+				initFB = function() {
+						clearTimeout('loadFacebookTimeout');
+					if (!!window.FB) {
+						FB.XFBML.parse();
+					} else {
+						setTimeout(initFB, 250);
+					}
+				};
 
 			$article_comments
 				.find('.comment-count')
@@ -179,7 +188,7 @@
 				.html('<fb:comments href="' + window.location.href + '" width="' + width + '"></fb:comments>')
 			;
 
-			FB.XFBML.parse();
+			loadFacebookTimeout = window.setTimeout(initFB, 500);
 		}
 	};
 
