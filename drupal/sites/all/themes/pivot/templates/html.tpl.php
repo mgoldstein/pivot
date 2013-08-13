@@ -112,5 +112,6 @@
         parent.kpiFrameSize(pxH);
       </script>
   <?php endif; ?>
+<div id="fb-root"></div>
 </body>
 </html>

@@ -31,17 +31,11 @@
       <?php print render($content['field_gallery_images']); ?>
   </div>
   <div id="gallery-related" class="primary with-sidebar">
-    <?php hide($content['facebook_comments']); // we print this later ?>
     <?php print render($content); ?>
 
     <section id="article-comments">
-      <h3 class="headline">
-  Comments
-  <span class="comment-count"><fb:comments-count href="<?php print $article_fb_comments_url; ?>" class="fb_comments_count_zero"><span class="fb_comments_count">0</span></fb:comments-count></span>
-      </h3>
-      <div class="fb_comments">
-        <?php print render($content['facebook_comments']); ?>
-      </div>
+      <h3 class="headline">Comments <span class="comment-count"></span></h3>
+      <div class="fb_comments" data-width="600"></div>
     </section>
 
   </div>
