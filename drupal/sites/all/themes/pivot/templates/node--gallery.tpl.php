@@ -14,6 +14,7 @@
           <p class="pubdate">
             <?php print date("F j, Y" ,$published_at); ?>
           </p>
+          <!-- <p class="comment"><a href="#article-comments">Comment</a></p> -->
         </div>
 
         <aside class="social above">
