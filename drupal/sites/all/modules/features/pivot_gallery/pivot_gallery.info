@@ -15,6 +15,7 @@ features[features_api][] = api:2
 features[field_instance][] = node-gallery-field_article_subtitle
 features[field_instance][] = node-gallery-field_description
 features[field_instance][] = node-gallery-field_gallery_images
+features[field_instance][] = node-gallery-field_global_tags
 features[field_instance][] = node-gallery-field_person_ref
 features[field_instance][] = node-gallery-field_promo_abstract
 features[field_instance][] = node-gallery-field_promo_headline

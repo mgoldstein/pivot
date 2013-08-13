@@ -99,16 +99,16 @@ function pivot_gallery_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '9',
-        ),
-        'metatags' => array(
-          'weight' => '12',
-        ),
-        'redirect' => array(
           'weight' => '10',
         ),
-        'xmlsitemap' => array(
+        'metatags' => array(
+          'weight' => '13',
+        ),
+        'redirect' => array(
           'weight' => '11',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '12',
         ),
       ),
       'display' => array(),
