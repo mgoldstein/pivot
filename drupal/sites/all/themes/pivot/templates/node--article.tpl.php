@@ -143,7 +143,6 @@
     // We hide the comments and links now so that we can render them later.
     hide($content['comments']);
     hide($content['links']);
-    hide($content['facebook_comments']); // we print this later
     print render($content);
   ?>
 
@@ -164,13 +163,8 @@
     </nav>
     -->
     <section id="article-comments">
-      <h3 class="headline">
-	Comments
-	<span class="comment-count"><fb:comments-count href="<?php print $article_fb_comments_url; ?>" class="fb_comments_count_zero"><span class="fb_comments_count">0</span></fb:comments-count></span>
-      </h3>
-      <div class="fb_comments">
-        <?php print render($content['facebook_comments']); ?>
-      </div>
+      <h3 class="headline">Comments <span class="comment-count"></span></h3>
+      <div class="fb_comments" data-width="580"></div>
     </section>
   </footer>
 </article><!-- /.node -->

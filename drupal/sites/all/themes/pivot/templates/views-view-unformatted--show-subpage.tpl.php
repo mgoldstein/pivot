@@ -29,9 +29,8 @@
       <?php print $row; ?>
     </div>
   <?php endforeach; ?>
-  <?php
-    if (function_exists('facebook_comments_display')) {
-      print facebook_comments_display('528', '15');
-    }
-  ?>
+    <section id="article-comments">
+      <h3 class="headline">Comments <span class="comment-count"></span></h3>
+      <div class="fb_comments" data-width="528"></div>
+    </section>
   </div>

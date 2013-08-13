@@ -134,7 +134,8 @@ function pivot_preprocess_html(&$variables, $hook) {
   drupal_add_js("WebFontConfig = { fontdeck: { id: '35228' } };", array('type' => 'inline', 'scope'=> 'footer', 'weight' => 10));
   drupal_add_js('//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js', array('type' => 'external', 'scope' => 'footer', 'weight' => 11));
 
-  // fb init
+  // Include Facebook JS SDK
+  // The fb-root <div> is in html.tpl.php
   drupal_add_js("
 window.fbAsyncInit = function() {
   FB.init({
@@ -145,7 +146,16 @@ window.fbAsyncInit = function() {
     xfbml      : true  // parse XFBML
   });
 };
-", array('type' => 'inline', 'scope'=> 'header'));
+", array('type' => 'inline', 'scope'=> 'footer'));
+  drupal_add_js("
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = '//connect.facebook.net/en_US/all.js#xfbml=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+", array('type' => 'inline', 'scope' => 'footer'));
 
   // The body tag's classes are controlled by the $classes_array variable. To
   // remove a class from $classes_array, use array_diff().
@@ -214,6 +224,9 @@ function pivot_process_page(&$variables) {
 * Implements hook_preprocess_node().
 */
 function pivot_preprocess_node(&$variables, $hook) {
+  global $base_url;
+  $variables['fb_comments_url'] = $base_url .'/'. drupal_get_path_alias($_GET['q']);
+
   if($variables['view_mode'] == 'promo') {
     // add classes to promo <article>s
     $variables['classes_array'][] = 'promo';
@@ -252,9 +265,6 @@ function pivot_preprocess_node__video(&$variables, $hook) {
 }
 
 function pivot_preprocess_node__article(&$variables, $hook) {
-  global $base_url;
-  $variables['article_fb_comments_url'] = $base_url .'/'. drupal_get_path_alias($_GET['q']);
-
   // Get a list of articles in the same blog
   $query = new EntityFieldQuery;
   $result = $query

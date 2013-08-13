@@ -50,20 +50,19 @@ function pivot_facebook_comments_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'facebook_comments_types';
   $strongarm->value = array(
-    'article' => 'article',
-    'gallery' => 'gallery',
     'action' => 0,
+    'article' => 0,
     'page' => 0,
     'download' => 0,
     'episode' => 0,
     'campaign' => 0,
+    'gallery' => 0,
     'homepage_slide' => 0,
     'movie' => 0,
     'person' => 0,
     'promo' => 0,
     'show' => 0,
     'video' => 0,
-    'webform' => 0,
   );
   $export['facebook_comments_types'] = $strongarm;
 

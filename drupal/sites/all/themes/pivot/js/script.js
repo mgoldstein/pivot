@@ -158,6 +158,31 @@
 		}
 	};
 
+	Drupal.behaviors.initializeFacebookComments = {
+		attach: function() {
+			var $article_comments = $('#article-comments');
+
+			// bail early
+			if (!$article_comments.length) return;
+
+			var $comments = $article_comments.find('.fb_comments'),
+				width = $comments.data('width');
+
+			$article_comments
+				.find('.comment-count')
+				.empty()
+				.html('<fb:comments-count href="' + window.location.href + '"></fb:comments-count>')
+			;
+
+			$comments
+				.empty()
+				.html('<fb:comments href="' + window.location.href + '" width="' + width + '"></fb:comments>')
+			;
+
+			FB.XFBML.parse();
+		}
+	};
+
 	Drupal.behaviors.populateSocialShareButtons = {
 		attach: function() {
 
@@ -256,7 +281,8 @@
 				var $gallery_main = $('#gallery-main');
 				var $slides = $('#gallery-content > ul');
 				var base_url = document.location.href.split(/\/|#/).slice(0,gallery_root_index + 3).join('/');
-				var $fb_comment = $('.fb-comments');
+				var $fb_comment = $('.fb_comments');
+				var $fb_comment_count = $('.comment-count');
 
 				var $first_slide = $slides.find('> li:first-child');
 				var first_image = $first_slide.find('img').attr('src');
@@ -286,14 +312,7 @@
 					update_to = setTimeout(function() {
 						var token = base_url + "#" + get_curtoken();
 
-						// We never hide this
-						$fb_comment
-							.empty()
-							.removeClass('fb_iframe_widget')
-							.removeAttr('fb-xfbml-state')
-							.attr('data-href', token)
-						;
-						FB.XFBML.parse();
+						refreshFacebook(token);
 
 						if ( window.googletag != undefined ) {
 							window.googletag.pubads().refresh();
@@ -304,6 +323,22 @@
 				// TODO: Restore gallery analytics when I understand the requirements
 				// prevent 2 email calls from firing
 				// takepart.analytics.skip_addthis = true;
+
+				// Refresh the 
+				var refreshFacebook = function(token) {
+					if (!token) return;
+
+					$fb_comment
+						.empty()
+						.html('<fb:comments href="' + token + '" width="600"></fb:comments>')
+					;
+					$fb_comment_count
+						.empty()
+						.html('<fb:comments-count href="' + token + '"></fb:comments-count>')
+					;
+
+					FB.XFBML.parse();
+				}
 
 				// Get current "token" from last folder of URL
 				var get_curtoken = function() {
