@@ -1110,11 +1110,15 @@ input[type=email] {
 				}
 
 				.authors,
-				.pubdate {
+				.pubdate,
+				.comment {
 					display: inline;
 					font-size: 14px;
 					line-height: 1;
 					margin: 0 1em 0 0;
+				}
+				.comment {
+					text-transform: uppercase;
 				}
 			}
 		} // .primary-header
@@ -1123,38 +1127,43 @@ input[type=email] {
 
 	#gallery-content {
 		clear: both;
-		margin-bottom: 60px;
+		margin-top: 40px;
 
+		@media (min-width: 1000px) {
+			margin: 0 0 60px;
+		}
+		
 		ul {
 			margin: 0;
 			padding: 0;
 		}
 
 		.photo-caption {
-			height: 10em;
-			@media (min-width: 1000px) {
-				width: 300px;
-				height: 335px;
-			}
 			float: right;
 			padding: 1em;
 			white-space: normal;
 			line-height: 1.5;
 			background: #f6f8f9;
-			border: 1px solid #e5e5e5;
-			border-left: none;
 			overflow: auto;
 			color: #333;
 
-			-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12);
-			-moz-box-shadow:    0px 1px 3px rgba(0, 0, 0, 0.12);
-			box-shadow:         0px 1px 3px rgba(0, 0, 0, 0.12);
+			@media (min-width: 1000px) {
+				width: 300px;
+				height: 335px;
+
+				border: 1px solid #e5e5e5;
+				border-left: none;
+				-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12);
+				-moz-box-shadow:    0px 1px 3px rgba(0, 0, 0, 0.12);
+				box-shadow:         0px 1px 3px rgba(0, 0, 0, 0.12);
+			}
 
 			.headline {
 				font-weight: bold;
 				color: #333;
-				font-size: 18px;
-				line-height: 1.618em;
+				margin: 0;
+				font-size: 20px;
+				text-transform: none;
 			}
 
 			.topic {
@@ -1271,9 +1280,11 @@ input[type=email] {
 	.tpslide_nav {
 		display: block;
 		position: absolute;
-		bottom: -45px;
 		width: 100%;
+		top: -10px;
 		@media (min-width: 1000px) {
+			top: auto;
+			bottom: -45px;
 			width: 620px;			
 		}
 	}
