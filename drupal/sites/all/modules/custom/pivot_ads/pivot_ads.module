@@ -11,7 +11,7 @@
  */
 function pivot_ads_help($path, $arg) {
     if ($path == 'admin/help#pivot_ads') {
-        return t('A module defining custom ad targeting for the Pivot.tv website');
+        return t('A module defining custom ad targeting for Pivot');
     }
 }
 
@@ -25,14 +25,13 @@ function pivot_ads_update_projects_alter(&$projects) {
 function pivot_ads_dfp_tag_load_alter(&$tag) {
     if (arg(0) == 'node') {
         $node1 = node_load(arg(1));
-        // dpm($node1);
         $contentType = isset($node1->type) ? $node1->type : "";
         $field_free_tag = isset($node1->field_global_tags['und']) ? $node1->field_global_tags['und'] : array();
 
         if ($contentType != '') {
-            $tag->settings['targeting'][] = array("target" => "page-type", "value" => $contentType);
+            $tag->settings['targeting'][] = array("target" => "Type", "value" => $contentType);
         }
-        
+        // Combine free tag values
         if (count($field_free_tag)) {
             $free_tags = "";
             $gpt_free_tags = "";
@@ -43,7 +42,7 @@ function pivot_ads_dfp_tag_load_alter(&$tag) {
             }
             // Format free tag values like this ["Schools", "Teachers", "students", "education reform"]
             $free_tags .= implode(',', $terms);
-            $tag->settings['targeting'][] = array("target" => "freeTags", "value" => $free_tags);
+            $tag->settings['targeting'][] = array("target" => "FreeTag", "value" => $free_tags);
         }
     }
     return $tag;
