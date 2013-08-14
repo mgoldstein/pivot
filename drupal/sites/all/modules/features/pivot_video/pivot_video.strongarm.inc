@@ -101,6 +101,12 @@ function pivot_video_strongarm() {
         'metatags' => array(
           'weight' => '7',
         ),
+        'redirect' => array(
+          'weight' => '14',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '13',
+        ),
       ),
       'display' => array(),
     ),

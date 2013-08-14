@@ -285,22 +285,22 @@ function pivot_video_field_default_field_instances() {
       'file_directory' => 'promo_images/video',
       'file_extensions' => 'png gif jpg jpeg',
       'filefield_paths' => array(
-	'active_updating' => 0,
-	'file_name' => array(
-	  'options' => array(
-	    'pathauto' => 0,
-	    'transliterate' => 0,
-	  ),
-	  'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
-	),
-	'file_path' => array(
-	  'options' => array(
-	    'pathauto' => 0,
-	    'transliterate' => 0,
-	  ),
-	  'value' => '',
-	),
-	'retroactive_update' => 0,
+        'active_updating' => 0,
+        'file_name' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
+        ),
+        'file_path' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '',
+        ),
+        'retroactive_update' => 0,
       ),
       'filefield_paths_enabled' => 0,
       'max_filesize' => '',
@@ -313,17 +313,17 @@ function pivot_video_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-	'file_entity_inline' => 0,
+        'file_entity_inline' => 0,
         'file_entity_inline_fields' => array(),
         'filefield_sources' => array(
-	  'filefield_sources' => array(
-	    'attach' => 0,
-	    'clipboard' => 0,
-	    'plupload' => 0,
-	    'reference' => 0,
-	    'remote' => 0,
-	    'upload' => 'upload',
-	  ),
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
           'source_attach' => array(
             'absolute' => 0,
             'attach_mode' => 'move',
@@ -336,7 +336,7 @@ function pivot_video_field_default_field_instances() {
             'autocomplete' => 0,
           ),
         ),
-	'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'bar',
       ),
@@ -457,6 +457,61 @@ function pivot_video_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-video-field_video_type'
+  $field_instances['node-video-field_video_type'] = array(
+    'bundle' => 'video',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 9,
+      ),
+      'promo' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'promo_alt' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_video_type',
+    'label' => 'Video Type',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_buttons',
+      'weight' => 12,
+    ),
+  );
+
   // Exported field_instance: 'node-video-field_video_youtube_media'
   $field_instances['node-video-field_video_youtube_media'] = array(
     'bundle' => 'video',
@@ -533,6 +588,7 @@ function pivot_video_field_default_field_instances() {
   t('Promo Headline');
   t('Promo Image');
   t('Section Reference');
+  t('Video Type');
   t('YouTube Video');
 
   return $field_instances;
