@@ -15,6 +15,37 @@ function pivot_video_ctools_plugin_api() {
 }
 
 /**
+ * Implements hook_fe_nodequeue_export_fields().
+ */
+function pivot_video_fe_nodequeue_export_fields() {
+  $nodequeues = array();
+
+  // Exported nodequeues: must_see_videos
+  $nodequeues['must_see_videos'] = array(
+    'name' => 'must_see_videos',
+    'title' => 'Must See Videos',
+    'subqueue_title' => '',
+    'size' => 0,
+    'link' => '',
+    'link_remove' => '',
+    'owner' => 'nodequeue',
+    'show_in_ui' => 1,
+    'show_in_tab' => 1,
+    'show_in_links' => 0,
+    'reference' => 0,
+    'reverse' => 0,
+    'i18n' => 0,
+    'types' => array(
+      0 => 'video',
+    ),
+    'roles' => array(),
+    'count' => 0,
+  );
+
+  return $nodequeues;
+}
+
+/**
  * Implements hook_node_info().
  */
 function pivot_video_node_info() {

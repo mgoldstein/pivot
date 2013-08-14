@@ -353,5 +353,36 @@ function pivot_contexts_context_default_contexts() {
   t('The Shows Landing Page');
   $export['shows_landing'] = $context;
 
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'videos';
+  $context->description = '';
+  $context->tag = '';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'video' => 'video',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-must_see_videos-block' => array(
+          'module' => 'views',
+          'delta' => 'must_see_videos-block',
+          'region' => 'right_sidebar',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+  $export['videos'] = $context;
+
   return $export;
 }
