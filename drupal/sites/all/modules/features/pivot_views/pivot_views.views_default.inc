@@ -519,7 +519,7 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['fields']['field_promo_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_promo_image']['settings'] = array(
-    'image_style' => 'must_see_videos_70_40',
+    'image_style' => 'must_see_videos_125x70',
     'image_link' => 'content',
   );
   /* Field: Content: Title */
