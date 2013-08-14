@@ -16,7 +16,7 @@
 
   </header>
   <?php endif; ?>
-  <main id="main">  
+  <main id="main">
     <div id="content" class="site-wrapper">
 
       <?php print render($page['preface']); ?>
@@ -34,7 +34,8 @@
         <?php endif; ?>
         <?php print render($title_suffix); ?>
         <?php print $messages; ?>
-        <?php print render($tabs); ?>
+        <?php global $user; ?>
+        <?php print ($user->uid != 0 ? render($tabs) : ''); ?>
         <?php print render($page['help']); ?>
         <?php if ($action_links): ?>
           <ul class="action-links"><?php print render($action_links); ?></ul>

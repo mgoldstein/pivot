@@ -213,6 +213,9 @@ function pivot_process_page(&$variables) {
   if (isset($variables['node']) && $variables['node']->type == 'show'){
     unset($variables['title']);
   }
+  if (isset($variables['node']) && $variables['node']->type == 'feed'){
+    unset($variables['title']);
+  }
 }
 
 /**
@@ -265,7 +268,7 @@ function pivot_preprocess_node__video(&$variables, $hook) {
   if($video_node = node_load($variables['nid'])) {
     $variables['video_title'] = check_plain($video_node->title);
   }
-  if($variables['field_video_type']['und'][0]['value'] == 2){
+  if($variables['field_video_type']['und'][0]['value'] == 2 && $variables['view_mode'] == 'full'){
     $variables['theme_hook_suggestions'][] = 'node__video_list';
   }
 }

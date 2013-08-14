@@ -2638,6 +2638,22 @@ iframe.media-youtube-player {
 	}
 }
 
-
+/* ============================================================
+|| Feed Page
+============================================================ */
+#block-views-feed-items-block{
+	background: #fff;
+	padding: 20px;
+	.views-row{
+		margin-bottom: 15px;
+		height: auto;
+		overflow: hidden;
+		img{
+			float: left;
+			width: 150px;
+			margin-right: 20px;
+		}
+	}
+}
 
 

@@ -493,6 +493,9 @@ body.page-dml div#content {
   margin: 0 auto;
   background: #fff;
   /* Modules and Items */ }
+body.node-type-feed.page-dml div#content {
+  background: transparent;
+}
   body.page-dml div#content.site-wrapper {
     padding: 0 !important; }
   @media screen and (max-width: 480px) {

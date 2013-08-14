@@ -2538,7 +2538,7 @@ iframe.media-youtube-player {
 /* ============================================================
 || Video Page
 ============================================================ */
-/* line 2445, ../sass/_pivot-global.scss */
+/* line 2446, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main a.important {
   background: #0084A9;
   width: 100%;
@@ -2546,20 +2546,20 @@ iframe.media-youtube-player {
   margin-bottom: 20px;
 }
 @media (max-width: 480px) {
-  /* line 2444, ../sass/_pivot-global.scss */
+  /* line 2445, ../sass/_pivot-global.scss */
   .page-node.node-type-video #video-main {
     /* iPhone vertical */
   }
-  /* line 2452, ../sass/_pivot-global.scss */
+  /* line 2453, ../sass/_pivot-global.scss */
   .page-node.node-type-video #video-main a.important {
     font-size: 12px;
   }
 }
-/* line 2456, ../sass/_pivot-global.scss */
+/* line 2457, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .list a.important {
   margin-top: 25px;
 }
-/* line 2459, ../sass/_pivot-global.scss */
+/* line 2460, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .social {
   float: right;
   font-size: 0;
@@ -2567,14 +2567,14 @@ iframe.media-youtube-player {
   white-space: nowrap;
   position: relative;
 }
-/* line 2466, ../sass/_pivot-global.scss */
+/* line 2467, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .social:before {
   content: "share";
   color: #424242;
   font-size: 16px;
   vertical-align: middle;
 }
-/* line 2474, ../sass/_pivot-global.scss */
+/* line 2475, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .social .tp-social,
 .page-node.node-type-video #video-main .social .article-social-more {
   display: inline-block;
@@ -2582,23 +2582,23 @@ iframe.media-youtube-player {
   *zoom: 1;
   vertical-align: middle;
 }
-/* line 2480, ../sass/_pivot-global.scss */
+/* line 2481, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .social .tp-social-link,
 .page-node.node-type-video #video-main .social .article-social-more {
   margin-left: 12px;
 }
-/* line 2485, ../sass/_pivot-global.scss */
+/* line 2486, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .social #article-social-more.focusin {
   position: static;
 }
-/* line 2487, ../sass/_pivot-global.scss */
+/* line 2488, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .social #article-social-more.focusin #article-more-shares {
   z-index: 1;
   left: 0;
   right: auto;
   max-width: 260px;
 }
-/* line 2498, ../sass/_pivot-global.scss */
+/* line 2499, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main #video-content.single {
   clear: left;
   position: relative;
@@ -2607,7 +2607,7 @@ iframe.media-youtube-player {
   margin: 0 auto 20px;
   width: 100%;
 }
-/* line 2506, ../sass/_pivot-global.scss */
+/* line 2507, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main #video-content.list {
   clear: left;
   position: relative;
@@ -2626,7 +2626,7 @@ iframe.media-youtube-player {
   box-sizing: border-box;
   word-wrap: break-word;
 }
-/* line 2526, ../sass/_pivot-global.scss */
+/* line 2527, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .primary-header {
   margin-bottom: 20px;
   position: relative;
@@ -2634,12 +2634,12 @@ iframe.media-youtube-player {
   vertical-align: top;
   width: 100%;
 }
-/* line 2533, ../sass/_pivot-global.scss */
+/* line 2534, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .primary-header .headline-wrapper {
   width: 530px;
   float: left;
 }
-/* line 2537, ../sass/_pivot-global.scss */
+/* line 2538, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .primary-header .headline-wrapper .node-title {
   margin: 0;
   font-size: 36px;
@@ -2647,13 +2647,13 @@ iframe.media-youtube-player {
   text-transform: uppercase;
   font-weight: bold;
 }
-/* line 2545, ../sass/_pivot-global.scss */
+/* line 2546, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .primary-header .headline-wrapper .field-name-field-article-subtitle {
   font-size: 17px;
   line-height: 1;
   margin: 10px 0 9px;
 }
-/* line 2553, ../sass/_pivot-global.scss */
+/* line 2554, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .primary-header .headline-wrapper .authors,
 .page-node.node-type-video #video-main .primary-header .headline-wrapper .pubdate,
 .page-node.node-type-video #video-main .primary-header .headline-wrapper .comment {
@@ -2662,12 +2662,12 @@ iframe.media-youtube-player {
   line-height: 1;
   margin: 0 1em 0 0;
 }
-/* line 2559, ../sass/_pivot-global.scss */
+/* line 2560, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .primary-header .headline-wrapper .comment {
   text-transform: uppercase;
 }
 @media (min-width: 1000px) {
-  /* line 2567, ../sass/_pivot-global.scss */
+  /* line 2568, ../sass/_pivot-global.scss */
   .page-node.node-type-video #video-related {
     clear: left;
     float: left;
@@ -2683,23 +2683,23 @@ iframe.media-youtube-player {
     word-wrap: break-word;
   }
 }
-/* line 2573, ../sass/_pivot-global.scss */
+/* line 2574, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-related {
   background-color: #fff;
   padding: 20px;
 }
-/* line 2580, ../sass/_pivot-global.scss */
+/* line 2581, ../sass/_pivot-global.scss */
 .page-node.node-type-video .page-tags,
 .page-node.node-type-video .comment-wrapper {
   background: #fff;
   margin-bottom: 20px;
   padding: 20px;
 }
-/* line 2585, ../sass/_pivot-global.scss */
+/* line 2586, ../sass/_pivot-global.scss */
 .page-node.node-type-video .page-tags .headline {
   margin-bottom: 0;
 }
-/* line 2588, ../sass/_pivot-global.scss */
+/* line 2589, ../sass/_pivot-global.scss */
 .page-node.node-type-video .page-tags .tag {
   font-size: 14px;
   text-transform: uppercase;
@@ -2709,37 +2709,37 @@ iframe.media-youtube-player {
   *zoom: 1;
   vertical-align: baseline;
 }
-/* line 2595, ../sass/_pivot-global.scss */
+/* line 2596, ../sass/_pivot-global.scss */
 .page-node.node-type-video .page-tags .tag:after {
   content: ', ';
 }
-/* line 2598, ../sass/_pivot-global.scss */
+/* line 2599, ../sass/_pivot-global.scss */
 .page-node.node-type-video .page-tags .tag:last-child:after {
   display: none;
 }
-/* line 2601, ../sass/_pivot-global.scss */
+/* line 2602, ../sass/_pivot-global.scss */
 .page-node.node-type-video #block-views-must-see-videos-block {
   background: #fff;
   padding: 10px;
   height: auto;
   overflow: hidden;
 }
-/* line 2606, ../sass/_pivot-global.scss */
+/* line 2607, ../sass/_pivot-global.scss */
 .page-node.node-type-video #block-views-must-see-videos-block h2.block-title {
   text-transform: uppercase;
 }
-/* line 2608, ../sass/_pivot-global.scss */
+/* line 2609, ../sass/_pivot-global.scss */
 .page-node.node-type-video #block-views-must-see-videos-block h2.block-title span {
   color: #c40066;
 }
-/* line 2612, ../sass/_pivot-global.scss */
+/* line 2613, ../sass/_pivot-global.scss */
 .page-node.node-type-video #block-views-must-see-videos-block .views-field-field-promo-image {
   float: left;
   display: block;
   width: 125px;
   height: 71px;
 }
-/* line 2618, ../sass/_pivot-global.scss */
+/* line 2619, ../sass/_pivot-global.scss */
 .page-node.node-type-video #block-views-must-see-videos-block .views-field-title {
   float: left;
   display: block;
@@ -2747,20 +2747,41 @@ iframe.media-youtube-player {
   text-align: left;
   margin-left: 10px;
 }
-/* line 2624, ../sass/_pivot-global.scss */
+/* line 2625, ../sass/_pivot-global.scss */
 .page-node.node-type-video #block-views-must-see-videos-block .views-field-title a {
   color: #000;
 }
-/* line 2626, ../sass/_pivot-global.scss */
+/* line 2627, ../sass/_pivot-global.scss */
 .page-node.node-type-video #block-views-must-see-videos-block .views-field-title a:hover {
   text-decoration: none;
 }
-/* line 2631, ../sass/_pivot-global.scss */
+/* line 2632, ../sass/_pivot-global.scss */
 .page-node.node-type-video #block-views-must-see-videos-block .views-row {
   clear: both;
   margin-bottom: 20px;
   height: auto;
   overflow: hidden;
+}
+
+/* ============================================================
+|| Feed Page
+============================================================ */
+/* line 2644, ../sass/_pivot-global.scss */
+#block-views-feed-items-block {
+  background: #fff;
+  padding: 20px;
+}
+/* line 2647, ../sass/_pivot-global.scss */
+#block-views-feed-items-block .views-row {
+  margin-bottom: 15px;
+  height: auto;
+  overflow: hidden;
+}
+/* line 2651, ../sass/_pivot-global.scss */
+#block-views-feed-items-block .views-row img {
+  float: left;
+  width: 150px;
+  margin-right: 20px;
 }
 
 /*
