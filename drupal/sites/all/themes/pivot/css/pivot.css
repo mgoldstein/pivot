@@ -2595,7 +2595,7 @@ iframe.media-youtube-player {
   max-width: 260px;
 }
 /* line 2495, ../sass/_pivot-global.scss */
-.page-node.node-type-video #video-main #video-content {
+.page-node.node-type-video #video-main #video-content.single {
   clear: left;
   position: relative;
   background: #fff;
@@ -2603,7 +2603,26 @@ iframe.media-youtube-player {
   margin: 0 auto 20px;
   width: 100%;
 }
-/* line 2505, ../sass/_pivot-global.scss */
+/* line 2503, ../sass/_pivot-global.scss */
+.page-node.node-type-video #video-main #video-content.list {
+  clear: left;
+  position: relative;
+  background: #fff;
+  padding: 20px 20px 1px;
+  margin: 0 auto 20px;
+  float: left;
+  width: 66.66667%;
+  margin-left: 0%;
+  margin-right: -66.66667%;
+  padding-left: 10px;
+  padding-right: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+/* line 2523, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .primary-header {
   margin-bottom: 20px;
   position: relative;
@@ -2611,12 +2630,12 @@ iframe.media-youtube-player {
   vertical-align: top;
   width: 100%;
 }
-/* line 2512, ../sass/_pivot-global.scss */
+/* line 2530, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .primary-header .headline-wrapper {
   width: 530px;
   float: left;
 }
-/* line 2516, ../sass/_pivot-global.scss */
+/* line 2534, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .primary-header .headline-wrapper .node-title {
   margin: 0;
   font-size: 36px;
@@ -2624,13 +2643,13 @@ iframe.media-youtube-player {
   text-transform: uppercase;
   font-weight: bold;
 }
-/* line 2524, ../sass/_pivot-global.scss */
+/* line 2542, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .primary-header .headline-wrapper .field-name-field-article-subtitle {
   font-size: 17px;
   line-height: 1;
   margin: 10px 0 9px;
 }
-/* line 2532, ../sass/_pivot-global.scss */
+/* line 2550, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .primary-header .headline-wrapper .authors,
 .page-node.node-type-video #video-main .primary-header .headline-wrapper .pubdate,
 .page-node.node-type-video #video-main .primary-header .headline-wrapper .comment {
@@ -2639,12 +2658,12 @@ iframe.media-youtube-player {
   line-height: 1;
   margin: 0 1em 0 0;
 }
-/* line 2538, ../sass/_pivot-global.scss */
+/* line 2556, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-main .primary-header .headline-wrapper .comment {
   text-transform: uppercase;
 }
 @media (min-width: 1000px) {
-  /* line 2546, ../sass/_pivot-global.scss */
+  /* line 2564, ../sass/_pivot-global.scss */
   .page-node.node-type-video #video-related {
     clear: left;
     float: left;
@@ -2660,23 +2679,23 @@ iframe.media-youtube-player {
     word-wrap: break-word;
   }
 }
-/* line 2552, ../sass/_pivot-global.scss */
+/* line 2570, ../sass/_pivot-global.scss */
 .page-node.node-type-video #video-related {
   background-color: #fff;
   padding: 20px;
 }
-/* line 2559, ../sass/_pivot-global.scss */
+/* line 2577, ../sass/_pivot-global.scss */
 .page-node.node-type-video .page-tags,
 .page-node.node-type-video .comment-wrapper {
   background: #fff;
   margin-bottom: 20px;
   padding: 20px;
 }
-/* line 2564, ../sass/_pivot-global.scss */
+/* line 2582, ../sass/_pivot-global.scss */
 .page-node.node-type-video .page-tags .headline {
   margin-bottom: 0;
 }
-/* line 2567, ../sass/_pivot-global.scss */
+/* line 2585, ../sass/_pivot-global.scss */
 .page-node.node-type-video .page-tags .tag {
   font-size: 14px;
   text-transform: uppercase;
@@ -2686,11 +2705,11 @@ iframe.media-youtube-player {
   *zoom: 1;
   vertical-align: baseline;
 }
-/* line 2574, ../sass/_pivot-global.scss */
+/* line 2592, ../sass/_pivot-global.scss */
 .page-node.node-type-video .page-tags .tag:after {
   content: ', ';
 }
-/* line 2577, ../sass/_pivot-global.scss */
+/* line 2595, ../sass/_pivot-global.scss */
 .page-node.node-type-video .page-tags .tag:last-child:after {
   display: none;
 }

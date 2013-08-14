@@ -2493,13 +2493,31 @@ iframe.media-youtube-player {
 		}
 
 		// the top, full-width block
-		#video-content {
+		#video-content.single {
 			@include zen-clear();
 			position: relative;
 			background: #fff;
 			padding: 20px 20px 1px;
 			margin: 0 auto 20px;
 			width: 100%;
+		}
+		#video-content.list {
+			@include zen-clear();
+			position: relative;
+			background: #fff;
+			padding: 20px 20px 1px;
+			margin: 0 auto 20px;
+			float: left;
+			width: 66.66667%;
+			margin-left: 0%;
+			margin-right: -66.66667%;
+			padding-left: 10px;
+			padding-right: 10px;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			box-sizing: border-box;
+			word-wrap: break-word;
 		}
 
 

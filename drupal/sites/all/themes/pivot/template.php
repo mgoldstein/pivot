@@ -265,11 +265,6 @@ function pivot_preprocess_node__video(&$variables, $hook) {
   if($video_node = node_load($variables['nid'])) {
     $variables['video_title'] = check_plain($video_node->title);
   }
-  if($variables['field_video_type']['und'][0]['value'] == 1){
-    $variables['theme_hook_suggestions'][] = 'node__video_single';
-  } else{
-    $variables['theme_hook_suggestions'][] = 'node__video_list';
-  }
 }
 
 function pivot_preprocess_node__article(&$variables, $hook) {

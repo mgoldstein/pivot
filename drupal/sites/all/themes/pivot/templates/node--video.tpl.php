@@ -1,5 +1,5 @@
 <article id="video-main" class="node-<?php print $node->nid; ?> <?php print $classes; ?>"<?php print $attributes; ?>>
-  <div id="video-content">
+  <div id="video-content" class="<?php print ($variables['field_video_type']['und'][0]['value'] == 1 ? 'single' : 'list') ?>">
       <header class="primary-header"><div class="headline-wrapper">
           <?php print render($title_prefix); ?>
           <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
@@ -31,7 +31,7 @@
       ?>
   </div>
   <div id="video-related" class="primary with-sidebar">
-    <?php print l(t('Watch full episodes right here, right now'), '#', array('attributes' => array('class' => array('important')))); ?>
+    <?php print l(t('Watch full episodes right here, right now'), '', array('fragment' => '', 'attributes' => array('class' => array('important')))); ?>
     <?php print render($content); ?>
 
     <section id="article-comments">
