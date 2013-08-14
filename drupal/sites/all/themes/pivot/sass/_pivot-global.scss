@@ -2599,6 +2599,39 @@ iframe.media-youtube-player {
 	.page-tags .tag:last-child:after {
 		display: none;
 	}
+	#block-views-must-see-videos-block {
+		background: #fff;
+		padding: 10px;
+		height: auto;
+		overflow: hidden;
+		h2.block-title{
+			text-transform: uppercase;
+			span{
+				color: #c40066;
+			}
+		}
+		.views-field-field-promo-image{
+			float: left;
+			display: block;
+			width: 125px;
+			height: 71px;
+		}
+		.views-field-title {
+			float: left;
+			display: block;
+			width: 150px;
+			text-align: left;
+			a{
+				color: #000;
+				&:hover{
+					text-decoration: none;
+				}
+			}
+		}
+		.views-row{
+			clear: both;
+		}
+	}
 }
 
 

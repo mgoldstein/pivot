@@ -2717,6 +2717,47 @@ iframe.media-youtube-player {
 .page-node.node-type-video .page-tags .tag:last-child:after {
   display: none;
 }
+/* line 2601, ../sass/_pivot-global.scss */
+.page-node.node-type-video #block-views-must-see-videos-block {
+  background: #fff;
+  padding: 10px;
+  height: auto;
+  overflow: hidden;
+}
+/* line 2606, ../sass/_pivot-global.scss */
+.page-node.node-type-video #block-views-must-see-videos-block h2.block-title {
+  text-transform: uppercase;
+}
+/* line 2608, ../sass/_pivot-global.scss */
+.page-node.node-type-video #block-views-must-see-videos-block h2.block-title span {
+  color: #c40066;
+}
+/* line 2612, ../sass/_pivot-global.scss */
+.page-node.node-type-video #block-views-must-see-videos-block .views-field-field-promo-image {
+  float: left;
+  display: block;
+  width: 125px;
+  height: 71px;
+}
+/* line 2618, ../sass/_pivot-global.scss */
+.page-node.node-type-video #block-views-must-see-videos-block .views-field-title {
+  float: left;
+  display: block;
+  width: 150px;
+  text-align: left;
+}
+/* line 2623, ../sass/_pivot-global.scss */
+.page-node.node-type-video #block-views-must-see-videos-block .views-field-title a {
+  color: #000;
+}
+/* line 2625, ../sass/_pivot-global.scss */
+.page-node.node-type-video #block-views-must-see-videos-block .views-field-title a:hover {
+  text-decoration: none;
+}
+/* line 2630, ../sass/_pivot-global.scss */
+.page-node.node-type-video #block-views-must-see-videos-block .views-row {
+  clear: both;
+}
 
 /*
  * Homepage Styles for Pivot.tv
