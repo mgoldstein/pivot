@@ -295,6 +295,7 @@
 
 				var $first_slide = $slides.find('> li:first-child');
 				var first_image = $first_slide.find('img').attr('src');
+				var gallery_description = $gallery_main.find('.field-name-field-description').text().trim();
 				var first_description = $first_slide.find('.photo-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
 				var skip_next_pageview = false;
 
@@ -319,9 +320,9 @@
 					// }
 
 					update_to = setTimeout(function() {
-						var token = base_url + "#" + get_curtoken();
+						var token = get_curtoken();
 
-						refreshFacebook(token);
+						refreshGalleryBehaviors(token);
 
 						if ( window.googletag != undefined ) {
 							window.googletag.pubads().refresh();
@@ -333,20 +334,56 @@
 				// prevent 2 email calls from firing
 				// takepart.analytics.skip_addthis = true;
 
-				// Refresh the 
-				var refreshFacebook = function(token) {
-					if (!token) return;
+				/**
+				 * Refersh social shares and Facebook Comments
+				 * on gallery initialize and slide nav
+				 * @param  {string} token the hash
+				 */
+				var refreshGalleryBehaviors = function(token) {
+					if (!token) return; // bail early
+					var $slide = $slides.find('[data-token=' + token + ']');
+					var slideURL = base_url + '#' + token;
+					var slideTitle = $slide.find('.field-name-field-image-title').text().trim();
+					var slideDescription = $slide.find('.field-name-field-image-description').text().trim();
+					var slideImageSRC = $slide.find('img').attr('src');
 
+					// clean up the some of these values
+					// get rid of http queries on the slideImageSRC string
+					slideImageSRC = slideImageSRC.replace(/\?.*$/, '');
+					// use the gallery description if the slide doesn't have one
+					if (slideDescription == '') slideDescription = gallery_description;
+
+					// redo the facebook stuff
 					$fb_comment
 						.empty()
-						.html('<fb:comments href="' + token + '" width="600"></fb:comments>')
+						.html('<fb:comments href="' + slideURL + '" width="600"></fb:comments>')
 					;
 					$fb_comment_count
 						.empty()
-						.html('<fb:comments-count href="' + token + '"></fb:comments-count>')
+						.html('<fb:comments-count href="' + slideURL + '"></fb:comments-count>')
 					;
-
 					FB.XFBML.parse();
+
+					// reset social services
+					tp_social_config.services.facebook = {
+						name: 'facebook',
+						url: slideURL,
+						image: slideImageSRC,
+						title: slideTitle,
+						description: slideDescription
+					};
+
+					more_services.pinterest = {
+						name: 'pinterest',
+						media: slideImageSRC
+					};
+
+
+					console.log(tp_social_config.services);
+					$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+					$('.article-more-shares p').tpsocial({
+						services: more_services
+					});
 				}
 
 				// Get current "token" from last folder of URL
@@ -503,8 +540,6 @@
 					if ( token ) {
 						goto_slide();
 						show_gallery();
-					} else if ( $gallery_cover.length ) {
-						hide_gallery();
 					}
 
 					update_page(token);
