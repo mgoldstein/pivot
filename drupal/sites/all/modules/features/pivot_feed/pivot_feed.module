@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feed feature.
+ */
+
+include_once 'pivot_feed.features.inc';
