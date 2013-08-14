@@ -1139,7 +1139,6 @@ input[type=email] {
 		}
 
 		.photo-caption {
-			float: right;
 			padding: 1em;
 			white-space: normal;
 			line-height: 1.5;
@@ -1148,6 +1147,8 @@ input[type=email] {
 			color: #333;
 
 			@media (min-width: 1000px) {
+
+				float: right;
 				width: 300px;
 				height: 335px;
 
