@@ -89,6 +89,9 @@ function pivot_video_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'promo_alt' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
