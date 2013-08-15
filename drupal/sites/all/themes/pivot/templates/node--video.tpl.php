@@ -31,7 +31,7 @@
       ?>
   </div>
   <div id="video-related" class="primary with-sidebar">
-    <?php print l(t('Watch full episodes right here, right now'), '', array('fragment' => '', 'attributes' => array('class' => array('important')))); ?>
+    <?php print l(t('Watch full episodes right here, right now'), 'http://watch.pivot.tv/pivottv/', array('attributes' => array('target' => '_blank', 'class' => array('important')))); ?>
     <?php print render($content); ?>
 
     <section id="article-comments">

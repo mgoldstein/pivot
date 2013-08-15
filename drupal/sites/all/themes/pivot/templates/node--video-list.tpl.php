@@ -1,6 +1,7 @@
 <article id="video-main" class="node-<?php print $node->nid; ?> <?php print $classes; ?>"<?php print $attributes; ?>>
   <div id="video-content" class="list">
-      <header class="primary-header"><div class="headline-wrapper">
+      <header class="primary-header">
+        <div class="headline-wrapper">
           <?php print render($title_prefix); ?>
           <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
           <?php print render($title_suffix); ?>
@@ -28,7 +29,7 @@
       elseif(isset($content['field_video_longtail_video_id'])){
         print render($content['field_video_longtail_video_id']);
       }
-      print l(t('Watch full episodes right here, right now'), '', array('fragment' => '', 'attributes' => array('class' => array('important'))));
+      print l(t('Watch full episodes right here, right now'), 'http://watch.pivot.tv/pivottv/', array('attributes' => array('target' => '_blank', 'class' => array('important'))));
       ?>
   </div>
 
