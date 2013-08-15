@@ -63,9 +63,11 @@
 <div class="row cta">
 	<div class="left">
 		<h3>Hot Headlines</h3>
-		<span>10 Actions You Should Take to Ensure Your Digital Privacy.</span><br><br>
-		<p>Protect your privacy and stick it to The Man with the black case that renders your phone untraceable.</p>
-		<a href="http://www.takepart.com/article/2013/07/26/10-important-actions-ensure-your-digital-privacy" class="btn" target="_blank">get the whole story</a>
+		<?php foreach($headlines as $headline): ?>
+			<span><?php print $headline->title; ?></span><br><br>
+		<?php endforeach; ?>
+
+		<a href="<?php print $path; ?>/news" class="btn">get the whole story</a>
 	</div>
 	<div class="right">
 		<a href="http://takeaction.takepart.com/actions/inform-yourself-and-lawmakers-about-online-privacy"><img src="/<?php print drupal_get_path('module', 'pivot_dml'); ?>/images/tacma.jpg" style="float:right; height:100%;"></a>
