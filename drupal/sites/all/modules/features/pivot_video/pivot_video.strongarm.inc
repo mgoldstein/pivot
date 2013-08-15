@@ -156,6 +156,13 @@ function pivot_video_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_video_pattern';
+  $strongarm->value = '[node:field-section-ref:0:url:path]/video/[node:title]';
+  $export['pathauto_node_video_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'scheduler_publish_enable_video';
   $strongarm->value = 1;
   $export['scheduler_publish_enable_video'] = $strongarm;
