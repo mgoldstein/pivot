@@ -200,14 +200,15 @@
 			if (
 				$body.is('.node-type-article') ||
 				$body.is('.page-shows') ||
-				$body.is('.node-type-gallery')
+				$body.is('.node-type-gallery') ||
+				$body.is('.node-type-video')
 			) {
 				// Social share buttons
 
 				$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
 				// setup main image
-				
+
 				if ($body.is('.node-type-article')) {
 					var main_image = $('.field-name-field-main-image img').attr('src');
 				} else if ($body.is('.page-shows')) {
