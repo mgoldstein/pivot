@@ -2872,17 +2872,16 @@ body.front {
   .hero-header .nav {
     background: #424242;
     margin-top: 0;
-    z-index: 0;
     opacity: 1;
   }
 
-  /* line 22, ../sass/_pivot-responsive.scss */
+  /* line 21, ../sass/_pivot-responsive.scss */
   .hero-header .show-hero .headline a {
     background: transparent;
     padding: 0 0 .5em 0;
   }
 
-  /* line 27, ../sass/_pivot-responsive.scss */
+  /* line 26, ../sass/_pivot-responsive.scss */
   .hero-header .show-hero .image {
     position: relative;
   }
