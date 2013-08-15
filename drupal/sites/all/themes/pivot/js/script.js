@@ -343,7 +343,7 @@
 				var refreshGalleryBehaviors = function(token) {
 					if (!token) return; // bail early
 					var $slide = $slides.find('[data-token=' + token + ']');
-					var slideURL = base_url + '#' + token;
+					var slideURL = base_url + '/' + token;
 					var slideTitle = $slide.find('.field-name-field-image-title').text().trim();
 					var slideDescription = $slide.find('.field-name-field-image-description').text().trim();
 					var slideImageSRC = $slide.find('img').attr('src');
@@ -379,8 +379,6 @@
 						media: slideImageSRC
 					};
 
-
-					console.log(tp_social_config.services);
 					$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 					$('.article-more-shares p').tpsocial({
 						services: more_services
@@ -389,14 +387,12 @@
 
 				// Get current "token" from last folder of URL
 				var get_curtoken = function() {
-					var token = document.location.href.split(/\/|#/).slice(gallery_root_index + 3,gallery_root_index + 4) + '';
-					// Allow for back buttoning to #first-slide cover page
-					return token;
+					return document.location.href.split(/\/|#/).slice(gallery_root_index + 3,gallery_root_index + 4) + '';						
 				};
 
 				// Update slideshow based on url
-				var goto_slide = function() {
-					var token = get_curtoken();
+				var goto_slide = function(token) {
+					token = token || get_curtoken();
 					var $slide = $slides.find('[data-token="' + token + '"]');
 					$slides.tpslide_to($slide);
 				};
@@ -415,9 +411,9 @@
 
 					if ( !has_history() ) return;
 					if ( replace ) {
-						history.replaceState(null, title, base_url + '#' + token);
+						history.replaceState(null, title, base_url + '/' + token);
 					} else {
-						history.pushState(null, title, base_url + '#' + token);
+						history.pushState(null, title, base_url + '/' + token);
 					}
 				};
 
@@ -517,8 +513,9 @@
 				});
 
 				// Initialize page based on URL
-				if ( get_curtoken() && get_curtoken() != 'first-slide' ) {
-					goto_slide();
+				var firstToken = get_curtoken();
+				if ( firstToken && firstToken != 'first-slide' ) {
+					goto_slide(firstToken);
 					show_gallery();
 				} else if ( get_curtoken() == 'first-slide' ) {
 					skip_next_pageview = true;

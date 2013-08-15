@@ -15,8 +15,8 @@ function pivot_global_help($path, $arg) {
 /**
  * Define custom blocks for the Pivot.tv site
  */
-include 'pivot_global.blocks.inc';
-
+module_load_include('inc', 'pivot_global', 'pivot_global.blocks');
+module_load_include('inc', 'pivot_global', 'pivot_global.gallery');
 
 /**
  * Implements hook_menu();
