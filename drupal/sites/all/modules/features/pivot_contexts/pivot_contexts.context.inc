@@ -419,7 +419,7 @@ function pivot_contexts_context_default_contexts() {
           'module' => 'views',
           'delta' => 'must_see_videos-block',
           'region' => 'right_sidebar',
-          'weight' => '-10',
+          'weight' => '32',
         ),
       ),
     ),
