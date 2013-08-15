@@ -887,6 +887,43 @@ input[type=email] {
 }
 
 /* ============================================================
+|| Blog Listing
+============================================================ */
+
+.blog-landing {
+	background-color: white;
+	padding: 20px;
+	float: left;
+
+	.views-row {
+		clear: both;
+		font-size: 14px;
+		line-height: 20px;
+		padding-bottom: 20px;
+		border-bottom: 1px solid #e6e6e6;
+		margin-bottom: 20px;
+
+		.headline {
+			font-size: 24px;
+			line-height: 1.25; // 30px
+			text-transform: none;
+			margin: 0 0 10px;
+		}
+		> img,
+		.article-image {
+			float: left;
+			margin-right: 20px;
+			margin-bottom: 20px;
+		}
+	}
+
+	img {
+		max-width: 100%;
+		height: auto !important;
+	}
+}
+
+/* ============================================================
 || Article (Blog Post)
 ============================================================ */
 
