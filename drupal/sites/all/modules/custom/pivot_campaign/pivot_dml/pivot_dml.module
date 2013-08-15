@@ -164,6 +164,34 @@ function pivot_dml_preprocess_node(&$variables){
   $current_path = drupal_get_path_alias(current_path());
   if($variables['type'] == 'campaign' && strpos($current_path, variable_get('pivot_dml_path', '')) !== FALSE) {
     $variables['theme_hook_suggestions'][] = 'node__piv_dml';
+
+    //lookup the first feed that is referencing DML
+    $campaign = node_load($variables['nid']);
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'feed')
+      ->propertyCondition('status', 1)
+      ->fieldCondition('field_section_ref', 'target_id', $campaign->nid, '=', 0, NULL)
+      ->range(0, 1)
+      ->addMetaData('account', user_load(1)); // Run the query as user 1.
+    $result = $query->execute();
+
+    //find the feed items that are referencing this feed
+    $node = current($result['node']);
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'feed_item')
+      ->propertyCondition('status', 1)
+      ->fieldCondition('field_feed_ref_id', 'value', $node->nid, '=')
+      ->range(0, 3)
+      ->fieldOrderBy('field_feed_created_date', 'value', $direction = 'DESC')
+      ->addMetaData('account', user_load(1)); // Run the query as user 1.
+    $result = $query->execute();
+    $headlines = array();
+    foreach ($result['node'] as $node) {
+      $headlines[] = node_load($node->nid);
+    }
+    $variables['headlines'] = $headlines;
   }
 }
 

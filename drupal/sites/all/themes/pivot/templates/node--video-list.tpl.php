@@ -9,9 +9,7 @@
             <?php print date("F j, Y" ,$published_at); ?>
           </p>
           <p class="comment"><a href="#article-comments">Comment</a></p>
-        </div>
-
-        <aside class="social above">
+          <aside class="social above">
           <div class="tp-social"></div>
           <div id="article-social-more" class="article-social-more">
             <h4 class="trigger"><a href="#article-more-shares">More</a></h4>
@@ -21,6 +19,9 @@
             </section>
           </div>
         </aside>
+        </div>
+
+
       </header>
       <?php
       if(isset($content['field_video_youtube_media'])){
