@@ -72,6 +72,16 @@ function pivot_feed_feeds_importer_default() {
             'target' => 'field_promo_image',
             'unique' => FALSE,
           ),
+          7 => array(
+            'source' => 'parent:nid',
+            'target' => 'field_feed_ref_id',
+            'unique' => FALSE,
+          ),
+          8 => array(
+            'source' => 'timestamp',
+            'target' => 'field_feed_created_date',
+            'unique' => FALSE,
+          ),
         ),
         'input_format' => 'full_html',
         'author' => 0,
