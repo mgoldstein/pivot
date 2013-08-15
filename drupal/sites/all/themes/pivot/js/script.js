@@ -513,7 +513,13 @@
 				});
 
 				// Initialize page based on URL
-				var firstToken = get_curtoken();
+				var firstToken;
+				if (Drupal.settings.gallery && Drupal.settings.gallery.slideToken) {
+					firstToken = Drupal.settings.gallery.slideToken;
+					delete Drupal.settings.gallery;
+				} else {
+					firstToken = get_curtoken();
+				}
 				if ( firstToken && firstToken != 'first-slide' ) {
 					goto_slide(firstToken);
 					show_gallery();
