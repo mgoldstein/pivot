@@ -6,7 +6,7 @@
 
 // Plugin
 
-var dpre = 'tps-';
+var dpre = 'tps';
 var cpre = 'tp-social-';
 var $window = $(window);
 
@@ -81,14 +81,14 @@ $.fn.tpsocial = function(args) {
 			// Add service specific arguments to the links'd data object
 			for ( var i in service ) {
 				if ( typeof service[i] == 'function' ) continue;
-				$link.data(dpre + name + '-' + i, service[i]);
+				$link.data(dpre + name + i, service[i]);
 			}
 
 			// If you are simply updating the services, bail out
 			if ( $this.data(dpre + 'processed') ) continue;
 
 			// Set up link
-			var data = $.extend({}, defaults, srvc, get_data($this, dpre + srvc.name + '-', dpre), get_data($link, dpre + srvc.name + '-', dpre));
+			var data = $.extend({}, defaults, srvc, get_data($this, dpre + srvc.name, dpre), get_data($link, dpre + srvc.name, dpre));
 			if ( typeof data.prepare == 'function' ) {
 				data.prepare($link[0], data);
 			}
@@ -97,7 +97,8 @@ $.fn.tpsocial = function(args) {
 			$link
 				.bind('click', (function(srvc, $parent, $lnk) {
 						return function(e) {
-							var data = $.extend({}, defaults, args, srvc, get_data($parent, dpre + srvc.name + '-', dpre), get_data($lnk, dpre + srvc.name + '-', dpre));
+
+							var data = $.extend({}, defaults, args, srvc, get_data($parent, dpre + srvc.name, dpre), get_data($lnk, dpre + srvc.name, dpre));
 							data.element = this;
 
 							if ( data.url == '{current}' ) data.url = document.location.href;
@@ -112,7 +113,7 @@ $.fn.tpsocial = function(args) {
 				$link
 					.bind('mouseover focus', (function(srvc, $parent, $lnk) {
 							return function(e) {
-								var data = $.extend({}, defaults, args, srvc, get_data($parent, dpre + srvc.name + '-', dpre), get_data($lnk, dpre + srvc.name + '-', dpre));
+								var data = $.extend({}, defaults, args, srvc, get_data($parent, dpre + srvc.name, dpre), get_data($lnk, dpre + srvc.name, dpre));
 
 								if ( data.url == '{current}' ) data.url = document.location.href;
 
