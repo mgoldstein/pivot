@@ -2083,6 +2083,9 @@ body.page-dml.page-dml-quiz div#content {
     position: absolute;
     right: 10px;
     bottom: 5px; }
+    body.page-dml.page-dml-quiz div#content div.newsletter-signup h4{
+      display: none;
+    }
     @media screen and (max-width: 480px) {
       body.page-dml.page-dml-quiz div#content div.newsletter-signup {
         position: relative;
@@ -2092,7 +2095,7 @@ body.page-dml.page-dml-quiz div#content {
       height: 37px;
       background: url("../images/quiz/newsletter-title.png") no-repeat top right;
       margin: 15px auto 0 auto;
-      overflow: hidden; }
+       }
     body.page-dml.page-dml-quiz div#content div.newsletter-signup h2 {
       width: 148px;
       text-align: justify;
@@ -2117,6 +2120,10 @@ body.page-dml.page-dml-quiz div#content {
     body.page-dml.page-dml-quiz div#content div.newsletter-signup form div {
       width: 218px;
       margin: 5px auto 0 auto; }
+      body.page-dml.page-dml-quiz div#content div.newsletter-signup form div .form-item-email {
+        float: left;
+        width: 155px;
+      }
       body.page-dml.page-dml-quiz div#content div.newsletter-signup form div input[type="text"] {
         float: left;
         width: 155px;
@@ -2126,10 +2133,16 @@ body.page-dml.page-dml-quiz div#content {
         padding-left: 3px;
         vertical-align: top;
         font-size: 12px; }
-      body.page-dml.page-dml-quiz div#content div.newsletter-signup form div input[type="image"] {
+      body.page-dml.page-dml-quiz div#content div.newsletter-signup form div input[type="submit"] {
         float: right;
         height: 24px;
-        width: auto; }
+        width: auto;
+        background: #0084a9;
+        color: #fff;
+        font-size: 12px;
+        border: none;
+        margin-top: 5px;
+      }
     body.page-dml.page-dml-quiz div#content div.newsletter-signup div.tos {
       color: #0084a9;
       font-size: 9px;
