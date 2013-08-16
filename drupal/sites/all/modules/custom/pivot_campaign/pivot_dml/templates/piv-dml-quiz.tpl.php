@@ -78,10 +78,18 @@
 					<div class="user">&#xe000;<span class="correct">&#xe008;</span><span class="incorrect">&#xe006;</span></div>
 				</div>
 				</div><!-- /#quiz-container -->
-				<?php
-					$block = module_invoke('newsletter_campaign', 'block_view', 2);
-					print '<div id="block-newsletter-campaign-2" class="block-newsletter-campaign">'. render($block['content']). '</div>';
-				?>
+				<div class="newsletter-signup">
+					<div class="title">
+						<h2>sign up for <span>email</span> updates</h2>
+					</div>
+					<p>We know your time and information is valuable, so we won't spam you or share your data with marketers without your consent. But we'd love to stay in touch and share with you updates, web exclusives, special events and more.</p>
+					<?php
+						$block = module_invoke('newsletter_campaign', 'block_view', 2);
+						print render($block['content']);
+					?>
+					<div class="tos">	By submitting your email address above, you agree to our <a href="<?php print $path; ?>/terms-of-use">Terms of Use</a> and <a href="<?php print $path; ?>/privacy-policy">Privacy Policy</a>.</div>
+				</div>
+
 	       </div>
 	<!-- END CONTENT -->
 
