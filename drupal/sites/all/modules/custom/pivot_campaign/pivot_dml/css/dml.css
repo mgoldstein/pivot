@@ -2098,8 +2098,6 @@ body.page-dml.page-dml-quiz div#content {
        }
     body.page-dml.page-dml-quiz div#content div.newsletter-signup h2 {
       width: 148px;
-      text-align: justify;
-      text-align-last: justify;
       text-transform: uppercase;
       color: #0084a9;
       font-size: 20px;
@@ -2132,7 +2130,9 @@ body.page-dml.page-dml-quiz div#content {
         -moz-box-sizing: border-box;
         padding-left: 3px;
         vertical-align: top;
-        font-size: 12px; }
+        font-size: 12px;
+        padding-left: 10px;
+      }
       body.page-dml.page-dml-quiz div#content div.newsletter-signup form div input[type="submit"] {
         float: right;
         height: 24px;
