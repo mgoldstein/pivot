@@ -217,3 +217,20 @@ function _pivot_dml_insert_after_first_element(&$a, $element) {
   }
 }
 
+function pivot_dml_js_alter(&$javascript){
+  $path = variable_get('pivot_dml_path', '');
+  if(current_path() == $path. '/quiz'){
+    unset($javascript['sites/all/modules/custom/pivot_custom_analytics/js/newsletter_campaign.js']);
+    drupal_add_js(drupal_get_path('module', 'pivot_dml') . '/js/dml_newsletter_campaign.js');
+  }
+}
+
+
+
+
+
+
+
+
+
+
