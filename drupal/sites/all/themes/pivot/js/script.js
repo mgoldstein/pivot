@@ -368,6 +368,7 @@
 					// reset social services
 					tp_social_config.services.facebook = {
 						name: 'facebook',
+						display: 'Facebook',
 						url: slideURL,
 						image: slideImageSRC,
 						title: slideTitle,
