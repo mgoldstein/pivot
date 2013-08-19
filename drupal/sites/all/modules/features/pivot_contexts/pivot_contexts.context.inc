@@ -13,6 +13,37 @@ function pivot_contexts_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'blog_landing';
+  $context->description = '';
+  $context->tag = '';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'blog' => 'blog',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-blog_listing-block_1' => array(
+          'module' => 'views',
+          'delta' => 'blog_listing-block_1',
+          'region' => 'content',
+          'weight' => '10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+  $export['blog_landing'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'blog_post';
   $context->description = '';
   $context->tag = '';
