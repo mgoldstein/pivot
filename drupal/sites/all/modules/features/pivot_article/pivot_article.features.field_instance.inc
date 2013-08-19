@@ -123,7 +123,7 @@ function pivot_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What blog does this article belong to?',
+    'description' => 'What blog does this article belong to? (You may need to <a href="/node/add/blog">create a blog</a> first.)',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -614,7 +614,7 @@ function pivot_article_field_default_field_instances() {
   t('Promo Image');
   t('Subtitle');
   t('Tags');
-  t('What blog does this article belong to?');
+  t('What blog does this article belong to? (You may need to <a href="/node/add/blog">create a blog</a> first.)');
 
   return $field_instances;
 }
