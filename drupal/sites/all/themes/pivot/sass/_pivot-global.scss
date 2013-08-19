@@ -890,7 +890,7 @@ input[type=email] {
 || Blog Listing
 ============================================================ */
 
-.blog-landing {
+.view-blog-listing {
 	background-color: white;
 	padding: 20px;
 	float: left;
@@ -1693,6 +1693,8 @@ input[type=email] {
 
 	img {
 		display: block;
+		max-width: 100%;
+		height: auto !important;
 	}
 
 	.field-name-field-promo-headline {
