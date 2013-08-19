@@ -60,7 +60,7 @@ function pivot_article_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 8,
+      'weight' => 5,
     ),
   );
 
@@ -115,6 +115,59 @@ function pivot_article_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'node-article-field_blog_ref'
+  $field_instances['node-article-field_blog_ref'] = array(
+    'bundle' => 'article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'What blog does this article belong to?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+      'promo' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'promo_alt' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_blog_ref',
+    'label' => 'Blog Reference',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => -1,
     ),
   );
 
@@ -215,22 +268,22 @@ function pivot_article_field_default_field_instances() {
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'filefield_paths' => array(
-	'active_updating' => 0,
-	'file_name' => array(
-	  'options' => array(
-	    'pathauto' => 1,
-	    'transliterate' => 0,
-	  ),
-	  'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
-	),
-	'file_path' => array(
-	  'options' => array(
-	    'pathauto' => 1,
-	    'transliterate' => 0,
-	  ),
-	  'value' => 'article_images/[node:title]',
-	),
-	'retroactive_update' => 0,
+        'active_updating' => 0,
+        'file_name' => array(
+          'options' => array(
+            'pathauto' => 1,
+            'transliterate' => 0,
+          ),
+          'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
+        ),
+        'file_path' => array(
+          'options' => array(
+            'pathauto' => 1,
+            'transliterate' => 0,
+          ),
+          'value' => 'article_images/[node:title]',
+        ),
+        'retroactive_update' => 0,
       ),
       'filefield_paths_enabled' => 1,
       'max_filesize' => '',
@@ -243,17 +296,17 @@ function pivot_article_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-	'file_entity_inline' => 0,
+        'file_entity_inline' => 0,
         'file_entity_inline_fields' => array(),
         'filefield_sources' => array(
-	  'filefield_sources' => array(
-	    'attach' => 0,
-	    'clipboard' => 0,
-	    'plupload' => 0,
-	    'reference' => 0,
-	    'remote' => 0,
-	    'upload' => 'upload',
-	  ),
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
           'source_attach' => array(
             'absolute' => 0,
             'attach_mode' => 'move',
@@ -266,12 +319,12 @@ function pivot_article_field_default_field_instances() {
             'autocomplete' => 0,
           ),
         ),
-	'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 6,
+      'weight' => 4,
     ),
   );
 
@@ -330,7 +383,7 @@ function pivot_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 7,
+      'weight' => 3,
     ),
   );
 
@@ -383,7 +436,7 @@ function pivot_article_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 5,
+      'weight' => 8,
     ),
   );
 
@@ -436,7 +489,7 @@ function pivot_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 6,
     ),
   );
 
@@ -489,22 +542,22 @@ function pivot_article_field_default_field_instances() {
       'file_directory' => 'promo_images/article',
       'file_extensions' => 'png gif jpg jpeg',
       'filefield_paths' => array(
-	'active_updating' => 0,
-	'file_name' => array(
-	  'options' => array(
-	    'pathauto' => 0,
-	    'transliterate' => 0,
-	  ),
-	  'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
-	),
-	'file_path' => array(
-	  'options' => array(
-	    'pathauto' => 0,
-	    'transliterate' => 0,
-	  ),
-	  'value' => '',
-	),
-	'retroactive_update' => 0,
+        'active_updating' => 0,
+        'file_name' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
+        ),
+        'file_path' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '',
+        ),
+        'retroactive_update' => 0,
       ),
       'filefield_paths_enabled' => 0,
       'max_filesize' => '',
@@ -517,17 +570,17 @@ function pivot_article_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-	'file_entity_inline' => 0,
+        'file_entity_inline' => 0,
         'file_entity_inline_fields' => array(),
         'filefield_sources' => array(
-	  'filefield_sources' => array(
-	    'attach' => 0,
-	    'clipboard' => 0,
-	    'plupload' => 0,
-	    'reference' => 0,
-	    'remote' => 0,
-	    'upload' => 'upload',
-	  ),
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
           'source_attach' => array(
             'absolute' => 0,
             'attach_mode' => 'move',
@@ -540,65 +593,12 @@ function pivot_article_field_default_field_instances() {
             'autocomplete' => 0,
           ),
         ),
-	'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 4,
-    ),
-  );
-
-  // Exported field_instance: 'node-article-field_section_ref'
-  $field_instances['node-article-field_section_ref'] = array(
-    'bundle' => 'article',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Enter one or more blogs that this article will be a part of. The branding and "Next Article" will come from the blog at the top of this list.',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'promo' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-      'promo_alt' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_section_ref',
-    'label' => 'Section Reference',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 2,
+      'weight' => 7,
     ),
   );
 
@@ -606,15 +606,15 @@ function pivot_article_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Add as many tags as you like. The tags are "global" because they can be used to categorize any type of content on the site.');
   t('Author');
+  t('Blog Reference');
   t('Body');
-  t('Enter one or more blogs that this article will be a part of. The branding and "Next Article" will come from the blog at the top of this list.');
   t('Image');
   t('Promo Abstract');
   t('Promo Headline');
   t('Promo Image');
-  t('Section Reference');
   t('Subtitle');
   t('Tags');
+  t('What blog does this article belong to?');
 
   return $field_instances;
 }
