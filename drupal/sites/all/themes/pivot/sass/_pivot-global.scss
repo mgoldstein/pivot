@@ -890,9 +890,18 @@ input[type=email] {
 || Blog Listing
 ============================================================ */
 
+#block-views-blog-listing-block-1 {
+	.block-title {
+		font-size: 24px;
+		line-height: 1.25;
+		background-color: #FFF;
+		padding: 15px;
+	}
+}
+
 .view-blog-listing {
 	background-color: white;
-	padding: 20px;
+	padding: 15px 20px 20px;
 
 	.views-row {
 		clear: both;
@@ -908,13 +917,13 @@ input[type=email] {
 		}
 
 		&:last-child:after {
-			margin: 0;
+			margin: 0 0 20px;
 			border: none;
 		}
 
 		.headline {
-			font-size: 24px;
-			line-height: 1.25; // 30px
+			font-size: 18px;
+			line-height: 1.1111111111; // 20px
 			text-transform: none;
 			margin: 0 0 10px;
 		}
@@ -934,6 +943,7 @@ input[type=email] {
 	.pager {
 		font-size: 18px;
 		line-height: 1.111111111;
+		margin: 0;
 	}
 }
 
@@ -1723,6 +1733,15 @@ input[type=email] {
 		font-family: "Apercu Mono Regular", monospace;
 	}
 }
+
+.panel-col-top {
+	.promo-alt {
+		.field-name-field-promo-headline {
+			margin: 4px 0 0;
+		}
+	}
+}
+
 
 #article-comments {
 	margin-top: 40px;
