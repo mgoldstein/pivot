@@ -1693,6 +1693,8 @@ input[type=email] {
 
 	img {
 		display: block;
+		max-width: 100%;
+		height: auto !important;
 	}
 
 	.field-name-field-promo-headline {
