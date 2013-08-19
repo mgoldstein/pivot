@@ -1054,13 +1054,13 @@ input[type=email] {
 || Blog Listing
 ============================================================ */
 /* line 893, ../sass/_pivot-global.scss */
-.blog-landing {
+.view-blog-listing {
   background-color: white;
   padding: 20px;
   float: left;
 }
 /* line 898, ../sass/_pivot-global.scss */
-.blog-landing .views-row {
+.view-blog-listing .views-row {
   clear: both;
   font-size: 14px;
   line-height: 20px;
@@ -1069,21 +1069,21 @@ input[type=email] {
   margin-bottom: 20px;
 }
 /* line 906, ../sass/_pivot-global.scss */
-.blog-landing .views-row .headline {
+.view-blog-listing .views-row .headline {
   font-size: 24px;
   line-height: 1.25;
   text-transform: none;
   margin: 0 0 10px;
 }
 /* line 913, ../sass/_pivot-global.scss */
-.blog-landing .views-row > img,
-.blog-landing .views-row .article-image {
+.view-blog-listing .views-row > img,
+.view-blog-listing .views-row .article-image {
   float: left;
   margin-right: 20px;
   margin-bottom: 20px;
 }
 /* line 920, ../sass/_pivot-global.scss */
-.blog-landing img {
+.view-blog-listing img {
   max-width: 100%;
   height: auto !important;
 }
