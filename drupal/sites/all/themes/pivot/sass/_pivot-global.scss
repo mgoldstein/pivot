@@ -893,15 +893,24 @@ input[type=email] {
 .view-blog-listing {
 	background-color: white;
 	padding: 20px;
-	float: left;
 
 	.views-row {
 		clear: both;
 		font-size: 14px;
 		line-height: 20px;
-		padding-bottom: 20px;
-		border-bottom: 1px solid #e6e6e6;
-		margin-bottom: 20px;
+
+		&:after {
+			content: "";
+			display: block;
+			clear: both;
+			margin: 20px 0;
+			border-bottom: 1px solid #e6e6e6;
+		}
+
+		&:last-child:after {
+			margin: 0;
+			border: none;
+		}
 
 		.headline {
 			font-size: 24px;
@@ -920,6 +929,11 @@ input[type=email] {
 	img {
 		max-width: 100%;
 		height: auto !important;
+	}
+
+	.pager {
+		font-size: 18px;
+		line-height: 1.111111111;
 	}
 }
 
