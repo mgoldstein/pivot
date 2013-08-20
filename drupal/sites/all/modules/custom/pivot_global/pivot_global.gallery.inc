@@ -16,7 +16,9 @@ function pivot_global_url_inbound_alter(&$path, $original_path, $path_language) 
   // find out of the string 'gallery' occurs exactly in the path
   $gallery_path_index = array_search('gallery', $dirs, true);
 
-  if ($gallery_path_index) {
+  // if we're viewing a node that has "gallery" as a component of the path
+  // do some redirecting
+  if ($gallery_path_index && arg(0) == 'node') {
     $gallery_path = '';
     for($i = 0; $i <= $gallery_path_index + 1; $i++) {
       $gallery_path .= $dirs[$i] . '/';
