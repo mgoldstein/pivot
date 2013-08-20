@@ -18,7 +18,10 @@ function pivot_global_url_inbound_alter(&$path, $original_path, $path_language) 
 
   // if we're viewing a node that has "gallery" as a component of the path
   // do some redirecting
-  if ($gallery_path_index && arg(0) == 'node') {
+  if (
+    $gallery_path_index &&
+    ($dirs[0] == 'shows' || $dirs[0] == 'gallery')
+  ) {
     $gallery_path = '';
     for($i = 0; $i <= $gallery_path_index + 1; $i++) {
       $gallery_path .= $dirs[$i] . '/';
