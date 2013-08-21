@@ -621,6 +621,18 @@ function pivot_schedule_block_view($delta = '') {
 
     // Get the node being shown.
     $node = menu_get_object();
+
+    // If we're in a page WTIHIN a show's namespace
+    // (i.e., shows/show-name/blog, etc.), figure out
+    // what show we're looking at
+    if (!$node || $node->type != 'show') {
+      $dirs = explode('/', drupal_get_path_alias());
+      if ($dirs[0] == 'shows') {
+        $show_path = $dirs[0] . '/' . $dirs[1];
+        $node = menu_get_object('node', 1, drupal_lookup_path('source', $show_path));
+      }
+    }
+
     if ($node) {
 
       // Check if the node has schedule name and listing title fields.
