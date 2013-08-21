@@ -9,6 +9,13 @@
         $('a').attr('target', '_top');
       }
     };
+
+    Drupal.behaviors.resizeFooter = {
+      attach: function() {
+        var pxH = $('#footer-inner').height();
+        setTimeout(function(){parent.kpiFrameSize(pxH);}, 1500);
+      }
+    };
   })(jQuery, Drupal, this, this.document);",
-  'inline');
+  array('type' => 'inline', 'scope' => 'footer'));
 print render($page['footer']); ?>
