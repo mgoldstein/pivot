@@ -11,15 +11,27 @@
     };
     Drupal.behaviors.resizeFrameOnClick = {
       attach: function() {
-        var $siteHeader = $("#site-header"),
-            click = "click",
-            isTouchmove = false;
+        var click = "click",
+            isTouchmove = false,
+            resizing = false,
+            lastHeight = $("#site-header").height(),
+            resizeHeader = function() {
+              var h = $("#site-header").height();
+              if (h == lastHeight) {
+                clearTimeout(resizing);
+              }
+              else {
+                parent.pivotHeaderHeight(h + "px");
+                lastHeight = h;
+                setTimeout(resizeHeader, 25);
+              }
+            };
 
         if ( "ontouchend" in document.documentElement ) click = "touchend";
 
-        window.parent.pivotHeaderHeight($siteHeader.height() + " px");
+        setTimeout(resizeHeader, 1000);
 
-        $siteHeader
+        $("#site-header")
           .on("touchmove", function() {
             isTouchmove = true;
           })
@@ -28,11 +40,12 @@
               isTouchmove = false;
               return true;
             } else {
-              setTimeout(function() {window.parent.pivotHeaderHeight($("#site-header").height() + " px");}, 550);              
+              resizing = setTimeout(resizeHeader, 25);
             }
         });
       }
     };
+
   })(jQuery, Drupal);',
   'inline');
 ?>
