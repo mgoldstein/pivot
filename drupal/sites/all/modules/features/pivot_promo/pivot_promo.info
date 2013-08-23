@@ -8,6 +8,7 @@ project = pivot_promo
 dependencies[] = auto_nodetitle
 dependencies[] = ctools
 dependencies[] = features
+dependencies[] = filefield_paths
 dependencies[] = image
 dependencies[] = link
 dependencies[] = pivot_field_bases
