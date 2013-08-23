@@ -415,6 +415,7 @@ function pivot_preprocess_field(&$variables) {
     $variables['item_attributes_array'] = array();
 
     foreach ($variables['items'] as $delta => $item) {
+      // put the slide token in the attributes array
       $atts = array();
 
       $token = $item['field_image_title']['#items'][0]['safe_value'];
@@ -506,6 +507,7 @@ function pivot_field__field_gallery_images($variables) {
   $output .= '<ul class="' . $variables['classes'] . '"' . $variables['content_attributes'] . '>';
 
   foreach ($variables['items'] as $delta => $item) {
+    $item['file']['#alt'] = $variables['element']['#object']->field_gallery_images[LANGUAGE_NONE][$delta]['alt'];
     $output .= '<li class="slide' . $delta . ' gallery-slide"' . $variables['item_attributes'][$delta] . '>';
     $output .= '<figure>';
     $output .= '<div class="image-content-wrapper"><div class="image">'. drupal_render($item['file']) . '</div></div>';
