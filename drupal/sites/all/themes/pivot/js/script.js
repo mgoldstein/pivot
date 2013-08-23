@@ -366,14 +366,12 @@
 					FB.XFBML.parse();
 
 					// reset social services
-					tp_social_config.services.facebook = {
-						name: 'facebook',
-						display: 'Facebook',
-						url: slideURL,
-						image: slideImageSRC,
-						title: slideTitle,
-						description: slideDescription
-					};
+					tp_social_config.services.facebook.url = slideURL;
+					tp_social_config.services.facebook.image = slideImageSRC;
+					tp_social_config.services.facebook.title = slideTitle;
+					tp_social_config.services.facebook.description = slideDescription;
+
+					tp_social_config.services.twitter.text = slideTitle;
 
 					more_services.pinterest = {
 						name: 'pinterest',
