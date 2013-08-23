@@ -71,6 +71,13 @@ function globalredirect_init() {
   // We need just left trimmed.
   $request_path = globalredirect_request_path();
 
+  // Don't allow redirects for paths that have been altered
+  // via hook_url_inbound_alter()
+  $original_path = $request_path;
+  drupal_alter('url_inbound', $request_path, $original_path, $language->language);
+  if ($original_path != $request_path) {
+    return;
+  }
 
   // Allow Drupal to rewrite the URL
   // Most commonly this will be used to invoke locale_language_url_rewrite_url().
