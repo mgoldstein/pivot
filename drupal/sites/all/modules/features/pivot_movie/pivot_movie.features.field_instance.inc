@@ -103,8 +103,8 @@ function pivot_movie_field_default_field_instances() {
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
-	'rel' => 'nofollow',
-	'target' => 'user',
+        'rel' => 'nofollow',
+        'target' => 'user',
         'title' => '',
       ),
       'display' => array(
@@ -291,22 +291,22 @@ function pivot_movie_field_default_field_instances() {
       'file_directory' => 'promo_images/movie',
       'file_extensions' => 'png gif jpg jpeg',
       'filefield_paths' => array(
-	'active_updating' => 0,
-	'file_name' => array(
-	  'options' => array(
-	    'pathauto' => 0,
-	    'transliterate' => 0,
-	  ),
-	  'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
-	),
-	'file_path' => array(
-	  'options' => array(
-	    'pathauto' => 0,
-	    'transliterate' => 0,
-	  ),
-	  'value' => '',
-	),
-	'retroactive_update' => 0,
+        'active_updating' => 0,
+        'file_name' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
+        ),
+        'file_path' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '',
+        ),
+        'retroactive_update' => 0,
       ),
       'filefield_paths_enabled' => 0,
       'max_filesize' => '',
@@ -319,17 +319,17 @@ function pivot_movie_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-	'file_entity_inline' => 0,
+        'file_entity_inline' => 2,
         'file_entity_inline_fields' => array(),
         'filefield_sources' => array(
-	  'filefield_sources' => array(
-	    'attach' => 0,
-	    'clipboard' => 0,
-	    'plupload' => 0,
-	    'reference' => 0,
-	    'remote' => 0,
-	    'upload' => 'upload',
-	  ),
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
           'source_attach' => array(
             'absolute' => 0,
             'attach_mode' => 'move',
@@ -342,7 +342,7 @@ function pivot_movie_field_default_field_instances() {
             'autocomplete' => 0,
           ),
         ),
-	'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),

@@ -296,7 +296,7 @@ function pivot_article_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-        'file_entity_inline' => 0,
+        'file_entity_inline' => 2,
         'file_entity_inline_fields' => array(),
         'filefield_sources' => array(
           'filefield_sources' => array(
@@ -570,7 +570,7 @@ function pivot_article_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-        'file_entity_inline' => 0,
+        'file_entity_inline' => 2,
         'file_entity_inline_fields' => array(),
         'filefield_sources' => array(
           'filefield_sources' => array(
