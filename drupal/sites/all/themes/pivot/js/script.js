@@ -24,7 +24,7 @@
 			twitter: {
 				name: 'twitter',
 				text: '{{title}}',
-				via: 'PivotTV',
+				via: 'pivot_tv',
 				url: '{current}'
 			},
 			googleplus: {
