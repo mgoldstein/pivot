@@ -278,6 +278,13 @@
 				// Example http://participant-static.local/pivot/pages/show_photos.php = 3
 				var gallery_root_index = window.location.pathname.substr(1).split('/').length;
 
+				// Now we have the number of components in our path. But if
+				// Drupal.settings.gallery.slideToken is set, the final component
+				// should NOT count towrad gallery_root_index
+				if (Drupal.settings.gallery && Drupal.settings.gallery.slideToken) {
+					gallery_root_index = gallery_root_index - 1;
+				}
+
 				// Tracking for "Next gallery" clicks
 				// $body
 				// 	.delegate('#next-gallery a, .forward-to-gallery a', 'click', function() {
@@ -366,14 +373,12 @@
 					FB.XFBML.parse();
 
 					// reset social services
-					tp_social_config.services.facebook = {
-						name: 'facebook',
-						display: 'Facebook',
-						url: slideURL,
-						image: slideImageSRC,
-						title: slideTitle,
-						description: slideDescription
-					};
+					tp_social_config.services.facebook.url = slideURL;
+					tp_social_config.services.facebook.image = slideImageSRC;
+					tp_social_config.services.facebook.title = slideTitle;
+					tp_social_config.services.facebook.description = slideDescription;
+
+					tp_social_config.services.twitter.text = slideTitle;
 
 					more_services.pinterest = {
 						name: 'pinterest',
