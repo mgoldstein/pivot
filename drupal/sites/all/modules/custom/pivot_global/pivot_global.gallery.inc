@@ -68,7 +68,7 @@ function pivot_global_preprocess_node(&$variables) {
 
       // populate the og meta tags
     
-      $slide_url = $GLOBALS['base_url'] . $request_path;
+      $slide_url = $GLOBALS['base_url'] . '/'. $request_path;
       $slide_image_url = file_create_url($current_slide['uri']);
       $slide_title = $current_slide['field_image_title'][LANGUAGE_NONE][0]['safe_value'];
       $slide_description = trim(strstr(strip_tags($current_slide['field_image_description'][LANGUAGE_NONE][0]['safe_value']), "\n", true));
