@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* line 4, ../sass/_pivot-layout.scss */
 .site-wrapper {
   max-width: 980px;
@@ -2856,6 +2857,70 @@ iframe.media-youtube-player {
   float: left;
   width: 150px;
   margin-right: 20px;
+}
+
+/* ============================================================
+|| Schedule Page
+============================================================ */
+/* line 2741, ../sass/_pivot-global.scss */
+.page.schedule .row {
+  max-width: 100%;
+  height: auto;
+  overflow: hidden;
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+/* line 2748, ../sass/_pivot-global.scss */
+.page.schedule .row .time {
+  width: 20%;
+  float: left;
+}
+/* line 2752, ../sass/_pivot-global.scss */
+.page.schedule .row .info {
+  width: 70%;
+  float: left;
+}
+/* line 2755, ../sass/_pivot-global.scss */
+.page.schedule .row .info .rating {
+  float: right;
+  width: 50%;
+  font-size: 16px;
+  line-height: 21px;
+}
+/* line 2761, ../sass/_pivot-global.scss */
+.page.schedule .row .info .title {
+  width: 50%;
+  text-transform: none;
+  font-size: 21px;
+  margin-bottom: 0;
+}
+/* line 2767, ../sass/_pivot-global.scss */
+.page.schedule .row .info .episode {
+  font-size: 13px;
+  font-weight: bolder;
+  line-height: 25px;
+}
+/* line 2772, ../sass/_pivot-global.scss */
+.page.schedule .row .info .description {
+  font-family: "Apercu Mono Regular", monospace;
+  font-size: 13px;
+  color: #C40066;
+}
+/* line 2778, ../sass/_pivot-global.scss */
+.page.schedule .row .premier {
+  width: 10%;
+  float: right;
+}
+/* line 2781, ../sass/_pivot-global.scss */
+.page.schedule .row .premier .icon {
+  font-weight: bold;
+  font-style: italic;
+  background: #01BF9E;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px;
+  float: right;
 }
 
 /*
