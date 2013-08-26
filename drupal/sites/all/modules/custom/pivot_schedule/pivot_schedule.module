@@ -137,7 +137,7 @@ function pivot_schedule_entity_property_info() {
   );
   $properties['broadcast_length'] = array(
     'label' => t('Broadcast length'),
-    'description' => t('Duration of the broadcast in seconds.'),
+    'description' => t('End date and time of the episode/content broadcast.'),
     'type' => 'duration',
     'validation callback' => 'entity_property_validate_integer_non_negative',
     'access callback' => 'pivot_schedule_access',
@@ -145,6 +145,16 @@ function pivot_schedule_entity_property_info() {
     'required' => TRUE,
     'field' => FALSE,
   );
+  // $properties['broadcast_end_time'] = array(
+  //   'label' => t('Broadcast End Time'),
+  //   'description' => t('Duration of the broadcast in seconds.'),
+  //   'type' => 'date',
+  //   'validation callback' => 'entity_property_validate_integer_non_negative',
+  //   'access callback' => 'pivot_schedule_access',
+  //   'computed' => TRUE,
+  //   'getter callback' => 'pivot_schedule_end_time',
+  //   'field' => FALSE,
+  // );
   $properties['element_name'] = array(
     'label' => t('Element Name'),
     'description' => t('Name of the broadcast show/program.'),
@@ -888,6 +898,7 @@ function pivot_schedule_timezone() {
 }
 
 function pivot_schedule_list_page() {
+
   $current_time = date('m/d/y h:ia');
   $user_timezone = $_SESSION['timezone'];
   $dateTimeZoneUser = new DateTimeZone($user_timezone);
@@ -900,18 +911,26 @@ function pivot_schedule_list_page() {
   // Get the upcoming show times.
 
   $user_time = strtotime($dateTimeUserNow->date);
+  $user_date = date('m/d/y', $user_time);
+  $user_date = strtotime($user_date);
+  $user_range = $user_date + 3600*24 - $offset;
   // Narrow the filter down so we're not loading every entity
   $eastern_time_range = $eastern_time + 3600*24;
 
+
+//Query Show/Movie times for the next 24 hours
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'pivot_schedule_show_time')
     ->propertyCondition('broadcast_start_time', $eastern_time, '>=')
-    ->propertyCondition('broadcast_start_time', $eastern_time_range, '<=')
+    ->propertyCondition('broadcast_start_time', $user_range, '<')
     ->propertyOrderBy('broadcast_start_time');
   $entities = $query->execute();
 
+
   $entity_list = array();
   foreach($entities['pivot_schedule_show_time'] as $key => $entity){
+
+    //Query Shows that are linked to the shows in the schedule
     $reference = new EntityFieldQuery();
     $reference->entityCondition('entity_type', 'node')
       ->propertyCondition('type', 'show')
@@ -919,16 +938,15 @@ function pivot_schedule_list_page() {
       ->propertyCondition('status', 1)
       ->range(0,1);
     $reference = $reference->execute();
-    // dpm($entity->element_name, 'element name');
+
+    //Load the Show Time entity
     $entity = entity_load('pivot_schedule_show_time', array($key));
     $entity[$key]->broadcast_start_time = $entity[$key]->broadcast_start_time + $offset;
     $entity = current($entity);
     $current_ref = current($reference['node']);
-    // dpm($current_ref, 'current ref');
     $entity_list[] = array($entity, 'reference' => $current_ref->nid);
-
-
   }
+
   $content = theme('pivot_schedule_list_page', array(
     'list' => $entity_list,
     'reference' => $reference,
@@ -937,6 +955,10 @@ function pivot_schedule_list_page() {
 
 }
 
+function pivot_schedule_end_time(){
+  $content = 'something';
+  return $content;
+}
 
 
 
