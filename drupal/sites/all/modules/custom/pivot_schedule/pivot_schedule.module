@@ -247,23 +247,33 @@ function pivot_schedule_entity_property_info() {
  * Implements hook_menu().
  */
 function pivot_schedule_menu() {
-  return array(
-    'admin/config/schedule' => array(
-      'title' => 'Show Schedule',
-      'description' => 'Configuraion of the show schedule',
-      'page callback' => 'system_admin_menu_block_page',
-      'access arguments' => array('access administration pages'),
-      'file' => 'system.admin.inc',
-      'file path' => drupal_get_path('module', 'system'),
-    ),
-    'admin/config/schedule/import' => array(
-      'title' => 'Schedule Import',
-      'description' => 'Import show schedule data.',
-      'page callback' => 'pivot_schedule_import_page',
-      'access callback' => 'user_access',
-      'access arguments' => array('import pivot_schedule show_times'),
-    ),
+  $items = array();
+  $items['admin/config/schedule'] = array(
+    'title' => 'Show Schedule',
+    'description' => 'Configuraion of the show schedule',
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('access administration pages'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
   );
+  $items['admin/config/schedule/import'] = array(
+    'title' => 'Schedule Import',
+    'description' => 'Import show schedule data.',
+    'page callback' => 'pivot_schedule_import_page',
+    'access callback' => 'user_access',
+    'access arguments' => array('import pivot_schedule show_times'),
+  );
+  $items['pivot-ajax/timezone'] = array(
+    'title' => 'Timezone',
+    'page callback' => 'pivot_schedule_timezone',
+    'access callback' => 'user_access',
+  );
+  $items['schedule-test'] = array(
+    'title' => 'Schedule',
+    'page callback' => 'pivot_schedule_list_page',
+    'access arguments' => array('access content'),
+  );
+  return $items;
 }
 
 function pivot_schedule_import_page() {
@@ -703,6 +713,13 @@ function pivot_schedule_theme() {
       ),
       'template' => 'pivot-schedule-show-listing',
     ),
+    'pivot_schedule_list_page' => array(
+      'variables' => array(
+        'list' => array(),
+        'reference' => NULL,
+      ),
+      'template' => 'pivot-schedule-list-page',
+    ),
   );
 }
 
@@ -850,7 +867,6 @@ function pivot_schedule_get_show_listing($schedule_name, $count, $tz) {
     ->propertyOrderBy('broadcast_start_time')
     ->range(0, $count);
   $entities = $query->execute();
-
   if (isset($entities['pivot_schedule_show_time'])) {
     $ids = array_keys($entities['pivot_schedule_show_time']);
     $listing = pivot_schedule_load_listing($ids, $timezone);
@@ -858,3 +874,81 @@ function pivot_schedule_get_show_listing($schedule_name, $count, $tz) {
 
   return $listing;
 }
+
+
+function pivot_schedule_page_build(&$page) {
+  if (!isset($_SESSION['timezone'])) {
+    drupal_add_js(drupal_get_path('module', 'pivot_schedule'). '/js/jstz.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_schedule'). '/js/pivot_schedule_timezone.js');
+  }
+}
+
+function pivot_schedule_timezone() {
+  $_SESSION['timezone'] = check_plain($_POST['timezone']);
+}
+
+function pivot_schedule_list_page() {
+  $current_time = date('m/d/y h:ia');
+  $user_timezone = $_SESSION['timezone'];
+  $dateTimeZoneUser = new DateTimeZone($user_timezone);
+  $dateTimeUserNow = new DateTime($current_time, $dateTimeZoneUser);
+
+  dpm($dateTimeUserNow, 'user now');
+
+  $eastern_time = strtotime($current_time) + 10800;
+  $offset = strtotime($dateTimeUserNow->date) - $eastern_time;
+  // Get the upcoming show times.
+
+  $user_time = strtotime($dateTimeUserNow->date);
+  // Narrow the filter down so we're not loading every entity
+  $eastern_time_range = $eastern_time + 3600*24;
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'pivot_schedule_show_time')
+    ->propertyCondition('broadcast_start_time', $eastern_time, '>=')
+    ->propertyCondition('broadcast_start_time', $eastern_time_range, '<=')
+    ->propertyOrderBy('broadcast_start_time');
+  $entities = $query->execute();
+
+  $entity_list = array();
+  foreach($entities['pivot_schedule_show_time'] as $key => $entity){
+    $reference = new EntityFieldQuery();
+    $reference->entityCondition('entity_type', 'node')
+      ->propertyCondition('type', 'show')
+      ->fieldCondition('field_schedule_name', $entity->element_name, '=')
+      ->propertyCondition('status', 1)
+      ->range(0,1);
+    $reference = $reference->execute();
+    // dpm($entity->element_name, 'element name');
+    $entity = entity_load('pivot_schedule_show_time', array($key));
+    $entity[$key]->broadcast_start_time = $entity[$key]->broadcast_start_time + $offset;
+    $entity = current($entity);
+    $current_ref = current($reference['node']);
+    // dpm($current_ref, 'current ref');
+    $entity_list[] = array($entity, 'reference' => $current_ref->nid);
+
+
+  }
+  $content = theme('pivot_schedule_list_page', array(
+    'list' => $entity_list,
+    'reference' => $reference,
+  ));
+  return $content;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
