@@ -898,17 +898,31 @@ function pivot_schedule_timezone() {
   $_SESSION['timezone'] = check_plain($_POST['timezone']);
 }
 
+
+
+
+
+function pivot_schedule_local_date($format, $current_time = null, $timezone = 'UTC'){
+    if (is_null($time))
+        $time = time();
+
+    $local = new DateTime('@'.$time);
+    $local->setTimeZone(new DateTimeZone($timezone));
+
+    return $local->format('m/d/y h:ia');
+}
+
+
 function pivot_schedule_list_page() {
 
   global $base_url;
 
-  $current_time = date('m/d/y h:ia');
-  $user_timezone = $_SESSION['timezone'];
-  $dateTimeZoneUser = new DateTimeZone($user_timezone);
-  $dateTimeUserNow = new DateTime($current_time, $dateTimeZoneUser);
-  dpm($dateTimeUserNow, 'user now');
-  $user_time = strtotime($dateTimeUserNow->date);
+$current_time = time();
+$user_timezone = $_SESSION['timezone'];
 
+$user_time = pivot_schedule_local_date('r', $current_time, $user_timezone);
+$user_time = strtotime($user_time);
+  $current_time = date('m/d/y h:ia');
 
   //if the date is set in the url, use it.  otherwise, default to todays date
   if(arg(1) != NULL){
