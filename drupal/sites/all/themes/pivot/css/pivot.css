@@ -2935,16 +2935,27 @@ iframe.media-youtube-player {
   float: right;
 }
 /* line 2803, ../sass/_pivot-global.scss */
-.page.schedule .date-menu {
+.page.schedule .date-menu, .page.schedule .tz-menu {
   float: right;
 }
 /* line 2805, ../sass/_pivot-global.scss */
-.page.schedule .date-menu .menu-title {
+.page.schedule .date-menu .menu-title, .page.schedule .tz-menu .menu-title {
   display: inline-block;
   margin-right: 5px;
   font-size: 18px;
 }
-/* line 2811, ../sass/_pivot-global.scss */
+/* line 2810, ../sass/_pivot-global.scss */
+.page.schedule .date-menu ul li ul li, .page.schedule .tz-menu ul li ul li {
+  color: #fff;
+  width: auto;
+  display: block;
+  white-space: no-wrap;
+}
+/* line 2817, ../sass/_pivot-global.scss */
+.page.schedule .tz-menu {
+  margin-right: 10px;
+}
+/* line 2820, ../sass/_pivot-global.scss */
 .page.schedule .sub-title {
   float: left;
   margin-top: 0px;
@@ -2952,25 +2963,25 @@ iframe.media-youtube-player {
   font-size: 24px;
   margin-bottom: 15px;
 }
-/* line 2818, ../sass/_pivot-global.scss */
+/* line 2827, ../sass/_pivot-global.scss */
 .page.schedule ul.sfw-menu {
   position: relative;
   margin: 0;
-  text-align: center;
+  text-align: left;
   font-size: 18px;
   padding: 0;
   display: inline-block;
 }
-/* line 2825, ../sass/_pivot-global.scss */
+/* line 2834, ../sass/_pivot-global.scss */
 .page.schedule ul.sfw-menu li.item {
+  width: 110px;
   list-style: none;
   cursor: pointer;
   border-bottom: 3px solid #0083a9;
   padding-bottom: 5px;
-  padding-left: 15px;
-  padding-right: 15px;
+  text-indent: 5px;
 }
-/* line 2832, ../sass/_pivot-global.scss */
+/* line 2841, ../sass/_pivot-global.scss */
 .page.schedule ul.sfw-menu li.item ul {
   background: #0083a9;
   position: absolute;
@@ -2979,13 +2990,13 @@ iframe.media-youtube-player {
   margin-top: 10px;
   padding: 10px;
   text-align: left;
-  margin-left: -15px;
 }
-/* line 2841, ../sass/_pivot-global.scss */
+/* line 2849, ../sass/_pivot-global.scss */
 .page.schedule ul.sfw-menu li.item ul li {
   padding: 0;
+  text-indent: 0;
 }
-/* line 2843, ../sass/_pivot-global.scss */
+/* line 2852, ../sass/_pivot-global.scss */
 .page.schedule ul.sfw-menu li.item ul li a {
   color: #fff;
   text-decoration: none;

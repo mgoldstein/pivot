@@ -2800,13 +2800,22 @@ iframe.media-youtube-player {
 			}
 		}
 	}
-	.date-menu{
+	.date-menu, .tz-menu{
 		float: right;
 		.menu-title{
 			display: inline-block;
 			margin-right: 5px;
 			font-size: 18px;
 		}
+		ul li ul li{
+			color: #fff;
+			width: auto;
+			display: block;
+			white-space:no-wrap;
+		}
+	}
+	.tz-menu{
+		margin-right: 10px;
 	}
 	.sub-title{
 		float: left;
@@ -2818,17 +2827,17 @@ iframe.media-youtube-player {
 	ul.sfw-menu{
 		position: relative;
 		margin: 0;
-		text-align: center;
+		text-align: left;
 		font-size: 18px;
 		padding: 0;
 		display: inline-block;
 		li.item{
+			width: 110px;
 			list-style: none;
 			cursor: pointer;
 			border-bottom: 3px solid #0083a9;
 			padding-bottom: 5px;
-			padding-left: 15px;
-			padding-right: 15px;
+			text-indent: 5px;
 			ul{
 				background: #0083a9;
 				position: absolute;
@@ -2837,9 +2846,9 @@ iframe.media-youtube-player {
 				margin-top: 10px;
 				padding: 10px;
 				text-align: left;
-				margin-left: -15px;
 				li{
 					padding: 0;
+					text-indent: 0;
 					a{
 						color: #fff;
 						text-decoration: none;

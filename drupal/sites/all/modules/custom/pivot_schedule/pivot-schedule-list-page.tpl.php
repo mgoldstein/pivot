@@ -16,6 +16,7 @@
   <div class="sub-title"><?php print date('l, F j', $selected_date); ?></div>
   <?php print $messages; ?>
   <?php print $date_menu; ?>
+  <?php print $tz_menu; ?>
   <?php foreach($list as $entity): ?>
     <div class="row">
       <div class="time"><?php print date('h:ia', $entity[0]->broadcast_start_time); ?></div>

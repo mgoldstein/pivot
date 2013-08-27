@@ -278,7 +278,7 @@ function pivot_schedule_menu() {
     'page callback' => 'pivot_schedule_timezone',
     'access callback' => 'user_access',
   );
-  $items['schedule-test'] = array(
+  $items['schedule'] = array(
     'title' => 'Pivot On-Air Schedule',
     'page callback' => 'pivot_schedule_list_page',
     'access arguments' => array('access content'),
@@ -728,6 +728,7 @@ function pivot_schedule_theme() {
         'list' => array(),
         'reference' => NULL,
         'date_menu' => NULL,
+        'tz_menu' => NULL,
         'selected_date' => NULL,
       ),
       'template' => 'pivot-schedule-list-page',
@@ -980,14 +981,32 @@ function pivot_schedule_list_page() {
     $date = $user_date + 3600*24*$x;
     $date_format_1 = date('D M j', $date);
     $date_format_2 = date('m-d-y', $date);
-    $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule-test/'. $date_format_2). '</li>';
+    $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule/'. $date_format_2). '</li>';
   }
   $date_menu .= '</ul></ul></div>';
+
+
+  //Create Timezone Menu List
+  $clean_tz = array(
+      'Eastern' => 'America/New_York',
+      'Central' => 'America/New_York',
+      'Mountain' => 'America/New_York',
+      'Pacific' => 'America/Los_Angeles',
+      'Alaska' => 'America/New_York',
+      'Hawaiian' => 'America/New_York',
+    );
+  $tz_menu = '<div class="tz-menu"><div class="menu-title">Timezone: </div><ul class="sfw-menu">';
+  $tz_menu .= '<li class="item">'. array_search($_SESSION['timezone'], $clean_tz). '<ul>';
+  foreach($clean_tz as $key => $tz){
+    $tz_menu .= '<li class="item" attr="'. $tz. '">'. $key. '</li>';
+  }
+  $tz_menu .= '</ul></ul></div>';
 
   $content = theme('pivot_schedule_list_page', array(
     'list' => $entity_list,
     'reference' => $reference,
     'date_menu' => $date_menu,
+    'tz_menu' => $tz_menu,
     'selected_date' => $selected_date,
   ));
   drupal_add_js(drupal_get_path('module', 'nice_menus'). '/js/superfish.js');
