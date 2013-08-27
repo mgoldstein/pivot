@@ -13,6 +13,7 @@
  */
 ?>
 <section class="page schedule">
+  <div class="sub-title"><?php print date('l, F j', $selected_date); ?></div>
   <?php print $messages; ?>
   <?php print $date_menu; ?>
   <?php foreach($list as $entity): ?>

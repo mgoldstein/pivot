@@ -728,6 +728,7 @@ function pivot_schedule_theme() {
         'list' => array(),
         'reference' => NULL,
         'date_menu' => NULL,
+        'selected_date' => NULL,
       ),
       'template' => 'pivot-schedule-list-page',
     ),
@@ -925,19 +926,20 @@ function pivot_schedule_list_page() {
   $current_time = date('m/d/y h:ia');
 
   //if the date is set in the url, use it.  otherwise, default to todays date
+  $user_date = date('m/d/y', $user_time);
+  $user_date = strtotime($user_date);
   if(arg(1) != NULL){
-    $user_date = str_replace('-', '/', arg(1));
-    $user_date = strtotime($user_date);
-    $show_time_et = $user_date + 10800;
+    $user_date_url = str_replace('-', '/', arg(1));
+    $user_date_url = strtotime($user_date_url);
+    $show_time_et = $user_date_url + 10800;
     $offset = $user_time - (strtotime($current_time) + 10800);
+    $date_end = $user_date_url + 3600*24 - $offset;
   }
   else{
-    $user_date = date('m/d/y', $user_time);
-    $user_date = strtotime($user_date);
     $show_time_et = strtotime($current_time) + 10800;
     $offset = $user_time - $show_time_et;
+    $date_end = $user_date + 3600*24 - $offset;
   }
-  $date_end = $user_date + 3600*24 - $offset;
 
 
 //Query Show/Movie times for the next 24 hours
@@ -972,8 +974,9 @@ function pivot_schedule_list_page() {
 
   //Create Date menu list
   $date_menu = '<div class="date-menu"><div class="menu-title">Date: </div><ul class="sfw-menu">';
-  $date_menu .= '<li class="item">'. date('D M j', $user_date). '<ul>';
-  for($x=1; $x<=7; $x++){
+  $selected_date = ($user_date_url != NULL ? $user_date_url : $user_date);
+  $date_menu .= '<li class="item">'. date('D M j', $selected_date). '<ul>';
+  for($x=0; $x<=7; $x++){
     $date = $user_date + 3600*24*$x;
     $date_format_1 = date('D M j', $date);
     $date_format_2 = date('m-d-y', $date);
@@ -985,6 +988,7 @@ function pivot_schedule_list_page() {
     'list' => $entity_list,
     'reference' => $reference,
     'date_menu' => $date_menu,
+    'selected_date' => $selected_date,
   ));
   drupal_add_js(drupal_get_path('module', 'nice_menus'). '/js/superfish.js');
   drupal_add_js(drupal_get_path('module', 'pivot_schedule'). '/js/pivot-sf.js');
