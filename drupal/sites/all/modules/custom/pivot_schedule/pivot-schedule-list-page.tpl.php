@@ -14,17 +14,17 @@
 ?>
 <section class="page schedule">
   <?php print $messages; ?>
+  <?php print $date_menu; ?>
   <?php foreach($list as $entity): ?>
-
     <div class="row">
-      <div class="time"><?php print date('h:ia', $entity[0]->broadcast_start_time); ?></div>
+      <div class="time"><?php print date('m/d/y h:ia', $entity[0]->broadcast_start_time); ?></div>
       <div class="info">
         <div class="rating"><?php print $entity[0]->fcc_rating_v_chip_codes; ?></div>
         <?php if(strtolower($entity[0]->element_name) == 'movie'): ?>
-          <div class="title"><?php print ($entity['reference'] != NULL ? l($entity[0]->title_name, 'node/'. $entity['reference']) : $entity[0]->title_name); ?></div>
+          <div class="title"><?php print ($entity['reference'] > 0 ? l($entity[0]->title_name, 'node/'. $entity['reference']) : $entity[0]->title_name); ?></div>
           <div class="episode"></div>
         <?php else: ?>
-          <div class="title"><?php print $entity[0]->element_name; ?> </div>
+          <div class="title"><?php print ($entity['reference'] > 0 ? l($entity[0]->element_name, 'node/'. $entity['reference']) : $entity[0]->element_name); ?></div>
           <div class="episode">"<?php print $entity[0]->title_name; ?>"</div>
         <?php endif; ?>
         <div class="description"><?php print $entity[0]->title_synopsis; ?></div>
