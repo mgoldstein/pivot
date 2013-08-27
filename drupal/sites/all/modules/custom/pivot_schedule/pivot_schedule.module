@@ -937,18 +937,19 @@ function pivot_schedule_list_page() {
 
   $entity_list = array();
   foreach($entities['pivot_schedule_show_time'] as $key => $entity){
+    $entity = entity_load('pivot_schedule_show_time', array($key));
 
-    //Query Shows that are linked to the shows in the schedule
     $reference = new EntityFieldQuery();
     $reference->entityCondition('entity_type', 'node')
       ->propertyCondition('type', 'show')
-      ->fieldCondition('field_schedule_name', $entity->element_name, '=')
+      ->fieldCondition('field_schedule_name', 'value', $entity[$key]->element_name, '=')
       ->propertyCondition('status', 1)
       ->range(0,1);
     $reference = $reference->execute();
+    //Query Shows that are linked to the shows in the schedule
+
 
     //Load the Show Time entity
-    $entity = entity_load('pivot_schedule_show_time', array($key));
     $entity[$key]->broadcast_start_time = $entity[$key]->broadcast_start_time + $offset;
     $entity = current($entity);
     $current_ref = current($reference['node']);
