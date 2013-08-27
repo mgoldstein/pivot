@@ -727,6 +727,7 @@ function pivot_schedule_theme() {
       'variables' => array(
         'list' => array(),
         'reference' => NULL,
+        'date_menu' => NULL,
       ),
       'template' => 'pivot-schedule-list-page',
     ),
@@ -899,30 +900,37 @@ function pivot_schedule_timezone() {
 
 function pivot_schedule_list_page() {
 
+  global $base_url;
+
   $current_time = date('m/d/y h:ia');
   $user_timezone = $_SESSION['timezone'];
   $dateTimeZoneUser = new DateTimeZone($user_timezone);
   $dateTimeUserNow = new DateTime($current_time, $dateTimeZoneUser);
-
   dpm($dateTimeUserNow, 'user now');
-
-  $eastern_time = strtotime($current_time) + 10800;
-  $offset = strtotime($dateTimeUserNow->date) - $eastern_time;
-  // Get the upcoming show times.
-
   $user_time = strtotime($dateTimeUserNow->date);
-  $user_date = date('m/d/y', $user_time);
-  $user_date = strtotime($user_date);
-  $user_range = $user_date + 3600*24 - $offset;
-  // Narrow the filter down so we're not loading every entity
-  $eastern_time_range = $eastern_time + 3600*24;
+
+
+  //if the date is set in the url, use it.  otherwise, default to todays date
+  if(arg(1) != NULL){
+    $user_date = str_replace('-', '/', arg(1));
+    $user_date = strtotime($user_date);
+    $show_time_et = $user_date + 10800;
+    $offset = $user_time - (strtotime($current_time) + 10800);
+  }
+  else{
+    $user_date = date('m/d/y', $user_time);
+    $user_date = strtotime($user_date);
+    $show_time_et = strtotime($current_time) + 10800;
+    $offset = $user_time - $show_time_et;
+  }
+  $date_end = $user_date + 3600*24 - $offset;
 
 
 //Query Show/Movie times for the next 24 hours
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'pivot_schedule_show_time')
-    ->propertyCondition('broadcast_start_time', $eastern_time, '>=')
-    ->propertyCondition('broadcast_start_time', $user_range, '<')
+    ->propertyCondition('broadcast_start_time', $show_time_et, '>=')
+    ->propertyCondition('broadcast_start_time', $date_end, '<')
     ->propertyOrderBy('broadcast_start_time');
   $entities = $query->execute();
 
@@ -947,9 +955,20 @@ function pivot_schedule_list_page() {
     $entity_list[] = array($entity, 'reference' => $current_ref->nid);
   }
 
+  //Create Date menu list
+  $date_menu = '<ul class="schedule-date-menu">';
+  for($x=0; $x<=7; $x++){
+    $date = $user_date + 3600*24*$x;
+    $date_format_1 = date('m/d/y', $date);
+    $date_format_2 = date('m-d-y', $date);
+    $date_menu .= '<li class="'. $date_format_2. '">'. l($date_format_1, $base_url. '/schedule-test/'. $date_format_2). '</li>';
+  }
+  $date_menu .= '</ul>';
+
   $content = theme('pivot_schedule_list_page', array(
     'list' => $entity_list,
     'reference' => $reference,
+    'date_menu' => $date_menu,
   ));
   return $content;
 

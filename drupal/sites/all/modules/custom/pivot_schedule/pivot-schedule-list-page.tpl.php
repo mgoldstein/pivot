@@ -14,10 +14,11 @@
 ?>
 <section class="page schedule">
   <?php print $messages; ?>
+  <?php print $date_menu; ?>
   <?php foreach($list as $entity): ?>
 
     <div class="row">
-      <div class="time"><?php print date('h:ia', $entity[0]->broadcast_start_time); ?></div>
+      <div class="time"><?php print date('m/d/y h:ia', $entity[0]->broadcast_start_time); ?></div>
       <div class="info">
         <div class="rating"><?php print $entity[0]->fcc_rating_v_chip_codes; ?></div>
         <?php if(strtolower($entity[0]->element_name) == 'movie'): ?>
