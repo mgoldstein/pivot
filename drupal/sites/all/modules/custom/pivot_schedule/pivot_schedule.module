@@ -279,7 +279,7 @@ function pivot_schedule_menu() {
     'access callback' => 'user_access',
   );
   $items['schedule-test'] = array(
-    'title' => 'Schedule',
+    'title' => 'Pivot On-Air Schedule',
     'page callback' => 'pivot_schedule_list_page',
     'access arguments' => array('access content'),
   );
@@ -917,11 +917,11 @@ function pivot_schedule_list_page() {
 
   global $base_url;
 
-$current_time = time();
-$user_timezone = $_SESSION['timezone'];
+  $current_time = time();
+  $user_timezone = $_SESSION['timezone'];
 
-$user_time = pivot_schedule_local_date('r', $current_time, $user_timezone);
-$user_time = strtotime($user_time);
+  $user_time = pivot_schedule_local_date('r', $current_time, $user_timezone);
+  $user_time = strtotime($user_time);
   $current_time = date('m/d/y h:ia');
 
   //if the date is set in the url, use it.  otherwise, default to todays date
@@ -971,20 +971,24 @@ $user_time = strtotime($user_time);
   }
 
   //Create Date menu list
-  $date_menu = '<ul class="schedule-date-menu">';
-  for($x=0; $x<=7; $x++){
+  $date_menu = '<div class="date-menu"><div class="menu-title">Date: </div><ul class="sfw-menu">';
+  $date_menu .= '<li class="item">'. date('D M j', $user_date). '<ul>';
+  for($x=1; $x<=7; $x++){
     $date = $user_date + 3600*24*$x;
-    $date_format_1 = date('m/d/y', $date);
+    $date_format_1 = date('D M j', $date);
     $date_format_2 = date('m-d-y', $date);
-    $date_menu .= '<li class="'. $date_format_2. '">'. l($date_format_1, $base_url. '/schedule-test/'. $date_format_2). '</li>';
+    $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule-test/'. $date_format_2). '</li>';
   }
-  $date_menu .= '</ul>';
+  $date_menu .= '</ul></ul></div>';
 
   $content = theme('pivot_schedule_list_page', array(
     'list' => $entity_list,
     'reference' => $reference,
     'date_menu' => $date_menu,
   ));
+  drupal_add_js(drupal_get_path('module', 'nice_menus'). '/js/superfish.js');
+  drupal_add_js(drupal_get_path('module', 'pivot_schedule'). '/js/pivot-sf.js');
+
   return $content;
 
 }

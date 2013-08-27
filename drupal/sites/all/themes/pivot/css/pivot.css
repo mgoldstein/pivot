@@ -2862,7 +2862,7 @@ iframe.media-youtube-player {
 /* ============================================================
 || Schedule Page
 ============================================================ */
-/* line 2741, ../sass/_pivot-global.scss */
+/* line 2742, ../sass/_pivot-global.scss */
 .page.schedule .row {
   max-width: 100%;
   height: auto;
@@ -2870,49 +2870,50 @@ iframe.media-youtube-player {
   background: #fff;
   padding: 20px;
   margin-bottom: 10px;
+  clear: both;
 }
-/* line 2748, ../sass/_pivot-global.scss */
+/* line 2750, ../sass/_pivot-global.scss */
 .page.schedule .row .time {
   width: 20%;
   float: left;
 }
-/* line 2752, ../sass/_pivot-global.scss */
+/* line 2754, ../sass/_pivot-global.scss */
 .page.schedule .row .info {
   width: 70%;
   float: left;
 }
-/* line 2755, ../sass/_pivot-global.scss */
+/* line 2757, ../sass/_pivot-global.scss */
 .page.schedule .row .info .rating {
   float: right;
   width: 50%;
   font-size: 16px;
   line-height: 21px;
 }
-/* line 2761, ../sass/_pivot-global.scss */
+/* line 2763, ../sass/_pivot-global.scss */
 .page.schedule .row .info .title {
   width: 50%;
   text-transform: none;
   font-size: 21px;
   margin-bottom: 0;
 }
-/* line 2767, ../sass/_pivot-global.scss */
+/* line 2769, ../sass/_pivot-global.scss */
 .page.schedule .row .info .episode {
   font-size: 13px;
   font-weight: bolder;
   line-height: 25px;
 }
-/* line 2772, ../sass/_pivot-global.scss */
+/* line 2774, ../sass/_pivot-global.scss */
 .page.schedule .row .info .description {
   font-family: "Apercu Mono Regular", monospace;
   font-size: 13px;
   color: #C40066;
 }
-/* line 2778, ../sass/_pivot-global.scss */
+/* line 2780, ../sass/_pivot-global.scss */
 .page.schedule .row .premier {
   width: 10%;
   float: right;
 }
-/* line 2781, ../sass/_pivot-global.scss */
+/* line 2783, ../sass/_pivot-global.scss */
 .page.schedule .row .premier .icon {
   font-weight: bold;
   font-style: italic;
@@ -2921,6 +2922,55 @@ iframe.media-youtube-player {
   font-size: 14px;
   padding: 10px;
   float: right;
+}
+/* line 2794, ../sass/_pivot-global.scss */
+.page.schedule .date-menu {
+  float: right;
+}
+/* line 2796, ../sass/_pivot-global.scss */
+.page.schedule .date-menu .menu-title {
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 18px;
+}
+/* line 2802, ../sass/_pivot-global.scss */
+.page.schedule ul.sfw-menu {
+  position: relative;
+  margin: 0;
+  text-align: center;
+  font-size: 18px;
+  padding: 0;
+  display: inline-block;
+}
+/* line 2809, ../sass/_pivot-global.scss */
+.page.schedule ul.sfw-menu li.item {
+  list-style: none;
+  cursor: pointer;
+  border-bottom: 3px solid #0083a9;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* line 2816, ../sass/_pivot-global.scss */
+.page.schedule ul.sfw-menu li.item ul {
+  background: #0083a9;
+  position: absolute;
+  z-index: 50;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  text-align: left;
+  margin-left: -15px;
+}
+/* line 2825, ../sass/_pivot-global.scss */
+.page.schedule ul.sfw-menu li.item ul li {
+  padding: 0;
+}
+/* line 2827, ../sass/_pivot-global.scss */
+.page.schedule ul.sfw-menu li.item ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
 }
 
 /*
