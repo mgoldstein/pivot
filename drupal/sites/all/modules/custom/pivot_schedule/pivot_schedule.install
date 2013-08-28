@@ -33,6 +33,13 @@ function pivot_schedule_schema() {
         'not null' => TRUE,
         'default' => 0,
       ),
+      'broadcast_end_time' => array(
+        'description' => 'Unix timestamp of end date and time for the broadcast.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
       'broadcast_length' => array(
         'description' => 'Duration of the broadcast in seconds.',
         'type' => 'int',
@@ -127,4 +134,13 @@ function pivot_schedule_update_7101(&$sandbox) {
     $schema['pivot_schedule_show_time']['fields']['year_released']);
   db_add_field('pivot_schedule_show_time', 'fcc_rating_v_chip_codes',
     $schema['pivot_schedule_show_time']['fields']['fcc_rating_v_chip_codes']);
+}
+
+/**
+ * Add the broadcast end date and time.
+ */
+function pivot_schedule_update_7102(&$sandbox) {
+  $schema = pivot_schedule_schema();
+  db_add_field('pivot_schedule_show_time', 'broadcast_end_time',
+    $schema['pivot_schedule_show_time']['fields']['broadcast_end_time']);
 }

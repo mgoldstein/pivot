@@ -42,6 +42,7 @@ class PivotScheduleShowTimeController extends EntityApiController {
       'id' => 0,
       'file_id' => 0,
       'broadcast_start_time' => 0,
+      'broadcast_end_time' => 0,
       'broadcast_length' => 0,
       'element_name' => '',
       'title_name' => '',
@@ -135,6 +136,16 @@ function pivot_schedule_entity_property_info() {
     'required' => TRUE,
     'field' => FALSE,
   );
+  $properties['broadcast_end_time'] = array(
+    'label' => t('Broadcast End Time'),
+    'description' => t('End date and time of the episode/content broadcast.'),
+    'type' => 'date',
+    'validation callback' => 'entity_property_validate_integer_non_negative',
+    'access callback' => 'pivot_schedule_access',
+    'schema field' => 'broadcast_end_time',
+    'required' => TRUE,
+    'field' => FALSE,
+  );
   $properties['broadcast_length'] = array(
     'label' => t('Broadcast length'),
     'description' => t('End date and time of the episode/content broadcast.'),
@@ -145,16 +156,6 @@ function pivot_schedule_entity_property_info() {
     'required' => TRUE,
     'field' => FALSE,
   );
-  // $properties['broadcast_end_time'] = array(
-  //   'label' => t('Broadcast End Time'),
-  //   'description' => t('Duration of the broadcast in seconds.'),
-  //   'type' => 'date',
-  //   'validation callback' => 'entity_property_validate_integer_non_negative',
-  //   'access callback' => 'pivot_schedule_access',
-  //   'computed' => TRUE,
-  //   'getter callback' => 'pivot_schedule_end_time',
-  //   'field' => FALSE,
-  // );
   $properties['element_name'] = array(
     'label' => t('Element Name'),
     'description' => t('Name of the broadcast show/program.'),
@@ -432,6 +433,10 @@ function pivot_schedule_import_form_submit($form, &$form_state) {
         = ($duration[0] * 3600)
         + ($duration[1] * 60)
         +  $duration[2];
+
+      // Precalculate the end date and time
+      $values['broadcast_end_time'] = $value['broadcast_start_time']
+        + $values['broadcast_length'];
 
       // Only premieres will have a value (P) for this field.
       if (isset($show->TitlePremiereIndicatorCurrentSchedule)) {
