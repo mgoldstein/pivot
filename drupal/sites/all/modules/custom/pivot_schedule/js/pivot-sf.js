@@ -19,7 +19,10 @@ jQuery(document).ready(function () {
         type: 'POST',
         url: '/pivot-ajax/timezone-set',
         dataType: 'json',
-        data: 'timezone=' + timezone
+        data: 'timezone=' + timezone,
+        complete: function(){
+           location.reload();
+        }
       });
     });
 
