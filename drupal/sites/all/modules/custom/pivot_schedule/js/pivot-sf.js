@@ -13,4 +13,14 @@ jQuery(document).ready(function () {
       respect_expanded:  false
     });
 
+    jQuery('.tz-menu ul li ul li').click(function() {
+      var timezone = jQuery(this).attr("tz");
+      jQuery.ajax({
+        type: 'POST',
+        url: '/pivot-ajax/timezone-set',
+        dataType: 'json',
+        data: 'timezone=' + timezone
+      });
+    });
+
 });

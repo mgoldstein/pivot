@@ -273,9 +273,14 @@ function pivot_schedule_menu() {
     'access callback' => 'user_access',
     'access arguments' => array('import pivot_schedule show_times'),
   );
-  $items['pivot-ajax/timezone'] = array(
-    'title' => 'Timezone',
-    'page callback' => 'pivot_schedule_timezone',
+  $items['pivot-ajax/timezone-detect'] = array(
+    'title' => 'Timezone Detect',
+    'page callback' => 'pivot_schedule_timezone_detect',
+    'access callback' => 'user_access',
+  );
+  $items['pivot-ajax/timezone-set'] = array(
+    'title' => 'Timezone Set',
+    'page callback' => 'pivot_schedule_timezone_set',
     'access callback' => 'user_access',
   );
   $items['schedule'] = array(
@@ -890,18 +895,18 @@ function pivot_schedule_get_show_listing($schedule_name, $count, $tz) {
 
 
 function pivot_schedule_page_build(&$page) {
-  if (!isset($_SESSION['timezone'])) {
+  if (!isset($_SESSION['timezone']) || $_SESSION['timezone'] == 'undefined') {
     drupal_add_js(drupal_get_path('module', 'pivot_schedule'). '/js/jstz.js');
     drupal_add_js(drupal_get_path('module', 'pivot_schedule'). '/js/pivot_schedule_timezone.js');
   }
 }
 
-function pivot_schedule_timezone() {
+function pivot_schedule_timezone_detect() {
   $_SESSION['timezone'] = check_plain($_POST['timezone']);
 }
-
-
-
+function pivot_schedule_timezone_set() {
+  $_SESSION['timezone'] = check_plain($_POST['timezone']);
+}
 
 
 function pivot_schedule_local_date($format, $current_time = null, $timezone = 'UTC'){
@@ -918,10 +923,9 @@ function pivot_schedule_local_date($format, $current_time = null, $timezone = 'U
 function pivot_schedule_list_page() {
 
   global $base_url;
-
+// $_SESSION['timezone'] = 'America/LosAngeles';
   $current_time = time();
   $user_timezone = $_SESSION['timezone'];
-
   $user_time = pivot_schedule_local_date('r', $current_time, $user_timezone);
   $user_time = strtotime($user_time);
   $current_time = date('m/d/y h:ia');
@@ -969,7 +973,7 @@ function pivot_schedule_list_page() {
     //Load the Show Time entity
     $entity[$key]->broadcast_start_time = $entity[$key]->broadcast_start_time + $offset;
     $entity = current($entity);
-    $current_ref = current($reference['node']);
+    $current_ref = (isset($reference['node']) ? current($reference['node']) : '');
     $entity_list[] = array($entity, 'reference' => $current_ref->nid);
   }
 
@@ -989,16 +993,16 @@ function pivot_schedule_list_page() {
   //Create Timezone Menu List
   $clean_tz = array(
       'Eastern' => 'America/New_York',
-      'Central' => 'America/New_York',
-      'Mountain' => 'America/New_York',
+      'Central' => 'America/Detroit',
+      'Mountain' => 'America/Denver',
       'Pacific' => 'America/Los_Angeles',
-      'Alaska' => 'America/New_York',
-      'Hawaiian' => 'America/New_York',
+      'Alaska' => 'America/Anchorage',
+      'Hawaiian' => 'Pacific/Honolulu',
     );
   $tz_menu = '<div class="tz-menu"><div class="menu-title">Timezone: </div><ul class="sfw-menu">';
   $tz_menu .= '<li class="item">'. array_search($_SESSION['timezone'], $clean_tz). '<ul>';
   foreach($clean_tz as $key => $tz){
-    $tz_menu .= '<li class="item" attr="'. $tz. '">'. $key. '</li>';
+    $tz_menu .= '<li class="item" tz="'. $tz. '">'. $key. '</li>';
   }
   $tz_menu .= '</ul></ul></div>';
 
