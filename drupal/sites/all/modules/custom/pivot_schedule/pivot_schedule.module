@@ -971,12 +971,22 @@ function pivot_schedule_list_page() {
 
 
 //Query Show/Movie times
+  if(arg(1) != NULL){
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'pivot_schedule_show_time')
+      ->propertyCondition('broadcast_start_time', $show_time_et, '>=')
+      ->propertyCondition('broadcast_start_time', $date_end, '<')
+      ->propertyOrderBy('broadcast_start_time');
+    $entities = $query->execute();
+  }
+  else{
   $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'pivot_schedule_show_time')
-    ->propertyCondition('broadcast_end_time', $show_time_et, '>=')
-    ->propertyCondition('broadcast_start_time', $date_end, '<')
-    ->propertyOrderBy('broadcast_start_time');
-  $entities = $query->execute();
+    $query->entityCondition('entity_type', 'pivot_schedule_show_time')
+      ->propertyCondition('broadcast_end_time', $show_time_et, '>=')
+      ->propertyCondition('broadcast_start_time', $date_end, '<')
+      ->propertyOrderBy('broadcast_start_time');
+    $entities = $query->execute();
+  }
 
 //Find the referenced Show given the Query above
   $entity_list = array();
