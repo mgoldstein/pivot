@@ -954,8 +954,8 @@ function pivot_schedule_list_page() {
   if(arg(2) != NULL){
     $user_date_url = str_replace('-', '/', arg(2));
     $user_date_url = strtotime($user_date_url);
-    $show_time_et = $user_date_url + 10800;
     $offset = $user_time - (strtotime($current_time) + 10800);
+    $show_time_et = $user_date_url - $offset;
     $date_end = $user_date_url + 3600*24 - $offset;
   }
   else{
@@ -968,7 +968,7 @@ function pivot_schedule_list_page() {
 //Query Show/Movie times
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'pivot_schedule_show_time')
-    ->propertyCondition('broadcast_start_time', $show_time_et - $offset, '>=')
+    ->propertyCondition('broadcast_start_time', $show_time_et, '>=')
     ->propertyCondition('broadcast_start_time', $date_end, '<')
     ->propertyOrderBy('broadcast_start_time');
   $entities = $query->execute();
@@ -1028,10 +1028,10 @@ function pivot_schedule_list_page() {
   $tz_menu .= '<li class="item">'. $user_clean_timezone. '<ul>';
   foreach($clean_tz as $key => $tz){
     if(arg(2) != NULL){
-      $tz_menu .= '<li class="item" tz="'. $tz. '">'. l($key, $base_url. '/schedule/'. $key). '</li>';
+      $tz_menu .= '<li class="item" tz="'. $tz. '">'. l($key, $base_url. '/schedule/'. $key. '/'. arg(2)). '</li>';
     }
     else{
-      $tz_menu .= '<li class="item" tz="'. $tz. '">'. l($key, $base_url. '/schedule/'. $key. '/'. arg(2)). '</li>';
+      $tz_menu .= '<li class="item" tz="'. $tz. '">'. l($key, $base_url. '/schedule/'. $key). '</li>';
     }
 
   }
