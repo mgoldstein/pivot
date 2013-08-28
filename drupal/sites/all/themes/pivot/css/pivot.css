@@ -2992,12 +2992,13 @@ iframe.media-youtube-player {
   text-align: left;
 }
 /* line 2849, ../sass/_pivot-global.scss */
-.page.schedule ul.sfw-menu li.item ul li {
+.page.schedule ul.sfw-menu li.item ul li.item {
   padding: 0;
   text-indent: 0;
+  border-bottom: none;
 }
-/* line 2852, ../sass/_pivot-global.scss */
-.page.schedule ul.sfw-menu li.item ul li a {
+/* line 2853, ../sass/_pivot-global.scss */
+.page.schedule ul.sfw-menu li.item ul li.item a {
   color: #fff;
   text-decoration: none;
   font-size: 16px;

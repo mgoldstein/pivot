@@ -2846,9 +2846,10 @@ iframe.media-youtube-player {
 				margin-top: 10px;
 				padding: 10px;
 				text-align: left;
-				li{
+				li.item{
 					padding: 0;
 					text-indent: 0;
+					border-bottom: none;
 					a{
 						color: #fff;
 						text-decoration: none;
