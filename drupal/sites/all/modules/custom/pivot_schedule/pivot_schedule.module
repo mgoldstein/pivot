@@ -273,19 +273,14 @@ function pivot_schedule_menu() {
     'access callback' => 'user_access',
     'access arguments' => array('import pivot_schedule show_times'),
   );
-  $items['pivot-ajax/timezone-detect'] = array(
-    'title' => 'Timezone Detect',
-    'page callback' => 'pivot_schedule_timezone_detect',
-    'access callback' => 'user_access',
-  );
-  $items['pivot-ajax/timezone-set'] = array(
-    'title' => 'Timezone Set',
-    'page callback' => 'pivot_schedule_timezone_set',
-    'access callback' => 'user_access',
-  );
   $items['schedule'] = array(
     'title' => 'Pivot On-Air Schedule',
     'page callback' => 'pivot_schedule_list_page',
+    'access arguments' => array('access content'),
+  );
+    $items['pivot-ajax/timezone'] = array(
+    'title' => 'Timezone Detect',
+    'page callback' => 'pivot_schedule_timezone_detect',
     'access arguments' => array('access content'),
   );
   return $items;
@@ -894,38 +889,61 @@ function pivot_schedule_get_show_listing($schedule_name, $count, $tz) {
 }
 
 
-function pivot_schedule_page_build(&$page) {
-  if (!isset($_SESSION['timezone']) || $_SESSION['timezone'] == 'undefined') {
-    drupal_add_js(drupal_get_path('module', 'pivot_schedule'). '/js/jstz.js');
-    drupal_add_js(drupal_get_path('module', 'pivot_schedule'). '/js/pivot_schedule_timezone.js');
-  }
-}
-
-function pivot_schedule_timezone_detect() {
-  $_SESSION['timezone'] = check_plain($_POST['timezone']);
-}
-function pivot_schedule_timezone_set() {
-  $_SESSION['timezone'] = check_plain($_POST['timezone']);
-}
-
-
 function pivot_schedule_local_date($format, $current_time = null, $timezone = 'UTC'){
-    if (is_null($time))
-        $time = time();
-
-    $local = new DateTime('@'.$time);
+    if (is_null($current_time))
+        $current_time = time();
+    $local = new DateTime('@'.$current_time);
     $local->setTimeZone(new DateTimeZone($timezone));
 
     return $local->format('m/d/y h:ia');
 }
 
 
+function pivot_schedule_timezone_detect() {
+  drupal_session_start();
+  $_SESSION['timezone'] = check_plain($_POST['timezone']);
+}
+
+function pivot_schedule_init(){
+  if($_SERVER['REQUEST_URI'] == 'schedule/' || $_SERVER['REQUEST_URI'] == 'schedule') {
+    drupal_add_js(drupal_get_path('module', 'pivot_schedule'). '/js/jstz.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_schedule'). '/js/pivot_schedule_timezone.js');
+  }
+}
+
+
 function pivot_schedule_list_page() {
 
+  //Create Timezone Menu List
+  $clean_tz = array(
+    'Eastern' => array('America/New_York', 'America/Bogota'),
+    'Central' => array('America/Detroit', 'America/Chicago', 'America/Guatemala', 'Pacific/Easter'),
+    'Mountain' => array('America/Denver', 'America/Phoenix'),
+    'Pacific' => array('America/Los_Angeles', 'Pacific/Pitcairn'),
+    'Alaska' => array('America/Anchorage', 'Pacific/Gambier'),
+    'Hawaiian' => array('Pacific/Honolulu', 'America/Adak'),
+  );
+
+
   global $base_url;
-// $_SESSION['timezone'] = 'America/LosAngeles';
   $current_time = time();
-  $user_timezone = $_SESSION['timezone'];
+
+// Set the Users timezone either by autodetecting or using the tz in url
+  if(arg(1) == NULL){
+    if(!isset($_SESSION['timezone'])){
+      drupal_add_js(drupal_get_path('module', 'pivot_schedule'). '/js/jstz.js');
+      drupal_add_js(drupal_get_path('module', 'pivot_schedule'). '/js/pivot_schedule_timezone.js');
+      $user_timezone = 'America/New_York';
+    }
+    else{
+      $user_timezone = $_SESSION['timezone'];
+    }
+  }
+  else{
+    $user_timezone = current($clean_tz[arg(1)]);
+  }
+
+// Get the current time given the User's timezone.
   $user_time = pivot_schedule_local_date('r', $current_time, $user_timezone);
   $user_time = strtotime($user_time);
   $current_time = date('m/d/y h:ia');
@@ -933,8 +951,8 @@ function pivot_schedule_list_page() {
   //if the date is set in the url, use it.  otherwise, default to todays date
   $user_date = date('m/d/y', $user_time);
   $user_date = strtotime($user_date);
-  if(arg(1) != NULL){
-    $user_date_url = str_replace('-', '/', arg(1));
+  if(arg(2) != NULL){
+    $user_date_url = str_replace('-', '/', arg(2));
     $user_date_url = strtotime($user_date_url);
     $show_time_et = $user_date_url + 10800;
     $offset = $user_time - (strtotime($current_time) + 10800);
@@ -947,15 +965,15 @@ function pivot_schedule_list_page() {
   }
 
 
-//Query Show/Movie times for the next 24 hours
+//Query Show/Movie times
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'pivot_schedule_show_time')
-    ->propertyCondition('broadcast_start_time', $show_time_et, '>=')
+    ->propertyCondition('broadcast_start_time', $show_time_et - $offset, '>=')
     ->propertyCondition('broadcast_start_time', $date_end, '<')
     ->propertyOrderBy('broadcast_start_time');
   $entities = $query->execute();
 
-
+//Find the referenced Show given the Query above
   $entity_list = array();
   foreach($entities['pivot_schedule_show_time'] as $key => $entity){
     $entity = entity_load('pivot_schedule_show_time', array($key));
@@ -967,7 +985,6 @@ function pivot_schedule_list_page() {
       ->propertyCondition('status', 1)
       ->range(0,1);
     $reference = $reference->execute();
-    //Query Shows that are linked to the shows in the schedule
 
 
     //Load the Show Time entity
@@ -977,7 +994,18 @@ function pivot_schedule_list_page() {
     $entity_list[] = array($entity, 'reference' => $current_ref->nid);
   }
 
-  //Create Date menu list
+  //Create Date menu list  TODO: move markup to the tpl file
+  if(arg(1) == NULL){
+    foreach($clean_tz as $key => $value) {
+      if(in_array($user_timezone, $value)){
+        $user_clean_timezone = $key;
+      }
+    }
+  }
+  else{
+    $user_clean_timezone = arg(1);
+  }
+
   $date_menu = '<div class="date-menu"><div class="menu-title">Date: </div><ul class="sfw-menu">';
   $selected_date = ($user_date_url != NULL ? $user_date_url : $user_date);
   $date_menu .= '<li class="item">'. date('D M j', $selected_date). '<ul>';
@@ -985,24 +1013,27 @@ function pivot_schedule_list_page() {
     $date = $user_date + 3600*24*$x;
     $date_format_1 = date('D M j', $date);
     $date_format_2 = date('m-d-y', $date);
-    $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule/'. $date_format_2). '</li>';
+    if(arg(2) != NULL){
+      $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule/'. $user_clean_timezone. '/'. $date_format_2). '</li>';
+    }
+    else{
+      $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule/'. $user_clean_timezone. '/'. $date_format_2). '</li>';
+    }
+
   }
   $date_menu .= '</ul></ul></div>';
 
-
-  //Create Timezone Menu List
-  $clean_tz = array(
-      'Eastern' => 'America/New_York',
-      'Central' => 'America/Detroit',
-      'Mountain' => 'America/Denver',
-      'Pacific' => 'America/Los_Angeles',
-      'Alaska' => 'America/Anchorage',
-      'Hawaiian' => 'Pacific/Honolulu',
-    );
+//Create Timezone menu list  TODO: move markup to the tpl file
   $tz_menu = '<div class="tz-menu"><div class="menu-title">Timezone: </div><ul class="sfw-menu">';
-  $tz_menu .= '<li class="item">'. array_search($_SESSION['timezone'], $clean_tz). '<ul>';
+  $tz_menu .= '<li class="item">'. $user_clean_timezone. '<ul>';
   foreach($clean_tz as $key => $tz){
-    $tz_menu .= '<li class="item" tz="'. $tz. '">'. $key. '</li>';
+    if(arg(2) != NULL){
+      $tz_menu .= '<li class="item" tz="'. $tz. '">'. l($key, $base_url. '/schedule/'. $key). '</li>';
+    }
+    else{
+      $tz_menu .= '<li class="item" tz="'. $tz. '">'. l($key, $base_url. '/schedule/'. $key. '/'. arg(2)). '</li>';
+    }
+
   }
   $tz_menu .= '</ul></ul></div>';
 
