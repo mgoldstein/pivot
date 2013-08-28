@@ -435,7 +435,7 @@ function pivot_schedule_import_form_submit($form, &$form_state) {
         +  $duration[2];
 
       // Precalculate the end date and time
-      $values['broadcast_end_time'] = $value['broadcast_start_time']
+      $values['broadcast_end_time'] = $values['broadcast_start_time']
         + $values['broadcast_length'];
 
       // Only premieres will have a value (P) for this field.
@@ -973,7 +973,7 @@ function pivot_schedule_list_page() {
 //Query Show/Movie times
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'pivot_schedule_show_time')
-    ->propertyCondition('broadcast_start_time', $show_time_et, '>=')
+    ->propertyCondition('broadcast_end_time', $show_time_et, '>=')
     ->propertyCondition('broadcast_start_time', $date_end, '<')
     ->propertyOrderBy('broadcast_start_time');
   $entities = $query->execute();
