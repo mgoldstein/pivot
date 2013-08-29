@@ -2750,6 +2750,9 @@ iframe.media-youtube-player {
 		.time{
 			width: 15%;
 			float: left;
+			@media (max-width: 1000px) {
+				width: 20%;
+			}
 			@media (max-width: 480px) {
 				float: left;
 				font-size: 16px;
@@ -2758,6 +2761,9 @@ iframe.media-youtube-player {
 		.info{
 			width: 75%;
 			float: left;
+			@media (max-width: 1000px) {
+				width: 80%;
+			}
 			@media (max-width: 480px) {
 				width: 100%;
 				clear: left;
@@ -2784,7 +2790,6 @@ iframe.media-youtube-player {
 				}
 			}
 			.title{
-				width: 50%;
 				text-transform: none;
 				font-size: 21px;
 				margin-bottom: 0;
