@@ -2872,55 +2872,62 @@ iframe.media-youtube-player {
   margin-bottom: 10px;
   clear: both;
 }
-/* line 2750, ../sass/_pivot-global.scss */
+@media (max-width: 480px) {
+  /* line 2742, ../sass/_pivot-global.scss */
+  .page.schedule .row {
+    padding: 10px;
+  }
+}
+/* line 2753, ../sass/_pivot-global.scss */
 .page.schedule .row .time {
   width: 15%;
   float: left;
 }
 @media (max-width: 1000px) {
-  /* line 2750, ../sass/_pivot-global.scss */
+  /* line 2753, ../sass/_pivot-global.scss */
   .page.schedule .row .time {
     width: 20%;
   }
 }
 @media (max-width: 480px) {
-  /* line 2750, ../sass/_pivot-global.scss */
+  /* line 2753, ../sass/_pivot-global.scss */
   .page.schedule .row .time {
     float: left;
     font-size: 16px;
+    margin-bottom: 5px;
   }
 }
-/* line 2761, ../sass/_pivot-global.scss */
+/* line 2765, ../sass/_pivot-global.scss */
 .page.schedule .row .info {
   width: 75%;
   float: left;
 }
 @media (max-width: 1000px) {
-  /* line 2761, ../sass/_pivot-global.scss */
+  /* line 2765, ../sass/_pivot-global.scss */
   .page.schedule .row .info {
     width: 80%;
   }
 }
 @media (max-width: 480px) {
-  /* line 2761, ../sass/_pivot-global.scss */
+  /* line 2765, ../sass/_pivot-global.scss */
   .page.schedule .row .info {
     width: 100%;
     clear: left;
     float: left;
   }
 }
-/* line 2772, ../sass/_pivot-global.scss */
+/* line 2776, ../sass/_pivot-global.scss */
 .page.schedule .row .info .title-wrapper {
   float: left;
   width: 50%;
 }
 @media (max-width: 480px) {
-  /* line 2772, ../sass/_pivot-global.scss */
+  /* line 2776, ../sass/_pivot-global.scss */
   .page.schedule .row .info .title-wrapper {
     width: 100%;
   }
 }
-/* line 2780, ../sass/_pivot-global.scss */
+/* line 2784, ../sass/_pivot-global.scss */
 .page.schedule .row .info .rating {
   float: right;
   width: 50%;
@@ -2928,7 +2935,7 @@ iframe.media-youtube-player {
   line-height: 21px;
 }
 @media (max-width: 480px) {
-  /* line 2780, ../sass/_pivot-global.scss */
+  /* line 2784, ../sass/_pivot-global.scss */
   .page.schedule .row .info .rating {
     float: left;
     clear: left;
@@ -2936,37 +2943,37 @@ iframe.media-youtube-player {
     text-align: left;
   }
 }
-/* line 2792, ../sass/_pivot-global.scss */
+/* line 2796, ../sass/_pivot-global.scss */
 .page.schedule .row .info .title {
   text-transform: none;
   font-size: 21px;
   margin-bottom: 0;
 }
-/* line 2797, ../sass/_pivot-global.scss */
+/* line 2801, ../sass/_pivot-global.scss */
 .page.schedule .row .info .episode {
   font-size: 13px;
   font-weight: bolder;
   line-height: 25px;
 }
-/* line 2802, ../sass/_pivot-global.scss */
+/* line 2806, ../sass/_pivot-global.scss */
 .page.schedule .row .info .description {
   font-family: "Apercu Mono Regular", monospace;
   font-size: 13px;
   color: #C40066;
   clear: left;
 }
-/* line 2809, ../sass/_pivot-global.scss */
+/* line 2813, ../sass/_pivot-global.scss */
 .page.schedule .row .premier {
   width: 10%;
   float: right;
 }
 @media (max-width: 480px) {
-  /* line 2809, ../sass/_pivot-global.scss */
+  /* line 2813, ../sass/_pivot-global.scss */
   .page.schedule .row .premier {
     width: 15%;
   }
 }
-/* line 2815, ../sass/_pivot-global.scss */
+/* line 2819, ../sass/_pivot-global.scss */
 .page.schedule .row .premier .icon {
   font-weight: bold;
   font-style: italic;
@@ -2977,40 +2984,40 @@ iframe.media-youtube-player {
   float: right;
 }
 @media (max-width: 480px) {
-  /* line 2815, ../sass/_pivot-global.scss */
+  /* line 2819, ../sass/_pivot-global.scss */
   .page.schedule .row .premier .icon {
     position: absolute;
   }
 }
-/* line 2829, ../sass/_pivot-global.scss */
+/* line 2833, ../sass/_pivot-global.scss */
 .page.schedule .date-menu, .page.schedule .tz-menu {
   float: right;
 }
 @media (max-width: 480px) {
-  /* line 2829, ../sass/_pivot-global.scss */
+  /* line 2833, ../sass/_pivot-global.scss */
   .page.schedule .date-menu, .page.schedule .tz-menu {
     float: left;
     clear: left;
   }
 }
-/* line 2835, ../sass/_pivot-global.scss */
+/* line 2839, ../sass/_pivot-global.scss */
 .page.schedule .date-menu .menu-title, .page.schedule .tz-menu .menu-title {
   display: inline-block;
   margin-right: 5px;
   font-size: 18px;
 }
-/* line 2840, ../sass/_pivot-global.scss */
+/* line 2844, ../sass/_pivot-global.scss */
 .page.schedule .date-menu ul li ul li, .page.schedule .tz-menu ul li ul li {
   color: #fff;
   width: auto;
   display: block;
   white-space: no-wrap;
 }
-/* line 2847, ../sass/_pivot-global.scss */
+/* line 2851, ../sass/_pivot-global.scss */
 .page.schedule .tz-menu {
   margin-right: 10px;
 }
-/* line 2850, ../sass/_pivot-global.scss */
+/* line 2854, ../sass/_pivot-global.scss */
 .page.schedule .sub-title {
   float: left;
   margin-top: 0px;
@@ -3018,7 +3025,7 @@ iframe.media-youtube-player {
   font-size: 24px;
   margin-bottom: 15px;
 }
-/* line 2857, ../sass/_pivot-global.scss */
+/* line 2861, ../sass/_pivot-global.scss */
 .page.schedule ul.sfw-menu {
   position: relative;
   margin: 0;
@@ -3027,7 +3034,7 @@ iframe.media-youtube-player {
   padding: 0;
   display: inline-block;
 }
-/* line 2864, ../sass/_pivot-global.scss */
+/* line 2868, ../sass/_pivot-global.scss */
 .page.schedule ul.sfw-menu li.item {
   width: 110px;
   list-style: none;
@@ -3036,7 +3043,7 @@ iframe.media-youtube-player {
   padding-bottom: 5px;
   text-indent: 5px;
 }
-/* line 2871, ../sass/_pivot-global.scss */
+/* line 2875, ../sass/_pivot-global.scss */
 .page.schedule ul.sfw-menu li.item ul {
   background: #0083a9;
   position: absolute;
@@ -3046,13 +3053,13 @@ iframe.media-youtube-player {
   padding: 10px;
   text-align: left;
 }
-/* line 2879, ../sass/_pivot-global.scss */
+/* line 2883, ../sass/_pivot-global.scss */
 .page.schedule ul.sfw-menu li.item ul li.item {
   padding: 0;
   text-indent: 0;
   border-bottom: none;
 }
-/* line 2883, ../sass/_pivot-global.scss */
+/* line 2887, ../sass/_pivot-global.scss */
 .page.schedule ul.sfw-menu li.item ul li.item a {
   color: #fff;
   text-decoration: none;

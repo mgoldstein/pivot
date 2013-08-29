@@ -2747,6 +2747,9 @@ iframe.media-youtube-player {
 		padding: 20px;
 		margin-bottom: 10px;
 		clear: both;
+		@media (max-width: 480px) {
+			padding: 10px;
+		}
 		.time{
 			width: 15%;
 			float: left;
@@ -2756,6 +2759,7 @@ iframe.media-youtube-player {
 			@media (max-width: 480px) {
 				float: left;
 				font-size: 16px;
+				margin-bottom: 5px;
 			}
 		}
 		.info{
