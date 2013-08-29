@@ -13,7 +13,7 @@
  */
 ?>
 <section class="page schedule">
-  <div class="sub-title"><?php print (arg(2) != NULL ? '' : 'Today, '). date('l, F j', $selected_date); ?></div>
+  <div class="sub-title"><?php print (arg(2) != NULL ? '' : 'Today, '). date('F j', $selected_date); ?></div>
   <?php print $date_menu; ?>
   <?php print $tz_menu; ?>
   <?php foreach($list as $entity): ?>
