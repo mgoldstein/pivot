@@ -2992,37 +2992,38 @@ iframe.media-youtube-player {
   /* line 2824, ../sass/_pivot-global.scss */
   .page.schedule .row .premier .icon {
     position: absolute;
+    right: 20px;
   }
 }
-/* line 2838, ../sass/_pivot-global.scss */
+/* line 2839, ../sass/_pivot-global.scss */
 .page.schedule .date-menu, .page.schedule .tz-menu {
   float: right;
 }
 @media (max-width: 480px) {
-  /* line 2838, ../sass/_pivot-global.scss */
+  /* line 2839, ../sass/_pivot-global.scss */
   .page.schedule .date-menu, .page.schedule .tz-menu {
     float: left;
     clear: left;
   }
 }
-/* line 2844, ../sass/_pivot-global.scss */
+/* line 2845, ../sass/_pivot-global.scss */
 .page.schedule .date-menu .menu-title, .page.schedule .tz-menu .menu-title {
   display: inline-block;
   margin-right: 5px;
   font-size: 18px;
 }
-/* line 2849, ../sass/_pivot-global.scss */
+/* line 2850, ../sass/_pivot-global.scss */
 .page.schedule .date-menu ul li ul li, .page.schedule .tz-menu ul li ul li {
   color: #fff;
   width: auto;
   display: block;
   white-space: no-wrap;
 }
-/* line 2856, ../sass/_pivot-global.scss */
+/* line 2857, ../sass/_pivot-global.scss */
 .page.schedule .tz-menu {
   margin-right: 10px;
 }
-/* line 2859, ../sass/_pivot-global.scss */
+/* line 2860, ../sass/_pivot-global.scss */
 .page.schedule .sub-title {
   float: left;
   margin-top: 0px;
@@ -3030,7 +3031,7 @@ iframe.media-youtube-player {
   font-size: 24px;
   margin-bottom: 15px;
 }
-/* line 2866, ../sass/_pivot-global.scss */
+/* line 2867, ../sass/_pivot-global.scss */
 .page.schedule ul.sfw-menu {
   position: relative;
   margin: 0;
@@ -3039,7 +3040,7 @@ iframe.media-youtube-player {
   padding: 0;
   display: inline-block;
 }
-/* line 2873, ../sass/_pivot-global.scss */
+/* line 2874, ../sass/_pivot-global.scss */
 .page.schedule ul.sfw-menu li.item {
   width: 110px;
   list-style: none;
@@ -3048,7 +3049,7 @@ iframe.media-youtube-player {
   padding-bottom: 5px;
   text-indent: 5px;
 }
-/* line 2880, ../sass/_pivot-global.scss */
+/* line 2881, ../sass/_pivot-global.scss */
 .page.schedule ul.sfw-menu li.item ul {
   background: #0083a9;
   position: absolute;
@@ -3058,13 +3059,13 @@ iframe.media-youtube-player {
   padding: 10px;
   text-align: left;
 }
-/* line 2888, ../sass/_pivot-global.scss */
+/* line 2889, ../sass/_pivot-global.scss */
 .page.schedule ul.sfw-menu li.item ul li.item {
   padding: 0;
   text-indent: 0;
   border-bottom: none;
 }
-/* line 2892, ../sass/_pivot-global.scss */
+/* line 2893, ../sass/_pivot-global.scss */
 .page.schedule ul.sfw-menu li.item ul li.item a {
   color: #fff;
   text-decoration: none;
