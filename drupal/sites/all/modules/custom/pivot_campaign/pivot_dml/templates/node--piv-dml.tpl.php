@@ -66,7 +66,7 @@
 		<?php foreach($headlines as $headline): ?>
 			<span><?php print $headline->title; ?></span><br><br>
 		<?php endforeach; ?>
-		<?php print l('get the whole story', $base_url. '/'. $path, array('attributes' => array('class' => array('btn')))); ?>
+		<?php print l('get the whole story', $base_url. '/'. $path. '/news', array('attributes' => array('class' => array('btn')))); ?>
 	</div>
 	<div class="right">
 		<a href="http://takeaction.takepart.com/actions/inform-yourself-and-lawmakers-about-online-privacy"><img src="/<?php print drupal_get_path('module', 'pivot_dml'); ?>/images/tacma.jpg" style="float:right; height:100%;"></a>
