@@ -922,7 +922,7 @@ function pivot_schedule_list_page() {
   //Create Timezone Menu List
   $clean_tz = array(
     'Eastern' => array('America/New_York', 'America/Bogota'),
-    'Central' => array('America/Detroit', 'America/Chicago', 'America/Guatemala', 'Pacific/Easter'),
+    'Central' => array('America/Chicago', 'America/Guatemala', 'Pacific/Easter'),
     'Mountain' => array('America/Denver', 'America/Phoenix'),
     'Pacific' => array('America/Los_Angeles', 'Pacific/Pitcairn'),
     'Alaska' => array('America/Anchorage', 'Pacific/Gambier'),
@@ -951,20 +951,23 @@ function pivot_schedule_list_page() {
 // Get the current time given the User's timezone.
   $user_time = pivot_schedule_local_date('r', $current_time, $user_timezone);
   $user_time = strtotime($user_time);
-  $current_time = date('m/d/y h:ia');
+  $current_time = date('m/d/y h:ia');  //current time of the server
 
   //if the date is set in the url, use it.  otherwise, default to todays date
   $user_date = date('m/d/y', $user_time);
   $user_date = strtotime($user_date);
   if(arg(2) != NULL){
-    $user_date_url = str_replace('-', '/', arg(2));
-    $user_date_url = strtotime($user_date_url);
-    $offset = $user_time - (strtotime($current_time) + 10800);
-    $show_time_et = $user_date_url - $offset;
+    $user_date_url = str_replace('-', '/', arg(2));  //date from url
+    $user_date_url = strtotime($user_date_url);  //date from url converted to timestamp
+    $offset = $user_time - (strtotime($current_time));  // + 10800
+    dpm($offset, 'offset');
+    $show_time_et = $user_date_url - $offset;  // add the offset to query eastern time shows
+    dpm(date('m/d/y h:ia', $show_time_et), 'show time et');
     $date_end = $user_date_url + 3600*24 - $offset;
+    dpm(date('m/d/y h:ia', $date_end), 'date end');
   }
   else{
-    $show_time_et = strtotime($current_time) + 10800;
+    $show_time_et = strtotime($current_time); // + 10800
     $offset = $user_time - $show_time_et;
     $date_end = $user_date + 3600*24 - $offset;
   }
@@ -990,9 +993,9 @@ function pivot_schedule_list_page() {
 
 //Find the referenced Show given the Query above
   $entity_list = array();
+  dpm(date('m-d-y h:ia', $something[7906]->broadcast_start_time), $something[7906]->element_name. ' '. $something[7906]->title_name);
   foreach($entities['pivot_schedule_show_time'] as $key => $entity){
     $entity = entity_load('pivot_schedule_show_time', array($key));
-
     $reference = new EntityFieldQuery();
     $reference->entityCondition('entity_type', 'node')
       ->propertyCondition('type', 'show')
@@ -1003,7 +1006,7 @@ function pivot_schedule_list_page() {
 
 
     //Load the Show Time entity
-    $entity[$key]->broadcast_start_time = $entity[$key]->broadcast_start_time + $offset;
+    $entity[$key]->broadcast_start_time = $entity[$key]->broadcast_start_time + $offset; // removed offset
     $entity = current($entity);
     $current_ref = (isset($reference['node']) ? current($reference['node']) : '');
     $entity_list[] = array($entity, 'reference' => $current_ref->nid);
@@ -1064,11 +1067,6 @@ function pivot_schedule_list_page() {
 
   return $content;
 
-}
-
-function pivot_schedule_end_time(){
-  $content = 'something';
-  return $content;
 }
 
 
