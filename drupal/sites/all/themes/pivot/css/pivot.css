@@ -2906,7 +2906,7 @@ iframe.media-youtube-player {
 @media (max-width: 1000px) {
   /* line 2766, ../sass/_pivot-global.scss */
   .page.schedule .row .info {
-    width: 80%;
+    width: 70%;
   }
 }
 @media (max-width: 480px) {
