@@ -14,7 +14,7 @@
 			<div class="row hero">
 	<div class="hero-single">
 
-		<a href="/<?php echo drupal_get_path('module', 'pivot_dml');?>/images/infographic-full.png" rel="lightbox"><img itemprop="image" src="/<?php echo drupal_get_path('module', 'pivot_dml');?>/images/infographic-thumb.png" width="540" height="733" alt="Hero Fpo"></a>
+		<a href="/<?php echo drupal_get_path('module', 'pivot_dml');?>/images/infographic-full-9-3.png" rel="lightbox"><img itemprop="image" src="/<?php echo drupal_get_path('module', 'pivot_dml');?>/images/infographic-thumb.png" width="540" height="733" alt="Hero Fpo"></a>
 	</div>
 	<!-- <div class="hero-one">
 						<h3>lorem ipsum</h3>
