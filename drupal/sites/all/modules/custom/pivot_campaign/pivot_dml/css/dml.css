@@ -800,7 +800,6 @@ body.page-dml div#content {
       height: 100%;
       box-sizing: border-box;
       -moz-box-sizing: border-box;
-      padding: 20px 20px 0 27px;
       background: #0084a9; }
       @media screen and (max-width: 480px) {
         body.page-dml div#content div.cta div.left {
@@ -896,7 +895,7 @@ body.page-dml div#content {
             top: 0; } }
   body.page-dml div#content div.video {
     width: 437px;
-    height: 246px; }
+    height: 496px; }
     @media screen and (max-width: 480px) {
       body.page-dml div#content div.video {
         width: 480px;
