@@ -57,7 +57,7 @@
 <div class="right">
 <div class="row video">
 	<div id="video-one">
-		<script type="text/javascript" src="http://video.takepart.com/players/<?php echo $homeData->videos->video_one->video_code; ?>-n2uhTYdH.js"></script>
+		<script type="text/javascript" src="http://video.takepart.com/players/<?php echo $homeData->videos->video_one->video_code; ?>-sbVGJbeW.js"></script>
 	</div>
 </div>
 <div class="row cta">
