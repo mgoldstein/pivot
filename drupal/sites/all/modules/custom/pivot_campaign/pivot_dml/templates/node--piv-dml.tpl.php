@@ -62,21 +62,17 @@
 </div>
 <div class="row cta">
 	<div class="left">
-		<h3>Hot Headlines</h3>
-		<?php foreach($headlines as $headline): ?>
-			<span><?php print $headline->title; ?></span><br><br>
-		<?php endforeach; ?>
-		<?php print l('get the whole story', $base_url. '/'. $path. '/news', array('attributes' => array('class' => array('btn')))); ?>
+		<?php print l('<img src="'. $base_url. '/'. drupal_get_path('module', 'pivot_dml'). '/images/you-are-media.jpg" alt="You are Media"', 'http://takeaction.takepart.com/actions?browse=pivot&cmpid=pivot-on-air&tags=eyes+wide+open&filtered=true&sort=recent', array('html' => TRUE, 'attributes' => array('target' => '_blank'))); ?>
 	</div>
 	<div class="right">
-		<a href="http://takeaction.takepart.com/actions/inform-yourself-and-lawmakers-about-online-privacy"><img src="/<?php print drupal_get_path('module', 'pivot_dml'); ?>/images/tacma.jpg" style="float:right; height:100%;"></a>
+		<a href="http://takeaction.takepart.com/actions?browse=pivot&cmpid=pivot-on-air&tags=terms+and+conditions+may+apply&filtered=true&sort=recent" target="_blank"><img src="/<?php print drupal_get_path('module', 'pivot_dml'); ?>/images/tacma.jpg" style="float:right; height:100%;"></a>
 	</div>
 </div>
-<div class="row video">
+<!-- <div class="row video">
 	<div id="video-two">
 		<script type="text/javascript" src="http://video.takepart.com/players/<?php echo $homeData->videos->video_two->video_code; ?>-n2uhTYdH.js"></script>
 	</div>
-</div>
+</div> -->
 <div class="row bottom">
 	<div class="twitter-feed">
 		<div class="header">
