@@ -469,14 +469,14 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['relationships']['feed_nid']['table'] = 'feeds_item';
   $handler->display->display_options['relationships']['feed_nid']['field'] = 'feed_nid';
   $handler->display->display_options['relationships']['feed_nid']['required'] = TRUE;
-  /* Field: Broken/missing handler */
+  /* Field: Content: Feed Link */
   $handler->display->display_options['fields']['field_feed_link']['id'] = 'field_feed_link';
   $handler->display->display_options['fields']['field_feed_link']['table'] = 'field_data_field_feed_link';
   $handler->display->display_options['fields']['field_feed_link']['field'] = 'field_feed_link';
   $handler->display->display_options['fields']['field_feed_link']['label'] = '';
   $handler->display->display_options['fields']['field_feed_link']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_feed_link']['element_label_colon'] = FALSE;
-  /* Field: Broken/missing handler */
+  /* Field: Content: Description */
   $handler->display->display_options['fields']['field_feed_item_description']['id'] = 'field_feed_item_description';
   $handler->display->display_options['fields']['field_feed_item_description']['table'] = 'field_data_field_feed_item_description';
   $handler->display->display_options['fields']['field_feed_item_description']['field'] = 'field_feed_item_description';
@@ -805,6 +805,16 @@ function pivot_views_views_default_views() {
   $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
   $handler->display->display_options['sorts']['position']['field'] = 'position';
   $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
+  /* Contextual filter: Global: Null */
+  $handler->display->display_options['arguments']['null']['id'] = 'null';
+  $handler->display->display_options['arguments']['null']['table'] = 'views';
+  $handler->display->display_options['arguments']['null']['field'] = 'null';
+  $handler->display->display_options['arguments']['null']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['null']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['null']['must_not_be'] = TRUE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
