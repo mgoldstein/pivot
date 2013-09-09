@@ -1020,32 +1020,44 @@ function pivot_schedule_list_page() {
     $user_clean_timezone = arg(1);
   }
 
+  $date_menu_last_day = '';
+  $date_menu_last_day = new EntityFieldQuery();
+  $date_menu_last_day->entityCondition('entity_type', 'pivot_schedule_show_time')
+    ->propertyOrderBy('broadcast_start_time', 'DESC')
+    ->range(0,1);
+  $date_menu_last_day = $date_menu_last_day->execute();
+  $date_menu_last_day = entity_load('pivot_schedule_show_time', array(current($date_menu_last_day['pivot_schedule_show_time'])->id));
+  $date_menu_last_day = current($date_menu_last_day)->broadcast_start_time;
+
+
   $date_menu = '<div class="date-menu"><div class="menu-title">Date: </div><ul class="sfw-menu">';
   $selected_date = ($user_date_url != NULL ? $user_date_url : $user_date);
   $date_menu .= '<li class="item">'. date('D M j', $selected_date). '<ul>';
-  for($x=0; $x<1; $x++){
-    $date = $user_date + 3600*24*$x;
-    $date_format_1 = date('D M j', $date);
-    $date_format_2 = date('m-d-y', $date);
-    if(arg(1) != NULL){
-      $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule/'. $user_clean_timezone). '</li>';
-    }
-    else{
-      $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule'). '</li>';
-    }
-  }
-  for($x=1; $x<=7; $x++){
-    $date = $user_date + 3600*24*$x;
-    $date_format_1 = date('D M j', $date);
-    $date_format_2 = date('m-d-y', $date);
-    if(arg(1) != NULL){
-      $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule/'. $user_clean_timezone. '/'. $date_format_2). '</li>';
-    }
-    else{
-      $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule/'. $user_clean_timezone. '/'. $date_format_2). '</li>';
-    }
 
+  $date_menu_day=$user_date;
+  $date_format_1 = date('D M j', $date_menu_day);
+  $date_format_2 = date('m-d-y', $date_menu_day);
+  if(arg(1) != NULL){
+    $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule/'. $user_clean_timezone). '</li>';
   }
+  else{
+    $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule'). '</li>';
+  }
+
+  for($x=1; $date_menu_day<$date_menu_last_day-3600*24; $x++){
+    $date_menu_day=$user_date;
+    $date_menu_day = $date_menu_day+$x*3600*24;
+    $date_format_1 = date('D M j', $date_menu_day);
+    $date_format_2 = date('m-d-y', $date_menu_day);
+    if(arg(1) != NULL){
+      $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule/'. $user_clean_timezone. '/'. $date_format_2). '</li>';
+    }
+    else{
+      $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule/'. $user_clean_timezone. '/'. $date_format_2). '</li>';
+    }
+  }
+
+
   $date_menu .= '</ul></ul></div>';
 
 //Create Timezone menu list  TODO: move markup to the tpl file
