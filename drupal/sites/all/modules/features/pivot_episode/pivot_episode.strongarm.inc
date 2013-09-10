@@ -148,7 +148,7 @@ function pivot_episode_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'scheduler_unpublish_enable_episode';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['scheduler_unpublish_enable_episode'] = $strongarm;
 
   $strongarm = new stdClass();

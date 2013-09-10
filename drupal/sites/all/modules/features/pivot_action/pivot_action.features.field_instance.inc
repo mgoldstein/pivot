@@ -35,10 +35,10 @@ function pivot_action_field_default_field_instances() {
         'weight' => 0,
       ),
       'promo_alt' => array(
-	'label' => 'above',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 0,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -91,10 +91,10 @@ function pivot_action_field_default_field_instances() {
         'weight' => 0,
       ),
       'promo_alt' => array(
-	'label' => 'above',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 0,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -146,10 +146,10 @@ function pivot_action_field_default_field_instances() {
         'weight' => 0,
       ),
       'promo_alt' => array(
-	'label' => 'above',
-	'settings' => array(),
-	'type' => 'hidden',
-	'weight' => 0,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',

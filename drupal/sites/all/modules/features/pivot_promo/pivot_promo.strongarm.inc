@@ -157,5 +157,54 @@ function pivot_promo_strongarm() {
   $strongarm->value = 'promo/[node:nid]';
   $export['pathauto_node_promo_pattern'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_enable_promo';
+  $strongarm->value = 1;
+  $export['scheduler_publish_enable_promo'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_required_promo';
+  $strongarm->value = 0;
+  $export['scheduler_publish_required_promo'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_revision_promo';
+  $strongarm->value = 0;
+  $export['scheduler_publish_revision_promo'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_touch_promo';
+  $strongarm->value = 0;
+  $export['scheduler_publish_touch_promo'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_enable_promo';
+  $strongarm->value = 1;
+  $export['scheduler_unpublish_enable_promo'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_required_promo';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_required_promo'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_revision_promo';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_revision_promo'] = $strongarm;
+
   return $export;
 }
