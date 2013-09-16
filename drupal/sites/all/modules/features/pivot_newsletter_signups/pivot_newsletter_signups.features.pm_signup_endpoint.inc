@@ -28,5 +28,26 @@ function pivot_newsletter_signups_pm_signup_endpoint_defaults() {
       ),
     ),
   );
+  $endpoints[] = array(
+    'type' => 'TakePartUserSignupEndpoint',
+    'name' => 'mentor_strong',
+    'label' => 'Mentor Strong Search Signup',
+    'configuration' => array(),
+    'plugins' => array(
+      'bluehornet.pm_signup.handler' => array(
+        'enabled' => TRUE,
+        'configuration' => array(
+          'segments' => array(
+            '1017890',
+          ),
+          'fields' => array(
+            '253169' => 'MentorStrong',
+            '253168' => 'MENTOR',
+          ),
+          'send-welcome' => TRUE,
+        ),
+      ),
+    ),
+  );
   return $endpoints;
 }
