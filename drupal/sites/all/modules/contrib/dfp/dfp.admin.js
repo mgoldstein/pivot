@@ -36,10 +36,20 @@ Drupal.behaviors.dfpVerticalTabs = {
     $('fieldset#edit-global-display-options', context).drupalSetSummary(function (context) {
       var slug = Drupal.checkPlain($('#edit-dfp-default-slug', context).val());
       var noscript = Drupal.checkPlain($('#edit-dfp-use-noscript', context).is(':checked'));
-      var collapse = Drupal.checkPlain($('#edit-dfp-collapse-empty-divs', context).is(':checked'));
+      var collapse = Drupal.checkPlain($('input[name="dfp_collapse_empty_divs"]:checked', context).val());
 
       summary = 'Global Slug: ' + slug + '<br/>';
-      summary += (collapse == "true" ? checkmark : exmark) + ' Hide ad slots if no ad is served';
+      switch (collapse) {
+        case '0':
+          summary += exmark + ' Never collapse empty divs';
+          break;
+        case '1':
+          summary += checkmark + ' Collapse divs only if empty';
+          break;
+        case '2':
+          summary += checkmark + ' Expand divs only if non-empty';
+          break;
+      }
 
       return summary;
     });
@@ -48,7 +58,7 @@ Drupal.behaviors.dfpVerticalTabs = {
       var adType = Drupal.checkPlain($('#edit-settings-adsense-ad-types option:selected', context).text());
       var adTypeVal = Drupal.checkPlain($('#edit-settings-adsense-ad-types', context).val());
 
-      summary = adTypeVal != '' ? Drupal.t('Ad Type: ') + adType : '';
+      summary = adTypeVal !== '' ? Drupal.t('Ad Type: ') + adType : '';
       return summary;
     });
 
@@ -56,7 +66,7 @@ Drupal.behaviors.dfpVerticalTabs = {
       var slot = Drupal.checkPlain($('#edit-slot', context).val());
       var size = Drupal.checkPlain($('#edit-size', context).val());
 
-      summary = slot != '' ?  slot  + ' [' + size + ']' : '';
+      summary = slot !== '' ?  slot  + ' [' + size + ']' : '';
       return summary;
     });
 
@@ -69,7 +79,7 @@ Drupal.behaviors.dfpVerticalTabs = {
       var summary = '';
       $('.field-target-target', context).each(function (context) {
         target = Drupal.checkPlain($(this).val());
-        if (target != '') {
+        if (target !== '') {
           value = Drupal.checkPlain($(this).closest('tr').find('.field-target-value').val());
           summary += target + ' = ' + value + '<br/>';
         }

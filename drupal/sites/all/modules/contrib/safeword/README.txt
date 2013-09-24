@@ -19,6 +19,10 @@ Safeword exposes a custom FieldAPI field type that stores two strings using the
 name/machine name approach. It can be useful when generating PathAuto aliases,
 exposing Views arguments, and so on.
 
+One common use is to not give users permission to 'Create and edit URL aliases' and instead give
+them access to a Safeword field which uses the node title as it's source. So that users can only
+edit a limited part of the path, keeping safe the other parts that your site features may rely on.
+
 
 ********************************************************************
 INSTALLATION:
@@ -28,12 +32,12 @@ check the Drupal web site if you need assistance.
 
 1. Place the entire directory into your Drupal directory:
    sites/all/modules/
-   
+
 
 2. Enable the module by navigating to:
 
    administration > modules
-     
+
   Click the 'Save configuration' button at the bottom to commit your
   changes.
 
@@ -62,9 +66,18 @@ More info on the Token system:
 
 http://drupal.org/documentation/modules/token
 
+If you need users to enter a machine name for a path, a good Replacement pattern would be:
+
+(--|<[^<>]+>|[^/a-z0-9-])+
+
+This allows '/' as part of the machine name.
+
+The 'Show the complete path' option will display the full path to the node being created/edited
+next to the source field of the machine name.
 
 
-        
+
+
 
 
 
