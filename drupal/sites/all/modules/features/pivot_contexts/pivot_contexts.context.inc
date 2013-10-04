@@ -286,11 +286,17 @@ function pivot_contexts_context_default_contexts() {
           'region' => 'right_sidebar',
           'weight' => '-9',
         ),
+        'newsletter_campaign-1' => array(
+          'module' => 'newsletter_campaign',
+          'delta' => '1',
+          'region' => 'right_sidebar',
+          'weight' => '-8',
+        ),
         'pivot_global-pivot_twitter_widget' => array(
           'module' => 'pivot_global',
           'delta' => 'pivot_twitter_widget',
           'region' => 'right_sidebar',
-          'weight' => '-8',
+          'weight' => '-7',
         ),
       ),
     ),
