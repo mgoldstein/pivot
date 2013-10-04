@@ -105,6 +105,7 @@ function pivot_movie_strongarm() {
   $strongarm->name = 'node_options_movie';
   $strongarm->value = array(
     0 => 'status',
+    1 => 'revision',
   );
   $export['node_options_movie'] = $strongarm;
 
