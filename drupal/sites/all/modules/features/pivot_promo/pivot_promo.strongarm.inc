@@ -133,6 +133,7 @@ function pivot_promo_strongarm() {
   $strongarm->name = 'node_options_promo';
   $strongarm->value = array(
     0 => 'status',
+    1 => 'revision',
   );
   $export['node_options_promo'] = $strongarm;
 

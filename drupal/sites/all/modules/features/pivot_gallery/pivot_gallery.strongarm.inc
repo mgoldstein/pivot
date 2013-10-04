@@ -136,6 +136,7 @@ function pivot_gallery_strongarm() {
   $strongarm->name = 'node_options_gallery';
   $strongarm->value = array(
     0 => 'status',
+    1 => 'revision',
   );
   $export['node_options_gallery'] = $strongarm;
 
