@@ -1,0 +1,57 @@
+.takepart-newsletter-form .edit-email-wrapper label { display: none; }
+.takepart-newsletter-form .edit-email-wrapper { display: inline; }
+.takepart-newsletter-form .form-submit { display: inline; }
+.takepart-newsletter-form .form-messages { height: 12px; color: red; }
+
+.takepart-newsletter-promo-text { margin: 4px 0 10px; }
+
+.takepart-newsletter-form .form-text {
+  /* border: 1px solid #d3d3d3; */
+  width: 180px;
+  height: 25px;
+  margin-bottom: 0px;
+  padding: 0 4px;
+  font-size: 12px;
+  background-color: #eeeeee;
+  border: none;
+}
+
+.block .takepart-newsletter-form a.button, .block .takepart-newsletter-form .form-button-wrapper {
+  float:right;
+  margin-bottom:10px;
+  margin-right:19px;
+  margin-top:-38px;
+}
+
+.takepart-newsletter-terms {
+    clear:both;
+    font-size: 11px;
+    padding-top:4px;
+}
+
+.takepart-newsletter-form .form-item-email {
+    float:left;
+    margin: 0 6px 0 0;
+}
+
+.takepart-newsletter-empty {
+  color: #b3b3b3;
+}
+
+#right-rail .block-newsletter-campaign h2 {
+  color:#000;
+  font-family:TradeGothicLTStdCnBold;
+  font-size:16px;
+  font-weight:400;
+  line-height:110%;
+  background: transparent url('/profiles/takepart/themes/takepart3/images/newsletter_icon.png') no-repeat top right;
+}
+
+#page-wrapper .drupal-embed .block-newsletter-campaign h2 {
+  color:#000;
+  font-family:TradeGothicLTStdCnBold;
+  font-size:18px;
+  font-weight:400;
+  line-height:18px;
+  background: transparent url('/profiles/takepart/themes/takepart3/images/newsletter_icon.png') no-repeat top right;
+}
