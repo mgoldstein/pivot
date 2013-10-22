@@ -1,35 +1,38 @@
 <?php
+
 /**
  * @file
  * Show times feed import module.
  */
-
 define('PIVOT_SCHEDULE_MAX_IMPORT_FILE_SIZE', 4194304);
 define('PIVOT_SCHEDULE_IMPORT_FILE_DIRECTORY', 'public://schedule-imports');
 
 define('PIVOT_SCHEDULE_PRIMETIME_START', '7:00pm');
 define('PIVOT_SCHEDULE_PRIMETIME_END', '11:00pm');
 define('PIVOT_SCHEDULE_REFERENCE_TZ', 'America/New_York');
+define('PIVOT_SCHEDULE_FILE_URL', 'https://s3.amazonaws.com/pivot-tv-schedule/PIVTcustom_xml_E.XML');
+define('PIVOT_SCHEDULE_IMPORT_TIME', '11:00am');
 
 /**
  * PivotScheduleShowTime entity.
  */
 class PivotScheduleShowTime extends Entity {
 
-  public function __construct($values = array()) {
-    parent::__construct($values, 'pivot_schedule_show_time');
-  }
+    public function __construct($values = array()) {
+        parent::__construct($values, 'pivot_schedule_show_time');
+    }
 
-  protected function defaultLabel() {
-    return t('@name @time', array(
-      '@name' => $this->element_name,
-      '@time' => date('d M Y g:i A T', $this->broadcast_start_time),
-    ));
-  }
+    protected function defaultLabel() {
+        return t('@name @time', array(
+                    '@name' => $this->element_name,
+                    '@time' => date('d M Y g:i A T', $this->broadcast_start_time),
+                ));
+    }
 
-  protected function defaultUri() {
-    return "<front>";
-  }
+    protected function defaultUri() {
+        return "<front>";
+    }
+
 }
 
 /**
@@ -37,580 +40,623 @@ class PivotScheduleShowTime extends Entity {
  */
 class PivotScheduleShowTimeController extends EntityApiController {
 
-  public function create(array $values = array()) {
-    $values += array(
-      'id' => 0,
-      'file_id' => 0,
-      'broadcast_start_time' => 0,
-      'broadcast_end_time' => 0,
-      'broadcast_length' => 0,
-      'element_name' => '',
-      'title_name' => '',
-      'title_synopsis' => '',
-      'title_premiere_indicator_current_schedule' => 0,
-      'title_code_wo_series_prefix' => '',
-      'year_released' => '',
-      'fcc_rating_v_chip_codes' => '',
-      'created' => 0,
-      'changed' => 0,
-    );
-    return parent::create($values);
-  }
+    public function create(array $values = array()) {
+        $values += array(
+            'id' => 0,
+            'file_id' => 0,
+            'broadcast_start_time' => 0,
+            'broadcast_end_time' => 0,
+            'broadcast_length' => 0,
+            'element_name' => '',
+            'title_name' => '',
+            'title_synopsis' => '',
+            'title_premiere_indicator_current_schedule' => 0,
+            'title_code_wo_series_prefix' => '',
+            'year_released' => '',
+            'fcc_rating_v_chip_codes' => '',
+            'created' => 0,
+            'changed' => 0,
+        );
+        return parent::create($values);
+    }
+
 }
 
 /**
  * Implements hook_permission().
  */
 function pivot_schedule_permission() {
-  // Return permissions for the standard API Entity operations.
-  return array(
-    'administer pivot_schedule show_times' => array(
-      'title' => t('Administer schedule show times'),
-      'restrict access' => TRUE,
-    ),
-    'import pivot_schedule show_times' => array(
-      'title' => t('Import schedule show times'),
-      'restrict access' => TRUE,
-    ),
-  );
+    // Return permissions for the standard API Entity operations.
+    return array(
+        'administer pivot_schedule show_times' => array(
+            'title' => t('Administer schedule show times'),
+            'restrict access' => TRUE,
+        ),
+        'import pivot_schedule show_times' => array(
+            'title' => t('Import schedule show times'),
+            'restrict access' => TRUE,
+        ),
+    );
 }
 
 /**
  * Access callback.
  */
 function pivot_schedule_access($op, $entity = NULL, $account = NULL) {
-  // Block unknown operations.
-  if (in_array($op, array('administer', 'import'))) {
-    return user_access("$op pivot_schedule show_times", $account)
-      || user_access("administer pivot_schedule show_times", $account);
-  }
-  return FALSE;
+    // Block unknown operations.
+    if (in_array($op, array('administer', 'import'))) {
+        return user_access("$op pivot_schedule show_times", $account)
+                || user_access("administer pivot_schedule show_times", $account);
+    }
+    return FALSE;
 }
 
 /**
  * Implements hook_entity_info().
  */
 function pivot_schedule_entity_info() {
-  return array(
-    'pivot_schedule_show_time' => array(
-      'label' => t("Show Time"),
-      'entity class' => 'PivotScheduleShowTime',
-      'controller class' => 'PivotScheduleShowTimeController',
-      'base table' => 'pivot_schedule_show_time',
-      'fieldable' => FALSE,
-      'entity keys' => array(
-        'id' => 'id',
-      ),
-      'uri callback' => 'entity_class_uri',
-      'label callback' => 'entity_class_label',
-      'access callback' => 'pivot_schedule_access',
-      'module' => 'pivot_schedule',
-    ),
-  );
+    return array(
+        'pivot_schedule_show_time' => array(
+            'label' => t("Show Time"),
+            'entity class' => 'PivotScheduleShowTime',
+            'controller class' => 'PivotScheduleShowTimeController',
+            'base table' => 'pivot_schedule_show_time',
+            'fieldable' => FALSE,
+            'entity keys' => array(
+                'id' => 'id',
+            ),
+            'uri callback' => 'entity_class_uri',
+            'label callback' => 'entity_class_label',
+            'access callback' => 'pivot_schedule_access',
+            'module' => 'pivot_schedule',
+        ),
+    );
 }
 
 /**
  * Implements hook_entity_property_info().
  */
 function pivot_schedule_entity_property_info() {
-  $info = array('pivot_schedule_show_time' => array('properties' => array()));
-  $properties = &$info['pivot_schedule_show_time']['properties'];
+    $info = array('pivot_schedule_show_time' => array('properties' => array()));
+    $properties = &$info['pivot_schedule_show_time']['properties'];
 
-  $properties['id'] = array(
-    'label' => t('Show Time ID'),
-    'description' => t('The unique show time id.'),
-    'type' => 'integer',
-    'validation callback' => 'entity_property_validate_integer_positive',
-    'access callback' => 'pivot_schedule_access',
-    'schema field' => 'id',
-    'required' => TRUE,
-    'field' => FALSE,
-  );
-  $properties['broadcast_start_time'] = array(
-    'label' => t('Broadcast Start Time'),
-    'description' => t('Start date and time of the episode/content broadcast.'),
-    'type' => 'date',
-    'validation callback' => 'entity_property_validate_integer_non_negative',
-    'access callback' => 'pivot_schedule_access',
-    'schema field' => 'broadcast_start_time',
-    'required' => TRUE,
-    'field' => FALSE,
-  );
-  $properties['broadcast_end_time'] = array(
-    'label' => t('Broadcast End Time'),
-    'description' => t('End date and time of the episode/content broadcast.'),
-    'type' => 'date',
-    'validation callback' => 'entity_property_validate_integer_non_negative',
-    'access callback' => 'pivot_schedule_access',
-    'schema field' => 'broadcast_end_time',
-    'required' => TRUE,
-    'field' => FALSE,
-  );
-  $properties['broadcast_length'] = array(
-    'label' => t('Broadcast length'),
-    'description' => t('End date and time of the episode/content broadcast.'),
-    'type' => 'duration',
-    'validation callback' => 'entity_property_validate_integer_non_negative',
-    'access callback' => 'pivot_schedule_access',
-    'schema field' => 'broadcast_length',
-    'required' => TRUE,
-    'field' => FALSE,
-  );
-  $properties['element_name'] = array(
-    'label' => t('Element Name'),
-    'description' => t('Name of the broadcast show/program.'),
-    'type' => 'text',
-    'access callback' => 'pivot_schedule_access',
-    'schema field' => 'element_name',
-    'required' => TRUE,
-    'field' => FALSE,
-    'sanitized' => TRUE,
-    'sanitize' => FALSE,
-  );
-  $properties['title_name'] = array(
-    'label' => t('Title Name'),
-    'description' => t('Name of the broadcast episode/content.'),
-    'type' => 'text',
-    'access callback' => 'pivot_schedule_access',
-    'schema field' => 'title_name',
-    'required' => FALSE,
-    'field' => FALSE,
-    'sanitized' => TRUE,
-    'sanitize' => FALSE,
-  );
-  $properties['title_synopsis'] = array(
-    'label' => t('Synopsis'),
-    'description' => t('Synopsis of the broadcast episode/content.'),
-    'type' => 'text',
-    'access callback' => 'pivot_schedule_access',
-    'schema field' => 'title_synopsis',
-    'required' => FALSE,
-    'field' => FALSE,
-    'sanitized' => TRUE,
-    'sanitize' => FALSE,
-  );
-  $properties['title_premiere_indicator_current_schedule'] = array(
-    'label' => t('Premiere Indicator'),
-    'description' => t('Title premiere indicator current schedule.'),
-    'type' => 'boolean',
-    'access callback' => 'pivot_schedule_accesspivot_schedule_access',
-    'schema field' => 'title_premiere_indicator_current_schedule',
-    'required' => FALSE,
-    'field' => FALSE,
-  );
-  $properties['title_code_wo_series_prefix'] = array(
-    'label' => t('Title Code w/o Series Prefix'),
-    'description' => t('Your guess is as good as mine.'),
-    'type' => 'text',
-    'access callback' => 'pivot_schedule_accesspivot_schedule_access',
-    'schema field' => 'title_code_wo_series_prefix',
-    'required' => TRUE,
-    'field' => FALSE,
-    'sanitized' => TRUE,
-    'sanitize' => FALSE,
-  );
-  $properties['year_released'] = array(
-    'label' => t('Year released'),
-    'description' => t('Year the content was released.'),
-    'type' => 'integer',
-    'validation callback' => 'entity_property_validate_integer_non_negative',
-    'access callback' => 'pivot_schedule_access',
-    'schema field' => 'year_released',
-    'required' => TRUE,
-    'field' => FALSE,
-  );
-  $properties['fcc_rating_v_chip_codes'] = array(
-    'label' => t('Rating'),
-    'description' => t('FCC rating V-Chip codes.'),
-    'type' => 'text',
-    'access callback' => 'pivot_schedule_access',
-    'schema field' => 'fcc_rating_v_chip_codes',
-    'required' => TRUE,
-    'field' => FALSE,
-    'sanitized' => TRUE,
-    'sanitize' => FALSE,
-  );
-  $properties['created'] = array(
-    'label' => t('Created'),
-    'description' => t('When the show time was created.'),
-    'type' => 'date',
-    'validation callback' => 'entity_property_validate_integer_non_negative',
-    'access callback' => 'pivot_schedule_access',
-    'schema field' => 'created',
-    'required' => TRUE,
-    'field' => FALSE,
-  );
-  $properties['changed'] = array(
-    'label' => t('Last Changed'),
-    'description' => t('When the show time was last changed.'),
-    'type' => 'date',
-    'validation callback' => 'entity_property_validate_integer_non_negative',
-    'access callback' => 'pivot_schedule_access',
-    'schema field' => 'changed',
-    'required' => TRUE,
-    'field' => FALSE,
-  );
+    $properties['id'] = array(
+        'label' => t('Show Time ID'),
+        'description' => t('The unique show time id.'),
+        'type' => 'integer',
+        'validation callback' => 'entity_property_validate_integer_positive',
+        'access callback' => 'pivot_schedule_access',
+        'schema field' => 'id',
+        'required' => TRUE,
+        'field' => FALSE,
+    );
+    $properties['broadcast_start_time'] = array(
+        'label' => t('Broadcast Start Time'),
+        'description' => t('Start date and time of the episode/content broadcast.'),
+        'type' => 'date',
+        'validation callback' => 'entity_property_validate_integer_non_negative',
+        'access callback' => 'pivot_schedule_access',
+        'schema field' => 'broadcast_start_time',
+        'required' => TRUE,
+        'field' => FALSE,
+    );
+    $properties['broadcast_end_time'] = array(
+        'label' => t('Broadcast End Time'),
+        'description' => t('End date and time of the episode/content broadcast.'),
+        'type' => 'date',
+        'validation callback' => 'entity_property_validate_integer_non_negative',
+        'access callback' => 'pivot_schedule_access',
+        'schema field' => 'broadcast_end_time',
+        'required' => TRUE,
+        'field' => FALSE,
+    );
+    $properties['broadcast_length'] = array(
+        'label' => t('Broadcast length'),
+        'description' => t('End date and time of the episode/content broadcast.'),
+        'type' => 'duration',
+        'validation callback' => 'entity_property_validate_integer_non_negative',
+        'access callback' => 'pivot_schedule_access',
+        'schema field' => 'broadcast_length',
+        'required' => TRUE,
+        'field' => FALSE,
+    );
+    $properties['element_name'] = array(
+        'label' => t('Element Name'),
+        'description' => t('Name of the broadcast show/program.'),
+        'type' => 'text',
+        'access callback' => 'pivot_schedule_access',
+        'schema field' => 'element_name',
+        'required' => TRUE,
+        'field' => FALSE,
+        'sanitized' => TRUE,
+        'sanitize' => FALSE,
+    );
+    $properties['title_name'] = array(
+        'label' => t('Title Name'),
+        'description' => t('Name of the broadcast episode/content.'),
+        'type' => 'text',
+        'access callback' => 'pivot_schedule_access',
+        'schema field' => 'title_name',
+        'required' => FALSE,
+        'field' => FALSE,
+        'sanitized' => TRUE,
+        'sanitize' => FALSE,
+    );
+    $properties['title_synopsis'] = array(
+        'label' => t('Synopsis'),
+        'description' => t('Synopsis of the broadcast episode/content.'),
+        'type' => 'text',
+        'access callback' => 'pivot_schedule_access',
+        'schema field' => 'title_synopsis',
+        'required' => FALSE,
+        'field' => FALSE,
+        'sanitized' => TRUE,
+        'sanitize' => FALSE,
+    );
+    $properties['title_premiere_indicator_current_schedule'] = array(
+        'label' => t('Premiere Indicator'),
+        'description' => t('Title premiere indicator current schedule.'),
+        'type' => 'boolean',
+        'access callback' => 'pivot_schedule_accesspivot_schedule_access',
+        'schema field' => 'title_premiere_indicator_current_schedule',
+        'required' => FALSE,
+        'field' => FALSE,
+    );
+    $properties['title_code_wo_series_prefix'] = array(
+        'label' => t('Title Code w/o Series Prefix'),
+        'description' => t('Your guess is as good as mine.'),
+        'type' => 'text',
+        'access callback' => 'pivot_schedule_accesspivot_schedule_access',
+        'schema field' => 'title_code_wo_series_prefix',
+        'required' => TRUE,
+        'field' => FALSE,
+        'sanitized' => TRUE,
+        'sanitize' => FALSE,
+    );
+    $properties['year_released'] = array(
+        'label' => t('Year released'),
+        'description' => t('Year the content was released.'),
+        'type' => 'integer',
+        'validation callback' => 'entity_property_validate_integer_non_negative',
+        'access callback' => 'pivot_schedule_access',
+        'schema field' => 'year_released',
+        'required' => TRUE,
+        'field' => FALSE,
+    );
+    $properties['fcc_rating_v_chip_codes'] = array(
+        'label' => t('Rating'),
+        'description' => t('FCC rating V-Chip codes.'),
+        'type' => 'text',
+        'access callback' => 'pivot_schedule_access',
+        'schema field' => 'fcc_rating_v_chip_codes',
+        'required' => TRUE,
+        'field' => FALSE,
+        'sanitized' => TRUE,
+        'sanitize' => FALSE,
+    );
+    $properties['created'] = array(
+        'label' => t('Created'),
+        'description' => t('When the show time was created.'),
+        'type' => 'date',
+        'validation callback' => 'entity_property_validate_integer_non_negative',
+        'access callback' => 'pivot_schedule_access',
+        'schema field' => 'created',
+        'required' => TRUE,
+        'field' => FALSE,
+    );
+    $properties['changed'] = array(
+        'label' => t('Last Changed'),
+        'description' => t('When the show time was last changed.'),
+        'type' => 'date',
+        'validation callback' => 'entity_property_validate_integer_non_negative',
+        'access callback' => 'pivot_schedule_access',
+        'schema field' => 'changed',
+        'required' => TRUE,
+        'field' => FALSE,
+    );
 
-  return $info;
+    return $info;
 }
 
 /**
  * Implements hook_menu().
  */
 function pivot_schedule_menu() {
-  $items = array();
-  $items['admin/config/schedule'] = array(
-    'title' => 'Show Schedule',
-    'description' => 'Configuraion of the show schedule',
-    'page callback' => 'system_admin_menu_block_page',
-    'access arguments' => array('access administration pages'),
-    'file' => 'system.admin.inc',
-    'file path' => drupal_get_path('module', 'system'),
-  );
-  $items['admin/config/schedule/import'] = array(
-    'title' => 'Schedule Import',
-    'description' => 'Import show schedule data.',
-    'page callback' => 'pivot_schedule_import_page',
-    'access callback' => 'user_access',
-    'access arguments' => array('import pivot_schedule show_times'),
-  );
-  $items['schedule'] = array(
-    'title' => 'Pivot On-Air Schedule',
-    'page callback' => 'pivot_schedule_list_page',
-    'access arguments' => array('access content'),
-  );
+    $items = array();
+    $items['admin/config/schedule'] = array(
+        'title' => 'Show Schedule',
+        'description' => 'Configuration of the show schedule',
+        'page callback' => 'system_admin_menu_block_page',
+        'access arguments' => array('access administration pages'),
+        'file' => 'system.admin.inc',
+        'file path' => drupal_get_path('module', 'system'),
+    );
+    $items['admin/config/schedule/import'] = array(
+        'title' => 'Schedule Import',
+        'description' => 'Import show schedule data.',
+        'page callback' => 'pivot_schedule_import_page',
+        'access callback' => 'user_access',
+        'access arguments' => array('import pivot_schedule show_times'),
+    );
+    $items['admin/config/schedule/settings'] = array(
+        'title' => 'Schedule Settings',
+        'description' => 'Configure the automatic cron task for updating the show schedule.',
+        'page callback' => 'pivot_schedule_settings_page',
+        'access callback' => 'user_access',
+        'access arguments' => array('import pivot_schedule show_times'),
+    );
+    $items['schedule'] = array(
+        'title' => 'Pivot On-Air Schedule',
+        'page callback' => 'pivot_schedule_list_page',
+        'access arguments' => array('access content'),
+    );
     $items['pivot-ajax/timezone'] = array(
-    'title' => 'Timezone Detect',
-    'page callback' => 'pivot_schedule_timezone_detect',
-    'access arguments' => array('access content'),
-  );
-  return $items;
+        'title' => 'Timezone Detect',
+        'page callback' => 'pivot_schedule_timezone_detect',
+        'access arguments' => array('access content'),
+    );
+    return $items;
 }
 
 function pivot_schedule_import_page() {
-  $content = array();
-  $content['import_form'] = drupal_get_form('pivot_schedule_import_form');
-  return $content;
+    $content = array();
+    $content['import_form'] = drupal_get_form('pivot_schedule_import_form');
+    return $content;
+}
+
+/* 
+ * Get form for Schedule cron settings
+ */
+function pivot_schedule_settings_page() {
+    $content = array();
+    $content['import_form'] = drupal_get_form('pivot_schedule_settings_form');
+    return $content;
 }
 
 function pivot_schedule_import_form($form, &$form_state) {
 
-  $form['timezone'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Timezone of import data'),
-    '#description' => t('Timezone of start and end times. For a list of valid values see <a href="http://php.net/manual/en/timezones.php" target="_blank">PHP - List of Supported Timezones</a>'),
-    '#default_value' => PIVOT_SCHEDULE_REFERENCE_TZ,
-    '#element_validate' => array('pivot_schedule_element_valdiate_timezone'),
-  );
+    $form['timezone'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Timezone of import data'),
+        '#description' => t('Timezone of start and end times. For a list of valid values see <a href="http://php.net/manual/en/timezones.php" target="_blank">PHP - List of Supported Timezones</a>'),
+        '#default_value' => PIVOT_SCHEDULE_REFERENCE_TZ,
+        '#element_validate' => array('pivot_schedule_element_validate_timezone'),
+    );
 
-  $form['file'] = array(
-    '#type' => 'file',
-    '#title' => t('Schedule Data File'),
-  );
+    $form['file'] = array(
+        '#type' => 'file',
+        '#title' => t('Schedule Data File'),
+    );
 
-  $form['actions'] = array('#type' => 'actions');
-  $form['actions']['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Import'),
-    '#weight' => 40,
-  );
+    $form['actions'] = array('#type' => 'actions');
+    $form['actions']['submit'] = array(
+        '#type' => 'submit',
+        '#value' => t('Import'),
+        '#weight' => 40,
+    );
 
-  return $form;
+    return $form;
+}
+
+function pivot_schedule_settings_form($form, &$form_state) {
+    $form['timezone'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Timezone of import data'),
+        '#description' => t('Timezone of start and end times. For a list of valid values see <a href="http://php.net/manual/en/timezones.php" target="_blank">PHP - List of Supported Timezones</a>'),
+        '#default_value' => PIVOT_SCHEDULE_REFERENCE_TZ,
+        '#element_validate' => array('pivot_schedule_element_validate_timezone'),
+    );
+
+    $form['file_url'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Schedule Data File URL'),
+        '#description' => t('URL address of the Pivot show schedule data file.'),
+        '#default_value' => PIVOT_SCHEDULE_FILE_URL,
+        '#element_validate' => array('pivot_schedule_element_validate_url'),
+    );
+
+    $form['actions'] = array('#type' => 'actions');
+    $form['actions']['submit'] = array(
+        '#type' => 'submit',
+        '#value' => t('Import'),
+        '#weight' => 40,
+    );
+
+    return system_settings_form($form);
 }
 
 function pivot_schedule_validate_import_file(stdClass $file) {
 
-  $errors = array();
+    $errors = array();
 
-  if ($file->filemime !== 'application/xml') {
-    // The file is not an XML file.
-    $errors[] = t('Schedule import must be an XML file.');
-  }
-  else {
-    $schedule = simplexml_load_file($file->uri);
-    if ($schedule === FALSE) {
-      // The file could not be parsed.
-      $errors[] = t('Schedule import must be a valid XML file.');
+    if ($file->filemime !== 'application/xml') {
+        // The file is not an XML file.
+        $errors[] = t('Schedule import must be an XML file.');
+    } else {
+        $schedule = simplexml_load_file($file->uri);
+        if ($schedule === FALSE) {
+            // The file could not be parsed.
+            $errors[] = t('Schedule import must be a valid XML file.');
+        }
     }
-  }
 
-  return $errors;
+    return $errors;
 }
 
 function pivot_schedule_import_form_validate($form, &$form_state) {
 
-  $file = file_save_upload('file', array(
-    'file_validate_size' => array(
-      PIVOT_SCHEDULE_MAX_IMPORT_FILE_SIZE, 0),
-    'file_validate_extensions' => array('xml'),
-    'pivot_schedule_validate_import_file' => array(),
-  ));
+    $file = file_save_upload('file', array(
+        'file_validate_size' => array(
+            PIVOT_SCHEDULE_MAX_IMPORT_FILE_SIZE, 0),
+        'file_validate_extensions' => array('xml'),
+        'pivot_schedule_validate_import_file' => array(),
+            ));
 
-  if ($file) {
+    if ($file) {
 
-    // Make sure the schedule import file directory exists.
-    $directory = PIVOT_SCHEDULE_IMPORT_FILE_DIRECTORY;
-    if (file_prepare_directory($directory, FILE_MODIFY_PERMISSIONS | FILE_CREATE_DIRECTORY)) {
-      if ($file = file_move($file, PIVOT_SCHEDULE_IMPORT_FILE_DIRECTORY)) {
-        $form_state['storage']['file'] = $file;
-      }
-      else {
-        form_set_error('file', t('Failed to write file to schedule import directory.'));
-      }
+        // Make sure the schedule import file directory exists.
+        $directory = PIVOT_SCHEDULE_IMPORT_FILE_DIRECTORY;
+        if (file_prepare_directory($directory, FILE_MODIFY_PERMISSIONS | FILE_CREATE_DIRECTORY)) {
+            if ($file = file_move($file, PIVOT_SCHEDULE_IMPORT_FILE_DIRECTORY)) {
+                $form_state['storage']['file'] = $file;
+            } else {
+                form_set_error('file', t('Failed to write file to schedule import directory.'));
+            }
+        } else {
+            form_set_error('file', t('Schedule import directory does not exist or is not writable.'));
+        }
+    } else {
+        form_set_error('file', t('No file was uploaded.'));
     }
-    else {
-      form_set_error('file', t('Schedule import directory does not exist or is not writable.'));
-    }
-  }
-  else {
-    form_set_error('file', t('No file was uploaded.'));
-  }
 }
 
 function pivot_schedule_import_form_submit($form, &$form_state) {
 
-  $file = $form_state['storage']['file'];
-  unset($form_state['storage']['file']);
+    $file = $form_state['storage']['file'];
+    unset($form_state['storage']['file']);
 
-  try {
+    try {
 
-    // Wipe out any previous schedule.
-    db_delete('pivot_schedule_show_time')
-      ->execute();
+        // Wipe out any previous schedule.
+        db_delete('pivot_schedule_show_time')
+                ->execute();
 
-    // Store the import file permanently.
-    $file->status = FILE_STATUS_PERMANENT;
-    file_save($file);
+        // Store the import file permanently.
+        $file->status = FILE_STATUS_PERMANENT;
+        file_save($file);
 
-    $schedule = simplexml_load_file($file->uri);
-    $imported = 0;
-    foreach ($schedule as $show) {
+        $schedule = simplexml_load_file($file->uri);
+        $imported = 0;
+        foreach ($schedule as $show) {
 
-      $values = array(
-        'file_id' => $file->fid,
-        'created' => REQUEST_TIME,
-        'changed' => REQUEST_TIME,
-        'title_synopsis' => '',
-        'title_code_wo_series_prefix' => '',
-        'title_premiere_indicator_current_schedule' => FALSE,
-        'fcc_rating_v_chip_codes' => '',
-      );
+            $values = array(
+                'file_id' => $file->fid,
+                'created' => REQUEST_TIME,
+                'changed' => REQUEST_TIME,
+                'title_synopsis' => '',
+                'title_code_wo_series_prefix' => '',
+                'title_premiere_indicator_current_schedule' => FALSE,
+                'fcc_rating_v_chip_codes' => '',
+            );
 
-      // Straight forward string values.
-      $values['element_name'] = (string) $show->SeriesName;
-      $values['title_name'] =  (string) $show->TitleName;
-      $values['year_released'] = (int) $show->YearReleased;
+            // Straight forward string values.
+            $values['element_name'] = (string) $show->SeriesName;
+            $values['title_name'] = (string) $show->TitleName;
+            $values['year_released'] = (int) $show->YearReleased;
 
-      if (isset($show->TitleSynopsis)) {
-        $values['title_synopsis'] =  (string) $show->TitleSynopsis;
-      }
-      if (isset($show->TitleCodeWOSeriesPrefix)) {
-        $values['title_code_wo_series_prefix']
-          = (string) $show->TitleCodeWOSeriesPrefix;
-      }
-      if (isset($show->{'FCCRatingV-ChipCodes'})) {
-        $values['fcc_rating_v_chip_codes']
-          =  (string) $show->{'FCCRatingV-ChipCodes'};
-      }
+            if (isset($show->TitleSynopsis)) {
+                $values['title_synopsis'] = (string) $show->TitleSynopsis;
+            }
+            if (isset($show->TitleCodeWOSeriesPrefix)) {
+                $values['title_code_wo_series_prefix']
+                        = (string) $show->TitleCodeWOSeriesPrefix;
+            }
+            if (isset($show->{'FCCRatingV-ChipCodes'})) {
+                $values['fcc_rating_v_chip_codes']
+                        = (string) $show->{'FCCRatingV-ChipCodes'};
+            }
 
-      // Combine and convert the start date and time instead a Unix timestamp.
-      // NOTE: StartDateStandard is the start date with a broadcast day start of
-      //   midnight. StartDateBroadcast is the start date with a broadcast day
-      //   start of 6:00am.
-      $start_date = (string) $show->StartDateStandard;
-      $start_time = (string) $show->StartTime;
-      $timezone = new DateTimeZone($form_state['values']['timezone']);
-      $start_datetime = DateTime::createFromFormat("m/d/Y G:i:s",
-        $start_date . ' ' . $start_time, $timezone);
-      if ($start_datetime === FALSE) {
-        throw new Exception("Invalid start date time.");
-      }
-      $values['broadcast_start_time'] = $start_datetime->getTimestamp();
+            // Combine and convert the start date and time instead a Unix timestamp.
+            // NOTE: StartDateStandard is the start date with a broadcast day start of
+            //   midnight. StartDateBroadcast is the start date with a broadcast day
+            //   start of 6:00am.
+            $start_date = (string) $show->StartDateStandard;
+            $start_time = (string) $show->StartTime;
+            $timezone = new DateTimeZone($form_state['values']['timezone']);
+            $start_datetime = DateTime::createFromFormat("m/d/Y G:i:s", $start_date . ' ' . $start_time, $timezone);
+            if ($start_datetime === FALSE) {
+                throw new Exception("Invalid start date time.");
+            }
+            $values['broadcast_start_time'] = $start_datetime->getTimestamp();
 
-      // Convert the broadcast length to seconds.
-      $duration = explode(':', (string) $show->Length);
-      $values['broadcast_length']
-        = ($duration[0] * 3600)
-        + ($duration[1] * 60)
-        +  $duration[2];
+            // Convert the broadcast length to seconds.
+            $duration = explode(':', (string) $show->Length);
+            $values['broadcast_length']
+                    = ($duration[0] * 3600)
+                    + ($duration[1] * 60)
+                    + $duration[2];
 
-      // Precalculate the end date and time
-      $values['broadcast_end_time'] = $values['broadcast_start_time']
-        + $values['broadcast_length'];
+            // Precalculate the end date and time
+            $values['broadcast_end_time'] = $values['broadcast_start_time']
+                    + $values['broadcast_length'];
 
-      // Only premieres will have a value (P) for this field.
-      if (isset($show->TitlePremiereIndicatorCurrentSchedule)) {
-        $premiere = (string) $show->TitlePremiereIndicatorCurrentSchedule;
-        $values['title_premiere_indicator_current_schedule']
-          = ($premiere === 'P');
-      }
+            // Only premieres will have a value (P) for this field.
+            if (isset($show->TitlePremiereIndicatorCurrentSchedule)) {
+                $premiere = (string) $show->TitlePremiereIndicatorCurrentSchedule;
+                $values['title_premiere_indicator_current_schedule']
+                        = ($premiere === 'P');
+            }
 
-      // Create and save the schedule time.
-      $show_time = entity_create('pivot_schedule_show_time', $values);
-      $show_time->save();
+            // Create and save the schedule time.
+            $show_time = entity_create('pivot_schedule_show_time', $values);
+            $show_time->save();
 
-      // Tick
-      $imported += 1;
+            // Tick
+            $imported += 1;
+        }
+
+        drupal_set_message(t('@count show times imported.', array(
+                    '@count' => $imported,
+                )), 'status');
+    } catch (Exception $e) {
+        drupal_set_message(t('An error occurred while importing the schedule, please verify the contents of the import file and try again.'), 'error');
     }
-
-    drupal_set_message(t('@count show times imported.', array(
-      '@count' => $imported,
-    )), 'status');
-  }
-  catch (Exception $e) {
-    drupal_set_message(t('An error occurred while importing the schedule, please verify the contents of the import file and try again.'), 'error');
-  }
 }
 
 /**
  * Implements hook_block_info().
  */
 function pivot_schedule_block_info() {
-  return array(
-    'primetime_listing' => array(
-      'info' => t('Schedule Primetime Listing'),
-      'cache' => DRUPAL_NO_CACHE,
-    ),
-    'show_listing' => array(
-      'info' => t('Schedule Show Listing'),
-      'cache' => DRUPAL_NO_CACHE,
-    ),
-  );
+    return array(
+        'primetime_listing' => array(
+            'info' => t('Schedule Primetime Listing'),
+            'cache' => DRUPAL_NO_CACHE,
+        ),
+        'show_listing' => array(
+            'info' => t('Schedule Show Listing'),
+            'cache' => DRUPAL_NO_CACHE,
+        ),
+    );
 }
 
 /**
  * Get the settings for a block given the block's delta.
  */
 function pivot_schedule_block_settings($delta) {
-  $values = FALSE;
-  if ($delta === 'primetime_listing') {
-    $values = variable_get('pivot_schedule_primetime_listing', array());
-    $values += array(
-      'headline_text' => t("What's On Tonight"),
-      'full_schedule_text' => t('See Full Schedule'),
-      'full_schedule_link' => '#',
-      'count' => 3,
-      'start_time' => PIVOT_SCHEDULE_PRIMETIME_START,
-      'end_time' => PIVOT_SCHEDULE_PRIMETIME_END,
-      'timezone' => PIVOT_SCHEDULE_REFERENCE_TZ,
-    );
-  }
-  elseif ($delta === 'show_listing') {
-    $values = variable_get('pivot_schedule_show_listing', array());
-    $values += array(
-      'count' => 5,
-      'timezone' => PIVOT_SCHEDULE_REFERENCE_TZ,
-    );
-  }
-  return $values;
+    $values = FALSE;
+    if ($delta === 'primetime_listing') {
+        $values = variable_get('pivot_schedule_primetime_listing', array());
+        $values += array(
+            'headline_text' => t("What's On Tonight"),
+            'full_schedule_text' => t('See Full Schedule'),
+            'full_schedule_link' => '#',
+            'count' => 3,
+            'start_time' => PIVOT_SCHEDULE_PRIMETIME_START,
+            'end_time' => PIVOT_SCHEDULE_PRIMETIME_END,
+            'timezone' => PIVOT_SCHEDULE_REFERENCE_TZ,
+        );
+    } elseif ($delta === 'show_listing') {
+        $values = variable_get('pivot_schedule_show_listing', array());
+        $values += array(
+            'count' => 5,
+            'timezone' => PIVOT_SCHEDULE_REFERENCE_TZ,
+        );
+    }
+    return $values;
 }
 
 /**
  * Implements hook_block_configure().
  */
 function pivot_schedule_block_configure($delta = '') {
-  $form = array();
+    $form = array();
 
-  $settings = pivot_schedule_block_settings($delta);
+    $settings = pivot_schedule_block_settings($delta);
 
-  if ($delta === 'primetime_listing') {
+    if ($delta === 'primetime_listing') {
 
-    $form['pivot_schedule'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Schedule Settings'),
-      '#tree' => TRUE,
-    );
+        $form['pivot_schedule'] = array(
+            '#type' => 'fieldset',
+            '#title' => t('Schedule Settings'),
+            '#tree' => TRUE,
+        );
 
-    $form['pivot_schedule']['headline_text'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Headline Text'),
-      '#default_value' => $settings['headline_text'],
-    );
+        $form['pivot_schedule']['headline_text'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Headline Text'),
+            '#default_value' => $settings['headline_text'],
+        );
 
-    $form['pivot_schedule']['full_schedule_text'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Full Schedule Text'),
-      '#default_value' => $settings['full_schedule_text'],
-    );
+        $form['pivot_schedule']['full_schedule_text'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Full Schedule Text'),
+            '#default_value' => $settings['full_schedule_text'],
+        );
 
-    $form['pivot_schedule']['full_schedule_link'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Full Schedule Link'),
-      '#default_value' => $settings['full_schedule_link'],
-    );
+        $form['pivot_schedule']['full_schedule_link'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Full Schedule Link'),
+            '#default_value' => $settings['full_schedule_link'],
+        );
 
-    $form['pivot_schedule']['count'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Maximum number of show times to display'),
-      '#default_value' => $settings['count'],
-      '#element_validate' => array('element_validate_integer_positive'),
-    );
+        $form['pivot_schedule']['count'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Maximum number of show times to display'),
+            '#default_value' => $settings['count'],
+            '#element_validate' => array('element_validate_integer_positive'),
+        );
 
-    $form['pivot_schedule']['start_time'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Start Time'),
-      '#description' => t('Start time in 12 hour format (e.g. 7:00pm).'),
-      '#default_value' => $settings['start_time'],
-    );
+        $form['pivot_schedule']['start_time'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Start Time'),
+            '#description' => t('Start time in 12 hour format (e.g. 7:00pm).'),
+            '#default_value' => $settings['start_time'],
+        );
 
-    $form['pivot_schedule']['end_time'] = array(
-      '#type' => 'textfield',
-      '#title' => t('End Time'),
-      '#description' => t('End time in 12 hour format (e.g. 11:00pm).'),
-      '#default_value' => $settings['end_time'],
-    );
+        $form['pivot_schedule']['end_time'] = array(
+            '#type' => 'textfield',
+            '#title' => t('End Time'),
+            '#description' => t('End time in 12 hour format (e.g. 11:00pm).'),
+            '#default_value' => $settings['end_time'],
+        );
 
-    $form['pivot_schedule']['timezone'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Timezone'),
-      '#description' => t('Timezone of start and end times. For a list of valid values see <a href="http://php.net/manual/en/timezones.php" target="_blank">PHP - List of Supported Timezones</a>'),
-      '#default_value' => $settings['timezone'],
-      '#element_validate' => array('pivot_schedule_element_valdiate_timezone'),
-    );
-  }
-  elseif ($delta === 'show_listing') {
+        $form['pivot_schedule']['timezone'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Timezone'),
+            '#description' => t('Timezone of start and end times. For a list of valid values see <a href="http://php.net/manual/en/timezones.php" target="_blank">PHP - List of Supported Timezones</a>'),
+            '#default_value' => $settings['timezone'],
+            '#element_validate' => array('pivot_schedule_element_validate_timezone'),
+        );
+    } elseif ($delta === 'show_listing') {
 
-    $form['pivot_schedule'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Schedule Settings'),
-      '#tree' => TRUE,
-    );
+        $form['pivot_schedule'] = array(
+            '#type' => 'fieldset',
+            '#title' => t('Schedule Settings'),
+            '#tree' => TRUE,
+        );
 
-    $form['pivot_schedule']['count'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Maximum number of show times to display'),
-      '#default_value' => $settings['count'],
-      '#element_validate' => array('element_validate_integer_positive'),
-    );
+        $form['pivot_schedule']['count'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Maximum number of show times to display'),
+            '#default_value' => $settings['count'],
+            '#element_validate' => array('element_validate_integer_positive'),
+        );
 
-    $form['pivot_schedule']['timezone'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Timezone'),
-      '#description' => t('Timezone of the show times. For a list of valid values see <a href="http://php.net/manual/en/timezones.php" target="_blank">PHP - List of Supported Timezones</a>'),
-      '#default_value' => $settings['timezone'],
-      '#element_validate' => array('pivot_schedule_element_valdiate_timezone'),
-    );
-  }
+        $form['pivot_schedule']['timezone'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Timezone'),
+            '#description' => t('Timezone of the show times. For a list of valid values see <a href="http://php.net/manual/en/timezones.php" target="_blank">PHP - List of Supported Timezones</a>'),
+            '#default_value' => $settings['timezone'],
+            '#element_validate' => array('pivot_schedule_element_validate_timezone'),
+        );
+    }
 
-  return $form;
+    return $form;
 }
 
-function pivot_schedule_element_valdiate_timezone($element, &$form_state) {
-  try {
-    $tz = new DateTimeZone($element['#value']);
-  }
-  catch (Exception $e) {
-    form_error($element, t('%name must be a valid timezone.', array(
-      '%name' => $element['#title'],
-    )));
-  }
+function pivot_schedule_element_validate_timezone($element, &$form_state) {
+    try {
+        $tz = new DateTimeZone($element['#value']);
+    } catch (Exception $e) {
+        form_error($element, t('%name must be a valid timezone.', array(
+                    '%name' => $element['#title'],
+                )));
+    }
+}
+
+function pivot_schedule_element_validate_url($element, &$form_state) {
+    if (!filter_var($element['#value'], FILTER_VALIDATE_URL)) {
+        form_error($element, t('%name must be a valid URL address.', array(
+                    '%name' => $element['#title'],
+                )));
+    }
 }
 
 /**
  * Implements hook_block_save().
  */
 function pivot_schedule_block_save($delta = '', $edit = array()) {
-  variable_set('pivot_schedule_' . $delta, $edit['pivot_schedule']);
+    variable_set('pivot_schedule_' . $delta, $edit['pivot_schedule']);
 }
 
 /**
@@ -618,487 +664,451 @@ function pivot_schedule_block_save($delta = '', $edit = array()) {
  */
 function pivot_schedule_block_view($delta = '') {
 
-  $block = array(
-    'subject' => '',
-    'content' => '',
-  );
-
-  $settings = pivot_schedule_block_settings($delta);
-
-  if ($delta === 'primetime_listing') {
-
-    // Get the prime time listing.
-    $show_times = pivot_schedule_get_primetime_listing($settings['count'],
-      $settings['start_time'], $settings['end_time'], $settings['timezone']);
-
-    // Set the content from the theme template.
-    $block['content'] = array(
-      '#theme' => 'pivot_schedule_primetime_listing',
-      '#show_times' => $show_times,
+    $block = array(
+        'subject' => '',
+        'content' => '',
     );
 
-    // Pass the block settings to the template as well.
-    foreach ($settings as $name => $value) {
-      $block['content']["#{$name}"] = $value;
-    }
-  }
-  elseif ($delta === 'show_listing') {
+    $settings = pivot_schedule_block_settings($delta);
 
-    // Get the node being shown.
-    $node = menu_get_object();
+    if ($delta === 'primetime_listing') {
 
-    // If we're in a page WTIHIN a show's namespace
-    // (i.e., shows/show-name/blog, etc.), figure out
-    // what show we're looking at
-    if (!$node || $node->type != 'show') {
-      $dirs = explode('/', drupal_get_path_alias());
-      if ($dirs[0] == 'shows') {
-        $show_path = $dirs[0] . '/' . $dirs[1];
-        $node = menu_get_object('node', 1, drupal_lookup_path('source', $show_path));
-      }
-    }
-
-    if ($node) {
-
-      // Check if the node has schedule name and listing title fields.
-      $schedule_name = FALSE;
-      $listing_title = FALSE;
-      $items = field_get_items('node', $node, 'field_schedule_name');
-      if ($items !== FALSE) {
-        $item = reset($items);
-        if ($item != FALSE && !empty($item['value'])) {
-          $schedule_name = $item['value'];
-        }
-      }
-      $items = field_get_items('node', $node, 'field_schedule_listing_title');
-      if ($items !== FALSE) {
-        $item = reset($items);
-        if ($item != FALSE && !empty($item['value'])) {
-          $listing_title = $item['value'];
-        }
-      }
-
-      if ($schedule_name !== FALSE && $listing_title !== FALSE) {
-
-        // Get the show listing for the named show.
-        $show_times = pivot_schedule_get_show_listing($schedule_name,
-          $settings['count'], $settings['timezone']);
+        // Get the prime time listing.
+        $show_times = pivot_schedule_get_primetime_listing($settings['count'], $settings['start_time'], $settings['end_time'], $settings['timezone']);
 
         // Set the content from the theme template.
         $block['content'] = array(
-          '#theme' => 'pivot_schedule_show_listing',
-          '#show_times' => $show_times,
-          '#headline' => $listing_title,
+            '#theme' => 'pivot_schedule_primetime_listing',
+            '#show_times' => $show_times,
         );
 
         // Pass the block settings to the template as well.
         foreach ($settings as $name => $value) {
-          $block['content']["#{$name}"] = $value;
+            $block['content']["#{$name}"] = $value;
         }
-      }
+    } elseif ($delta === 'show_listing') {
+
+        // Get the node being shown.
+        $node = menu_get_object();
+
+        // If we're in a page WTIHIN a show's namespace
+        // (i.e., shows/show-name/blog, etc.), figure out
+        // what show we're looking at
+        if (!$node || $node->type != 'show') {
+            $dirs = explode('/', drupal_get_path_alias());
+            if ($dirs[0] == 'shows') {
+                $show_path = $dirs[0] . '/' . $dirs[1];
+                $node = menu_get_object('node', 1, drupal_lookup_path('source', $show_path));
+            }
+        }
+
+        if ($node) {
+
+            // Check if the node has schedule name and listing title fields.
+            $schedule_name = FALSE;
+            $listing_title = FALSE;
+            $items = field_get_items('node', $node, 'field_schedule_name');
+            if ($items !== FALSE) {
+                $item = reset($items);
+                if ($item != FALSE && !empty($item['value'])) {
+                    $schedule_name = $item['value'];
+                }
+            }
+            $items = field_get_items('node', $node, 'field_schedule_listing_title');
+            if ($items !== FALSE) {
+                $item = reset($items);
+                if ($item != FALSE && !empty($item['value'])) {
+                    $listing_title = $item['value'];
+                }
+            }
+
+            if ($schedule_name !== FALSE && $listing_title !== FALSE) {
+
+                // Get the show listing for the named show.
+                $show_times = pivot_schedule_get_show_listing($schedule_name, $settings['count'], $settings['timezone']);
+
+                // Set the content from the theme template.
+                $block['content'] = array(
+                    '#theme' => 'pivot_schedule_show_listing',
+                    '#show_times' => $show_times,
+                    '#headline' => $listing_title,
+                );
+
+                // Pass the block settings to the template as well.
+                foreach ($settings as $name => $value) {
+                    $block['content']["#{$name}"] = $value;
+                }
+            }
+        }
     }
-  }
-  return $block;
+    return $block;
 }
 
 /**
  * Implements hook_theme().
  */
 function pivot_schedule_theme() {
-  return array(
-    'pivot_schedule_primetime_listing' => array(
-      'variables' => array(
-        'show_times' => array(),
-        'headline_text' => NULL,
-        'full_schedule_text' => NULL,
-        'full_schedule_link' => NULL,
-        'count' => 0,
-        'start_time' => NULL,
-        'end_time' => NULL,
-        'timezone' => NULL,
-      ),
-      'template' => 'pivot-schedule-primetime-listing',
-    ),
-    'pivot_schedule_show_listing' => array(
-      'variables' => array(
-        'show_times' => array(),
-        'headline' => NULL,
-        'count' => 0,
-        'timezone' => NULL,
-      ),
-      'template' => 'pivot-schedule-show-listing',
-    ),
-    'pivot_schedule_list_page' => array(
-      'variables' => array(
-        'list' => array(),
-        'reference' => NULL,
-        'date_menu' => NULL,
-        'tz_menu' => NULL,
-        'selected_date' => NULL,
-      ),
-      'template' => 'pivot-schedule-list-page',
-    ),
-  );
+    return array(
+        'pivot_schedule_primetime_listing' => array(
+            'variables' => array(
+                'show_times' => array(),
+                'headline_text' => NULL,
+                'full_schedule_text' => NULL,
+                'full_schedule_link' => NULL,
+                'count' => 0,
+                'start_time' => NULL,
+                'end_time' => NULL,
+                'timezone' => NULL,
+            ),
+            'template' => 'pivot-schedule-primetime-listing',
+        ),
+        'pivot_schedule_show_listing' => array(
+            'variables' => array(
+                'show_times' => array(),
+                'headline' => NULL,
+                'count' => 0,
+                'timezone' => NULL,
+            ),
+            'template' => 'pivot-schedule-show-listing',
+        ),
+        'pivot_schedule_list_page' => array(
+            'variables' => array(
+                'list' => array(),
+                'reference' => NULL,
+                'date_menu' => NULL,
+                'tz_menu' => NULL,
+                'selected_date' => NULL,
+            ),
+            'template' => 'pivot-schedule-list-page',
+        ),
+    );
 }
 
 function pivot_schedule_shows_by_schedule_name() {
-  // Static caching
-  static $shows_by_schedule_name = FALSE;
+    // Static caching
+    static $shows_by_schedule_name = FALSE;
 
-  if ($shows_by_schedule_name === FALSE) {
+    if ($shows_by_schedule_name === FALSE) {
 
-    $shows_by_schedule_name = array();
+        $shows_by_schedule_name = array();
 
-    // Get the show type nodes.
-    $query = new EntityFieldQuery();
-    $query->entityCondition('entity_type', 'node')
-      ->propertyCondition('type', 'show');
-    $entities = $query->execute();
+        // Get the show type nodes.
+        $query = new EntityFieldQuery();
+        $query->entityCondition('entity_type', 'node')
+                ->propertyCondition('type', 'show');
+        $entities = $query->execute();
 
-    if (isset($entities['node'])) {
+        if (isset($entities['node'])) {
 
-      // Load the actual show nodes.
-      $ids = array_keys($entities['node']);
-      $shows = entity_load('node', $ids);
+            // Load the actual show nodes.
+            $ids = array_keys($entities['node']);
+            $shows = entity_load('node', $ids);
 
-      // Add all show's with a schedule name to the list.
-      foreach ($shows as $show) {
-        $items = field_get_items('node', $show, 'field_schedule_name');
-        if ($items !== FALSE) {
-          $item = reset($items);
-          if ($item != FALSE && !empty($item['value'])) {
-            $shows_by_schedule_name[$item['value']] = $show;
-          }
+            // Add all show's with a schedule name to the list.
+            foreach ($shows as $show) {
+                $items = field_get_items('node', $show, 'field_schedule_name');
+                if ($items !== FALSE) {
+                    $item = reset($items);
+                    if ($item != FALSE && !empty($item['value'])) {
+                        $shows_by_schedule_name[$item['value']] = $show;
+                    }
+                }
+            }
         }
-      }
     }
-  }
 
-  return $shows_by_schedule_name;
+    return $shows_by_schedule_name;
 }
 
 function pivot_schedule_load_listing($ids, $timezone) {
 
-  $listing = array();
+    $listing = array();
 
-  // Load the actual show times.
-  $show_times = entity_load('pivot_schedule_show_time', $ids);
+    // Load the actual show times.
+    $show_times = entity_load('pivot_schedule_show_time', $ids);
 
-  // Get a list of shows that may appear in the schedule.
-  $shows_by_schedule_name = pivot_schedule_shows_by_schedule_name();
+    // Get a list of shows that may appear in the schedule.
+    $shows_by_schedule_name = pivot_schedule_shows_by_schedule_name();
 
-  // Build the listing.
-  foreach ($show_times as $show_time) {
+    // Build the listing.
+    foreach ($show_times as $show_time) {
 
-    $item = new StdClass();
+        $item = new StdClass();
 
-    // Adjust the start time to the reference timezone.
-    $item->start = new DateTime('now', $timezone);
-    $item->start->setTimestamp((int) $show_time->broadcast_start_time);
+        // Adjust the start time to the reference timezone.
+        $item->start = new DateTime('now', $timezone);
+        $item->start->setTimestamp((int) $show_time->broadcast_start_time);
 
-    // Use the show title as it appears in the feed.
-    if ($show_time->element_name === 'Movie') {
-      $item->show_title = $show_time->title_name;
+        // Use the show title as it appears in the feed.
+        if ($show_time->element_name === 'Movie') {
+            $item->show_title = $show_time->title_name;
+        } else {
+            $item->show_title = $show_time->element_name;
+        }
+
+        // Check for a show page to link to.
+        if (array_key_exists($show_time->element_name, $shows_by_schedule_name)) {
+            $show = $shows_by_schedule_name[$show_time->element_name];
+            $uri = node_uri($show);
+            $item->show_path = url($uri['path']);
+        } else {
+            $item->show_path = NULL;
+        }
+
+        // Add the show time to the listing.
+        $listing[] = $item;
     }
-    else {
-      $item->show_title = $show_time->element_name;
-    }
 
-    // Check for a show page to link to.
-    if (array_key_exists($show_time->element_name, $shows_by_schedule_name)) {
-      $show = $shows_by_schedule_name[$show_time->element_name];
-      $uri = node_uri($show);
-      $item->show_path = url($uri['path']);
-    }
-    else {
-      $item->show_path = NULL;
-    }
-
-    // Add the show time to the listing.
-    $listing[] = $item;
-  }
-
-  return $listing;
+    return $listing;
 }
 
 function pivot_schedule_get_primetime_listing($count, $start, $end, $tz) {
 
-  $listing = array();
+    $listing = array();
 
-  // Initialize the reference timezone.
-  try {
-    $timezone = new DateTimeZone($tz);
-  }
-  catch (Exception $e) {
-    // The configured time zone is invalid, use the default until
-    // it can be changed
-    drupal_set_message(t('Invalid primetime schedule timezone'), 'warning');
-    $timezone = new DateTimeZone(PIVOT_SCHEDULE_REFERENCE_TZ);
-  }
-  // Convert the start and end times to actual date times.
-  $start_time = new DateTime($start, $timezone);
-  $end_time = new DateTime($end, $timezone);
+    // Initialize the reference timezone.
+    try {
+        $timezone = new DateTimeZone($tz);
+    } catch (Exception $e) {
+        // The configured time zone is invalid, use the default until
+        // it can be changed
+        drupal_set_message(t('Invalid primetime schedule timezone'), 'warning');
+        $timezone = new DateTimeZone(PIVOT_SCHEDULE_REFERENCE_TZ);
+    }
+    // Convert the start and end times to actual date times.
+    $start_time = new DateTime($start, $timezone);
+    $end_time = new DateTime($end, $timezone);
 
-  // Get the show times during primetime.
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'pivot_schedule_show_time')
-    ->propertyCondition('broadcast_start_time', $start_time->getTimestamp(), '>=')
-    ->propertyCondition('broadcast_start_time', $end_time->getTimestamp(), '<=')
-    ->propertyOrderBy('broadcast_start_time')
-    ->range(0, $count);
-  $entities = $query->execute();
+    // Get the show times during primetime.
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'pivot_schedule_show_time')
+            ->propertyCondition('broadcast_start_time', $start_time->getTimestamp(), '>=')
+            ->propertyCondition('broadcast_start_time', $end_time->getTimestamp(), '<=')
+            ->propertyOrderBy('broadcast_start_time')
+            ->range(0, $count);
+    $entities = $query->execute();
 
-  if (isset($entities['pivot_schedule_show_time'])) {
-    $ids = array_keys($entities['pivot_schedule_show_time']);
-    $listing = pivot_schedule_load_listing($ids, $timezone);
-  }
+    if (isset($entities['pivot_schedule_show_time'])) {
+        $ids = array_keys($entities['pivot_schedule_show_time']);
+        $listing = pivot_schedule_load_listing($ids, $timezone);
+    }
 
-  return $listing;
+    return $listing;
 }
 
 function pivot_schedule_get_show_listing($schedule_name, $count, $tz) {
 
-  $listing = array();
+    $listing = array();
 
-  // Initialize the reference timezone.
-  try {
-    $timezone = new DateTimeZone($tz);
-  }
-  catch (Exception $e) {
-    // The configured time zone is invalid, use the default until
-    // it can be changed
-    drupal_set_message(t('Invalid show schedule timezone'), 'warning');
-    $timezone = new DateTimeZone(PIVOT_SCHEDULE_REFERENCE_TZ);
-  }
+    // Initialize the reference timezone.
+    try {
+        $timezone = new DateTimeZone($tz);
+    } catch (Exception $e) {
+        // The configured time zone is invalid, use the default until
+        // it can be changed
+        drupal_set_message(t('Invalid show schedule timezone'), 'warning');
+        $timezone = new DateTimeZone(PIVOT_SCHEDULE_REFERENCE_TZ);
+    }
 
-  // Get the current hour in the reference timezone.
-  $this_hour = new DateTime('now', $timezone);
-  $offset = $this_hour->format('i \m\i\n\u\t\e\s + s \s\e\c\o\n\d\s');
-  $interval = DateInterval::createFromDateString($offset);
-  $this_hour->sub($interval);
+    // Get the current hour in the reference timezone.
+    $this_hour = new DateTime('now', $timezone);
+    $offset = $this_hour->format('i \m\i\n\u\t\e\s + s \s\e\c\o\n\d\s');
+    $interval = DateInterval::createFromDateString($offset);
+    $this_hour->sub($interval);
 
-  // Get the upcoming show times.
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'pivot_schedule_show_time')
-    ->propertyCondition('broadcast_start_time', $this_hour->getTimestamp(), '>=')
-    ->propertyCondition('element_name', $schedule_name)
-    ->propertyOrderBy('broadcast_start_time')
-    ->range(0, $count);
-  $entities = $query->execute();
-  if (isset($entities['pivot_schedule_show_time'])) {
-    $ids = array_keys($entities['pivot_schedule_show_time']);
-    $listing = pivot_schedule_load_listing($ids, $timezone);
-  }
+    // Get the upcoming show times.
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'pivot_schedule_show_time')
+            ->propertyCondition('broadcast_start_time', $this_hour->getTimestamp(), '>=')
+            ->propertyCondition('element_name', $schedule_name)
+            ->propertyOrderBy('broadcast_start_time')
+            ->range(0, $count);
+    $entities = $query->execute();
+    if (isset($entities['pivot_schedule_show_time'])) {
+        $ids = array_keys($entities['pivot_schedule_show_time']);
+        $listing = pivot_schedule_load_listing($ids, $timezone);
+    }
 
-  return $listing;
+    return $listing;
 }
 
-
-function pivot_schedule_local_date($format, $current_time = null, $timezone = 'UTC'){
+function pivot_schedule_local_date($format, $current_time = null, $timezone = 'UTC') {
     if (is_null($current_time))
         $current_time = time();
-    $local = new DateTime('@'.$current_time);
+    $local = new DateTime('@' . $current_time);
     $local->setTimeZone(new DateTimeZone($timezone));
 
     return $local->format('m/d/y h:ia');
 }
 
-
 function pivot_schedule_timezone_detect() {
-  drupal_session_start();
-  $_SESSION['timezone'] = check_plain($_POST['timezone']);
+    drupal_session_start();
+    $_SESSION['timezone'] = check_plain($_POST['timezone']);
 }
 
-function pivot_schedule_init(){
-  if($_SERVER['REQUEST_URI'] == 'schedule/' || $_SERVER['REQUEST_URI'] == 'schedule') {
-    drupal_add_js(drupal_get_path('module', 'pivot_schedule'). '/js/jstz.js');
-    drupal_add_js(drupal_get_path('module', 'pivot_schedule'). '/js/pivot_schedule_timezone.js');
-  }
+function pivot_schedule_init() {
+    if ($_SERVER['REQUEST_URI'] == 'schedule/' || $_SERVER['REQUEST_URI'] == 'schedule') {
+        drupal_add_js(drupal_get_path('module', 'pivot_schedule') . '/js/jstz.js');
+        drupal_add_js(drupal_get_path('module', 'pivot_schedule') . '/js/pivot_schedule_timezone.js');
+    }
 }
-
 
 function pivot_schedule_list_page() {
 
-  //Create Timezone Menu List
-  $clean_tz = array(
-    'Eastern' => array('America/New_York', 'America/Bogota'),
-    'Central' => array('America/Chicago', 'America/Guatemala', 'Pacific/Easter'),
-    'Mountain' => array('America/Denver', 'America/Phoenix'),
-    'Pacific' => array('America/Los_Angeles', 'Pacific/Pitcairn'),
-    'Alaska' => array('America/Anchorage', 'Pacific/Gambier'),
-    'Hawaiian' => array('Pacific/Honolulu', 'America/Adak'),
-  );
+    //Create Timezone Menu List
+    $clean_tz = array(
+        'Eastern' => array('America/New_York', 'America/Bogota'),
+        'Central' => array('America/Chicago', 'America/Guatemala', 'Pacific/Easter'),
+        'Mountain' => array('America/Denver', 'America/Phoenix'),
+        'Pacific' => array('America/Los_Angeles', 'Pacific/Pitcairn'),
+        'Alaska' => array('America/Anchorage', 'Pacific/Gambier'),
+        'Hawaiian' => array('Pacific/Honolulu', 'America/Adak'),
+    );
 
 
-  global $base_url;
-  $current_time = time();
+    global $base_url;
+    $current_time = time();
 
 // Set the Users timezone either by autodetecting or using the tz in url
-  if(arg(1) == NULL){
-    if(!isset($_SESSION['timezone'])){
-      drupal_add_js(drupal_get_path('module', 'pivot_schedule'). '/js/jstz.js');
-      drupal_add_js(drupal_get_path('module', 'pivot_schedule'). '/js/pivot_schedule_timezone.js');
-      $user_timezone = 'America/New_York';
+    if (arg(1) == NULL) {
+        if (!isset($_SESSION['timezone'])) {
+            drupal_add_js(drupal_get_path('module', 'pivot_schedule') . '/js/jstz.js');
+            drupal_add_js(drupal_get_path('module', 'pivot_schedule') . '/js/pivot_schedule_timezone.js');
+            $user_timezone = 'America/New_York';
+        } else {
+            $user_timezone = $_SESSION['timezone'];
+        }
+    } else {
+        $user_timezone = current($clean_tz[arg(1)]);
     }
-    else{
-      $user_timezone = $_SESSION['timezone'];
-    }
-  }
-  else{
-    $user_timezone = current($clean_tz[arg(1)]);
-  }
 
 // Get the current time given the User's timezone.
-  $user_time = pivot_schedule_local_date('r', $current_time, $user_timezone);
-  $user_time = strtotime($user_time);
-  $current_time = date('m/d/y h:ia');  //current time of the server
-
-  //if the date is set in the url, use it.  otherwise, default to todays date
-  $user_date = date('m/d/y', $user_time);
-  $user_date = strtotime($user_date);
-  if(arg(2) != NULL){
-    $user_date_url = str_replace('-', '/', arg(2));
-    $user_date_url = strtotime($user_date_url);
-    $offset = $user_time - (strtotime($current_time));
-    $show_time_et = $user_date_url - $offset;
-    $date_end = $user_date_url + 3600*24 - $offset;
-  }
-  else{
-    $show_time_et = strtotime($current_time);
-    $offset = $user_time - $show_time_et;
-    $date_end = $user_date + 3600*24 - $offset;
-  }
+    $user_time = pivot_schedule_local_date('r', $current_time, $user_timezone);
+    $user_time = strtotime($user_time);
+    $current_time = date('m/d/y h:ia');  //current time of the server
+    //if the date is set in the url, use it.  otherwise, default to todays date
+    $user_date = date('m/d/y', $user_time);
+    $user_date = strtotime($user_date);
+    if (arg(2) != NULL) {
+        $user_date_url = str_replace('-', '/', arg(2));
+        $user_date_url = strtotime($user_date_url);
+        $offset = $user_time - (strtotime($current_time));
+        $show_time_et = $user_date_url - $offset;
+        $date_end = $user_date_url + 3600 * 24 - $offset;
+    } else {
+        $show_time_et = strtotime($current_time);
+        $offset = $user_time - $show_time_et;
+        $date_end = $user_date + 3600 * 24 - $offset;
+    }
 
 
 //Query Show/Movie times
-  if(arg(2) != NULL){
-    $query = new EntityFieldQuery();
-    $query->entityCondition('entity_type', 'pivot_schedule_show_time')
-      ->propertyCondition('broadcast_start_time', $show_time_et, '>=')
-      ->propertyCondition('broadcast_start_time', $date_end, '<')
-      ->propertyOrderBy('broadcast_start_time');
-    $entities = $query->execute();
-  }
-  else{
-  $query = new EntityFieldQuery();
-    $query->entityCondition('entity_type', 'pivot_schedule_show_time')
-      ->propertyCondition('broadcast_end_time', $show_time_et, '>=')
-      ->propertyCondition('broadcast_start_time', $date_end, '<')
-      ->propertyOrderBy('broadcast_start_time');
-    $entities = $query->execute();
-  }
+    if (arg(2) != NULL) {
+        $query = new EntityFieldQuery();
+        $query->entityCondition('entity_type', 'pivot_schedule_show_time')
+                ->propertyCondition('broadcast_start_time', $show_time_et, '>=')
+                ->propertyCondition('broadcast_start_time', $date_end, '<')
+                ->propertyOrderBy('broadcast_start_time');
+        $entities = $query->execute();
+    } else {
+        $query = new EntityFieldQuery();
+        $query->entityCondition('entity_type', 'pivot_schedule_show_time')
+                ->propertyCondition('broadcast_end_time', $show_time_et, '>=')
+                ->propertyCondition('broadcast_start_time', $date_end, '<')
+                ->propertyOrderBy('broadcast_start_time');
+        $entities = $query->execute();
+    }
 
 //Find the referenced Show given the Query above
-  $entity_list = array();
-  foreach($entities['pivot_schedule_show_time'] as $key => $entity){
-    $entity = entity_load('pivot_schedule_show_time', array($key));
-    $reference = new EntityFieldQuery();
-    $reference->entityCondition('entity_type', 'node')
-      ->propertyCondition('type', 'show')
-      ->fieldCondition('field_schedule_name', 'value', $entity[$key]->element_name, '=')
-      ->propertyCondition('status', 1)
-      ->range(0,1);
-    $reference = $reference->execute();
+    $entity_list = array();
+    foreach ($entities['pivot_schedule_show_time'] as $key => $entity) {
+        $entity = entity_load('pivot_schedule_show_time', array($key));
+        $reference = new EntityFieldQuery();
+        $reference->entityCondition('entity_type', 'node')
+                ->propertyCondition('type', 'show')
+                ->fieldCondition('field_schedule_name', 'value', $entity[$key]->element_name, '=')
+                ->propertyCondition('status', 1)
+                ->range(0, 1);
+        $reference = $reference->execute();
 
 
-    //Load the Show Time entity
-    $entity[$key]->broadcast_start_time = $entity[$key]->broadcast_start_time + $offset; // removed offset
-    $entity = current($entity);
-    $current_ref = (isset($reference['node']) ? current($reference['node']) : '');
-    $entity_list[] = array($entity, 'reference' => $current_ref->nid);
-  }
-
-  //Create Date menu list  TODO: move markup to the tpl file
-  if(arg(1) == NULL){
-    foreach($clean_tz as $key => $value) {
-      if(in_array($user_timezone, $value)){
-        $user_clean_timezone = $key;
-      }
+        //Load the Show Time entity
+        $entity[$key]->broadcast_start_time = $entity[$key]->broadcast_start_time + $offset; // removed offset
+        $entity = current($entity);
+        $current_ref = (isset($reference['node']) ? current($reference['node']) : '');
+        $entity_list[] = array($entity, 'reference' => $current_ref->nid);
     }
-  }
-  else{
-    $user_clean_timezone = arg(1);
-  }
 
-  $date_menu_last_day = '';
-  $date_menu_last_day = new EntityFieldQuery();
-  $date_menu_last_day->entityCondition('entity_type', 'pivot_schedule_show_time')
-    ->propertyOrderBy('broadcast_start_time', 'DESC')
-    ->range(0,1);
-  $date_menu_last_day = $date_menu_last_day->execute();
-  $date_menu_last_day = entity_load('pivot_schedule_show_time', array(current($date_menu_last_day['pivot_schedule_show_time'])->id));
-  $date_menu_last_day = current($date_menu_last_day)->broadcast_start_time;
+    //Create Date menu list  TODO: move markup to the tpl file
+    if (arg(1) == NULL) {
+        foreach ($clean_tz as $key => $value) {
+            if (in_array($user_timezone, $value)) {
+                $user_clean_timezone = $key;
+            }
+        }
+    } else {
+        $user_clean_timezone = arg(1);
+    }
+
+    $date_menu_last_day = '';
+    $date_menu_last_day = new EntityFieldQuery();
+    $date_menu_last_day->entityCondition('entity_type', 'pivot_schedule_show_time')
+            ->propertyOrderBy('broadcast_start_time', 'DESC')
+            ->range(0, 1);
+    $date_menu_last_day = $date_menu_last_day->execute();
+    $date_menu_last_day = entity_load('pivot_schedule_show_time', array(current($date_menu_last_day['pivot_schedule_show_time'])->id));
+    $date_menu_last_day = current($date_menu_last_day)->broadcast_start_time;
 
 
-  $date_menu = '<div class="date-menu"><div class="menu-title">Date: </div><ul class="sfw-menu">';
-  $selected_date = ($user_date_url != NULL ? $user_date_url : $user_date);
-  $date_menu .= '<li class="item">'. date('D M j', $selected_date). '<ul>';
+    $date_menu = '<div class="date-menu"><div class="menu-title">Date: </div><ul class="sfw-menu">';
+    $selected_date = ($user_date_url != NULL ? $user_date_url : $user_date);
+    $date_menu .= '<li class="item">' . date('D M j', $selected_date) . '<ul>';
 
-  $date_menu_day=$user_date;
-  $date_format_1 = date('D M j', $date_menu_day);
-  $date_format_2 = date('m-d-y', $date_menu_day);
-  if(arg(1) != NULL){
-    $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule/'. $user_clean_timezone). '</li>';
-  }
-  else{
-    $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule'). '</li>';
-  }
-
-  for($x=1; $date_menu_day<$date_menu_last_day-3600*24; $x++){
-    $date_menu_day=$user_date;
-    $date_menu_day = $date_menu_day+$x*3600*24;
+    $date_menu_day = $user_date;
     $date_format_1 = date('D M j', $date_menu_day);
     $date_format_2 = date('m-d-y', $date_menu_day);
-    if(arg(1) != NULL){
-      $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule/'. $user_clean_timezone. '/'. $date_format_2). '</li>';
+    if (arg(1) != NULL) {
+        $date_menu .= '<li class="item">' . l($date_format_1, $base_url . '/schedule/' . $user_clean_timezone) . '</li>';
+    } else {
+        $date_menu .= '<li class="item">' . l($date_format_1, $base_url . '/schedule') . '</li>';
     }
-    else{
-      $date_menu .= '<li class="item">'. l($date_format_1, $base_url. '/schedule/'. $user_clean_timezone. '/'. $date_format_2). '</li>';
+
+    for ($x = 1; $date_menu_day < $date_menu_last_day - 3600 * 24; $x++) {
+        $date_menu_day = $user_date;
+        $date_menu_day = $date_menu_day + $x * 3600 * 24;
+        $date_format_1 = date('D M j', $date_menu_day);
+        $date_format_2 = date('m-d-y', $date_menu_day);
+        if (arg(1) != NULL) {
+            $date_menu .= '<li class="item">' . l($date_format_1, $base_url . '/schedule/' . $user_clean_timezone . '/' . $date_format_2) . '</li>';
+        } else {
+            $date_menu .= '<li class="item">' . l($date_format_1, $base_url . '/schedule/' . $user_clean_timezone . '/' . $date_format_2) . '</li>';
+        }
     }
-  }
 
 
-  $date_menu .= '</ul></ul></div>';
+    $date_menu .= '</ul></ul></div>';
 
 //Create Timezone menu list  TODO: move markup to the tpl file
-  $tz_menu = '<div class="tz-menu"><div class="menu-title">Timezone: </div><ul class="sfw-menu">';
-  $tz_menu .= '<li class="item">'. $user_clean_timezone. '<ul>';
-  foreach($clean_tz as $key => $tz){
-    if(arg(2) != NULL){
-      $tz_menu .= '<li class="item" tz="'. $tz. '">'. l($key, $base_url. '/schedule/'. $key. '/'. arg(2)). '</li>';
+    $tz_menu = '<div class="tz-menu"><div class="menu-title">Timezone: </div><ul class="sfw-menu">';
+    $tz_menu .= '<li class="item">' . $user_clean_timezone . '<ul>';
+    foreach ($clean_tz as $key => $tz) {
+        if (arg(2) != NULL) {
+            $tz_menu .= '<li class="item" tz="' . $tz . '">' . l($key, $base_url . '/schedule/' . $key . '/' . arg(2)) . '</li>';
+        } else {
+            $tz_menu .= '<li class="item" tz="' . $tz . '">' . l($key, $base_url . '/schedule/' . $key) . '</li>';
+        }
     }
-    else{
-      $tz_menu .= '<li class="item" tz="'. $tz. '">'. l($key, $base_url. '/schedule/'. $key). '</li>';
-    }
+    $tz_menu .= '</ul></ul></div>';
 
-  }
-  $tz_menu .= '</ul></ul></div>';
+    $content = theme('pivot_schedule_list_page', array(
+        'list' => $entity_list,
+        'reference' => $reference,
+        'date_menu' => $date_menu,
+        'tz_menu' => $tz_menu,
+        'selected_date' => $selected_date,
+            ));
+    drupal_add_js(drupal_get_path('module', 'nice_menus') . '/js/superfish.js');
+    drupal_add_js(drupal_get_path('module', 'pivot_schedule') . '/js/pivot-sf.js');
 
-  $content = theme('pivot_schedule_list_page', array(
-    'list' => $entity_list,
-    'reference' => $reference,
-    'date_menu' => $date_menu,
-    'tz_menu' => $tz_menu,
-    'selected_date' => $selected_date,
-  ));
-  drupal_add_js(drupal_get_path('module', 'nice_menus'). '/js/superfish.js');
-  drupal_add_js(drupal_get_path('module', 'pivot_schedule'). '/js/pivot-sf.js');
-
-  return $content;
-
+    return $content;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
