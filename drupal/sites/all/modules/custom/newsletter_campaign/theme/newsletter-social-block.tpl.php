@@ -1,7 +1,7 @@
 <section id="<?php print $variables['response_id']; ?>" class="subscribe">
   <h4 class="headline"><?php print $variables['body']; ?></h4>
   <?php print drupal_render($variables['form']); ?>
-  <p class="terms-link"><?php print drupal_render($variables['tos_link']); ?></p>
+  <p class="terms-link"><?php echo $variables['tos_link']; ?></p>
 </section>
 <?php if ($variables['follow_us_enabled']): ?>
 <section class="follow">
