@@ -6,12 +6,9 @@
  */
 define('PIVOT_SCHEDULE_MAX_IMPORT_FILE_SIZE', 4194304);
 define('PIVOT_SCHEDULE_IMPORT_FILE_DIRECTORY', 'public://schedule-imports');
-
 define('PIVOT_SCHEDULE_PRIMETIME_START', '7:00pm');
 define('PIVOT_SCHEDULE_PRIMETIME_END', '11:00pm');
 define('PIVOT_SCHEDULE_REFERENCE_TZ', 'America/New_York');
-define('PIVOT_SCHEDULE_FILE_URL', 'https://s3.amazonaws.com/pivot-tv-schedule/PIVTcustom_xml_E.XML');
-define('PIVOT_SCHEDULE_IMPORT_TIME', '11:00am');
 
 /**
  * PivotScheduleShowTime entity.
@@ -304,9 +301,10 @@ function pivot_schedule_import_page() {
     return $content;
 }
 
-/* 
+/*
  * Get form for Schedule cron settings
  */
+
 function pivot_schedule_settings_page() {
     $content = array();
     $content['import_form'] = drupal_get_form('pivot_schedule_settings_form');
@@ -314,7 +312,6 @@ function pivot_schedule_settings_page() {
 }
 
 function pivot_schedule_import_form($form, &$form_state) {
-
     $form['timezone'] = array(
         '#type' => 'textfield',
         '#title' => t('Timezone of import data'),
@@ -351,15 +348,16 @@ function pivot_schedule_settings_form($form, &$form_state) {
         '#type' => 'textfield',
         '#title' => t('Schedule Data File URL'),
         '#description' => t('URL address of the Pivot show schedule data file.'),
-        '#default_value' => PIVOT_SCHEDULE_FILE_URL,
+        '#default_value' => variable_get('pivot_show_schedule_url', ''),
         '#element_validate' => array('pivot_schedule_element_validate_url'),
     );
 
-    $form['actions'] = array('#type' => 'actions');
-    $form['actions']['submit'] = array(
-        '#type' => 'submit',
-        '#value' => t('Import'),
-        '#weight' => 40,
+    $form['import_time'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Schedule Import Time'),
+        '#description' => t('Time of day to run the show schedule import'),
+        '#default_value' => variable_get('pivot_show_schedule_import_time', ''),
+            //'#element_validate' => array('pivot_schedule_element_validate_time'),
     );
 
     return system_settings_form($form);
@@ -384,7 +382,6 @@ function pivot_schedule_validate_import_file(stdClass $file) {
 }
 
 function pivot_schedule_import_form_validate($form, &$form_state) {
-
     $file = file_save_upload('file', array(
         'file_validate_size' => array(
             PIVOT_SCHEDULE_MAX_IMPORT_FILE_SIZE, 0),
@@ -502,6 +499,92 @@ function pivot_schedule_import_form_submit($form, &$form_state) {
         drupal_set_message(t('An error occurred while importing the schedule, please verify the contents of the import file and try again.'), 'error');
     }
 }
+
+/*
+ * Implements hook_cron().
+ */
+
+function pivot_schedule_cron() {
+    //$result = db_query('SELECT title,nid FROM {node}');
+    $queue = DrupalQueue::get('schedule_update');
+    //foreach ($result as $hf_info) {
+    $queue->createItem($getDownloadURL);
+    //}
+}
+
+/*
+ * Implements hook_cron_queue_info().
+ */
+
+function pivot_schedule_cron_queue_info() {
+    $queues['schedule_update'] = array(
+        'worker callback' => 'pivot_schedule_auto_import',
+        'time' => 30,
+    );
+    return $queues;
+}
+
+function pivot_schedule_auto_import($data) {
+    
+}
+
+/**
+ *
+ * param string $url
+ *    Full url to file to download
+ * param string $uri
+ *    Drupal uri of where to save file public://archive/test.pdf
+ * param int $save_mode
+ *    File save mode from drupal core, ex FILE_EXISTS_REPLACE
+ */
+function download_external_file($url, $uri, $save_mode = FILE_EXISTS_RENAME, $manage_file = TRUE) {
+    $url_info = parse_url($url);
+    $url_path_info = pathinfo($url_info['path']);
+
+    //This helps with filenames with spaces
+    $url = $url_info['scheme'] . '://' . $url_info['host'] . $url_path_info['dirname'] . '/' . rawurlencode($url_path_info['basename']);
+
+    //Need to remove the filename from the uri
+    $uri_target = file_uri_target($uri);
+    $uri_scheme = file_uri_scheme($uri);
+    $uri_path_info = pathinfo($uri_target);
+    $directory = file_stream_wrapper_uri_normalize($uri_scheme . "://" . $uri_path_info['dirname']);
+
+    if (file_prepare_directory($directory, FILE_CREATE_DIRECTORY)) {
+        $drupal_result = drupal_http_request($url);
+        if (!empty($drupal_result->data)) {
+            $path = file_stream_wrapper_uri_normalize($uri);
+            if ($manage_file) {
+                $new_file = file_save_data($drupal_result->data, $path, $save_mode);
+            } else {
+                return file_unmanaged_save_data($drupal_result->data, $path, $save_mode);
+            }
+        } else {
+            drupal_set_message("Error downloading file, no data recieved for " . $url);
+            return FALSE;
+        }
+
+        $new_file->display = 1;
+        return (array) $new_file;
+    } else {
+        drupal_set_message("Could not create directory");
+    } 
+}
+
+/*
+ * Usage of download_external_file
+ 
+$uri  =  'public://some_directory/new_1/file.txt';
+$new_file = download_external_file('http://www.somewebsite.com/somefile.txt', $uri, FILE_EXISTS_REPLACE);
+ 
+if($new_file) {
+  $node->name_of_my_filefield[X][] = $new_file;
+  node_save($node);
+} else {
+  drupal_set_message("Download failed");
+}
+ */
+
 
 /**
  * Implements hook_block_info().
