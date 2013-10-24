@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* line 4, ../sass/_pivot-layout.scss */
 .site-wrapper {
   max-width: 980px;
@@ -2277,11 +2276,11 @@ iframe.media-youtube-player {
 ============================================================ */
 /* Hero Header; */
 /* line 2184, ../sass/_pivot-global.scss */
-.hero-header .show-hero {
+.hero-header .show-hero, .hero-header .campaign-hero {
   position: relative;
 }
 /* line 2186, ../sass/_pivot-global.scss */
-.hero-header .show-hero img {
+.hero-header .show-hero img, .hero-header .campaign-hero img {
   display: block;
   max-width: 100%;
   max-height: 100%;
@@ -2289,14 +2288,14 @@ iframe.media-youtube-player {
   width: auto;
 }
 /* line 2193, ../sass/_pivot-global.scss */
-.hero-header .show-hero .headline {
+.hero-header .show-hero .headline, .hero-header .campaign-hero .headline {
   position: absolute;
   bottom: 54px;
   left: 0;
   margin-bottom: 0;
 }
 /* line 2199, ../sass/_pivot-global.scss */
-.hero-header .show-hero .headline a {
+.hero-header .show-hero .headline a, .hero-header .campaign-hero .headline a {
   display: block;
   padding: 15px;
   color: #000;
@@ -2310,13 +2309,14 @@ iframe.media-youtube-player {
 }
 /* line 2212, ../sass/_pivot-global.scss */
 .hero-header .show-hero .headline a:hover,
-.hero-header .show-hero .headline a:focus {
+.hero-header .show-hero .headline a:focus, .hero-header .campaign-hero .headline a:hover,
+.hero-header .campaign-hero .headline a:focus {
   background-color: rgba(0, 132, 169, 0.9);
   color: #fff;
   text-decoration: none;
 }
 /* line 2217, ../sass/_pivot-global.scss */
-.hero-header .show-hero .hero-ad {
+.hero-header .show-hero .hero-ad, .hero-header .campaign-hero .hero-ad {
   display: block;
   position: absolute;
   top: 0;
@@ -2330,12 +2330,13 @@ iframe.media-youtube-player {
 }
 /* line 2230, ../sass/_pivot-global.scss */
 .hero-header .show-hero .hero-ad:hover,
-.hero-header .show-hero .hero-ad:focus {
+.hero-header .show-hero .hero-ad:focus, .hero-header .campaign-hero .hero-ad:hover,
+.hero-header .campaign-hero .hero-ad:focus {
   background-color: #0084a9;
   background-color: rgba(0, 132, 169, 0.7);
 }
 /* line 2234, ../sass/_pivot-global.scss */
-.hero-header .show-hero .hero-ad img {
+.hero-header .show-hero .hero-ad img, .hero-header .campaign-hero .hero-ad img {
   padding: 0 10%;
   position: relative;
   top: 50%;
