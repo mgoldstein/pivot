@@ -1181,7 +1181,7 @@ function pivot_schedule_list_page() {
     }
 
     for ($x = 1; $date_menu_day < $date_menu_last_day - 3600 * 24; $x++) {
-        $date_menu_day = $user_date;
+        $date_menu_day = $user_date + 3600; // +3600 to compensate for daylight savings
         $date_menu_day = $date_menu_day + $x * 3600 * 24;
         $date_format_1 = date('D M j', $date_menu_day);
         $date_format_2 = date('m-d-y', $date_menu_day);
