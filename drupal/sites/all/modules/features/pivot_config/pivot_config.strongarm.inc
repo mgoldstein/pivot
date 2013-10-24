@@ -128,6 +128,13 @@ iframe/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pivot_show_schedule_timezone';
+  $strongarm->value = 'America/New_York';
+  $export['pivot_show_schedule_timezone'] = $strongarm;
+  
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pivot_show_schedule_import_time';
   $strongarm->value = '11:00am';
   $export['pivot_show_schedule_import_time'] = $strongarm;
