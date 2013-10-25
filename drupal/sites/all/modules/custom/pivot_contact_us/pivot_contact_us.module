@@ -1,0 +1,28 @@
+<?php
+/**
+ * @file
+ * Main file for the Pivot Contact Us custom module.
+ */
+
+/**
+ * Implement hook_form_FORM_ID_alter
+ *
+ */
+function pivot_contact_us_form_zendesk_forms_support_form_alter(&$form, &$form_state, $form_id) {
+  $form['name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Name'),
+    '#required' => TRUE,
+  );
+  $form['requester'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Email address'),
+    '#required' => TRUE,
+  );
+  $form['subject'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Subject'),
+    '#required' => TRUE,
+  );
+  return $form;
+}
