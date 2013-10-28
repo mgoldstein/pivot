@@ -6,7 +6,6 @@
 
 define('PIVOT_SCHEDULE_MAX_IMPORT_FILE_SIZE', 4194304);
 define('PIVOT_SCHEDULE_IMPORT_FILE_DIRECTORY', 'public://schedule-imports');
-
 define('PIVOT_SCHEDULE_PRIMETIME_START', '7:00pm');
 define('PIVOT_SCHEDULE_PRIMETIME_END', '11:00pm');
 define('PIVOT_SCHEDULE_REFERENCE_TZ', 'America/New_York');

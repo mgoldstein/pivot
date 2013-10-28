@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Main file for the Pivot Contact Us custom module.
@@ -9,20 +10,39 @@
  *
  */
 function pivot_contact_us_form_zendesk_forms_support_form_alter(&$form, &$form_state, $form_id) {
-  $form['name'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Name'),
-    '#required' => TRUE,
-  );
-  $form['requester'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Email address'),
-    '#required' => TRUE,
-  );
-  $form['subject'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Subject'),
-    '#required' => TRUE,
-  );
-  return $form;
+    $form['name'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Name'),
+        '#required' => TRUE,
+    );
+    $form['requester'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Email address'),
+        '#required' => TRUE,
+    );
+    $form['subject'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Subject'),
+        '#required' => TRUE,
+    );
+    $form['user_agent'] = array(
+        '#type' => 'hidden',
+        '#default_value' => '',
+    );
+    $form['referrer'] = array(
+        '#type' => 'hidden',
+        '#value' => $_SERVER['HTTP_REFERER'],
+    );
+    return $form;
+}
+
+function pivot_contact_us_block_view_zendesk_forms_zendesk_support_form_alter(&$data, $block) {
+    $form_body = drupal_get_form('zendesk_forms_support_form');
+    $js = '<script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery("input[name=user_agent]").val(navigator.userAgent);
+        });
+        </script>';
+    $data['subject'] = t('');
+    $data['content'] = drupal_render($form_body) . "\n" . $js;
 }
