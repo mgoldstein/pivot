@@ -518,93 +518,106 @@ function pivot_schedule_cron_queue_info() {
 }
 
 function pivot_schedule_auto_import($data) {
-    // watchdog('Show Schedule Import', $file->uri);
-
     try {
         $url = $data;
         $result = drupal_http_request($url);
-
-        if (!isset($result->error)) {
-            db_delete('pivot_schedule_show_time')->execute();
+        
+        if (!isset($result->error) && $result->status_message == 'OK') {
+            
             $xmldata = $result->data;
             $path = strrpos($url, "/");
             if ($path) {
                 $filename = substr($url, $path);
             }
             $file = file_save_data($xmldata, 'public://schedule-imports/' . $filename, FILE_EXISTS_REPLACE);
-            $schedule = simplexml_load_file($file->uri);
+            if ($file) {
+                $schedule = simplexml_load_file($file->uri);
+            } else {
+                watchdog('Show Schedule Import', 'XML file save failed');
+                $schedule = FALSE;
+            }
+
+            if ($schedule && (count($schedule)>0)) {
+                
+                db_delete('pivot_schedule_show_time')->execute();
+                $imported = 0;
+                foreach($schedule as $show) {
+                    $values = array(
+                        'file_id' => $file->fid,
+                        'created' => REQUEST_TIME,
+                        'changed' => REQUEST_TIME,
+                        'title_synopsis' => '',
+                        'title_code_wo_series_prefix' => '',
+                        'title_premiere_indicator_current_schedule' => FALSE,
+                        'fcc_rating_v_chip_codes' => '',
+                    );
+
+                    // Straight forward string values.
+                    $values['element_name'] = (string) $show->SeriesName;
+                    $values['title_name'] = (string) $show->TitleName;
+                    $values['year_released'] = (int) $show->YearReleased;
+
+                    if (isset($show->TitleSynopsis)) {
+                        $values['title_synopsis'] = (string) $show->TitleSynopsis;
+                    }
+                    if (isset($show->TitleCodeWOSeriesPrefix)) {
+                        $values['title_code_wo_series_prefix']
+                                = (string) $show->TitleCodeWOSeriesPrefix;
+                    }
+                    if (isset($show->{'FCCRatingV-ChipCodes'})) {
+                        $values['fcc_rating_v_chip_codes']
+                                = (string) $show->{'FCCRatingV-ChipCodes'};
+                    }
+
+                    // Combine and convert the start date and time instead a Unix timestamp.
+                    // NOTE: StartDateStandard is the start date with a broadcast day start of
+                    //   midnight. StartDateBroadcast is the start date with a broadcast day
+                    //   start of 6:00am.
+                    $start_date = (string) $show->StartDateStandard;
+                    $start_time = (string) $show->StartTime;
+                    $timezone = new DateTimeZone(variable_get('pivot_show_schedule_timezone', PIVOT_SCHEDULE_REFERENCE_TZ));
+                    $start_datetime = DateTime::createFromFormat("m/d/Y G:i:s", $start_date . ' ' . $start_time, $timezone);
+                    if ($start_datetime === FALSE) {
+                        throw new Exception("Invalid start date time.");
+                    }
+                    $values['broadcast_start_time'] = $start_datetime->getTimestamp();
+
+                    // Convert the broadcast length to seconds.
+                    $duration = explode(':', (string) $show->Length);
+                    $values['broadcast_length']
+                            = ($duration[0] * 3600)
+                            + ($duration[1] * 60)
+                            + $duration[2];
+
+                    // Precalculate the end date and time
+                    $values['broadcast_end_time'] = $values['broadcast_start_time']
+                            + $values['broadcast_length'];
+
+                    // Only premieres will have a value (P) for this field.
+                    if (isset($show->TitlePremiereIndicatorCurrentSchedule)) {
+                        $premiere = (string) $show->TitlePremiereIndicatorCurrentSchedule;
+                        $values['title_premiere_indicator_current_schedule']
+                                = ($premiere === 'P');
+                    }
+
+                    // Create and save the schedule time.
+                    $show_time = entity_create('pivot_schedule_show_time', $values);
+                    $show_time->save();
+
+                    // Tick
+                    $imported += 1;
+                }
+                watchdog('Show Schedule Import', t('@count show times imported.', array(
+                            '@count' => $imported,
+                        )));
+            }
+            else {
+                watchdog('Show Schedule Import', 'simplexml_load_file count = ' . count($schedule));
+            }
         }
-
-        $imported = 0;
-        foreach ($schedule as $show) {
-            $values = array(
-                'file_id' => $file->fid,
-                'created' => REQUEST_TIME,
-                'changed' => REQUEST_TIME,
-                'title_synopsis' => '',
-                'title_code_wo_series_prefix' => '',
-                'title_premiere_indicator_current_schedule' => FALSE,
-                'fcc_rating_v_chip_codes' => '',
-            );
-
-            // Straight forward string values.
-            $values['element_name'] = (string) $show->SeriesName;
-            $values['title_name'] = (string) $show->TitleName;
-            $values['year_released'] = (int) $show->YearReleased;
-
-            if (isset($show->TitleSynopsis)) {
-                $values['title_synopsis'] = (string) $show->TitleSynopsis;
-            }
-            if (isset($show->TitleCodeWOSeriesPrefix)) {
-                $values['title_code_wo_series_prefix']
-                        = (string) $show->TitleCodeWOSeriesPrefix;
-            }
-            if (isset($show->{'FCCRatingV-ChipCodes'})) {
-                $values['fcc_rating_v_chip_codes']
-                        = (string) $show->{'FCCRatingV-ChipCodes'};
-            }
-
-            // Combine and convert the start date and time instead a Unix timestamp.
-            // NOTE: StartDateStandard is the start date with a broadcast day start of
-            //   midnight. StartDateBroadcast is the start date with a broadcast day
-            //   start of 6:00am.
-            $start_date = (string) $show->StartDateStandard;
-            $start_time = (string) $show->StartTime;
-            $timezone = new DateTimeZone(variable_get('pivot_show_schedule_timezone', PIVOT_SCHEDULE_REFERENCE_TZ));
-            $start_datetime = DateTime::createFromFormat("m/d/Y G:i:s", $start_date . ' ' . $start_time, $timezone);
-            if ($start_datetime === FALSE) {
-                throw new Exception("Invalid start date time.");
-            }
-            $values['broadcast_start_time'] = $start_datetime->getTimestamp();
-
-            // Convert the broadcast length to seconds.
-            $duration = explode(':', (string) $show->Length);
-            $values['broadcast_length']
-                    = ($duration[0] * 3600)
-                    + ($duration[1] * 60)
-                    + $duration[2];
-
-            // Precalculate the end date and time
-            $values['broadcast_end_time'] = $values['broadcast_start_time']
-                    + $values['broadcast_length'];
-
-            // Only premieres will have a value (P) for this field.
-            if (isset($show->TitlePremiereIndicatorCurrentSchedule)) {
-                $premiere = (string) $show->TitlePremiereIndicatorCurrentSchedule;
-                $values['title_premiere_indicator_current_schedule']
-                        = ($premiere === 'P');
-            }
-
-            // Create and save the schedule time.
-            $show_time = entity_create('pivot_schedule_show_time', $values);
-            $show_time->save();
-
-            // Tick
-            $imported += 1;
+        else {
+            watchdog('Show Schedule Import', 'HTTP request status: ' . $result->status_message);
         }
-        watchdog('Show Schedule Import', t('@count show times imported.', array(
-                    '@count' => $imported,
-                )));
     } catch (Exception $e) {
         watchdog('Show Schedule Import', 'Error ' . $e . ' occurred while importing the schedule, please verify the contents of the import file and try again.', WATCHDOG_ERROR);
     }
