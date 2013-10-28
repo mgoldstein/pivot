@@ -537,7 +537,7 @@ function pivot_schedule_auto_import($data) {
                 $schedule = FALSE;
             }
 
-            if ($schedule && (count($schedule)>0)) {
+            if ($schedule && (count($schedule)>1)) {
                 
                 db_delete('pivot_schedule_show_time')->execute();
                 $imported = 0;
