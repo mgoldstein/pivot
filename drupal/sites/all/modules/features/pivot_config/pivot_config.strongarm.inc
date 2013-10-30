@@ -110,7 +110,7 @@ iframe/*';
   $strongarm->name = 'takeaction_button_js_url';
   $strongarm->value = 'http://tab.takepart.com/assets/publisher.js?v=3.7';
   $export['takeaction_button_js_url'] = $strongarm;
-
+  
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -118,6 +118,27 @@ iframe/*';
   $strongarm->value = '4d243fc45c4332cd8a6f28f6575765dd';
   $export['takeaction_button_pub_id'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pivot_show_schedule_url';
+  $strongarm->value = 'https://s3.amazonaws.com/pivot-tv-schedule/PIVTcustom_xml_E.XML';
+  $export['pivot_show_schedule_url'] = $strongarm;
+  
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pivot_show_schedule_timezone';
+  $strongarm->value = 'America/New_York';
+  $export['pivot_show_schedule_timezone'] = $strongarm;
+  
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pivot_show_schedule_import_time';
+  $strongarm->value = '11:00am';
+  $export['pivot_show_schedule_import_time'] = $strongarm;
+  
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;

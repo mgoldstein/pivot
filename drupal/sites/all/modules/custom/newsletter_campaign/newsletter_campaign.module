@@ -66,6 +66,7 @@ class NewsletterCampaignController extends EntityApiController {
       'header' => '',
       'promo_message' => '',
       'thankyou_message' => '',
+      'tos_link' => 'By clicking "Submit", I agree to be bound by TakePart\'s <a href="/terms-of-use" target="_blank">Terms of Use</a> and <a href="/privacy-policy" target="_blank">Privacy Policy</a>.',
       'campaign_id' => '',
       'follow_us_enabled' => FALSE,
       'follow_us_configuration' => $this->initializeFollowUs(),
@@ -224,6 +225,7 @@ function newsletter_campaign_form($form, &$form_state, $campaign, $op = 'edit') 
     'header' => $campaign->header,
     'promo_message' => $campaign->promo_message,
     'thankyou_message' => $campaign->thankyou_message,
+    'tos_link' => $campaign->tos_link,
     'signup_name' => $campaign->signup_name,
     'follow_us_enabled' => $campaign->follow_us_enabled,
   );
@@ -275,6 +277,14 @@ function newsletter_campaign_form($form, &$form_state, $campaign, $op = 'edit') 
     '#default_value' => $values['thankyou_message'],
     '#description' => t('Message to display after a user submits their email. Supports HTML tags a, i, strong, u, em, b, ul, ol, li, dl, dt, dd, p, br, div, and span.'),
     '#required' => TRUE,
+    '#rows' => 4,
+  );
+
+  $form['tos_link'] = array(
+    '#title' => t('Legal Terms'),
+    '#type' => 'textarea',
+    '#default_value' => $values['tos_link'],
+    '#description' => t('Legal copy and links. Supports HTML tags a, i, strong, u, em, b, ul, ol, li, dl, dt, dd, p, br, div, and span.'),
     '#rows' => 4,
   );
 
@@ -481,19 +491,6 @@ function newsletter_campaign_block_view($delta) {
       $allowed_tags = array('a', 'i', 'strong', 'u', 'em', 'b', 'ul', 'ol',
         'li', 'dl', 'dt', 'dd', 'p', 'br', 'div', 'span');
 
-      // Both blocks have a terms of service link.
-      $tos_link = array(
-        '#theme' => 'link',
-        '#text' => t("Terms & Conditions"),
-        '#path' => 'terms-of-use',
-        '#options' => array(
-          'attributes' => array(
-            'target' => '_blank',
-          ),
-          'html' => FALSE,
-        ),
-      );
-
       $config = $newsletter->follow_us_configuration;
       $social_links = array();
       $services = newsletter_campaign_follow_us_service_names();
@@ -528,7 +525,7 @@ function newsletter_campaign_block_view($delta) {
         'header' => filter_xss($newsletter->header, $allowed_tags),
         'body' => filter_xss($newsletter->promo_message, $allowed_tags),
         'form' => drupal_get_form('newsletter_campaign_social_form', $newsletter),
-        'tos_link' => $tos_link,
+        'tos_link' => filter_xss($newsletter->tos_link, $allowed_tags),
         'social_links' => $social_links,
         'follow_us_enabled' => $newsletter->follow_us_enabled,
       ));

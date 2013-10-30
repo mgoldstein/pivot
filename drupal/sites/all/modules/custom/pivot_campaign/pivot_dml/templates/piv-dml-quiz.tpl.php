@@ -87,7 +87,7 @@
 						$block = module_invoke('newsletter_campaign', 'block_view', 2);
 						print render($block['content']);
 					?>
-					<div class="tos">	By submitting your email address above, you agree to our <a href="<?php print $path; ?>/terms-of-use">Terms of Use</a> and <a href="<?php print $path; ?>/privacy-policy">Privacy Policy</a>.</div>
+					<!-- <div class="tos">By submitting your email address above, you agree to our <a href="/terms-of-use">Terms of Use</a> and <a href="/privacy-policy">Privacy Policy</a>.</div> -->
 				</div>
 
 	       </div>
