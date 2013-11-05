@@ -25,13 +25,17 @@ function pivot_contact_us_form_zendesk_forms_support_form_alter(&$form, &$form_s
         '#title' => t('Subject'),
         '#required' => TRUE,
     );
-    $form['zendesk_user_agent'] = array(
+    $form['zendesk_23560737'] = array(
         '#type' => 'hidden',
         '#default_value' => '',
     );
-    $form['zendesk_referrer'] = array(
+    $form['zendesk_23560727'] = array(
         '#type' => 'hidden',
         '#value' => $_SERVER['HTTP_REFERER'],
+    );
+    $form['zendesk_23643146'] = array(
+        '#type' => 'hidden',
+        '#value' => variable_get('site_name', ''),
     );
     return $form;
 }
@@ -40,7 +44,7 @@ function pivot_contact_us_block_view_zendesk_forms_zendesk_support_form_alter(&$
     $form_body = drupal_get_form('zendesk_forms_support_form');
     $js = '<script type="text/javascript">
         jQuery(document).ready(function() {
-            jQuery("input[name=zendesk_user_agent]").val(navigator.userAgent);
+            jQuery("input[name=zendesk_23560737]").val(navigator.userAgent);
         });
         </script>';
     $data['subject'] = t('');
