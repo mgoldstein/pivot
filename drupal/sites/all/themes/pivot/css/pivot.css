@@ -3952,3 +3952,6 @@ a:focus, a::-moz-focus-inner {
 #block-zendesk-forms-zendesk-support-form {
     font-size: medium;
 }
+#edit-description--2-counter {
+    margin-top: 8px;
+}
