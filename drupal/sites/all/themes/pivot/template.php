@@ -427,6 +427,29 @@ function pivot_preprocess_field(&$variables) {
       $variables['item_attributes_array'][$delta] = $atts;
     }
   }
+  elseif ($variables['element']['#field_name'] == 'field_video_longtail_video_id') {
+
+    // If the object also has an 'allowed regions' field then add the geo
+    // location limiting code to the video field.
+    $obj = $variables['element']['#object'];
+    $type = $variables['element']['#entity_type'];
+    $items = field_get_items($type, $obj, 'field_allowed_regions');
+    if (!empty($items)) {
+      $item = reset($items);
+      $allowed_regions = array_map('strtolower', array_filter(array_map('trim',
+        explode(' ', $item['value'])), 'strlen'));
+      if (!empty($allowed_regions)) {
+        $new_suggestions = array();
+        foreach ($variables['theme_hook_suggestions'] as $suggestion) {
+          $new_suggestions[] = $suggestion;
+          $new_suggestions[] = $suggestion . '__geo_limited';
+        }
+        $variables['theme_hook_suggestions'] = $new_suggestions;
+        drupal_add_js('//j.maxmind.com/js/apis/geoip2/v2.0/geoip2.js', 'external');
+        $variables['element']['#allowed_regions'] = $allowed_regions;
+      }
+    }
+  }
 }
 
 /**
@@ -440,6 +463,35 @@ function pivot_field__field_video_longtail_video_id__video($variables) {
   // Render the item(s) -- there should only be one
   foreach ($variables['items'] as $delta => $item) {
     $output .= '<script type="text/javascript" src="http://video.takepart.com/players/' . drupal_render($item) . '.js"></script>';
+  }
+
+  // Render the top-level DIV.
+  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+
+  return $output;
+}
+
+/**
+ * Implements theme_field().
+ *
+ * Output HTML for a Longtail Video Player with Geo location limiting.
+ */
+function pivot_field__field_video_longtail_video_id__video__geo_limited($variables) {
+  $output = '';
+
+  // Render the item(s) -- there should only be one
+  foreach ($variables['items'] as $delta => $item) {
+    $botr_id = drupal_render($item);
+    $attributes = array(
+      'id' => 'botr_' . str_replace('-', '_', $botr_id) . '_div',
+      'class' => 'geo-limited-video',
+      'data-botr-id' => $botr_id,
+      'data-allowed-regions' => implode($variables['element']['#allowed_regions']),
+    );
+    $output .= '<div' . drupal_attributes($attributes) . '>';
+    $output .= '<img src="/sites/all/themes/pivot/images/video-blocked.gif" alt="Sorry, but this content is only available in the U.S. at this time." class="video-blocked" style="display:none; max-width:100%" />';
+    $output .= '<img src="/sites/all/themes/pivot/images/video-loading.gif" alt="Hang On! Video Loading" class="video-loading" style="max-width:100%" />';
+    $output .= '</div>';
   }
 
   // Render the top-level DIV.

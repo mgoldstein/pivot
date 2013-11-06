@@ -393,7 +393,7 @@
 
 				// Get current "token" from last folder of URL
 				var get_curtoken = function() {
-					return document.location.href.split(/\/|#/).slice(gallery_root_index + 3,gallery_root_index + 4) + '';						
+					return document.location.href.split(/\/|#/).slice(gallery_root_index + 3,gallery_root_index + 4) + '';
 				};
 
 				// Update slideshow based on url
@@ -564,7 +564,31 @@
 				$('body').addClass('ie8');
 			}
 		}
-	}
+	};
+
+        Drupal.behaviors.geoLimiting = {
+          attach: function() {
+            $('.geo-limited-video').once('initialized', function(index, element) {
+              var player = element;
+              var showBlocked = function() {
+              	$('.video-loading', player).hide();
+              	$('.video-blocked', player).show();
+              };
+              var handleRegion = function(response) {
+                if (!response.country.iso_code) { showBlocked(); return false; }
+                var code = response.country.iso_code.toLowerCase();
+                var regions = $(player).attr('data-allowed-regions').split(',');
+                if ($.inArray(code, regions) < 0) { showBlocked(); return false; }
+                showBlocked();
+                return false;
+                var url = "http://video.takepart.com/players/"
+                  + $(player).attr('data-botr-id') + ".js";
+                $.getScript(url).fail(showBlocked);
+              };
+              geoip2.country(handleRegion, showBlocked);
+            });
+          }
+        };
 })(jQuery, Drupal, this, this.document);
 
 
