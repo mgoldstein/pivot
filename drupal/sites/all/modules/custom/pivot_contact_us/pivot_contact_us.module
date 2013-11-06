@@ -32,6 +32,10 @@ function pivot_contact_us_form_zendesk_forms_support_form_alter(&$form, &$form_s
         '#maxlength' => 1500,
         '#maxlength_js' => TRUE,
     );
+    $form['zendesk_group_id'] = array(
+        '#type' => 'hidden',
+        '#value' => 20847042,
+    );
     $form['zendesk_23560737'] = array(
         '#type' => 'hidden',
         '#default_value' => '',
