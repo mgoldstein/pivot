@@ -65,6 +65,60 @@ function pivot_video_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-video-field_allowed_regions'
+  $field_instances['node-video-field_allowed_regions'] = array(
+    'bundle' => 'video',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Space separated list of regions in which the video may be viewed. Leave this value empty to allow all regions.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'promo' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'promo_alt' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_allowed_regions',
+    'label' => 'Allowed Regions',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 10,
+    ),
+  );
+
   // Exported field_instance: 'node-video-field_person_ref'
   $field_instances['node-video-field_person_ref'] = array(
     'bundle' => 'video',
@@ -561,13 +615,14 @@ function pivot_video_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Add a YouTube video from the Web tab of the Media browser.');
+  t('Allowed Regions');
   t('Author');
   t('Description');
   t('Longtail Video ID');
@@ -575,6 +630,7 @@ function pivot_video_field_default_field_instances() {
   t('Promo Headline');
   t('Promo Image');
   t('Section Reference');
+  t('Space separated list of regions in which the video may be viewed. Leave this value empty to allow all regions.');
   t('Video Type');
   t('YouTube Video');
 
