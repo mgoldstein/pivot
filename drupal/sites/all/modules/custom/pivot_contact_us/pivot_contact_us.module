@@ -75,6 +75,9 @@ function pivot_contact_us_block_view_zendesk_forms_zendesk_support_form_alter(&$
     $data['content'] = drupal_render($form_body) . "\n" . $js;
 }
 
+/*
+ * New submit handler for processing custom fields and group ID field
+ */
 function pivot_contact_us_form_submit($form, &$form_state) {
     $ticket = array(
         'description' => $form_state['values']['description'],
