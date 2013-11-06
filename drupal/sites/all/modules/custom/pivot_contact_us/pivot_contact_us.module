@@ -24,6 +24,18 @@ function pivot_contact_us_form_zendesk_forms_support_form_alter(&$form, &$form_s
         '#type' => 'textfield',
         '#title' => t('Subject'),
         '#required' => TRUE,
+        '#maxlength' => 150,
+    );
+    $form['description'] = array(
+        '#type' => 'textarea',
+        '#title' => t('Message'),
+        '#required' => TRUE,
+        '#maxlength' => 1500,
+        '#maxlength_js' => TRUE,
+    );
+    $form['group_id'] = array(
+        '#type' => 'hidden',
+        '#value' => 20847042,
     );
     $form['zendesk_23560737'] = array(
         '#type' => 'hidden',
@@ -38,6 +50,10 @@ function pivot_contact_us_form_zendesk_forms_support_form_alter(&$form, &$form_s
         '#value' => variable_get('site_name', ''),
     );
     return $form;
+}
+
+function pivot_contact_us_block_info_alter(&$blocks, $theme, $code_blocks) {
+    $blocks['zendesk_forms']['zendesk_support_form']['cache'] = DRUPAL_NO_CACHE;
 }
 
 function pivot_contact_us_block_view_zendesk_forms_zendesk_support_form_alter(&$data, $block) {

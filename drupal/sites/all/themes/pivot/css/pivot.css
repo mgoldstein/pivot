@@ -3949,3 +3949,6 @@ a:focus, a::-moz-focus-inner {
     display: none;
   }
 }
+#block-zendesk-forms-zendesk-support-form {
+    font-size: medium;
+}
