@@ -16,6 +16,7 @@ function dfp_admin_settings($form, $form_state) {
     '#type' => 'vertical_tabs',
   );
 
+  $form['#validate'][] = 'dfp_admin_form_validate';
   $form['#submit'][] = 'dfp_admin_form_submit';
 
   // Default tag settings.
@@ -38,11 +39,48 @@ function dfp_admin_settings($form, $form_state) {
     '#required' => TRUE,
     '#description' => t('The Network ID to use on all tags. According to Google this value should begin with a /.'),
   );
+  $form['global_tag_settings']['dfp_default_adunit'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Default Ad Unit Pattern'),
+    '#required' => FALSE,
+    '#maxlength' => 255,
+    '#default_value' => variable_get('dfp_default_adunit', ''),
+    '#description' => t('Use the tokens below to define how the default ad unit should display. This can be overridden on each tag. The network id will be included automatically. Example: [current-page:url:args:value:0]/[current-page:url:args:value:1]/[dfp_tag:slot]'),
+  );
+  $form['global_tag_settings']['dfp_click_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('DFP Click URL (Sync mode only)'),
+    '#default_value' => variable_get('dfp_click_url', ''),
+    '#description' => t('Sets a click URL on each DFP tag. Useful for intercepting ad click calls for reporting. Values beginning with http:// are treated as absolute; otherwise relative to current site domain.'),
+    '#states' => array(
+      'enabled' => array(
+        'input[name="dfp_async_rendering"]' => array('checked' => FALSE),
+      ),
+    ),
+  );
+  $form['global_tag_settings']['tokens'] = array(
+    '#theme' => 'token_tree',
+    '#token_types' => array('dfp_tag', 'node', 'term', 'user'),
+    '#global_types' => TRUE,
+    '#click_insert' => TRUE,
+    '#dialog' => TRUE,
+  );
   $form['global_tag_settings']['dfp_async_rendering'] = array(
     '#type' => 'checkbox',
     '#title' => t('Render ads asynchronously'),
     '#default_value' => variable_get('dfp_async_rendering', 1),
     '#description' => t('This can speed up page rendering time by loading page content without waiting for ads to load.'),
+  );
+  $form['global_tag_settings']['dfp_disable_init_load'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Disable initial ad load'),
+    '#default_value' => variable_get('dfp_disable_init_load', 0),
+    '#description' => t('(Async mode only) Disables the initial fetch of ads from Google when the page is first loaded. Calls to refresh() can still be used to fetch ads.'),
+     '#states' => array(
+      'enabled' => array(
+        'input[name="dfp_async_rendering"]' => array('checked' => TRUE),
+      ),
+    ),
   );
   $form['global_tag_settings']['dfp_single_request'] = array(
     '#type' => 'checkbox',
@@ -98,9 +136,25 @@ function dfp_admin_settings($form, $form_state) {
     '#description' => t('Slug all ad tags with this label. Example: Advertisement', array('@tag' => '<none>')),
   );
   $form['global_display_options']['dfp_collapse_empty_divs'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Hide ad slots if no ad is served'),
+    '#type' => 'radios',
+    '#title' => t('Collapse empty divs'),
     '#default_value' => variable_get('dfp_collapse_empty_divs', 1),
+    '#options' => array(
+      0 => t('Never'),
+      1 => t('Collapse only if no ad is served'),
+      2 => t('Expand only if an ad is served'),
+    ),
+    '#description' => t('<dl><dt>Never</dt><dd>Never collapse ad slots.</dd><dt>Collapse only</dt><dd>Collapse before any ad is loaded. Useful if ad slots will get filled most of the time.</dd><dt>Expand only</dt><dd>Collapse all divs on the page before any ads are fetched and expand if an ad is loaded into the ad slot. Useful if ad slots will stay empty most of the time.</dd></dl>'),
+  );
+  $form['global_display_options']['dfp_slug_placement'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Hide slug if no ad is served (recommended)'),
+    '#default_value' => variable_get('dfp_slug_placement', 1),
+    '#states' => array(
+      'visible' => array(
+        'input[name="dfp_collapse_empty_divs"]' => array('!value' => 0),
+      ),
+    ),
   );
 
   // Global targeting options.
@@ -154,6 +208,17 @@ function dfp_admin_settings($form, $form_state) {
   );
 
   return system_settings_form($form);
+}
+
+/**
+ * Submit handler for the global DFP settings form.
+ */
+function dfp_admin_form_validate($element, &$form_state)
+{
+  $settings = $element['global_tag_settings'];
+  if (!empty($settings['dfp_click_url']['#value']) && $settings['dfp_async_rendering']['#value'] == 1) {
+    form_error($settings['dfp_click_url'], t('Setting a click URL does not work with async rendering.'));
+  }
 }
 
 /**

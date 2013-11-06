@@ -2,9 +2,11 @@ name = Safeword
 description = Provides a text field with both human and machine-readable versions of a string.
 core = 7.x
 files[] = safeword.module
-; Information added by drupal.org packaging script on 2013-05-26
-version = "7.x-1.0"
+files[] = safeword.migrate.inc
+
+; Information added by drupal.org packaging script on 2013-08-28
+version = "7.x-1.4"
 core = "7.x"
 project = "safeword"
-datestamp = "1369584362"
+datestamp = "1377731506"
 

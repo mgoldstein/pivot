@@ -35,6 +35,7 @@ function dfp_theme($existing, $type, $theme, $path) {
     'dfp_tag' => array(
       'variables' => array(
         'tag' => NULL,
+        'slug' => NULL,
       ),
       'template' => 'theme/dfp_tag',
     ),
@@ -91,6 +92,14 @@ function dfp_menu() {
 }
 
 /**
+ * Implements hook_menu_alter().
+ */
+function dfp_menu_alter(&$items) {
+  $items['admin/structure/dfp_ads/list/%ctools_export_ui/edit']['context'] = MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE;
+  $items['admin/structure/dfp_ads/list/%ctools_export_ui/edit']['title'] = t('Edit DFP ad tag');
+}
+
+/**
  * Implements hook_block_info().
  */
 function dfp_block_info() {
@@ -142,6 +151,9 @@ function dfp_block_view($delta) {
 
   if (empty($tag->disabled)) {
     $block['content'] = dfp_tag($delta);
+    $block['content']['#contextual_links'] = array(
+      'dfp' => array('admin/structure/dfp_ads/list', array($delta, 'edit'))
+    );
   }
 
   return $block;
@@ -153,16 +165,27 @@ function dfp_block_view($delta) {
 function dfp_entity_view($entity, $type, $view_mode, $langcode) {
   $dfp_targeting_terms = &drupal_static('dfp_entity_targeting_terms', array());
 
-  if ($view_mode == 'full') {
+  if (variable_get('dfp_enable_ad_categories', 0) && $view_mode == 'full') {
+    // If this entity is itself a taxonomy term add it to the
+    // dfp_targetting_terms array. Check it to see if a DFP Ad Category
+    // has been assigned to it. If so, add that term to the array instead. Note
+    // that we check all types of entities here because any fieldable entity can
+    // have a taxonomy term reference field attached to it.
+    if ($type == 'taxonomy_term') {
+      $dfp_targeting_terms[] = _dfp_get_ad_category($entity, TRUE);
+    }
+
     // Find all taxonomy terms attached to the given entity and add them to the
     // dfp_targeting_terms array. Check each term to see if a DFP Ad Category
     // has been assigned to it. If so, add that term to the array instead.
     foreach (element_children($entity->content) as $key) {
       if (isset($entity->content[$key]['#field_type']) && $entity->content[$key]['#field_type'] == 'taxonomy_term_reference') {
         $terms = field_view_field($type, $entity, $key);
-        foreach ($terms['#items'] as $item) {
-          if (array_key_exists('taxonomy_term', $item)) {
-            $dfp_targeting_terms[] = _dfp_get_ad_category($item['taxonomy_term'], TRUE);
+        if (isset($terms['#items']) && is_array($terms['#items'])) {
+          foreach ($terms['#items'] as $item) {
+            if (array_key_exists('taxonomy_term', $item)) {
+              $dfp_targeting_terms[] = _dfp_get_ad_category($item['taxonomy_term'], TRUE);
+            }
           }
         }
       }
@@ -282,7 +305,7 @@ function dfp_token_info() {
 }
 
 /**
- * Implements hook_token().
+ * Implements hook_tokens().
  */
 function dfp_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $replacements = array();
@@ -302,16 +325,6 @@ function dfp_tokens($type, $tokens, array $data = array(), array $options = arra
 
         case 'ad_categories':
           $term_names = &drupal_static('dfp_entity_targeting_terms', array());
-
-          // If a term has been explicitly defined because we are on a term page
-          // then add the term to the list.
-          // @todo: If http://drupal.org/node/1067120 ever lands, this logic can
-          // be moved to dfp_entity_view() where it belongs.
-          if (isset($data['term'])) {
-            $term_names[] = _dfp_get_ad_category($data['term'], TRUE);
-            $term_names = array_unique($term_names);
-          }
-
           $replacements[$original] = implode(',', $term_names);
           break;
       }
@@ -350,6 +363,7 @@ function dfp_tag($machinename) {
   }
   else {
     $tag->slug = dfp_format_slug($tag->slug);
+    $slug_placement = variable_get('dfp_slug_placement', 0);
 
     if (!empty($tag)) {
       $render_array = array(
@@ -367,7 +381,7 @@ function dfp_tag($machinename) {
           ),
         ),
       );
-      if (!empty($tag->slug)) {
+      if (!empty($tag->slug) && $slug_placement == 0) {
         $render_array['dfp_wrapper']['slug_wrapper'] = array(
           '#type' => 'container',
           '#attributes' => array(
@@ -464,7 +478,7 @@ function dfp_tag_load_all($include_disabled = FALSE) {
  */
 function dfp_tag_save(&$tag) {
   $update = (isset($tag->adid) && is_numeric($tag->adid)) ? array('adid') : array();
-  return drupal_write_record('dfp_tag', $tag, $update);
+  return drupal_write_record('dfp_tags', $tag, $update);
 }
 
 /**
@@ -524,13 +538,16 @@ function dfp_format_targeting($targeting, $tag = '') {
 
   foreach ($targeting as $key => &$target) {
     $target['target'] = '"' . check_plain($target['target']) . '"';
-    $target['value'] = token_replace(check_plain($target['value']), $data);
+    $target['value'] = token_replace(check_plain($target['value']), $data, array('sanitize' => TRUE, 'clear' => TRUE));
 
     // The target value could be blank if tokens are used. If so, removed it.
     if (empty($target['value'])) {
       unset($targeting[$key]);
       continue;
     }
+
+    // Allow other modules to alter the target.
+    drupal_alter('dfp_target', $target);
 
     // Convert the values into an array and trim the whitespace from each value.
     $values = explode(',', $target['value']);
@@ -634,11 +651,15 @@ function _dfp_js_global_settings() {
   $js .= 'googletag.cmd = googletag.cmd || [];';
   $js .= variable_get('dfp_injected_js', '') . "\n";
 
+  // Add a place to store the slot name variable
+  $js .= 'googletag.slots = googletag.slots || {};';
+
   $options = array(
     'type' => 'inline',
     'group' => JS_LIBRARY,
     'every_page' => TRUE,
     'weight' => -10,
+    'force header' => TRUE,
   );
   drupal_add_js($js, $options);
 
@@ -655,11 +676,22 @@ function _dfp_js_global_settings() {
   if (variable_get('dfp_async_rendering', 1)) {
     $js .= '  googletag.pubads().enableAsyncRendering();' . "\n";
   }
+  else {
+     $js .= '  googletag.pubads().enableSyncRendering();' . "\n";
+  }
   if (variable_get('dfp_single_request', 1)) {
     $js .= '  googletag.pubads().enableSingleRequest();' . "\n";
   }
-  if (variable_get('dfp_collapse_empty_divs', 1)) {
-    $js .= '  googletag.pubads().collapseEmptyDivs();' . "\n";
+  switch (variable_get('dfp_collapse_empty_divs', 1)) {
+    case 1:
+      $js .= '  googletag.pubads().collapseEmptyDivs();' . "\n";
+      break;
+    case 2:
+      $js .= '  googletag.pubads().collapseEmptyDivs(true);' . "\n";
+      break;
+  }
+  if (variable_get('dfp_disable_init_load', 0)) {
+    $js .= '  googletag.pubads().disableInitialLoad();' . "\n";
   }
 
   // Set global targeting values for this page.
@@ -680,6 +712,7 @@ function _dfp_js_global_settings() {
     'group' => JS_DEFAULT,
     'every_page' => TRUE,
     'weight' => 10,
+    'force header' => TRUE,
   );
   drupal_add_js($js, $options);
 }
@@ -690,7 +723,15 @@ function _dfp_js_global_settings() {
  */
 function _dfp_js_slot_definition($tag) {
   // Add the js needed to define this adSlot to <head>.
-  $js = 'googletag.defineSlot("' . $tag->adunit . '", ' . $tag->size . ', "' . $tag->placeholder_id . '")' . "\n";
+  $js = 'googletag.slots.' . $tag->machinename . ' = googletag.defineSlot("' . $tag->adunit . '", ' . $tag->size . ', "' . $tag->placeholder_id . '")' . "\n";
+  $click_url = variable_get('dfp_click_url', '');
+  if (!empty($click_url)) {
+    if (!preg_match("/^https?:\/\//", $click_url)) {
+      // relative URL; prepend site domain
+      $click_url = (($GLOBALS['is_https']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . "/" . $click_url;
+    }
+    $js .= '  .setClickUrl("' . $click_url . '")' . "\n";
+  }
   $js .= '  .addService(googletag.pubads())' . "\n";
 
   if (!empty($tag->adsense_ad_types)) {
@@ -732,7 +773,11 @@ function _dfp_prepare_tokens($tag = NULL) {
   $data = array();
   $data['user'] = $user;
   $data['node'] = menu_get_object();
-  $data['term'] = menu_get_object('taxonomy_term', 2);
+
+  // We cannot use menu_get_object because the views version of the taxonomy
+  // term pages will not work properly.
+  $data['term'] = (arg(0) == 'taxonomy' && arg(1) == 'term' && is_numeric(arg(2))) ? taxonomy_term_load(arg(2)) : NULL;
+
   if (!empty($tag)) {
     $data['tag'] = $tag;
   }
@@ -741,13 +786,30 @@ function _dfp_prepare_tokens($tag = NULL) {
 }
 
 /**
+ * Check adunit has a value and/or if the global should be used.
+ *
+ * @param  object $tag
+ * @return object $tag
+ */
+function _dfp_prepare_adunit($tag) {
+  $global_adunit = variable_get('dfp_default_adunit', '');
+  if (empty($tag->adunit) && !empty($global_adunit)) {
+    $tag->adunit = $global_adunit;
+  }
+
+  return $tag;
+}
+
+/**
  * Preprocess function for DFP tags.
  */
 function template_preprocess_dfp_tag(&$variables) {
   $tag = $variables['tag'];
+  $tag = _dfp_prepare_adunit($tag);
+  $slug_placement = variable_get('dfp_slug_placement', 0);
 
   // Format certain tag properties for display.
-  $tag->adunit = token_replace('[dfp_tag:network_id]/' . $tag->adunit, _dfp_prepare_tokens($tag));
+  $tag->adunit = token_replace('[dfp_tag:network_id]/' . $tag->adunit, _dfp_prepare_tokens($tag), array('sanitize' => TRUE, 'clear' => TRUE));
   $tag->size = dfp_format_size($tag->size);
   $tag->slug = dfp_format_slug($tag->slug);
 
@@ -759,6 +821,21 @@ function template_preprocess_dfp_tag(&$variables) {
     ),
   );
 
+  if (!empty($tag->slug) && $slug_placement == 1) {
+    $variables['slug'] = array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array(
+          'slug',
+        ),
+      ),
+      'slug' => array(
+        '#markup' => $tag->slug,
+      ),
+      '#weight' => -1,
+    );
+  }
+
   // Define a javascript ad slot for this tag.
   _dfp_js_slot_definition($tag);
 }
@@ -769,13 +846,13 @@ function template_preprocess_dfp_tag(&$variables) {
 function template_preprocess_dfp_short_tag(&$variables) {
   static $tile = 0;
   $tag = $variables['tag'];
+  $tag = _dfp_prepare_adunit($tag);
 
   // Build a key|vals array and allow third party modules to modify it.
   $keyvals = array();
-  $keyvals['iu'] = $tag->adunit;
-  $keyvals['c'] = rand(100000, 99999);
-  $keyvals['size'] = str_replace(',', '|', check_plain($tag->raw->size));
-  $keyvals['tile'] = ++$tile;
+  $keyvals['iu'] = token_replace('/[dfp_tag:network_id]/' . $tag->adunit, _dfp_prepare_tokens($tag), array('sanitize' => TRUE, 'clear' => TRUE));
+  $keyvals['sz'] = str_replace(',', '|', check_plain($tag->raw->size));
+  $keyvals['c'] = rand(10000, 99999);
 
   $targets = array();
   foreach ($tag->targeting as $data) {
