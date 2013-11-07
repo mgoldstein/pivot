@@ -74,10 +74,9 @@ function pivot_video_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 9,
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'promo' => array(
         'label' => 'above',
@@ -130,7 +129,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'promo' => array(
         'label' => 'above',
@@ -186,7 +185,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'promo' => array(
         'label' => 'hidden',
@@ -239,7 +238,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'promo' => array(
         'label' => 'hidden',
@@ -291,7 +290,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'promo' => array(
         'label' => 'hidden',
@@ -401,7 +400,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'promo' => array(
         'label' => 'above',
@@ -514,7 +513,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'promo' => array(
         'label' => 'above',

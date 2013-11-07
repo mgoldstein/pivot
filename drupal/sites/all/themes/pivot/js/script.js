@@ -575,12 +575,10 @@
               	$('.video-blocked', player).show();
               };
               var handleRegion = function(response) {
-                if (!response.country.iso_code) { showBlocked(); return false; }
+                if (!response.country || !response.country.iso_code) { showBlocked(); return false; }
                 var code = response.country.iso_code.toLowerCase();
                 var regions = $(player).attr('data-allowed-regions').split(',');
                 if ($.inArray(code, regions) < 0) { showBlocked(); return false; }
-                showBlocked();
-                return false;
                 var url = "http://video.takepart.com/players/"
                   + $(player).attr('data-botr-id') + ".js";
                 $.getScript(url).fail(showBlocked);
