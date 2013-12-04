@@ -21,14 +21,7 @@
           </div>
         </aside>
       </header>
-      <?php
-      if(isset($content['field_video_youtube_media'])){
-        print render($content['field_video_youtube_media']);
-      }
-      elseif(isset($content['field_video_longtail_video_id'])){
-        print render($content['field_video_longtail_video_id']);
-      }
-      ?>
+      <?php print render($content['field_video_media']); ?>
   </div>
   <div id="video-related" class="primary with-sidebar">
     <?php print l(t('Watch full episodes right here, right now'), 'http://watch.pivot.tv/pivottv/', array('attributes' => array('target' => '_blank', 'class' => array('important')))); ?>

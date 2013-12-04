@@ -24,13 +24,8 @@
 
       </header>
       <?php
-      if(isset($content['field_video_youtube_media'])){
-        print render($content['field_video_youtube_media']);
-      }
-      elseif(isset($content['field_video_longtail_video_id'])){
-        print render($content['field_video_longtail_video_id']);
-      }
-      print l(t('Watch full episodes right here, right now'), 'http://watch.pivot.tv/pivottv/', array('attributes' => array('target' => '_blank', 'class' => array('important'))));
+        print render($content['field_video_media']);
+        print l(t('Watch full episodes right here, right now'), 'http://watch.pivot.tv/pivottv/', array('attributes' => array('target' => '_blank', 'class' => array('important'))));
       ?>
   </div>
 

@@ -105,10 +105,10 @@ function pivot_video_strongarm() {
           'weight' => '7',
         ),
         'redirect' => array(
-          'weight' => '14',
+          'weight' => '15',
         ),
         'xmlsitemap' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
       ),
       'display' => array(),
@@ -160,6 +160,34 @@ function pivot_video_strongarm() {
   $strongarm->name = 'pathauto_node_video_pattern';
   $strongarm->value = '[node:field-section-ref:0:url:path]/video/[node:title]';
   $export['pathauto_node_video_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pm_jwplatform_api_key';
+  $strongarm->value = 'NnnOqH8r';
+  $export['pm_jwplatform_api_key'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pm_jwplatform_api_secret';
+  $strongarm->value = 'fJoeVtVS5YriI0Bnh8v6lo1i';
+  $export['pm_jwplatform_api_secret'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pm_jwplatform_content_dns_mask';
+  $strongarm->value = 'video.takepart.com';
+  $export['pm_jwplatform_content_dns_mask'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pm_jwplayer_account_token';
+  $strongarm->value = 'esP2FhWwEeODmBIxOUCPzg';
+  $export['pm_jwplayer_account_token'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
