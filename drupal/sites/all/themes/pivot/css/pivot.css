@@ -3079,7 +3079,7 @@ iframe.media-youtube-player {
 || Videos Page
 ============================================================ */
 /* line 2912, ../sass/_pivot-global.scss */
-body.node-type-video .loading {
+.pm-jwplayer.loading {
   width: 100%;
   background: url('../images/video-loading.gif?1386210192');
   background-size: cover;
@@ -3088,7 +3088,7 @@ body.node-type-video .loading {
   /* 16:9 */
 }
 /* line 2919, ../sass/_pivot-global.scss */
-body.node-type-video .blocked {
+.pm-jwplayer.blocked {
   width: 100%;
   background: url('../images/video-blocked.gif?1386210192') no-repeat center center;
   background-size: cover;
