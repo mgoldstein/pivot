@@ -181,9 +181,6 @@ function theme_pm_jwplayer($variables) {
   }
 
   $output = '<div' . drupal_attributes($attributes) . '></div>';
-  $output .= '<script type="text/javascript">';
-  $output .= 'Drupal.pm_jwplayer.setup("' . $element['#player_id'] . '");';
-  $output .= '</script>';
 
   return $output;
 }
