@@ -86,7 +86,7 @@ class JWPlayerConfiguration {
   }
 
   public static function booleanValue($value) {
-    return $value ? TRUE : FALSE;
+    return strtolower($value) == 'true' ? TRUE : FALSE;
   }
 
   public static function intValue($value) {
@@ -142,17 +142,17 @@ class JWPlayerConfiguration {
     if (!empty($settings['stretching'])) {
       $values['stretching'] = $settings['stretching'];
     }
-    if ($settings['responsive']) {
+    if (self::booleanValue($settings['responsive'])) {
       $values['width'] = '100%';
       if (!empty($settings['aspectratio'])) {
         $values['aspectratio'] = $settings['aspectratio'];
       }
     }
     else {
-      if (!empty($settings['width'])) {
+      if (!empty($settings['width']) || $settings['width'] == '0') {
         $values['width'] = self::intValue($settings['width']);
       }
-      if (!empty($settings['height'])) {
+      if (!empty($settings['height']) || $settings['height'] == '0') {
         $values['height'] = self::intValue($settings['height']);
       }
     }
@@ -180,17 +180,20 @@ class JWPlayerConfiguration {
     return $values;
   }
 
-  protected function listbarSettings() {
+  protected function listbarSettings($uri) {
     $values = array();
-    $settings = $this->_settings['listbar'];
-    if (!empty($settings['position'])) {
-      $values['position'] = $settings['position'];
-    }
-    if (!empty($settings['size'])) {
-      $values['size'] = self::intValue($settings['size']);
-    }
-    if (!empty($settings['layout'])) {
-      $values['layout'] = $settings['layout'];
+    $scheme = file_uri_scheme($uri);
+    if ($scheme === 'jwplatform-channel') {
+      $settings = $this->_settings['listbar'];
+      if (!empty($settings['position'])) {
+        $values['position'] = $settings['position'];
+      }
+      if (!empty($settings['size']) || $settings['size'] == '0') {
+        $values['size'] = self::intValue($settings['size']);
+      }
+      if (!empty($settings['layout']) && $settings['layout'] == 'basic') {
+        $values['layout'] = $settings['layout'];
+      }
     }
     return count($values) > 0 ? array('listbar' => $values) : $values;
   }
@@ -282,7 +285,7 @@ class JWPlayerConfiguration {
       $this->promoSettings(),
       $this->layoutSettings(),
       $this->playbackSettings(),
-      $this->listbarSettings(),
+      $this->listbarSettings($uri),
       $this->sharingSettings(),
       $this->relatedSettings(),
       $this->advertisingSettings(),
