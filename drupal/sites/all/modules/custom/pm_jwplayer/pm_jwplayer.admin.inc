@@ -13,5 +13,13 @@ function pm_jwplayer_settings_form($form, &$form_state) {
     '#required' => TRUE,
   );
 
+  $form['pm_jwplayer_player_key'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Player Key'),
+    '#description' => t('License key for the JW Player.'),
+    '#default_value' => variable_get('pm_jwplayer_player_key', ''),
+    '#required' => TRUE,
+  );
+
   return system_settings_form($form);
 }
