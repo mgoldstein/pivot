@@ -3075,6 +3075,28 @@ iframe.media-youtube-player {
   font-size: 16px;
 }
 
+/* ============================================================
+|| Videos Page
+============================================================ */
+/* line 2912, ../sass/_pivot-global.scss */
+.pm-jwplayer.loading {
+  width: 100%;
+  background: url('../images/video-loading.gif?1386210192');
+  background-size: cover;
+  height: 0;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+}
+/* line 2919, ../sass/_pivot-global.scss */
+.pm-jwplayer.blocked {
+  width: 100%;
+  background: url('../images/video-blocked.gif?1386210192') no-repeat center center;
+  background-size: cover;
+  height: 0;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+}
+
 /*
  * Homepage Styles for Pivot.tv
  */
@@ -3735,8 +3757,8 @@ a:focus, a::-moz-focus-inner {
   outline: none;
 }
 
-/* line 499, ../sass/_pivot-homepage-hero.scss */
-.jwplayer span.jwmain div div {
+/* line 500, ../sass/_pivot-homepage-hero.scss */
+#topslide .jwplayer span.jwmain div div {
   display: none !important;
 }
 
@@ -3948,10 +3970,4 @@ a:focus, a::-moz-focus-inner {
   .upcoming .times {
     display: none;
   }
-}
-#block-zendesk-forms-zendesk-support-form {
-    font-size: medium;
-}
-#edit-description--2-counter {
-    margin-top: 8px;
 }

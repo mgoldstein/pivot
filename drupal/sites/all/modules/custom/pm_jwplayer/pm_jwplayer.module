@@ -21,8 +21,8 @@ function pm_jwplayer_permission() {
 function pm_jwplayer_menu() {
   return array(
     'admin/config/media/pm_jwplayer/settings' => array(
-      'title' => 'Cloud Hosting',
-      'description' => 'Settings for JW Player cloud hosted JavaScript library.',
+      'title' => 'Account Settings',
+      'description' => 'Set the cloud hosting account token and player license key.',
       'page callback' => 'drupal_get_form',
       'page arguments' => array('pm_jwplayer_settings_form'),
       'access arguments' => array('configure pm_jwplayer'),
@@ -154,10 +154,15 @@ function pm_jwplayer_add_player($player_id, $configuration) {
       'scope' => 'header',
       'weight' => 6,
     ));
+    drupal_add_js(array('pm_jwplayer' => array(
+      'key' => variable_get('pm_jwplayer_player_key', ''),
+    )), 'setting');
     $setup_function_added = TRUE;
   }
   drupal_add_js(array('pm_jwplayer' => array(
-    $player_id => $configuration
+    'configurations' => array(
+      $player_id => $configuration
+    ),
   )), 'setting');
 }
 

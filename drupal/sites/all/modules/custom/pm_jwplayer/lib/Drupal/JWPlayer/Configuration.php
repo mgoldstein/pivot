@@ -11,6 +11,10 @@ class JWPlayerConfiguration {
         'title' => t('Title'),
         'displaytitle' => t('Display Title'),
       ),
+      'players' => array(
+        'flashplayer' => t('Flash Player'),
+        'html5player' => t('HTML5 Player'),
+      ),
       'layout' => array(
         'controls' => t('Controls'),
         'responsive' => t('Responsive'),
@@ -126,6 +130,18 @@ class JWPlayerConfiguration {
     }
     if (!empty($settings['displaytitle'])) {
       $values['displaytitle'] = self::booleanValue($settings['displaytitle']);
+    }
+    return $values;
+  }
+
+  protected function playerSettings() {
+    $values = array();
+    $settings = $this->_settings['players'];
+    if (!empty($settings['flashplayer'])) {
+      $values['flashplayer'] = $settings['flashplayer'];
+    }
+    if (!empty($settings['html5player'])) {
+      $values['html5player'] = $settings['html5player'];
     }
     return $values;
   }
@@ -247,12 +263,11 @@ class JWPlayerConfiguration {
   }
 
   protected function jwplayerAnalyticsSettings() {
-    $values = array();
     $settings = $this->_settings['jwplayer_analytics'];
-    if (!empty($settings['enabled'])) {
-      $values['enabled'] = self::booleanValue($settings['enabled']);
-    }
-    return count($values) > 0 ? array('analytics' => $values) : $values;
+    $values = array('analytics' => array(
+      'enabled' => self::booleanValue($settings['enabled']),
+    ));
+    return $values;
   }
 
   protected function googleAnalyticsSettings() {
@@ -283,6 +298,7 @@ class JWPlayerConfiguration {
     return array_merge(
       $this->contentSettings($uri),
       $this->promoSettings(),
+      $this->playerSettings(),
       $this->layoutSettings(),
       $this->playbackSettings(),
       $this->listbarSettings($uri),

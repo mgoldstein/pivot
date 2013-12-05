@@ -488,10 +488,6 @@ function pivot_field__field_video_longtail_video_id__video__geo_limited($variabl
       'data-botr-id' => $botr_id,
       'data-allowed-regions' => implode($variables['element']['#allowed_regions']),
     );
-    $output .= '<div' . drupal_attributes($attributes) . '>';
-    $output .= '<img src="/sites/all/themes/pivot/images/video-blocked.gif" alt="Sorry, but this content is only available in the U.S. at this time." class="video-blocked" style="display:none; max-width:100%" />';
-    $output .= '<img src="/sites/all/themes/pivot/images/video-loading.gif" alt="Hang On! Video Loading" class="video-loading" style="max-width:100%" />';
-    $output .= '</div>';
   }
 
   // Render the top-level DIV.
