@@ -1,7 +1,7 @@
 name = Video
 core = 7.x
 package = Content Types
-version = 7.x-1.7
+version = 7.x-1.8
 project = pivot_video
 dependencies[] = ctools
 dependencies[] = entityreference
@@ -12,6 +12,7 @@ dependencies[] = filefield_paths
 dependencies[] = image
 dependencies[] = list
 dependencies[] = media
+dependencies[] = number
 dependencies[] = options
 dependencies[] = pivot_field_bases
 dependencies[] = pm_jwplayer
