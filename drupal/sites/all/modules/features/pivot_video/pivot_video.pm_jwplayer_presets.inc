@@ -22,6 +22,10 @@ function pivot_video_default_pm_jwplayer_presets() {
       'title' => '[node:title]',
       'displaytitle' => 'false',
     ),
+    'players' => array(
+      'flashplayer' => '',
+      'html5player' => '',
+    ),
     'layout' => array(
       'controls' => 'true',
       'responsive' => 'true',
@@ -35,7 +39,7 @@ function pivot_video_default_pm_jwplayer_presets() {
       'autostart' => 'false',
       'fallback' => 'false',
       'mute' => 'false',
-      'primary' => 'flash',
+      'primary' => 'html5',
       'repeat' => 'false',
     ),
     'region_limits' => array(
@@ -88,6 +92,10 @@ function pivot_video_default_pm_jwplayer_presets() {
       'title' => '[node:title]',
       'displaytitle' => 'false',
     ),
+    'players' => array(
+      'flashplayer' => '',
+      'html5player' => '',
+    ),
     'layout' => array(
       'controls' => 'true',
       'responsive' => 'true',
@@ -136,8 +144,8 @@ function pivot_video_default_pm_jwplayer_presets() {
       'trackingobject' => '',
     ),
     'sitecatalyst' => array(
-      'mediaName' => '',
-      'playerName' => '',
+      'mediaName' => '[node:title]',
+      'playerName' => 'Teaser',
     ),
   );
   $export['teaser'] = $pm_jwplayer_preset;
