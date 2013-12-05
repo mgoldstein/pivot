@@ -496,10 +496,11 @@ a:focus, a::-moz-focus-inner {
   outline: none;
 }
 
-.jwplayer span.jwmain div div {
-    display: none !important;
+#topslide{
+	.jwplayer span.jwmain div div {
+	    display: none !important;
+	}
 }
-
 
 
 
