@@ -20,11 +20,11 @@ function pivot_video_default_pm_jwplayer_presets() {
     'promo' => array(
       'image' => '',
       'title' => '[node:title]',
-      'displaytitle' => '1',
+      'displaytitle' => 'false',
     ),
     'layout' => array(
-      'controls' => '1',
-      'responsive' => '1',
+      'controls' => 'true',
+      'responsive' => 'true',
       'aspectratio' => '16:9',
       'width' => '',
       'height' => '',
@@ -32,19 +32,19 @@ function pivot_video_default_pm_jwplayer_presets() {
       'stretching' => 'uniform',
     ),
     'playback' => array(
-      'autostart' => '0',
-      'fallback' => '0',
-      'mute' => '0',
+      'autostart' => 'false',
+      'fallback' => 'false',
+      'mute' => 'false',
       'primary' => 'flash',
-      'repeat' => '0',
+      'repeat' => 'false',
     ),
     'region_limits' => array(
       'allowed_regions' => '[node:field-allowed-regions]',
     ),
     'listbar' => array(
-      'position' => '',
-      'size' => '',
-      'layout' => '',
+      'position' => '[node:field-playlist-position]',
+      'size' => '[node:field-playlist-size]',
+      'layout' => '[node:field-playlist-layout]',
     ),
     'sharing' => array(
       'link' => '[node:url:absolute]',
@@ -63,15 +63,15 @@ function pivot_video_default_pm_jwplayer_presets() {
       'tag' => '',
     ),
     'jwplayer_analytics' => array(
-      'enabled' => '0',
+      'enabled' => 'false',
     ),
     'google_analytics' => array(
       'idstring' => '',
       'trackingobject' => '',
     ),
     'sitecatalyst' => array(
-      'mediaName' => '',
-      'playerName' => '',
+      'mediaName' => '[node:title]',
+      'playerName' => 'Full Conent',
     ),
   );
   $export['full_content'] = $pm_jwplayer_preset;
@@ -86,11 +86,11 @@ function pivot_video_default_pm_jwplayer_presets() {
     'promo' => array(
       'image' => '',
       'title' => '[node:title]',
-      'displaytitle' => '1',
+      'displaytitle' => 'false',
     ),
     'layout' => array(
-      'controls' => '1',
-      'responsive' => '1',
+      'controls' => 'true',
+      'responsive' => 'true',
       'aspectratio' => '16:9',
       'width' => '',
       'height' => '',
@@ -98,19 +98,19 @@ function pivot_video_default_pm_jwplayer_presets() {
       'stretching' => 'uniform',
     ),
     'playback' => array(
-      'autostart' => '0',
-      'fallback' => '0',
-      'mute' => '0',
-      'primary' => 'flash',
-      'repeat' => '0',
+      'autostart' => 'false',
+      'fallback' => 'false',
+      'mute' => 'false',
+      'primary' => 'html5',
+      'repeat' => 'false',
     ),
     'region_limits' => array(
       'allowed_regions' => '[node:field-allowed-regions]',
     ),
     'listbar' => array(
-      'position' => '',
-      'size' => '',
-      'layout' => '',
+      'position' => '[node:field-playlist-position]',
+      'size' => '[node:field-playlist-size]',
+      'layout' => '[node:field-playlist-layout]',
     ),
     'sharing' => array(
       'link' => '[node:url:absolute]',
@@ -129,7 +129,7 @@ function pivot_video_default_pm_jwplayer_presets() {
       'tag' => '',
     ),
     'jwplayer_analytics' => array(
-      'enabled' => '0',
+      'enabled' => 'false',
     ),
     'google_analytics' => array(
       'idstring' => '',
