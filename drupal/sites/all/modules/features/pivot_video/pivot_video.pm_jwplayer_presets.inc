@@ -51,6 +51,7 @@ function pivot_video_default_pm_jwplayer_presets() {
       'layout' => '[node:field-playlist-layout]',
     ),
     'sharing' => array(
+      'enabled' => '[node:field-sharing-enabled]',
       'link' => '[node:url:absolute]',
       'code' => '',
       'heading' => 'Share This Video',
@@ -63,8 +64,9 @@ function pivot_video_default_pm_jwplayer_presets() {
       'dimensions' => '',
     ),
     'advertising' => array(
-      'client' => '',
-      'tag' => '',
+      'client' => '[node:field-ads-client]',
+      'tag' => '[node:field-ads-tag]',
+      'admessage' => 'You can skip this ad in XX more seconds',
     ),
     'jwplayer_analytics' => array(
       'enabled' => 'false',
@@ -121,6 +123,7 @@ function pivot_video_default_pm_jwplayer_presets() {
       'layout' => '[node:field-playlist-layout]',
     ),
     'sharing' => array(
+      'enabled' => '[node:field-sharing-enabled]',
       'link' => '[node:url:absolute]',
       'code' => '',
       'heading' => 'Share This Video',
@@ -133,8 +136,10 @@ function pivot_video_default_pm_jwplayer_presets() {
       'dimensions' => '',
     ),
     'advertising' => array(
-      'client' => '',
+      'enabled' => '[node:field-ads-enabled]',
+      'client' => 'vast',
       'tag' => '',
+      'admessage' => 'You can skip this ad in XX more seconds',
     ),
     'jwplayer_analytics' => array(
       'enabled' => 'false',

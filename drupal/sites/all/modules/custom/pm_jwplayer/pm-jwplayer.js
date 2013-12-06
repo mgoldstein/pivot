@@ -5,9 +5,6 @@
       $('.pm-jwplayer').once('initialized', function(index, element) {
         var element_id = $(element).attr('id');
         var settings = Drupal.settings.pm_jwplayer.configurations[element_id];
-        if ($.browser.mozilla && navigator.appVersion.indexOf("Win") == -1) {
-          settings['primary'] = 'flash';
-        }
         var attribute = $(element).attr('data-allowed-regions');
         var regions = attribute ? attribute.split(',') : [];
         if (regions.length > 0) {
