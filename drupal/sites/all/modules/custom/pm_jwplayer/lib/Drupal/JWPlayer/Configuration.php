@@ -40,6 +40,7 @@ class JWPlayerConfiguration {
         'layout' => t('Layout'),
       ),
       'sharing' => array(
+        'enabled' => t('Enabled'),
         'link' => t('Link'),
         'code' => t('Code'),
         'heading' => t('Heading'),
@@ -54,6 +55,7 @@ class JWPlayerConfiguration {
       'advertising' => array(
         'client' => t('Client'),
         'tag' => t('Tag'),
+        'admessage' => t('Ad Message'),
       ),
       'jwplayer_analytics' => array(
         'enabled' => t('Enabled'),
@@ -217,14 +219,16 @@ class JWPlayerConfiguration {
   protected function sharingSettings() {
     $values = array();
     $settings = $this->_settings['sharing'];
-    if (!empty($settings['link'])) {
-      $values['link'] = $settings['link'];
-    }
-    if (!empty($settings['code'])) {
-      $values['code'] = urlencode($settings['code']);
-    }
-    if (!empty($settings['heading'])) {
-      $values['heading'] = $settings['heading'];
+    if (self::booleanValue($settings['enabled'])) {
+      if (!empty($settings['link'])) {
+        $values['link'] = $settings['link'];
+      }
+      if (!empty($settings['code'])) {
+        $values['code'] = urlencode($settings['code']);
+      }
+      if (!empty($settings['heading'])) {
+        $values['heading'] = $settings['heading'];
+      }
     }
     return count($values) > 0 ? array('sharing' => $values) : $values;
   }
@@ -253,11 +257,16 @@ class JWPlayerConfiguration {
   protected function advertisingSettings() {
     $values = array();
     $settings = $this->_settings['advertising'];
-    if (!empty($settings['client'])) {
-      $values['client'] = $settings['client'];
-    }
     if (!empty($settings['tag'])) {
-      $values['tag'] = $settings['tag'];
+      if (!empty($settings['client'])) {
+        $values['client'] = $settings['client'];
+      }
+      if (!empty($settings['tag'])) {
+        $values['tag'] = $settings['tag'];
+      }
+      if (!empty($settings['admessage'])) {
+        $values['admessage'] = $settings['admessage'];
+      }
     }
     return count($values) > 0 ? array('advertising' => $values) : $values;
   }

@@ -105,10 +105,10 @@ function pivot_video_strongarm() {
           'weight' => '7',
         ),
         'redirect' => array(
-          'weight' => '18',
+          'weight' => '21',
         ),
         'xmlsitemap' => array(
-          'weight' => '17',
+          'weight' => '20',
         ),
       ),
       'display' => array(),
