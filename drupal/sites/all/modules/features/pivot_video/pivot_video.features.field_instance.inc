@@ -65,6 +65,115 @@ function pivot_video_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-video-field_ads_client'
+  $field_instances['node-video-field_ads_client'] = array(
+    'bundle' => 'video',
+    'default_value' => array(
+      0 => array(
+        'value' => 'vast',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 16,
+      ),
+      'promo' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'promo_alt' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ads_client',
+    'label' => 'Ad Client',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_select',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'node-video-field_ads_tag'
+  $field_instances['node-video-field_ads_tag'] = array(
+    'bundle' => 'video',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 17,
+      ),
+      'promo' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'promo_alt' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ads_tag',
+    'label' => 'Ad Tag',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 13,
+    ),
+  );
+
   // Exported field_instance: 'node-video-field_allowed_regions'
   $field_instances['node-video-field_allowed_regions'] = array(
     'bundle' => 'video',
@@ -114,7 +223,7 @@ function pivot_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 14,
     ),
   );
 
@@ -224,7 +333,7 @@ function pivot_video_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 13,
+      'weight' => 16,
     ),
   );
 
@@ -278,7 +387,7 @@ function pivot_video_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 12,
+      'weight' => 15,
     ),
   );
 
@@ -287,7 +396,7 @@ function pivot_video_field_default_field_instances() {
     'bundle' => 'video',
     'default_value' => array(
       0 => array(
-        'value' => 180,
+        'value' => 270,
       ),
     ),
     'deleted' => 0,
@@ -336,7 +445,7 @@ function pivot_video_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'number',
-      'weight' => 14,
+      'weight' => 17,
     ),
   );
 
@@ -611,6 +720,62 @@ function pivot_video_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-video-field_sharing_enabled'
+  $field_instances['node-video-field_sharing_enabled'] = array(
+    'bundle' => 'video',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 15,
+      ),
+      'promo' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'promo_alt' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_sharing_enabled',
+    'label' => 'Enable Sharing',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_onoff',
+      'weight' => 11,
+    ),
+  );
+
   // Exported field_instance: 'node-video-field_video_longtail_video_id'
   $field_instances['node-video-field_video_longtail_video_id'] = array(
     'bundle' => 'video',
@@ -658,7 +823,7 @@ function pivot_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 18,
     ),
   );
 
@@ -666,7 +831,11 @@ function pivot_video_field_default_field_instances() {
   $field_instances['node-video-field_video_media'] = array(
     'bundle' => 'video',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select a video by pasting the video\'s URL into the text field on the \'Web\' tab of the media selection dialog.
+<ul>
+  <li>Bits on the Run - Use the video (or playlist) dashboard URL</li>
+  <li>YouTube - Use the video\'s URL.</li>
+</ul>',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -701,12 +870,12 @@ function pivot_video_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_video_media',
-    'label' => 'Video Media',
+    'label' => 'Botr or YouTube Video',
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
       'file_directory' => '',
-      'file_extensions' => 'txt',
+      'file_extensions' => 'noextensions',
       'filefield_paths' => array(
         'active_updating' => 0,
         'file_name' => array(
@@ -792,7 +961,7 @@ function pivot_video_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_video_type',
-    'label' => 'Video Type',
+    'label' => 'Player Location',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -864,17 +1033,22 @@ function pivot_video_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 16,
+      'weight' => 19,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Ad Client');
+  t('Ad Tag');
   t('Add a YouTube video from the Web tab of the Media browser.');
   t('Allowed Regions');
   t('Author');
+  t('Botr or YouTube Video');
   t('Description');
+  t('Enable Sharing');
   t('Longtail Video ID');
+  t('Player Location');
   t('Playlist Layout');
   t('Playlist Position');
   t('Playlist Size');
@@ -882,9 +1056,12 @@ function pivot_video_field_default_field_instances() {
   t('Promo Headline');
   t('Promo Image');
   t('Section Reference');
+  t('Select a video by pasting the video\'s URL into the text field on the \'Web\' tab of the media selection dialog.
+<ul>
+  <li>Bits on the Run - Use the video (or playlist) dashboard URL</li>
+  <li>YouTube - Use the video\'s URL.</li>
+</ul>');
   t('Space separated list of regions in which the video may be viewed. Leave this value empty to allow all regions.');
-  t('Video Media');
-  t('Video Type');
   t('YouTube Video');
 
   return $field_instances;
