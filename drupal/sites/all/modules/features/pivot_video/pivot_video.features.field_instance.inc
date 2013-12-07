@@ -78,10 +78,9 @@ function pivot_video_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 16,
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'promo' => array(
         'label' => 'above',
@@ -123,16 +122,19 @@ function pivot_video_field_default_field_instances() {
   // Exported field_instance: 'node-video-field_ads_tag'
   $field_instances['node-video-field_ads_tag'] = array(
     'bundle' => 'video',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/Pivot_Video_640x360&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&correlator=__timestamp__&url=http://www.pivot.tv',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 17,
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'promo' => array(
         'label' => 'above',
@@ -167,7 +169,7 @@ function pivot_video_field_default_field_instances() {
       'settings' => array(
         'maxlength_js' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
+        'size' => 120,
       ),
       'type' => 'text_textfield',
       'weight' => 13,
@@ -185,7 +187,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 7,
       ),
       'promo' => array(
         'label' => 'above',
@@ -238,7 +240,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 12,
       ),
       'promo' => array(
         'label' => 'above',
@@ -298,7 +300,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 16,
       ),
       'promo' => array(
         'label' => 'above',
@@ -352,7 +354,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 14,
       ),
       'promo' => array(
         'label' => 'above',
@@ -406,7 +408,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 15,
       ),
       'promo' => array(
         'label' => 'above',
@@ -460,7 +462,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 10,
       ),
       'promo' => array(
         'label' => 'hidden',
@@ -513,7 +515,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 9,
       ),
       'promo' => array(
         'label' => 'hidden',
@@ -565,7 +567,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 8,
       ),
       'promo' => array(
         'label' => 'hidden',
@@ -675,7 +677,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 11,
       ),
       'promo' => array(
         'label' => 'above',
@@ -733,10 +735,9 @@ function pivot_video_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 15,
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'promo' => array(
         'label' => 'above',
@@ -781,13 +782,13 @@ function pivot_video_field_default_field_instances() {
     'bundle' => 'video',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => ' \'<strong>The Longtail Video ID field has been deprecated</strong>',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 5,
       ),
       'promo' => array(
         'label' => 'above',
@@ -820,6 +821,8 @@ function pivot_video_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'size' => 60,
       ),
       'type' => 'text_textfield',
@@ -938,7 +941,7 @@ function pivot_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 13,
       ),
       'promo' => array(
         'label' => 'above',
@@ -981,13 +984,13 @@ function pivot_video_field_default_field_instances() {
   $field_instances['node-video-field_video_youtube_media'] = array(
     'bundle' => 'video',
     'deleted' => 0,
-    'description' => 'Add a YouTube video from the Web tab of the Media browser.',
+    'description' => '<strong>The YouTube Video field has been deprecated</strong>',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 6,
       ),
       'promo' => array(
         'label' => 'above',
@@ -1021,6 +1024,9 @@ function pivot_video_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
+          'jwplatform-channel' => 0,
+          'jwplatform-video' => 0,
+          'private' => 0,
           'public' => 0,
           'youtube' => 'youtube',
         ),
@@ -1030,6 +1036,7 @@ function pivot_video_field_default_field_instances() {
           'image' => 0,
           'video' => 'video',
         ),
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
@@ -1039,9 +1046,10 @@ function pivot_video_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t(' \'<strong>The Longtail Video ID field has been deprecated</strong>');
+  t('<strong>The YouTube Video field has been deprecated</strong>');
   t('Ad Client');
   t('Ad Tag');
-  t('Add a YouTube video from the Web tab of the Media browser.');
   t('Allowed Regions');
   t('Author');
   t('Botr or YouTube Video');
