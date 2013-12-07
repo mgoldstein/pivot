@@ -28,5 +28,8 @@
         print l(t('Watch full episodes right here, right now'), 'http://watch.pivot.tv/pivottv/', array('attributes' => array('target' => '_blank', 'class' => array('important'))));
       ?>
   </div>
+  <div id="video-related" class="primary with-sidebar">
+    <?php print render($content); ?>
+  </div>
 
 </article><!-- /.node -->
