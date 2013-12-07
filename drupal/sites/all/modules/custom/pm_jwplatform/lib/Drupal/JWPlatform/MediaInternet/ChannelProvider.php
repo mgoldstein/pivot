@@ -7,6 +7,6 @@ class JWPlatformMediaInternetChannelProvider extends JWPlatformMediaInternetCont
   }
 
   public function getFilename() {
-    return "Channel ({$this->content_key})";
+    return "Playlist ({$this->content_key})";
   }
 }
