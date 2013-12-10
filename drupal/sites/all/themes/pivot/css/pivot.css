@@ -3810,6 +3810,17 @@ a:focus, a::-moz-focus-inner {
   }
 }
 
+@media (max-width: 760px) {
+  /* line 518, ../sass/_pivot-homepage-hero.scss */
+  .jwplayer span.jwmain div[id*=botr_][id*=_sharing] {
+    left: 0 !important;
+  }
+  /* line 521, ../sass/_pivot-homepage-hero.scss */
+  .jwplayer span.jwmain div[id*=botr_][id*=_sharing] > div {
+    max-width: 200px;
+  }
+}
+
 /* ============================================================
 || Global;
 ============================================================ */

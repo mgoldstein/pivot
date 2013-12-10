@@ -513,7 +513,18 @@ a:focus, a::-moz-focus-inner {
     }
   }
 }
-
+.jwplayer span.jwmain{
+	div[id*=botr_]{
+		&[id*=_sharing]{
+			@media (max-width: 760px) {
+		    left: 0 !important;
+		    > div{
+		    	max-width: 200px;
+		    }
+		  }
+		}
+	}
+}
 
 
 
