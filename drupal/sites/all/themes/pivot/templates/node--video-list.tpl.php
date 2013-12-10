@@ -27,9 +27,10 @@
         print render($content['field_video_media']);
         print l(t('Watch full episodes right here, right now'), 'http://watch.pivot.tv/pivottv/', array('attributes' => array('target' => '_blank', 'class' => array('important'))));
       ?>
+    <div id="video-related" class="primary with-sidebar">
+      <?php print render($content); ?>
+    </div>   
   </div>
-  <div id="video-related" class="primary with-sidebar">
-    <?php print render($content); ?>
-  </div>
+
 
 </article><!-- /.node -->
