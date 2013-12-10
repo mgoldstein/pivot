@@ -3788,9 +3788,26 @@ a:focus, a::-moz-focus-inner {
   outline: none;
 }
 
-/* line 500, ../sass/_pivot-homepage-hero.scss */
-#topslide .jwplayer span.jwmain div div {
-  display: none !important;
+@media (max-width: 760px) {
+  /* line 500, ../sass/_pivot-homepage-hero.scss */
+  .jwplayer span.jwmain #pm-jwplayer-field-video-media-0-full-content_sharing > div {
+    left: 0 !important;
+  }
+  /* line 503, ../sass/_pivot-homepage-hero.scss */
+  .jwplayer span.jwmain #pm-jwplayer-field-video-media-0-full-content_sharing > div > div {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 760px) {
+  /* line 508, ../sass/_pivot-homepage-hero.scss */
+  .jwplayer span.jwmain #pm-jwplayer-field-video-media-0-teaser_sharing > div {
+    left: 0 !important;
+  }
+  /* line 511, ../sass/_pivot-homepage-hero.scss */
+  .jwplayer span.jwmain #pm-jwplayer-field-video-media-0-teaser_sharing > div > div {
+    max-width: 200px;
+  }
 }
 
 /* ============================================================

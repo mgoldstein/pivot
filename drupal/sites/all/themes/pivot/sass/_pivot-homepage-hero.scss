@@ -496,12 +496,23 @@ a:focus, a::-moz-focus-inner {
   outline: none;
 }
 
-#topslide{
-	.jwplayer span.jwmain div div {
-	    display: none !important;
-	}
-}
 
+.jwplayer span.jwmain #pm-jwplayer-field-video-media-0-full-content_sharing > div {
+	@media (max-width: 760px) {
+    left: 0 !important;
+    > div {
+    	max-width: 200px;
+    }
+   }
+}
+.jwplayer span.jwmain #pm-jwplayer-field-video-media-0-teaser_sharing > div {
+	@media (max-width: 760px) {
+    left: 0 !important;
+    > div{
+    	max-width: 200px;
+    }
+  }
+}
 
 
 
