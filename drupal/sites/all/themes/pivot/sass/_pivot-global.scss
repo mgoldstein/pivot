@@ -2597,6 +2597,10 @@ iframe.media-youtube-player {
 			-ms-box-sizing: border-box;
 			box-sizing: border-box;
 			word-wrap: break-word;
+			@media (max-width: 767px) { /* iPad vertical */
+				width: 100%;
+				margin-right: 0;
+			}
 		}
 
 
@@ -2929,7 +2933,17 @@ iframe.media-youtube-player {
 
 
 
-
+body.node-type-video{
+	.site-wrapper {
+		@include zen-grid-container;
+		max-width: 980px;
+		margin: auto;
+		padding: 20px 10px;
+		@media (max-width: 767px) { /* iPad vertical */
+			padding: 0;
+		}
+	}
+}
 
 
 
