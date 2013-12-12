@@ -252,7 +252,16 @@ function pivot_preprocess_node(&$variables, $hook) {
     // use our custom templates for easy overridability
     $variables['theme_hook_suggestions'][] = 'node__promo_alt';
     $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__promo_alt';
-  } else if ($variables['view_mode'] == 'teaser') {
+  }
+  else if ($variables['view_mode'] == 'promo_impact') {
+    $variables['classes_array'][] = 'promo-impact';
+    $variables['classes_array'][] = 'node-' . $variables['type'] . '-promo-impact';
+
+    // use our custom templates for easy overridability
+    $variables['theme_hook_suggestions'][] = 'node__promo_impact';
+    $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__promo_impact';
+  }
+  else if ($variables['view_mode'] == 'teaser') {
     $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__teaser';
   }
 

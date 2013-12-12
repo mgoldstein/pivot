@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Impact Movies Features feature.
+ */
+
+include_once 'pivot_impact_movies.features.inc';
