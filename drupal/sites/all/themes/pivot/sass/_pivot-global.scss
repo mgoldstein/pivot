@@ -1725,6 +1725,7 @@ input[type=email] {
 	.field-name-field-promo-headline {
 		font-size: 1.1em; // 22px
 		text-transform: capitalize;
+		color: #0084a9;
 		margin: 15px 0 10px;
 	}
 
@@ -1733,35 +1734,6 @@ input[type=email] {
 		font-family: "Apercu Mono Regular", monospace;
 	}
 }
-
-// Impact Movies
-
-#block-views-impact-movies-block-1 .block-title{
-  font-size: 36px;
-}
-
-h2.other-movies.block-title {
-  font-size: 36px;
-}
-
-.view-impact-movies{
-
-  .field-name-field-promo-headline {
-    font-size: 1.5em;
-    text-transform: capitalize;
-    color: #0084a9;
-    margin: 15px 0 10px;
-    line-height: 1.28205em;
-  }
-
-  .field-name-field-promo-abstract {
-    font-size: 13px;
-    font-family: "Apercu Mono Regular", monospace;
-    margin-bottom: 20px;
-  }
-}
-
-//----------
 
 .panel-col-top {
 	.promo-alt {
@@ -1807,6 +1779,7 @@ h2.other-movies.block-title {
 /* ============================================================
 || Shows Landing, movies landing
 ============================================================ */
+
 .view-shows.view-display-id-page,
 .view-movies.view-display-id-page {
 	.view-content {
@@ -2208,7 +2181,7 @@ iframe.media-youtube-player {
 
 /* Hero Header; */
 .hero-header {
-	.show-hero, .campaign-hero, .movie-hero {
+	.show-hero, .campaign-hero {
 		position: relative;
 		img {
 			display: block;

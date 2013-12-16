@@ -83,9 +83,20 @@
  * @see template_process()
  */
 ?>
-
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-  <?php print render($content['field_promo_image']);?>
-  <?php print render($content['field_promo_headline']);?>
+  <?php
+	if (isset($promo_external_link_url)) {
+		if (isset($promo_external_link_attributes)) {
+			print l(render($content['field_promo_image']), $promo_external_link_url, array('html'=> TRUE, 'attributes' => $promo_external_link_attributes));
+			print l(render($content['field_promo_headline']), $promo_external_link_url, array('html' => TRUE, 'attributes' => $promo_external_link_attributes));
+		} else {
+			print l(render($content['field_promo_image']), $promo_external_link_url, array('html'=> TRUE,));
+			print l(render($content['field_promo_headline']), $promo_external_link_url, array('html' => TRUE,));
+		}
+	} else {
+		print render($content['field_promo_image']);
+		print render($content['field_promo_headline']);
+	}
+  ?>
   <?php print render($content['field_promo_abstract']);?>
 </article><!-- /.node.promo -->
