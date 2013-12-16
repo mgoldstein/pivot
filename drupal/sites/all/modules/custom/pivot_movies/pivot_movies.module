@@ -1,0 +1,154 @@
+<?php
+
+function pivot_movies_block_info(){
+  $blocks = array();
+  $blocks['pivot_movies_hero'] = array(
+    'info' => t('Movies Hero')
+   );
+  return $blocks;
+ }
+
+
+function pivot_movies_block_view($delta = ''){
+  //The $delta parameter tells us which block is being requested.
+  $block = array();
+  switch ($delta) {
+    case 'pivot_movies_hero':
+      $block['content'] = pivot_movies_hero();
+      break;
+  }
+  return $block;
+  }
+
+function pivot_movies_hero() {
+  global $base_url;
+  if(arg(0) == 'node'){
+    $node1 = node_load(arg(1));
+    $path = drupal_get_path_alias(current_path());
+    $pos = (strpos($path, '/', strpos($path, '/') + 1) == NULL ? strlen(current_path()) : strpos($path, '/', strpos($path, '/') + 1));
+    $alias = substr($path, 0 , $pos);
+    $subalias = substr($alias, 0, 5);
+    if($node1->type == 'movie'){
+      $node = $node1;
+    }
+    elseif($subalias == 'movies'){
+      $path = drupal_lookup_path('source', $alias);
+      $node = menu_get_object("node", 1, $path);
+    }
+  }
+  elseif(arg(0) == 'movies') {
+    $current_path = current_path();
+    $pos = strpos($current_path, '/', strpos($current_path, '/') + 1 );
+    $alias = substr(current_path(), 0 , $pos);
+    $path = drupal_lookup_path('source', $alias);
+    $node = menu_get_object("node", 1, $path);
+    if($node == NULL){
+      drupal_not_found();
+    }
+  }
+
+  $hero_image = '<img src="'.file_create_url($node->field_header_image['und'][0]['uri']). '" alt="'. (isset($node->field_promo_headline['und'][0]['value']) ? $node->field_promo_headline['und'][0]['value'] : ''). '">';
+  $headline_link = l($node->title, 'node/'. $node->nid);
+
+  $nice_menus = theme('nice_menus', array(
+    'id' => 100,
+    'menu_name' => $node->field_header_menu['und'][0]['value'],
+    'mlid' => 0,
+    'direction' => 'down',
+    'depth' => '-1',
+    'respect_expanded' => FALSE
+  ));
+  return theme('pivot_movies_hero', array('node' => $node, 'hero_image' => $hero_image, 'headline_link' => $headline_link, 'hero_menu' => $nice_menus['content']));
+}
+
+function pivot_movies_theme() {
+  return array(
+    'pivot_movies_hero' => array(
+      'variables' => array(
+        'node' => '',
+        'hero_image' => '',
+        'hero_menu' => '',
+        'headline_link' => '',
+      ),
+      'arguments' => array(),
+      'template' => 'pivot-movies-hero'
+    ),
+  );
+}
+
+function pivot_movies_menu_title(&$title) {
+  $title = strtolower($title);
+  $title = preg_replace("/[^a-z0-9_\s-]/", "", $title);
+  $title = preg_replace("/[\s-]+/", " ", $title);
+  $title = preg_replace("/[\s_]/", "-", $title);
+}
+function pivot_movies_node_presave($node) {
+  if($node->type == 'movie' && !isset($node->field_header_menu['und'][0]['value'])){
+    $title = $node->title;
+    pivot_movies_menu_title($title);
+    $menu = array(
+     'menu_name' => 'movie-'. $title,
+     'title' => $node->title,
+     'description' => 'Movie Menu For '. $node->title,
+    );
+    menu_save($menu); //uncomment this line when ready and no longer testing
+    $node->field_header_menu['und'][0]['value'] = 'movie-'. $title;
+  }
+}
+
+function pivot_movie_form_alter(&$form, &$form_state, $form_id) {
+  if($form_id =='movie_node_form') {
+    $form['field_header_menu']['#type'] = 'hidden';
+  }
+}
+
+function pivot_movie_node_submit($node, $form, &$form_state) {
+  $title = $node->title;
+  pivot_movies_menu_title($title);
+  $form_state['redirect'] = 'admin/structure/menu/manage/movie-'. $title; //THIS DOESN'T WORK.
+}
+
+/*
+ * PAGE TITLES FOR MOVIES
+ * '[movie title]: [subnode title or view title]''
+ */
+function pivot_movies_page_title_alter(&$title) {
+  if(arg(0) == 'node'){
+    $node = node_load(arg(1));
+    $path = drupal_get_path_alias(current_path());
+    $pos = (strpos($path, '/', strpos($path, '/') + 1) == NULL ? strlen(current_path()) : strpos($path, '/', strpos($path, '/') + 1));
+    $alias = substr($path, 0 , $pos);
+    $subalias = substr($alias, 0, 5);
+    if(isset($node->type) && $node->type == 'movie'){
+      $title = $node->title;
+    }
+    elseif($subalias == 'movies'){
+      $path = drupal_lookup_path('source', $alias);
+      $parent_node = menu_get_object("node", 1, $path);
+      $title = $parent_node->title. ': '. $node->title;
+    }
+  }
+  elseif(arg(0) == 'movies' && arg(1) == NULL) {
+    $title = 'Movies';
+  }
+  elseif(arg(0) == 'movies') {
+    $current_path = current_path();
+    $pos = strpos($current_path, '/', strpos($current_path, '/') + 1 );
+    $alias = substr(current_path(), 0 , $pos);
+    $path = drupal_lookup_path('source', $alias);
+    $node = menu_get_object("node", 1, $path);
+    $title = $node->title. ': '. ucfirst(arg(2));
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+

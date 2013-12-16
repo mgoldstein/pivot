@@ -1,0 +1,4 @@
+name = Pivot Movies
+description = Global Settings for Pivot Movies
+core = 7.x
+package = Pivot
