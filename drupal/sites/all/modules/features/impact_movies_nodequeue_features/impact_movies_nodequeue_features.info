@@ -1,0 +1,14 @@
+name = Impact movies nodequeue features
+core = 7.x
+package = Features
+version = 7.x-1.0
+project = impact_movies_nodequeue_features
+dependencies[] = fe_nodequeue
+dependencies[] = image
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[fe_nodequeue][] = impact_movies
+features[features_api][] = api:2
+features[image][] = impact_promo_imagestyle
+features[views_view][] = impact_movies
+features_exclude[dependencies][ctools] = ctools
