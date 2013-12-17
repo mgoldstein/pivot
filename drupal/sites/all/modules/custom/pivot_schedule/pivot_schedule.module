@@ -822,6 +822,7 @@ function pivot_schedule_block_view($delta = '') {
             }
         }
 
+
         if ($node) {
 
             // Check if the node has schedule name and listing title fields.
@@ -917,28 +918,68 @@ function pivot_schedule_shows_by_schedule_name() {
         $query->entityCondition('entity_type', 'node')
                 ->propertyCondition('type', 'show');
         $entities = $query->execute();
+			
+	        if (isset($entities['node'])) {
+	
+	            // Load the actual show nodes.
+	            $ids = array_keys($entities['node']);
+	            $shows = entity_load('node', $ids);
+	
+	            // Add all show's with a schedule name to the list.
+	            foreach ($shows as $show) {
+	                $items = field_get_items('node', $show, 'field_schedule_name');
+	                if ($items !== FALSE) {
+	                    $item = reset($items);
+	                    if ($item != FALSE && !empty($item['value'])) {
+	                        $shows_by_schedule_name[$item['value']] = $show;
+	                    }
+	                }
+	            }
+	        }
 
-        if (isset($entities['node'])) {
-
-            // Load the actual show nodes.
-            $ids = array_keys($entities['node']);
-            $shows = entity_load('node', $ids);
-
-            // Add all show's with a schedule name to the list.
-            foreach ($shows as $show) {
-                $items = field_get_items('node', $show, 'field_schedule_name');
-                if ($items !== FALSE) {
-                    $item = reset($items);
-                    if ($item != FALSE && !empty($item['value'])) {
-                        $shows_by_schedule_name[$item['value']] = $show;
-                    }
-                }
-            }
-        }
     }
 
     return $shows_by_schedule_name;
 }
+
+function pivot_schedule_movies_by_schedule_name() {
+    // Static caching
+    static $movies_by_schedule_name = FALSE;
+
+    if ($movies_by_schedule_name === FALSE) {
+
+        $movies_by_schedule_name = array();
+
+        // Get the show type nodes.
+        $query = new EntityFieldQuery();
+        $query->entityCondition('entity_type', 'node')
+                ->propertyCondition('type', 'movie');
+        $entities = $query->execute();
+			
+	        if (isset($entities['node'])) {
+	
+	            // Load the actual show nodes.
+	            $ids = array_keys($entities['node']);
+	            $movies = entity_load('node', $ids);
+	
+	            // Add all show's with a schedule name to the list.
+	            foreach ($movies as $movie) {
+	                $items = field_get_items('node', $movie, 'field_schedule_name');
+	                if ($items !== FALSE) {
+	                    $item = reset($items);
+	                    if ($item != FALSE && !empty($item['value'])) {
+	                        $movies_by_schedule_name[$item['value']] = $movie;
+	                    }
+	                }
+	            }
+	        }
+
+    }
+
+    return $movies_by_schedule_name;
+}
+
+
 
 function pivot_schedule_load_listing($ids, $timezone) {
 
@@ -949,6 +990,7 @@ function pivot_schedule_load_listing($ids, $timezone) {
 
     // Get a list of shows that may appear in the schedule.
     $shows_by_schedule_name = pivot_schedule_shows_by_schedule_name();
+	$movies_by_schedule_name = pivot_schedule_movies_by_schedule_name();
 
     // Build the listing.
     foreach ($show_times as $show_time) {
@@ -971,7 +1013,13 @@ function pivot_schedule_load_listing($ids, $timezone) {
             $show = $shows_by_schedule_name[$show_time->element_name];
             $uri = node_uri($show);
             $item->show_path = url($uri['path']);
-        } else {
+        } 
+		elseif (array_key_exists($show_time->title_name, $movies_by_schedule_name)) {
+            $show = $movies_by_schedule_name[$show_time->title_name];
+            $uri = node_uri($show);
+            $item->show_path = url($uri['path']);
+        } 
+        else {
             $item->show_path = NULL;
         }
 
@@ -1036,18 +1084,43 @@ function pivot_schedule_get_show_listing($schedule_name, $count, $tz) {
     $interval = DateInterval::createFromDateString($offset);
     $this_hour->sub($interval);
 
-    // Get the upcoming show times.
+    // Get the upcoming times for show or movies
     $query = new EntityFieldQuery();
+
     $query->entityCondition('entity_type', 'pivot_schedule_show_time')
             ->propertyCondition('broadcast_start_time', $this_hour->getTimestamp(), '>=')
             ->propertyCondition('element_name', $schedule_name)
             ->propertyOrderBy('broadcast_start_time')
             ->range(0, $count);
     $entities = $query->execute();
-    if (isset($entities['pivot_schedule_show_time'])) {
-        $ids = array_keys($entities['pivot_schedule_show_time']);
-        $listing = pivot_schedule_load_listing($ids, $timezone);
-    }
+	
+	if($entities){
+		
+	    if (isset($entities['pivot_schedule_show_time'])) {
+	        $ids = array_keys($entities['pivot_schedule_show_time']);
+	        $listing = pivot_schedule_load_listing($ids, $timezone);
+	    }
+
+	}
+	else{
+		
+		$query_movie = new EntityFieldQuery();
+	    $query_movie->entityCondition('entity_type', 'pivot_schedule_show_time')
+	            ->propertyCondition('broadcast_start_time', $this_hour->getTimestamp(), '>=')
+	            ->propertyCondition('title_name', $schedule_name)
+	            ->propertyOrderBy('broadcast_start_time')
+	            ->range(0, $count);
+	    $entities_movie = $query_movie->execute();
+		
+		 if (isset($entities_movie['pivot_schedule_show_time'])) {
+		        $ids = array_keys($entities_movie['pivot_schedule_show_time']);
+		        $listing = pivot_schedule_load_listing($ids, $timezone);
+		 }
+		
+		
+	}
+	
+
 
     return $listing;
 }
@@ -1143,20 +1216,45 @@ function pivot_schedule_list_page() {
     $entity_list = array();
     foreach ($entities['pivot_schedule_show_time'] as $key => $entity) {
         $entity = entity_load('pivot_schedule_show_time', array($key));
-        $reference = new EntityFieldQuery();
-        $reference->entityCondition('entity_type', 'node')
-                ->propertyCondition('type', 'show')
+        $reference_show = new EntityFieldQuery();
+
+        $reference_show->entityCondition('entity_type', 'node')
+				->propertyCondition('type', 'show')
                 ->fieldCondition('field_schedule_name', 'value', $entity[$key]->element_name, '=')
                 ->propertyCondition('status', 1)
                 ->range(0, 1);
-        $reference = $reference->execute();
 
+        $reference_show = $reference_show->execute();
+
+		// If there's no reference on show, reference a movie
+		if($reference_show)
+		{
+        //Load the Show Time entity
+        $entity[$key]->broadcast_start_time = $entity[$key]->broadcast_start_time + $offset; // removed offset
+        $entity = current($entity);
+        $current_ref = (isset($reference_show['node']) ? current($reference_show['node']) : '');
+        $entity_list[] = array($entity, 'reference' => $current_ref->nid);
+		
+	    }
+		else{
+		// Reference a movie if it's not a show
+		$reference_movie = new EntityFieldQuery();
+        $reference_movie->entityCondition('entity_type', 'node')
+				->propertyCondition('type', 'movie')
+                ->fieldCondition('field_schedule_name', 'value', $entity[$key]->title_name, '=')
+                ->propertyCondition('status', 1)
+                ->range(0, 1);
+
+        $reference_movie = $reference_movie->execute();
 
         //Load the Show Time entity
         $entity[$key]->broadcast_start_time = $entity[$key]->broadcast_start_time + $offset; // removed offset
         $entity = current($entity);
-        $current_ref = (isset($reference['node']) ? current($reference['node']) : '');
-        $entity_list[] = array($entity, 'reference' => $current_ref->nid);
+        $current_ref = (isset($reference_movie['node']) ? current($reference_movie['node']) : '');
+        $entity_list[] = array($entity, 'reference' => $current_ref->nid);		
+			
+		}
+		
     }
 
     //Create Date menu list  TODO: move markup to the tpl file
