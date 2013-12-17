@@ -46,6 +46,10 @@ function pivot_global_entity_info_alter(&$entity_info) {
     'label' => t('16x9 Promo'),
     'custom settings' => TRUE,
   );
+  $entity_info['node']['view modes']['promo_impact'] = array(
+    'label' => t('Impact Promo'),
+    'custom settings' => TRUE,
+  );
 }
 
 /**
