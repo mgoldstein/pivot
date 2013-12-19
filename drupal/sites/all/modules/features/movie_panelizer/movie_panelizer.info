@@ -1,0 +1,11 @@
+name = Movie Panelizer
+description = Panelizer default for movies
+core = 7.x
+package = Features
+version = 7.x-1.0
+project = movie_panelizer
+dependencies[] = ctools
+dependencies[] = panelizer
+features[ctools][] = panelizer:panelizer:1
+features[features_api][] = api:2
+features[panelizer_defaults][] = node:movie:default:default
