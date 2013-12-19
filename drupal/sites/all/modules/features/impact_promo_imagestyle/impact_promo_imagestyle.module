@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the impact_promo_imagestyle feature.
+ */
+
+include_once 'impact_promo_imagestyle.features.inc';
