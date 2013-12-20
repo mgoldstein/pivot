@@ -31,7 +31,7 @@ function pivot_movies_hero() {
     if($node1->type == 'movie'){
       $node = $node1;
     }
-    elseif($subalias == 'movies'){
+    elseif($subalias == 'movie'){
       $path = drupal_lookup_path('source', $alias);
       $node = menu_get_object("node", 1, $path);
     }
@@ -87,12 +87,12 @@ function pivot_movies_node_presave($node) {
     $title = $node->title;
     pivot_movies_menu_title($title);
     $menu = array(
-     'menu_name' => 'movie-'. $title,
+     'menu_name' => 'menu-movie-'. $title,
      'title' => $node->title,
      'description' => 'Movie Menu For '. $node->title,
     );
     menu_save($menu); //uncomment this line when ready and no longer testing
-    $node->field_header_menu['und'][0]['value'] = 'movie-'. $title;
+    $node->field_header_menu['und'][0]['value'] = 'menu-movie-'. $title;
   }
 }
 
