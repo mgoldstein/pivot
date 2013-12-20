@@ -31,7 +31,7 @@ function pivot_movies_hero() {
     if($node1->type == 'movie'){
       $node = $node1;
     }
-    elseif($subalias == 'movies'){
+    elseif($subalias == 'movie'){
       $path = drupal_lookup_path('source', $alias);
       $node = menu_get_object("node", 1, $path);
     }
