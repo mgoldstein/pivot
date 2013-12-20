@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * movie_panelizer.panelizer.inc
+ * pivot_movie.panelizer.inc
  */
 
 /**
  * Implements hook_panelizer_defaults().
  */
-function movie_panelizer_panelizer_defaults() {
+function pivot_movie_panelizer_defaults() {
   $export = array();
 
   $panelizer = new stdClass();
