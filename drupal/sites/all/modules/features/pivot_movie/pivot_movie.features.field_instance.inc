@@ -124,6 +124,80 @@ function pivot_movie_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-movie-field_external_link'
+  $field_instances['node-movie-field_external_link'] = array(
+    'bundle' => 'movie',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Enter an internal path (like <code>shows/please-like-me</code>) or an external URL.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 5,
+      ),
+      'promo' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'promo_alt' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'promo_impact' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_external_link',
+    'label' => 'Internal Path or External Link URL',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => 'nofollow',
+        'target' => 'user',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'rel_remove_internal',
+      'title' => 'none',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'link_field',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'node-movie-field_gallery_ref'
   $field_instances['node-movie-field_gallery_ref'] = array(
     'bundle' => 'movie',
@@ -778,10 +852,12 @@ function pivot_movie_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Cast and Crew');
   t('Description');
+  t('Enter an internal path (like <code>shows/please-like-me</code>) or an external URL.');
   t('For schedule feeds to relate to show content');
   t('Gallery');
   t('Header Image');
   t('Header Menu');
+  t('Internal Path or External Link URL');
   t('Promo Abstract');
   t('Promo Headline');
   t('Promo Image');

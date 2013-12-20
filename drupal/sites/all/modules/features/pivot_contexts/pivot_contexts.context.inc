@@ -88,17 +88,24 @@ function pivot_contexts_context_default_contexts() {
       'values' => array(
         'campaigns/eyes-wide-open' => 'campaigns/eyes-wide-open',
         'campaigns/eyes-wide-open/*' => 'campaigns/eyes-wide-open/*',
+        '~campaigns/eyes-wide-open/quiz' => '~campaigns/eyes-wide-open/quiz',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'pivot_dml-pivot_dml_hero' => array(
-          'module' => 'pivot_dml',
-          'delta' => 'pivot_dml_hero',
+        'pivot_campaign-pivot_campaign_hero' => array(
+          'module' => 'pivot_campaign',
+          'delta' => 'pivot_campaign_hero',
           'region' => 'preface',
-          'weight' => '-10',
+          'weight' => '-9',
+        ),
+        'block-10' => array(
+          'module' => 'block',
+          'delta' => '10',
+          'region' => 'right_sidebar',
+          'weight' => '-9',
         ),
       ),
     ),
@@ -286,17 +293,11 @@ function pivot_contexts_context_default_contexts() {
           'region' => 'right_sidebar',
           'weight' => '-9',
         ),
-        'newsletter_campaign-1' => array(
-          'module' => 'newsletter_campaign',
-          'delta' => '1',
-          'region' => 'right_sidebar',
-          'weight' => '-8',
-        ),
         'pivot_global-pivot_twitter_widget' => array(
           'module' => 'pivot_global',
           'delta' => 'pivot_twitter_widget',
           'region' => 'right_sidebar',
-          'weight' => '-7',
+          'weight' => '-8',
         ),
       ),
     ),
@@ -330,6 +331,12 @@ function pivot_contexts_context_default_contexts() {
           'region' => 'preface',
           'weight' => '-10',
         ),
+        'views-impact_movies-block_1' => array(
+          'module' => 'views',
+          'delta' => 'impact_movies-block_1',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
         'dfp-pivot_ros_rr_300x250' => array(
           'module' => 'dfp',
           'delta' => 'pivot_ros_rr_300x250',
@@ -361,6 +368,8 @@ function pivot_contexts_context_default_contexts() {
     'path' => array(
       'values' => array(
         'shows/*' => 'shows/*',
+        '~shows/teach' => '~shows/teach',
+        '~shows/teach/*' => '~shows/teach/*',
       ),
     ),
   );
@@ -411,12 +420,6 @@ function pivot_contexts_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'pivot_schedule-primetime_listing' => array(
-          'module' => 'pivot_schedule',
-          'delta' => 'primetime_listing',
-          'region' => 'preface',
-          'weight' => '-10',
-        ),
         'dfp-pivot_ros_rr_300x250' => array(
           'module' => 'dfp',
           'delta' => 'pivot_ros_rr_300x250',

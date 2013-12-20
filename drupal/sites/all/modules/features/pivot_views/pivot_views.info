@@ -1,7 +1,6 @@
 name = Views
 core = 7.x
 package = Content Display
-php = 5.2.4
 version = 7.x-1.7
 project = pivot_views
 dependencies[] = views
@@ -14,6 +13,7 @@ features[views_view][] = downloads
 features[views_view][] = episodes
 features[views_view][] = feed_items
 features[views_view][] = homepage_slider
+features[views_view][] = impact_movies
 features[views_view][] = movies
 features[views_view][] = must_see_videos
 features[views_view][] = shows

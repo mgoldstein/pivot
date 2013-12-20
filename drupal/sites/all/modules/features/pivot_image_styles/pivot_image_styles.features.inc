@@ -31,6 +31,7 @@ function pivot_image_styles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'blog_article',
   );
 
   // Exported image style: gallery_image.
@@ -50,6 +51,30 @@ function pivot_image_styles_image_default_styles() {
           'width' => 600,
           'height' => 335,
           'upscale' => 0,
+        ),
+        'weight' => 1,
+      ),
+    ),
+    'label' => 'gallery_image',
+  );
+
+  // Exported image style: impact_promo_imagestyle.
+  $styles['impact_promo_imagestyle'] = array(
+    'name' => 'impact_promo_imagestyle',
+    'label' => 'Impact Promo Imagestyle',
+    'effects' => array(
+      4 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 620,
+          'height' => 237,
         ),
         'weight' => 1,
       ),
@@ -76,6 +101,7 @@ function pivot_image_styles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'must_see_videos_125x70',
   );
 
   // Exported image style: profile_image.
@@ -98,6 +124,7 @@ function pivot_image_styles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'profile_image',
   );
 
   // Exported image style: promo_square.
@@ -120,6 +147,7 @@ function pivot_image_styles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'promo_square',
   );
 
   // Exported image style: promo_widescreen.
@@ -142,6 +170,7 @@ function pivot_image_styles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'promo_widescreen',
   );
 
   return $styles;
