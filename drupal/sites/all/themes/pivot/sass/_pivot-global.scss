@@ -665,14 +665,16 @@ input[type=email] {
 
 		.takepart {
 			background-image: url(../images/footer_participant_takepart.png);
-			width: 45px;
-			height: 45px;
+			width: 83px;
+			height: 20px;
+			vertical-align: middle;
 		}
 
 		.pivot {
 			background-image: url(../images/footer_participant_pivot.png);
 			width: 48px;
 			height: 16px;
+			vertical-align: middle;
 		}
 	}
 
