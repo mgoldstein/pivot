@@ -63,6 +63,7 @@ scripts[] = js/jquery.scrollTo.js
 scripts[] = js/jquery.touchSwipe.js
 scripts[] = js/tpslide.jquery.js
 ; scripts[] = js/tpanalytics.js
+scripts[] = js/tpanalytics.media.js
 scripts[] = js/tpmodal.jquery.js
 scripts[] = js/tpselect.jquery.js
 scripts[] = js/tpregions.jquery.js
