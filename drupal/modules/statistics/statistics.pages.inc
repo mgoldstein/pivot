@@ -54,7 +54,9 @@ function statistics_node_tracker() {
     $build['statistics_pager'] = array('#theme' => 'pager');
     return $build;
   }
-  return MENU_NOT_FOUND;
+  else {
+    drupal_not_found();
+  }
 }
 
 /**
@@ -97,5 +99,7 @@ function statistics_user_tracker() {
     $build['statistics_pager'] = array('#theme' => 'pager');
     return $build;
   }
-  return MENU_NOT_FOUND;
+  else {
+    drupal_not_found();
+  }
 }

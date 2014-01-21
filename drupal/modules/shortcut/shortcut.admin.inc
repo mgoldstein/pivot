@@ -784,5 +784,5 @@ function shortcut_link_add_inline($shortcut_set) {
     drupal_goto();
   }
 
-  return MENU_ACCESS_DENIED;
+  return drupal_access_denied();
 }

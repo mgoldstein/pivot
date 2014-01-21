@@ -186,7 +186,7 @@ function file_field_load($entity_type, $entities, $field, $instances, $langcode,
         $items[$id][$delta] = NULL;
       }
       else {
-        $items[$id][$delta] = array_merge((array) $files[$item['fid']], $item);
+        $items[$id][$delta] = array_merge($item, (array) $files[$item['fid']]);
       }
     }
   }
@@ -215,16 +215,8 @@ function file_field_presave($entity_type, $entity, $field, $instance, $langcode,
   // Make sure that each file which will be saved with this object has a
   // permanent status, so that it will not be removed when temporary files are
   // cleaned up.
-  foreach ($items as $delta => $item) {
-    if (empty($item['fid'])) {
-      unset($items[$delta]);
-      continue;
-    }
+  foreach ($items as $item) {
     $file = file_load($item['fid']);
-    if (empty($file)) {
-      unset($items[$delta]);
-      continue;
-    }
     if (!$file->status) {
       $file->status = FILE_STATUS_PERMANENT;
       file_save($file);

@@ -373,7 +373,7 @@ states.Trigger.states = {
 
   checked: {
     'change': function () {
-      return this.is(':checked');
+      return this.attr('checked');
     }
   },
 

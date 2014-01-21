@@ -475,12 +475,6 @@ table th {
   border-color: #bebfb9;
   padding: 3px 10px;
 }
-/**
- * Force browsers to calculate the width of a 'select all' TH element.
- */
-table th.select-all {
-  width: 1px;
-}
 table th.active {
   background: #bdbeb9;
 }
