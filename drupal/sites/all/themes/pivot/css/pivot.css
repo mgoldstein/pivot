@@ -713,6 +713,7 @@ input[type=email] {
 #site-footer .nav .menu {
   margin: 0;
   padding: 0;
+  height: 50px;
 }
 /* line 570, ../sass/_pivot-global.scss */
 #site-footer .nav .menu li {
