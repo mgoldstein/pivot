@@ -5,6 +5,13 @@
  */
 
 /**
+ * Implements hook_install().
+ */
+function advanced_help_install() {
+  // drupal_set_message('Installing advanced_help.');
+}
+
+/**
  * Implements hook_uninstall().
  */
 function advanced_help_uninstall() {

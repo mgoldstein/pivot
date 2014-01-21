@@ -1,11 +1,10 @@
 
-.advanced-help-topic code,
-.advanced-help-topic pre {
-  background: #f1f1f1;
+.advanced-help-topic code, .advanced-help-topic pre {
   border: 1px solid #444;
-  display: block;
+  background: #f1f1f1;
   margin: 1em;
   padding: .2em;
+  display: block;
 }
 
 .advanced-help-topic h3,
@@ -24,32 +23,32 @@
 }
 
 .help-left {
-  display: block;
-  float: left; /* LTR */
   text-align: left;
   width: 42%;
+  display: block;
+  float: left; /* LTR */
 }
 
 .help-up {
-  display: block;
-  float: left; /* LTR */
   margin: 0 5%;
   width: 4%;
+  display: block;
+  float: left; /* LTR */
 }
 
 .help-up-noleft {
+  margin: 0 5%;
+  width: 42%;
+  text-align: right;
   display: block;
   float: left; /* LTR */
-  margin: 0 5%;
-  text-align: right;
-  width: 42%;
 }
 
 .help-right {
-  display: block;
-  float: right;
   text-align: right;
   width: 42%;
+  display: block;
+  float: right;
 }
 
 .help-box {

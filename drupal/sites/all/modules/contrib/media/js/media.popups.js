@@ -82,11 +82,13 @@ Drupal.media.popups.mediaBrowser = function (onSelect, globalOptions, pluginOpti
       return;
     }
     onSelect(selected);
-    $(this).dialog("close");
+    $(this).dialog("destroy");
+    $(this).remove();
   };
 
   dialogOptions.buttons[cancel] = function () {
-    $(this).dialog("close");
+    $(this).dialog("destroy");
+    $(this).remove();
   };
 
   Drupal.media.popups.setDialogPadding(mediaIframe.dialog(dialogOptions));
@@ -127,7 +129,8 @@ Drupal.media.popups.mediaBrowser.finalizeSelection = function () {
     return;
   }
   onSelect(selected);
-  $(this).dialog("close");
+  $(this).dialog("destroy");
+  $(this).remove();
 }
 
 /**
@@ -178,11 +181,13 @@ Drupal.media.popups.mediaStyleSelector = function (mediaFile, onSelect, options)
       return;
     }
     onSelect(formattedMedia);
-    $(this).dialog("close");
+    $(this).dialog("destroy");
+    $(this).remove();
   };
 
   dialogOptions.buttons[cancel] = function () {
-    $(this).dialog("close");
+    $(this).dialog("destroy");
+    $(this).remove();
   };
 
   Drupal.media.popups.setDialogPadding(mediaIframe.dialog(dialogOptions));
@@ -246,17 +251,22 @@ Drupal.media.popups.mediaFieldEditor = function (fid, onSelect, options) {
   var dialogOptions = Drupal.media.popups.getDialogOptions();
 
   dialogOptions.buttons[ok] = function () {
+    alert('hell yeah');
+    return "poo";
+
     var formattedMedia = this.contentWindow.Drupal.media.formatForm.getFormattedMedia();
     if (!formattedMedia) {
       alert(notSelected);
       return;
     }
     onSelect(formattedMedia);
-    $(this).dialog("close");
+    $(this).dialog("destroy");
+    $(this).remove();
   };
 
   dialogOptions.buttons[cancel] = function () {
-    $(this).dialog("close");
+    $(this).dialog("destroy");
+    $(this).remove();
   };
 
   Drupal.media.popups.setDialogPadding(mediaIframe.dialog(dialogOptions));
@@ -301,10 +311,7 @@ Drupal.media.popups.getDialogOptions = function () {
       backgroundColor: '#000000',
       opacity: 0.4
     },
-    zIndex: 10000,
-    close: function (event, ui) {
-      $(event.target).remove();
-    }
+    zIndex: 10000
   };
 };
 
