@@ -1,8 +1,7 @@
 name = Feed
 core = 7.x
 package = Content Types
-php = 5.2.4
-version = 7.x-1.4
+version = 7.x-1.5
 project = pivot_feed
 dependencies[] = ctools
 dependencies[] = entityreference

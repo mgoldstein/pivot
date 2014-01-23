@@ -36,6 +36,12 @@ function pivot_promo_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 3,
       ),
+      'promo_impact' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -106,6 +112,12 @@ function pivot_promo_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
+      'promo_impact' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -162,6 +174,12 @@ function pivot_promo_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 1,
+      ),
+      'promo_impact' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -225,6 +243,12 @@ function pivot_promo_field_default_field_instances() {
           'image_style' => 'promo_widescreen',
         ),
         'type' => 'image',
+        'weight' => 0,
+      ),
+      'promo_impact' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'teaser' => array(

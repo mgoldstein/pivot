@@ -1,13 +1,15 @@
 name = Contexts
 core = 7.x
 package = Content Display
-version = 7.x-1.8
+version = 7.x-1.9
 project = pivot_contexts
 dependencies[] = block
 dependencies[] = context
 dependencies[] = context_error
 dependencies[] = ctools
 dependencies[] = dfp
+dependencies[] = entityreference
+dependencies[] = features
 dependencies[] = menu
 dependencies[] = newsletter_campaign
 dependencies[] = pivot_article

@@ -392,7 +392,7 @@ function pivot_contexts_context_default_contexts() {
           'module' => 'pivot_schedule',
           'delta' => 'show_listing',
           'region' => 'right_sidebar',
-          'weight' => '-9',
+          'weight' => '0',
         ),
       ),
     ),

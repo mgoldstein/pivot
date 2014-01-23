@@ -186,6 +186,11 @@ function pivot_show_strongarm() {
         'default' => 0,
         'choice' => 0,
       ),
+      'promo_impact' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
     ),
   );
   $export['panelizer_defaults_node_show'] = $strongarm;
@@ -819,7 +824,7 @@ function pivot_show_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'scheduler_unpublish_enable_show';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['scheduler_unpublish_enable_show'] = $strongarm;
 
   $strongarm = new stdClass();
