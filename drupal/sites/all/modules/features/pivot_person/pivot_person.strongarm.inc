@@ -104,6 +104,21 @@ function pivot_person_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'promo' => array(
+        'custom_settings' => TRUE,
+      ),
+      'promo_alt' => array(
+        'custom_settings' => TRUE,
+      ),
+      'promo_impact' => array(
+        'custom_settings' => TRUE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'embedded' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

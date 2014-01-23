@@ -92,6 +92,12 @@ function pivot_article_strongarm() {
       'promo_alt' => array(
         'custom_settings' => TRUE,
       ),
+      'promo_impact' => array(
+        'custom_settings' => TRUE,
+      ),
+      'embedded' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
