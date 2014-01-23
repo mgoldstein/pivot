@@ -1,5 +1,7 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the Pivot Text Formats feature.
  */
+
+include_once 'pivot_text_formats.features.inc';
