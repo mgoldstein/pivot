@@ -157,6 +157,7 @@ function pivot_blogs_strongarm() {
   $strongarm->name = 'node_options_blog';
   $strongarm->value = array(
     0 => 'status',
+    1 => 'revision',
   );
   $export['node_options_blog'] = $strongarm;
 
@@ -206,6 +207,11 @@ function pivot_blogs_strongarm() {
         'default' => 0,
         'choice' => 0,
       ),
+      'promo_impact' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
     ),
   );
   $export['panelizer_defaults_node_blog'] = $strongarm;
@@ -238,6 +244,11 @@ function pivot_blogs_strongarm() {
         'choice' => 0,
       ),
       'promo_alt' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'promo_impact' => array(
         'status' => 0,
         'default' => 0,
         'choice' => 0,

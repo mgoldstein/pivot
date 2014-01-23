@@ -174,6 +174,11 @@ function pivot_feed_strongarm() {
         'default' => 0,
         'choice' => 0,
       ),
+      'promo_impact' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
     ),
   );
   $export['panelizer_defaults_node_feed'] = $strongarm;
@@ -206,6 +211,11 @@ function pivot_feed_strongarm() {
         'choice' => 0,
       ),
       'promo_alt' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'promo_impact' => array(
         'status' => 0,
         'default' => 0,
         'choice' => 0,
