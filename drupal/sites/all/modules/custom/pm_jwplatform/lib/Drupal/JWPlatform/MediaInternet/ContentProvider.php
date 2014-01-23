@@ -34,6 +34,7 @@ abstract class JWPlatformMediaInternetContentProvider extends MediaInternetBaseH
     // Embed code using the BotR domain name
     $patterns = array(
       '@dashboard.bitsontherun.com/' . $this->content_type . 's/([A-Za-z0-9]+)@',
+      '@dashboard.jwplatform.com/' . $this->content_type . 's/([A-Za-z0-9]+)@',
       '@content.bitsontherun.com/players/' . $embed_pattern . '@',
     );
 
