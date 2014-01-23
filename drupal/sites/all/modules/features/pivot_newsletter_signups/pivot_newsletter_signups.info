@@ -6,5 +6,5 @@ version = 7.x-1.0
 project = pivot_newsletter_signups
 dependencies[] = pm_signup
 features[features_api][] = api:2
-features[pm_signup_endpoint][] = pivot_newsletter
 features[pm_signup_endpoint][] = mentor_strong
+features[pm_signup_endpoint][] = pivot_newsletter

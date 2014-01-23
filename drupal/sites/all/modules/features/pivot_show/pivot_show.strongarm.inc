@@ -92,6 +92,12 @@ function pivot_show_strongarm() {
       'diff_standard' => array(
         'custom_settings' => FALSE,
       ),
+      'promo_impact' => array(
+        'custom_settings' => TRUE,
+      ),
+      'embedded' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
