@@ -95,6 +95,12 @@ function pivot_video_strongarm() {
       'embedded' => array(
         'custom_settings' => TRUE,
       ),
+      'node_embed' => array(
+        'custom_settings' => TRUE,
+      ),
+      'promo_impact' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
