@@ -51,8 +51,8 @@ function pivot_text_formats_wysiwyg_default_profiles() {
           'SpellChecker' => 1,
         ),
         'drupal' => array(
-          'node' => 1,
           'media' => 1,
+          'node_embed' => 1,
         ),
       ),
       'toolbar_loc' => 'top',
@@ -115,8 +115,8 @@ function pivot_text_formats_wysiwyg_default_profiles() {
           'SpellChecker' => 1,
         ),
         'drupal' => array(
-          'node' => 1,
           'media' => 1,
+          'node_embed' => 1,
         ),
       ),
       'toolbar_loc' => 'top',
