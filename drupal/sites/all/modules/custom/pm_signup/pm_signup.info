@@ -8,5 +8,3 @@ files[] = includes/pm_signup.core.inc
 files[] = includes/signature.signup.inc
 files[] = includes/user.signup.inc
 files[] = includes/newsletter.signup.inc
-
-dependencies[] = pm_core
