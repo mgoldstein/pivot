@@ -1,0 +1,160 @@
+<?php
+/**
+ * @file
+ * The TakeAction Button Integeration Module
+ */
+
+/**
+ * Implements hook_help().
+ */
+function pm_takeaction_help($path, $arg) {
+  $output = '';
+  if ($path == 'admin/help#pm_takeaction') {
+    $output .= '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t("The TakeAction Button Core module allows integration
+      with the TakePart TakeAction Button system.") . '</p>';
+  }
+  return $output;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function pm_takeaction_menu() {
+  return array(
+    'admin/config/pm_takeaction' => array(
+      'title' => 'TakeAction Button',
+      'description' => 'Configuraion of the TakeAction Button integration',
+      'position' => 'right',
+      'weight' => 0,
+      'page callback' => 'system_admin_menu_block_page',
+      'access arguments' => array('access administration pages'),
+      'file' => 'system.admin.inc',
+      'file path' => drupal_get_path('module', 'system'),
+    ),
+    'admin/config/pm_takeaction/settings' => array(
+      'title' => 'TakeAction Button Settings',
+      'description' => 'Global settings for TakeAction Button integration',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('pm_takeaction_admin_form'),
+      'access callback' => 'user_access',
+      'access arguments' => array('pm_takeaction configure settings'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_permission().
+ */
+function pm_takeaction_permission() {
+  return array(
+    'pm_takeaction configure settings' => array(
+      'title' => t('Configure global settings'),
+      'description' => t('Configure the TakeAction Button global settings.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Admin form callback.
+ */
+function pm_takeaction_admin_form($form, &$form_state) {
+
+  $form['urls'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Integration URLs and Pages'),
+    '#description' => t('Settings for integration URLs and pages.'),
+    '#tree' => FALSE,
+  );
+
+  $form['urls']['pm_takeaction_button_js_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Button JavaScript URL'),
+    '#description' => t('The absolute URL to the TakeAction button JavaScript file.'),
+    '#required' => TRUE,
+    '#element_validate' => array('pm_takeaction_validate_url'),
+    '#default_value' => variable_get('pm_takeaction_button_js_url', ''),
+  );
+
+  $form['urls']['pm_takeaction_button_pub_id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Publisher ID'),
+    '#description' => t('The publisher ID passed through the button JS'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('pm_takeaction_button_pub_id', ''),
+  );
+
+  $form['urls']['pm_takeaction_button_js_location'] = array(
+    '#type' => 'select',
+    '#title' => t('Button JavaScript Location'),
+    '#description' => t('The location of the TakeAction button JavaScript file script tag.'),
+    '#required' => TRUE,
+    '#options' => array(
+      'header' => t('Header'),
+      'footer' => t('Footer'),
+    ),
+    '#default_value' => variable_get('pm_takeaction_button_js_location', 'footer'),
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * URL form element validation callback.
+ */
+function pm_takeaction_validate_url($element, &$form_state) {
+  if (!empty($element['#value'])) {
+    if (!valid_url($element['#value'], TRUE)) {
+      form_error($element, t('@title must be an absolute URL.', array(
+        '@title' => $element['#title'],
+      )));
+    }
+  }
+}
+
+/**
+ * Implements hook_init().
+ */
+function pm_takeaction_javascript_init() {
+  $uri = drupal_get_path_alias($_GET['q']);
+  if (($uri != 'iframes/header') && ($uri != 'iframes/footer') && ($uri != 'iframes/slim-header')) {
+    $button_js_url = variable_get('pm_takeaction_button_js_url', '');
+    if (!empty($button_js_url)) {
+      $scheme = parse_url($button_js_url, PHP_URL_SCHEME);
+      $host = parse_url($button_js_url, PHP_URL_HOST);
+      $location = variable_get('pm_takeaction_button_js_location', 'footer');
+      $pub_id = variable_get('pm_takeaction_button_pub_id', '');
+      $publisher_js = parse_url($button_js_url, PHP_URL_PATH);
+      $args = parse_url($button_js_url, PHP_URL_QUERY);
+      if (!empty($args)) {
+        $publisher_js .= '?' . $args;
+      }
+      $anchor = parse_url($button_js_url, PHP_URL_FRAGMENT);
+      if (!empty($anchor)) {
+        $publisher_js .= '#' . $anchor;
+      }
+      $button_js = "
+        window.TP = window.TP || {};
+        TP.tabHost = '{$scheme}://{$host}';
+        TP.publisherId = '{$pub_id}';
+        (function() {
+          var tabScript = document.createElement('script');
+          tabScript.type = 'text/javascript';
+          tabScript.async = true;
+          var scriptLocation = TP.tabHost || 'http://takeaction.takepart.com';
+          tabScript.src = scriptLocation + '{$publisher_js}';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(tabScript, s);
+        })();
+      ";
+      drupal_add_js($button_js, array(
+        'type' => 'inline',
+        'group' => JS_LIBRARY,
+        'every_page' => TRUE,
+        'scope' => $location,
+        'weight' => 0,
+      ));
+    }
+  }
+}
