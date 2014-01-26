@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Pivot Longtail feature.
- */
-
-include_once 'pivot_longtail.features.inc';
