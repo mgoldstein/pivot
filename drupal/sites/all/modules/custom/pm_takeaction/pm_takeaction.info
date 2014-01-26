@@ -1,4 +1,4 @@
-name = TakeAction Button Core
+name = TakeAction Button
 description = Module for managing and configuring the TakeAction button
 core = 7.x
 package = TakeAction Button
