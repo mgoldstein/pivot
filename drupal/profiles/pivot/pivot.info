@@ -29,7 +29,6 @@ dependencies[] = admin_menu_toolbar
 dependencies[] = advanced_help
 dependencies[] = apachesolr
 dependencies[] = backup_migrate
-dependencies[] = botr
 dependencies[] = content_lock
 dependencies[] = ctools
 dependencies[] = dfp
@@ -40,7 +39,6 @@ dependencies[] = file_entity
 dependencies[] = file_entity_inline
 dependencies[] = filefield_sources
 dependencies[] = filefield_sources_plupload
-dependencies[] = jw_player
 dependencies[] = libraries
 dependencies[] = link
 dependencies[] = media
@@ -76,7 +74,6 @@ dependencies[] = pivot_global
 dependencies[] = bluestatedigital
 dependencies[] = newsletter_campaign
 dependencies[] = waterfallapi
-dependencies[] = wordlet
 
 ; Features
 dependencies[] = pivot_action
