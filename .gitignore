@@ -4,9 +4,6 @@
 # Ignore environment settings
 /drupal/sites/default/settings.php
 
-# Ignore the participant core theme
-/drupal/sites/all/themes/participant_core
-
 # Ignore NetBeans project
 /nbproject/
 
