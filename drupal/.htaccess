@@ -63,6 +63,10 @@ DirectoryIndex index.php index.html index.htm
   RewriteCond %{HTTP_HOST} ^pivot\.tv$ [NC]
   RewriteRule ^(.*)$ http://www.pivot.tv/$1 [L,R=301]
 
+  # The style sheet for the schedule page was created when we were planning to
+  # use versioned theme names.
+  RewriteRule sites/all/themes/pivot1/css/schedule.css sites/all/themes/pivot/css/schedule.css [L]
+
   # Select the correct robots.txt
   RewriteCond %{HTTP_HOST} =www.pivot.tv [OR]
   RewriteCond %{HTTP_HOST} =pivot.tv
@@ -74,7 +78,7 @@ DirectoryIndex index.php index.html index.htm
   # The ELB health check uses the internal IP address of the webhead.
   #RewriteCond %{SERVER_ADDR} ^(10.28.207.242|10.28.193.19|10.159.36.144|10.157.31.224)$
   #RewriteCond %{HTTP_HOST} !^(10.28.207.242|10.28.193.19|10.159.36.144|10.157.31.224)$
-  
+
   # Check that the server is not being accessed by its webhead name
   #RewriteCond %{HTTP_HOST} !^web(1|2|3|4).prod.pivot.tv$
 
@@ -92,7 +96,7 @@ DirectoryIndex index.php index.html index.htm
 
   # Please like me campaign redirect (needs to be case-insensitive)
   RewriteCond %{REQUEST_URI} /PleaseLikeMe [NC]
-  RewriteRule .* http://www.pleaselikeme.org/ [R=301,L] 
+  RewriteRule .* http://www.pleaselikeme.org/ [R=301,L]
 
   # Please like me campaign redirect (needs to be case-insensitive)
   RewriteCond %{REQUEST_URI} /projectpivot [NC]
