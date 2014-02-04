@@ -116,7 +116,7 @@ function pm_takeaction_validate_url($element, &$form_state) {
 /**
  * Implements hook_init().
  */
-function pm_takeaction_javascript_init() {
+function pm_takeaction_init() {
   $uri = drupal_get_path_alias($_GET['q']);
   if (($uri != 'iframes/header') && ($uri != 'iframes/footer') && ($uri != 'iframes/slim-header')) {
     $button_js_url = variable_get('pm_takeaction_button_js_url', '');
