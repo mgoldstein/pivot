@@ -158,3 +158,24 @@ function pm_takeaction_init() {
     }
   }
 }
+
+/**
+ * Implements hook_wysiwyg_plugin().
+ */
+function pm_takeaction_wysiwyg_plugin($editor, $version) {
+  $plugin_path = drupal_get_path('module', 'pm_takeaction')
+    . '/ckeditor/takeactionbutton';
+  switch ($editor) {
+    case 'ckeditor':
+      return array(
+        'takeactionbutton' => array(
+          'path' => $plugin_path,
+          'buttons' => array(
+            'takeactionbutton' => t('Embed TakeAction Button'),
+          ),
+          'load' => TRUE,
+        ),
+      );
+      break;
+  }
+}
