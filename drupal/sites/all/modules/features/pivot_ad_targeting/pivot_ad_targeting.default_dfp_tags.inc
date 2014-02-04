@@ -30,7 +30,12 @@ function pivot_ad_targeting_default_dfp_tag() {
       'text' => '',
       'url' => '',
     ),
-    'targeting' => array(),
+    'targeting' => array(
+      0 => array(
+        'target' => 'show',
+        'value' => '[current-page:url:args:value:1]',
+      ),
+    ),
   );
   $export['pivot_ros_background_1x1'] = $tag;
 
@@ -54,7 +59,12 @@ function pivot_ad_targeting_default_dfp_tag() {
       'text' => '',
       'url' => '',
     ),
-    'targeting' => array(),
+    'targeting' => array(
+      0 => array(
+        'target' => 'show',
+        'value' => '[current-page:url:args:value:1]',
+      ),
+    ),
   );
   $export['pivot_ros_leaderboard_728x90'] = $tag;
 
@@ -78,7 +88,12 @@ function pivot_ad_targeting_default_dfp_tag() {
       'text' => '',
       'url' => '',
     ),
-    'targeting' => array(),
+    'targeting' => array(
+      0 => array(
+        'target' => 'show',
+        'value' => '[current-page:url:args:value:1]',
+      ),
+    ),
   );
   $export['pivot_ros_mobile_300x50'] = $tag;
 
@@ -102,7 +117,12 @@ function pivot_ad_targeting_default_dfp_tag() {
       'text' => '',
       'url' => '',
     ),
-    'targeting' => array(),
+    'targeting' => array(
+      0 => array(
+        'target' => 'show',
+        'value' => '[current-page:url:args:value:1]',
+      ),
+    ),
   );
   $export['pivot_ros_rr_300x250'] = $tag;
 

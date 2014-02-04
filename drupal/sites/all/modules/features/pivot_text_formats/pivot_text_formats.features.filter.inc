@@ -14,7 +14,7 @@ function pivot_text_formats_filter_default_formats() {
   $formats['filtered_html'] = array(
     'format' => 'filtered_html',
     'name' => 'Filtered HTML',
-    'cache' => 0,
+    'cache' => 1,
     'status' => 1,
     'weight' => 0,
     'filters' => array(
@@ -24,11 +24,6 @@ function pivot_text_formats_filter_default_formats() {
         'settings' => array(
           'filter_url_length' => 72,
         ),
-      ),
-      'node_embed' => array(
-        'weight' => 0,
-        'status' => 1,
-        'settings' => array(),
       ),
       'filter_html' => array(
         'weight' => 1,
@@ -61,7 +56,7 @@ function pivot_text_formats_filter_default_formats() {
   $formats['full_html'] = array(
     'format' => 'full_html',
     'name' => 'Full HTML',
-    'cache' => 0,
+    'cache' => 1,
     'status' => 1,
     'weight' => 1,
     'filters' => array(
@@ -71,11 +66,6 @@ function pivot_text_formats_filter_default_formats() {
         'settings' => array(
           'filter_url_length' => 72,
         ),
-      ),
-      'node_embed' => array(
-        'weight' => 0,
-        'status' => 1,
-        'settings' => array(),
       ),
       'filter_autop' => array(
         'weight' => 1,

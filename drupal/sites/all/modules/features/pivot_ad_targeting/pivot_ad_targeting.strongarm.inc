@@ -82,12 +82,12 @@ function pivot_ad_targeting_strongarm() {
   $strongarm->name = 'dfp_targeting';
   $strongarm->value = array(
     0 => array(
-      'target' => 'PageTitle',
+      'target' => 'page-title',
       'value' => '[current-page:page-title]',
     ),
     1 => array(
-      'target' => 'show',
-      'value' => '[current-page:url:args:value:1]',
+      'target' => 'url',
+      'value' => '[site:current-page:path]',
     ),
   );
   $export['dfp_targeting'] = $strongarm;

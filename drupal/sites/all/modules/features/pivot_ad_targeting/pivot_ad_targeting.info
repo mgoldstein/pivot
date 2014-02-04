@@ -2,7 +2,6 @@ name = Pivot Ad Targeting
 description = Provides custom ad targeting for Pivot
 core = 7.x
 package = Config
-php = 5.2.4
 version = 7.x-1.0
 project = pivot_ad_targeting
 dependencies[] = ctools
