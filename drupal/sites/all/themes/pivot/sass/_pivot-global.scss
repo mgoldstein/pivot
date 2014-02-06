@@ -1761,14 +1761,14 @@ h2.other-movies.block-title {
     font-family: "Apercu Mono Regular", monospace;
     margin-bottom: 20px;
   }
-  
+
   img {
     max-width: 100%;
   }
   a{
   	color: #0084a9;
   }
-  
+
 }
 
 //----------
@@ -2549,8 +2549,19 @@ iframe.media-youtube-player {
 
 
 /* ============================================================
-|| Video Page
+|| Video Page and Embeds
 ============================================================ */
+
+.region-right-sidebar {
+  .field-name-field-video-media {
+    object {
+      display: table-cell;
+    }
+    div[id*=jwplayer] {
+      display: table;
+    }
+	}
+}
 
 .page-node.node-type-video {
 
