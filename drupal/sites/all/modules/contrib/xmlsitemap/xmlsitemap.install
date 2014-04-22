@@ -25,7 +25,7 @@ function xmlsitemap_requirements($phase) {
       'value' => $t('Disabled'),
       'severity' => REQUIREMENT_ERROR,
       'description' => $t("The XML sitemap module requires you to enable the PHP extensions in the following list (see the <a href=\"@xmlsitemap_requirements\">module's system requirements page</a> for more information):", array(
-	'@xmlsitemap_requirements' => 'http://drupal.org/documentation/modules/xmlsitemap/requirements',
+        '@xmlsitemap_requirements' => 'http://drupal.org/documentation/modules/xmlsitemap/requirements',
       )) . theme('item_list', array('items' => $missing_extensions)),
     );
   }
@@ -35,10 +35,10 @@ function xmlsitemap_requirements($phase) {
     // the root directory.
     if (variable_get('clean_url', 0) && file_exists(DRUPAL_ROOT . '/sitemap.xml')) {
       $requirements['xmlsitemap_file'] = array(
-	'title' => $t('XML sitemap'),
-	'value' => $t('Existing sitemap.xml file found.'),
-	'severity' => REQUIREMENT_ERROR,
-	'description' => $t('The XML sitemap module cannot display its XML output if there is an existing sitemap.xml file in your website root.'),
+        'title' => $t('XML sitemap'),
+        'value' => $t('Existing sitemap.xml file found.'),
+        'severity' => REQUIREMENT_ERROR,
+        'description' => $t('The XML sitemap module cannot display its XML output if there is an existing sitemap.xml file in your website root.'),
       );
     }
 
@@ -55,14 +55,14 @@ function xmlsitemap_requirements($phase) {
     else {
       $directories = xmlsitemap_check_all_directories();
       foreach ($directories as $directory => $writable) {
-	if ($writable) {
-	  unset($directories[$directory]);
-	}
+        if ($writable) {
+          unset($directories[$directory]);
+        }
       }
       if (!empty($directories)) {
-	$requirements['xmlsitemap_directory']['value'] = $t('Not found or not writable');
-	$requirements['xmlsitemap_directory']['severity'] = REQUIREMENT_ERROR;
-	$requirements['xmlsitemap_directory']['description'] = $t('The following directories were not found or are not writable by the server. See <a href="@docpage">@docpage</a> for more information. !directories', array('!directories' => theme('item_list', array('items' => array_keys($directories))), '@docpage' => 'http://drupal.org/node/34025'));
+        $requirements['xmlsitemap_directory']['value'] = $t('Not found or not writable');
+        $requirements['xmlsitemap_directory']['severity'] = REQUIREMENT_ERROR;
+        $requirements['xmlsitemap_directory']['description'] = $t('The following directories were not found or are not writable by the server. See <a href="@docpage">@docpage</a> for more information. !directories', array('!directories' => theme('item_list', array('items' => array_keys($directories))), '@docpage' => 'http://drupal.org/node/34025'));
       }
     }
 
@@ -71,10 +71,10 @@ function xmlsitemap_requirements($phase) {
     $max_links_limit = XMLSITEMAP_MAX_SITEMAP_LINKS * XMLSITEMAP_MAX_SITEMAP_LINKS;
     if ($max_links > $max_links_limit) {
       $requirements['xmlsitemap_link_count'] = array(
-	'title' => $t('XML sitemap link count'),
-	'value' => $max_links,
-	'description' => $t('You have exceeded the number of links that your sitemap can contain (@num).', array('@num' => number_format($max_links))),
-	'severity' => REQUIREMENT_ERROR,
+        'title' => $t('XML sitemap link count'),
+        'value' => $max_links,
+        'description' => $t('You have exceeded the number of links that your sitemap can contain (@num).', array('@num' => number_format($max_links))),
+        'severity' => REQUIREMENT_ERROR,
       );
     }
 
@@ -82,13 +82,13 @@ function xmlsitemap_requirements($phase) {
     $max_chunks = db_query("SELECT MAX(chunks) FROM {xmlsitemap_sitemap}")->fetchField();
     if ($max_chunks > XMLSITEMAP_MAX_SITEMAP_LINKS) {
       $requirements['xmlsitemap_chunk_count'] = array(
-	'title' => $t('XML sitemap page count'),
-	'value' => $max_chunks,
-	'description' => $t('You have exceeded the number of sitemap pages (@number).', array('@number' => number_format(XMLSITEMAP_MAX_SITEMAP_LINKS))),
-	'severity' => REQUIREMENT_ERROR,
+        'title' => $t('XML sitemap page count'),
+        'value' => $max_chunks,
+        'description' => $t('You have exceeded the number of sitemap pages (@number).', array('@number' => number_format(XMLSITEMAP_MAX_SITEMAP_LINKS))),
+        'severity' => REQUIREMENT_ERROR,
       );
       if (!in_array(xmlsitemap_get_chunk_size(), array(50000, 'auto'))) {
-	$requirements['xmlsitemap_chunk_count']['description'] .= ' ' . t('Please increase the number of links per page.');
+        $requirements['xmlsitemap_chunk_count']['description'] .= ' ' . t('Please increase the number of links per page.');
       }
     }
 
@@ -120,17 +120,17 @@ function xmlsitemap_requirements($phase) {
     }
     elseif (variable_get('xmlsitemap_regenerate_needed', FALSE)) {
       if ($max_filesize == 0) {
-	// A maximum sitemap file size of 0 indicates an error in generation.
-	$requirements['xmlsitemap_generated']['severity'] = REQUIREMENT_ERROR;
+        // A maximum sitemap file size of 0 indicates an error in generation.
+        $requirements['xmlsitemap_generated']['severity'] = REQUIREMENT_ERROR;
       }
       elseif ($generated_ago >= variable_get('cron_threshold_error', 1209600)) {
-	$requirements['xmlsitemap_generated']['severity'] = REQUIREMENT_ERROR;
+        $requirements['xmlsitemap_generated']['severity'] = REQUIREMENT_ERROR;
       }
       elseif ($generated_ago >= variable_get('cron_threshold_warning', 172800)) {
-	$requirements['xmlsitemap_generated']['severity'] = REQUIREMENT_WARNING;
+        $requirements['xmlsitemap_generated']['severity'] = REQUIREMENT_WARNING;
       }
       if ($requirements['xmlsitemap_generated']['severity']) {
-	$requirements['xmlsitemap_generated']['description'] = $t('The XML cached files are out of date and need to be regenerated. You can <a href="@link-cron">run cron manually</a> to regenerate the sitemap files.', array('@link-cron' => url('admin/reports/status/run-cron', array('query' => drupal_get_destination()))));
+        $requirements['xmlsitemap_generated']['description'] = $t('The XML cached files are out of date and need to be regenerated. You can <a href="@link-cron">run cron manually</a> to regenerate the sitemap files.', array('@link-cron' => url('admin/reports/status/run-cron', array('query' => drupal_get_destination()))));
       }
     }
   }
@@ -147,96 +147,96 @@ function xmlsitemap_schema() {
     'description' => 'The base table for xmlsitemap links.',
     'fields' => array(
       'id' => array(
-	'description' => 'Primary key with type; a unique id for the item.',
-	'type' => 'int',
-	'not null' => TRUE,
-	'unsigned' => TRUE,
-	'default' => 0,
+        'description' => 'Primary key with type; a unique id for the item.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+        'default' => 0,
       ),
       'type' => array(
-	'description' => 'Primary key with id; the type of item (e.g. node, user, etc.).',
-	'type' => 'varchar',
-	'length' => 32,
-	'not null' => TRUE,
-	'default' => '',
+        'description' => 'Primary key with id; the type of item (e.g. node, user, etc.).',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
       ),
       'subtype' => array(
-	'description' => 'A sub-type identifier for the link (node type, menu name, term VID, etc.).',
-	'type' => 'varchar',
-	'length' => 128,
-	'not null' => TRUE,
-	'default' => '',
+        'description' => 'A sub-type identifier for the link (node type, menu name, term VID, etc.).',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
       ),
       'loc' => array(
-	'description' => 'The URL to the item relative to the Drupal path.',
-	'type' => 'varchar',
-	'length' => 255,
-	'not null' => TRUE,
-	'default' => '',
+        'description' => 'The URL to the item relative to the Drupal path.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
       ),
       'language' => array(
-	'description' => 'The {languages}.language of this link or an empty string if it is language-neutral.',
-	'type' => 'varchar',
-	'length' => 12,
-	'not null' => TRUE,
-	'default' => '',
+        'description' => 'The {languages}.language of this link or an empty string if it is language-neutral.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => TRUE,
+        'default' => '',
       ),
       'access' => array(
-	'description' => 'A boolean that represents if the item is viewable by the anonymous user. This field is useful to store the result of node_access() so we can retain changefreq and priority_override information.',
-	'type' => 'int',
-	'size' => 'tiny',
-	'not null' => TRUE,
-	'default' => 1,
+        'description' => 'A boolean that represents if the item is viewable by the anonymous user. This field is useful to store the result of node_access() so we can retain changefreq and priority_override information.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 1,
       ),
       'status' => array(
-	'description' => 'An integer that represents if the item is included in the sitemap.',
-	'type' => 'int',
-	'size' => 'tiny',
-	'not null' => TRUE,
-	'default' => 1,
+        'description' => 'An integer that represents if the item is included in the sitemap.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 1,
       ),
       'status_override' => array(
-	'description' => 'A boolean that if TRUE means that the status field has been overridden from its default value.',
-	'type' => 'int',
-	'size' => 'tiny',
-	'not null' => TRUE,
-	'default' => 0,
+        'description' => 'A boolean that if TRUE means that the status field has been overridden from its default value.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 0,
       ),
       'lastmod' => array(
-	'description' => 'The UNIX timestamp of last modification of the item.',
-	'type' => 'int',
-	'unsigned' => TRUE,
-	'not null' => TRUE,
-	'default' => 0,
+        'description' => 'The UNIX timestamp of last modification of the item.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
       'priority' => array(
-	'description' => 'The priority of this URL relative to other URLs on your site. Valid values range from 0.0 to 1.0.',
-	'type' => 'float',
-	'default' => NULL,
-	// @todo Convert this field to non-nullable.
-	//'default' => 0.5,
-	//'not null' => NULL,
+        'description' => 'The priority of this URL relative to other URLs on your site. Valid values range from 0.0 to 1.0.',
+        'type' => 'float',
+        'default' => NULL,
+        // @todo Convert this field to non-nullable.
+        //'default' => 0.5,
+        //'not null' => NULL,
       ),
       'priority_override' => array(
-	'description' => 'A boolean that if TRUE means that the priority field has been overridden from its default value.',
-	'type' => 'int',
-	'size' => 'tiny',
-	'not null' => TRUE,
-	'default' => 0,
+        'description' => 'A boolean that if TRUE means that the priority field has been overridden from its default value.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 0,
       ),
       'changefreq' => array(
-	'description' => 'The average time in seconds between changes of this item.',
-	'type' => 'int',
-	'unsigned' => TRUE,
-	'not null' => TRUE,
-	'default' => 0,
+        'description' => 'The average time in seconds between changes of this item.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
       'changecount' => array(
-	'description' => 'The number of times this item has been changed. Used to help calculate the next changefreq value.',
-	'type' => 'int',
-	'unsigned' => TRUE,
-	'not null' => TRUE,
-	'default' => 0,
+        'description' => 'The number of times this item has been changed. Used to help calculate the next changefreq value.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
     ),
     'primary key' => array('id', 'type'),
@@ -251,40 +251,40 @@ function xmlsitemap_schema() {
   $schema['xmlsitemap_sitemap'] = array(
     'fields' => array(
       'smid' => array(
-	'description' => 'The sitemap ID (the hashed value of {xmlsitemap}.context.',
-	'type' => 'varchar',
-	'length' => 64,
-	'not null' => TRUE,
+        'description' => 'The sitemap ID (the hashed value of {xmlsitemap}.context.',
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
       ),
       'context' => array(
-	'description' => 'Serialized array with the sitemaps context',
-	'type' => 'text',
-	'not null' => TRUE,
-	'serialize' => TRUE,
+        'description' => 'Serialized array with the sitemaps context',
+        'type' => 'text',
+        'not null' => TRUE,
+        'serialize' => TRUE,
       ),
       'updated' => array(
-	'type' => 'int',
-	'unsigned' => TRUE,
-	'not null' => TRUE,
-	'default' => 0,
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
       'links' => array(
-	'type' => 'int',
-	'unsigned' => TRUE,
-	'not null' => TRUE,
-	'default' => 0,
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
       'chunks' => array(
-	'type' => 'int',
-	'unsigned' => TRUE,
-	'not null' => TRUE,
-	'default' => 0,
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
       'max_filesize' => array(
-	'type' => 'int',
-	'unsigned' => TRUE,
-	'not null' => TRUE,
-	'default' => 0,
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
       //'queued' => array(
       //  'type' => 'int',
@@ -379,46 +379,46 @@ function xmlsitemap_update_6202() {
   if (!db_table_exists('xmlsitemap_sitemap')) {
     $schema['xmlsitemap_sitemap'] = array(
       'fields' => array(
-	'smid' => array(
-	  'description' => 'Sitemap ID',
-	  'type' => 'serial',
-	  'unsigned' => TRUE,
-	  'not null' => TRUE,
-	),
-	'context_hash' => array(
-	  'description' => 'The MD5 hash of the context field.',
-	  'type' => 'varchar',
-	  'length' => 32,
-	  'not null' => TRUE,
-	  'default' => '',
-	),
-	'context' => array(
-	  'description' => 'Serialized array with the sitemaps context',
-	  'type' => 'text',
-	  'not null' => TRUE,
-	),
-	'updated' => array(
-	  'type' => 'int',
-	  'unsigned' => TRUE,
-	  'not null' => TRUE,
-	  'default' => 0,
-	),
-	'links' => array(
-	  'type' => 'int',
-	  'unsigned' => TRUE,
-	  'not null' => TRUE,
-	  'default' => 0,
-	),
-	'chunks' => array(
-	  'type' => 'int',
-	  'unsigned' => TRUE,
-	  'not null' => TRUE,
-	  'default' => 0,
-	),
+        'smid' => array(
+          'description' => 'Sitemap ID',
+          'type' => 'serial',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        ),
+        'context_hash' => array(
+          'description' => 'The MD5 hash of the context field.',
+          'type' => 'varchar',
+          'length' => 32,
+          'not null' => TRUE,
+          'default' => '',
+        ),
+        'context' => array(
+          'description' => 'Serialized array with the sitemaps context',
+          'type' => 'text',
+          'not null' => TRUE,
+        ),
+        'updated' => array(
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0,
+        ),
+        'links' => array(
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0,
+        ),
+        'chunks' => array(
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0,
+        ),
       ),
       'primary key' => array('smid'),
       'unique keys' => array(
-	'context_hash' => array('context_hash'),
+        'context_hash' => array('context_hash'),
       ),
     );
     db_create_table('xmlsitemap_sitemap', $schema['xmlsitemap_sitemap']);
@@ -432,9 +432,9 @@ function xmlsitemap_update_6202() {
 
     if (module_exists('xmlsitemap_i18n') && $languages = variable_get('xmlsitemap_languages', array())) {
       foreach ($languages as $language) {
-	$sitemap = new stdClass();
-	$sitemap->context = array('language' => $language);
-	xmlsitemap_sitemap_save($sitemap);
+        $sitemap = new stdClass();
+        $sitemap->context = array('language' => $language);
+        xmlsitemap_sitemap_save($sitemap);
       }
     }
     else {

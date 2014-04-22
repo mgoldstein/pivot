@@ -52,7 +52,7 @@ function _xmlsitemap_regenerate_before() {
 
   if (variable_get('xmlsitemap_developer_mode', 0)) {
     watchdog('xmlsitemap', 'Starting XML sitemap generation. Memory usage: @memory-peak.', array(
-	'@memory-peak' => format_size(memory_get_peak_usage(TRUE)),
+        '@memory-peak' => format_size(memory_get_peak_usage(TRUE)),
       ),
       WATCHDOG_DEBUG
     );
@@ -341,8 +341,8 @@ function xmlsitemap_regenerate_batch_finished($success, $results, $operations, $
     watchdog('xmlsitemap',
       'Finished XML sitemap generation in @elapsed. Memory usage: @memory-peak.',
       array(
-	'@elapsed' => $elapsed,
-	'@memory-peak' => format_size(memory_get_peak_usage(TRUE)),
+        '@elapsed' => $elapsed,
+        '@memory-peak' => format_size(memory_get_peak_usage(TRUE)),
       ),
       WATCHDOG_NOTICE
     );

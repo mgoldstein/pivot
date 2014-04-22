@@ -9,19 +9,19 @@ $.tablesorter.addParser({
   format: function(s) {
     switch (s) {
       case 'always':
-	return 0;
+        return 0;
       case 'hourly':
-	return 1;
+        return 1;
       case 'daily':
-	return 2;
+        return 2;
       case 'weekly':
-	return 3;
+        return 3;
       case 'monthly':
-	return 4;
+        return 4;
       case 'yearly':
-	return 5;
+        return 5;
       default:
-	return 6;
+        return 6;
     }
   },
   type: 'numeric'

@@ -24,34 +24,34 @@ function hook_xmlsitemap_link_info() {
       'label' => 'My module',
       'base table' => 'mymodule',
       'entity keys' => array(
-	// Primary ID key on {base table}
-	'id' => 'myid',
-	// Subtype key on {base table}
-	'bundle' => 'mysubtype',
+        // Primary ID key on {base table}
+        'id' => 'myid',
+        // Subtype key on {base table}
+        'bundle' => 'mysubtype',
       ),
       'path callback' => 'mymodule_path',
       'bundle label' => t('Subtype name'),
       'bundles' => array(
-	'mysubtype1' => array(
-	  'label' => t('My subtype 1'),
-	  'admin' => array(
-	    'real path' => 'admin/settings/mymodule/mysubtype1/edit',
-	    'access arguments' => array('administer mymodule'),
-	  ),
-	  'xmlsitemap' => array(
-	    'status' => XMLSITEMAP_STATUS_DEFAULT,
-	    'priority' => XMLSITEMAP_PRIORITY_DEFAULT,
-	  ),
-	),
+        'mysubtype1' => array(
+          'label' => t('My subtype 1'),
+          'admin' => array(
+            'real path' => 'admin/settings/mymodule/mysubtype1/edit',
+            'access arguments' => array('administer mymodule'),
+          ),
+          'xmlsitemap' => array(
+            'status' => XMLSITEMAP_STATUS_DEFAULT,
+            'priority' => XMLSITEMAP_PRIORITY_DEFAULT,
+          ),
+        ),
       ),
       'xmlsitemap' => array(
-	// Callback function to take an array of IDs and save them as sitemap
-	// links.
-	'process callback' => '',
-	// Callback function used in batch API for rebuilding all links.
-	'rebuild callback' => '',
-	// Callback function called from the XML sitemap settings page.
-	'settings callback' => '',
+        // Callback function to take an array of IDs and save them as sitemap
+        // links.
+        'process callback' => '',
+        // Callback function used in batch API for rebuilding all links.
+        'rebuild callback' => '',
+        // Callback function called from the XML sitemap settings page.
+        'settings callback' => '',
       )
     ),
   );

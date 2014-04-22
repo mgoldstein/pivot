@@ -128,12 +128,12 @@ class XMLSitemapTestHelper extends DrupalWebTestCase {
 
     foreach ($conditions as $key => $value) {
       if ($value === NULL || $link[$key] === NULL) {
-	// For nullable fields, always check for identical values (===).
-	$this->assertIdentical($link[$key], $value, t('Identical values for @type @id link field @key.', array('@type' => $entity_type, '@id' => $entity_id, '@key' => $key)));
+        // For nullable fields, always check for identical values (===).
+        $this->assertIdentical($link[$key], $value, t('Identical values for @type @id link field @key.', array('@type' => $entity_type, '@id' => $entity_id, '@key' => $key)));
       }
       else {
-	// Otherwise check simple equality (==).
-	$this->assertEqual($link[$key], $value, t('Equal values for @type @id link field @key.', array('@type' => $entity_type, '@id' => $entity_id, '@key' => $key)));
+        // Otherwise check simple equality (==).
+        $this->assertEqual($link[$key], $value, t('Equal values for @type @id link field @key.', array('@type' => $entity_type, '@id' => $entity_id, '@key' => $key)));
       }
     }
   }
@@ -147,12 +147,12 @@ class XMLSitemapTestHelper extends DrupalWebTestCase {
 
     foreach ($conditions as $key => $value) {
       if ($value === NULL || $link[$key] === NULL) {
-	// For nullable fields, always check for identical values (===).
-	$this->assertNotIdentical($link[$key], $value, t('Not identical values for @type @id link field @key.', array('@type' => $entity_type, '@id' => $entity_id, '@key' => $key)));
+        // For nullable fields, always check for identical values (===).
+        $this->assertNotIdentical($link[$key], $value, t('Not identical values for @type @id link field @key.', array('@type' => $entity_type, '@id' => $entity_id, '@key' => $key)));
       }
       else {
-	// Otherwise check simple equality (==).
-	$this->assertNotEqual($link[$key], $value, t('Not equal values for link @type @id field @key.', array('@type' => $entity_type, '@id' => $entity_id, '@key' => $key)));
+        // Otherwise check simple equality (==).
+        $this->assertNotEqual($link[$key], $value, t('Not equal values for link @type @id field @key.', array('@type' => $entity_type, '@id' => $entity_id, '@key' => $key)));
       }
     }
   }
@@ -231,7 +231,7 @@ class XMLSitemapTestHelper extends DrupalWebTestCase {
     $query->fields('watchdog', array('wid', 'type', 'severity', 'message', 'variables', 'timestamp'));
     foreach ($conditions as $field => $value) {
       if ($field == 'variables' && !is_string($value)) {
-	$value = serialize($value);
+        $value = serialize($value);
       }
       $query->condition($field, $value);
     }
@@ -263,7 +263,7 @@ class XMLSitemapTestHelper extends DrupalWebTestCase {
     foreach ($messages as $message) {
       $message->text = $this->formatWatchdogMessage($message);
       if (in_array($message->severity, array(WATCHDOG_EMERGENCY, WATCHDOG_ALERT, WATCHDOG_CRITICAL, WATCHDOG_ERROR, WATCHDOG_WARNING))) {
-	$this->fail($message->text);
+        $this->fail($message->text);
       }
       $verbose[] = $message->text;
     }

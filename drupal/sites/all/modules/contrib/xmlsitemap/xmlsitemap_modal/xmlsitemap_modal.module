@@ -34,7 +34,7 @@ function xmlsitemap_modal_get_form() {
     if (empty($commands)) {
       $commands[] = ctools_modal_command_loading();
       if (!empty($_GET['destination'])) {
-	$commands[] = ctools_ajax_command_redirect($_GET['destination']);
+        $commands[] = ctools_ajax_command_redirect($_GET['destination']);
       }
     }
     return ajax_render($commands);

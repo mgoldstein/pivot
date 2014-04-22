@@ -458,8 +458,8 @@ function xmlsitemap_sitemap_delete_multiple(array $smids) {
   if (!empty($smids)) {
     $sitemaps = xmlsitemap_sitemap_load_multiple($smids);
     db_delete('xmlsitemap_sitemap')
-	->condition('smid', $smids)
-	->execute();
+        ->condition('smid', $smids)
+        ->execute();
 
     foreach ($sitemaps as $sitemap) {
       xmlsitemap_clear_directory($sitemap, TRUE);
@@ -880,7 +880,7 @@ function _xmlsitemap_delete_recursive($path, $delete_root = FALSE) {
     $dir = dir($path);
     while (($entry = $dir->read()) !== FALSE) {
       if ($entry == '.' || $entry == '..') {
-	continue;
+        continue;
       }
       $entry_path = $path . '/' . $entry;
       file_unmanaged_delete_recursive($entry_path, TRUE);
@@ -922,34 +922,34 @@ function xmlsitemap_get_link_info($type = NULL, $reset = FALSE) {
       entity_info_cache_clear();
       $link_info = entity_get_info();
       foreach ($link_info as $key => $info) {
-	if (empty($info['uri callback']) || !isset($info['xmlsitemap'])) {
-	  // Remove any non URL-able or XML sitemap un-supported entites.
-	  unset($link_info[$key]);
-	}
-	foreach ($info['bundles'] as $bundle_key => $bundle) {
-	  if (!isset($bundle['xmlsitemap'])) {
-	    // Remove any un-supported entity bundles.
-	    //unset($link_info[$key]['bundles'][$bundle_key]);
-	  }
-	}
+        if (empty($info['uri callback']) || !isset($info['xmlsitemap'])) {
+          // Remove any non URL-able or XML sitemap un-supported entites.
+          unset($link_info[$key]);
+        }
+        foreach ($info['bundles'] as $bundle_key => $bundle) {
+          if (!isset($bundle['xmlsitemap'])) {
+            // Remove any un-supported entity bundles.
+            //unset($link_info[$key]['bundles'][$bundle_key]);
+          }
+        }
       }
       $link_info = array_merge($link_info, module_invoke_all('xmlsitemap_link_info'));
       foreach ($link_info as $key => &$info) {
-	$info += array(
-	  'type' => $key,
-	  'base table' => FALSE,
-	  'bundles' => array(),
-	  'xmlsitemap' => array(),
-	);
-	if (!isset($info['xmlsitemap']['rebuild callback']) && !empty($info['base table']) && !empty($info['entity keys']['id']) && !empty($info['xmlsitemap']['process callback'])) {
-	  $info['xmlsitemap']['rebuild callback'] = 'xmlsitemap_rebuild_batch_fetch';
-	}
-	foreach ($info['bundles'] as $bundle => &$bundle_info) {
-	  $bundle_info += array(
-	    'xmlsitemap' => array(),
-	  );
-	  $bundle_info['xmlsitemap'] += xmlsitemap_link_bundle_load($key, $bundle, FALSE);
-	}
+        $info += array(
+          'type' => $key,
+          'base table' => FALSE,
+          'bundles' => array(),
+          'xmlsitemap' => array(),
+        );
+        if (!isset($info['xmlsitemap']['rebuild callback']) && !empty($info['base table']) && !empty($info['entity keys']['id']) && !empty($info['xmlsitemap']['process callback'])) {
+          $info['xmlsitemap']['rebuild callback'] = 'xmlsitemap_rebuild_batch_fetch';
+        }
+        foreach ($info['bundles'] as $bundle => &$bundle_info) {
+          $bundle_info += array(
+            'xmlsitemap' => array(),
+          );
+          $bundle_info['xmlsitemap'] += xmlsitemap_link_bundle_load($key, $bundle, FALSE);
+        }
       }
       drupal_alter('xmlsitemap_link_info', $link_info);
       ksort($link_info);
@@ -1347,8 +1347,8 @@ function xmlsitemap_link_bundle_settings_form_submit($form, &$form_state) {
     if (isset($entity_info['bundle keys']['bundle'])) {
       $bundle_key = $entity_info['bundle keys']['bundle'];
       if (isset($form_state['values'][$bundle_key])) {
-	$bundle = $form_state['values'][$bundle_key];
-	$form['xmlsitemap']['#bundle'] = $bundle;
+        $bundle = $form_state['values'][$bundle_key];
+        $form['xmlsitemap']['#bundle'] = $bundle;
       }
     }
   }

@@ -19,11 +19,11 @@ function _xmlsitemap_get_blurb($check_version = TRUE) {
     $blurb = FALSE;
     if (!$check_version || (($version = _xmlsitemap_get_version()) && preg_match('/dev|unstable|alpha|beta|HEAD/i', $version))) {
       $sponsors = array(
-	l('Symantec', 'http://www.symantec.com/'),
-	l('WebWise Solutions', 'http://www.webwiseone.com/'),
-	l('Volacci', 'http://www.volacci.com/'),
-	l('lanetro', 'http://www.lanetro.com/'),
-	l('Coupons Dealuxe', 'http://couponsdealuxe.com/'),
+        l('Symantec', 'http://www.symantec.com/'),
+        l('WebWise Solutions', 'http://www.webwiseone.com/'),
+        l('Volacci', 'http://www.volacci.com/'),
+        l('lanetro', 'http://www.lanetro.com/'),
+        l('Coupons Dealuxe', 'http://couponsdealuxe.com/'),
       );
       // Don't extract the following string for translation.
       $blurb = '<div class="description"><p>Thank you for helping test the XML sitemap module rewrite. Please consider helping offset developer free time by <a href="http://davereid.chipin.com/">donating</a> or if your company is interested in sponsoring the rewrite or a specific feature, please <a href="http://davereid.net/contact">contact the developer</a>. Thank you to the following current sponsors: ' . implode(', ', $sponsors) . ', and all the individuals that have donated. This message will not be seen in the stable versions.</p></div>';
@@ -58,9 +58,9 @@ function xmlsitemap_check_status() {
       $modules = array();
       module_load_all_includes('install');
       foreach (module_implements('requirements') as $module) {
-	if (strpos($module, 'xmlsitemap') !== FALSE) {
-	  $modules[] = $module;
-	}
+        if (strpos($module, 'xmlsitemap') !== FALSE) {
+          $modules[] = $module;
+        }
       }
       cache_set('xmlsitemap:registry:requirements', $modules);
     }
@@ -70,16 +70,16 @@ function xmlsitemap_check_status() {
       module_load_install($module);
       $requirements = module_invoke($module, 'requirements', 'runtime');
       foreach ($requirements as $requirement) {
-	if (isset($requirement['severity']) && max(REQUIREMENT_OK, $requirement['severity'])) {
-	  $messages[] = $requirement['description'];
-	}
+        if (isset($requirement['severity']) && max(REQUIREMENT_OK, $requirement['severity'])) {
+          $messages[] = $requirement['description'];
+        }
       }
     }
 
     if ($messages) {
       $message = t('One or more problems were detected with your XML sitemap configuration: !messages', array('!messages' => theme('item_list', array('items' => $messages))));
       if (user_access('access site reports')) {
-	$message .= t('Check the <a href="@status-report">status report</a> for more information.', array('@status-report' => url('admin/reports/status')));
+        $message .= t('Check the <a href="@status-report">status report</a> for more information.', array('@status-report' => url('admin/reports/status')));
       }
       drupal_set_message($message, 'warning', FALSE);
     }

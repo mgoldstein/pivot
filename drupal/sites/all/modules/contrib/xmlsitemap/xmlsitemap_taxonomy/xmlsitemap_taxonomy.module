@@ -205,7 +205,7 @@ function xmlsitemap_taxonomy_get_term_depth(stdClass $term) {
     if ($parent = db_query("SELECT parent FROM {taxonomy_term_hierarchy} WHERE tid = %d", $term->tid)->fetchField()) {
       // If the term has a parent, the term's depth is the parent's depth + 1.
       if (!isset($depths[$parent])) {
-	$depths[$parent] = xmlsitemap_taxonomy_get_term_depth($parent);
+        $depths[$parent] = xmlsitemap_taxonomy_get_term_depth($parent);
       }
       $depths[$term->tid] = $depths[$parent] + 1;
     }
@@ -248,14 +248,14 @@ function xmlsitemap_taxonomy_entity_query_alter($query) {
 
       // Convert vocabulary machine names to vocabulary IDs.
       if (is_array($conditions['bundle']['value'])) {
-	foreach ($conditions['bundle']['value'] as $vocabulary_machine_name) {
-	  $vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_machine_name);
-	  $vids[] = $vocabulary->vid;
-	}
+        foreach ($conditions['bundle']['value'] as $vocabulary_machine_name) {
+          $vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_machine_name);
+          $vids[] = $vocabulary->vid;
+        }
       }
       else {
-	$vocabulary = taxonomy_vocabulary_machine_name_load($conditions['bundle']['value']);
-	$vids = $vocabulary->vid;
+        $vocabulary = taxonomy_vocabulary_machine_name_load($conditions['bundle']['value']);
+        $vids = $vocabulary->vid;
       }
 
       $query->propertyCondition('vid', $vids, $conditions['bundle']['operator']);

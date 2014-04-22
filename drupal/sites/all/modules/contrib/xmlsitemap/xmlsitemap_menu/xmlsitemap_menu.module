@@ -16,32 +16,32 @@ function xmlsitemap_menu_entity_info_alter(&$info) {
       'static cache' => TRUE,
       'field cache' => TRUE,
       'entity keys' => array(
-	'id' => 'mlid',
-	'bundle' => 'menu_name',
-	'label' => 'link_title',
-	'revision' => '',
+        'id' => 'mlid',
+        'bundle' => 'menu_name',
+        'label' => 'link_title',
+        'revision' => '',
       ),
       'load hook' => NULL,
       'view modes' => array(),
       'translation' => array(),
       'schema_fields_sql' => array(
-	'base table' => drupal_schema_fields_sql('menu_links'),
+        'base table' => drupal_schema_fields_sql('menu_links'),
       ),
       'xmlsitemap' => array(
-	'process callback' => 'xmlsitemap_menu_xmlsitemap_process_menu_links',
+        'process callback' => 'xmlsitemap_menu_xmlsitemap_process_menu_links',
       ),
       'bundle label' => t('Menu'),
     );
 
     foreach (menu_get_menus() as $type => $name) {
       $info['menu_link']['bundles'][$type] = array(
-	'label' => $name,
-	'admin' => array(
-	  'path' => 'admin/structure/menu/manage/%menu/edit',
-	  'bundle argument' => 4,
-	  'real path' => 'admin/structure/menu/manage/' . $type . '/edit',
-	  'access arguments' => array('administer menus'),
-	),
+        'label' => $name,
+        'admin' => array(
+          'path' => 'admin/structure/menu/manage/%menu/edit',
+          'bundle argument' => 4,
+          'real path' => 'admin/structure/menu/manage/' . $type . '/edit',
+          'access arguments' => array('administer menus'),
+        ),
       );
     }
   }

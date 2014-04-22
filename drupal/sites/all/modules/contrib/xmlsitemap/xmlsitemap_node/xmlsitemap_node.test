@@ -136,12 +136,12 @@ class XMLSitemapNodeFunctionalTest extends XMLSitemapTestHelper {
     for ($i = 1; $i <= ($limit + 1); $i++) {
       $node = array_pop($nodes);
       if ($i <= $limit) {
-	// The first $limit nodes should be inserted.
-	$this->assertSitemapLinkValues('node', $node->nid, array('access' => 1, 'status' => 1, 'lastmod' => $node->changed));
+        // The first $limit nodes should be inserted.
+        $this->assertSitemapLinkValues('node', $node->nid, array('access' => 1, 'status' => 1, 'lastmod' => $node->changed));
       }
       else {
-	// Any beyond $limit should not be in the sitemap.
-	$this->assertNoSitemapLink(array('type' => 'node', 'id' => $node->nid));
+        // Any beyond $limit should not be in the sitemap.
+        $this->assertNoSitemapLink(array('type' => 'node', 'id' => $node->nid));
       }
     }
   }

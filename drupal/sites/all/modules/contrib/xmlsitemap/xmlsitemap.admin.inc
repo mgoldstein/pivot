@@ -65,15 +65,15 @@ function xmlsitemap_sitemap_list_form() {
 
     $options[$smid]['url'] = array(
       'data' => array(
-	'#type' => 'link',
-	'#title' => $sitemap->url,
-	'#href' => $sitemap->url,
+        '#type' => 'link',
+        '#title' => $sitemap->url,
+        '#href' => $sitemap->url,
       ),
     );
 
     foreach ($contexts as $context_key => $context_info) {
       if (!empty($context_info['summary callback'])) {
-	$options[$smid]['context_' . $context_key] = _xmlsitemap_sitemap_context_summary($sitemap, $context_key, $context_info);
+        $options[$smid]['context_' . $context_key] = _xmlsitemap_sitemap_context_summary($sitemap, $context_key, $context_info);
       }
     }
 
@@ -89,11 +89,11 @@ function xmlsitemap_sitemap_list_form() {
     $operations['delete'] = xmlsitemap_get_operation_link('admin/config/search/xmlsitemap/delete/' . $smid, array('title' => t('Delete'), 'modal' => TRUE));
     if ($operations) {
       $options[$smid]['operations'] = array(
-	'data' => array(
-	  '#theme' => 'links',
-	  '#links' => $operations,
-	  '#attributes' => array('class' => array('links', 'inline')),
-	),
+        'data' => array(
+          '#theme' => 'links',
+          '#links' => $operations,
+          '#attributes' => array('class' => array('links', 'inline')),
+        ),
       );
     }
     else {
@@ -521,21 +521,21 @@ function xmlsitemap_add_form_entity_summary(&$form, $entity, array $entity_info)
     );
     $rows[] = array(
       array(
-	'data' => t('Totals'),
-	'colspan' => 3,
-	'header' => TRUE,
+        'data' => t('Totals'),
+        'colspan' => 3,
+        'header' => TRUE,
       ),
       array(
-	'data' => $totals['total'],
-	'header' => TRUE,
+        'data' => $totals['total'],
+        'header' => TRUE,
       ),
       array(
-	'data' => $totals['indexed'],
-	'header' => TRUE,
+        'data' => $totals['indexed'],
+        'header' => TRUE,
       ),
       array(
-	'data' => $totals['visible'],
-	'header' => TRUE,
+        'data' => $totals['visible'],
+        'header' => TRUE,
       ),
     );
     $form['summary'] = array(
@@ -576,7 +576,7 @@ function xmlsitemap_add_link_bundle_settings(array &$form, array &$form_state, $
     '#group' => 'additional_settings',
     '#attached' => array(
       'js' => array(
-	'vertical-tabs' => drupal_get_path('module', 'xmlsitemap') . '/xmlsitemap.js',
+        'vertical-tabs' => drupal_get_path('module', 'xmlsitemap') . '/xmlsitemap.js',
       ),
     ),
     '#tree' => TRUE,
@@ -609,7 +609,7 @@ function xmlsitemap_add_link_bundle_settings(array &$form, array &$form_state, $
     '#default_value' => $bundle_info['priority'],
     '#states' => array(
       'invisible' => array(
-	'select[name="xmlsitemap[status]"]' => array('value' => '0'),
+        'select[name="xmlsitemap[status]"]' => array('value' => '0'),
       ),
     ),
   );
@@ -695,7 +695,7 @@ function xmlsitemap_add_form_link_options(array &$form, $entity, $bundle, $id) {
     '#group' => 'additional_settings',
     '#attached' => array(
       'js' => array(
-	'vertical-tabs' => drupal_get_path('module', 'xmlsitemap') . '/xmlsitemap.js',
+        'vertical-tabs' => drupal_get_path('module', 'xmlsitemap') . '/xmlsitemap.js',
       ),
     ),
   );
@@ -749,7 +749,7 @@ function xmlsitemap_add_form_link_options(array &$form, $entity, $bundle, $id) {
     '#description' => t('The priority of this URL relative to other URLs on your site.'),
     '#states' => array(
       'invisible' => array(
-	'select[name="xmlsitemap[status]"]' => array('value' => '0'),
+        'select[name="xmlsitemap[status]"]' => array('value' => '0'),
       ),
     ),
   );

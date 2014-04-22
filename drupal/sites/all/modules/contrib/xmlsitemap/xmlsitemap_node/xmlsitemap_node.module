@@ -146,7 +146,7 @@ function xmlsitemap_node_form_node_form_alter(array &$form, array &$form_state) 
  *   An array of UNIX timestamp integers.
  */
 function xmlsitemap_node_get_timestamps(stdClass $node) {
-  static $timestamps = array();
+  $timestamps = &drupal_static(__FUNCTION__, array());
 
   if (!isset($timestamps[$node->nid])) {
     $timestamps[$node->nid] = db_query("SELECT nr.timestamp FROM {node_revision} nr WHERE nr.nid = :nid", array(':nid' => $node->nid))->fetchCol();
@@ -289,7 +289,7 @@ function xmlsitemap_node_view_access($node, $account = NULL) {
       $query->condition('grant_' . $op, 1, '>=');
       $nids = db_or()->condition('nid', $node->nid);
       if ($node->status) {
-	$nids->condition('nid', 0);
+        $nids->condition('nid', 0);
       }
       $query->condition($nids);
       $query->range(0, 1);
@@ -297,24 +297,24 @@ function xmlsitemap_node_view_access($node, $account = NULL) {
       // Fetch the node grants and allow other modules to alter them (D7 backport).
       $grants = &drupal_static(__FUNCTION__ . ':grants', array());
       if (!isset($grants[$account->uid][$op])) {
-	// Indicate that this is our special function in the grants.
-	$account->xmlsitemap_node_access = TRUE;
-	$grants[$account->uid][$op] = node_access_grants($op, $account);
-	// Remove the special indicator.
-	unset($account->xmlsitemap_node_access);
+        // Indicate that this is our special function in the grants.
+        $account->xmlsitemap_node_access = TRUE;
+        $grants[$account->uid][$op] = node_access_grants($op, $account);
+        // Remove the special indicator.
+        unset($account->xmlsitemap_node_access);
       }
 
       $grant_condition = db_or();
       foreach ($grants[$account->uid][$op] as $realm => $gids) {
-	foreach ($gids as $gid) {
-	  $grant_condition->condition(db_and()
-	    ->condition('gid', $gid)
-	    ->condition('realm', $realm)
-	  );
-	}
+        foreach ($gids as $gid) {
+          $grant_condition->condition(db_and()
+            ->condition('gid', $gid)
+            ->condition('realm', $realm)
+          );
+        }
       }
       if (count($grant_condition) > 0) {
-	$query->condition($grant_condition);
+        $query->condition($grant_condition);
       }
 
       $result = (bool) $query->execute()->fetchField();

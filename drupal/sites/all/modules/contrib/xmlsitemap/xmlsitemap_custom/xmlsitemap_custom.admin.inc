@@ -41,9 +41,9 @@ function xmlsitemap_custom_list_links() {
     $operations['delete'] = xmlsitemap_get_operation_link('admin/config/search/xmlsitemap/custom/delete/' . $link->id, array('title' => t('Delete'), 'modal' => TRUE));
     $row['operations'] = array(
       'data' => array(
-	'#theme' => 'links',
-	'#links' => $operations,
-	'#attributes' => array('class' => array('links', 'inline')),
+        '#theme' => 'links',
+        '#links' => $operations,
+        '#attributes' => array('class' => array('links', 'inline')),
       ),
     );
     $rows[] = $row;
