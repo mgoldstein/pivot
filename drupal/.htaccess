@@ -95,10 +95,6 @@ DirectoryIndex index.php index.html index.htm
   #RewriteRule (.*) http://www.pivot.tv/$1 [R=301,L,NC]
 
   # Please like me campaign redirect (needs to be case-insensitive)
-  RewriteCond %{REQUEST_URI} /PleaseLikeMe [NC]
-  RewriteRule .* http://www.pleaselikeme.org/ [R=301,L]
-
-  # Please like me campaign redirect (needs to be case-insensitive)
   RewriteCond %{REQUEST_URI} /projectpivot [NC]
   RewriteRule .* http://projectpivot.pivot.tv/projectpivot [R=301,L]
   RewriteCond %{REQUEST_URI} ^/projectpivot/ [NC]
