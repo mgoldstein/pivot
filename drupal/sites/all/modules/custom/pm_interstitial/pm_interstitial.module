@@ -1,0 +1,214 @@
+<?php
+/**
+ * @file
+ * Marketing interstitials.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function pm_interstitial_help($path, $arg) {
+  $output = '';
+  if ($path == 'admin/help#pm_interstitial') {
+    $output .= '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t("The Interstitial module provides marketing interstitials with limited user targeting.") . '</p>';
+    $output .= '<h3>' . t('Use') . '</h3>';
+    $output .= '<dl>';
+    $output .= '<dt>' . t('Configure global settings') . '</dt>';
+    $output .= '<dd>';
+    $output .= t('To configure the global settings visit the
+      <a href="@settings-config">Settings Configuration</a> page. On this page
+      you can configure campaign ids used when targeting users.',
+      array('@settings-config' => url('admin/config/participant-media/interstitials'))
+    );
+    $output .= '</dd>';
+    $output .= '</dl>';
+  }
+  return $output;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function pm_interstitial_menu() {
+  return array(
+    'admin/config/participant-media/interstitials' => array(
+      'title' => 'Interstitial Settings',
+      'description' => 'Global settings for marketing interstitials',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('pm_interstitial_admin_form'),
+      'access callback' => 'user_access',
+      'access arguments' => array('pm_interstitial configure settings'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_permission().
+ */
+function pm_interstitial_permission() {
+  return array(
+    'pm_interstitial configure settings' => array(
+      'title' => t('Configure global settings'),
+      'description' => t('Configure the marketing interstitial global settings.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Admin form callback.
+ */
+function pm_interstitial_admin_form($form, &$form_state) {
+
+  $form['email'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Email Interstitials'),
+    '#description' => t('Settings for the email interstitial.'),
+    '#tree' => FALSE,
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['email']['pm_interstitial_email_interstitials'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Interstitial Paths'),
+    '#description' => t('List of email interstitial paths. Paths should be listed one per line.'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('pm_interstitial_email_interstitials', ''),
+  );
+
+  $form['email']['pm_interstitial_email_cmpids'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Campaign ID Prefixes'),
+    '#description' => t('List of campaign id (cmpid) prefixes that should be treated as email referrers. Prefixes should be listed one per line.'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('pm_interstitial_email_cmpids', ''),
+  );
+
+  $form['social'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Social Interstitials'),
+    '#description' => t('Settings for the social interstitial.'),
+    '#tree' => FALSE,
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['social']['pm_interstitial_social_interstitials'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Interstitial Paths'),
+    '#description' => t('List of social interstitial paths. Paths should be listed one per line.'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('pm_interstitial_social_interstitials', ''),
+  );
+
+  $form['social']['pm_interstitial_social_cmpids'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Campaign ID Prefixes'),
+    '#description' => t('List of campaign id (cmpid) prefixes that should be treated as social site referrers. Prefixes should be listed one per line.'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('pm_interstitial_social_cmpids', ''),
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * Implements hook_context_registry().
+ *
+ * Registers the interstitial data attribute reaction.
+ */
+function pm_interstitial_context_registry() {
+  return array(
+    'reactions' => array(
+      'pm_interstitial_referer' => array(
+        'title' => t('Interstitial Referer'),
+        'description' => t('Adds the marketing interstitial referer type to the page.'),
+        'plugin' => 'pm_interstitial_referer',
+      ),
+    )
+  );
+}
+
+/**
+ * Implements hook_context_plugins().
+ *
+ * Provides the interstitial data attribute reaction.
+ */
+function pm_interstitial_context_plugins() {
+  return array(
+    'pm_interstitial_referer' => array(
+      'handler' => array(
+        'path' => drupal_get_path('module', 'pm_interstitial') . '/plugins',
+        'file' => 'context.reactions.inc',
+        'class' => 'InterstitialReaction',
+        'parent' => 'context_reaction',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_preprocess_html().
+ *
+ * Activates the interstitial data attribute reaction.
+ */
+function pm_interstitial_preprocess_html(&$vars) {
+  // Fire the provider url reaction with the current activation state.
+  if ($plugin = context_get_plugin('reaction', 'pm_interstitial_referer')) {
+    $cmpid = isset($_GET['cmpid']) ? $_GET['cmpid'] : '';
+    $plugin->execute($vars, $cmpid);
+  }
+}
+
+
+/**
+ * Implements hook_block_info().
+ */
+function pm_interstitial_block_info() {
+  return array(
+    'interstitials' => array(
+      'info' => t('Interstitial URLs'),
+      'cache' => DRUPAL_NO_CACHE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function pm_interstitial_block_view($delta = '') {
+  $interstitials = array(
+    'email' => 'Newsletter Interstitial',
+    'social' => 'Social Interstitial',
+  );
+  $links = array();
+  if ($delta === 'interstitials') {
+    foreach($interstitials as $type => $label) {
+      $url = InterstitialReaction::get_interstitial($type);
+      if ($url !== FALSE) {
+        $links[] = l($label, $url, array(
+          'attributes' => array(
+            'data-interstitial-type' => $type,
+            'rel' => 'nofollow',
+          ),
+        ));
+      }
+    }
+  }
+  return array(
+    'subject' => '',
+    'content' => implode("\n", $links),
+  );
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function pm_interstitial_preprocess_block(&$variables) {
+  $block = $variables['block'];
+  if ($block->module === 'pm_interstitial' && $block->delta === 'interstitials') {
+    $variables['classes_array'][] = 'element-invisible';
+  }
+}
