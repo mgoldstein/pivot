@@ -1,0 +1,24 @@
+<?php
+/**
+ * @file
+ * pivot_interstitial.module
+ */
+
+/**
+ * Implements hook_menu();
+ */
+function pivot_interstitial_menu(){
+	$items = array();
+	$items['interstitial/channelFinder'] = array(
+		'title' => t('Channel Finder Interstitial'),
+		'page callback' => 'pivot_interstitial_channel_finder',
+		'access arguments' => array('access content')
+	);
+
+	return $items;
+}
+
+function pivot_interstitial_channel_finder(){
+	$block = module_invoke('pivot_global', 'block_view', 'find_pivot_sidebar');
+	return $block['content'];
+}

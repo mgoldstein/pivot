@@ -312,6 +312,105 @@ function pivot_contexts_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'interstitial_exclusions';
+  $context->description = 'Pages that should not show an interstitial';
+  $context->tag = 'Interstitials';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'admin/*' => 'admin/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'theme_html' => array(
+      'class' => '',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Interstitials');
+  t('Pages that should not show an interstitial');
+  $export['interstitial_exclusions'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'interstitial_referers';
+  $context->description = 'Pages that should be marked with an interstitial referer type';
+  $context->tag = 'Interstitials';
+  $context->conditions = array(
+    'sitewide' => array(
+      'values' => array(
+        1 => 1,
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'pm_interstitial_referer' => array(
+      'actve' => TRUE,
+    ),
+    'theme' => array(
+      'title' => '',
+      'subtitle' => '',
+    ),
+    'theme_html' => array(
+      'class' => '',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Interstitials');
+  t('Pages that should be marked with an interstitial referer type');
+  $export['interstitial_referers'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'interstitials';
+  $context->description = 'Pages that can show an interstitial';
+  $context->tag = 'Interstitials';
+  $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '~interstitial_exclusions' => '~interstitial_exclusions',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'pm_interstitial-interstitials' => array(
+          'module' => 'pm_interstitial',
+          'delta' => 'interstitials',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+    'theme' => array(
+      'title' => '',
+      'subtitle' => '',
+    ),
+    'theme_html' => array(
+      'class' => '',
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Interstitials');
+  t('Pages that can show an interstitial');
+  $export['interstitials'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'movies_landing';
   $context->description = 'The Movies Landing Page';
   $context->tag = '';
