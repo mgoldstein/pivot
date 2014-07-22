@@ -1,0 +1,4 @@
+name = Pivot Interstitial
+description = Additional stuff required for interstitials to work on Pivot
+core = 7.x
+dependencies[] = pm_interstitial

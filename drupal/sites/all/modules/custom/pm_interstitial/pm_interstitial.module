@@ -212,3 +212,14 @@ function pm_interstitial_preprocess_block(&$variables) {
     $variables['classes_array'][] = 'element-invisible';
   }
 }
+
+/* moved this out of the pm_core module */
+function pm_split($value, $delimiter, $alternates = array()) {
+	if (count($alternates) > 0) {
+		// Replace all alternate delimiters with the primary delimter.
+		$value = str_replace($alternates, $delimiter, $value);
+	}
+	$list = explode($delimiter, $value);
+	$trimmed = array_map('trim', $list);
+	return array_filter($trimmed, 'strlen');
+}
