@@ -78,7 +78,7 @@
                     }
                     var h = $iframe.contents().find('html').height();
                     $modal.hide();
-                    $iframe.css({width: w, height: h});
+                    $iframe.css({width: w, height: 400});
                     $modal.css({overflow: 'hidden'});
                     $.tpmodal.showModal({id: interstitial_modal_id});
                     return takepart.analytics.track('tpinterstitial_show_modal', {interstitial_type: analytics_types[interstitial_type]});
