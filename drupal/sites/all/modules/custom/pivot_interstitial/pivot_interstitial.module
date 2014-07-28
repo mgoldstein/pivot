@@ -19,6 +19,7 @@ function pivot_interstitial_menu(){
 }
 
 function pivot_interstitial_channel_finder(){
+	drupal_add_library('system', 'jquery.cookie');
 	$block = module_invoke('pivot_global', 'block_view', 'find_pivot_sidebar');
 	return $block['content'];
 }
