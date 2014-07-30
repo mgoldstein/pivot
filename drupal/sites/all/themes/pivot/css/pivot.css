@@ -4108,7 +4108,7 @@ a:focus, a::-moz-focus-inner {
 .interstitial_modal_modal{
     background: white;
     max-width: 400px;
-    width: 100%;
+    width: 100% !important;
 }
 
 .interstitial.channel-finder{
