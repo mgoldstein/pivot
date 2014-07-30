@@ -29,7 +29,6 @@
                  */
                 // alert(GetQueryStringParams('cmpid'));
                 var interstitial_cookie = $.cookie('pm_igloo');
-                var interstitial_cookie = '0';
                 var referer_cookie = $.cookie('pm_referers') || '';
                 var referers = $('body').attr('data-interstitial-referer');
                 if (typeof referers === 'undefined') { // opt out
