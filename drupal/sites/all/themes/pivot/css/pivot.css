@@ -4099,12 +4099,60 @@ a:focus, a::-moz-focus-inner {
     content: 'X';
     font-size: 21px;
     position: absolute;
-    right: 5px;
-    top: 0px;
-    color: black;
+    right: 2px;
+    top: -1px;
+    color: white;
     text-indent: 0;
+    font-family: "Apercu Regular", sans-serif;
 }
 .interstitial_modal_modal{
     background: white;
-    padding-top: 15px;
+}
+
+.interstitial.channel-finder{
+    display: block;
+    width: 400px;
+    height: 450px;
+    background: url('../images/pivot-interstitial.png');
+    max-width: 100%;
+}
+.interstitial-dont-show{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    font-style: italic;
+    font-weight: 100;
+    text-decoration: underline;
+    font-size: 15px;
+}
+.interstitial-cta{
+    position: absolute;
+    bottom: 53px;
+    left: 20px;
+    background: #0084a9;
+    display: block;
+    width: 230px;
+    font-size: 21px;
+    font-weight: bolder;
+    line-height: 23px;
+    padding: 5px;text-transform: uppercase;
+    font-family: "Apercu Regular", sans-serif;
+    cursor: pointer;
+}
+.channel-finder-widget{
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    display: none;
+}
+.channel-finder-widget.expose{
+    display: block;
+}
+.channel-finder-widget iframe{
+    display: block;
+    margin: 0 auto;
 }

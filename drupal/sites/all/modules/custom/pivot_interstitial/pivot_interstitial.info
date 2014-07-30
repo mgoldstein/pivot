@@ -1,4 +1,7 @@
 name = Pivot Interstitial
 description = Additional stuff required for interstitials to work on Pivot
 core = 7.x
+
+scripts[] = js/interstitial-channel-finder.js
+
 dependencies[] = pm_interstitial
