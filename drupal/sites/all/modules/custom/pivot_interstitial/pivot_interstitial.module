@@ -21,5 +21,21 @@ function pivot_interstitial_menu(){
 function pivot_interstitial_channel_finder(){
 	drupal_add_library('system', 'jquery.cookie');
 	$block = module_invoke('pivot_global', 'block_view', 'find_pivot_sidebar');
-	return $block['content'];
+	$pivot_channel_finder = $block['content'];
+	$block = theme('interstitial_cf', array('pivot_channel_finder' => $pivot_channel_finder));
+	return $block;
+}
+
+/**
+ * Implements hook_theme
+ */
+function pivot_interstitial_theme(){
+	return array(
+		'interstitial_cf' => array(
+			'variables' => array(
+				'pivot_channel_finder' => array()
+			),
+			'template' => 'pivot-interstitial-channel-finder',
+		)
+	);
 }

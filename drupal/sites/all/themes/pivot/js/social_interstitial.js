@@ -29,6 +29,7 @@
                  */
                 // alert(GetQueryStringParams('cmpid'));
                 var interstitial_cookie = $.cookie('pm_igloo');
+                var interstitial_cookie = '0';
                 var referer_cookie = $.cookie('pm_referers') || '';
                 var referers = $('body').attr('data-interstitial-referer');
                 if (typeof referers === 'undefined') { // opt out
@@ -78,7 +79,7 @@
                     }
                     var h = $iframe.contents().find('html').height();
                     $modal.hide();
-                    $iframe.css({width: w, height: 400});
+                    $iframe.css({width: 400, height: 450});
                     $modal.css({overflow: 'hidden'});
                     $.tpmodal.showModal({id: interstitial_modal_id});
                     return takepart.analytics.track('tpinterstitial_show_modal', {interstitial_type: analytics_types[interstitial_type]});
