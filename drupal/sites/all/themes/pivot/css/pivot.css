@@ -4160,3 +4160,7 @@ a:focus, a::-moz-focus-inner {
     margin: 0 auto;
     max-width: 100%;
 }
+.tpmodal_content > iframe,
+.interstitial_modal_content > iframe{
+    max-width: 100% !important;
+}
