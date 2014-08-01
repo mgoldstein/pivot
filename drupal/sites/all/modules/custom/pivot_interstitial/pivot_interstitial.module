@@ -21,6 +21,7 @@ function pivot_interstitial_menu(){
 function pivot_interstitial_channel_finder(){
 	$block = module_invoke('pivot_global', 'block_view', 'find_pivot_sidebar');
 	$pivot_channel_finder = $block['content'];
+	drupal_add_css(drupal_get_path('module', 'pivot_interstitial'). '/css/interstitial.css');
 	$block = theme('interstitial_cf', array('pivot_channel_finder' => $pivot_channel_finder));
 	return $block;
 }
