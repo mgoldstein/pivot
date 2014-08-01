@@ -3079,6 +3079,7 @@ body.node-type-video{
 .tpmodal_content > iframe,
 .interstitial_modal_content > iframe{
   max-width: 100% !important;
+  overflow: hidden;
 }
 
 @media all and (min-width: 321px) {
