@@ -3048,11 +3048,11 @@ body.node-type-video{
 }
 .interstitial-cta{
   position: absolute;
-  bottom: 110px;
+  bottom: 100px;
   left: 20px;
   background: #0084a9;
   display: block;
-  width: 230px;
+  width: 220px;
   font-size: 20px;
   font-weight: bolder;
   line-height: 23px;
@@ -3091,5 +3091,6 @@ body.node-type-video{
   }
   .interstitial-cta{
     bottom: 53px;
+    width: 230px;
   }
 }
