@@ -817,9 +817,9 @@ input[type=email] {
 }
 /* line 659, ../sass/_pivot-global.scss */
 #site-footer .footer-participant-nav .participant-media {
-  background-image: url(../images/footer_participant_participant.png);
+  background-image: url(../images/PM_Logo_White.png);
   width: 113px;
-  height: 24px;
+  height: 31px;
   vertical-align: middle;
 }
 /* line 666, ../sass/_pivot-global.scss */
@@ -3140,7 +3140,7 @@ iframe.media-youtube-player {
 /* line 2967, ../sass/_pivot-global.scss */
 .pm-jwplayer.loading {
   width: 100%;
-  background: url('../images/video-loading.gif?1390350395');
+  background: url('../images/video-loading.gif?1390007394');
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3149,7 +3149,7 @@ iframe.media-youtube-player {
 /* line 2974, ../sass/_pivot-global.scss */
 .pm-jwplayer.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1390350395') no-repeat center center;
+  background: url('../images/video-blocked.gif?1390007394') no-repeat center center;
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
