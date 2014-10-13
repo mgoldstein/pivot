@@ -55,3 +55,4 @@ function panels_list_style_settings_form($style_settings) {
 
   return $form;
 }
+

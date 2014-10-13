@@ -31,11 +31,11 @@ class panels_renderer_ipe extends panels_renderer_editor {
       '#href' => $this->get_url('save_form'),
       '#id' => 'panels-ipe-customize-page',
       '#attributes' => array(
-	'class' => array('panels-ipe-startedit', 'panels-ipe-pseudobutton'),
+        'class' => array('panels-ipe-startedit', 'panels-ipe-pseudobutton'),
       ),
       '#ajax' => array(
-	'progress' => 'throbber',
-	'ipe_cache_key' => $this->clean_key,
+        'progress' => 'throbber',
+        'ipe_cache_key' => $this->clean_key,
       ),
       '#prefix' => '<div class="panels-ipe-pseudobutton-container">',
       '#suffix' => '</div>',
@@ -46,16 +46,16 @@ class panels_renderer_ipe extends panels_renderer_editor {
     // @todo this actually should be an IPE setting instead.
     if (user_access('change layouts in place editing')) {
       $button = array(
-	'#type' => 'link',
-	'#title' => t('Change layout'),
-	'#href' => $this->get_url('change_layout'),
-	'#attributes' => array(
-	  'class' => array('panels-ipe-change-layout', 'panels-ipe-pseudobutton', 'ctools-modal-layout'),
-	),
-	'#ajax' => array(
-	  'progress' => 'throbber',
-	  'ipe_cache_key' => $this->clean_key,
-	),
+        '#type' => 'link',
+        '#title' => t('Change layout'),
+        '#href' => $this->get_url('change_layout'),
+        '#attributes' => array(
+          'class' => array('panels-ipe-change-layout', 'panels-ipe-pseudobutton', 'ctools-modal-layout'),
+        ),
+        '#ajax' => array(
+          'progress' => 'throbber',
+          'ipe_cache_key' => $this->clean_key,
+        ),
 
       '#prefix' => '<div class="panels-ipe-pseudobutton-container">',
       '#suffix' => '</div>',
@@ -102,16 +102,16 @@ class panels_renderer_ipe extends panels_renderer_editor {
       // drupal_add_js breaks as we add these, but we can't just lump them
       // together because panes can be rendered independently. So game the system:
       if (empty($key)) {
-	$settings['Panels']['RegionLock'][$pane->pid] = $pane->locks['regions'];
-	drupal_add_js($settings, 'setting');
+        $settings['Panels']['RegionLock'][$pane->pid] = $pane->locks['regions'];
+        drupal_add_js($settings, 'setting');
 
-	// These are just added via [] so we have to grab the last one
-	// and reference it.
-	$keys = array_keys($javascript['settings']['data']);
-	$key = end($keys);
+        // These are just added via [] so we have to grab the last one
+        // and reference it.
+        $keys = array_keys($javascript['settings']['data']);
+        $key = end($keys);
       }
       else {
-	$javascript['settings']['data'][$key]['Panels']['RegionLock'][$pane->pid] = $pane->locks['regions'];
+        $javascript['settings']['data'][$key]['Panels']['RegionLock'][$pane->pid] = $pane->locks['regions'];
       }
 
     }
@@ -134,15 +134,28 @@ class panels_renderer_ipe extends panels_renderer_editor {
     return "<div id=\"panels-ipe-paneid-{$pane->pid}\" class=\"panels-ipe-portlet-wrapper panels-ipe-portlet-marker\">" . $output . "</div>";
   }
 
+  function prepare_panes($panes) {
+    // Set to admin mode just for this to ensure all panes are represented.
+    $this->admin = TRUE;
+    $panes = parent::prepare_panes($panes);
+    $this->admin = FALSE;
+  }
+
   function render_pane_content(&$pane) {
-    $content = parent::render_pane_content($pane);
+    if (!empty($pane->shown) && panels_pane_access($pane, $this->display)) {
+      $content = parent::render_pane_content($pane);
+    }
     // Ensure that empty panes have some content.
     if (empty($content) || empty($content->content)) {
+      if (empty($content)) {
+        $content = new stdClass();
+      }
+
       // Get the administrative title.
       $content_type = ctools_get_content_type($pane->type);
       $title = ctools_content_admin_title($content_type, $pane->subtype, $pane->configuration, $this->display->context);
 
-      $content->content = t('Placeholder for empty "@title"', array('@title' => $title));
+      $content->content = t('Placeholder for empty or inaccessible "@title"', array('@title' => html_entity_decode($title, ENT_QUOTES)));
       // Add these to prevent notices.
       $content->type = 'panels_ipe';
       $content->subtype = 'panels_ipe';
@@ -178,19 +191,19 @@ class panels_renderer_ipe extends panels_renderer_editor {
   function ipe_test_lock($url, $break) {
     if (!empty($this->cache->locked)) {
       if ($break != 'break') {
-	$account  = user_load($this->cache->locked->uid);
-	$name     = format_username($account);
-	$lock_age = format_interval(time() - $this->cache->locked->updated);
+        $account  = user_load($this->cache->locked->uid);
+        $name     = format_username($account);
+        $lock_age = format_interval(time() - $this->cache->locked->updated);
 
-	$message = t("This panel is being edited by user !user, and is therefore locked from editing by others. This lock is !age old.\n\nClick OK to break this lock and discard any changes made by !user.", array('!user' => $name, '!age' => $lock_age));
+        $message = t("This panel is being edited by user !user, and is therefore locked from editing by others. This lock is !age old.\n\nClick OK to break this lock and discard any changes made by !user.", array('!user' => $name, '!age' => $lock_age));
 
-	$this->commands[] = array(
-	  'command' => 'unlockIPE',
-	  'message' => $message,
-	  'break_path' => url($this->get_url($url, 'break')),
-	  'key' => $this->clean_key,
-	);
-	return TRUE;
+        $this->commands[] = array(
+          'command' => 'unlockIPE',
+          'message' => $message,
+          'break_path' => url($this->get_url($url, 'break')),
+          'key' => $this->clean_key,
+        );
+        return TRUE;
       }
 
       // Break the lock.
@@ -227,6 +240,7 @@ class panels_renderer_ipe extends panels_renderer_editor {
     $_POST['ajax_html_ids'] = array();
 
     $form_state = array(
+      'renderer' => $this,
       'display' => &$this->display,
       'content_types' => $this->cache->content_types,
       'rerender' => FALSE,
@@ -241,10 +255,10 @@ class panels_renderer_ipe extends panels_renderer_editor {
       $this->cache->ipe_locked = TRUE;
       panels_edit_cache_set($this->cache);
       $this->commands[] = array(
-	'command' => 'initIPE',
-	'key' => $this->clean_key,
-	'data' => drupal_render($output),
-	'lockPath' => $this->get_url('unlock_ipe'),
+        'command' => 'initIPE',
+        'key' => $this->clean_key,
+        'data' => drupal_render($output),
+        'lockPath' => url($this->get_url('unlock_ipe')),
       );
       return;
     }
@@ -254,8 +268,8 @@ class panels_renderer_ipe extends panels_renderer_editor {
     if (empty($this->cache->ipe_locked)) {
       $this->commands[] = ajax_command_alert(t('A lock you had has been externally broken, and all your changes have been reverted.'));
       $this->commands[] = array(
-	'command' => 'cancelIPE',
-	'key' => $this->clean_key,
+        'command' => 'cancelIPE',
+        'key' => $this->clean_key,
       );
       return;
     }
@@ -315,7 +329,7 @@ class panels_renderer_ipe extends panels_renderer_editor {
     $this->commands[] = array(
       'command' => 'IPEsetLockState',
       'key' => $this->clean_key,
-      'lockPath' => $this->get_url('unlock_ipe'),
+      'lockPath' => url($this->get_url('unlock_ipe')),
     );
   }
 
@@ -338,27 +352,27 @@ class panels_renderer_ipe extends panels_renderer_editor {
     $output = drupal_render($output);
     if (!empty($form_state['executed'])) {
       if (isset($form_state['back'])) {
-	return $this->ajax_change_layout();
+        return $this->ajax_change_layout();
       }
 
       if (!empty($form_state['clicked_button']['#save-display'])) {
-	// Saved. Save the cache.
-	panels_edit_cache_save($this->cache);
-	$this->display->skip_cache;
+        // Saved. Save the cache.
+        panels_edit_cache_save($this->cache);
+        $this->display->skip_cache = TRUE;
 
-	// Since the layout changed, we have to update these things in the
-	// renderer in order to get the right settings.
-	$layout = panels_get_layout($this->display->layout);
-	$this->plugins['layout'] = $layout;
-	if (!isset($layout['regions'])) {
-	  $this->plugins['layout']['regions'] = panels_get_regions($layout, $this->display);
-	}
+        // Since the layout changed, we have to update these things in the
+        // renderer in order to get the right settings.
+        $layout = panels_get_layout($this->display->layout);
+        $this->plugins['layout'] = $layout;
+        if (!isset($layout['regions'])) {
+          $this->plugins['layout']['regions'] = panels_get_regions($layout, $this->display);
+        }
 
-	$this->meta_location = 'inline';
+        $this->meta_location = 'inline';
 
-	$this->commands[] = ajax_command_replace("#panels-ipe-display-{$this->clean_key}", panels_render_display($this->display, $this));
-	$this->commands[] = ctools_modal_command_dismiss();
-	return;
+        $this->commands[] = ajax_command_replace("#panels-ipe-display-{$this->clean_key}", panels_render_display($this->display, $this));
+        $this->commands[] = ctools_modal_command_dismiss();
+        return;
       }
     }
 
@@ -391,8 +405,16 @@ class panels_renderer_ipe extends panels_renderer_editor {
       $pane = $this->display->content[$pid];
     }
 
-    $this->commands[] = ajax_command_prepend("#panels-ipe-regionid-{$pane->panel} div.panels-ipe-sort-container", $this->render_pane($pane));
+    $this->commands[] = array(
+      'command' => 'insertNewPane',
+      'regionId' => $pane->panel,
+      'renderedPane' => $this->render_pane($pane),
+    );
     $this->commands[] = ajax_command_changed("#panels-ipe-display-{$this->clean_key}");
+    $this->commands[] = array(
+      'command' => 'addNewPane',
+      'key' => $this->clean_key,
+    );
   }
 }
 
@@ -430,12 +452,14 @@ function panels_ipe_edit_control_form($form, &$form_state) {
     '#type' => 'submit',
     '#value' => t('Save'),
     '#id' => 'panels-ipe-save',
+    '#attributes' => array('class' => array('panels-ipe-save')),
     '#submit' => array('panels_edit_display_form_submit'),
     '#save-display' => TRUE,
   );
   $form['buttons']['cancel'] = array(
     '#type' => 'submit',
     '#id' => 'panels-ipe-cancel',
+    '#attributes' => array('class' => array('panels-ipe-cancel')),
     '#value' => t('Cancel'),
   );
   return $form;

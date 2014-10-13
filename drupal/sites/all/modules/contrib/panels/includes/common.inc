@@ -239,7 +239,7 @@ function panels_common_settings($form, &$form_state, $module_name = 'panels_comm
     if (empty($info['single'])) {
       $default_options[$id] = t('New @s', array('@s' => $info['title']));
       if ($skip) {
-	$default_types[$id] = TRUE;
+        $default_types[$id] = TRUE;
       }
     }
   }
@@ -276,15 +276,15 @@ function panels_common_settings($form, &$form_state, $module_name = 'panels_comm
 
     foreach ($available_content_types as $id => $types) {
       foreach ($types as $type => $info) {
-	$key = $id . '-' . $type;
-	$checkboxes = empty($content_types[$id]['single']) ? $id : 'other';
-	$options[$checkboxes][$key] = $info['title'];
-	if (!isset($allowed_content_types[$key])) {
-	  $allowed[$checkboxes][$key] = isset($default_types[$id]) ? $default_types[$id] : $default_types['other'];
-	}
-	else {
-	  $allowed[$checkboxes][$key] = $allowed_content_types[$key];
-	}
+        $key = $id . '-' . $type;
+        $checkboxes = empty($content_types[$id]['single']) ? $id : 'other';
+        $options[$checkboxes][$key] = $info['title'];
+        if (!isset($allowed_content_types[$key])) {
+          $allowed[$checkboxes][$key] = isset($default_types[$id]) ? $default_types[$id] : $default_types['other'];
+        }
+        else {
+          $allowed[$checkboxes][$key] = $allowed_content_types[$key];
+        }
       }
     }
 
@@ -297,20 +297,20 @@ function panels_common_settings($form, &$form_state, $module_name = 'panels_comm
     foreach ($content_types as $id => $info) {
       if (isset($allowed[$id])) {
 
-	$form['content_types'][$id] = array(
-	  '#type' => 'fieldset',
-	  '#group' => 'additional_settings',
-	  '#title' => t('Allowed @s content', array('@s' => $info['title'])),
-	);
+        $form['content_types'][$id] = array(
+          '#type' => 'fieldset',
+          '#group' => 'additional_settings',
+          '#title' => t('Allowed @s content', array('@s' => $info['title'])),
+        );
 
-	$form['content_types'][$id]['options'] = array(
-	  '#prefix' => '<div class="panels-page-type-container">',
-	  '#suffix' => '</div>',
-	  '#type' => 'checkboxes',
-	  '#options' => $options[$id],
-	  '#default_value' => array_keys(array_filter($allowed[$id])),
-	  '#checkall' => TRUE,
-	);
+        $form['content_types'][$id]['options'] = array(
+          '#prefix' => '<div class="panels-page-type-container">',
+          '#suffix' => '</div>',
+          '#type' => 'checkboxes',
+          '#options' => $options[$id],
+          '#default_value' => array_keys(array_filter($allowed[$id])),
+          '#checkall' => TRUE,
+        );
       }
     }
   }
@@ -477,6 +477,7 @@ function panels_common_get_allowed_layout_object($module_name) {
  * Get the allowed layouts for the given module.
  */
 function panels_common_get_allowed_layouts($module_name) {
+  ctools_include('plugins', 'panels');
   $available_layouts = panels_get_layouts();
   if (empty($module_name)) {
     return $available_layouts;
@@ -521,7 +522,7 @@ function theme_panels_common_content_list($vars) {
     if (!empty($display->panels[$panel_id])) {
       $content .= '<ol>';
       foreach ($display->panels[$panel_id] as $pid) {
-	$content .= '<li>' . panels_get_pane_title($display->content[$pid], $display->context) . '</li>';
+        $content .= '<li>' . panels_get_pane_title($display->content[$pid], $display->context) . '</li>';
       }
       $content .= '</ol>';
     }

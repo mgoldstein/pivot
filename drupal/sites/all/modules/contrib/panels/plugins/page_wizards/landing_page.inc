@@ -27,10 +27,10 @@ $plugin = array(
 
     'forms' => array(
       'basic' => array(
-	'form id' => 'panels_landing_page_basic',
+        'form id' => 'panels_landing_page_basic',
       ),
       'content' => array(
-	'form id' => 'panels_landing_page_content',
+        'form id' => 'panels_landing_page_content',
       ),
     ),
   ),

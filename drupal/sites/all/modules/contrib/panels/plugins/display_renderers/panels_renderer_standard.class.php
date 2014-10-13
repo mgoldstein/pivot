@@ -223,42 +223,46 @@ class panels_renderer_standard {
     // Prepare the list of panes to be rendered
     foreach ($panes as $pid => $pane) {
       if (empty($this->admin)) {
-	// TODO remove in 7.x and ensure the upgrade path weeds out any stragglers; it's been long enough
-	$pane->shown = !empty($pane->shown); // guarantee this field exists.
-	// If this pane is not visible to the user, skip out and do the next one
-	if (!$pane->shown || !panels_pane_access($pane, $this->display)) {
-	  continue;
-	}
+        // TODO remove in 7.x and ensure the upgrade path weeds out any stragglers; it's been long enough
+        $pane->shown = !empty($pane->shown); // guarantee this field exists.
+        // If this pane is not visible to the user, skip out and do the next one
+        if (!$pane->shown || !panels_pane_access($pane, $this->display)) {
+          continue;
+        }
       }
 
       // If the pane's subtype is unique, get it so that
       // hook_ctools_content_subtype_alter() and/or
       // hook_ctools_block_info() will be called.
       if ($pane->type != $pane->subtype) {
-	$content_type = ctools_content_get_subtype($pane->type, $pane->subtype);
+        $content_type = ctools_content_get_subtype($pane->type, $pane->subtype);
       }
       else {
-	$content_type = ctools_get_content_type($pane->type);
+        $content_type = ctools_get_content_type($pane->type);
       }
 
       // If this pane wants to render last, add it to the $last array. We allow
       // this because some panes need to be rendered after other panes,
       // primarily so they can do things like the leftovers of forms.
       if (!empty($content_type['render last'])) {
-	$last[$pid] = $pane;
+        $last[$pid] = $pane;
       }
       // If it wants to render first, add it to the $first array. This is used
       // by panes that need to do some processing before other panes are
       // rendered.
       else if (!empty($content_type['render first'])) {
-	$first[$pid] = $pane;
+        $first[$pid] = $pane;
       }
       // Otherwise, render it in the normal order.
       else {
-	$normal[$pid] = $pane;
+        $normal[$pid] = $pane;
       }
     }
     $this->prepared['panes'] = $first + $normal + $last;
+
+    // Allow other modules the alter the prepared panes array.
+    drupal_alter('panels_panes_prepared', $this->prepared['panes'], $this);
+
     return $this->prepared['panes'];
   }
 
@@ -307,26 +311,26 @@ class panels_renderer_standard {
     if (empty($settings)) {
       // No display/panel region settings exist, init all with the defaults.
       foreach ($this->plugins['layout']['regions'] as $region_id => $title) {
-	// Ensure this region has at least an empty panes array.
-	$panes = !empty($region_pane_list[$region_id]) ? $region_pane_list[$region_id] : array();
+        // Ensure this region has at least an empty panes array.
+        $panes = !empty($region_pane_list[$region_id]) ? $region_pane_list[$region_id] : array();
 
-	$regions[$region_id] = $default;
-	$regions[$region_id]['pids'] = $panes;
+        $regions[$region_id] = $default;
+        $regions[$region_id]['pids'] = $panes;
       }
     }
     else {
       // Some settings exist; iterate through each region and set individually.
       foreach ($this->plugins['layout']['regions'] as $region_id => $title) {
-	// Ensure this region has at least an empty panes array.
-	$panes = !empty($region_pane_list[$region_id]) ? $region_pane_list[$region_id] : array();
-	if (empty($settings[$region_id]['style']) || $settings[$region_id]['style'] == -1) {
-	  $regions[$region_id] = $default;
-	}
-	else {
-	  $regions[$region_id]['style'] = panels_get_style($settings[$region_id]['style']);
-	  $regions[$region_id]['style settings'] = isset($settings['style_settings'][$region_id]) ? $settings['style_settings'][$region_id] : array();
-	}
-	$regions[$region_id]['pids'] = $panes;
+        // Ensure this region has at least an empty panes array.
+        $panes = !empty($region_pane_list[$region_id]) ? $region_pane_list[$region_id] : array();
+        if (empty($settings[$region_id]['style']) || $settings[$region_id]['style'] == -1) {
+          $regions[$region_id] = $default;
+        }
+        else {
+          $regions[$region_id]['style'] = panels_get_style($settings[$region_id]['style']);
+          $regions[$region_id]['style settings'] = isset($settings['style_settings'][$region_id]) ? $settings['style_settings'][$region_id] : array();
+        }
+        $regions[$region_id]['pids'] = $panes;
       }
     }
 
@@ -358,9 +362,9 @@ class panels_renderer_standard {
     else {
       $cache = panels_get_cached_content($this->display, $this->display->args, $this->display->context);
       if ($cache === FALSE) {
-	$cache = new panels_cache_object();
-	$cache->set_content($this->render_layout());
-	panels_set_cached_content($cache, $this->display, $this->display->args, $this->display->context);
+        $cache = new panels_cache_object();
+        $cache->set_content($this->render_layout());
+        panels_set_cached_content($cache, $this->display, $this->display->args, $this->display->context);
       }
       return $cache->content;
     }
@@ -404,16 +408,28 @@ class panels_renderer_standard {
    */
   function add_meta() {
     if (!empty($this->plugins['layout']['css'])) {
-      if (file_exists(path_to_theme() . '/' . $this->plugins['layout']['css'])) {
-	$this->add_css(path_to_theme() . '/' . $this->plugins['layout']['css']);
+      $css = $this->plugins['layout']['css'];
+      if (!is_array($css)) {
+        $css = array($css);
       }
-      else {
-	$this->add_css($this->plugins['layout']['path'] . '/' . $this->plugins['layout']['css']);
+      foreach($css as $file) {
+        if (file_exists(path_to_theme() . '/' . $file)) {
+          $this->add_css(path_to_theme() . '/' . $file);
+        }
+        else {
+          $this->add_css($this->plugins['layout']['path'] . '/' . $file);
+        }
       }
     }
 
     if ($this->admin && isset($this->plugins['layout']['admin css'])) {
-      $this->add_css($this->plugins['layout']['path'] . '/' . $this->plugins['layout']['admin css']);
+      $admin_css = $this->plugins['layout']['admin css'];
+      if (!is_array($admin_css)) {
+        $admin_css = array($admin_css);
+      }
+      foreach($admin_css as $file) {
+        $this->add_css($this->plugins['layout']['path'] . '/' . $file);
+      }
     }
   }
 
@@ -432,12 +448,12 @@ class panels_renderer_standard {
   function add_css($filename) {
     switch ($this->meta_location) {
       case 'standard':
-	drupal_add_css($filename);
-	break;
+        drupal_add_css($filename);
+        break;
       case 'inline':
-	$url = base_path() . $filename;
-	$this->prefix .= '<link type="text/css" rel="stylesheet" href="' . $url . '" />'."\n";
-	break;
+        $url = base_path() . $filename;
+        $this->prefix .= '<link type="text/css" rel="stylesheet" href="' . file_create_url($url) . '" />'."\n";
+        break;
     }
   }
 
@@ -456,7 +472,7 @@ class panels_renderer_standard {
     foreach ($this->prepared['panes'] as $pid => $pane) {
       $content = $this->render_pane($pane);
       if ($content) {
-	$this->rendered['panes'][$pid] = $content;
+        $this->rendered['panes'][$pid] = $content;
       }
     }
     return $this->rendered['panes'];
@@ -473,6 +489,8 @@ class panels_renderer_standard {
    *  A Panels pane object, as loaded from the database.
    */
   function render_pane(&$pane) {
+    module_invoke_all('panels_pane_prerender', $pane);
+
     $content = $this->render_pane_content($pane);
     if ($this->display->hide_title == PANELS_TITLE_PANE && !empty($this->display->title_pane) && $this->display->title_pane == $pane->pid) {
 
@@ -480,25 +498,25 @@ class panels_renderer_standard {
       // this as the title pane, assume the user actually wanted the original
       // title to bubble up to the top but not actually be used on the pane.
       if (empty($content->title) && !empty($content->original_title)) {
-	$this->display->stored_pane_title = $content->original_title;
+        $this->display->stored_pane_title = $content->original_title;
       }
       else {
-	$this->display->stored_pane_title = !empty($content->title) ? $content->title : '';
+        $this->display->stored_pane_title = !empty($content->title) ? $content->title : '';
       }
     }
 
     if (!empty($content->content)) {
       if (!empty($pane->style['style'])) {
-	$style = panels_get_style($pane->style['style']);
+        $style = panels_get_style($pane->style['style']);
 
-	if (isset($style) && isset($style['render pane'])) {
-	  $output = theme($style['render pane'], array('content' => $content, 'pane' => $pane, 'display' => $this->display, 'style' => $style, 'settings' => $pane->style['settings']));
+        if (isset($style) && isset($style['render pane'])) {
+          $output = theme($style['render pane'], array('content' => $content, 'pane' => $pane, 'display' => $this->display, 'style' => $style, 'settings' => $pane->style['settings']));
 
-	  // This could be null if no theme function existed.
-	  if (isset($output)) {
-	    return $output;
-	  }
-	}
+          // This could be null if no theme function existed.
+          if (isset($output)) {
+            return $output;
+          }
+        }
       }
 
       // fallback
@@ -526,43 +544,41 @@ class panels_renderer_standard {
       $this->display->context = array();
     }
 
-    $content = FALSE;
     $caching = !empty($pane->cache['method']) && empty($this->display->skip_cache);
     if ($caching && ($cache = panels_get_cached_content($this->display, $this->display->args, $this->display->context, $pane))) {
       $content = $cache->content;
     }
     else {
       if ($caching) {
-	// This is created before rendering so that calls to drupal_add_js
-	// and drupal_add_css will be captured.
-	$cache = new panels_cache_object();
+        // This is created before rendering so that calls to drupal_add_js
+        // and drupal_add_css will be captured.
+        $cache = new panels_cache_object();
       }
 
       $content = ctools_content_render($pane->type, $pane->subtype, $pane->configuration, array(), $this->display->args, $this->display->context);
 
-      if (empty($content)) {
-	return;
-      }
-
       foreach (module_implements('panels_pane_content_alter') as $module) {
-	$function = $module . '_panels_pane_content_alter';
-	$function($content, $pane, $this->display->args, $this->display->context, $this, $this->display);
+        $function = $module . '_panels_pane_content_alter';
+        $function($content, $pane, $this->display->args, $this->display->context, $this, $this->display);
       }
       if ($caching && isset($cache)) {
-	$cache->set_content($content);
-	panels_set_cached_content($cache, $this->display, $this->display->args, $this->display->context, $pane);
-	$content = $cache->content;
+        $cache->set_content($content);
+        panels_set_cached_content($cache, $this->display, $this->display->args, $this->display->context, $pane);
+        $content = $cache->content;
       }
     }
 
-    // Pass long the css_id that is usually available.
-    if (!empty($pane->css['css_id'])) {
-      $content->css_id = check_plain($pane->css['css_id']);
-    }
+    // If there's content, check if we've css configuration to add.
+    if (!empty($content)) {
+      // Pass long the css_id that is usually available.
+      if (!empty($pane->css['css_id'])) {
+        $content->css_id = check_plain($pane->css['css_id']);
+      }
 
-    // Pass long the css_class that is usually available.
-    if (!empty($pane->css['css_class'])) {
-      $content->css_class = check_plain($pane->css['css_class']);
+      // Pass long the css_class that is usually available.
+      if (!empty($pane->css['css_class'])) {
+        $content->css_class = check_plain($pane->css['css_class']);
+      }
     }
 
     return $content;
@@ -585,10 +601,10 @@ class panels_renderer_standard {
     foreach ($this->prepared['regions'] as $region_id => $conf) {
       $region_panes = array();
       foreach ($conf['pids'] as $pid) {
-	// Only include panes for region rendering if they had some output.
-	if (!empty($this->rendered['panes'][$pid])) {
-	  $region_panes[$pid] = $this->rendered['panes'][$pid];
-	}
+        // Only include panes for region rendering if they had some output.
+        if (!empty($this->rendered['panes'][$pid])) {
+          $region_panes[$pid] = $this->rendered['panes'][$pid];
+        }
       }
       $this->rendered['regions'][$region_id] = $this->render_region($region_id, $region_panes);
     }

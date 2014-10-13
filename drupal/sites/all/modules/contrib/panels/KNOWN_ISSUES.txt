@@ -1,7 +1,7 @@
 
 Known Issue http://drupal.org/node/191771
   'Node' panes can have two titles or have two title areas.
-  Cause:
+  Cause: 
     Content that comes into a pane is already formatted, and this happens
     in theme('node'). theme('node') assumes it will be printing a title
     most of the time. However, Panels wants the titles of panes to be
@@ -57,7 +57,7 @@ Known Issue http://drupal.org/node/180650
 
 Known Issue http://drupal.org/node/165745
   You see a message similar to this:
-  Table 'drupal.panels_info' doesn't exist query: SELECT * FROM panels_info
+  Table 'drupal.panels_info' doesn't exist query: SELECT * FROM panels_info 
   WHERE path = 'front_page_new' in...
 
   The important piece of information is 'panels_info'.
@@ -79,7 +79,7 @@ Known Issue http://drupal.org/node/153399
     such as Firefox or Opera.
 
 Known Issue http://drupal.org/node/207859
-  When using the secure pages module, the Panels administrative UI gives
+  When using the secure pages module, the Panels administrative UI gives 
   unhelpful "An error occurred" popups when trying to add or edit content.
 
   Cause:

@@ -21,20 +21,20 @@ function panels_ipe_default_panels_renderer_pipeline() {
   $pipeline->settings = array(
     'renderers' => array(
       0 => array(
-	'access' => array(
-	  'plugins' => array(
-	    0 => array(
-	      'name' => 'perm',
-	      'settings' => array(
-		'perm' => 'use panels in place editing',
-	      ),
-	      'context' => 'logged-in-user',
-	    ),
-	  ),
-	  'logic' => 'and',
-	),
-	'renderer' => 'ipe',
-	'options' => array(),
+        'access' => array(
+          'plugins' => array(
+            0 => array(
+              'name' => 'perm',
+              'settings' => array(
+                'perm' => 'use panels in place editing',
+              ),
+              'context' => 'logged-in-user',
+            ),
+          ),
+          'logic' => 'and',
+        ),
+        'renderer' => 'ipe',
+        'options' => array(),
       ),
     ),
   );

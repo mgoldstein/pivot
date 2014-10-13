@@ -56,8 +56,8 @@ function panels_panels_dashboard_blocks(&$vars) {
     $rows[] = array(
       check_plain($item->admin_title),
       array(
-	'data' => l(t('Edit'), "admin/structure/panels/layouts/list/$item->name/edit"),
-	'class' => 'links',
+        'data' => l(t('Edit'), "admin/structure/panels/layouts/list/$item->name/edit"),
+        'class' => 'links',
       ),
     );
 
@@ -117,12 +117,12 @@ function template_preprocess_panels_dashboard(&$vars) {
 
     foreach ($plugins as $id => $plugin) {
       if (isset($plugin['type']) && $plugin['type'] == 'panels') {
-	$link = array(
-	  'title' => l($plugin['title'], 'admin/structure/pages/wizard/' . $id),
-	  'description' => $plugin['description'],
-	);
+        $link = array(
+          'title' => l($plugin['title'], 'admin/structure/pages/wizard/' . $id),
+          'description' => $plugin['description'],
+        );
 
-	$vars['blocks']['wizards']['content'] .= theme('panels_dashboard_link', array('link' => $link));
+        $vars['blocks']['wizards']['content'] .= theme('panels_dashboard_link', array('link' => $link));
       }
     }
 
@@ -160,7 +160,7 @@ function panels_admin_settings_page() {
   if (module_exists('page_manager')) {
     foreach (page_manager_get_tasks() as $task) {
       if ($function = ctools_plugin_get_function($task, 'admin settings')) {
-	$function($form);
+        $function($form);
       }
     }
   }
@@ -170,6 +170,22 @@ function panels_admin_settings_page() {
     if ($function = ctools_plugin_get_function($content, 'admin settings')) {
       $function($form);
     }
+  }
+
+  ctools_include('plugins', 'panels');
+  $pipelines = panels_get_renderer_pipelines();
+  $options = array();
+  foreach ($pipelines as $key => $value) {
+    $options[$key] = $value->admin_title;
+  }
+  if (count($options) > 1) {
+    $form['panels_renderer_default'] = array(
+      '#type' => 'select',
+      '#title' => t('Default renderer'),
+      '#options' => $options,
+      '#default_value' => variable_get('panels_renderer_default', 'standard'),
+      '#description' => t('The default renderer for new panel pages.'),
+    );
   }
 
   if (empty($form)) {
@@ -186,3 +202,4 @@ function panels_admin_panel_context_page() {
   ctools_include('common', 'panels');
   return drupal_get_form('panels_common_settings', 'panels_page');
 }
+

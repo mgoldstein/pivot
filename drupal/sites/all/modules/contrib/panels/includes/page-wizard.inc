@@ -83,3 +83,4 @@ function panels_page_wizard_add_content_submit(&$form, &$form_state) {
   $cache->display = &$form_state['display'];
   unset($cache->display_cache);
 }
+

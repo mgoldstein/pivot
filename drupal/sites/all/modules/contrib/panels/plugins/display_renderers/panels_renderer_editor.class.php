@@ -132,11 +132,11 @@ class panels_renderer_editor extends panels_renderer_standard {
     // If there are region locks, add them.
     if (!empty($pane->locks['type'])) {
       if ($pane->locks['type'] == 'regions') {
-	$settings['Panels']['RegionLock'][$pane->pid] = $pane->locks['regions'];
-	drupal_add_js($settings, 'setting');
+        $settings['Panels']['RegionLock'][$pane->pid] = $pane->locks['regions'];
+        drupal_add_js($settings, 'setting');
       }
       else if ($pane->locks['type'] == 'immovable') {
-	$grabber_class = 'grab-title not-grabber';
+        $grabber_class = 'grab-title not-grabber';
       }
     }
 
@@ -153,7 +153,7 @@ class panels_renderer_editor extends panels_renderer_standard {
 
     $output = '<div class="' . $class . '" id="panel-pane-' . $pane->pid . '">';
 
-    if (!$block->title) {
+    if (empty($block->title)) {
       $block->title = t('No title');
     }
 
@@ -186,12 +186,12 @@ class panels_renderer_editor extends panels_renderer_standard {
 
     $style_title = isset($style['title']) ? $style['title'] : t('Default');
 
-    $style_links[] = array(
+    $style_links['title'] = array(
       'title' => $style_title,
       'attributes' => array('class' => array('panels-text')),
     );
 
-    $style_links[] = array(
+    $style_links['change'] = array(
       'title' => t('Change'),
       'href' => $this->get_url('style-type', $type, $id),
       'attributes' => array('class' => array('ctools-use-modal')),
@@ -199,10 +199,10 @@ class panels_renderer_editor extends panels_renderer_standard {
 
     $function = $type != 'pane' ? 'settings form' : 'pane settings form';
     if (panels_plugin_get_function('styles', $style, $function)) {
-      $style_links[] = array(
-	'title' => t('Settings'),
-	'href' => $this->get_url('style-settings', $type, $id),
-	'attributes' => array('class' => array('ctools-use-modal')),
+      $style_links['settings'] = array(
+        'title' => t('Settings'),
+        'href' => $this->get_url('style-settings', $type, $id),
+        'attributes' => array('class' => array('ctools-use-modal')),
       );
     }
 
@@ -220,16 +220,16 @@ class panels_renderer_editor extends panels_renderer_standard {
     if (user_access('administer panels styles')) {
       $style_links = $this->get_style_links('display');
       $links[] = array(
-	'title' => '<span class="dropdown-header">' . t('Style') . '</span>' . theme_links(array('links' => $style_links, 'attributes' => array(), 'heading' => array())),
-	'html' => TRUE,
-	'attributes' => array('class' => array('panels-sub-menu')),
+        'title' => '<span class="dropdown-header">' . t('Style') . '</span>' . theme_links(array('links' => $style_links, 'attributes' => array(), 'heading' => array())),
+        'html' => TRUE,
+        'attributes' => array('class' => array('panels-sub-menu')),
       );
     }
 
     if (user_access('use panels caching features')) {
       $links[] = array(
-	'title' => '<hr />',
-	'html' => TRUE,
+        'title' => '<hr />',
+        'html' => TRUE,
       );
 
       $method = isset($this->display->cache['method']) ? $this->display->cache['method'] : 0;
@@ -237,26 +237,26 @@ class panels_renderer_editor extends panels_renderer_standard {
       $cache_method = isset($info['title']) ? $info['title'] : t('No caching');
 
       $cache_links[] = array(
-	'title' => $cache_method,
-	'attributes' => array('class' => array('panels-text')),
+        'title' => $cache_method,
+        'attributes' => array('class' => array('panels-text')),
       );
       $cache_links[] = array(
-	'title' => t('Change'),
-	'href' => $this->get_url('cache-method', 'display'),
-	'attributes' => array('class' => array('ctools-use-modal')),
+        'title' => t('Change'),
+        'href' => $this->get_url('cache-method', 'display'),
+        'attributes' => array('class' => array('ctools-use-modal')),
       );
       if (panels_plugin_get_function('cache', $info, 'settings form')) {
-	$cache_links[] = array(
-	  'title' => t('Settings'),
-	  'href' => $this->get_url('cache-settings', 'display'),
-	  'attributes' => array('class' => array('ctools-use-modal')),
-	);
+        $cache_links[] = array(
+          'title' => t('Settings'),
+          'href' => $this->get_url('cache-settings', 'display'),
+          'attributes' => array('class' => array('ctools-use-modal')),
+        );
       }
 
       $links[] = array(
-	'title' => '<span class="dropdown-header">' . t('Caching') . '</span>' . theme_links(array('links' => $cache_links, 'attributes' => array(), 'heading' => array())),
-	'html' => TRUE,
-	'attributes' => array('class' => array('panels-sub-menu')),
+        'title' => '<span class="dropdown-header">' . t('Caching') . '</span>' . theme_links(array('links' => $cache_links, 'attributes' => array(), 'heading' => array())),
+        'html' => TRUE,
+        'attributes' => array('class' => array('panels-sub-menu')),
       );
     }
 
@@ -275,22 +275,22 @@ class panels_renderer_editor extends panels_renderer_standard {
       'title' => t('Add content'),
       'href' => $this->get_url('select-content', $region_id),
       'attributes' => array(
-	'class' => array('ctools-use-modal'),
+        'class' => array('ctools-use-modal'),
       ),
     );
 
     if (user_access('administer panels styles')) {
       $links[] = array(
-	'title' => '<hr />',
-	'html' => TRUE,
+        'title' => '<hr />',
+        'html' => TRUE,
       );
 
       $style_links = $this->get_style_links('region', $region_id);
 
       $links[] = array(
-	'title' => '<span class="dropdown-header">' . t('Style') . '</span>' . theme_links(array('links' => $style_links, 'attributes' => array(), 'heading' => array())),
-	'html' => TRUE,
-	'attributes' => array('class' => array('panels-sub-menu')),
+        'title' => '<span class="dropdown-header">' . t('Style') . '</span>' . theme_links(array('links' => $style_links, 'attributes' => array(), 'heading' => array())),
+        'html' => TRUE,
+        'attributes' => array('class' => array('panels-sub-menu')),
       );
     }
 
@@ -307,205 +307,190 @@ class panels_renderer_editor extends panels_renderer_standard {
     $links = array();
 
     if (!empty($pane->shown)) {
-      $links[] = array(
-	'title' => t('Disable this pane'),
-	'href' => $this->get_url('hide', $pane->pid),
-	'attributes' => array('class' => array('use-ajax')),
+      $links['top']['disabled'] = array(
+        'title' => t('Disable this pane'),
+        'href' => $this->get_url('hide', $pane->pid),
+        'attributes' => array('class' => array('use-ajax')),
       );
     }
     else {
-      $links[] = array(
-	'title' => t('Enable this pane'),
-	'href' => $this->get_url('show', $pane->pid),
-	'attributes' => array('class' => array('use-ajax')),
+      $links['top']['enable'] = array(
+        'title' => t('Enable this pane'),
+        'href' => $this->get_url('show', $pane->pid),
+        'attributes' => array('class' => array('use-ajax')),
       );
     }
 
     if (isset($this->display->title_pane) && $this->display->title_pane == $pane->pid) {
-      $links['panels-set-title'] = array(
-	'title' => t('&#x2713;Panel title'),
-	'html' => TRUE,
+      $links['top']['panels-set-title'] = array(
+        'title' => t('&#x2713;Panel title'),
+        'html' => TRUE,
       );
     }
     else {
-      $links['panels-set-title'] = array(
-	'title' => t('Panel title'),
-	'href' => $this->get_url('panel-title', $pane->pid),
-	'attributes' => array('class' => array('use-ajax')),
+      $links['top']['panels-set-title'] = array(
+        'title' => t('Panel title'),
+        'href' => $this->get_url('panel-title', $pane->pid),
+        'attributes' => array('class' => array('use-ajax')),
       );
     }
 
     $subtype = ctools_content_get_subtype($content_type, $pane->subtype);
 
     if (ctools_content_editable($content_type, $subtype, $pane->configuration)) {
-      $links[] = array(
-	'title' => isset($content_type['edit text']) ? $content_type['edit text'] : t('Settings'),
-	'href' => $this->get_url('edit-pane', $pane->pid),
-	'attributes' => array('class' => array('ctools-use-modal')),
+      $links['top']['settings'] = array(
+        'title' => isset($content_type['edit text']) ? $content_type['edit text'] : t('Settings'),
+        'href' => $this->get_url('edit-pane', $pane->pid),
+        'attributes' => array('class' => array('ctools-use-modal')),
       );
     }
 
     if (user_access('administer advanced pane settings')) {
-      $links[] = array(
-	'title' => t('CSS properties'),
-	'href' => $this->get_url('pane-css', $pane->pid),
-	'attributes' => array('class' => array('ctools-use-modal')),
+      $links['top']['css'] = array(
+        'title' => t('CSS properties'),
+        'href' => $this->get_url('pane-css', $pane->pid),
+        'attributes' => array('class' => array('ctools-use-modal')),
       );
     }
 
     if (user_access('administer panels styles')) {
-      $links[] = array(
-	'title' => '<hr />',
-	'html' => TRUE,
-      );
-
-      $style_links = $this->get_style_links('pane', $pane->pid);
-
-      $links[] = array(
-	'title' => '<span class="dropdown-header">' . t('Style') . '</span>' . theme_links(array('links' => $style_links, 'attributes' => array(), 'heading' => array())),
-	'html' => TRUE,
-	'attributes' => array('class' => array('panels-sub-menu')),
-      );
+      $links['style'] = $this->get_style_links('pane', $pane->pid);
     }
 
     if (user_access('administer pane access')) {
-      $links[] = array(
-	'title' => '<hr />',
-	'html' => TRUE,
-      );
-
       $contexts = $this->display->context;
       // Make sure we have the logged in user context
       if (!isset($contexts['logged-in-user'])) {
-	$contexts['logged-in-user'] = ctools_access_get_loggedin_context();
+        $contexts['logged-in-user'] = ctools_access_get_loggedin_context();
       }
 
       $visibility_links = array();
 
       if (!empty($pane->access['plugins'])) {
-	foreach ($pane->access['plugins'] as $id => $test) {
-	  $plugin = ctools_get_access_plugin($test['name']);
-	  $access_title  = isset($plugin['title']) ? $plugin['title'] : t('Broken/missing access plugin %plugin', array('%plugin' => $test['name']));
-	  $access_description = ctools_access_summary($plugin, $contexts, $test);
+        foreach ($pane->access['plugins'] as $id => $test) {
+          $plugin = ctools_get_access_plugin($test['name']);
+          $access_title = isset($plugin['title']) ? $plugin['title'] : t('Broken/missing access plugin %plugin', array('%plugin' => $test['name']));
+          $access_description = ctools_access_summary($plugin, $contexts, $test);
 
-	  $visibility_links[] = array(
-	    'title' => $access_description,
-	    'href' => $this->get_url('access-configure-test', $pane->pid, $id),
-	    'attributes' => array('class' => array('ctools-use-modal', 'panels-italic')),
-	  );
-	}
+          $visibility_links[] = array(
+            'title' => $access_description,
+            'href' => $this->get_url('access-configure-test', $pane->pid, $id),
+            'attributes' => array('class' => array('ctools-use-modal', 'panels-italic')),
+          );
+        }
       }
       if (empty($visibility_links)) {
-	$visibility_links[] = array(
-	  'title' => t('No rules'),
-	  'attributes' => array('class' => array('panels-text')),
-	);
+        $visibility_links['no_rules'] = array(
+          'title' => t('No rules'),
+          'attributes' => array('class' => array('panels-text')),
+        );
       }
 
-      $visibility_links[] = array(
-	'title' => t('Add new rule'),
-	'href' => $this->get_url('access-add-test', $pane->pid),
-	'attributes' => array('class' => array('ctools-use-modal')),
+      $visibility_links['add_rule'] = array(
+        'title' => t('Add new rule'),
+        'href' => $this->get_url('access-add-test', $pane->pid),
+        'attributes' => array('class' => array('ctools-use-modal')),
       );
 
-      $visibility_links[] = array(
-	'title' => t('Settings'),
-	'href' => $this->get_url('access-settings', $pane->pid),
-	'attributes' => array('class' => array('ctools-use-modal')),
+      $visibility_links['settings'] = array(
+        'title' => t('Settings'),
+        'href' => $this->get_url('access-settings', $pane->pid),
+        'attributes' => array('class' => array('ctools-use-modal')),
       );
 
-      $links[] = array(
-	'title' => '<span class="dropdown-header">' . t('Visibility rules') . '</span>' . theme_links(array('links' => $visibility_links, 'attributes' => array(), 'heading' => array())),
-	'html' => TRUE,
-	'attributes' => array('class' => array('panels-sub-menu')),
-      );
+      $links['visibility'] = $visibility_links;
     }
 
     if (user_access('use panels locks')) {
-      $links[] = array(
-	'title' => '<hr />',
-	'html' => TRUE,
-      );
-
       $lock_type = !empty($pane->locks['type']) ? $pane->locks['type'] : 'none';
       switch ($lock_type) {
-	case 'immovable':
-	  $lock_method = t('Immovable');
-	  break;
-	case 'regions':
-	  $lock_method = t('Regions');
-	  break;
-	case 'none':
-	default:
-	  $lock_method = t('No lock');
-	  break;
+        case 'immovable':
+          $lock_method = t('Immovable');
+          break;
+        case 'regions':
+          $lock_method = t('Regions');
+          break;
+        case 'none':
+        default:
+          $lock_method = t('No lock');
+          break;
       }
 
-      $lock_links[] = array(
-	'title' => $lock_method,
-	'attributes' => array('class' => array('panels-text')),
+      $lock_links['lock'] = array(
+        'title' => $lock_method,
+        'attributes' => array('class' => array('panels-text')),
       );
-      $lock_links[] = array(
-	'title' => t('Change'),
-	'href' => $this->get_url('lock', $pane->pid),
-	'attributes' => array('class' => array('ctools-use-modal')),
+      $lock_links['change'] = array(
+        'title' => t('Change'),
+        'href' => $this->get_url('lock', $pane->pid),
+        'attributes' => array('class' => array('ctools-use-modal')),
       );
 
-      $links[] = array(
-	'title' => '<span class="dropdown-header">' . t('Locking') . '</span>' . theme_links(array('links' => $lock_links, 'attributes' => array(), 'heading' => array())),
-	'html' => TRUE,
-	'attributes' => array('class' => array('panels-sub-menu')),
-      );
+      $links['lock'] = $lock_links;
     }
 
     if (panels_get_caches() && user_access('use panels caching features')) {
-      $links[] = array(
-	'title' => '<hr />',
-	'html' => TRUE,
-      );
-
       $method = isset($pane->cache['method']) ? $pane->cache['method'] : 0;
       $info = panels_get_cache($method);
       $cache_method = isset($info['title']) ? $info['title'] : t('No caching');
-      $cache_links[] = array(
-	'title' => $cache_method,
-	'attributes' => array('class' => array('panels-text')),
+      $cache_links['title'] = array(
+        'title' => $cache_method,
+        'attributes' => array('class' => array('panels-text')),
       );
-      $cache_links[] = array(
-	'title' => t('Change'),
-	'href' => $this->get_url('cache-method', $pane->pid),
-	'attributes' => array('class' => array('ctools-use-modal')),
+      $cache_links['change'] = array(
+        'title' => t('Change'),
+        'href' => $this->get_url('cache-method', $pane->pid),
+        'attributes' => array('class' => array('ctools-use-modal')),
       );
       if (panels_plugin_get_function('cache', $info, 'settings form')) {
-	$cache_links[] = array(
-	  'title' => t('Settings'),
-	  'href' => $this->get_url('cache-settings', $pane->pid),
-	  'attributes' => array('class' => array('ctools-use-modal')),
-	);
+        $cache_links['settings'] = array(
+          'title' => t('Settings'),
+          'href' => $this->get_url('cache-settings', $pane->pid),
+          'attributes' => array('class' => array('ctools-use-modal')),
+        );
       }
 
-      $links[] = array(
-	'title' => '<span class="dropdown-header">' . t('Caching') . '</span>' . theme_links(array('links' => $cache_links, 'attributes' => array(), 'heading' => array())),
-	'html' => TRUE,
-	'attributes' => array('class' => array('panels-sub-menu')),
-      );
+      $links['cache'] = $cache_links;
     }
 
-    $links[] = array(
-      'title' => '<hr />',
-      'html' => TRUE,
-    );
-
-    $links[] = array(
+    $links['bottom']['remove'] = array(
       'title' => t('Remove'),
       'href' => '#',
       'attributes' => array(
-	'class' => array('pane-delete'),
-	'id' => "pane-delete-panel-pane-$pane->pid",
+        'class' => array('pane-delete'),
+        'id' => "pane-delete-panel-pane-$pane->pid",
       ),
     );
 
-    return theme('ctools_dropdown', array('title' => theme('image', array('path' => ctools_image_path('icon-configure.png', 'panels'))), 'links' => $links, 'image' => TRUE));
+    // Allow others to add/remove links from pane context menu.
+    // Grouped by 'top', 'style', 'visibility', 'lock', 'cache' and 'bottom'
+    drupal_alter('get_pane_links', $links, $pane, $content_type);
+
+    $dropdown_links = $links['top'];
+    foreach (array(
+  'style' => 'Style',
+  'visibility' => 'Visibility rules',
+  'lock' => 'Locking',
+  'cache' => 'Caching'
+    ) as $category => $label) {
+      $dropdown_links[] = array(
+        'title' => '<hr />',
+        'html' => TRUE,
+      );
+      $dropdown_links[] = array(
+        'title' => '<span class="dropdown-header">' . t($label) . '</span>' . theme_links(array('links' => $links[$category], 'attributes' => array(), 'heading' => array())),
+        'html' => TRUE,
+        'attributes' => array('class' => array('panels-sub-menu')),
+      );
+    }
+
+    $dropdown_links[] = array(
+      'title' => '<hr />',
+      'html' => TRUE,
+    );
+    $dropdown_links = array_merge($dropdown_links, $links['bottom']);
+
+    return theme('ctools_dropdown', array('title' => theme('image', array('path' => ctools_image_path('icon-configure.png', 'panels'))), 'links' => $dropdown_links, 'image' => TRUE));
   }
 
   // -----------------------------------------------------------------------
@@ -581,15 +566,15 @@ class panels_renderer_editor extends panels_renderer_standard {
    * @todo -- this should be in CTools.
    */
   function get_category($content_type) {
-    if (isset($content_type['top level'])) {
+    if (!empty($content_type['top level'])) {
       $category = 'root';
     }
     else if (isset($content_type['category'])) {
       if (is_array($content_type['category'])) {
-	list($category, $weight) = $content_type['category'];
+        list($category, $weight) = $content_type['category'];
       }
       else {
-	$category = $content_type['category'];
+        $category = $content_type['category'];
       }
     }
     else {
@@ -617,26 +602,26 @@ class panels_renderer_editor extends panels_renderer_standard {
 
     foreach ($content_types as $type_name => $subtypes) {
       foreach ($subtypes as $subtype_name => $content_type) {
-	list($category_key, $category) = $this->get_category($content_type);
+        list($category_key, $category) = $this->get_category($content_type);
 
-	if (empty($categories[$category_key])) {
-	  $categories[$category_key] = array(
-	    'title' => $category,
-	    'content' => array(),
-	  );
-	  $category_names[$category_key] = $category;
-	}
+        if (empty($categories[$category_key])) {
+          $categories[$category_key] = array(
+            'title' => $category,
+            'content' => array(),
+          );
+          $category_names[$category_key] = $category;
+        }
 
-	$content_title = filter_xss_admin($content_type['title']);
+        $content_title = filter_xss_admin($content_type['title']);
 
-	// Ensure content with the same title doesn't overwrite each other.
-	while (isset($categories[$category_key]['content'][$content_title])) {
-	  $content_title .= '-';
-	}
+        // Ensure content with the same title doesn't overwrite each other.
+        while (isset($categories[$category_key]['content'][$content_title])) {
+          $content_title .= '-';
+        }
 
-	$categories[$category_key]['content'][$content_title] = $content_type;
-	$categories[$category_key]['content'][$content_title]['type_name'] = $type_name;
-	$categories[$category_key]['content'][$content_title]['subtype_name'] = $subtype_name;
+        $categories[$category_key]['content'][$content_title] = $content_type;
+        $categories[$category_key]['content'][$content_title]['type_name'] = $type_name;
+        $categories[$category_key]['content'][$content_title]['subtype_name'] = $subtype_name;
       }
     }
 
@@ -656,7 +641,19 @@ class panels_renderer_editor extends panels_renderer_standard {
     $content_type = ctools_get_content_type($type_name);
     $subtype = ctools_content_get_subtype($content_type, $subtype_name);
 
-    if (!isset($step) || !isset($this->cache->new_pane)) {
+    // Determine if we are adding a different pane than previously cached. This
+    // is used to load the different pane into cache so that multistep forms
+    // have the correct context instead of a previously cached version that
+    // does not match the pane currently being added.
+    $is_different_pane = FALSE;
+    if (isset($this->cache) && isset($this->cache->new_pane)) {
+      $diff_type = $type_name != $this->cache->new_pane->type;
+      $diff_subtype = $subtype_name != $this->cache->new_pane->subtype;
+
+      $is_different_pane = $diff_type || $diff_subtype;
+    }
+
+    if (!isset($step) || !isset($this->cache->new_pane) || $is_different_pane) {
       $pane = panels_new_pane($type_name, $subtype_name, TRUE);
       $this->cache->new_pane = &$pane;
     }
@@ -757,6 +754,11 @@ class panels_renderer_editor extends panels_renderer_standard {
       // References get blown away with AJAX caching. This will fix that.
       $this->cache->display->content[$pid] = $form_state['pane'];
 
+      // Conditionally overwrite the context for this panel if present in the form state.
+      if (!empty($form_state['display_cache']->display->context)) {
+        $this->cache->display->context = $form_state['display_cache']->display->context;
+      }
+
       panels_edit_cache_set($this->cache);
       $this->command_update_pane($pid);
       $this->commands[] = ctools_modal_command_dismiss();
@@ -842,10 +844,10 @@ class panels_renderer_editor extends panels_renderer_standard {
       $this->commands[] = ctools_modal_command_dismiss();
 
       if ($pid != 'display') {
-	$this->command_update_pane($pane);
+        $this->command_update_pane($pane);
       }
       else {
-	$this->command_update_display_links();
+        $this->command_update_display_links();
       }
     }
     else {
@@ -929,25 +931,25 @@ class panels_renderer_editor extends panels_renderer_standard {
     // a pane's.
     switch ($type) {
       case 'display':
-	$style = isset($this->display->panel_settings['style']) ? $this->display->panel_settings['style'] : 'default';
-	$title = t('Default style for this display');
-	break;
+        $style = isset($this->display->panel_settings['style']) ? $this->display->panel_settings['style'] : 'default';
+        $title = t('Default style for this display');
+        break;
 
       case 'region':
-	$style = isset($this->display->panel_settings[$pid]['style']) ? $this->display->panel_settings[$pid]['style'] : '-1'; // -1 signifies to use the default setting.
-	$title = t('Panel style for region "!region"', array('!region' => $this->plugins['layout']['regions'][$pid]));
-	break;
+        $style = isset($this->display->panel_settings[$pid]['style']) ? $this->display->panel_settings[$pid]['style'] : '-1'; // -1 signifies to use the default setting.
+        $title = t('Panel style for region "!region"', array('!region' => $this->plugins['layout']['regions'][$pid]));
+        break;
 
       case 'pane':
-	ctools_include('content');
-	$pane = &$this->display->content[$pid];
-	$style = isset($pane->style['style']) ? $pane->style['style'] : 'default';
-	$subtype = ctools_content_get_subtype($pane->type, $pane->subtype);
-	$title = t('Pane style for "!pane"', array('!pane' => $subtype['title']));
-	break;
+        ctools_include('content');
+        $pane = &$this->display->content[$pid];
+        $style = isset($pane->style['style']) ? $pane->style['style'] : 'default';
+        $subtype = ctools_content_get_subtype($pane->type, $pane->subtype);
+        $title = t('Pane style for "!pane"', array('!pane' => $subtype['title']));
+        break;
 
       default:
-	ctools_modal_render(t('Error'), t('Invalid pane id.'));
+        ctools_modal_render(t('Error'), t('Invalid pane id.'));
     }
     $info = $this->get_style($type, $pid);
     $style_plugin = $info[0];
@@ -980,51 +982,51 @@ class panels_renderer_editor extends panels_renderer_standard {
     $function = panels_plugin_get_function('styles', $style, ($type == 'pane') ? 'pane settings form' : 'settings form');
     if (!$function) {
       if (isset($this->cache->style)) {
-	unset($this->cache->style);
+        unset($this->cache->style);
       }
 
       // If there's no settings form, just change the style and exit.
       switch($type) {
-	case 'display':
-	  $this->display->panel_settings['style'] = $form_state['style'];
-	  if (isset($this->display->panel_settings['style_settings']['default'])) {
-	    unset($this->display->panel_settings['style_settings']['default']);
-	  }
-	  break;
+        case 'display':
+          $this->display->panel_settings['style'] = $form_state['style'];
+          if (isset($this->display->panel_settings['style_settings']['default'])) {
+            unset($this->display->panel_settings['style_settings']['default']);
+          }
+          break;
 
-	case 'region':
-	  $this->display->panel_settings[$pid]['style'] = $form_state['style'];
-	  if (isset($this->display->panel_settings['style_settings'][$pid])) {
-	    unset($this->display->panel_settings['style_settings'][$pid]);
-	  }
-	  break;
+        case 'region':
+          $this->display->panel_settings[$pid]['style'] = $form_state['style'];
+          if (isset($this->display->panel_settings['style_settings'][$pid])) {
+            unset($this->display->panel_settings['style_settings'][$pid]);
+          }
+          break;
 
-	case 'pane':
-	  $pane->style['style'] = $form_state['style'];
-	  if (isset($pane->style['settings'])) {
-	    unset($pane->style['settings']);
-	  }
+        case 'pane':
+          $pane->style['style'] = $form_state['style'];
+          if (isset($pane->style['settings'])) {
+            unset($pane->style['settings']);
+          }
 
-	  break;
+          break;
       }
       panels_edit_cache_set($this->cache);
 
       $this->commands[] = ctools_modal_command_dismiss();
 
       if ($type == 'pane') {
-	$this->command_update_pane($pane);
+        $this->command_update_pane($pane);
       }
       else if ($type == 'region') {
-	$this->command_update_region_links($pid);
+        $this->command_update_region_links($pid);
       }
       else {
-	$this->command_update_display_links();
+        $this->command_update_display_links();
       }
     }
     else {
       if ($form_state['style'] != $form_state['old_style']) {
-	$this->cache->style = $form_state['style'];
-	panels_edit_cache_set($this->cache);
+        $this->cache->style = $form_state['style'];
+        panels_edit_cache_set($this->cache);
       }
 
       // send them to next form.
@@ -1045,56 +1047,56 @@ class panels_renderer_editor extends panels_renderer_standard {
       $defaults = isset($style['defaults']) ? $style['defaults'] : array();
       // Get the &$conf variable based upon whose style we're editing.
       switch ($type) {
-	case 'display':
-	  $this->display->panel_settings['style'] = $this->cache->style;
-	  $this->display->panel_settings['style_settings']['default'] = $defaults;
-	  break;
+        case 'display':
+          $this->display->panel_settings['style'] = $this->cache->style;
+          $this->display->panel_settings['style_settings']['default'] = $defaults;
+          break;
 
-	case 'region':
-	  $this->display->panel_settings[$pid]['style'] = $this->cache->style;
-	  $this->display->panel_settings['style_settings'][$pid] = $defaults;
-	  break;
+        case 'region':
+          $this->display->panel_settings[$pid]['style'] = $this->cache->style;
+          $this->display->panel_settings['style_settings'][$pid] = $defaults;
+          break;
 
-	case 'pane':
-	  $pane = &$this->display->content[$pid];
-	  $pane->style['style'] = $this->cache->style;
-	  $pane->style['settings'] = $defaults;
-	  $conf = &$pane->style['settings'];
-	  break;
+        case 'pane':
+          $pane = &$this->display->content[$pid];
+          $pane->style['style'] = $this->cache->style;
+          $pane->style['settings'] = $defaults;
+          $conf = &$pane->style['settings'];
+          break;
       }
     }
     else {
       switch ($type) {
-	case 'display':
-	  $style = panels_get_style((!empty($this->display->panel_settings['style'])) ? $this->display->panel_settings['style'] : 'default');
-	  break;
+        case 'display':
+          $style = panels_get_style((!empty($this->display->panel_settings['style'])) ? $this->display->panel_settings['style'] : 'default');
+          break;
 
-	case 'region':
-	  $style = panels_get_style((!empty($this->display->panel_settings[$pid]['style'])) ? $this->display->panel_settings[$pid]['style'] : '-1');
-	  break;
+        case 'region':
+          $style = panels_get_style((!empty($this->display->panel_settings[$pid]['style'])) ? $this->display->panel_settings[$pid]['style'] : '-1');
+          break;
 
-	case 'pane':
-	  $pane = &$this->display->content[$pid];
-	  $style = panels_get_style(!empty($pane->style['style']) ? $pane->style['style'] : 'default');
-	  break;
+        case 'pane':
+          $pane = &$this->display->content[$pid];
+          $style = panels_get_style(!empty($pane->style['style']) ? $pane->style['style'] : 'default');
+          break;
       }
     }
 
     // Set up our $conf reference.
     switch ($type) {
       case 'display':
-	$conf = &$this->display->panel_settings['style_settings']['default'];
-	break;
+        $conf = &$this->display->panel_settings['style_settings']['default'];
+        break;
 
       case 'region':
-	$conf = &$this->display->panel_settings['style_settings'][$pid];
-	break;
+        $conf = &$this->display->panel_settings['style_settings'][$pid];
+        break;
 
       case 'pane':
-	ctools_include('content');
-	$pane = &$this->display->content[$pid];
-	$conf = &$pane->style['settings'];
-	break;
+        ctools_include('content');
+        $pane = &$this->display->content[$pid];
+        $conf = &$pane->style['settings'];
+        break;
     }
 
     // Backward compatibility: Translate old-style stylizer to new style
@@ -1121,19 +1123,19 @@ class panels_renderer_editor extends panels_renderer_standard {
 
     switch ($type) {
       case 'display':
-	$title = t('Style settings for @style (display)', array('@style' => $style['title']));
-	break;
+        $title = t('Style settings for @style (display)', array('@style' => $style['title']));
+        break;
 
       case 'region':
-	$title = t('Style settings for style @style (Region "!region")', array('@style' => $style['title'], '!region' => $this->plugins['layout']['regions'][$pid]));
-	break;
+        $title = t('Style settings for style @style (Region "!region")', array('@style' => $style['title'], '!region' => $this->plugins['layout']['regions'][$pid]));
+        break;
 
       case 'pane':
-	ctools_include('content');
-	$pane = &$this->display->content[$pid];
-	$subtype = ctools_content_get_subtype($pane->type, $pane->subtype);
-	$title = t('Style settings for style @style (Pane "!pane")', array('@style' => $style['title'], '!pane' => $subtype['title']));
-	break;
+        ctools_include('content');
+        $pane = &$this->display->content[$pid];
+        $subtype = ctools_content_get_subtype($pane->type, $pane->subtype);
+        $title = t('Style settings for style @style (Pane "!pane")', array('@style' => $style['title'], '!pane' => $subtype['title']));
+        break;
     }
 
     $form_state = array(
@@ -1158,7 +1160,11 @@ class panels_renderer_editor extends panels_renderer_standard {
       unset($this->cache->style);
     }
 
-    // $conf was a reference so it should just modify.
+    // Copy settings from form state back into the cache.
+    if(!empty($form_state['values']['settings'])) {
+      $this->cache->display->content[$pid]->style['settings'] = $form_state['values']['settings'];
+    }
+
     panels_edit_cache_set($this->cache);
 
     $this->commands[] = ctools_modal_command_dismiss();
@@ -1501,6 +1507,8 @@ function panels_ajax_edit_pane_cancel(&$form_state) {
  * Choose cache method form
  */
 function panels_edit_cache_method_form($form, &$form_state) {
+  ctools_form_include($form_state, 'plugins', 'panels');
+  form_load_include($form_state, 'php', 'panels', '/plugins/display_renderers/panels_renderer_editor.class');
   $display = &$form_state['display'];
   $conf = &$form_state['conf'];
 
@@ -1549,6 +1557,8 @@ function panels_edit_cache_method_form_submit($form, &$form_state) {
  * Cache settings form
  */
 function panels_edit_cache_settings_form($form, &$form_state) {
+  ctools_form_include($form_state, 'plugins', 'panels');
+  form_load_include($form_state, 'php', 'panels', '/plugins/display_renderers/panels_renderer_editor.class');
   $display = &$form_state['display'];
   $conf = &$form_state['conf'];
   $pid = $form_state['pid'];
@@ -1609,6 +1619,8 @@ function panels_edit_cache_settings_form_submit($form, &$form_state) {
  * Choose style form
  */
 function panels_edit_style_type_form($form, &$form_state) {
+  ctools_form_include($form_state, 'plugins', 'panels');
+  form_load_include($form_state, 'php', 'panels', '/plugins/display_renderers/panels_renderer_editor.class');
   $display = &$form_state['display'];
   $style = $form_state['style'];
   $type = $form_state['type'];
@@ -1659,6 +1671,8 @@ function panels_edit_style_type_form_submit($form, &$form_state) {
  * Style settings form
  */
 function panels_edit_style_settings_form($form, &$form_state) {
+  ctools_form_include($form_state, 'plugins', 'panels');
+  form_load_include($form_state, 'php', 'panels', '/plugins/display_renderers/panels_renderer_editor.class');
   $display = &$form_state['display'];
   $conf = &$form_state['conf'];
   $pid = $form_state['pid'];
@@ -1713,6 +1727,8 @@ function panels_edit_style_settings_form_submit($form, &$form_state) {
  * Configure CSS on a pane form.
  */
 function panels_edit_configure_pane_css_form($form, &$form_state) {
+  ctools_form_include($form_state, 'plugins', 'panels');
+  form_load_include($form_state, 'php', 'panels', '/plugins/display_renderers/panels_renderer_editor.class');
   $display = &$form_state['display'];
   $pane = &$form_state['pane'];
 
@@ -1755,6 +1771,8 @@ function panels_edit_configure_pane_css_form_submit($form, &$form_state) {
  * Configure lock on a pane form.
  */
 function panels_edit_configure_pane_lock_form($form, &$form_state) {
+  ctools_form_include($form_state, 'plugins', 'panels');
+  form_load_include($form_state, 'php', 'panels', '/plugins/display_renderers/panels_renderer_editor.class');
   $display = &$form_state['display'];
   $pane = &$form_state['pane'];
 
@@ -1830,6 +1848,8 @@ function panels_edit_configure_pane_lock_form_submit($form, &$form_state) {
  * Form to control basic visibility settings.
  */
 function panels_edit_configure_access_settings_form($form, &$form_state) {
+  ctools_form_include($form_state, 'plugins', 'panels');
+  form_load_include($form_state, 'php', 'panels', '/plugins/display_renderers/panels_renderer_editor.class');
   $display = &$form_state['display'];
   $pane = &$form_state['pane'];
 
@@ -1867,6 +1887,8 @@ function panels_edit_configure_access_settings_form_submit($form, &$form_state) 
  * Form to add a visibility rule.
  */
 function panels_edit_add_access_test_form($form, &$form_state) {
+  ctools_form_include($form_state, 'plugins', 'panels');
+  form_load_include($form_state, 'php', 'panels', '/plugins/display_renderers/panels_renderer_editor.class');
   $display = &$form_state['display'];
   $pane = &$form_state['pane'];
 
@@ -1896,6 +1918,8 @@ function panels_edit_add_access_test_form($form, &$form_state) {
  * Form to configure a visibility rule.
  */
 function panels_edit_configure_access_test_form($form, &$form_state) {
+  ctools_form_include($form_state, 'plugins', 'panels');
+  form_load_include($form_state, 'php', 'panels', '/plugins/display_renderers/panels_renderer_editor.class');
   $display = &$form_state['display'];
   $test = &$form_state['test'];
   $plugin = &$form_state['plugin'];
@@ -1968,3 +1992,4 @@ function panels_edit_configure_access_test_form_submit(&$form, &$form_state) {
   }
   $form_state['test']['not'] = !empty($form_state['values']['not']);
 }
+

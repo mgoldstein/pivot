@@ -65,23 +65,23 @@ class panels_mini_ui extends ctools_export_ui {
     // Set up sorting
     switch ($form_state['values']['order']) {
       case 'disabled':
-	$this->sorts[$item->name] = empty($item->disabled) . $item->admin_title;
-	break;
+        $this->sorts[$item->name] = empty($item->disabled) . $item->admin_title;
+        break;
       case 'title':
-	$this->sorts[$item->name] = $item->admin_title;
-	break;
+        $this->sorts[$item->name] = $item->admin_title;
+        break;
       case 'name':
-	$this->sorts[$item->name] = $item->name;
-	break;
+        $this->sorts[$item->name] = $item->name;
+        break;
       case 'category':
-	$this->sorts[$item->name] = ($item->category ? $item->category : t('Mini panels')) . $item->admin_title;
-	break;
+        $this->sorts[$item->name] = ($item->category ? $item->category : t('Mini panels')) . $item->admin_title;
+        break;
       case 'layout':
-	$this->sorts[$item->name] = $item->display->layout . $item->admin_title;
-	break;
+        $this->sorts[$item->name] = $item->display->layout . $item->admin_title;
+        break;
       case 'storage':
-	$this->sorts[$item->name] = $item->type . $item->admin_title;
-	break;
+        $this->sorts[$item->name] = $item->type . $item->admin_title;
+        break;
     }
 
     $layout = !empty($this->layouts[$item->display->layout]) ? $this->layouts[$item->display->layout]['title'] : t('Missing layout');
@@ -91,12 +91,12 @@ class panels_mini_ui extends ctools_export_ui {
 
     $this->rows[$item->name] = array(
       'data' => array(
-	array('data' => check_plain($item->admin_title), 'class' => array('ctools-export-ui-title')),
-	array('data' => check_plain($item->name), 'class' => array('ctools-export-ui-name')),
-	array('data' => $category, 'class' => array('ctools-export-ui-category')),
-	array('data' => $layout, 'class' => array('ctools-export-ui-layout')),
-	array('data' => $item->type, 'class' => array('ctools-export-ui-storage')),
-	array('data' => $ops, 'class' => array('ctools-export-ui-operations')),
+        array('data' => check_plain($item->admin_title), 'class' => array('ctools-export-ui-title')),
+        array('data' => check_plain($item->name), 'class' => array('ctools-export-ui-name')),
+        array('data' => $category, 'class' => array('ctools-export-ui-category')),
+        array('data' => $layout, 'class' => array('ctools-export-ui-layout')),
+        array('data' => $item->type, 'class' => array('ctools-export-ui-storage')),
+        array('data' => $ops, 'class' => array('ctools-export-ui-operations')),
       ),
       'title' => !empty($item->admin_description) ? check_plain($item->admin_description) : '',
       'class' => array(!empty($item->disabled) ? 'ctools-export-ui-disabled' : 'ctools-export-ui-enabled'),
@@ -117,6 +117,13 @@ class panels_mini_ui extends ctools_export_ui {
   function edit_form(&$form, &$form_state) {
     // Get the basic edit form
     parent::edit_form($form, $form_state);
+
+    // Set the admin title machine name length.
+    // We need to do this because the system block name length is
+    // limited to 32 chars.
+    $form['info']['name']['#maxlength'] = 32;
+    $form['info']['name']['#size'] = 34;
+    $form['info']['name']['#description'] .= ' ' . t('The machine name length is limited to 32 characters, due to a limitation in the core block system.');
 
     $form['category'] = array(
       '#type' => 'textfield',
@@ -210,7 +217,7 @@ class panels_mini_ui extends ctools_export_ui {
     }
     if ($form_state['op'] == 'edit') {
       if ($form_state['values']['layout'] == $display->layout) {
-	form_error($form['layout'], t('You must select a different layout if you wish to change layouts.'));
+        form_error($form['layout'], t('You must select a different layout if you wish to change layouts.'));
       }
     }
   }
@@ -222,8 +229,8 @@ class panels_mini_ui extends ctools_export_ui {
     $display = &$form_state['display'];
     if ($form_state['op'] == 'edit') {
       if ($form_state['values']['layout'] != $display->layout) {
-	$form_state['item']->temp_layout = $form_state['values']['layout'];
-	$form_state['clicked_button']['#next'] = 'move';
+        $form_state['item']->temp_layout = $form_state['values']['layout'];
+        $form_state['clicked_button']['#next'] = 'move';
       }
     }
     else {

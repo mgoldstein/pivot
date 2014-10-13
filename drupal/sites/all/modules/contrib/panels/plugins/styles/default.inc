@@ -24,3 +24,4 @@ function theme_panels_default_style_render_region($vars) {
 //  $output .= '</div>';
   return $output;
 }
+

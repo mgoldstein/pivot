@@ -16,7 +16,7 @@ Drupal.Panels.bindClickDelete = function(context) {
   $('a.pane-delete:not(.pane-delete-processed)', context)
     .addClass('pane-delete-processed')
     .click(function() {
-    if (confirm('Remove this pane?')) {
+    if (confirm(Drupal.t('Remove this pane?'))) {
       var id = '#' + $(this).attr('id').replace('pane-delete-', '');
       $(id).remove();
       Drupal.Panels.Draggable.savePositions();
@@ -155,7 +155,7 @@ Drupal.Panels.Draggable = {
     // Create a landing pad before each existing portlet.
     $(this.current_dropzone.obj).find(this.draggable).each(function() {
       if (that.object.id != this.id) {
-	that.createLandingPad(this, false);
+        that.createLandingPad(this, false);
       }
     });
   },
@@ -172,13 +172,13 @@ Drupal.Panels.Draggable = {
       var dsty = Math.abs(y - this.landing_pads[i].centerY);
       var distance =  (dstx * dstx) + (dsty * dsty);
       if (shortest_distance == null || distance < shortest_distance) {
-	shortest_distance = distance;
-	nearest_pad = this.landing_pads[i];
+        shortest_distance = distance;
+        nearest_pad = this.landing_pads[i];
       }
     }
     if (nearest_pad != this.current_pad) {
       if (this.current_pad) {
-	$(this.current_pad.obj).hide();
+        $(this.current_pad.obj).hide();
       }
       this.current_pad = nearest_pad;
       $(nearest_pad.obj).show();
@@ -191,24 +191,24 @@ Drupal.Panels.Draggable = {
     for (var i in this.dropzones) {
 //      console.log('x:' + x + ' left:' + this.dropzones[i].left + ' right: ' + this.dropzones[i].left + this.dropzones[i].width);
       if (this.dropzones[i].left < x &&
-	x < this.dropzones[i].left + this.dropzones[i].width &&
-	this.dropzones[i].top < y &&
-	y < this.dropzones[i].top + this.dropzones[i].height) {
-	  new_dropzone = this.dropzones[i];
-	  break;
+        x < this.dropzones[i].left + this.dropzones[i].width &&
+        this.dropzones[i].top < y &&
+        y < this.dropzones[i].top + this.dropzones[i].height) {
+          new_dropzone = this.dropzones[i];
+          break;
       }
     }
     // If we're over one, see if it's different.
     if (new_dropzone && (!this.regionLock || this.regionLockRegions[new_dropzone.region])) {
       var changed = false;
       if (!this.current_dropzone || new_dropzone.obj.id != this.current_dropzone.obj.id) {
-	this.changeDropZone(new_dropzone);
-	changed = true;
+        this.changeDropZone(new_dropzone);
+        changed = true;
       }
       this.findLandingPad(x, y);
       if (changed)  {
-	// recalculate the size of our drop zones due to the fact that we're drawing landing pads.
-	this.reCalculateDropZones();
+        // recalculate the size of our drop zones due to the fact that we're drawing landing pads.
+        this.reCalculateDropZones();
       }
     }
     // If we're not over one, be sure to unhilite one if we were just
@@ -224,11 +224,11 @@ Drupal.Panels.Draggable = {
     $(draggable.accept).each(function() {
       var val = '';
       $(this).find(draggable.draggable).each(function() {
-	if (val) {
-	  val += ',';
-	}
+        if (val) {
+          val += ',';
+        }
 
-	val += this.id.replace(draggable.draggableId, '');
+        val += this.id.replace(draggable.draggableId, '');
       });
       var region = this.id.replace(draggable.regionId, '');
       $('input[name="panel[pane][' +  region + ']"]').val(val);
@@ -265,8 +265,8 @@ Drupal.Panels.DraggableHandler = function() {
     if (document.defaultView && document.defaultView.getComputedStyle) {
       var css = document.defaultView.getComputedStyle(e, null);
       return {
-	x: parseInt(css.getPropertyValue('left')),
-	y: parseInt(css.getPropertyValue('top'))
+        x: parseInt(css.getPropertyValue('left')),
+        y: parseInt(css.getPropertyValue('top'))
       };
     }
     */
@@ -483,8 +483,8 @@ Drupal.behaviors.PanelsDisplayEditor = {
     // The above doesn't work if context IS the pane, so do this to catch that.
     if ($(context).hasClass('panel-pane') && !$(context).hasClass('panel-portlet')) {
       $(context)
-	.addClass('panel-portlet')
-	.each(Drupal.Panels.bindPortlet);
+        .addClass('panel-portlet')
+        .each(Drupal.Panels.bindPortlet);
     }
 
     // Make draggables and make sure their positions are saved.
@@ -500,25 +500,25 @@ Drupal.behaviors.PanelsDisplayEditor = {
     $('#panels-live-preview-button:not(.panels-preview-processed)')
       .addClass('panels-preview-processed')
       .click(function () {
-	if (!$('#panels-preview').size()) {
-	  $('#panels-dnd-main').parents('form').after('<div id="panels-preview" class="clearfix"></div>');
-	}
-	var html = '';
-	html += '  <div id="modal-throbber">';
-	html += '    <div class="modal-throbber-wrapper">';
-	html +=        Drupal.settings.CToolsModal.throbber;
-	html += '    </div>';
-	html += '  </div>';
+        if (!$('#panels-preview').size()) {
+          $('#panels-dnd-main').parents('form').after('<div id="panels-preview" class="clearfix"></div>');
+        }
+        var html = '';
+        html += '  <div id="modal-throbber">';
+        html += '    <div class="modal-throbber-wrapper">';
+        html +=        Drupal.settings.CToolsModal.throbber;
+        html += '    </div>';
+        html += '  </div>';
 
-	$('#panels-preview').html(html);
+        $('#panels-preview').html(html);
       });
 
     var setTitleClass = function () {
       if ($('#edit-display-title-hide-title').val() == 2) {
-	$('#panels-dnd-main').removeClass('panels-set-title-hide');
+        $('#panels-dnd-main').removeClass('panels-set-title-hide');
       }
       else {
-	$('#panels-dnd-main').addClass('panels-set-title-hide');
+        $('#panels-dnd-main').addClass('panels-set-title-hide');
       }
     }
 

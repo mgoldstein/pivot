@@ -20,25 +20,25 @@ Drupal.behaviors.flexibleAdmin = {
     $('input#panels-flexible-toggle-layout:not(.panels-flexible-processed)', context)
       .addClass('panels-flexible-processed')
       .click(function() {
-	$('.panel-flexible-admin')
-	  .toggleClass('panel-flexible-no-edit-layout')
-	  .toggleClass('panel-flexible-edit-layout');
+        $('.panel-flexible-admin')
+          .toggleClass('panel-flexible-no-edit-layout')
+          .toggleClass('panel-flexible-edit-layout');
 
-	if ($('.panel-flexible-admin').hasClass('panel-flexible-edit-layout')) {
-	  $(this).val(Drupal.t('Hide layout designer'));
-	  Drupal.flexible.fixHeight();
-	}
-	else {
-	  $(this).val(Drupal.t('Show layout designer'));
-	}
-	return false;
+        if ($('.panel-flexible-admin').hasClass('panel-flexible-edit-layout')) {
+          $(this).val(Drupal.t('Hide layout designer'));
+          Drupal.flexible.fixHeight();
+        }
+        else {
+          $(this).val(Drupal.t('Show layout designer'));
+        }
+        return false;
       });
 
     // Window splitter behavior.
     $('div.panels-flexible-splitter:not(.panels-splitter-processed)')
       .addClass('panels-splitter-processed')
       .each(function() {
-	Drupal.flexible.splitters.push(new Drupal.flexible.splitter($(this)));
+        Drupal.flexible.splitters.push(new Drupal.flexible.splitter($(this)));
       });
 
     Drupal.flexible.fixHeight();
@@ -80,24 +80,24 @@ Drupal.flexible.splitter = function($splitter) {
 
       // calculate unit size and min/max width.
       if (splitter.left_width_type == '%') {
-	splitter.left_total = splitter.left.width() / (splitter.left_width / 100);
-	// One pixel is equivalent to what percentage of the total?
-	splitter.left_unit = (1 / splitter.left_total) * 100;
-	splitter.left_min = 5; // minimum % we'll use.
+        splitter.left_total = splitter.left.width() / (splitter.left_width / 100);
+        // One pixel is equivalent to what percentage of the total?
+        splitter.left_unit = (1 / splitter.left_total) * 100;
+        splitter.left_min = 5; // minimum % we'll use.
       }
       else {
-	splitter.left_unit = 1;
-	splitter.left_min = 25; // minimum pixels we'll use.
+        splitter.left_unit = 1;
+        splitter.left_min = 25; // minimum pixels we'll use.
       }
       if (splitter.right_width_type == '%') {
-	splitter.right_total = splitter.right.width() / (splitter.right_width / 100);
-	// One pixel is equivalent to what percentage of the total?
-	splitter.right_unit = (1 / splitter.right_total) * 100;
-	splitter.right_min = 5; // minimum % we'll use.
+        splitter.right_total = splitter.right.width() / (splitter.right_width / 100);
+        // One pixel is equivalent to what percentage of the total?
+        splitter.right_unit = (1 / splitter.right_total) * 100;
+        splitter.right_min = 5; // minimum % we'll use.
       }
       else {
-	splitter.right_unit = 1;
-	splitter.right_min = 25; // minimum pixels we'll use.
+        splitter.right_unit = 1;
+        splitter.right_min = 25; // minimum pixels we'll use.
       }
     }
     else {
@@ -105,30 +105,30 @@ Drupal.flexible.splitter = function($splitter) {
       splitter.parent = $splitter.parent().parent();
 
       if (splitter.left_width_type != 'px') {
-	// Only the 'px' side can resize.
-	splitter.left_unit = 0;
-	splitter.right_unit = 1;
-	splitter.right_min = 25;
-	splitter.right_padding = parseInt(splitter.parent.css('padding-right'));
-	splitter.right_parent = parseInt(splitter.right.parent().css('margin-right'));
-	splitter.max = splitter.right.width() + splitter.left.parent().width() -
-	  (splitter.left.siblings(':not(.panels-flexible-splitter)').length * 25) - 25;
+        // Only the 'px' side can resize.
+        splitter.left_unit = 0;
+        splitter.right_unit = 1;
+        splitter.right_min = 25;
+        splitter.right_padding = parseInt(splitter.parent.css('padding-right'));
+        splitter.right_parent = parseInt(splitter.right.parent().css('margin-right'));
+        splitter.max = splitter.right.width() + splitter.left.parent().width() -
+          (splitter.left.siblings(':not(.panels-flexible-splitter)').length * 25) - 25;
       }
       else {
-	splitter.right_unit = 0;
-	splitter.left_unit = 1;
-	splitter.left_min = 25;
-	splitter.left_padding = parseInt(splitter.parent.css('padding-left'));
-	splitter.left_parent = parseInt(splitter.left.parent().css('margin-left'));
-	if (splitter.right_id) {
-	  splitter.max = splitter.left.width() + splitter.right.parent().width() -
-	    (splitter.right.siblings(':not(.panels-flexible-splitter)').length * 25) - 25;
-	}
-	else {
-	  var subtract = 0;
-	  splitter.left.siblings(':not(.panels-flexible-splitter)').each(function() { subtract += $(this).width()});
-	  splitter.max = splitter.left.parent().width() - subtract;
-	}
+        splitter.right_unit = 0;
+        splitter.left_unit = 1;
+        splitter.left_min = 25;
+        splitter.left_padding = parseInt(splitter.parent.css('padding-left'));
+        splitter.left_parent = parseInt(splitter.left.parent().css('margin-left'));
+        if (splitter.right_id) {
+          splitter.max = splitter.left.width() + splitter.right.parent().width() -
+            (splitter.right.siblings(':not(.panels-flexible-splitter)').length * 25) - 25;
+        }
+        else {
+          var subtract = 0;
+          splitter.left.siblings(':not(.panels-flexible-splitter)').each(function() { subtract += $(this).width()});
+          splitter.max = splitter.left.parent().width() - subtract;
+        }
       }
     }
 
@@ -143,13 +143,13 @@ Drupal.flexible.splitter = function($splitter) {
       splitter.left_box.css('left', event.pageX - 65);
 
     if (splitter.left_width_type == '%') {
-	var left = splitter.currentLeft / splitter.left_scale;
-	splitter.left_box.html(left.toFixed(2) + splitter.left_width_type);
+        var left = splitter.currentLeft / splitter.left_scale;
+        splitter.left_box.html(left.toFixed(2) + splitter.left_width_type);
       }
       else {
-	// make sure pixel values are always whole integers.
-	splitter.currentLeft = parseInt(splitter.currentLeft);
-	splitter.left_box.html(splitter.currentLeft + splitter.left_width_type);
+        // make sure pixel values are always whole integers.
+        splitter.currentLeft = parseInt(splitter.currentLeft);
+        splitter.left_box.html(splitter.currentLeft + splitter.left_width_type);
       }
     }
 
@@ -160,13 +160,13 @@ Drupal.flexible.splitter = function($splitter) {
       splitter.right_box.css('top', offset.top);
       splitter.right_box.css('left', event.pageX + 5);
       if (splitter.right_width_type == '%') {
-	var right = splitter.currentRight / splitter.right_scale;
-	splitter.right_box.html(right.toFixed(2) + splitter.right_width_type);
+        var right = splitter.currentRight / splitter.right_scale;
+        splitter.right_box.html(right.toFixed(2) + splitter.right_width_type);
       }
       else {
-	// make sure pixel values are always whole integers.
-	splitter.currentRight = parseInt(splitter.currentRight);
-	splitter.right_box.html(splitter.currentRight + splitter.right_width_type);
+        // make sure pixel values are always whole integers.
+        splitter.currentRight = parseInt(splitter.currentRight);
+        splitter.right_box.html(splitter.currentRight + splitter.right_width_type);
       }
     }
 
@@ -188,38 +188,38 @@ Drupal.flexible.splitter = function($splitter) {
       // in order to move the fluid side we have to adjust the padding
       // on our parent object.
       if (splitter.left_unit) {
-	// Only the left box is allowed to move.
-	splitter.currentLeft = splitter.startLeft - diff;
+        // Only the left box is allowed to move.
+        splitter.currentLeft = splitter.startLeft - diff;
 
-	if (splitter.currentLeft < splitter.left_min) {
-	  splitter.currentLeft = splitter.left_min;
-	}
-	if (splitter.currentLeft > splitter.max) {
-	  splitter.currentLeft = splitter.max;
-	}
+        if (splitter.currentLeft < splitter.left_min) {
+          splitter.currentLeft = splitter.left_min;
+        }
+        if (splitter.currentLeft > splitter.max) {
+          splitter.currentLeft = splitter.max;
+        }
 
-	// If the shift key is pressed, go with 1% or 10px boundaries.
-	if (event.shiftKey) {
-	  splitter.currentLeft = parseInt(splitter.currentLeft / 10) * 10;
-	}
-	moved = (splitter.startLeft - splitter.currentLeft);
+        // If the shift key is pressed, go with 1% or 10px boundaries.
+        if (event.shiftKey) {
+          splitter.currentLeft = parseInt(splitter.currentLeft / 10) * 10;
+        }
+        moved = (splitter.startLeft - splitter.currentLeft);
       }
       else {
-	// Only the left box is allowed to move.
-	splitter.currentRight = splitter.startRight + diff;
+        // Only the left box is allowed to move.
+        splitter.currentRight = splitter.startRight + diff;
 
-	if (splitter.currentRight < splitter.right_min) {
-	  splitter.currentRight = splitter.right_min;
-	}
-	if (splitter.currentRight > splitter.max) {
-	  splitter.currentRight = splitter.max;
-	}
+        if (splitter.currentRight < splitter.right_min) {
+          splitter.currentRight = splitter.right_min;
+        }
+        if (splitter.currentRight > splitter.max) {
+          splitter.currentRight = splitter.max;
+        }
 
-	// If the shift key is pressed, go with 1% or 10px boundaries.
-	if (event.shiftKey) {
-	  splitter.currentRight = parseInt(splitter.currentRight / 10) * 10;
-	}
-	moved = (splitter.currentRight - splitter.startRight);
+        // If the shift key is pressed, go with 1% or 10px boundaries.
+        if (event.shiftKey) {
+          splitter.currentRight = parseInt(splitter.currentRight / 10) * 10;
+        }
+        moved = (splitter.currentRight - splitter.startRight);
       }
     }
     else {
@@ -230,20 +230,20 @@ Drupal.flexible.splitter = function($splitter) {
       splitter.currentLeft = splitter.startLeft + left;
 
       if (splitter.currentLeft < splitter.left_min) {
-	splitter.currentLeft = splitter.left_min;
+        splitter.currentLeft = splitter.left_min;
       }
       if (splitter.currentLeft > splitter.max - splitter.right_min) {
-	splitter.currentLeft = splitter.max - splitter.right_min;
+        splitter.currentLeft = splitter.max - splitter.right_min;
       }
 
       // If the shift key is pressed, go with 1% or 10px boundaries.
       if (event.shiftKey) {
-	if (splitter.left_width_type == '%') {
-	  splitter.currentLeft = parseInt(splitter.currentLeft / splitter.left_scale) * splitter.left_scale;
-	}
-	else {
-	  splitter.currentLeft = parseInt(splitter.currentLeft / 10) * 10;
-	}
+        if (splitter.left_width_type == '%') {
+          splitter.currentLeft = parseInt(splitter.currentLeft / splitter.left_scale) * splitter.left_scale;
+        }
+        else {
+          splitter.currentLeft = parseInt(splitter.currentLeft / 10) * 10;
+        }
       }
 
       // Now automatically make the right side to be the other half.
@@ -257,11 +257,11 @@ Drupal.flexible.splitter = function($splitter) {
     if (splitter.left_unit) {
       splitter.left_box.css('left', splitter.startX - 65 - moved);
       if (splitter.left_width_type == '%') {
-	var left = splitter.currentLeft / splitter.left_scale;
-	splitter.left_box.html(left.toFixed(2) + splitter.left_width_type);
+        var left = splitter.currentLeft / splitter.left_scale;
+        splitter.left_box.html(left.toFixed(2) + splitter.left_width_type);
       }
       else {
-	splitter.left_box.html(parseInt(splitter.currentLeft) + splitter.left_width_type);
+        splitter.left_box.html(parseInt(splitter.currentLeft) + splitter.left_width_type);
       }
 
       // Finally actually move the left side
@@ -276,11 +276,11 @@ Drupal.flexible.splitter = function($splitter) {
     if (splitter.right_unit) {
       splitter.right_box.css('left', splitter.startX + 5 - moved);
       if (splitter.right_width_type == '%') {
-	var right = splitter.currentRight / splitter.right_scale;
-	splitter.right_box.html(right.toFixed(2) + splitter.right_width_type);
+        var right = splitter.currentRight / splitter.right_scale;
+        splitter.right_box.html(right.toFixed(2) + splitter.right_width_type);
       }
       else {
-	splitter.right_box.html(parseInt(splitter.currentRight) + splitter.right_width_type);
+        splitter.right_box.html(parseInt(splitter.currentRight) + splitter.right_width_type);
       }
 
       // Finally actually move the right side
@@ -290,9 +290,6 @@ Drupal.flexible.splitter = function($splitter) {
       // if not moving the right side, adjust the parent padding instead.
       splitter.parent.css('padding-left', (splitter.left_padding - moved) + 'px');
       splitter.left.parent().css('margin-left', (splitter.left_parent + moved) + 'px');
-      if (jQuery.browser.msie) {
-	splitter.left.parent().css('left', splitter.currentLeft);
-      }
     }
     return false;
   };

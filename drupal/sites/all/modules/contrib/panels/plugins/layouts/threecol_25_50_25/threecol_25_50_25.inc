@@ -17,3 +17,4 @@ $plugin = array(
     'right' => t('Right side')
   ),
 );
+

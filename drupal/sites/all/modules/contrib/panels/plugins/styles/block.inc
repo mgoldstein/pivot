@@ -31,6 +31,9 @@ function theme_panels_block_style_render_pane($vars) {
   if (!empty($block->title)) {
     $block->subject = $block->title;
   }
+  if (!isset($block->subject)) {
+    $block->subject = '';
+  }
 
   $block->region = $pane->panel;
   if (!isset($block->module)) {
@@ -53,3 +56,4 @@ function theme_panels_block_style_render_pane($vars) {
   // might want to utilize.
   return drupal_render($build);
 }
+

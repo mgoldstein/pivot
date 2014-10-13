@@ -20,3 +20,4 @@ $plugin = array(
     'class' => 'panels_layouts_ui',
   ),
 );
+

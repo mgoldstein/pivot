@@ -362,7 +362,7 @@ function safeword_field_widget_form(&$form, &$form_state, $field, $instance, $la
         '#type' => 'textfield',
         '#default_value' => empty($items[$delta]['human']) ? '' : $items[$delta]['human'],
         '#maxlength' => $field['settings']['max_length'],
-        '#description' => $element['#description'],
+        '#description' => filter_xss_admin($element['#description']),
         '#required' => $element['#required']
       );
 
@@ -374,10 +374,10 @@ function safeword_field_widget_form(&$form, &$form_state, $field, $instance, $la
         '#type' => 'machine_name',
         '#default_value' => empty($items[$delta]['machine']) ? '' : $items[$delta]['machine'],
         '#maxlength' => $field['settings']['max_length'],
-        '#description' => $field['settings']['machine_description'],
+        '#description' => filter_xss_admin($field['settings']['machine_description']),
         '#machine_name' => array(
           'source' => isset($safeword_source) ? $safeword_source : array('title'),
-          'label' => $field['settings']['machine_label'],
+          'label' => check_plain($field['settings']['machine_label']),
           'replace_pattern' => $field['settings']['replace_pattern'],
           'replace' => $field['settings']['replace_value'],
           'field_prefix' => '',
@@ -424,7 +424,7 @@ function safeword_field_widget_form(&$form, &$form_state, $field, $instance, $la
 
           foreach ($exploded_path as $path_key => $path_part) {
             //$exploded_path[$path_key] = '<span class="safeword-path-un-editable">' . $path_part . '</span>';
-            $exploded_path[$path_key] = theme('safeword_un_editable_path_parts', array('path' => $path_part));
+            $exploded_path[$path_key] = theme('safeword_un_editable_path_parts', array('path' => check_plain($path_part)));
           }
 
 

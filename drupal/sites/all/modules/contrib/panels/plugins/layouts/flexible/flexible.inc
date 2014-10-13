@@ -102,34 +102,34 @@ function panels_flexible_convert_settings(&$settings, &$layout) {
     // set up a default
     $settings = array(
       'items' => array(
-	// The 'canvas' is a special row that does not get rendered
-	// normally, but is used to contain the columns.
-	'canvas' => array(
-	  'type' => 'row',
-	  'contains' => 'column',
-	  'children' => array('main'),
-	  'parent' => NULL,
-	),
-	'main' => array(
-	  'type' => 'column',
-	  'width' => 100,
-	  'width_type' => '%',
-	  'children' => array('main-row'),
-	  'parent' => 'canvas',
-	),
-	'main-row' => array(
-	  'type' => 'row',
-	  'contains' => 'region',
-	  'children' => array('center'),
-	  'parent' => 'main',
-	),
-	'center' => array(
-	  'type' => 'region',
-	  'title' => t('Center'),
-	  'width' => 100,
-	  'width_type' => '%',
-	  'parent' => 'main-row',
-	),
+        // The 'canvas' is a special row that does not get rendered
+        // normally, but is used to contain the columns.
+        'canvas' => array(
+          'type' => 'row',
+          'contains' => 'column',
+          'children' => array('main'),
+          'parent' => NULL,
+        ),
+        'main' => array(
+          'type' => 'column',
+          'width' => 100,
+          'width_type' => '%',
+          'children' => array('main-row'),
+          'parent' => 'canvas',
+        ),
+        'main-row' => array(
+          'type' => 'row',
+          'contains' => 'region',
+          'children' => array('center'),
+          'parent' => 'main',
+        ),
+        'center' => array(
+          'type' => 'region',
+          'title' => t('Center'),
+          'width' => 100,
+          'width_type' => '%',
+          'parent' => 'main-row',
+        ),
       ),
     );
   }
@@ -147,24 +147,24 @@ function panels_flexible_convert_settings(&$settings, &$layout) {
     if (!empty($old['sidebars']['left'])) {
       $settings['items']['canvas']['children'][] = 'sidebar-left';
       $settings['items']['sidebar-left'] = array(
-	'type' => 'column',
-	'width' => $old['sidebars']['left_width'],
-	'width_type' => $old['sidebars']['width_type'],
-	'children' => array('sidebar-left-row'),
-	'parent' => 'canvas',
+        'type' => 'column',
+        'width' => $old['sidebars']['left_width'],
+        'width_type' => $old['sidebars']['width_type'],
+        'children' => array('sidebar-left-row'),
+        'parent' => 'canvas',
       );
       $settings['items']['sidebar-left-row'] = array(
-	'type' => 'row',
-	'contains' => 'region',
-	'children' => array('sidebar_left'),
-	'parent' => 'sidebar-left',
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array('sidebar_left'),
+        'parent' => 'sidebar-left',
       );
       $settings['items']['sidebar_left'] = array(
-	'type' => 'region',
-	'title' => t('Left sidebar'),
-	'width' => 100,
-	'width_type' => '%',
-	'parent' => 'sidebar-left-row',
+        'type' => 'region',
+        'title' => t('Left sidebar'),
+        'width' => 100,
+        'width_type' => '%',
+        'parent' => 'sidebar-left-row',
       );
     }
 
@@ -173,24 +173,24 @@ function panels_flexible_convert_settings(&$settings, &$layout) {
     if (!empty($old['sidebars']['right'])) {
       $settings['items']['canvas']['children'][] = 'sidebar-right';
       $settings['items']['sidebar-right'] = array(
-	'type' => 'column',
-	'width' => $old['sidebars']['right_width'],
-	'width_type' => $old['sidebars']['width_type'],
-	'children' => array('sidebar-right-row'),
-	'parent' => 'canvas',
+        'type' => 'column',
+        'width' => $old['sidebars']['right_width'],
+        'width_type' => $old['sidebars']['width_type'],
+        'children' => array('sidebar-right-row'),
+        'parent' => 'canvas',
       );
       $settings['items']['sidebar-right-row'] = array(
-	'type' => 'row',
-	'contains' => 'region',
-	'children' => array('sidebar_right'),
-	'parent' => 'sidebar-right',
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array('sidebar_right'),
+        'parent' => 'sidebar-right',
       );
       $settings['items']['sidebar_right'] = array(
-	'type' => 'region',
-	'title' => t('Right sidebar'),
-	'width' => 100,
-	'width_type' => '%',
-	'parent' => 'sidebar-right-row',
+        'type' => 'region',
+        'title' => t('Right sidebar'),
+        'width' => 100,
+        'width_type' => '%',
+        'parent' => 'sidebar-right-row',
       );
     }
 
@@ -207,32 +207,32 @@ function panels_flexible_convert_settings(&$settings, &$layout) {
     for ($row = 1; $row <= intval($old['rows']); $row++) {
       // Create entry for the row
       $settings['items']["row_$row"] = array(
-	'type' => 'row',
-	'contains' => 'region',
-	'children' => array(),
-	'parent' => 'main',
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(),
+        'parent' => 'main',
       );
       // Add the row to the parent's children
       $settings['items']['main']['children'][] = "row_$row";
 
       for ($col = 1; $col <= intval($old["row_$row"]['columns']); $col++) {
-	// Create entry for the region
-	$settings['items']["row_${row}_$col"] = array(
-	  'type' => 'region',
-	  'width' => $old["row_$row"]["width_$col"],
-	  'width_type' => '%',
-	  'parent' => "row_$row",
-	);
-	// Add entry for the region to the row's children
-	$settings['items']["row_$row"]['children'][] = "row_${row}_$col";
+        // Create entry for the region
+        $settings['items']["row_${row}_$col"] = array(
+          'type' => 'region',
+          'width' => $old["row_$row"]["width_$col"],
+          'width_type' => '%',
+          'parent' => "row_$row",
+        );
+        // Add entry for the region to the row's children
+        $settings['items']["row_$row"]['children'][] = "row_${row}_$col";
 
-	// Apply the proper title to the region
-	if (!empty($old["row_$row"]['names'][$col - 1])) {
-	  $settings['items']["row_${row}_$col"]['title'] = $old["row_$row"]['names'][$col - 1];
-	}
-	else {
-	  $settings['items']["row_${row}_$col"]['title'] = t("Row @row, Column @col", array('@row' => $row, '@col' => $col));
-	}
+        // Apply the proper title to the region
+        if (!empty($old["row_$row"]['names'][$col - 1])) {
+          $settings['items']["row_${row}_$col"]['title'] = $old["row_$row"]['names'][$col - 1];
+        }
+        else {
+          $settings['items']["row_${row}_$col"]['title'] = t("Row @row, Column @col", array('@row' => $row, '@col' => $col));
+        }
       }
     }
   }
@@ -431,7 +431,7 @@ function theme_panels_flexible_admin($vars) {
     if (user_access('administer panels layouts')) {
       $output .= '<input type="hidden" class="panels-flexible-reuse-layout-url" value="' . url($handler->get_url('layout', 'reuse'), array('absolute' => TRUE)) . '">';
       $output .= '<input type="submit" id="panels-flexible-reuse-layout" class="form-submit ctools-use-modal" value ="' .
-	t('Reuse layout') . '">';
+        t('Reuse layout') . '">';
     }
     $output .= "<div class=\"panel-flexible " . $renderer->base['canvas'] . " clearfix panel-flexible-admin panel-flexible-no-edit-layout\" $renderer->id_str>\n";
   }
@@ -470,17 +470,17 @@ function panels_flexible_render_items($renderer, $list, $owner_id) {
 
     switch ($item['type']) {
       case 'column':
-	$content = panels_flexible_render_items($renderer, $item['children'], $renderer->base['column'] . '-' . $id);
-	$groups[$location] .= panels_flexible_render_item($renderer, $item, $content, $id, $position, $max);
-	break;
+        $content = panels_flexible_render_items($renderer, $item['children'], $renderer->base['column'] . '-' . $id);
+        $groups[$location] .= panels_flexible_render_item($renderer, $item, $content, $id, $position, $max);
+        break;
       case 'row':
-	$content = panels_flexible_render_items($renderer, $item['children'], $renderer->base['row'] . '-' . $id);
-	$groups[$location] .= panels_flexible_render_item($renderer, $item, $content, $id, $position, $max, TRUE);
-	break;
+        $content = panels_flexible_render_items($renderer, $item['children'], $renderer->base['row'] . '-' . $id);
+        $groups[$location] .= panels_flexible_render_item($renderer, $item, $content, $id, $position, $max, TRUE);
+        break;
       case 'region':
-	$content = isset($renderer->content[$id]) ? $renderer->content[$id] : "&nbsp;";
-	$groups[$location] .= panels_flexible_render_item($renderer, $item, $content, $id, $position, $max);
-	break;
+        $content = isset($renderer->content[$id]) ? $renderer->content[$id] : "&nbsp;";
+        $groups[$location] .= panels_flexible_render_item($renderer, $item, $content, $id, $position, $max);
+        break;
     }
 
     // If all items are fixed then we have a special splitter on the right to
@@ -498,10 +498,10 @@ function panels_flexible_render_items($renderer, $list, $owner_id) {
   foreach ($groups as $position => $content) {
     if (!empty($content) || $renderer->admin) {
       if ($group_count > 1 || $renderer->admin) {
-	$output .= '<div class="' . $owner_id . '-' . $position . '">' . $content . '</div>';
+        $output .= '<div class="' . $owner_id . '-' . $position . '">' . $content . '</div>';
       }
       else {
-	$output .= $content;
+        $output .= $content;
       }
     }
   }
@@ -520,8 +520,8 @@ function panels_flexible_render_item($renderer, $item, $content, $id, $position,
     $fixed = FALSE;
     foreach ($item['children'] as $id) {
       if ($renderer->settings['items'][$id]['width_type'] != '%') {
-	$fixed = TRUE;
-	break;
+        $fixed = TRUE;
+        break;
       }
     }
 
@@ -677,7 +677,7 @@ function panels_flexible_render_item_links($renderer, $id, $item) {
     }
     if (empty($item['children'])) {
       if ($id != 'canvas') {
-	$remove = t('Remove row');
+        $remove = t('Remove row');
       }
       $add = $item['contains'] == 'region' ? t('Add region') : t('Add column');
     }
@@ -747,47 +747,47 @@ function panels_flexible_render_css_group($renderer, $list, $owner_id, $type, $i
   $css = array();
 
   // Start off with some generic CSS to properly pad regions
-  $css['.' . $renderer->item_class['region']] = array(
+  $css[$owner_id . ' .' . $renderer->item_class['region']] = array(
     'padding' => '0',
   );
 
-  $css['.' . $renderer->item_class['region'] . '-inside'] = array(
+  $css[$owner_id . ' .' . $renderer->item_class['region'] . '-inside'] = array(
     'padding-right' => $renderer->region_separation,
     'padding-left' => $renderer->region_separation,
   );
 
-  $css['.' . $renderer->item_class['region'] . '-inside-first'] = array(
+  $css[$owner_id . ' .' . $renderer->item_class['region'] . '-inside-first'] = array(
     'padding-left' => '0',
   );
 
-  $css['.' . $renderer->item_class['region'] . '-inside-last'] = array(
+  $css[$owner_id . ' .' . $renderer->item_class['region'] . '-inside-last'] = array(
     'padding-right' => '0',
   );
 
-  $css['.' . $renderer->item_class['column']] = array(
+  $css[$owner_id . ' .' . $renderer->item_class['column']] = array(
     'padding' => '0',
   );
 
-  $css['.' . $renderer->item_class['column'] . '-inside'] = array(
+  $css[$owner_id . ' .' . $renderer->item_class['column'] . '-inside'] = array(
     'padding-right' => $renderer->column_separation,
     'padding-left' => $renderer->column_separation,
   );
 
-  $css['.' . $renderer->item_class['column'] . '-inside-first'] = array(
+  $css[$owner_id . ' .' . $renderer->item_class['column'] . '-inside-first'] = array(
     'padding-left' => '0',
   );
 
-  $css['.' . $renderer->item_class['column'] . '-inside-last'] = array(
+  $css[$owner_id . ' .' . $renderer->item_class['column'] . '-inside-last'] = array(
     'padding-right' => '0',
   );
 
   // And properly pad rows too
-  $css['.' . $renderer->item_class['row']] = array(
+  $css[$owner_id . ' .' . $renderer->item_class['row']] = array(
     'padding' => '0 0 ' . $renderer->row_separation . ' 0',
     'margin' => '0',
   );
 
-  $css['.' . $renderer->item_class['row'] . '-last'] = array(
+  $css[$owner_id . ' .' . $renderer->item_class['row'] . '-last'] = array(
     'padding-bottom' => '0',
   );
 
@@ -816,29 +816,29 @@ function panels_flexible_get_css_group(&$css, $renderer, $list, $owner_id, $type
     $current = 'left';
     foreach ($list as $id) {
       if ($renderer->settings['items'][$id]['width_type'] == 'px') {
-	// fixed
-	if ($current == 'left') {
-	  $left[] = $id;
-	  $renderer->positions[$id] = 'left';
-	  $left_total += $renderer->settings['items'][$id]['width'];
-	}
-	else {
-	  $current = 'right';
-	  $right[] = $id;
-	  $renderer->positions[$id] = 'right';
-	  $right_total += $renderer->settings['items'][$id]['width'];
-	}
+        // fixed
+        if ($current == 'left') {
+          $left[] = $id;
+          $renderer->positions[$id] = 'left';
+          $left_total += $renderer->settings['items'][$id]['width'];
+        }
+        else {
+          $current = 'right';
+          $right[] = $id;
+          $renderer->positions[$id] = 'right';
+          $right_total += $renderer->settings['items'][$id]['width'];
+        }
       }
       else {
-	// fluid
-	if ($current != 'right') {
-	  $current = 'middle';
-	  $middle[] = $id;
-	  $renderer->positions[$id] = 'middle';
-	  $middle_total += $renderer->settings['items'][$id]['width'];
-	}
-	// fall through: if current is 'right' and we ran into a 'fluid' then
-	// it gets *dropped* because that is invalid.
+        // fluid
+        if ($current != 'right') {
+          $current = 'middle';
+          $middle[] = $id;
+          $renderer->positions[$id] = 'middle';
+          $middle_total += $renderer->settings['items'][$id]['width'];
+        }
+        // fall through: if current is 'right' and we ran into a 'fluid' then
+        // it gets *dropped* because that is invalid.
       }
     }
 
@@ -846,10 +846,10 @@ function panels_flexible_get_css_group(&$css, $renderer, $list, $owner_id, $type
     foreach ($left as $id) {
       $class = "." . $renderer->base[$type] . "-$id";
       $css[$class] = array(
-	'position' => 'relative',
-	'float' => 'left',
-	'background-color' => 'transparent',
-	'width' => $renderer->settings['items'][$id]['width'] . "px",
+        'position' => 'relative',
+        'float' => 'left',
+        'background-color' => 'transparent',
+        'width' => $renderer->settings['items'][$id]['width'] . "px",
       );
     }
 
@@ -859,8 +859,8 @@ function panels_flexible_get_css_group(&$css, $renderer, $list, $owner_id, $type
     foreach ($right as $id) {
       $class = "." . $renderer->base[$type] . "-$id";
       $css[$class] = array(
-	'float' => 'left',
-	'width' => $renderer->settings['items'][$id]['width'] . "px",
+        'float' => 'left',
+        'width' => $renderer->settings['items'][$id]['width'] . "px",
       );
     }
 
@@ -872,16 +872,16 @@ function panels_flexible_get_css_group(&$css, $renderer, $list, $owner_id, $type
       // to each so that the total is 99%.
       $scale = $renderer->scale_base / $middle_total;
       foreach ($middle as $position => $id) {
-	$class = "." . $renderer->base[$type] . "-$id";
-	$css[$class] = array(
-	  'float' => 'left',
-	  'width' => number_format($renderer->settings['items'][$id]['width'] * $scale, 4, '.', '') . "%",
-	);
+        $class = "." . $renderer->base[$type] . "-$id";
+        $css[$class] = array(
+          'float' => 'left',
+          'width' => number_format($renderer->settings['items'][$id]['width'] * $scale, 4, '.', '') . "%",
+        );
 
-	// Store this so we can use it later.
-	// @todo: Store the scale, not the new width, so .js can adjust
-	// bi-directionally.
-	$renderer->scale[$id] = $scale;
+        // Store this so we can use it later.
+        // @todo: Store the scale, not the new width, so .js can adjust
+        // bi-directionally.
+        $renderer->scale[$id] = $scale;
       }
     }
 
@@ -891,18 +891,18 @@ function panels_flexible_get_css_group(&$css, $renderer, $list, $owner_id, $type
       // Add this even if it's 0 so we can handle removals.
       $css["$owner_id-inside"]['padding-left'] = '0px';
       if ($renderer->admin || count($middle)) {
-	$css["$owner_id-middle"]['margin-left'] = $left_total . 'px';
-	// IE hack
-	$css["* html $owner_id-left"]['left'] = $left_total . "px";
-	// Make this one very specific to the admin CSS so that preview
-	// does not stomp it.
-	$css[".panel-flexible-admin $owner_id-inside"]['padding-left'] = '0px';
+        $css["$owner_id-middle"]['margin-left'] = $left_total . 'px';
+        // IE hack
+        $css["* html $owner_id-left"]['left'] = $left_total . "px";
+        // Make this one very specific to the admin CSS so that preview
+        // does not stomp it.
+        $css[".panel-flexible-admin $owner_id-inside"]['padding-left'] = '0px';
       }
       else {
-	$css["$owner_id-inside"]['margin-left'] = '-' . $left_total . 'px';
-	$css["$owner_id-inside"]['padding-left'] = $left_total . 'px';
-	// IE hack
-	$css["* html $owner_id-inside"]['left'] = $left_total . "px";
+        $css["$owner_id-inside"]['margin-left'] = '-' . $left_total . 'px';
+        $css["$owner_id-inside"]['padding-left'] = $left_total . 'px';
+        // IE hack
+        $css["* html $owner_id-inside"]['left'] = $left_total . "px";
       }
     }
     if ($right_total) {
@@ -972,10 +972,10 @@ function panels_ajax_flexible_edit_settings($handler, $id) {
       break;
     case 'row':
       if ($id == 'canvas') {
-	$title = t('Configure canvas');
+        $title = t('Configure canvas');
       }
       else {
-	$title = t('Configure row');
+        $title = t('Configure row');
       }
       break;
     case 'region':
@@ -1008,7 +1008,7 @@ function panels_ajax_flexible_edit_settings($handler, $id) {
     $class = $renderer->base[$item['type']] . '-' . $id;
     if ($item['type'] == 'region') {
       $output[] = ajax_command_replace(".$class h2.label",
-	'<h2 class="label">' . check_plain($item['title']) . '</h2>');
+        '<h2 class="label">' . check_plain($item['title']) . '</h2>');
     }
 
     // Rerender our links in case something changed.
@@ -1019,26 +1019,26 @@ function panels_ajax_flexible_edit_settings($handler, $id) {
     if ($id == 'canvas') {
       // update canvas CSS.
       $css = array(
-	'.' . $renderer->item_class['column'] . '-inside' => array(
-	  'padding-left' => $renderer->column_separation,
-	  'padding-right' => $renderer->column_separation,
-	),
-	'.' . $renderer->item_class['region'] . '-inside' => array(
-	  'padding-left' => $renderer->region_separation,
-	  'padding-right' => $renderer->region_separation,
-	),
-	'.' . $renderer->item_class['row'] => array(
-	  'padding-bottom' => $renderer->row_separation,
-	),
+        '.' . $renderer->item_class['column'] . '-inside' => array(
+          'padding-left' => $renderer->column_separation,
+          'padding-right' => $renderer->column_separation,
+        ),
+        '.' . $renderer->item_class['region'] . '-inside' => array(
+          'padding-left' => $renderer->region_separation,
+          'padding-right' => $renderer->region_separation,
+        ),
+        '.' . $renderer->item_class['row'] => array(
+          'padding-bottom' => $renderer->row_separation,
+        ),
       );
       if (!empty($item['fixed_width']) && intval($item['fixed_width'])) {
-	$css['.' . $renderer->base['canvas']] = array('width' => intval($item['fixed_width']) . 'px');
+        $css['.' . $renderer->base['canvas']] = array('width' => intval($item['fixed_width']) . 'px');
       }
       else {
-	$css['.' . $renderer->base['canvas']] = array('width' => 'auto');
+        $css['.' . $renderer->base['canvas']] = array('width' => 'auto');
       }
       foreach ($css as $selector => $data) {
-	$output[] = ajax_command_css($selector, $data);
+        $output[] = ajax_command_css($selector, $data);
       }
     }
 
@@ -1148,40 +1148,40 @@ function panels_flexible_config_item_form($form, &$form_state) {
       $left = $right = FALSE;
       $current = 'left';
       foreach ($siblings as $sibling) {
-	if ($sibling == $id) {
-	  $current = 'right';
-	}
-	else if ($settings['items'][$sibling]['width_type'] == '%') {
-	  $$current = TRUE; // Indirection.
-	}
+        if ($sibling == $id) {
+          $current = 'right';
+        }
+        else if ($settings['items'][$sibling]['width_type'] == '%') {
+          $$current = TRUE; // Indirection.
+        }
       }
 
       $form['width_type'] = array(
-	'#type' => 'select',
-	'#title' => t('Width'),
-	'#default_value' => $item['width_type'],
-	'#options' => array(
-	  '%' => t('Fluid'),
-	  'px' => t('Fixed'),
-	),
-	'#disabled' => TRUE,
+        '#type' => 'select',
+        '#title' => t('Width'),
+        '#default_value' => $item['width_type'],
+        '#options' => array(
+          '%' => t('Fluid'),
+          'px' => t('Fixed'),
+        ),
+        '#disabled' => TRUE,
       );
     }
     else {
       $form['contains'] = array(
-	'#type' => 'select',
-	'#title' => t('Contains'),
-	'#default_value' => $item['contains'],
-	'#options' => array(
-	  'region' => t('Regions'),
-	  'column' => t('Columns'),
-	),
+        '#type' => 'select',
+        '#title' => t('Contains'),
+        '#default_value' => $item['contains'],
+        '#options' => array(
+          'region' => t('Regions'),
+          'column' => t('Columns'),
+        ),
       );
 
       if (!empty($item['children'])) {
-	$form['contains']['#disabled'] = TRUE;
-	$form['contains']['#value'] = $item['contains'];
-	$form['contains']['#description'] = t('You must remove contained items to change the row container type.');
+        $form['contains']['#disabled'] = TRUE;
+        $form['contains']['#value'] = $item['contains'];
+        $form['contains']['#description'] = t('You must remove contained items to change the row container type.');
       }
     }
   }
@@ -1246,34 +1246,34 @@ function panels_ajax_flexible_edit_add($handler, $id, $location = 'left') {
       $title = t('Add row');
       // Create the new item with defaults.
       $item = array(
-	'type' => 'row',
-	'contains' => 'region',
-	'children' => array(),
-	'parent' => $id,
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(),
+        'parent' => $id,
       );
       break;
     case 'row':
       switch ($parent['contains']) {
-	case 'region':
-	  $title = $location == 'left' ? t('Add region to left') : t('Add region to right');
-	  $item = array(
-	    'type' => 'region',
-	    'title' => '',
-	    'width' => 100,
-	    'width_type' => '%',
-	    'parent' => $id,
-	  );
-	  break;
-	case 'column':
-	  $title = $location == 'left' ? t('Add column to left') : t('Add column to right');
-	  $item = array(
-	    'type' => 'column',
-	    'width' => 100,
-	    'width_type' => '%',
-	    'parent' => $id,
-	    'children' => array(),
-	  );
-	  break;
+        case 'region':
+          $title = $location == 'left' ? t('Add region to left') : t('Add region to right');
+          $item = array(
+            'type' => 'region',
+            'title' => '',
+            'width' => 100,
+            'width_type' => '%',
+            'parent' => $id,
+          );
+          break;
+        case 'column':
+          $title = $location == 'left' ? t('Add column to left') : t('Add column to right');
+          $item = array(
+            'type' => 'column',
+            'width' => 100,
+            'width_type' => '%',
+            'parent' => $id,
+            'children' => array(),
+          );
+          break;
       }
       // Create the new item with defaults.
       break;
@@ -1312,16 +1312,16 @@ function panels_ajax_flexible_edit_add($handler, $id, $location = 'left') {
 
       // Manually add the hidden field that our region uses to store pane info.
       $content .= '<input type="hidden" name="panel[pane][' .
-	$form_state['key'] . ']" value="" />';
+        $form_state['key'] . ']" value="" />';
 
     }
     else {
       // We need to make sure the left/middle/right divs exist inside this
       // so that more stuff can be added inside it as needed.
       foreach (array('left', 'middle', 'right') as $position) {
-	if (!empty($content) || $renderer->admin) {
-	  $content .= '<div class="' . $renderer->base[$item['type']] . '-' . $form_state['key'] . '-' . $position . '"></div>';
-	}
+        if (!empty($content) || $renderer->admin) {
+          $content .= '<div class="' . $renderer->base[$item['type']] . '-' . $form_state['key'] . '-' . $position . '"></div>';
+        }
       }
 
     }
@@ -1342,40 +1342,40 @@ function panels_ajax_flexible_edit_add($handler, $id, $location = 'left') {
     // duplicated because the order changes based on left or right.
     switch ($position) {
       case 'left':
-	if ($location == 'left') {
-	  $item_output .= panels_flexible_render_splitter($renderer, $form_state['key'], $form_state['sibling']);
-	  $output[] = ajax_command_prepend('#panels-dnd-main .' . $parent_class . '-left', $item_output);
-	}
-	else if ($location == 'right') {
-	  // If we are adding to the right side of the left box, there is
-	  // a splitter that we have to remove; then we add our box normally,
-	  // and then add a new splitter for just our guy.
-	  $output[] = ajax_command_remove('panels-flexible-splitter-for-' . $renderer->base[$item['type']] . '-' . $form_state['key']);
-	  $item_output = panels_flexible_render_splitter($renderer, $form_state['sibling'], $form_state['key']) .  $item_output;
-	  $item_output .= panels_flexible_render_splitter($renderer, $form_state['key'], NULL);
-	  $output[] = ajax_command_append('#panels-dnd-main .' . $parent_class . '-left', $item_output);
-	}
-	break;
+        if ($location == 'left') {
+          $item_output .= panels_flexible_render_splitter($renderer, $form_state['key'], $form_state['sibling']);
+          $output[] = ajax_command_prepend('#panels-dnd-main .' . $parent_class . '-left', $item_output);
+        }
+        else if ($location == 'right') {
+          // If we are adding to the right side of the left box, there is
+          // a splitter that we have to remove; then we add our box normally,
+          // and then add a new splitter for just our guy.
+          $output[] = ajax_command_remove('panels-flexible-splitter-for-' . $renderer->base[$item['type']] . '-' . $form_state['key']);
+          $item_output = panels_flexible_render_splitter($renderer, $form_state['sibling'], $form_state['key']) .  $item_output;
+          $item_output .= panels_flexible_render_splitter($renderer, $form_state['key'], NULL);
+          $output[] = ajax_command_append('#panels-dnd-main .' . $parent_class . '-left', $item_output);
+        }
+        break;
       case 'right':
-	if (!empty($form_state['sibling'])) {
-	  $item_output = panels_flexible_render_splitter($renderer, $form_state['sibling'], $form_state['key']) .  $item_output;
-	}
-	$output[] = ajax_command_append('#panels-dnd-main .' . $parent_class . '-right', $item_output);
-	break;
+        if (!empty($form_state['sibling'])) {
+          $item_output = panels_flexible_render_splitter($renderer, $form_state['sibling'], $form_state['key']) .  $item_output;
+        }
+        $output[] = ajax_command_append('#panels-dnd-main .' . $parent_class . '-right', $item_output);
+        break;
       case 'middle':
-	if ($location == 'left') {
-	  if (!empty($form_state['sibling'])) {
-	    $item_output .= panels_flexible_render_splitter($renderer, $form_state['key'], $form_state['sibling']);
-	  }
-	  $output[] = ajax_command_prepend('#panels-dnd-main .' . $parent_class . '-middle', $item_output);
-	}
-	else {
-	  if (!empty($form_state['sibling'])) {
-	    $item_output = panels_flexible_render_splitter($renderer, $form_state['sibling'], $form_state['key']) .  $item_output;
-	  }
-	  $output[] = ajax_command_append('#panels-dnd-main .' . $parent_class . '-middle', $item_output);
-	}
-	break;
+        if ($location == 'left') {
+          if (!empty($form_state['sibling'])) {
+            $item_output .= panels_flexible_render_splitter($renderer, $form_state['key'], $form_state['sibling']);
+          }
+          $output[] = ajax_command_prepend('#panels-dnd-main .' . $parent_class . '-middle', $item_output);
+        }
+        else {
+          if (!empty($form_state['sibling'])) {
+            $item_output = panels_flexible_render_splitter($renderer, $form_state['sibling'], $form_state['key']) .  $item_output;
+          }
+          $output[] = ajax_command_append('#panels-dnd-main .' . $parent_class . '-middle', $item_output);
+        }
+        break;
 
     }
 
@@ -1385,9 +1385,9 @@ function panels_ajax_flexible_edit_add($handler, $id, $location = 'left') {
     if (!empty($form_state['sibling'])) {
       $sibling_width = '#panels-dnd-main .' . $renderer->base[$item['type']] . '-' . $form_state['sibling'] . '-width';
       $output[] = array(
-	'command' => 'flexible_set_width',
-	'selector' => $sibling_width,
-	'width' => $settings['items'][$form_state['sibling']]['width'],
+        'command' => 'flexible_set_width',
+        'selector' => $sibling_width,
+        'width' => $settings['items'][$form_state['sibling']]['width'],
       );
     }
     foreach ($css as $selector => $data) {
@@ -1446,14 +1446,14 @@ function panels_flexible_add_item_form($form, &$form_state) {
 
     if (!empty($parent['children'])) {
       if ($location == 'left') {
-	$sibling = reset($parent['children']);
+        $sibling = reset($parent['children']);
       }
       else {
-	$sibling = end($parent['children']);
+        $sibling = end($parent['children']);
       }
       if ($settings['items'][$sibling]['width_type'] == 'px') {
-	$restrict = TRUE;
-	$item['width_type'] = 'px';
+        $restrict = TRUE;
+        $item['width_type'] = 'px';
       }
     }
 
@@ -1462,8 +1462,8 @@ function panels_flexible_add_item_form($form, &$form_state) {
       '#title' => t('Width'),
       '#default_value' => $item['width_type'],
       '#options' => array(
-	'%' => t('Fluid'),
-	'px' => t('Fixed'),
+        '%' => t('Fluid'),
+        'px' => t('Fixed'),
       ),
       '#disabled' => $restrict,
     );
@@ -1480,8 +1480,8 @@ function panels_flexible_add_item_form($form, &$form_state) {
       '#title' => t('Contains'),
       '#default_value' => $item['contains'],
       '#options' => array(
-	'region' => t('Regions'),
-	'column' => t('Columns'),
+        'region' => t('Regions'),
+        'column' => t('Columns'),
       ),
     );
   }
@@ -1598,11 +1598,11 @@ function panels_ajax_flexible_edit_remove($handler, $id) {
     if ($item['width_type'] == '%') {
       // First, try next.
       if (isset($next) && $settings['items'][$next]['width_type'] == '%') {
-	$settings['items'][$next]['width'] += $item['width'];
+        $settings['items'][$next]['width'] += $item['width'];
       }
       // If that failed, try the previous one.
       else if (isset($prev) && $settings['items'][$prev]['width_type'] == '%') {
-	$settings['items'][$prev]['width'] += $item['width'];
+        $settings['items'][$prev]['width'] += $item['width'];
       }
     }
     // Not sure what happens if they both failed. Maybe nothing.

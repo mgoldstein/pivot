@@ -125,7 +125,17 @@ class panels_layouts_ui extends ctools_export_ui {
 
   function edit_form_submit(&$form, &$form_state) {
     parent::edit_form_submit($form, $form_state);
+
+    // While we short circuited the main submit hook, we need to keep this one.
+    panels_edit_display_settings_form_submit($form, $form_state);
     $form_state['item']->settings = $form_state['display']->layout_settings;
+  }
+
+  function edit_form_validate(&$form, &$form_state) {
+    parent::edit_form_validate($form, $form_state);
+
+    // While we short circuited the main validate hook, we need to keep this one.
+    panels_edit_display_settings_form_validate($form, $form_state);
   }
 
   function list_form(&$form, &$form_state) {
@@ -186,23 +196,23 @@ class panels_layouts_ui extends ctools_export_ui {
     // Set up sorting
     switch ($form_state['values']['order']) {
       case 'disabled':
-	$this->sorts[$item->name] = empty($item->disabled) . $item->admin_title;
-	break;
+        $this->sorts[$item->name] = empty($item->disabled) . $item->admin_title;
+        break;
       case 'title':
-	$this->sorts[$item->name] = $item->admin_title;
-	break;
+        $this->sorts[$item->name] = $item->admin_title;
+        break;
       case 'name':
-	$this->sorts[$item->name] = $item->name;
-	break;
+        $this->sorts[$item->name] = $item->name;
+        break;
       case 'category':
-	$this->sorts[$item->name] = ($item->category ? $item->category : t('Miscellaneous')) . $item->admin_title;
-	break;
+        $this->sorts[$item->name] = ($item->category ? $item->category : t('Miscellaneous')) . $item->admin_title;
+        break;
       case 'plugin':
-	$this->sorts[$item->name] = $item->plugin;
-	break;
+        $this->sorts[$item->name] = $item->plugin;
+        break;
       case 'storage':
-	$this->sorts[$item->name] = $item->type . $item->admin_title;
-	break;
+        $this->sorts[$item->name] = $item->type . $item->admin_title;
+        break;
     }
 
     $type = !empty($this->builders[$item->plugin]) ? $this->builders[$item->plugin]['title'] : t('Broken/missing plugin');
@@ -212,11 +222,11 @@ class panels_layouts_ui extends ctools_export_ui {
 
     $this->rows[$item->name] = array(
       'data' => array(
-	array('data' => check_plain($type), 'class' => array('ctools-export-ui-type')),
-	array('data' => check_plain($item->name), 'class' => array('ctools-export-ui-name')),
-	array('data' => check_plain($item->admin_title), 'class' => array('ctools-export-ui-title')),
-	array('data' => $category, 'class' => array('ctools-export-ui-category')),
-	array('data' => $ops, 'class' => array('ctools-export-ui-operations')),
+        array('data' => check_plain($type), 'class' => array('ctools-export-ui-type')),
+        array('data' => check_plain($item->name), 'class' => array('ctools-export-ui-name')),
+        array('data' => check_plain($item->admin_title), 'class' => array('ctools-export-ui-title')),
+        array('data' => $category, 'class' => array('ctools-export-ui-category')),
+        array('data' => $ops, 'class' => array('ctools-export-ui-operations')),
       ),
       'title' => check_plain($item->admin_description),
       'class' => array(!empty($item->disabled) ? 'ctools-export-ui-disabled' : 'ctools-export-ui-enabled'),
