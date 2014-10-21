@@ -20,9 +20,9 @@
       .removeClass('even')
       .removeClass('odd')
       .filter(':even')
-	.addClass('odd')
+        .addClass('odd')
       .end()
       .filter(':odd')
-	.addClass('even');
+        .addClass('even');
   };
 })(jQuery);

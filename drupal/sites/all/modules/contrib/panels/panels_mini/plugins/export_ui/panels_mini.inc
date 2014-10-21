@@ -32,9 +32,10 @@ $plugin = array(
     // We have to add this form specially because it's invisible.
     'forms' => array(
       'move' => array(
-	'form id' => 'ctools_export_ui_edit_item_wizard_form',
+        'form id' => 'ctools_export_ui_edit_item_wizard_form',
       ),
     ),
   ),
 
 );
+

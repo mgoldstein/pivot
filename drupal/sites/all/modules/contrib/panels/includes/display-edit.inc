@@ -156,23 +156,23 @@ function panels_edit_display_form_submit($form, &$form_state) {
     foreach ($form_state['values']['panel']['pane'] as $region_id => $panes) {
       $display->panels[$region_id] = array();
       if ($panes) {
-	$pids = explode(',', $panes);
-	// need to filter the array, b/c passing it in a hidden field can generate trash
-	foreach (array_filter($pids) as $pid) {
-	  if ($old_content[$pid]) {
-	    $display->panels[$region_id][] = $pid;
-	    $old_content[$pid]->panel = $region_id;
-	    $display->content[$pid] = $old_content[$pid];
+        $pids = explode(',', $panes);
+        // need to filter the array, b/c passing it in a hidden field can generate trash
+        foreach (array_filter($pids) as $pid) {
+          if ($old_content[$pid]) {
+            $display->panels[$region_id][] = $pid;
+            $old_content[$pid]->panel = $region_id;
+            $display->content[$pid] = $old_content[$pid];
 
-	    // If the panel has region locking, make sure that the region
-	    // the panel is in is applicable. This can happen if the panel
-	    // was moved and then the lock changed and the server didn't
-	    // know.
-	    if (!empty($old_content[$pid]->locks) && $old_content[$pid]->locks['type'] == 'regions') {
-	      $old_content[$pid]->locks['regions'][$region_id] = $region_id;
-	    }
-	  }
-	}
+            // If the panel has region locking, make sure that the region
+            // the panel is in is applicable. This can happen if the panel
+            // was moved and then the lock changed and the server didn't
+            // know.
+            if (!empty($old_content[$pid]->locks) && $old_content[$pid]->locks['type'] == 'regions') {
+              $old_content[$pid]->locks['regions'][$region_id] = $region_id;
+            }
+          }
+        }
       }
     }
   }
@@ -230,9 +230,9 @@ function panels_edit_display_settings_form($form, &$form_state) {
       '#title' => t('Title type'),
       '#default_value' => (int) $display->hide_title,
       '#options' => array(
-	PANELS_TITLE_NONE => t('No title'),
-	PANELS_TITLE_FIXED => t('Manually set'),
-	PANELS_TITLE_PANE => t('From pane'),
+        PANELS_TITLE_NONE => t('No title'),
+        PANELS_TITLE_FIXED => t('Manually set'),
+        PANELS_TITLE_PANE => t('From pane'),
       ),
     );
 
@@ -264,21 +264,21 @@ function panels_edit_display_settings_form($form, &$form_state) {
 
       $rows = array();
       foreach ($display->context as $context) {
-	foreach (ctools_context_get_converters('%' . check_plain($context->keyword) . ':', $context) as $keyword => $title) {
-	  $rows[] = array(
-	    check_plain($keyword),
-	    t('@identifier: @title', array('@title' => $title, '@identifier' => $context->identifier)),
-	  );
-	}
+        foreach (ctools_context_get_converters('%' . check_plain($context->keyword) . ':', $context) as $keyword => $title) {
+          $rows[] = array(
+            check_plain($keyword),
+            t('@identifier: @title', array('@title' => $title, '@identifier' => $context->identifier)),
+          );
+        }
       }
 
       $header = array(t('Keyword'), t('Value'));
       $form['display_title']['contexts'] = array(
-	'#type' => 'fieldset',
-	'#title' => t('Substitutions'),
-	'#collapsible' => TRUE,
-	'#collapsed' => TRUE,
-	'#value' => theme('table', array('header' => $header, 'rows' => $rows)),
+        '#type' => 'fieldset',
+        '#title' => t('Substitutions'),
+        '#collapsible' => TRUE,
+        '#collapsed' => TRUE,
+        '#value' => theme('table', array('header' => $header, 'rows' => $rows)),
 //        '#process' => array('form_process_fieldset', 'ctools_dependent_process'),
 //        '#id' => 'edit-display-title-context',
 //        '#dependency' => array('edit-display-title-hide-title' => array(PANELS_TITLE_FIXED)),

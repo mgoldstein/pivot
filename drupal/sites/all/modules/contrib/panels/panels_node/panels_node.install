@@ -18,21 +18,21 @@ function panels_node_schema_1() {
   $schema['panels_node'] = array(
     'fields' => array(
       'nid' => array(
-	'type' => 'int',
-	'not null' => TRUE,
-	'default' => 0,
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
       ),
       'css_id' => array(
-	'type' => 'varchar',
-	'length' => '255',
+        'type' => 'varchar',
+        'length' => '255',
       ),
       'did' => array(
-	'type' => 'int',
-	'not null' => TRUE,
+        'type' => 'int',
+        'not null' => TRUE,
       ),
       'pipeline' => array(
-	'type' => 'varchar',
-	'length' => '255',
+        'type' => 'varchar',
+        'length' => '255',
       ),
     ),
     'primary key' => array('did'),

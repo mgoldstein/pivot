@@ -33,10 +33,10 @@ class panels_views_plugin_row_fields extends views_plugin_row_fields {
     $options = array();
     foreach ($layouts as $name => $layout) {
       if (empty($layout['builder'])) {
-	$options[$name] = $layout['title'];
+        $options[$name] = $layout['title'];
       }
       if ($name == $this->options['layout']) {
-	$current_layout = $layout;
+        $current_layout = $layout;
       }
     }
 
@@ -59,14 +59,14 @@ class panels_views_plugin_row_fields extends views_plugin_row_fields {
       $fields = $this->display->handler->get_field_labels();
       $regions = panels_get_regions($current_layout, panels_new_display());
       foreach ($fields as $id => $title) {
-	$form['regions'][$id] = array(
-	  '#type' => 'select',
-	  '#title' => $title,
-	  '#options' => $regions,
-	);
-	if (!empty($this->options['regions'][$id]) && !empty($regions[$this->options['regions'][$id]])) {
-	  $form['regions'][$id]['#default_value'] = $this->options['regions'][$id];
-	}
+        $form['regions'][$id] = array(
+          '#type' => 'select',
+          '#title' => $title,
+          '#options' => $regions,
+        );
+        if (!empty($this->options['regions'][$id]) && !empty($regions[$this->options['regions'][$id]])) {
+          $form['regions'][$id]['#default_value'] = $this->options['regions'][$id];
+        }
       }
     }
   }
@@ -105,28 +105,28 @@ class panels_views_plugin_row_fields extends views_plugin_row_fields {
 
       // Ensure each region has an empty array.
       foreach ($regions as $region_id => $name) {
-	if (empty($default_region)) {
-	  $default_region = $region_id;
-	}
+        if (empty($default_region)) {
+          $default_region = $region_id;
+        }
 
-	$this->region_fields[$region_id] = array();
+        $this->region_fields[$region_id] = array();
       }
 
 
       // Go through all our fields and place them in regions according to the
       // settings.
       foreach ($fields as $id => $field) {
-	$region_id = ''; // ensure we don't accidentlly use the last field's region.
-	if (!empty($this->options['regions'][$id]) && !empty($regions[$this->options['regions'][$id]])) {
-	  $region_id = $this->options['regions'][$id];
-	}
-	else {
-	  // Fallback to putting unknown fields into the first region.
-	  $region_id = $default_region;
-	}
+        $region_id = ''; // ensure we don't accidentlly use the last field's region.
+        if (!empty($this->options['regions'][$id]) && !empty($regions[$this->options['regions'][$id]])) {
+          $region_id = $this->options['regions'][$id];
+        }
+        else {
+          // Fallback to putting unknown fields into the first region.
+          $region_id = $default_region;
+        }
 
-	// Ensure this works in PHP4 by keeping the reference.
-	$this->region_fields[$region_id][$id] = &$fields[$id];
+        // Ensure this works in PHP4 by keeping the reference.
+        $this->region_fields[$region_id][$id] = &$fields[$id];
       }
 
       // We don't need to set 'inline' for every record, so we do it inside
@@ -137,8 +137,8 @@ class panels_views_plugin_row_fields extends views_plugin_row_fields {
 
     // Now that we have distributed our fields, go through the regions and
     // render them into the content array.
-    foreach ($this->region_fields as $region_id => $fields) {
-      $this->view->field = $fields;
+    foreach ($this->region_fields as $region_id => $fields_list) {
+      $this->view->field = $fields_list;
       $content[$region_id] = theme($this->theme_functions(), array('view' => $this->view, 'options' => $this->options, 'row' => $row));
     }
 

@@ -9,7 +9,7 @@
     <div class="inside">
       <div class="panels-categories-box">
       <?php foreach ($categories_array as $category): ?>
-	<?php print $category; ?>
+        <?php print $category; ?>
       <?php endforeach; ?>
       </div>
       <?php print $root_content; ?>
@@ -28,9 +28,9 @@
   <div class="panels-section-columns">
     <?php foreach ($columns as $column_id => $column): ?>
       <div class="panels-section-column panels-section-column-<?php print $column_id; ?> ">
-	<div class="inside">
-	  <?php print $column; ?>
-	</div>
+        <div class="inside">
+          <?php print $column; ?>
+        </div>
       </div>
     <?php endforeach; ?>
   </div>

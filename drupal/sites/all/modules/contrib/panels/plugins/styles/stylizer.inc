@@ -237,7 +237,7 @@ function panels_stylizer_pane_add_style(&$renderer, $plugin, &$conf, $type, $pid
       ctools_export_crud_save('stylizer', $style);
       $conf['style'] = $info['settings']['name'];
       if (isset($conf['settings'])) {
-	unset($conf['settings']);
+        unset($conf['settings']);
       }
     }
     else {
@@ -335,18 +335,18 @@ function panels_stylizer_edit_pane_style_form_validate(&$form, &$form_state) {
     // If this is new, make sure the name is unique:
     if ($form_state['op'] == 'add') {
       if (empty($form_state['values']['name'])) {
-	form_error($form['panels']['name'], t('You must choose a machine name.'));
+        form_error($form['panels']['name'], t('You must choose a machine name.'));
       }
 
       ctools_include('export');
       $test = ctools_export_crud_load('stylizer', $form_state['values']['name']);
       if ($test) {
-	form_error($form['panels']['name'], t('That name is used by another style: @page', array('@page' => $test->admin_title)));
+        form_error($form['panels']['name'], t('That name is used by another style: @page', array('@page' => $test->admin_title)));
       }
 
       // Ensure name fits the rules:
       if (preg_match('/[^a-zA-Z0-9_]/', $form_state['values']['name'])) {
-	form_error($form['panels']['name'], t('Name must be alphanumeric or underscores only.'));
+        form_error($form['panels']['name'], t('Name must be alphanumeric or underscores only.'));
       }
     }
   }

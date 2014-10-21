@@ -14,7 +14,7 @@ class panels_renderer_simple extends panels_renderer_standard {
     $this->rendered['regions'] = array();
     foreach ($this->display->content as $region_id => $content) {
       if (is_array($content)) {
-	$content = implode('', $content);
+        $content = implode('', $content);
       }
 
       $this->rendered['regions'][$region_id] = $content;

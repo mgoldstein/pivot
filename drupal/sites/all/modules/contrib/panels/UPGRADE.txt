@@ -11,7 +11,7 @@ Upgrading from Panels-6.x-3.x to Panels-7.x-3.x
 
   - panels_plugin_get_function() deprecated.
 
-  - panels_required_context removed. These were deprecated long ago and
+  - panels_required_context removed. These were deprecated long ago and 
     existed only to prevent crashes.
 
   - panels_optional_context removed.
@@ -19,3 +19,4 @@ Upgrading from Panels-6.x-3.x to Panels-7.x-3.x
   - $renderer->plugins['layout']['panels'] changed to $renderer->plugin['layout']['regions']
 
   - display_renderer class is now in 'renderer', not 'handler'.
+

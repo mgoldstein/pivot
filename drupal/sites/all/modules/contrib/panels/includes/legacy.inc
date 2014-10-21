@@ -31,7 +31,7 @@ class PanelsLegacyState {
     $this->legacy = array();
     foreach(get_class_methods($this) as $method) {
       if (strtolower(substr($method, 0, 5)) == 'check') {
-	$this->legacy[$method] = $this->$method();
+        $this->legacy[$method] = $this->$method();
       }
     }
     $this->legacy = array_filter($this->legacy);

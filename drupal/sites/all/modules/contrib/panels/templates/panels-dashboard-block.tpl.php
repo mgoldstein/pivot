@@ -6,7 +6,7 @@
     <?php print $block['content']; ?>
     <?php if (!empty($block['link'])): ?>
       <div class="links">
-	<?php print $block['link']; ?>
+        <?php print $block['link']; ?>
       </div>
     <?php endif; ?>
   </div>

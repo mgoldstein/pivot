@@ -21,9 +21,9 @@ function panels_default_panels_renderer_pipeline() {
   $pipeline->settings = array(
     'renderers' => array(
       0 => array(
-	'access' => array(),
-	'renderer' => 'standard',
-	'options' => array(),
+        'access' => array(),
+        'renderer' => 'standard',
+        'options' => array(),
       ),
     ),
   );

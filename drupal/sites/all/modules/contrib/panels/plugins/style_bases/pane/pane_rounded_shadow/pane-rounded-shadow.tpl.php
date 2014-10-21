@@ -15,13 +15,13 @@
   <div class="rounded-shadow-background">
     <div class="rounded-shadow-wrap-corner">
       <div class="rounded-shadow-top-edge">
-	<div class="rounded-shadow-left"></div>
-	<div class="rounded-shadow-right"></div>
+        <div class="rounded-shadow-left"></div>
+        <div class="rounded-shadow-right"></div>
       </div>
       <div class="rounded-shadow-left-edge">
-	<div class="rounded-shadow-right-edge clearfix">
-	  <?php print $output; ?>
-	</div>
+        <div class="rounded-shadow-right-edge clearfix">
+          <?php print $output; ?>
+        </div>
       </div>
       <div class="rounded-shadow-bottom-edge">
       <div class="rounded-shadow-left"></div><div class="rounded-shadow-right"></div>

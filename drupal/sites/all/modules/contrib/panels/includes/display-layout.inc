@@ -47,17 +47,17 @@ function _panels_edit_layout($display, $finish, $destination, $allowed_layouts) 
     $output = drupal_build_form('panels_change_layout', $change_form_state);
     if (!empty($change_form_state['executed'])) {
       if (isset($change_form_state['back'])) {
-	unset($_POST);
-	return _panels_edit_layout($display, $finish, $destination, $allowed_layouts);
+        unset($_POST);
+        return _panels_edit_layout($display, $finish, $destination, $allowed_layouts);
       }
 
       if (!empty($change_form_state['clicked_button']['#save-display'])) {
-	drupal_set_message(t('Panel layout has been updated.'));
-	panels_save_display($display);
+        drupal_set_message(t('Panel layout has been updated.'));
+        panels_save_display($display);
       }
 
       if ($destination) {
-	return panels_goto($destination);
+        return panels_goto($destination);
       }
       return $change_form_state['display'];
     }
@@ -127,17 +127,17 @@ function panels_choose_layout($form, &$form_state) {
     foreach ($radios as $key => $choice) {
       // Set the first available layout as default value.
       if (empty($display->layout)) {
-	$display->layout = $key;
+        $display->layout = $key;
       }
       // Generate the parents as the autogenerator does, so we will have a
       // unique id for each radio button.
       $form['layout'][$category][$key] = array(
-	'#type' => 'radio',
-	'#title' => $choice,
-	'#parents' => array('layout'),
-	'#id' => drupal_clean_css_identifier('edit-layout-' . $key),
-	'#return_value' => check_plain($key),
-	'#default_value' => in_array($display->layout, array_keys($layouts)) ? $display->layout : NULL,
+        '#type' => 'radio',
+        '#title' => $choice,
+        '#parents' => array('layout'),
+        '#id' => drupal_clean_css_identifier('edit-layout-' . $key),
+        '#return_value' => check_plain($key),
+        '#default_value' => in_array($display->layout, array_keys($layouts)) ? $display->layout : NULL,
       );
     }
   }
@@ -214,8 +214,8 @@ function panels_change_layout($form, &$form_state) {
       // Get a list of pane titles used.
       $titles = array();
       foreach ($form_state['display']->panels[$region_id] as $pid) {
-	$content_type = ctools_get_content_type($form_state['display']->content[$pid]->type);
-	$titles[$pid] = ctools_content_admin_title($content_type, $form_state['display']->content[$pid]->subtype, $form_state['display']->content[$pid]->configuration, $form_state['display']->context);
+        $content_type = ctools_get_content_type($form_state['display']->content[$pid]->type);
+        $titles[$pid] = ctools_content_admin_title($content_type, $form_state['display']->content[$pid]->subtype, $form_state['display']->content[$pid]->configuration, $form_state['display']->context);
       }
       $pane->configuration['body'] = '<ul><li>' . implode('</li><li>', $titles) . '</li></ul>';
 
@@ -291,11 +291,11 @@ function panels_change_layout_submit($form, &$form_state) {
   if (!empty($form_state['values']['panel']['pane'])) {
     foreach ($form_state['values']['panel']['pane'] as $region_id => $panes) {
       if ($panes) {
-	$pids = explode(',', $panes);
-	// need to filter the array, b/c passing it in a hidden field can generate trash
-	foreach (array_filter($pids) as $pid) {
-	  $switch[$pid] = $region_id;
-	}
+        $pids = explode(',', $panes);
+        // need to filter the array, b/c passing it in a hidden field can generate trash
+        foreach (array_filter($pids) as $pid) {
+          $switch[$pid] = $region_id;
+        }
       }
     }
   }
@@ -304,7 +304,7 @@ function panels_change_layout_submit($form, &$form_state) {
   foreach ($switch as $region_id => $new_region_id) {
     if (isset($display->panels[$region_id])) {
       if (!isset($content[$new_region_id])) {
-	$content[$new_region_id] = array();
+        $content[$new_region_id] = array();
       }
       $content[$new_region_id] = array_merge($content[$new_region_id], $display->panels[$region_id]);
     }
