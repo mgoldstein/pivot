@@ -1,0 +1,108 @@
+<?php
+
+define(PIVOT_DYNAMIC_CONFIG, 'admin/config/pivot');
+
+/**
+ * Implements hook_menu().
+ */
+function pivot_dynamic_blocks_menu() {
+  $items = array();
+  
+  $items[PIVOT_DYNAMIC_CONFIG] = array(
+    'title' => t('Pivot - Configuration for Custom Blocks'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('pivot_dynamic_blocks_admin_form'),
+    'file' => 'pivot_dynamic_blocks_form.admin.inc',
+    'file path' => drupal_get_path('module', 'pivot_dynamic_blocks') . '/inc',
+    'access arguments' => array('administer site configuration'),
+  );
+  
+  $items[PIVOT_DYNAMIC_CONFIG . '/config'] = $items[PIVOT_DYNAMIC_CONFIG];
+  $items[PIVOT_DYNAMIC_CONFIG . '/config']['type'] = MENU_DEFAULT_LOCAL_TASK;
+  
+  return $items;
+}
+
+/**
+ *  Imeplemnts hook_blocks_theme().
+ */
+function pivot_dynamic_blocks_theme($existing, $type, $theme, $path) {
+  return array(
+    'pivot_dynamic_block_render' => array(
+      'variables' => array(),
+      'path' => drupal_get_path('module', 'pivot_dynamic_blocks') . '/inc',
+      'file' => 'pivot_dynamic_blocks.theme.inc'
+    ),
+  );
+}
+
+/**
+ *  Implements hook_block_info().
+ */
+function pivot_dynamic_blocks_block_info() {
+	$blocks = array();
+  $dynamic_blocks = _pivot_dynamic_blocks_list();
+  
+  //dynamically create the blocks
+  foreach ($dynamic_blocks as $key => $value) {
+    $blocks[$key] = array(
+      'info' => $value['title'],
+    );
+  }
+
+	return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function pivot_dynamic_blocks_block_view($delta = '') {
+  $block = array();
+  
+  //gets the list of blocks
+  $dynamic_blocks = _pivot_dynamic_blocks_list();
+  
+  //checks if the block exist
+  if (isset($dynamic_blocks[$delta])) {
+    $block['subject'] = NULL;
+    $block['content'] = theme('pivot_dynamic_block_render', $dynamic_blocks[$delta]);
+  }
+
+  return $block;
+}
+
+/**
+ *  @function:
+ *    Helper function that is used to get the list of blocks
+ */
+function _pivot_dynamic_blocks_list() {
+  //default variables
+  $list = array();
+  $counter = 1;
+  
+  //loads the first one to test
+  $image = variable_get('pivot_dynamic_block_image_img_' . $counter, '');
+  $image_url = variable_get('pivot_dynamic_block_image_url_' . $counter, '');
+    
+  //does until the end
+  while (!empty($image)) {
+    $title = t('Pivot Promo Blocks - Block - ' . $counter);
+    $title_key = str_replace('_-_', '_', str_replace(' ', '_', strtolower($title)));
+    //loads at the end for test
+    $image = variable_get('pivot_dynamic_block_image_img_' . $counter, '');
+    $image_url = variable_get('pivot_dynamic_block_image_url_' . $counter, '');
+
+    //only adds into the list if the image is set
+    if (!empty($image)) {
+      $list[$title_key] = array(
+        'title' => $title,
+        'image' => $image,
+        'image_url' => $image_url
+      );
+    }
+    
+    $counter++;
+  }
+  
+  return $list;
+}

@@ -1,0 +1,4 @@
+name = Pivot Dynamic Blocks
+description = Custom Functionality for the Pivot.tv website
+package = Pivot
+core = 7.x
