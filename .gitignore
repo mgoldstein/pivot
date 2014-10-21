@@ -16,3 +16,6 @@ DEADJOE
 .AppleDouble
 .idea
 
+# Local Development Modules
+/drupal/sites/all/modules/contrib/stage_file_proxy
+
