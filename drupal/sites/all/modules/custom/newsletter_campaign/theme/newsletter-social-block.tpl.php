@@ -5,7 +5,7 @@
 </section>
 <?php if ($variables['follow_us_enabled']): ?>
 <section class="follow">
-  <h4 class="headline"><?= t('Follow Pivot') ?></h3>
+  <h4 class="headline"><?= t('Follow Pivot') ?></h4>
   <ul class="list social">
     <?php foreach ($variables['social_links'] as $link): ?>
     <li><?php echo render($link); ?></li>
