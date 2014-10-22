@@ -35,6 +35,12 @@ function pivot_contexts_context_default_contexts() {
           'region' => 'content',
           'weight' => '10',
         ),
+        'pivot_global-find_pivot_sidebar' => array(
+          'module' => 'pivot_global',
+          'delta' => 'find_pivot_sidebar',
+          'region' => 'right_sidebar',
+          'weight' => '5',
+        ),
       ),
     ),
   );
@@ -65,6 +71,12 @@ function pivot_contexts_context_default_contexts() {
           'delta' => 'pivot_ros_rr_300x250',
           'region' => 'right_sidebar',
           'weight' => '-10',
+        ),
+        'pivot_global-find_pivot_sidebar' => array(
+          'module' => 'pivot_global',
+          'delta' => 'find_pivot_sidebar',
+          'region' => 'right_sidebar',
+          'weight' => '5',
         ),
       ),
     ),
@@ -269,18 +281,6 @@ function pivot_contexts_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'pivot_schedule-primetime_listing' => array(
-          'module' => 'pivot_schedule',
-          'delta' => 'primetime_listing',
-          'region' => 'header',
-          'weight' => '-10',
-        ),
-        'views-homepage_slider-block' => array(
-          'module' => 'views',
-          'delta' => 'homepage_slider-block',
-          'region' => 'header',
-          'weight' => '-9',
-        ),
         'dfp-pivot_ros_rr_300x250' => array(
           'module' => 'dfp',
           'delta' => 'pivot_ros_rr_300x250',
@@ -293,11 +293,17 @@ function pivot_contexts_context_default_contexts() {
           'region' => 'right_sidebar',
           'weight' => '-9',
         ),
+        'newsletter_campaign-1' => array(
+          'module' => 'newsletter_campaign',
+          'delta' => '1',
+          'region' => 'right_sidebar',
+          'weight' => '-8',
+        ),
         'pivot_global-pivot_twitter_widget' => array(
           'module' => 'pivot_global',
           'delta' => 'pivot_twitter_widget',
           'region' => 'right_sidebar',
-          'weight' => '-8',
+          'weight' => '-7',
         ),
       ),
     ),
@@ -492,6 +498,12 @@ function pivot_contexts_context_default_contexts() {
           'delta' => 'show_listing',
           'region' => 'right_sidebar',
           'weight' => '0',
+        ),
+        'pivot_global-find_pivot_sidebar' => array(
+          'module' => 'pivot_global',
+          'delta' => 'find_pivot_sidebar',
+          'region' => 'right_sidebar',
+          'weight' => '-5',
         ),
       ),
     ),
