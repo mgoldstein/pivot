@@ -2,3 +2,102 @@
 /**
  * Custom Pivot module for the Homepage Hero Slider
  */
+
+/**
+ * Implements hook_block_info()
+ */
+function pivot_hpslider_block_info(){
+	$blocks = array();
+	$blocks['hpslider'] = array(
+		'info' => t('Homepage Slider'),
+	);
+
+	return $blocks;
+}
+
+/**
+ * Implements hook_block_view()
+ */
+function pivot_hpslider_block_view($delta = ''){
+	switch($delta){
+		case 'hpslider':
+			$block['subject'] = t('Homepage Slider');
+			$block['content'] = hpslider_block_content();
+			return $block;
+			break;
+	}
+
+}
+
+function hpslider_block_content(){
+	//Grab the slides from the nodequeue
+	//Theme the slides
+	//Theme the slide wrapper
+
+	/* Get the nodes from the 'homepage_slider' (3) nodequeue */
+	$nodes = nodequeue_load_nodes(3, $backward = FALSE, $from = 0, $count = 10, $published_only = TRUE);
+
+	/* Use the correct node display and add additional markup for the slides */
+	$slides = array();
+	foreach($nodes as $node){
+		$node_view = node_view($node, $view_mode = 'teaser', $langcode = NULL);
+		$node_view = drupal_render($node_view);
+
+		/* Add any slide markup for the slider */
+		$slides[] = theme('hpslider_slide', array('node' => $node_view));
+	}
+	$slides = implode('', $slides);
+
+	/* Now that we have the slides themed, let's 'wrap' things up */
+	$background = 'background';  //obviously change this to an image.
+	$slider = theme('hpslider_wrapper', array('slides' => $slides, 'background' => $background));
+
+	return $slider;
+}
+
+/**
+ * Implements hook_theme()
+ */
+function pivot_hpslider_theme(){
+ return array(
+	 'hpslider_slide' => array(
+			'template' => 'templates/hpslider-slide',
+			'variables' => array(
+				'node' => '',
+			)
+	 ),
+	 'hpslider_wrapper' => array(
+			'template' => 'templates/hpslider-wrapper',
+		  'variables' => array(
+			  'slides' => array(),
+			  'background' => ''
+		  )
+	 )
+ );
+
+}
+
+/**
+ * Implements hook_preprocess_node
+ */
+function pivot_hpslider_preprocess_node(&$variables) {
+	/* Use the Teaser display view for rendering out a slide */
+	if($variables['view_mode'] == 'teaser' && $variables['type'] == 'homepage_slide') {
+		/* Set logic for video/image display */
+		$default = '';
+		if(!empty($variables['field_video_reference'])){  //Use video field if it exists
+			$video_display = 'full';
+			$video = field_view_field('node', $variables['node'], 'field_video_reference', $video_display, $langcode = NULL);
+			$variables['media'] = drupal_render($video);
+		}elseif(!empty($variables['field_hs_slider_image'])){  //Use Image field if video doesn't exist
+			$image_display = 'teaser';
+			$image = field_view_field('node', $variables['node'], 'field_hs_slider_image', $image_display, $langcode = NULL);
+			$variables['media'] = drupal_render($image);
+		}else{
+			$variables['media'] = $default;
+		}
+
+		/* Set the template to suggest */
+		$variables['theme_hook_suggestion'] = 'node__homepage_slide__teaser';
+	}
+}
