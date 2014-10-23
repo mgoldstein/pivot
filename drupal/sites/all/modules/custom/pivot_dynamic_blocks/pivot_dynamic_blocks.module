@@ -1,6 +1,6 @@
 <?php
 
-define(PIVOT_DYNAMIC_CONFIG, 'admin/config/pivot');
+define('PIVOT_DYNAMIC_CONFIG', 'admin/config/pivot');
 
 /**
  * Implements hook_menu().
