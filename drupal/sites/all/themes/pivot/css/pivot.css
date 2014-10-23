@@ -3144,7 +3144,7 @@ iframe.media-youtube-player {
 /* line 2970, ../sass/_pivot-global.scss */
 .pm-jwplayer.loading {
   width: 100%;
-  background: url('../images/video-loading.gif?1390350395');
+  background: url('../images/video-loading.gif?1412981611');
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3153,7 +3153,7 @@ iframe.media-youtube-player {
 /* line 2977, ../sass/_pivot-global.scss */
 .pm-jwplayer.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1390350395') no-repeat center center;
+  background: url('../images/video-blocked.gif?1412981611') no-repeat center center;
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3308,6 +3308,73 @@ body.node-type-video .site-wrapper:after {
     width: 230px;
   }
 }
+/* line 3101, ../sass/_pivot-global.scss */
+.region-prefix-footer {
+  background-color: #626262;
+}
+
+/* line 3105, ../sass/_pivot-global.scss */
+#block-views-pivot-channels-pivot-channels {
+  width: 960px;
+  margin: 0 auto;
+  margin-bottom: 0;
+  padding: 10px 0;
+  color: #FFF;
+}
+/* line 3112, ../sass/_pivot-global.scss */
+#block-views-pivot-channels-pivot-channels .block-title {
+  text-align: center;
+  text-transform: lowercase;
+}
+/* line 3119, ../sass/_pivot-global.scss */
+#block-views-pivot-channels-pivot-channels .view-pivot-channels .view-header {
+  text-align: center;
+}
+/* line 3123, ../sass/_pivot-global.scss */
+#block-views-pivot-channels-pivot-channels .view-pivot-channels .view-content {
+  text-align: center;
+}
+/* line 3127, ../sass/_pivot-global.scss */
+#block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row {
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 12px;
+  text-align: center;
+}
+/* line 3133, ../sass/_pivot-global.scss */
+#block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row .views-field-title {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+/* line 3138, ../sass/_pivot-global.scss */
+#block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row .views-field-title p {
+  margin: 0;
+}
+/* line 3143, ../sass/_pivot-global.scss */
+#block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row .views-field-field-channels {
+  text-align: center;
+  margin-top: 5px;
+}
+/* line 3147, ../sass/_pivot-global.scss */
+#block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row .views-field-field-channels .field-content {
+  font-size: 23px;
+  letter-spacing: -0.4px;
+}
+@media (max-width: 767px) {
+  /* line 3127, ../sass/_pivot-global.scss */
+  #block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 480px) {
+  /* line 3127, ../sass/_pivot-global.scss */
+  #block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row {
+    display: block;
+    clear: both;
+  }
+}
+
 /**
  * BxSlider v4.1.2 - Fully loaded, responsive content slider
  * http://bxslider.com
