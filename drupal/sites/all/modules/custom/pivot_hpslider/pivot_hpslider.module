@@ -101,3 +101,36 @@ function pivot_hpslider_preprocess_node(&$variables) {
 		$variables['theme_hook_suggestion'] = 'node__homepage_slide__teaser';
 	}
 }
+
+/**
+ * Implements hook_form_alter();
+ */
+function pivot_hpslider_form_alter(&$form, &$form_state, $form_id){
+
+	if($form_id == 'block_admin_configure' && $form['delta']['#value'] == 'hpslider'){
+
+		$form['settings']['bgimage'] = array(
+			'#type' => 'managed_file',
+			'#title' => t('Background Image'),
+			'#default_value' => variable_get('hpslider_background', ''),
+			'#upload_location' => 'public://hpslider/',
+		);
+		$form['#submit'][] = 'pivot_hpslider_form_submit_callback';
+	}
+}
+
+/**
+ * Callback for block submit handler
+ * @see pivot_hpslider_form_alter
+ */
+function pivot_hpslider_form_submit_callback($form, &$form_state) {
+
+	/* Save the image */
+	$file_id = $form_state['values']['bgimage'];
+	$file = file_load($file_id);
+	$file->status = FILE_STATUS_PERMANENT;
+	file_save($file);
+	file_usage_add($file, 'user', 'user', 1);
+	variable_set('hpslider_background', $file_id);
+
+}
