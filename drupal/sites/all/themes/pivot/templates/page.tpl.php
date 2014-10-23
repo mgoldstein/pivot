@@ -52,6 +52,7 @@
     </div><!-- /#content -->
   </main><!-- /#main -->
 
+	<?php print render($page['prefix_footer']); ?>
   <?php // footer will always render ?>
   <?php print render($page['footer']); ?>
 
