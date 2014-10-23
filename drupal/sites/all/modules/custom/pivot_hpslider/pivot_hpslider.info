@@ -1,3 +1,5 @@
 name = Homepage Slider
 description = Slider for the homepage
 core = 7.x
+
+scripts[] = js/hpslider.js
