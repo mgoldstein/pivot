@@ -49,6 +49,20 @@ function hpslider_block_content(){
 	}
 	$slides = implode('', $slides);
 
+	//adds the css into the body as it gets removed on the frontend element on resize
+	$node_count = count($nodes);
+	$slider_width = 100 / $node_count;
+	
+	//remove the max-width if they want to auto adjust for all screen size
+	drupal_add_css(
+		'@media all and (max-width: 480px) {
+			body .bx-controls .bx-pager .bx-pager-item {
+				width:' . $slider_width . '%;
+			}
+			}',
+		'inline'
+	);
+
 	/* Now that we have the slides themed, let's 'wrap' things up */
 	$background = variable_get('hpslider_background', '');
 	$background = file_load($background);

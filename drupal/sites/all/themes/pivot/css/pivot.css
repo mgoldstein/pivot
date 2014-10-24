@@ -3371,6 +3371,24 @@ body.node-type-video .site-wrapper:after {
   }
 }
 
+/* line 3166, ../sass/_pivot-global.scss */
+body .bx-wrapper .bx-controls .bx-pager-item a {
+  background-color: #00b5cc;
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+}
+/* line 3173, ../sass/_pivot-global.scss */
+body .bx-wrapper .bx-controls .bx-pager-item a.active, body .bx-wrapper .bx-controls .bx-pager-item a:hover {
+  background-color: #FFF;
+}
+@media (max-width: 480px) {
+  /* line 3166, ../sass/_pivot-global.scss */
+  body .bx-wrapper .bx-controls .bx-pager-item a {
+    margin: 0 auto;
+  }
+}
+
 /**
  * BxSlider v4.1.2 - Fully loaded, responsive content slider
  * http://bxslider.com
