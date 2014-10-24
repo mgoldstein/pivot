@@ -3,7 +3,13 @@
     attach: function() {
 
       $(document).ready(function(){
-        $('.bxslider').bxSlider();
+        $('.bxslider').bxSlider({
+          nextSelector: '.next-slide',
+          prevSelector: '.prev-slide',
+          nextText: '',
+          prevText: '',
+          mode: 'fade'
+        });
       });
 
     }

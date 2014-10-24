@@ -15,12 +15,14 @@
 <div class="media">
 	<?php print $variables['media']; //Coming soon?>
 </div>
-<div class="slider-title">
-	<?php print $title; ?>
-</div>
-<div class="slider-text">
-	<?php print drupal_render($content['field_hs_slider_text']); ?>
-</div>
-<div class="slider-cta">
-	<?php print drupal_render($content['field_hs_link']); ?>
+<div class="slider-content">
+	<div class="slider-title">
+		<?php print $title; ?>
+	</div>
+	<div class="slider-text">
+		<?php print drupal_render($content['field_hs_slider_text']); ?>
+	</div>
+	<div class="slider-cta">
+		<?php print $variables['more_link']; ?>
+	</div>
 </div>
