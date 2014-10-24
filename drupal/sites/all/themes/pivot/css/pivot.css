@@ -3304,12 +3304,12 @@ body.node-type-video .site-wrapper:after {
     width: 230px;
   }
 }
-/* line 3101, ../sass/_pivot-global.scss */
+/* line 3098, ../sass/_pivot-global.scss */
 .region-prefix-footer {
   background-color: #626262;
 }
 
-/* line 3105, ../sass/_pivot-global.scss */
+/* line 3102, ../sass/_pivot-global.scss */
 #block-views-pivot-channels-pivot-channels {
   width: 960px;
   margin: 0 auto;
@@ -3317,57 +3317,75 @@ body.node-type-video .site-wrapper:after {
   padding: 10px 0;
   color: #FFF;
 }
-/* line 3112, ../sass/_pivot-global.scss */
+/* line 3109, ../sass/_pivot-global.scss */
 #block-views-pivot-channels-pivot-channels .block-title {
   text-align: center;
   text-transform: lowercase;
 }
-/* line 3119, ../sass/_pivot-global.scss */
+/* line 3116, ../sass/_pivot-global.scss */
 #block-views-pivot-channels-pivot-channels .view-pivot-channels .view-header {
   text-align: center;
 }
-/* line 3123, ../sass/_pivot-global.scss */
+/* line 3120, ../sass/_pivot-global.scss */
 #block-views-pivot-channels-pivot-channels .view-pivot-channels .view-content {
   text-align: center;
 }
-/* line 3127, ../sass/_pivot-global.scss */
+/* line 3124, ../sass/_pivot-global.scss */
 #block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row {
   display: inline-block;
   margin: 0 10px;
   font-size: 12px;
   text-align: center;
 }
-/* line 3133, ../sass/_pivot-global.scss */
+/* line 3130, ../sass/_pivot-global.scss */
 #block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row .views-field-title {
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 0.5px;
 }
-/* line 3138, ../sass/_pivot-global.scss */
+/* line 3135, ../sass/_pivot-global.scss */
 #block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row .views-field-title p {
   margin: 0;
 }
-/* line 3143, ../sass/_pivot-global.scss */
+/* line 3140, ../sass/_pivot-global.scss */
 #block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row .views-field-field-channels {
   text-align: center;
   margin-top: 5px;
 }
-/* line 3147, ../sass/_pivot-global.scss */
+/* line 3144, ../sass/_pivot-global.scss */
 #block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row .views-field-field-channels .field-content {
   font-size: 23px;
   letter-spacing: -0.4px;
 }
 @media (max-width: 767px) {
-  /* line 3127, ../sass/_pivot-global.scss */
+  /* line 3124, ../sass/_pivot-global.scss */
   #block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row {
     margin-bottom: 20px;
   }
 }
 @media (max-width: 480px) {
-  /* line 3127, ../sass/_pivot-global.scss */
+  /* line 3124, ../sass/_pivot-global.scss */
   #block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row {
     display: block;
     clear: both;
+  }
+}
+
+/* line 3166, ../sass/_pivot-global.scss */
+body .bx-wrapper .bx-controls .bx-pager-item a {
+  background-color: #00b5cc;
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+}
+/* line 3173, ../sass/_pivot-global.scss */
+body .bx-wrapper .bx-controls .bx-pager-item a.active, body .bx-wrapper .bx-controls .bx-pager-item a:hover {
+  background-color: #FFF;
+}
+@media (max-width: 480px) {
+  /* line 3166, ../sass/_pivot-global.scss */
+  body .bx-wrapper .bx-controls .bx-pager-item a {
+    margin: 0 auto;
   }
 }
 
