@@ -7,6 +7,7 @@
 .hero-slider .bxslider-container{
   max-width: 980px;
   margin: 0 auto;
+  margin-top: 10px;
   position: relative;
 }
 .hero-slider ul{
@@ -14,6 +15,10 @@
 }
 .hero-slider img{
   width: 100%;
+}
+.hero-slider .field-name-field-video-media{
+  max-width: 755px;
+  margin: 0 auto;
 }
 .hero-slider .slider-title{
   font-family: "Apercu Regular", sans-serif;

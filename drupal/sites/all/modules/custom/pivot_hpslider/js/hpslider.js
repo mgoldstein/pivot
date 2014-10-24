@@ -8,7 +8,10 @@
           prevSelector: '.prev-slide',
           nextText: '',
           prevText: '',
-          mode: 'fade'
+          mode: 'fade',
+          onSlideAfter: function(){
+            jwplayer().stop();
+          }
         });
       });
 
