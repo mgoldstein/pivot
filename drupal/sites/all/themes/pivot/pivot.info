@@ -94,6 +94,7 @@ regions[preface]        = Preface
 regions[content]        = Content
 regions[suffix]       	= Suffix
 regions[right_sidebar]  = First sidebar
+regions[prefix_footer]  = Prefix Footer
 regions[footer]         = Footer
 
 ; The page_top and page_bottom regions are hidden, which means they will not
