@@ -89,8 +89,11 @@ function pivot_hpslider_preprocess_node(&$variables) {
 		/* Set logic for video/image display */
 		$default = '';
 		if(!empty($variables['field_video_reference'])){  //Use video field if it exists
-			$video_display = 'full';
-			$video = field_view_field('node', $variables['node'], 'field_video_reference', $video_display, $langcode = NULL);
+			$video = field_get_items('node', $variables['node'], 'field_video_reference');
+			$video_id = $video[0]['target_id'];
+			$video = entity_load('node', array($video_id));
+			$video = current($video);
+			$video = field_view_field('node', $video, 'field_video_media', 'pm_jwplayer');
 			$variables['media'] = drupal_render($video);
 		}elseif(!empty($variables['field_hs_slider_image'])){  //Use Image field if video doesn't exist
 			$image_display = 'teaser';
