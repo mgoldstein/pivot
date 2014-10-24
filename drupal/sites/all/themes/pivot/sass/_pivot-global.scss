@@ -1934,9 +1934,6 @@ a.important .pivot {
 }
 
 .upcoming {
-	.front & {
-		position: absolute;
-	}
 	width: 100%;
 	z-index: 5;
 	background: #000 url(../images/secondary-background.gif) left top repeat;

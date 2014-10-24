@@ -30,12 +30,13 @@ function pivot_hpslider_block_view($delta = ''){
 }
 
 function hpslider_block_content(){
-	//Grab the slides from the nodequeue
-	//Theme the slides
-	//Theme the slide wrapper
 
 	/* Get the nodes from the 'homepage_slider' (3) nodequeue */
 	$nodes = nodequeue_load_nodes(3, $backward = FALSE, $from = 0, $count = 10, $published_only = TRUE);
+
+	/* Get the "What's on Tonight" block */
+	$primetime = module_invoke('pivot_schedule', 'block_view', 'primetime_listing');
+	$primetime = drupal_render($primetime['content']);
 
 	/* Use the correct node display and add additional markup for the slides */
 	$slides = array();
@@ -49,8 +50,10 @@ function hpslider_block_content(){
 	$slides = implode('', $slides);
 
 	/* Now that we have the slides themed, let's 'wrap' things up */
-	$background = 'background';  //obviously change this to an image.
-	$slider = theme('hpslider_wrapper', array('slides' => $slides, 'background' => $background));
+	$background = variable_get('hpslider_background', '');
+	$background = file_load($background);
+	$background = file_create_url($background->uri);
+	$slider = theme('hpslider_wrapper', array('slides' => $slides, 'background' => $background, 'primetime' => $primetime));
 
 	return $slider;
 }
@@ -97,7 +100,52 @@ function pivot_hpslider_preprocess_node(&$variables) {
 			$variables['media'] = $default;
 		}
 
+		if (isset($variables['field_hs_link'][0]['title']) && isset($variables['field_hs_link'][0]['url'])) {
+			$variables['more_link'] = l(
+				$variables['field_hs_link'][0]['title'],
+				$variables['field_hs_link'][0]['url'],
+				array('attributes' => array(
+					'class' => 'important',
+					'target' => isset($variables['field_hs_link'][0]['attributes']['target']) ?
+							$variables['field_hs_link'][0]['attributes']['target'] : NULL,
+				))
+			);
+		}
+
 		/* Set the template to suggest */
 		$variables['theme_hook_suggestion'] = 'node__homepage_slide__teaser';
 	}
+}
+
+/**
+ * Implements hook_form_alter();
+ */
+function pivot_hpslider_form_alter(&$form, &$form_state, $form_id){
+
+	if($form_id == 'block_admin_configure' && $form['delta']['#value'] == 'hpslider'){
+
+		$form['settings']['bgimage'] = array(
+			'#type' => 'managed_file',
+			'#title' => t('Background Image'),
+			'#default_value' => variable_get('hpslider_background', ''),
+			'#upload_location' => 'public://hpslider/',
+		);
+		$form['#submit'][] = 'pivot_hpslider_form_submit_callback';
+	}
+}
+
+/**
+ * Callback for block submit handler
+ * @see pivot_hpslider_form_alter
+ */
+function pivot_hpslider_form_submit_callback($form, &$form_state) {
+
+	/* Save the image */
+	$file_id = $form_state['values']['bgimage'];
+	$file = file_load($file_id);
+	$file->status = FILE_STATUS_PERMANENT;
+	file_save($file);
+	file_usage_add($file, 'user', 'user', 1);
+	variable_set('hpslider_background', $file_id);
+
 }

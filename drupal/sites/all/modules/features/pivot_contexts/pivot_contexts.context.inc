@@ -284,7 +284,7 @@ function pivot_contexts_context_default_contexts() {
         'pivot_hpslider-hpslider' => array(
           'module' => 'pivot_hpslider',
           'delta' => 'hpslider',
-          'region' => 'preface',
+          'region' => 'header',
           'weight' => '-10',
         ),
         'dfp-pivot_ros_rr_300x250' => array(
