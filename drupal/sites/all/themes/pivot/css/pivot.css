@@ -3782,28 +3782,32 @@ body.tp_ad_takeover header {
   background: url(../images/slide_nav_right.png) no-repeat;
 }
 
-/* line 89, ../sass/_pivot-homepage-hero.scss */
+/* line 88, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .prev-slide:hover {
   background: url(../images/slide_nav_left_active.png) no-repeat;
 }
 
-/* line 93, ../sass/_pivot-homepage-hero.scss */
+/* line 92, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .next-slide:hover {
   background: url(../images/slide_nav_right_active.png) no-repeat;
 }
 
 /* Upcoming */
-/* line 98, ../sass/_pivot-homepage-hero.scss */
+/* line 97, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .primetime {
   padding-top: 5px;
 }
-/* line 100, ../sass/_pivot-homepage-hero.scss */
+/* line 99, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .primetime a.important {
   color: black;
   background: white;
 }
+/* line 102, ../sass/_pivot-homepage-hero.scss */
+.hero-slider .primetime a.important:after {
+  background-image: url(../images/full_schedule_arrow.png);
+}
 
-/* line 105, ../sass/_pivot-homepage-hero.scss */
+/* line 107, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .upcoming {
   background: transparent;
   box-shadow: none;
@@ -3812,17 +3816,17 @@ body.tp_ad_takeover header {
 }
 
 @media (max-width: 768px) {
-  /* line 112, ../sass/_pivot-homepage-hero.scss */
+  /* line 114, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .upcoming #upcoming-times {
     display: none;
   }
 
-  /* line 115, ../sass/_pivot-homepage-hero.scss */
+  /* line 117, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .nav-arrow {
     display: none;
   }
 
-  /* line 118, ../sass/_pivot-homepage-hero.scss */
+  /* line 120, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-content {
     max-width: 100%;
     padding: 10px;
@@ -3830,7 +3834,7 @@ body.tp_ad_takeover header {
     padding-top: 15px;
   }
 
-  /* line 124, ../sass/_pivot-homepage-hero.scss */
+  /* line 126, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-text {
     max-width: 100%;
     width: 100%;
@@ -3838,31 +3842,31 @@ body.tp_ad_takeover header {
     margin-top: 5px;
   }
 
-  /* line 130, ../sass/_pivot-homepage-hero.scss */
+  /* line 132, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-cta {
     max-width: 100%;
     width: 100%;
   }
 
-  /* line 134, ../sass/_pivot-homepage-hero.scss */
+  /* line 136, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-cta a.important {
     float: none;
     display: block;
     margin: 0;
   }
 
-  /* line 139, ../sass/_pivot-homepage-hero.scss */
+  /* line 141, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .primetime a.important {
     width: 100%;
   }
 }
 @media (max-width: 480px) {
-  /* line 144, ../sass/_pivot-homepage-hero.scss */
+  /* line 146, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-cta a.important {
     text-align: center;
   }
 
-  /* line 147, ../sass/_pivot-homepage-hero.scss */
+  /* line 149, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-title {
     font-size: 28px;
   }
