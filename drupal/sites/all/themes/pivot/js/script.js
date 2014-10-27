@@ -587,6 +587,38 @@
             });
           }
         };
+
+  Drupal.behaviors.homepageSlider = {
+    attach: function() {
+
+      $(document).ready(function(){
+        $('.bxslider').bxSlider({
+          nextSelector: '.next-slide',
+          prevSelector: '.prev-slide',
+          nextText: '',
+          prevText: '',
+          mode: 'fade',
+          onSlideAfter: function(){
+            jwplayer().stop();
+          }
+        });
+      });
+
+    }
+  };
+
+  Drupal.behaviors.pivotNavigation = {
+    attach: function(){
+      var snapper = new Snap({
+        element: document.getElementById('page')
+      });
+
+      $('body').click(function(){
+        snapper.open('left');
+      });
+    }
+  };
+
 })(jQuery, Drupal, this, this.document);
 
 

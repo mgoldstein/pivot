@@ -1,3 +1,9 @@
+<div class="drawers">
+	<div class="snap-drawer snap-drawer-left">
+		<?php render($page['left_drawer']); ?>
+		<?php dpm($page, 'page'); ?>
+	</div>
+</div>
 <div id="page">
 
   <header id="site-header" role="banner" class="header">

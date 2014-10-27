@@ -1,3 +1,8 @@
+<div class="drawers">
+	<div class="snap-drawer snap-drawer-left">
+		<?php print render($page['left_drawer']); ?>
+	</div>
+</div>
 <div id="page">
 
   <?php
@@ -6,11 +11,6 @@
   ?>
 
   <header id="site-header" role="banner" class="header">
-
-    <?php // no logo!
-     /* if ($logo):
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
-    <?php // endif; */ ?>
 
     <?php print $header; ?>
 

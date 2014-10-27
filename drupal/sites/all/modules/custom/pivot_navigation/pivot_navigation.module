@@ -1,0 +1,39 @@
+<?php
+/* Do something crazy */
+
+/**
+ * Implements hook_block_info()
+ */
+function pivot_navigation_block_info(){
+	return array(
+		'pivot_navigation' => array(
+			'info' => t('Pivot Navigation')
+		)
+	);
+}
+
+/**
+ * Implements hook_block_view()
+ */
+function pivot_navigation_block_view($delta = ''){
+	switch($delta){
+		case 'pivot_navigation':
+			$block['subject'] = t('Batman');
+			$block['content'] = some_custom_callback();
+	}
+}
+
+/* Callback for 'pivot_navigation' block */
+function some_custom_callback(){
+	dpm(get_defined_vars(), 'get defined vars');
+	/*
+	 * TODO:
+	 * 1) get the main nav menu
+	 * 2) get the social menu
+	 * 3) get the collab image
+	 * 4) print user registration div
+	 * 5) send that through the theme processor
+	 * 6) http://stream1.gifsoup.com/view8/20131226/4935715/chappelle-mic-drop-o.gif
+	 *
+	 */
+}
