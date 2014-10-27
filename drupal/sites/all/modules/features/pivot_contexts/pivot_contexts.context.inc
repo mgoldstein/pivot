@@ -281,11 +281,17 @@ function pivot_contexts_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'dfp-pivot_ros_leaderboard_728x90' => array(
+          'module' => 'dfp',
+          'delta' => 'pivot_ros_leaderboard_728x90',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
         'pivot_hpslider-hpslider' => array(
           'module' => 'pivot_hpslider',
           'delta' => 'hpslider',
           'region' => 'header',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'dfp-pivot_ros_rr_300x250' => array(
           'module' => 'dfp',
