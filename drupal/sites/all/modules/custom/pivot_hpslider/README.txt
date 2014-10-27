@@ -2,6 +2,7 @@ Documentation
 
 Homepage Slider uses bxslider
 Documentation can be found here http://bxslider.com/
+Javascript for this module is in the script.js file in the pivot theme directory.
 
 USAGE
 Create Homepage Slider nodes and publish them.
