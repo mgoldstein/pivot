@@ -20,6 +20,7 @@ dependencies[] = pivot_dml
 dependencies[] = pivot_feed
 dependencies[] = pivot_global
 dependencies[] = pivot_hpslider
+dependencies[] = pivot_navigation
 dependencies[] = pivot_schedule
 dependencies[] = pivot_shows
 dependencies[] = pivot_video
