@@ -598,6 +598,8 @@
           nextText: '',
           prevText: '',
           mode: 'fade',
+          infiniteLoop: false,
+          hideControlOnEnd: true,
           onSlideAfter: function(){
             jwplayer().stop();
           }
@@ -610,12 +612,14 @@
   Drupal.behaviors.pivotNavigation = {
     attach: function(){
       var snapper = new Snap({
-        element: document.getElementById('page')
+        element: document.getElementById('page'),
+        disable: 'right',
+        touchToDrag: false
       });
 
-      $('body').click(function(){
-        snapper.open('left');
-      });
+//      $('body').click(function(){
+//        snapper.open('left');
+//      });
     }
   };
 
