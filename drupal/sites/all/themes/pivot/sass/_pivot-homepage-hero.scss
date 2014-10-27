@@ -82,7 +82,6 @@ body.tp_ad_takeover header{
   height: 58px;
   width: 58px;
   display: block;
-  //  background: url(../images/controls.png) no-repeat -43px -32px;
   background: url(../images/slide_nav_right.png) no-repeat;
 }
 
@@ -100,6 +99,9 @@ body.tp_ad_takeover header{
   a.important{
     color: black;
     background: white;
+    &:after{
+      background-image: url(../images/full_schedule_arrow.png);
+    }
   }
 }
 .hero-slider .upcoming{
