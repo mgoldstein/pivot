@@ -59,12 +59,12 @@ body.snapjs-left .drawers, body.snapjs-right .drawers{
 
 .snap-drawer-left {
   left: 0;
-  z-index: -1;
+  z-index: 0;
 }
 
 .snap-drawer-right {
   right: 0;
-  z-index: -1;
+  z-index: 0;
 }
 
 .snapjs-left .snap-drawer-right,
@@ -109,11 +109,11 @@ body.snapjs-left .drawers, body.snapjs-right .drawers{
 }
 
 .snap-drawers {
-  background: #323949;
+  background: #616161;
 }
 
 .snap-drawer {
-  background: #323949;
+  background: #616161;
   color: #eee;
 }
 
@@ -137,18 +137,29 @@ body.snapjs-left .drawers, body.snapjs-right .drawers{
 
 .snap-drawer li > a {
   display: block;
-  border-bottom: 1px solid rgba(0,0,0, 0.1);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: "Apercu Regular";
+  font-size: 15px;
+  border-bottom: 1px solid #ccc;
   padding: 15px;
-  font-weight: bold;
-  text-shadow: 0 1px 0 #000;
+  font-weight: 100;
+  text-transform: uppercase;
   text-decoration: none;
-  color: #ccc;
-  text-indent: 20px;
+  color: #fff;
+  &:hover{
+    background: #333;
+  }
 }
 
+/* Overrides */
 .snap-drawer p {
   opacity: 0.5;
   padding: 15px;
   font-size: 12px;
+}
+.snap-drawer li{
+  margin: 0;
+}
+#megamenu .item-list ul{
+  margin: 0;
+  padding: 0;
 }
