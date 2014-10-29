@@ -287,23 +287,23 @@ function pivot_contexts_context_default_contexts() {
           'region' => 'left_drawer',
           'weight' => '-10',
         ),
-        'pivot_navigation-pivot_navigation' => array(
-          'module' => 'pivot_navigation',
-          'delta' => 'pivot_navigation',
-          'region' => 'header',
-          'weight' => '-10',
-        ),
         'dfp-pivot_ros_leaderboard_728x90' => array(
           'module' => 'dfp',
           'delta' => 'pivot_ros_leaderboard_728x90',
           'region' => 'header',
-          'weight' => '-9',
+          'weight' => '-89',
+        ),
+        'pivot_navigation-pivot_navigation' => array(
+          'module' => 'pivot_navigation',
+          'delta' => 'pivot_navigation',
+          'region' => 'header',
+          'weight' => '-88',
         ),
         'pivot_hpslider-hpslider' => array(
           'module' => 'pivot_hpslider',
           'delta' => 'hpslider',
           'region' => 'header',
-          'weight' => '-8',
+          'weight' => '-87',
         ),
         'dfp-pivot_ros_rr_300x250' => array(
           'module' => 'dfp',
