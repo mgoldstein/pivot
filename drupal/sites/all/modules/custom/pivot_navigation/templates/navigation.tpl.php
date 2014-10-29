@@ -1,10 +1,27 @@
-<div class="navigation-wrapper">
-	<nav class="main-nav">
-		<div class="hamburger"></div>
-		<div class="logo"></div>
-		<div id="pivot-navigation" class="menu"><?php print $menu; ?></div>
-		<div class="social"><?php print $social_menu; ?></div>
-		<div class="collab"><?php print $collab; ?></div>
-		<div class="tpsLogin"></div>
-	</nav>
+<div class="tp-slim-nav-wrapper">
+	<div class="menu-toggle"></div>
+	<div class="left">
+		<?php print $logo; ?>
+		<div class="megamenu-wrapper">
+			<nav id="megamenu" class="tp-slim-nav">
+				<?php print $slimnav; ?>
+			</nav>
+		</div>
+		<?php
+		print render($left_info);
+		?>
+	</div>
+	<div class="right">
+		<div class="follow-us">
+			<?php if(!empty($social_menu)): ?>
+<!--				<div class="title">Follow</br>Pivot</div>-->
+<!--				--><?php //print render($social_menu); ?>
+			<?php endif; ?>
+		</div>
+		<?php
+		print render($right_info);
+		?>
+		<?php print render($search); ?>
+	</div>
+	<div class="clearfix"></div>
 </div>

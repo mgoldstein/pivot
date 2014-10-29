@@ -69,7 +69,7 @@ function pivot_navigation_block_view($delta = ''){
 function pivot_navigation_theme(){
 	return array(
 		'pivot_navigation' => array (
-			'template' => 'templates/navigation-new',
+			'template' => 'templates/navigation',
 			'variables' => array (
 				'logo' => NULL,
 				'slimnav' => NULL,
@@ -326,7 +326,6 @@ function _pivot_navigation_slim_block_gen() {
  *  Implements hook_tp_collab_alter().
  */
 function pivot_navigation_pivot_collab_alter(&$normal_state, &$focus_state, &$classes) {
-  dpm($normal_state, 'normal state');
 	$normal_state = '<span class="small">in collaboration with</span><br/><img src="/sites/all/themes/pivot/images/takepart_logo_white.png" style="vertical-align: middle;"/><span class="small">&nbsp;&nbsp;[?]</span>';
 	$focus_state = '<a class="focus-state-link" href="http://www.takepart.com/">TakePart is the social<br/>action platform for<br/>Pivot TV. <span style="color: #018b73;">About Takepart</span></a>';
 	$classes = array('takepart');
