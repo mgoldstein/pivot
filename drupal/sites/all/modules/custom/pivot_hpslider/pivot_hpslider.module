@@ -156,13 +156,20 @@ function pivot_hpslider_form_alter(&$form, &$form_state, $form_id){
  * @see pivot_hpslider_form_alter
  */
 function pivot_hpslider_form_submit_callback($form, &$form_state) {
-
 	/* Save the image */
 	$file_id = $form_state['values']['bgimage'];
-	$file = file_load($file_id);
-	$file->status = FILE_STATUS_PERMANENT;
-	file_save($file);
-	file_usage_add($file, 'user', 'user', 1);
-	variable_set('hpslider_background', $file_id);
+  if(!empty($file_id)){
+    $file = file_load($file_id);
+    $file->status = FILE_STATUS_PERMANENT;
+    file_save($file);
+    file_usage_add($file, 'user', 'user', 1);
+    variable_set('hpslider_background', $file_id);
+  }else{
+    $file = variable_get('hpslider_background', '');
+    $file = file_load($file);
+    file_delete($file);
+    variable_del('hpslider_background');
+  }
+
 
 }
