@@ -617,9 +617,12 @@
         touchToDrag: false
       });
 
-//      $('body').click(function(){
-//        snapper.open('left');
-//      });
+      $('body .menu-toggle').click(function(){
+        snapper.open('left');
+      });
+      $('body.snapjs-left .menu-toggle').click(function(){
+        snapper.close('left');
+      });
     }
   };
 
