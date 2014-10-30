@@ -93,7 +93,7 @@ header {
     
     //search button 
     #edit-submit {
-      background: image-url('search.png') no-repeat center center;
+      background: image-url('search_black.jpg') no-repeat center center;
       background-color: transparent;
       border: 0;
       text-indent: 9999px;
@@ -102,6 +102,9 @@ header {
       height: 30px;
       width: 30px;
       cursor: pointer;
+      &:focus {
+        outline: none;
+      }
     }
     
     //search input
@@ -109,7 +112,7 @@ header {
       position: absolute;
       display: none;
       margin: 0;
-      bottom: -24px;
+      bottom: -41px;
       right: 0;
       left: 0;
       padding: 10px;
@@ -301,7 +304,7 @@ header {
         display: block;
       }
       .form-submit {
-        background: image-url('mobile-search-hover.jpg') no-repeat center center;
+//        background: image-url('mobile-search-hover.jpg') no-repeat center center;
         background-color: #000;
       }
     }
@@ -423,9 +426,9 @@ header {
     .logo {
       /*display: inline-block;*/
       float: left;
-      background: url(../images/logo.png) no-repeat center center;
+      background: url(../images/logo.jpg) no-repeat center center;
       display: block;
-      height: 47px;
+      height: 30px;
       width: 121px;
       background-size: contain;
     }
@@ -532,7 +535,7 @@ header {
 
         @include breakpoint($breakpoint-tablet) {
           max-width: none;
-          margin-top: 0px;
+          margin-top: 5px;
         }
       }
     }
@@ -679,15 +682,6 @@ header {
 
 //overrides the follow for pivot
 .pivot-nav-theme {
-  .tp-slim-nav-wrapper {
-    #megamenu {
-      li {
-        a {
-          //font-family: "Apercu Medium", sans-serif;
-        }
-      }
-    }
-  }
 
   //follow
   .follow-us,
@@ -844,9 +838,10 @@ body.tploggedin {
   }
 }
 
-.tp-slim-nav-wrapper a.important:link{
+.tp-slim-nav-wrapper a.important{
   background-color: #0084aa;
   padding: 6px 49px 6px 29px;
+  margin-right: 5px;
   line-height: 14px;
   &:after{
     right: 29px;
