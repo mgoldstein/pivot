@@ -641,6 +641,33 @@
    */
   Drupal.behaviors.megaMenuBehaviors = {
     attach: function(context, settings) {
+			//functionality for the search
+			$('.search-toggle #edit-submit').click(function() {
+				if ($('#search-block-form').hasClass('active')) {
+					$('#search-block-form').removeClass('active');
+					var search_input = $('.search-toggle #edit-search-block-form--2').val();
+					
+					if (search_input == 'Search') {
+						return false;
+					}
+					return true;
+				}
+				else {
+					$('#search-block-form').addClass('active');
+					$('.search-toggle #edit-search-block-form--2').val('Search');
+					return false;
+				}
+			});
+			
+			//additional code to handle the mousedown and touch for mobile
+			$("body").bind('touchstart mousedown', function(event) {
+				var is_submit = $(event.target).is('#edit-submit');
+				var is_input = $(event.target).is('#edit-search-block-form--2');
+				//closes the search for mobile
+				if ($('#search-block-form').hasClass('active') && !is_submit && !is_input) {
+					$('.search-toggle #edit-submit').trigger('click');
+				}
+			});
 
       //Toggle search on mobile
       $('html').click(function() {

@@ -5,43 +5,43 @@
  * Implements hook_block_info()
  */
 function pivot_navigation_block_info(){
-	return array(
-		'pivot_navigation' => array(
-			'info' => t('Pivot Navigation')
-		),
-	);
+  return array(
+    'pivot_navigation' => array(
+      'info' => t('Pivot Navigation')
+    ),
+  );
 }
 
 /**
  * Implements hook_block_view()
  */
 function pivot_navigation_block_view($delta = ''){
-	switch($delta){
-		case 'pivot_navigation':
-			$block['subject'] = NULL;
-			$block['content'] = _pivot_navigation_slim_block_gen();
-			return $block;
-			break;
-	}
+  switch($delta){
+    case 'pivot_navigation':
+      $block['subject'] = NULL;
+      $block['content'] = _pivot_navigation_slim_block_gen();
+      return $block;
+      break;
+  }
 }
 
 /**
  * Implements hook_theme()
  */
 function pivot_navigation_theme(){
-	return array(
-		'pivot_navigation' => array (
-			'template' => 'templates/navigation',
-			'variables' => array (
-				'logo' => NULL,
-				'slimnav' => NULL,
-				'social_menu' => NULL,
-				'search' => NULL,
-				'right_info' => NULL,
-				'left_info' => NULL
-			)
-		)
-	);
+  return array(
+    'pivot_navigation' => array (
+      'template' => 'templates/navigation',
+      'variables' => array (
+        'logo' => NULL,
+        'slimnav' => NULL,
+        'social_menu' => NULL,
+        'search' => NULL,
+        'right_info' => NULL,
+        'left_info' => NULL
+      )
+    )
+  );
 }
 
 /**
@@ -49,14 +49,28 @@ function pivot_navigation_theme(){
  */
 function pivot_navigation_pivot_preprocess_slim_nav_alter(&$data) {
   //adds tap login
-	$get_pivot = l('GET <span class="pivot">Pivot</span>', 'http://find.pivot.tv', array('html' => TRUE, 'attributes' => array('class' => array('important'))));
-  $search =  '<div class="search">
-  <div class="search-toggle"></div> ' . drupal_render(module_invoke('search', 'block_view', 'form')) . '
-</div>';
+  $get_pivot = l('GET <span class="pivot">Pivot</span>', 'http://find.pivot.tv', array('html' => TRUE, 'attributes' => array('class' => array('important'))));
 
-
-	//add it to the right_info
-	$data['right_info'] = $search. $get_pivot;
+	//adds in the search form
+  $search = theme('html_tag', array(
+  'element' => array(
+    '#tag' => 'div',
+    '#value' => drupal_render(module_invoke('search', 'block_view', 'form')),
+    '#attributes' => array(
+      'class' => 'search-toggle',
+  ))));
+  
+	//creates search wrapper
+  $search_wrapper = theme('html_tag', array(
+    'element' => array(
+      '#tag' => 'div',
+      '#value' => $search,
+      '#attributes' => array(
+        'class' => 'search',
+  ))));
+  
+  //add it to the right_info
+  $data['right_info'] = $search_wrapper . $get_pivot;
 }
 
 /**
@@ -64,28 +78,28 @@ function pivot_navigation_pivot_preprocess_slim_nav_alter(&$data) {
  *    This function is used to parse the mobile menu as it was not pulling in the secondary levels
  */
 function _pivot_navigation_menu_parser($mobile_menu) {
-	//TODO: make sure we have all of the contrib modules and modifications necessary
-	$mobile_menu_processed = array();
-	//does for each item
-	foreach ($mobile_menu as $menu => $value) {
-		//creates the menu
-		$mobile_menu_processed[$value['link']['mlid']] = array(
-			'#title' => $value['link']['link_title'],
-			'#href' => $value['link']['link_path'],
-			'#theme' => 'menu_link__' . str_replace('-', '_', (strtolower($value['link']['menu_name']))),
-			'#attributes' => array(
-				'class' => $value['link']['options']['#attributes'],
-			),
-			'#original_link' => $value['link'],
-			'#below' => (!empty($value['below'])) ? _pivot_navigation_menu_parser($value['below']) : '',
-			'#localized_options' => $value['link']['localized_options']
-		);
+  //TODO: make sure we have all of the contrib modules and modifications necessary
+  $mobile_menu_processed = array();
+  //does for each item
+  foreach ($mobile_menu as $menu => $value) {
+    //creates the menu
+    $mobile_menu_processed[$value['link']['mlid']] = array(
+      '#title' => $value['link']['link_title'],
+      '#href' => $value['link']['link_path'],
+      '#theme' => 'menu_link__' . str_replace('-', '_', (strtolower($value['link']['menu_name']))),
+      '#attributes' => array(
+        'class' => $value['link']['options']['#attributes'],
+      ),
+      '#original_link' => $value['link'],
+      '#below' => (!empty($value['below'])) ? _pivot_navigation_menu_parser($value['below']) : '',
+      '#localized_options' => $value['link']['localized_options']
+    );
 
-		//ensures we add an extra class to be normal
-		$mobile_menu_processed[$value['link']['mlid']]['#attributes']['class'][] = 'normal';
-	}
+    //ensures we add an extra class to be normal
+    $mobile_menu_processed[$value['link']['mlid']]['#attributes']['class'][] = 'normal';
+  }
 
-	return $mobile_menu_processed;
+  return $mobile_menu_processed;
 }
 
 /**
@@ -96,95 +110,95 @@ function _pivot_navigation_menu_parser($mobile_menu) {
  *      $menu = the menu to pull in and process
  */
 function _pivot_navigation_menu_handler($menu = NULL) {
-	$output = '';
-	$items = array();
+  $output = '';
+  $items = array();
 
-	//return empty if menu is not set
-	if (empty($menu)) {
-		return '';
-	}
+  //return empty if menu is not set
+  if (empty($menu)) {
+    return '';
+  }
 
-	//grabs the mega tree
-	$mega_tree = menu_tree_all_data($menu, $link = NULL, $max_depth = 2);
+  //grabs the mega tree
+  $mega_tree = menu_tree_all_data($menu, $link = NULL, $max_depth = 2);
 
-	//does each tree
-	foreach ($mega_tree as $key => $link) {
-		//default variables
-		$attributes = $link_data = $see_more = $categories = $left_menu = '';
+  //does each tree
+  foreach ($mega_tree as $key => $link) {
+    //default variables
+    $attributes = $link_data = $see_more = $categories = $left_menu = '';
 
-		//gets the path
-		$path = drupal_get_path_alias($mega_tree[$key]['link']['link_path']);
-		$attributes = $link['link']['options']['attributes'];
-		$attributes['class'] = array($link['link']['options']['attributes']['class'][0]);
-		$title = '<div class="title first-level">'. l($mega_tree[$key]['link']['link_title'], $path, array('attributes' => $attributes)). '</div>';
+    //gets the path
+    $path = drupal_get_path_alias($mega_tree[$key]['link']['link_path']);
+    $attributes = $link['link']['options']['attributes'];
+    $attributes['class'] = array($link['link']['options']['attributes']['class'][0]);
+    $title = '<div class="title first-level">'. l($mega_tree[$key]['link']['link_title'], $path, array('attributes' => $attributes)). '</div>';
 
-		//limits down the menu to 10 items. @dev: this is disabled for now
-		//$bottom_menu = array_slice($mega_tree[$key]['below'], 0, 10);
-		$bottom_menu = $mega_tree[$key]['below'];
+    //limits down the menu to 10 items. @dev: this is disabled for now
+    //$bottom_menu = array_slice($mega_tree[$key]['below'], 0, 10);
+    $bottom_menu = $mega_tree[$key]['below'];
 
-		//left menu curation
-		$menu = render(menu_tree_output($bottom_menu));
-		$menu_text = ($link['link']['options']['attributes']['title'] ? $link['link']['options']['attributes']['title'] : '');
-		$left_menu = theme('tp_megamenu_inner_left', array('left_menu' => $menu, 'left_menu_text' => $menu_text));
+    //left menu curation
+    $menu = render(menu_tree_output($bottom_menu));
+    $menu_text = ($link['link']['options']['attributes']['title'] ? $link['link']['options']['attributes']['title'] : '');
+    $left_menu = theme('tp_megamenu_inner_left', array('left_menu' => $menu, 'left_menu_text' => $menu_text));
 
-		//only add if there is a second level
-		if (!empty($link['below'])) {
-			//return more link
-			if (isset($link['link']['options']['attributes']['name'])) {
-				$see_more = l(
-					$link['link']['options']['attributes']['name'],
-					$path,
-					array(
-						'attributes' => array(
-							'class' => array('right-more')
-						)
-					)
-				);
-			}
-			else {
-				$see_more = l(
-					'See More '. $link['link']['link_title'],
-					$path,
-					array(
-						'attributes' => array(
-							'class' => array('right-more')
-						)
-					)
-				);
-			}
-		}
+    //only add if there is a second level
+    if (!empty($link['below'])) {
+      //return more link
+      if (isset($link['link']['options']['attributes']['name'])) {
+        $see_more = l(
+          $link['link']['options']['attributes']['name'],
+          $path,
+          array(
+            'attributes' => array(
+              'class' => array('right-more')
+            )
+          )
+        );
+      }
+      else {
+        $see_more = l(
+          'See More '. $link['link']['link_title'],
+          $path,
+          array(
+            'attributes' => array(
+              'class' => array('right-more')
+            )
+          )
+        );
+      }
+    }
 
-		$mega_content_wrapper = theme('html_tag', array(
-			'element' => array(
-				'#tag' => 'div',
-				'#value' => $left_menu . $see_more,
-				'#attributes' => array(
-					'class' => 'mega-content-wrapper',
-				))));
+    $mega_content_wrapper = theme('html_tag', array(
+      'element' => array(
+        '#tag' => 'div',
+        '#value' => $left_menu . $see_more,
+        '#attributes' => array(
+          'class' => 'mega-content-wrapper',
+        ))));
 
-		$link_mega_wrapper = theme('html_tag', array(
-			'element' => array(
-				'#tag' => 'div',
-				'#value' => $mega_content_wrapper,
-				'#attributes' => array(
-					'class' => 'mega-content second-level',
-				))));
+    $link_mega_wrapper = theme('html_tag', array(
+      'element' => array(
+        '#tag' => 'div',
+        '#value' => $mega_content_wrapper,
+        '#attributes' => array(
+          'class' => 'mega-content second-level',
+        ))));
 
-		//adds into array for items
-		$items[] = array(
-			'data' => $title . (!empty($bottom_menu) ? $link_mega_wrapper : ''),
-			'class' => array("mega-item ". $link['link']['mlid'])
-		);
-	}
+    //adds into array for items
+    $items[] = array(
+      'data' => $title . (!empty($bottom_menu) ? $link_mega_wrapper : ''),
+      'class' => array("mega-item ". $link['link']['mlid'])
+    );
+  }
 
-	//outputs the menu using item_list
-	$output = theme('item_list', array(
-		'items' => $items,
-		'title' => NULL,
-		'type' => 'ul'
-	));
+  //outputs the menu using item_list
+  $output = theme('item_list', array(
+    'items' => $items,
+    'title' => NULL,
+    'type' => 'ul'
+  ));
 
-	return $output;
+  return $output;
 }
 
 /**
@@ -193,46 +207,46 @@ function _pivot_navigation_menu_handler($menu = NULL) {
  *    This function will only run when the node field brand category is set.
  */
 function _pivot_navigation_slim_block_gen() {
-	//default variables
-	drupal_add_js('https://api.takepart.com/assets/login_widget.js', 'external');
-	/* Make this static */
-	$logo = '<div class="logo"></div>';
+  //default variables
+  drupal_add_js('https://api.takepart.com/assets/login_widget.js', 'external');
+  /* Make this static */
+  $logo = '<div class="logo"></div>';
   global $base_url;
   $logo = l('', $base_url, array('attributes' => array('class' => array('logo'))));
 
-	/* Get the social menu */
-	$social_menu_depth = 2;
-	$social_menu_tree = menu_tree_all_data('menu-follow-us', null, $social_menu_depth);
-	$slim_nav_social_menu = drupal_render(menu_tree_output($social_menu_tree));
+  /* Get the social menu */
+  $social_menu_depth = 2;
+  $social_menu_tree = menu_tree_all_data('menu-follow-us', null, $social_menu_depth);
+  $slim_nav_social_menu = drupal_render(menu_tree_output($social_menu_tree));
 
-	//prepped array before alter
-	$pre_slim_array = array(
-		'logo' => $logo,
-		'slimnav' => _pivot_navigation_menu_handler($menu = 'menu-primary'),
-		'social_menu' => $slim_nav_social_menu,
-		'right_info' => array(),
-		'left_info' => array(),
-	);
+  //prepped array before alter
+  $pre_slim_array = array(
+    'logo' => $logo,
+    'slimnav' => _pivot_navigation_menu_handler($menu = 'menu-primary'),
+    'social_menu' => $slim_nav_social_menu,
+    'right_info' => array(),
+    'left_info' => array(),
+  );
 
-	//allow other modules to preprocess the slim nav array
-	drupal_alter('pivot_preprocess_slim_nav', $pre_slim_array);
+  //allow other modules to preprocess the slim nav array
+  drupal_alter('pivot_preprocess_slim_nav', $pre_slim_array);
 
-	//calls theme function to theme the output
-	$slim_nav_output = theme('pivot_navigation', $pre_slim_array);
+  //calls theme function to theme the output
+  $slim_nav_output = theme('pivot_navigation', $pre_slim_array);
 
-	//wraps the output for easier theming
-	$output = theme('html_tag', array(
-		'element' => array(
-			'#tag' => 'div',
-			'#value' => $slim_nav_output,
-			'#attributes' => array(
-				'class' => 'tp-slim-nav'
-			)
-		)
-	));
+  //wraps the output for easier theming
+  $output = theme('html_tag', array(
+    'element' => array(
+      '#tag' => 'div',
+      '#value' => $slim_nav_output,
+      '#attributes' => array(
+        'class' => 'tp-slim-nav'
+      )
+    )
+  ));
 
 
-	return $output;
+  return $output;
 }
 /**
  *  Implements hook_preprocess_page().
