@@ -647,7 +647,7 @@ function pivot_schedule_block_settings($delta) {
     if ($delta === 'primetime_listing') {
         $values = variable_get('pivot_schedule_primetime_listing', array());
         $values += array(
-            'headline_text' => t("What's On Tonight"),
+            'headline_text' => t("What's On Tonight:"),
             'full_schedule_text' => t('See Full Schedule'),
             'full_schedule_link' => '#',
             'count' => 3,

@@ -1960,18 +1960,18 @@ a.important .pivot {
 
 .upcoming .headline a, .upcoming .headline .extra {
 	font-size: 24px;
-	text-transform: uppercase;
+	text-transform: capitalize; 
 	font-weight: bold;
 	font-style: italic;
-	padding: 5px 25px 5px 10px;
+	padding: 5px 25px 0 10px;
 	position: relative;
 	text-align: right;
 	white-space: nowrap;
 	color: #fff;
+        font-family: "Apercu Regular", sans-serif;
 }
 
 .upcoming .headline a:after, .upcoming .headline .extra:after {
-	content: " ";
 	display: block;
 	position: absolute;
 	right: 5px;
@@ -1979,8 +1979,6 @@ a.important .pivot {
 	margin-top: -11px;
 	width: 11px;
 	height: 22px;
-	background-repeat: no-repeat;
-	background-image: url(../images/rightarrow_medium.png);
 	vertical-align: middle;
 }
 
@@ -1998,8 +1996,8 @@ a.important .pivot {
 }
 
 .upcoming .times .item {
-	font-family: "Apercu Mono Regular", monospace, sans-serif;
-	font-size: 14px;
+	font-family: "Apercu Regular", sans-serif;
+	font-size: 15px;
 	position: relative;
 	text-align: center;
 	padding: 0 5px;
@@ -2047,6 +2045,8 @@ a.important .pivot {
 
 .upcoming .full-schedule {
 	padding: 0 5px;
+        font-family: "Apercu Regular", sans-serif;
+        font-size: 16px;
 }
 
 /* Upcoming Bar */
