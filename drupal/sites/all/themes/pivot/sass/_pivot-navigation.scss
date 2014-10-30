@@ -920,3 +920,12 @@ body.tploggedin {
     background:white;
   }
 }
+
+.tp-slim-nav-wrapper a.important:link{
+  background-color: #0084aa;
+  padding: 6px 49px 6px 29px;
+  line-height: 14px;
+  &:after{
+    right: 29px;
+  }
+}

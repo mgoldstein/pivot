@@ -3419,11 +3419,7 @@ iframe.media-youtube-player {
 /* line 2973, ../sass/_pivot-global.scss */
 .pm-jwplayer.loading {
   width: 100%;
-<<<<<<< HEAD
   background: url('../images/video-loading.gif?1390350395');
-=======
-  background: url('../images/video-loading.gif?1390007394');
->>>>>>> 231af36d1d828f3f3b7e097e249c2467bb8a8fb0
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3432,11 +3428,7 @@ iframe.media-youtube-player {
 /* line 2980, ../sass/_pivot-global.scss */
 .pm-jwplayer.blocked {
   width: 100%;
-<<<<<<< HEAD
   background: url('../images/video-blocked.gif?1390350395') no-repeat center center;
-=======
-  background: url('../images/video-blocked.gif?1390007394') no-repeat center center;
->>>>>>> 231af36d1d828f3f3b7e097e249c2467bb8a8fb0
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -5364,6 +5356,17 @@ body.tploggedin .pivot-nav-theme .tpsLogin .user_image:hover {
 /* line 919, ../sass/_pivot-navigation.scss */
 #megamenu .second-level {
   background: white;
+}
+
+/* line 924, ../sass/_pivot-navigation.scss */
+.tp-slim-nav-wrapper a.important:link {
+  background-color: #0084aa;
+  padding: 6px 49px 6px 29px;
+  line-height: 14px;
+}
+/* line 928, ../sass/_pivot-navigation.scss */
+.tp-slim-nav-wrapper a.important:link:after {
+  right: 29px;
 }
 
 /* line 1, ../sass/_pivot-snap-drawers.scss */
