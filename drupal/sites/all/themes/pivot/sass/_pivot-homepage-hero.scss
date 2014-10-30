@@ -1,3 +1,7 @@
+.slider ul{
+  margin: 0;
+  padding: 0;
+}
 body.tp_ad_takeover header{
   max-width: 980px;
   margin: 0 auto;
@@ -123,6 +127,8 @@ body.tp_ad_takeover header{
   .hero-slider .upcoming #upcoming-times{
     display: none;
   }
+}
+@media (max-width: 767px) {
   .hero-slider .slider-content{
     max-width: 100%;
     padding: 10px;
@@ -158,4 +164,8 @@ body.tp_ad_takeover header{
   .hero-slider .slider-title {
     font-size: 30px;
   }
+}
+
+.media.video{
+  paddin-bottom: 56.49867%;
 }
