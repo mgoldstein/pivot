@@ -329,6 +329,12 @@ function pivot_contexts_context_default_contexts() {
           'region' => 'right_sidebar',
           'weight' => '-7',
         ),
+        'dfp-pivot_ros_background_1x1' => array(
+          'module' => 'dfp',
+          'delta' => 'pivot_ros_background_1x1',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
