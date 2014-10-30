@@ -24,7 +24,7 @@ function pivot_hs_fe_nodequeue_export_fields() {
     'name' => 'homepage_slider',
     'title' => 'Homepage Slider',
     'subqueue_title' => '',
-    'size' => 0,
+    'size' => 10,
     'link' => '',
     'link_remove' => '',
     'owner' => 'nodequeue',
