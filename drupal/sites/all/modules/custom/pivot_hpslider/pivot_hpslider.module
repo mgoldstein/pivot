@@ -33,7 +33,6 @@ function hpslider_block_content(){
 
 	/* Get the nodes from the 'homepage_slider' (3) nodequeue */
 	$nodes = nodequeue_load_nodes(3, $backward = FALSE, $from = 0, $count = 10, $published_only = TRUE);
-  dpm($nodes, 'nodes');
 
 	/* Get the "What's on Tonight" block */
 	$primetime = module_invoke('pivot_schedule', 'block_view', 'primetime_listing');
