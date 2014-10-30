@@ -3419,7 +3419,7 @@ iframe.media-youtube-player {
 /* line 2973, ../sass/_pivot-global.scss */
 .pm-jwplayer.loading {
   width: 100%;
-  background: url('../images/video-loading.gif?1390007394');
+  background: url('../images/video-loading.gif?1390350395');
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3428,7 +3428,7 @@ iframe.media-youtube-player {
 /* line 2980, ../sass/_pivot-global.scss */
 .pm-jwplayer.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1390007394') no-repeat center center;
+  background: url('../images/video-blocked.gif?1390350395') no-repeat center center;
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3693,11 +3693,18 @@ body .bx-wrapper .bx-controls .bx-pager-item a.active, body .bx-wrapper .bx-cont
 .bx-wrapper img {
   max-width: 100%;
   display: block;
+  padding: 0 20px;
+}
+@media (max-width: 768px) {
+  /* line 24, ../sass/_bxslider.scss */
+  .bx-wrapper img {
+    padding: 0;
+  }
 }
 
 /** THEME
 ===================================*/
-/* line 32, ../sass/_bxslider.scss */
+/* line 36, ../sass/_bxslider.scss */
 .bx-wrapper .bx-viewport {
   /*fix other elements on the page moving (on Chrome)*/
   -webkit-transform: translatez(0);
@@ -3707,7 +3714,7 @@ body .bx-wrapper .bx-controls .bx-pager-item a.active, body .bx-wrapper .bx-cont
   transform: translatez(0);
 }
 
-/* line 43, ../sass/_bxslider.scss */
+/* line 47, ../sass/_bxslider.scss */
 .bx-wrapper .bx-pager,
 .bx-wrapper .bx-controls-auto {
   position: absolute;
@@ -3716,7 +3723,7 @@ body .bx-wrapper .bx-controls .bx-pager-item a.active, body .bx-wrapper .bx-cont
 }
 
 /* LOADER */
-/* line 51, ../sass/_bxslider.scss */
+/* line 55, ../sass/_bxslider.scss */
 .bx-wrapper .bx-loading {
   min-height: 50px;
   background: url(../images/bx_loader.gif) center center no-repeat white;
@@ -3729,7 +3736,7 @@ body .bx-wrapper .bx-controls .bx-pager-item a.active, body .bx-wrapper .bx-cont
 }
 
 /* PAGER */
-/* line 64, ../sass/_bxslider.scss */
+/* line 68, ../sass/_bxslider.scss */
 .bx-wrapper .bx-pager {
   text-align: center;
   font-size: .85em;
@@ -3739,7 +3746,7 @@ body .bx-wrapper .bx-controls .bx-pager-item a.active, body .bx-wrapper .bx-cont
   padding-top: 20px;
 }
 
-/* line 74, ../sass/_bxslider.scss */
+/* line 78, ../sass/_bxslider.scss */
 .bx-wrapper .bx-pager .bx-pager-item,
 .bx-wrapper .bx-controls-auto .bx-controls-auto-item {
   display: inline-block;
@@ -3747,7 +3754,7 @@ body .bx-wrapper .bx-controls .bx-pager-item a.active, body .bx-wrapper .bx-cont
   *display: inline;
 }
 
-/* line 80, ../sass/_bxslider.scss */
+/* line 84, ../sass/_bxslider.scss */
 .bx-wrapper .bx-pager.bx-default-pager a {
   background: #666;
   text-indent: -9999px;
@@ -3761,36 +3768,36 @@ body .bx-wrapper .bx-controls .bx-pager-item a.active, body .bx-wrapper .bx-cont
   border-radius: 5px;
 }
 
-/* line 94, ../sass/_bxslider.scss */
+/* line 98, ../sass/_bxslider.scss */
 .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .bx-wrapper .bx-pager.bx-default-pager a.active {
   background: #000;
 }
 
 /* DIRECTION CONTROLS (NEXT / PREV) */
-/* line 100, ../sass/_bxslider.scss */
+/* line 104, ../sass/_bxslider.scss */
 .bx-wrapper .bx-prev {
   left: 10px;
   background: url(../images/controls.png) no-repeat 0 -32px;
 }
 
-/* line 105, ../sass/_bxslider.scss */
+/* line 109, ../sass/_bxslider.scss */
 .bx-wrapper .bx-next {
   right: 10px;
   background: url(../images/controls.png) no-repeat -43px -32px;
 }
 
-/* line 111, ../sass/_bxslider.scss */
+/* line 115, ../sass/_bxslider.scss */
 .bx-wrapper .bx-prev:hover {
   background-position: 0 0;
 }
 
-/* line 115, ../sass/_bxslider.scss */
+/* line 119, ../sass/_bxslider.scss */
 .bx-wrapper .bx-next:hover {
   background-position: -43px 0;
 }
 
-/* line 119, ../sass/_bxslider.scss */
+/* line 123, ../sass/_bxslider.scss */
 .bx-wrapper .bx-controls-direction a {
   position: absolute;
   top: 50%;
@@ -3802,18 +3809,18 @@ body .bx-wrapper .bx-controls .bx-pager-item a.active, body .bx-wrapper .bx-cont
   z-index: 9999;
 }
 
-/* line 130, ../sass/_bxslider.scss */
+/* line 134, ../sass/_bxslider.scss */
 .bx-wrapper .bx-controls-direction a.disabled {
   display: none;
 }
 
 /* AUTO CONTROLS (START / STOP) */
-/* line 136, ../sass/_bxslider.scss */
+/* line 140, ../sass/_bxslider.scss */
 .bx-wrapper .bx-controls-auto {
   text-align: center;
 }
 
-/* line 140, ../sass/_bxslider.scss */
+/* line 144, ../sass/_bxslider.scss */
 .bx-wrapper .bx-controls-auto .bx-start {
   display: block;
   text-indent: -9999px;
@@ -3824,13 +3831,13 @@ body .bx-wrapper .bx-controls .bx-pager-item a.active, body .bx-wrapper .bx-cont
   margin: 0 3px;
 }
 
-/* line 151, ../sass/_bxslider.scss */
+/* line 155, ../sass/_bxslider.scss */
 .bx-wrapper .bx-controls-auto .bx-start:hover,
 .bx-wrapper .bx-controls-auto .bx-start.active {
   background-position: -86px 0;
 }
 
-/* line 155, ../sass/_bxslider.scss */
+/* line 159, ../sass/_bxslider.scss */
 .bx-wrapper .bx-controls-auto .bx-stop {
   display: block;
   text-indent: -9999px;
@@ -3841,27 +3848,27 @@ body .bx-wrapper .bx-controls .bx-pager-item a.active, body .bx-wrapper .bx-cont
   margin: 0 3px;
 }
 
-/* line 166, ../sass/_bxslider.scss */
+/* line 170, ../sass/_bxslider.scss */
 .bx-wrapper .bx-controls-auto .bx-stop:hover,
 .bx-wrapper .bx-controls-auto .bx-stop.active {
   background-position: -86px -33px;
 }
 
 /* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
-/* line 172, ../sass/_bxslider.scss */
+/* line 176, ../sass/_bxslider.scss */
 .bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
   text-align: left;
   width: 80%;
 }
 
-/* line 177, ../sass/_bxslider.scss */
+/* line 181, ../sass/_bxslider.scss */
 .bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto {
   right: 0;
   width: 35px;
 }
 
 /* IMAGE CAPTIONS */
-/* line 184, ../sass/_bxslider.scss */
+/* line 188, ../sass/_bxslider.scss */
 .bx-wrapper .bx-caption {
   position: absolute;
   bottom: 0;
@@ -3871,7 +3878,7 @@ body .bx-wrapper .bx-controls .bx-pager-item a.active, body .bx-wrapper .bx-cont
   width: 100%;
 }
 
-/* line 193, ../sass/_bxslider.scss */
+/* line 197, ../sass/_bxslider.scss */
 .bx-wrapper .bx-caption span {
   color: #fff;
   font-family: Arial;
