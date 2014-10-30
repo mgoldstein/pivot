@@ -566,48 +566,58 @@
 		}
 	};
 
-        Drupal.behaviors.geoLimiting = {
-          attach: function() {
-            $('.geo-limited-video').once('initialized', function(index, element) {
-              var player = element;
-              var showBlocked = function() {
-              	$('.video-loading', player).hide();
-              	$('.video-blocked', player).show();
-              };
-              var handleRegion = function(response) {
-                if (!response.country || !response.country.iso_code) { showBlocked(); return false; }
-                var code = response.country.iso_code.toLowerCase();
-                var regions = $(player).attr('data-allowed-regions').split(',');
-                if ($.inArray(code, regions) < 0) { showBlocked(); return false; }
-                var url = "http://video.takepart.com/players/"
-                  + $(player).attr('data-botr-id') + ".js";
-                $.getScript(url).fail(showBlocked);
-              };
-              geoip2.country(handleRegion, showBlocked);
-            });
-          }
+  Drupal.behaviors.geoLimiting = {
+    attach: function() {
+      $('.geo-limited-video').once('initialized', function(index, element) {
+        var player = element;
+        var showBlocked = function() {
+          $('.video-loading', player).hide();
+          $('.video-blocked', player).show();
         };
+        var handleRegion = function(response) {
+          if (!response.country || !response.country.iso_code) { showBlocked(); return false; }
+          var code = response.country.iso_code.toLowerCase();
+          var regions = $(player).attr('data-allowed-regions').split(',');
+          if ($.inArray(code, regions) < 0) { showBlocked(); return false; }
+          var url = "http://video.takepart.com/players/"
+            + $(player).attr('data-botr-id') + ".js";
+          $.getScript(url).fail(showBlocked);
+        };
+        geoip2.country(handleRegion, showBlocked);
+      });
+    }
+  };
 
   Drupal.behaviors.homepageSlider = {
     attach: function() {
 
-      $(document).ready(function(){
-        $('.bxslider').bxSlider({
-          nextSelector: '.next-slide',
-          prevSelector: '.prev-slide',
-          nextText: '',
-          prevText: '',
-          mode: 'fade',
-          infiniteLoop: false,
-          hideControlOnEnd: true,
-          onSlideAfter: function(){
-            jwplayer().stop();
-          }
+      $(document).ready(function() {
+        homepageSliderSizeInit();
+        $(document).ready(function(){
+          $('.bxslider').bxSlider({
+            nextSelector: '.next-slide',
+            prevSelector: '.prev-slide',
+            nextText: '',
+            prevText: '',
+            mode: window.sliderMode,
+            infiniteLoop: false,
+            hideControlOnEnd: true,
+            onSlideAfter: function(){
+              jwplayer().stop();
+            }
+          });
         });
       });
-
     }
   };
+
+  function homepageSliderSizeInit(){
+    if($(window).width() < 768){
+      window.sliderMode = 'horizontal';
+    }else{
+      window.sliderMode = 'fade';
+    }
+  }
 
   Drupal.behaviors.pivotNavigation = {
     attach: function(){
