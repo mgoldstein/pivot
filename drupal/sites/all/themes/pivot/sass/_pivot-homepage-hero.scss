@@ -24,9 +24,9 @@ body.tp_ad_takeover header{
   margin: 0 auto;
 }
 .hero-slider .slider-title{
-  font-family: "Apercu Regular", sans-serif;
+  font-family: "Apercu Bold", sans-serif;
   color: white;
-  font-size: 43px;
+  font-size: 45px;
   text-transform: uppercase;
 }
 .hero-slider .slider-content{
@@ -43,7 +43,7 @@ body.tp_ad_takeover header{
 .hero-slider .slider-text{
   color: white;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 22px;
   font-family: "Apercu Regular", sans-serif;
   margin-top: 20px;
   width: 50%;
@@ -123,9 +123,6 @@ body.tp_ad_takeover header{
   .hero-slider .upcoming #upcoming-times{
     display: none;
   }
-  .hero-slider .nav-arrow{
-    display: none;
-  }
   .hero-slider .slider-content{
     max-width: 100%;
     padding: 10px;
@@ -152,10 +149,13 @@ body.tp_ad_takeover header{
   }
 }
 @media (max-width: 480px) {
+  .hero-slider .nav-arrow{
+    display: none;
+  }
   .hero-slider .slider-cta a.important{
     text-align: center;
   }
   .hero-slider .slider-title {
-    font-size: 28px;
+    font-size: 30px;
   }
 }

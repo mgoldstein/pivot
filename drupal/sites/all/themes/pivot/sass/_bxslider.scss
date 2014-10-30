@@ -19,13 +19,20 @@
   margin: 0 auto 60px;
   padding: 0;
   *zoom: 1;
+  @media (max-width: 480px) {
+    margin: 0 auto 10px;
+    padding-bottom: 5px;
+  }
+  @media (max-width: 767px) {
+    margin: 0 auto 20px;
+  }
 }
 
 .bx-wrapper img {
   max-width: 100%;
   display: block;
   padding: 0 20px;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     padding: 0;
   }
 }
@@ -200,4 +207,33 @@
   display: block;
   font-size: .85em;
   padding: 10px;
+}
+
+/* Controls */
+body {
+  .bx-wrapper {
+    .bx-controls {
+      .bx-pager-item {
+        a {
+          background-color: #00b5cc;
+          width: 13px;
+          height: 13px;
+          border-radius: 13px;
+          margin: 0 12px;
+
+          &.active,
+          &:hover {
+            background-color: #FFF;
+          }
+
+          @media(max-width: 480px) {
+            margin: 0 auto;
+            width: 26px;
+            height: 26px;
+            border-radius: 26px;
+          }
+        }
+      }
+    }
+  }
 }
