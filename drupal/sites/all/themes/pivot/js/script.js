@@ -626,6 +626,58 @@
     }
   };
 
+  /**
+   * Megamenu Behaviors
+   */
+  Drupal.behaviors.megaMenuBehaviors = {
+    attach: function(context, settings) {
+
+      //Toggle search on mobile
+      $('html').click(function() {
+        $('.search-toggle').parent().removeClass('active');
+      });
+
+      $('.search-toggle').parent().click(function(event){
+        event.stopPropagation();
+        $(this).addClass('active');
+      });
+
+      $('.search-toggle').parent().hover(function(){
+        $(this).addClass('active');
+      }, function(){
+        $(this).removeClass('active');
+      });
+
+      function makeTall(){$(this).find('.mega-content').fadeIn(100);}
+      function makeShort(){$(this).find('.mega-content').fadeOut(100);}
+
+      //allows the custom slim nav to instantly display the second level
+      if ($('#megamenu').hasClass('tp-slim-nav')) {
+        $('.mega-item').hover(
+          function() {
+            $('.mega-content', this).show();
+          },
+          function() {
+            $('.mega-content', this).hide();
+          }
+        );
+      }
+      //fall back to the original for other pages
+      else {
+        $("#megamenu").hoverIntent({
+          over: makeTall,
+          out: makeShort,
+          selector: 'li.mega-item'
+        });
+      }
+    }
+  };
+
+
+
+
+
+
 })(jQuery, Drupal, this, this.document);
 
 

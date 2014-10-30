@@ -12,12 +12,6 @@
 		?>
 	</div>
 	<div class="right">
-		<div class="follow-us">
-			<?php if(!empty($social_menu)): ?>
-<!--				<div class="title">Follow</br>Pivot</div>-->
-<!--				--><?php //print render($social_menu); ?>
-			<?php endif; ?>
-		</div>
 		<?php
 		print render($right_info);
 		?>
