@@ -9,9 +9,6 @@ function pivot_navigation_block_info(){
 		'pivot_navigation' => array(
 			'info' => t('Pivot Navigation')
 		),
-		'pivot_navigation_collab' => array(
-		 'info' => t('Pivot Collab')
-		)
 	);
 }
 
@@ -25,43 +22,8 @@ function pivot_navigation_block_view($delta = ''){
 			$block['content'] = _pivot_navigation_slim_block_gen();
 			return $block;
 			break;
-		case 'pivot_navigation_collab':
-			$block['subject'] = NULL;
-			$block['content'] = _pivot_navigation_slim_collab_gen();
-      return $block;
-			break;
 	}
 }
-
-/* Callback for 'pivot_navigation' block */
-//function pivot_navigation_global_menu(){
-//	/*
-//	 * TODO:
-//	 * 3) get the collab image (what is this)
-//	 * 4) print user registration div (need the tpsLogin js for pivot)
-//	 * 5) send that through the theme processor
-//	 * 6) http://stream1.gifsoup.com/view8/20131226/4935715/chappelle-mic-drop-o.gif
-//	 */
-//
-//	/* Get the main menu */
-//	$menu_depth = 2;
-//	$menu_tree = menu_tree_all_data('menu-primary', null, $menu_depth);
-//	$menu = drupal_render(menu_tree_output($menu_tree));
-//
-//	/* Get the social menu */
-//	$social_menu_depth = 2;
-//	$social_menu_tree = menu_tree_all_data('menu-follow-us', null, $social_menu_depth);
-//	$social_menu = drupal_render(menu_tree_output($social_menu_tree));
-//
-//	$collab = 'collab';
-//	$items = array(
-//		'menu' => $menu,
-//		'social_menu' => $social_menu,
-//		'collab' => $collab
-//	);
-//	$block = theme('pivot_navigation', $items);
-//	return $block;
-//}
 
 /**
  * Implements hook_theme()
@@ -82,68 +44,19 @@ function pivot_navigation_theme(){
 	);
 }
 
-
-/**
- *  @function:
- *    This function is used to generate the custom collab block
- *
- *    @param:
- *      normal_state = markup for the normal state
- *      focus_state = markup for the focus/hover state
- */
-function _pivot_navigation_slim_collab_gen($normal_state = NULL, $focus_state = NULL, $classes = array()) {
-	$output = '';
-	//allows other modules to hook in and alter the output
-	drupal_alter('pivot_collab', $normal_state, $focus_state, $classes);
-	//only return something if title is set
-	if (!empty($normal_state)) {
-		//appends the custom js to handle the block on desktop and mobile
-		drupal_add_js(drupal_get_path('module', 'pivot_navigation') . '/js/navigation.js', 'file');
-
-		//normal state
-		$normal_state_wrapper = theme('html_tag', array(
-			'element' => array(
-				'#tag' => 'div',
-				'#value' => $normal_state,
-				'#attributes' => array(
-					'class' => 'normal-state',
-				))));
-
-		//focus state
-		$focus_state_wrapper = theme('html_tag', array(
-			'element' => array(
-				'#tag' => 'div',
-				'#value' => $focus_state,
-				'#attributes' => array(
-					'class' => 'focus-state',
-					'style' => 'display: none;'
-				))));
-
-		//main wrapper for both states
-		$output = theme('html_tag', array(
-			'element' => array(
-				'#tag' => 'div',
-				'#value' => $normal_state_wrapper . $focus_state_wrapper,
-				'#attributes' => array(
-					'class' => 'pivot-collab-block ' . implode(' ', $classes),
-				))));
-	}
-	return $output;
-}
-
 /**
  *  Implements hook_tp_process_slim_nav_alter().
  */
 function pivot_navigation_pivot_preprocess_slim_nav_alter(&$data) {
-	//custom block for the collab
-	$block = block_load('pivot_navigation', 'pivot_navigation_collab');
-	$block_content = drupal_render(_block_get_renderable_array(_block_render_blocks(array($block))));
+  //adds tap login
+	$get_pivot = l('GET <span class="pivot">Pivot</span>', 'http://find.pivot.tv', array('html' => TRUE, 'attributes' => array('class' => array('important'))));
+  $search =  '<div class="search">
+  <div class="search-toggle"></div> ' . drupal_render(module_invoke('search', 'block_view', 'form')) . '
+</div>';
 
-	//adds tap login
-	$tap_login = '<div class="tpsLogin"></div>';
 
 	//add it to the right_info
-	$data['right_info'] = $block_content . $tap_login;
+	$data['right_info'] = $search. $get_pivot;
 }
 
 /**
@@ -321,12 +234,20 @@ function _pivot_navigation_slim_block_gen() {
 
 	return $output;
 }
-
 /**
- *  Implements hook_tp_collab_alter().
+ *  Implements hook_preprocess_page().
  */
-function pivot_navigation_pivot_collab_alter(&$normal_state, &$focus_state, &$classes) {
-	$normal_state = '<span class="small">in collaboration with</span><br/><img src="/sites/all/themes/pivot/images/takepart_logo_white.png" style="vertical-align: middle;"/><span class="small">&nbsp;&nbsp;[?]</span>';
-	$focus_state = '<a class="focus-state-link" href="http://www.takepart.com/">TakePart is the social<br/>action platform for<br/>Pivot TV. <span style="color: #018b73;">About Takepart</span></a>';
-	$classes = array('takepart');
+function pivot_navigation_preprocess_page(&$variables) {
+  $social_menu = 'menu-follow-us';
+  $social_markup = theme('html_tag', array(
+    'element' => array(
+      '#tag' => 'div',
+      '#value' => '<div class="title">Follow<br/>Pivot</div>' . render(menu_tree($social_menu)),
+      '#attributes' => array(
+        'class' => 'follow-us ',
+      ))));
+
+  $variables['page']['left_drawer']['tp4_support_tp4_mobile_menu_header']['#markup'] = $social_markup;
+  $variables['page']['left_drawer']['tp4_support_tp4_mobile_menu_header']['#prefix'] = '<div class="tp_slim_nav_wrapper">';
+  $variables['page']['left_drawer']['tp4_support_tp4_mobile_menu_header']['#suffix'] = '</div>';
 }
