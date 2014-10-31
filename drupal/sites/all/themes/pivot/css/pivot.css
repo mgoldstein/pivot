@@ -4193,6 +4193,12 @@ body.tp_ad_takeover header {
 }
 /* line 169, ../sass/_pivot-homepage-hero.scss */
 .media.video {
+  max-width: 755px;
+  width: 100%;
+  margin: 0 auto;
+}
+/* line 173, ../sass/_pivot-homepage-hero.scss */
+.media.video .field-name-field-video-media {
   padding-bottom: 56.49867%;
   height: 0;
 }

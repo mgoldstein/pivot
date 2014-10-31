@@ -167,6 +167,11 @@ body.tp_ad_takeover header{
 }
 
 .media.video{
-  padding-bottom: 56.49867%;
-  height: 0;
+  max-width: 755px;
+  width: 100%;
+  margin: 0 auto;
+  .field-name-field-video-media{
+    padding-bottom: 56.49867%;
+    height: 0;
+  }
 }
