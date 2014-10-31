@@ -647,7 +647,7 @@
 					$('#search-block-form').removeClass('active');
 					var search_input = $('.search-toggle #edit-search-block-form--2').val();
 					
-					if (search_input == 'Search') {
+					if (search_input == 'Search' || search_input == '') {
 						return false;
 					}
 					return true;
@@ -669,6 +669,12 @@
 				}
 			});
 
+			//makes the search go away on focus			
+			$('.search-toggle #search-block-form #edit-search-block-form--2').focus(function() {
+				$(this).val('');
+			});
+
+			
       //Toggle search on mobile
       $('html').click(function() {
         $('.search-toggle').parent().removeClass('active');

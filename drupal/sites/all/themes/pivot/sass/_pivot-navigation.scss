@@ -112,7 +112,7 @@ header {
       position: absolute;
       display: none;
       margin: 0;
-      bottom: -41px;
+      bottom: -47px;
       right: 0;
       left: 0;
       padding: 10px;
@@ -439,6 +439,8 @@ header {
   }
   .right {
     float: right;
+    margin-top: 6px;
+    
     @include breakpoint($breakpoint-tablet) {
       width: 40%;
     }
