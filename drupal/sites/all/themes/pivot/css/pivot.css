@@ -4193,7 +4193,8 @@ body.tp_ad_takeover header {
 }
 /* line 169, ../sass/_pivot-homepage-hero.scss */
 .media.video {
-  paddin-bottom: 56.49867%;
+  padding-bottom: 56.49867%;
+  height: 0;
 }
 
 /* ============================================================
