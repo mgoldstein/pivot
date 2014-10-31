@@ -13,10 +13,6 @@
 /**
  * Header (fat and slim)
  */
-
-/*
- *Social
-*/
 header {
   color: $dark-gray;
   .block{
@@ -41,7 +37,7 @@ header {
     float: left;
     margin-right: 10px;
     margin-top: 4px;
-    @include breakpoint($breakpoint-desktop) {
+    @include breakpoint($breakpoint-tablet) {
       display: none;
     }
   }
@@ -50,14 +46,7 @@ header {
       display: none;
     }
   }
-  .logo{
-    float: left;
-    width: 121px;
-    margin-bottom: 4px;
-    @include breakpoint($breakpoint-tablet) {
-      width: auto;
-    }
-  }
+
   .follow-us{
     display: none;
     @include breakpoint($breakpoint-tablet) {
@@ -163,7 +152,6 @@ header {
   position: relative;
   overflow: visible;
   z-index: 101;
-
   background-color: #fff;
   color: $dark-gray;
   border-bottom: 2px solid #000;
@@ -186,10 +174,6 @@ header {
     @include breakpoint($breakpoint-desktop) {
       width: auto;
     }
-  }
-
-  .logo {
-    width: 121px; // <img> is already locked down to max-width 100%
   }
   .follow-us {
     @include breakpoint($breakpoint-tablet) {
@@ -416,6 +400,9 @@ header {
   max-width: 1000px;
   color: $dark-gray;
   border-bottom: 2px solid #000;
+  @include breakpoint($breakpoint-tablet) {
+    padding: 0 10px;
+  }
 
   .left {
     @include breakpoint($breakpoint-desktop) {
@@ -428,8 +415,6 @@ header {
       float: left;
       background: url(../images/logo.jpg) no-repeat center center;
       display: block;
-      height: 30px;
-      width: 121px;
       background-size: contain;
     }
 
@@ -463,7 +448,7 @@ header {
 
   #megamenu{
     display: none;
-    @include breakpoint($breakpoint-desktop) {
+    @include breakpoint($breakpoint-tablet) {
       display: block;
       width: auto;
       padding: 0 0 0 20px;
@@ -533,11 +518,17 @@ header {
     .left {
       .logo {
         max-width: 75px;
-        margin-top: 5px;
-
-        @include breakpoint($breakpoint-tablet) {
+        margin-top: 0px;
+        width: 75px;
+        height: 30px;
+        @include breakpoint($breakpoint-tablet){
+          margin-top: 6px;
+        }
+        @include breakpoint($breakpoint-desktop) {
           max-width: none;
-          margin-top: 5px;
+          margin-top: 0px;
+          width: 125px;
+          height: 42px;
         }
       }
     }
@@ -842,6 +833,5 @@ body.tploggedin {
 
 .tp-slim-nav-wrapper a.important{
   background-color: #0084aa;
-  margin-right: 5px;
   line-height: 14px;
 }
