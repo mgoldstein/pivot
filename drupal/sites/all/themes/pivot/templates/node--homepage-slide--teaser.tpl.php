@@ -12,7 +12,7 @@
 		<?php print render($title_suffix); ?>
 	</header>
 <?php endif; ?>
-<div class="media">
+<div class="media <?php print $variables['media_type']; ?>">
 	<?php print $variables['media']; //Coming soon?>
 </div>
 <div class="slider-content">

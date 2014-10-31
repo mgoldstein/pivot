@@ -3162,27 +3162,3 @@ body.node-type-video{
 		}
 	}
 }
-
-body {
-	.bx-wrapper {		
-		.bx-controls {
-			.bx-pager-item {
-				a {
-					background-color: #00b5cc;
-					width: 15px;
-					height: 15px;
-					border-radius: 15px;
-
-					&.active,
-					&:hover {
-						background-color: #FFF;
-					}
-					
-					@media(max-width: 480px) {
-						margin: 0 auto;
-					}
-				}
-			}
-		}
-	}
-}

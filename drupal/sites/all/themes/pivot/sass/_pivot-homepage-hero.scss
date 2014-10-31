@@ -1,3 +1,7 @@
+.slider ul{
+  margin: 0;
+  padding: 0;
+}
 body.tp_ad_takeover header{
   max-width: 980px;
   margin: 0 auto;
@@ -24,9 +28,9 @@ body.tp_ad_takeover header{
   margin: 0 auto;
 }
 .hero-slider .slider-title{
-  font-family: "Apercu Regular", sans-serif;
+  font-family: "Apercu Bold", sans-serif;
   color: white;
-  font-size: 43px;
+  font-size: 45px;
   text-transform: uppercase;
 }
 .hero-slider .slider-content{
@@ -43,7 +47,7 @@ body.tp_ad_takeover header{
 .hero-slider .slider-text{
   color: white;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 22px;
   font-family: "Apercu Regular", sans-serif;
   margin-top: 20px;
   width: 50%;
@@ -123,9 +127,8 @@ body.tp_ad_takeover header{
   .hero-slider .upcoming #upcoming-times{
     display: none;
   }
-  .hero-slider .nav-arrow{
-    display: none;
-  }
+}
+@media (max-width: 767px) {
   .hero-slider .slider-content{
     max-width: 100%;
     padding: 10px;
@@ -152,10 +155,23 @@ body.tp_ad_takeover header{
   }
 }
 @media (max-width: 480px) {
+  .hero-slider .nav-arrow{
+    display: none;
+  }
   .hero-slider .slider-cta a.important{
     text-align: center;
   }
   .hero-slider .slider-title {
-    font-size: 28px;
+    font-size: 30px;
+  }
+}
+
+.media.video{
+  max-width: 755px;
+  width: 100%;
+  margin: 0 auto;
+  .field-name-field-video-media{
+    padding-bottom: 56.49867%;
+    height: 0;
   }
 }
