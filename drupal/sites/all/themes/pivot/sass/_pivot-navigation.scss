@@ -840,10 +840,6 @@ body.tploggedin {
 
 .tp-slim-nav-wrapper a.important{
   background-color: #0084aa;
-  padding: 6px 49px 6px 29px;
   margin-right: 5px;
   line-height: 14px;
-  &:after{
-    right: 29px;
-  }
 }

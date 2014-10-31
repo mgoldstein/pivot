@@ -5308,13 +5308,8 @@ body.tploggedin .pivot-nav-theme .tpsLogin .user_image:hover {
 /* line 841, ../sass/_pivot-navigation.scss */
 .tp-slim-nav-wrapper a.important {
   background-color: #0084aa;
-  padding: 6px 49px 6px 29px;
   margin-right: 5px;
   line-height: 14px;
-}
-/* line 846, ../sass/_pivot-navigation.scss */
-.tp-slim-nav-wrapper a.important:after {
-  right: 29px;
 }
 
 /* line 1, ../sass/_pivot-snap-drawers.scss */
