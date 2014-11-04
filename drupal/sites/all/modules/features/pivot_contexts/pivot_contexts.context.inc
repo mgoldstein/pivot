@@ -317,17 +317,23 @@ function pivot_contexts_context_default_contexts() {
           'region' => 'right_sidebar',
           'weight' => '-9',
         ),
+        'pivot_dynamic_blocks-pivot_promo_blocks_block_1' => array(
+          'module' => 'pivot_dynamic_blocks',
+          'delta' => 'pivot_promo_blocks_block_1',
+          'region' => 'right_sidebar',
+          'weight' => '-8',
+        ),
         'newsletter_campaign-1' => array(
           'module' => 'newsletter_campaign',
           'delta' => '1',
           'region' => 'right_sidebar',
-          'weight' => '-8',
+          'weight' => '-7',
         ),
         'pivot_global-pivot_twitter_widget' => array(
           'module' => 'pivot_global',
           'delta' => 'pivot_twitter_widget',
           'region' => 'right_sidebar',
-          'weight' => '-7',
+          'weight' => '-6',
         ),
         'dfp-pivot_ros_background_1x1' => array(
           'module' => 'dfp',
