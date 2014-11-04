@@ -24,12 +24,11 @@
           <?php foreach ($show_times as $show_time): ?>
           <li class="item">
             <div class="item-inner">
-              <span class="time"><?php echo $show_time->start->format('g:ia/\E\T'); ?></span>
-              <wbr>
+              <div class="time"><?php echo $show_time->start->format('g:ia/\E\T'); ?>
               <?php if (isset($show_time->show_path)): ?>
-              <span class="show"><a href="<?php echo $show_time->show_path; ?>"><?php echo $show_time->show_title ?></a></span>
+              <a href="<?php echo $show_time->show_path; ?>"><?php echo $show_time->show_title ?></a>
               <?php else: ?>
-              <span class="show"><?php echo $show_time->show_title; ?></span>
+              <?php echo $show_time->show_title; ?>
               <?php endif ?>
             </div>
           </li>

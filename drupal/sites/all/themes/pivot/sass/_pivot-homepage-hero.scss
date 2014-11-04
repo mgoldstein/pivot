@@ -129,9 +129,10 @@ body.tp_ad_takeover header{
   max-width: 980px;
   margin: 0 auto;
 }
-@media (max-width: 768px) {
-  .hero-slider .upcoming #upcoming-times{
-    display: none;
+.hero-slider .upcoming #upcoming-times{
+  display: none;
+  @include breakpoint($breakpoint-tablet){
+    display: table-cell;
   }
 }
 @media (max-width: 767px) {

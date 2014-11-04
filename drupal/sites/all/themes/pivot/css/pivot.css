@@ -4144,14 +4144,19 @@ body.tp_ad_takeover header {
   margin: 0 auto;
 }
 
-@media (max-width: 768px) {
-  /* line 133, ../sass/_pivot-homepage-hero.scss */
+/* line 132, ../sass/_pivot-homepage-hero.scss */
+.hero-slider .upcoming #upcoming-times {
+  display: none;
+}
+@media all and (min-width: 768px) {
+  /* line 132, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .upcoming #upcoming-times {
-    display: none;
+    display: table-cell;
   }
 }
+
 @media (max-width: 767px) {
-  /* line 138, ../sass/_pivot-homepage-hero.scss */
+  /* line 139, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-content {
     max-width: 100%;
     padding: 10px;
@@ -4159,7 +4164,7 @@ body.tp_ad_takeover header {
     padding-top: 15px;
   }
 
-  /* line 144, ../sass/_pivot-homepage-hero.scss */
+  /* line 145, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-text {
     max-width: 100%;
     width: 100%;
@@ -4167,42 +4172,42 @@ body.tp_ad_takeover header {
     margin-top: 5px;
   }
 
-  /* line 150, ../sass/_pivot-homepage-hero.scss */
+  /* line 151, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-cta {
     max-width: 100%;
     width: 100%;
   }
 
-  /* line 154, ../sass/_pivot-homepage-hero.scss */
+  /* line 155, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-cta a.important {
     float: none;
     display: block;
     margin: 0;
   }
 
-  /* line 159, ../sass/_pivot-homepage-hero.scss */
+  /* line 160, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .primetime a.important {
     width: 100%;
   }
 }
 @media (max-width: 480px) {
-  /* line 164, ../sass/_pivot-homepage-hero.scss */
+  /* line 165, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-cta a.important {
     text-align: center;
   }
 
-  /* line 167, ../sass/_pivot-homepage-hero.scss */
+  /* line 168, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-title {
     font-size: 30px;
   }
 }
-/* line 172, ../sass/_pivot-homepage-hero.scss */
+/* line 173, ../sass/_pivot-homepage-hero.scss */
 .media.video {
   max-width: 755px;
   width: 100%;
   margin: 0 auto;
 }
-/* line 176, ../sass/_pivot-homepage-hero.scss */
+/* line 177, ../sass/_pivot-homepage-hero.scss */
 .media.video .field-name-field-video-media {
   padding-bottom: 56.49867%;
   height: 0;
