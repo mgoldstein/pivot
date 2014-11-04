@@ -63,6 +63,12 @@ body.tp_ad_takeover header{
   float: right;
   background: #0084A9;
 }
+.hero-slider .nav-arrow{
+  display: none;
+  @include breakpoint($breakpoint-tablet){
+    display: block;
+  }
+}
 .hero-slider .nav-arrow a{
   height: 100%;
   width: 100%;
@@ -155,9 +161,6 @@ body.tp_ad_takeover header{
   }
 }
 @media (max-width: 480px) {
-  .hero-slider .nav-arrow{
-    display: none;
-  }
   .hero-slider .slider-cta a.important{
     text-align: center;
   }

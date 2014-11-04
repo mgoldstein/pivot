@@ -199,7 +199,6 @@ function _pivot_navigation_menu_handler($menu = NULL) {
 /**
  *  @function:
  *    This function is used to generate the slim nav.
- *    This function will only run when the node field brand category is set.
  */
 function _pivot_navigation_slim_block_gen() {
   //default variables
@@ -241,21 +240,4 @@ function _pivot_navigation_slim_block_gen() {
 
 
   return $output;
-}
-/**
- *  Implements hook_preprocess_page().
- */
-function pivot_navigation_preprocess_page(&$variables) {
-  $social_menu = 'menu-follow-us';
-  $social_markup = theme('html_tag', array(
-    'element' => array(
-      '#tag' => 'div',
-      '#value' => '<div class="title">Follow<br/>Pivot</div>' . render(menu_tree($social_menu)),
-      '#attributes' => array(
-        'class' => 'follow-us ',
-      ))));
-
-  $variables['page']['left_drawer']['tp4_support_tp4_mobile_menu_header']['#markup'] = $social_markup;
-  $variables['page']['left_drawer']['tp4_support_tp4_mobile_menu_header']['#prefix'] = '<div class="tp_slim_nav_wrapper">';
-  $variables['page']['left_drawer']['tp4_support_tp4_mobile_menu_header']['#suffix'] = '</div>';
 }
