@@ -4334,8 +4334,8 @@ header .follow-us {
   }
 }
 /* line 84, ../sass/_pivot-navigation.scss */
-.search-toggle #search-block-form #edit-submit {
-  background: url('../images/search_black.jpg?1415056826') no-repeat center center;
+.search-toggle #search-block-form .form-submit {
+  background: url('../images/search_black.jpg?1415141168') no-repeat center center;
   background-color: transparent;
   border: 0;
   text-indent: 9999px;
@@ -4346,7 +4346,7 @@ header .follow-us {
   cursor: pointer;
 }
 /* line 94, ../sass/_pivot-navigation.scss */
-.search-toggle #search-block-form #edit-submit:focus {
+.search-toggle #search-block-form .form-submit:focus {
   outline: none;
 }
 /* line 100, ../sass/_pivot-navigation.scss */
