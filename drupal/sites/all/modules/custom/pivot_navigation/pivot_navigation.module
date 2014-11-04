@@ -110,9 +110,7 @@ function _pivot_navigation_menu_parser($mobile_menu) {
  *      $menu = the menu to pull in and process
  */
 function _pivot_navigation_menu_handler($menu = NULL) {
-  $output = '';
   $items = array();
-
   //return empty if menu is not set
   if (empty($menu)) {
     return '';
@@ -124,7 +122,7 @@ function _pivot_navigation_menu_handler($menu = NULL) {
   //does each tree
   foreach ($mega_tree as $key => $link) {
     //default variables
-    $attributes = $link_data = $see_more = $categories = $left_menu = '';
+    $see_more = $categories = $left_menu = '';
 
     //gets the path
     $path = drupal_get_path_alias($mega_tree[$key]['link']['link_path']);
@@ -132,14 +130,11 @@ function _pivot_navigation_menu_handler($menu = NULL) {
     $attributes['class'] = array($link['link']['options']['attributes']['class'][0]);
     $title = '<div class="title first-level">'. l($mega_tree[$key]['link']['link_title'], $path, array('attributes' => $attributes)). '</div>';
 
-    //limits down the menu to 10 items. @dev: this is disabled for now
-    //$bottom_menu = array_slice($mega_tree[$key]['below'], 0, 10);
+
     $bottom_menu = $mega_tree[$key]['below'];
 
     //left menu curation
-    $menu = render(menu_tree_output($bottom_menu));
-    $menu_text = ($link['link']['options']['attributes']['title'] ? $link['link']['options']['attributes']['title'] : '');
-    $left_menu = theme('tp_megamenu_inner_left', array('left_menu' => $menu, 'left_menu_text' => $menu_text));
+    $left_menu = render(menu_tree_output($bottom_menu));
 
     //only add if there is a second level
     if (!empty($link['below'])) {
@@ -208,7 +203,6 @@ function _pivot_navigation_menu_handler($menu = NULL) {
  */
 function _pivot_navigation_slim_block_gen() {
   //default variables
-  drupal_add_js('https://api.takepart.com/assets/login_widget.js', 'external');
   /* Make this static */
   $logo = '<div class="logo"></div>';
   global $base_url;

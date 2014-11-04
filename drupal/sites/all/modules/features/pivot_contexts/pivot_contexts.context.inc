@@ -247,11 +247,11 @@ function pivot_contexts_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
-        'pivot_global-pivot_global_header_nav' => array(
-          'module' => 'pivot_global',
-          'delta' => 'pivot_global_header_nav',
+        'pivot_navigation-pivot_navigation' => array(
+          'module' => 'pivot_navigation',
+          'delta' => 'pivot_navigation',
           'region' => 'header',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
         'dfp-pivot_ros_background_1x1' => array(
           'module' => 'dfp',
