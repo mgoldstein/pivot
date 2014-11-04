@@ -4912,11 +4912,11 @@ header .follow-us {
 /* line 425, ../sass/_pivot-navigation.scss */
 .tp-slim-nav .right {
   float: right;
-  margin-top: 6px;
 }
 @media all and (min-width: 768px) {
   /* line 425, ../sass/_pivot-navigation.scss */
   .tp-slim-nav .right {
+    margin-top: 6px;
     width: 40%;
   }
 }
@@ -4926,24 +4926,24 @@ header .follow-us {
     width: auto;
   }
 }
-/* line 436, ../sass/_pivot-navigation.scss */
+/* line 435, ../sass/_pivot-navigation.scss */
 .tp-slim-nav .right .title {
   display: inline-block;
   text-align: left;
   margin-right: 5px;
   letter-spacing: 1px;
 }
-/* line 443, ../sass/_pivot-navigation.scss */
+/* line 442, ../sass/_pivot-navigation.scss */
 .tp-slim-nav .right .menu {
   display: inline-block;
   float: none;
 }
-/* line 449, ../sass/_pivot-navigation.scss */
+/* line 448, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu {
   display: none;
 }
 @media all and (min-width: 768px) {
-  /* line 449, ../sass/_pivot-navigation.scss */
+  /* line 448, ../sass/_pivot-navigation.scss */
   .tp-slim-nav #megamenu {
     display: block;
     width: auto;
@@ -4951,7 +4951,7 @@ header .follow-us {
     line-height: 26px;
   }
 }
-/* line 457, ../sass/_pivot-navigation.scss */
+/* line 456, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu li {
   float: left;
   font-size: 17px;
@@ -4963,35 +4963,35 @@ header .follow-us {
   list-style-image: none;
   list-style-type: none;
 }
-/* line 468, ../sass/_pivot-navigation.scss */
+/* line 467, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu li:last-child {
   padding-right: 0;
 }
-/* line 470, ../sass/_pivot-navigation.scss */
+/* line 469, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu li:last-child:after {
   display: none;
 }
-/* line 475, ../sass/_pivot-navigation.scss */
+/* line 474, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu li a {
   position: relative;
   display: block;
 }
-/* line 478, ../sass/_pivot-navigation.scss */
+/* line 477, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu li a:hover {
   text-decoration: none;
 }
-/* line 483, ../sass/_pivot-navigation.scss */
+/* line 482, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu li .mega-content {
   display: none;
   position: absolute;
   top: 53px;
   z-index: 10;
 }
-/* line 489, ../sass/_pivot-navigation.scss */
+/* line 488, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu li .mega-content .mega-content-wrapper {
   padding: 10px;
 }
-/* line 493, ../sass/_pivot-navigation.scss */
+/* line 492, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu li .mega-content .mega-content-wrapper .menu li {
   float: none;
   width: 100%;
@@ -5000,20 +5000,26 @@ header .follow-us {
 /**
  *	Overrides for the new custom slim nav
  */
-/* line 507, ../sass/_pivot-navigation.scss */
+/* line 506, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation {
   margin-bottom: 0px;
-  padding-top: 10px;
+  padding: 10px;
 }
-/* line 511, ../sass/_pivot-navigation.scss */
+@media all and (min-width: 768px) {
+  /* line 506, ../sass/_pivot-navigation.scss */
+  #block-pivot-navigation-pivot-navigation {
+    padding: 10px 0 0 0;
+  }
+}
+/* line 512, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .tp-slim-nav {
   border: none;
 }
-/* line 514, ../sass/_pivot-navigation.scss */
+/* line 515, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .tp-slim-nav #megamenu {
   padding-left: 10px;
 }
-/* line 519, ../sass/_pivot-navigation.scss */
+/* line 520, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .tp-slim-nav .left .logo {
   max-width: 75px;
   margin-top: 0px;
@@ -5021,13 +5027,13 @@ header .follow-us {
   height: 30px;
 }
 @media all and (min-width: 768px) {
-  /* line 519, ../sass/_pivot-navigation.scss */
+  /* line 520, ../sass/_pivot-navigation.scss */
   #block-pivot-navigation-pivot-navigation .tp-slim-nav .left .logo {
     margin-top: 6px;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 519, ../sass/_pivot-navigation.scss */
+  /* line 520, ../sass/_pivot-navigation.scss */
   #block-pivot-navigation-pivot-navigation .tp-slim-nav .left .logo {
     max-width: none;
     margin-top: 0px;
@@ -5035,47 +5041,47 @@ header .follow-us {
     height: 42px;
   }
 }
-/* line 536, ../sass/_pivot-navigation.scss */
+/* line 537, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .tp-slim-nav .right {
   width: auto;
 }
-/* line 539, ../sass/_pivot-navigation.scss */
+/* line 540, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .tp-slim-nav .right .follow-us {
   display: none;
 }
 @media all and (min-width: 980px) {
-  /* line 539, ../sass/_pivot-navigation.scss */
+  /* line 540, ../sass/_pivot-navigation.scss */
   #block-pivot-navigation-pivot-navigation .tp-slim-nav .right .follow-us {
     display: block;
   }
 }
-/* line 548, ../sass/_pivot-navigation.scss */
+/* line 549, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .megamenu-wrapper {
   margin-top: -3px;
 }
-/* line 551, ../sass/_pivot-navigation.scss */
+/* line 552, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .megamenu-wrapper .mega-item {
   min-height: 53px;
   font-family: "Apercu Regular";
 }
-/* line 556, ../sass/_pivot-navigation.scss */
+/* line 557, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .megamenu-wrapper .mega-item .title a {
   padding: 10px 8px 0;
   text-transform: none;
   font-size: 18px;
   letter-spacing: 1px;
 }
-/* line 566, ../sass/_pivot-navigation.scss */
+/* line 567, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .megamenu-wrapper .second-level {
   border-top: none;
   min-width: 250px;
   box-shadow: 2px 2px 2px #666;
 }
-/* line 573, ../sass/_pivot-navigation.scss */
+/* line 574, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .megamenu-wrapper .second-level .mega-content-wrapper {
   padding: 20px !important;
 }
-/* line 577, ../sass/_pivot-navigation.scss */
+/* line 578, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .megamenu-wrapper .second-level .mega-content-wrapper li a {
   text-transform: none;
   font-weight: bold;
@@ -5083,17 +5089,16 @@ header .follow-us {
   font-size: 14px;
   line-height: 30px;
 }
-/* line 584, ../sass/_pivot-navigation.scss */
+/* line 585, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .megamenu-wrapper .second-level .mega-content-wrapper li a:hover {
   text-decoration: underline;
 }
-/* line 591, ../sass/_pivot-navigation.scss */
+/* line 592, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .megamenu-wrapper .second-level .mega-content-wrapper a:hover {
   text-decoration: underline;
 }
-/* line 600, ../sass/_pivot-navigation.scss */
+/* line 601, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .menu-toggle {
-  margin-left: 10px;
   margin-top: 10px;
   height: 15px;
   width: 21px;

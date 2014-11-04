@@ -424,9 +424,8 @@ header {
   }
   .right {
     float: right;
-    margin-top: 6px;
-    
     @include breakpoint($breakpoint-tablet) {
+      margin-top: 6px;
       width: 40%;
     }
     @include breakpoint($breakpoint-desktop) {
@@ -506,8 +505,10 @@ header {
  */
 #block-pivot-navigation-pivot-navigation {
   margin-bottom: 0px;
-  padding-top: 10px;
-
+  padding: 10px;
+  @include breakpoint($breakpoint-tablet){
+    padding: 10px 0 0 0;
+  }
   .tp-slim-nav {
     border: none;
 
@@ -598,7 +599,6 @@ header {
   }
 
   .menu-toggle {
-    margin-left: 10px;
     margin-top: 10px;
     height: 15px;
     width: 21px;
