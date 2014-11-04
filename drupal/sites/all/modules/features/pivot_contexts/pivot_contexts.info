@@ -17,6 +17,7 @@ dependencies[] = pivot_article
 dependencies[] = pivot_blogs
 dependencies[] = pivot_campaign
 dependencies[] = pivot_dml
+dependencies[] = pivot_dynamic_blocks
 dependencies[] = pivot_feed
 dependencies[] = pivot_global
 dependencies[] = pivot_hpslider
