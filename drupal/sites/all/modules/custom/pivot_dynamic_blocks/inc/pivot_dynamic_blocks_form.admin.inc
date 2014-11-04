@@ -78,6 +78,16 @@ function _pivot_dynamic_blocks_admin_form_submit(&$form, &$form_state) {
   //variable for flushing
   $flush = $form_state['values']['flush_block_cache'];
 
+  //ensures that the blocks are perm saved
+  $blocks = _pivot_dynamic_blocks_list();
+  foreach($blocks as $key => $values) {
+    //loads the file
+    $image_file = file_load($values['image']);
+    $image_file->status = FILE_STATUS_PERMANENT;
+    file_save($image_file);
+    file_usage_add($image_file, 'user', 'user', 1); 
+  }
+  
   //if true then flush the drupal cache to rebuild the new blocks
   if ($flush) {
     drupal_flush_all_caches();

@@ -1676,6 +1676,10 @@ input[type=email] {
 	margin-bottom: 1em;
 	min-height: 405px;
 
+	@media (max-width: 480px) {
+		min-height: initial;
+	}
+	
 	a { color: black; }
 
 	img {
@@ -1697,18 +1701,19 @@ input[type=email] {
 	}
 
 	.field-name-field-promo-headline {
-		font-size: 1.2em; // 24px
+		font-size: 24px; // 24px
 		color: #0084a9;
-		font-style: italic;
-		font-weight: bold;
+		font-family: 'Apercu Bold Italic', sans-serif;
 		margin: 0;
-		line-height: 29px;
+		letter-spacing: -2px;
+		line-height: 26px;
+		font-style: italic;
 	}
 
 	.field-name-field-promo-abstract {
-		font-size: 13px;
+		font-size: 15px;
 		font-family: "Apercu Regular", monospace;
-		font-weight: bold;
+		line-height: 20px;
 		margin-top: 6px;
 	}
 }
@@ -1738,7 +1743,7 @@ input[type=email] {
 	.field-name-field-promo-abstract {
 		font-size: 15px;
 		font-family: "Apercu Regular", sans-serif;
-                line-height: 20px;
+    line-height: 20px;
 	}
 }
 
@@ -3157,6 +3162,19 @@ body.node-type-video{
 			@media (max-width: 480px) {
 				display: block;
 				clear: both;
+			}
+		}
+	}
+}
+
+/**
+ *	Only for homepage
+ */
+body {
+	&.front {
+		#content {
+			> .primary {
+				max-width: 640px;
 			}
 		}
 	}
