@@ -3140,13 +3140,14 @@ body.node-type-video{
 		
 		.views-row {
 			display: inline-block;
-			margin: 0 10px;
+			margin: 0 10px 2em 0;
 			font-size: 12px;
 			text-align: center;
 			
 			.views-field-title {
 				text-transform: uppercase;
-				font-size: 12px;
+				font-size: 13px;
+                                font-family: 'Apercu Regular', Calibri, sans-serif;
 				letter-spacing: 0.5px;
 				
 				p {
@@ -3159,7 +3160,8 @@ body.node-type-video{
 				margin-top: 5px;
 				
 				.field-content {
-					font-size: 23px;
+					font-size: 24px;
+                                        font-family: 'Apercu Regular', Calibri, sans-serif;
 					letter-spacing: -0.4px;
 				}
 			}

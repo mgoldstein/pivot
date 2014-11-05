@@ -3623,28 +3623,30 @@ body.node-type-video .site-wrapper:after {
 /* line 3141, ../sass/_pivot-global.scss */
 #block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 10px 2em 0;
   font-size: 12px;
   text-align: center;
 }
 /* line 3147, ../sass/_pivot-global.scss */
 #block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row .views-field-title {
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 13px;
+  font-family: 'Apercu Regular', Calibri, sans-serif;
   letter-spacing: 0.5px;
 }
-/* line 3152, ../sass/_pivot-global.scss */
+/* line 3153, ../sass/_pivot-global.scss */
 #block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row .views-field-title p {
   margin: 0;
 }
-/* line 3157, ../sass/_pivot-global.scss */
+/* line 3158, ../sass/_pivot-global.scss */
 #block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row .views-field-field-channels {
   text-align: center;
   margin-top: 5px;
 }
-/* line 3161, ../sass/_pivot-global.scss */
+/* line 3162, ../sass/_pivot-global.scss */
 #block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row .views-field-field-channels .field-content {
-  font-size: 23px;
+  font-size: 24px;
+  font-family: 'Apercu Regular', Calibri, sans-serif;
   letter-spacing: -0.4px;
 }
 @media (max-width: 767px) {
@@ -3664,7 +3666,7 @@ body.node-type-video .site-wrapper:after {
 /**
  *	Only for homepage
  */
-/* line 3185, ../sass/_pivot-global.scss */
+/* line 3187, ../sass/_pivot-global.scss */
 body.front #content > .primary {
   max-width: 640px;
 }
