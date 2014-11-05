@@ -79,13 +79,22 @@ function _pivot_dynamic_blocks_admin_form_submit(&$form, &$form_state) {
   $flush = $form_state['values']['flush_block_cache'];
 
   //ensures that the blocks are perm saved
-  $blocks = _pivot_dynamic_blocks_list();
-  foreach($blocks as $key => $values) {
+  $counter = 1;
+  
+  //loads the first one to test
+  $form_state_input = $form_state['input'];
+  $image = $form_state_input['pivot_dynamic_block_image_img_' . $counter];
+    
+  //does until the end
+  while (!empty($image['fid'])) {
     //loads the file
-    $image_file = file_load($values['image']);
+    $image_file = file_load($image['fid']);
     $image_file->status = FILE_STATUS_PERMANENT;
     file_save($image_file);
-    file_usage_add($image_file, 'user', 'user', 1); 
+    file_usage_add($image_file, 'user', 'user', 1);
+    
+    $counter++;
+    $image = $form_state_input['pivot_dynamic_block_image_img_' . $counter];
   }
   
   //if true then flush the drupal cache to rebuild the new blocks
