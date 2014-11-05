@@ -3436,7 +3436,7 @@ iframe.media-youtube-player {
 /* line 2990, ../sass/_pivot-global.scss */
 .pm-jwplayer.loading {
   width: 100%;
-  background: url('../images/video-loading.gif?1390007394');
+  background: url('../images/video-loading.gif?1390350395');
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3445,7 +3445,7 @@ iframe.media-youtube-player {
 /* line 2997, ../sass/_pivot-global.scss */
 .pm-jwplayer.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1390007394') no-repeat center center;
+  background: url('../images/video-blocked.gif?1390350395') no-repeat center center;
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -4264,10 +4264,11 @@ body.tp_ad_takeover header {
   width: 100%;
   margin: 0;
   background: black;
+  border-bottom: 1px solid #0084aa;
 }
 
 @media (max-width: 786px) {
-  /* line 9, ../sass/_pivot-navigation.scss */
+  /* line 10, ../sass/_pivot-navigation.scss */
   .hamburger {
     display: block;
   }
@@ -4275,31 +4276,31 @@ body.tp_ad_takeover header {
 /**
  * Header (fat and slim)
  */
-/* line 16, ../sass/_pivot-navigation.scss */
+/* line 17, ../sass/_pivot-navigation.scss */
 header {
   color: #5a5a5a;
 }
-/* line 18, ../sass/_pivot-navigation.scss */
+/* line 19, ../sass/_pivot-navigation.scss */
 header .block {
   margin-bottom: 0em;
 }
 @media all and (min-width: 768px) {
-  /* line 18, ../sass/_pivot-navigation.scss */
+  /* line 19, ../sass/_pivot-navigation.scss */
   header .block {
     margin-bottom: 1.5em;
   }
 }
-/* line 24, ../sass/_pivot-navigation.scss */
+/* line 25, ../sass/_pivot-navigation.scss */
 header .leaderboard {
   display: none;
 }
 @media all and (min-width: 768px) {
-  /* line 24, ../sass/_pivot-navigation.scss */
+  /* line 25, ../sass/_pivot-navigation.scss */
   header .leaderboard {
     display: block;
   }
 }
-/* line 30, ../sass/_pivot-navigation.scss */
+/* line 31, ../sass/_pivot-navigation.scss */
 header .menu-toggle {
   display: block;
   width: 20px;
@@ -4312,59 +4313,59 @@ header .menu-toggle {
   margin-top: 4px;
 }
 @media all and (min-width: 768px) {
-  /* line 30, ../sass/_pivot-navigation.scss */
+  /* line 31, ../sass/_pivot-navigation.scss */
   header .menu-toggle {
     display: none;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 44, ../sass/_pivot-navigation.scss */
+  /* line 45, ../sass/_pivot-navigation.scss */
   header .tp4-fat-header .menu-toggle {
     display: none;
   }
 }
-/* line 50, ../sass/_pivot-navigation.scss */
+/* line 51, ../sass/_pivot-navigation.scss */
 header .follow-us {
   display: none;
 }
 @media all and (min-width: 768px) {
-  /* line 50, ../sass/_pivot-navigation.scss */
+  /* line 51, ../sass/_pivot-navigation.scss */
   header .follow-us {
     display: block;
     text-align: right;
     float: right;
     font-size: .928571429em;
   }
-  /* line 57, ../sass/_pivot-navigation.scss */
+  /* line 58, ../sass/_pivot-navigation.scss */
   header .follow-us .text {
     display: inline-block;
     margin: 0 10px 0 0;
   }
-  /* line 60, ../sass/_pivot-navigation.scss */
+  /* line 61, ../sass/_pivot-navigation.scss */
   header .follow-us .text:before {
     content: '|';
     padding-right: 10px;
   }
-  /* line 65, ../sass/_pivot-navigation.scss */
+  /* line 66, ../sass/_pivot-navigation.scss */
   header .follow-us ul {
     margin-top: -5px;
     float: right;
   }
-  /* line 68, ../sass/_pivot-navigation.scss */
+  /* line 69, ../sass/_pivot-navigation.scss */
   header .follow-us ul li {
     float: left;
   }
 }
 
 @media all and (min-width: 768px) {
-  /* line 78, ../sass/_pivot-navigation.scss */
+  /* line 79, ../sass/_pivot-navigation.scss */
   .search-toggle #search-block-form {
     position: relative;
   }
 }
-/* line 84, ../sass/_pivot-navigation.scss */
+/* line 85, ../sass/_pivot-navigation.scss */
 .search-toggle #search-block-form .form-submit {
-  background: url('../images/search_black.jpg?1415153808') no-repeat center center;
+  background: url('../images/search_black.jpg?1414704647') no-repeat center center;
   background-color: transparent;
   border: 0;
   text-indent: 9999px;
@@ -4374,11 +4375,11 @@ header .follow-us {
   width: 30px;
   cursor: pointer;
 }
-/* line 94, ../sass/_pivot-navigation.scss */
+/* line 95, ../sass/_pivot-navigation.scss */
 .search-toggle #search-block-form .form-submit:focus {
   outline: none;
 }
-/* line 100, ../sass/_pivot-navigation.scss */
+/* line 101, ../sass/_pivot-navigation.scss */
 .search-toggle #search-block-form .form-item-search-block-form {
   position: absolute;
   display: none;
@@ -4393,13 +4394,13 @@ header .follow-us {
   box-shadow: 1px 2px 2px;
 }
 @media all and (min-width: 768px) {
-  /* line 100, ../sass/_pivot-navigation.scss */
+  /* line 101, ../sass/_pivot-navigation.scss */
   .search-toggle #search-block-form .form-item-search-block-form {
     left: auto;
     bottom: -50px;
   }
 }
-/* line 119, ../sass/_pivot-navigation.scss */
+/* line 120, ../sass/_pivot-navigation.scss */
 .search-toggle #search-block-form .form-item-search-block-form input {
   border: 1px solid #CCC;
   border-radius: 0;
@@ -4409,22 +4410,22 @@ header .follow-us {
   width: 100%;
 }
 @media all and (min-width: 768px) {
-  /* line 119, ../sass/_pivot-navigation.scss */
+  /* line 120, ../sass/_pivot-navigation.scss */
   .search-toggle #search-block-form .form-item-search-block-form input {
     width: 300px;
   }
 }
-/* line 135, ../sass/_pivot-navigation.scss */
+/* line 136, ../sass/_pivot-navigation.scss */
 .search-toggle #search-block-form.active #edit-submit {
-  background: url('../images/search-black.png?1415153808') no-repeat center center;
+  background: url('../images/search-black.png?1414703576') no-repeat center center;
   background-color: #FFF;
 }
-/* line 140, ../sass/_pivot-navigation.scss */
+/* line 141, ../sass/_pivot-navigation.scss */
 .search-toggle #search-block-form.active .form-item-search-block-form {
   display: block;
 }
 
-/* line 150, ../sass/_pivot-navigation.scss */
+/* line 151, ../sass/_pivot-navigation.scss */
 .slim-nav {
   height: auto;
   position: relative;
@@ -4434,57 +4435,57 @@ header .follow-us {
   color: #5a5a5a;
   border-bottom: 2px solid #000;
 }
-/* line 159, ../sass/_pivot-navigation.scss */
+/* line 160, ../sass/_pivot-navigation.scss */
 .slim-nav .slim-nav-inner {
   position: relative;
 }
-/* line 162, ../sass/_pivot-navigation.scss */
+/* line 163, ../sass/_pivot-navigation.scss */
 .slim-nav .left {
   float: left;
 }
 @media all and (min-width: 980px) {
-  /* line 162, ../sass/_pivot-navigation.scss */
+  /* line 163, ../sass/_pivot-navigation.scss */
   .slim-nav .left {
     padding-left: 10px;
     width: auto;
   }
 }
-/* line 169, ../sass/_pivot-navigation.scss */
+/* line 170, ../sass/_pivot-navigation.scss */
 .slim-nav .right {
   float: right;
 }
 @media all and (min-width: 768px) {
-  /* line 169, ../sass/_pivot-navigation.scss */
+  /* line 170, ../sass/_pivot-navigation.scss */
   .slim-nav .right {
     width: 40%;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 169, ../sass/_pivot-navigation.scss */
+  /* line 170, ../sass/_pivot-navigation.scss */
   .slim-nav .right {
     width: auto;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 178, ../sass/_pivot-navigation.scss */
+  /* line 179, ../sass/_pivot-navigation.scss */
   .slim-nav .follow-us {
     display: none;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 178, ../sass/_pivot-navigation.scss */
+  /* line 179, ../sass/_pivot-navigation.scss */
   .slim-nav .follow-us {
     display: block;
     padding-right: 39px;
     padding-top: 7px;
   }
 }
-/* line 187, ../sass/_pivot-navigation.scss */
+/* line 188, ../sass/_pivot-navigation.scss */
 .slim-nav .follow-us ul {
   float: none;
   display: inline-block;
 }
-/* line 192, ../sass/_pivot-navigation.scss */
+/* line 193, ../sass/_pivot-navigation.scss */
 .slim-nav .follow-headline {
   display: inline-block;
   text-transform: uppercase;
@@ -4492,7 +4493,7 @@ header .follow-us {
   margin: .285714286em .5em 0 0;
   vertical-align: top;
 }
-/* line 200, ../sass/_pivot-navigation.scss */
+/* line 201, ../sass/_pivot-navigation.scss */
 .slim-nav .search {
   float: none;
   margin-top: 0px;
@@ -4501,12 +4502,12 @@ header .follow-us {
   right: 0;
 }
 @media all and (min-width: 980px) {
-  /* line 200, ../sass/_pivot-navigation.scss */
+  /* line 201, ../sass/_pivot-navigation.scss */
   .slim-nav .search {
     right: 0;
   }
 }
-/* line 212, ../sass/_pivot-navigation.scss */
+/* line 213, ../sass/_pivot-navigation.scss */
 .slim-nav .search .search-toggle {
   display: block;
   z-index: 9;
@@ -4515,7 +4516,7 @@ header .follow-us {
   height: 37px;
   cursor: pointer;
 }
-/* line 219, ../sass/_pivot-navigation.scss */
+/* line 220, ../sass/_pivot-navigation.scss */
 .slim-nav .search .search-toggle:before {
   display: block;
   width: 34px;
@@ -4539,16 +4540,16 @@ header .follow-us {
   -ms-filter: "FlipH";
 }
 @media all and (min-width: 768px) {
-  /* line 212, ../sass/_pivot-navigation.scss */
+  /* line 213, ../sass/_pivot-navigation.scss */
   .slim-nav .search .search-toggle {
     height: 30px;
   }
-  /* line 239, ../sass/_pivot-navigation.scss */
+  /* line 240, ../sass/_pivot-navigation.scss */
   .slim-nav .search .search-toggle:before {
     height: 30px;
   }
 }
-/* line 244, ../sass/_pivot-navigation.scss */
+/* line 245, ../sass/_pivot-navigation.scss */
 .slim-nav .search .form-item-keys-2 {
   display: none;
   position: absolute;
@@ -4565,36 +4566,36 @@ header .follow-us {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 255, ../sass/_pivot-navigation.scss */
+/* line 256, ../sass/_pivot-navigation.scss */
 .slim-nav .search .form-item-keys-2 [type=text] {
   padding-top: .25em;
 }
-/* line 257, ../sass/_pivot-navigation.scss */
+/* line 258, ../sass/_pivot-navigation.scss */
 .slim-nav .search .form-item-keys-2 [type=text]::-webkit-input-placeholder {
   opacity: 1;
 }
-/* line 261, ../sass/_pivot-navigation.scss */
+/* line 262, ../sass/_pivot-navigation.scss */
 .slim-nav .search .form-item-keys-2 [type=text]:-moz-placeholder {
   /* Firefox 18- */
   opacity: 1;
 }
-/* line 264, ../sass/_pivot-navigation.scss */
+/* line 265, ../sass/_pivot-navigation.scss */
 .slim-nav .search .form-item-keys-2 [type=text]::-moz-placeholder {
   /* Firefox 19+ */
   opacity: 1;
 }
 @media all and (min-width: 768px) {
-  /* line 244, ../sass/_pivot-navigation.scss */
+  /* line 245, ../sass/_pivot-navigation.scss */
   .slim-nav .search .form-item-keys-2 {
     background: #FFF;
     width: 420px;
   }
-  /* line 271, ../sass/_pivot-navigation.scss */
+  /* line 272, ../sass/_pivot-navigation.scss */
   .slim-nav .search .form-item-keys-2 [type=text] {
     width: 400px;
   }
 }
-/* line 276, ../sass/_pivot-navigation.scss */
+/* line 277, ../sass/_pivot-navigation.scss */
 .slim-nav .search .form-submit {
   top: 0;
   bottom: auto;
@@ -4603,25 +4604,25 @@ header .follow-us {
   background: transparent none;
 }
 @media all and (min-width: 768px) {
-  /* line 276, ../sass/_pivot-navigation.scss */
+  /* line 277, ../sass/_pivot-navigation.scss */
   .slim-nav .search .form-submit {
     padding: 19px 15px;
   }
 }
-/* line 287, ../sass/_pivot-navigation.scss */
+/* line 288, ../sass/_pivot-navigation.scss */
 .slim-nav .search.active .form-item-keys-2 {
   display: block;
 }
-/* line 290, ../sass/_pivot-navigation.scss */
+/* line 291, ../sass/_pivot-navigation.scss */
 .slim-nav .search.active .form-submit {
   background-color: #000;
 }
-/* line 296, ../sass/_pivot-navigation.scss */
+/* line 297, ../sass/_pivot-navigation.scss */
 .slim-nav #main-menu {
   display: none;
 }
 @media all and (min-width: 980px) {
-  /* line 296, ../sass/_pivot-navigation.scss */
+  /* line 297, ../sass/_pivot-navigation.scss */
   .slim-nav #main-menu {
     display: block;
     width: auto;
@@ -4630,7 +4631,7 @@ header .follow-us {
     line-height: 26px;
   }
 }
-/* line 305, ../sass/_pivot-navigation.scss */
+/* line 306, ../sass/_pivot-navigation.scss */
 .slim-nav #main-menu li {
   float: left;
   font-size: 17px;
@@ -4644,7 +4645,7 @@ header .follow-us {
   list-style-type: none;
   padding-right: 1em;
 }
-/* line 317, ../sass/_pivot-navigation.scss */
+/* line 318, ../sass/_pivot-navigation.scss */
 .slim-nav #main-menu li:after {
   content: '';
   display: inline-block;
@@ -4655,47 +4656,47 @@ header .follow-us {
   right: .5em;
   top: 0;
 }
-/* line 327, ../sass/_pivot-navigation.scss */
+/* line 328, ../sass/_pivot-navigation.scss */
 .slim-nav #main-menu li:last-child {
   padding-right: 0;
 }
-/* line 329, ../sass/_pivot-navigation.scss */
+/* line 330, ../sass/_pivot-navigation.scss */
 .slim-nav #main-menu li:last-child:after {
   display: none;
 }
-/* line 333, ../sass/_pivot-navigation.scss */
+/* line 334, ../sass/_pivot-navigation.scss */
 .slim-nav #main-menu li a {
   color: #000;
   position: relative;
   width: 100%;
   display: block;
 }
-/* line 338, ../sass/_pivot-navigation.scss */
+/* line 339, ../sass/_pivot-navigation.scss */
 .slim-nav #main-menu li a:hover {
   text-decoration: none;
 }
 
-/* line 347, ../sass/_pivot-navigation.scss */
+/* line 348, ../sass/_pivot-navigation.scss */
 .user-menu {
   display: block;
   margin-right: 34px;
   float: right;
 }
 @media all and (min-width: 768px) {
-  /* line 347, ../sass/_pivot-navigation.scss */
+  /* line 348, ../sass/_pivot-navigation.scss */
   .user-menu {
     margin-right: 5px;
   }
 }
 
-/* line 359, ../sass/_pivot-navigation.scss */
+/* line 360, ../sass/_pivot-navigation.scss */
 .slim-nav .user-menu {
   margin-right: 24px;
   padding-top: 3px;
   padding-right: 2px;
   position: relative;
 }
-/* line 364, ../sass/_pivot-navigation.scss */
+/* line 365, ../sass/_pivot-navigation.scss */
 .slim-nav .user-menu:after {
   content: '';
   display: block;
@@ -4707,18 +4708,18 @@ header .follow-us {
   top: 11px;
 }
 @media all and (min-width: 980px) {
-  /* line 359, ../sass/_pivot-navigation.scss */
+  /* line 360, ../sass/_pivot-navigation.scss */
   .slim-nav .user-menu {
     margin-right: 10px;
   }
 }
 
-/* line 378, ../sass/_pivot-navigation.scss */
+/* line 379, ../sass/_pivot-navigation.scss */
 .tp_login a.user_image {
   padding: 13px 8px;
 }
 
-/* line 382, ../sass/_pivot-navigation.scss */
+/* line 383, ../sass/_pivot-navigation.scss */
 .tp-slim-nav {
   height: auto;
   position: relative;
@@ -4730,19 +4731,19 @@ header .follow-us {
   border-bottom: 2px solid #000;
 }
 @media all and (min-width: 768px) {
-  /* line 382, ../sass/_pivot-navigation.scss */
+  /* line 383, ../sass/_pivot-navigation.scss */
   .tp-slim-nav {
     padding: 0 10px;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 395, ../sass/_pivot-navigation.scss */
+  /* line 396, ../sass/_pivot-navigation.scss */
   .tp-slim-nav .left {
     padding-left: 10px;
     width: auto;
   }
 }
-/* line 401, ../sass/_pivot-navigation.scss */
+/* line 402, ../sass/_pivot-navigation.scss */
 .tp-slim-nav .left .logo {
   /*display: inline-block;*/
   float: left;
@@ -4750,45 +4751,45 @@ header .follow-us {
   display: block;
   background-size: contain;
 }
-/* line 409, ../sass/_pivot-navigation.scss */
+/* line 410, ../sass/_pivot-navigation.scss */
 .tp-slim-nav .left .megamenu-wrapper {
   float: left;
 }
-/* line 413, ../sass/_pivot-navigation.scss */
+/* line 414, ../sass/_pivot-navigation.scss */
 .tp-slim-nav .right {
   float: right;
 }
 @media all and (min-width: 768px) {
-  /* line 413, ../sass/_pivot-navigation.scss */
+  /* line 414, ../sass/_pivot-navigation.scss */
   .tp-slim-nav .right {
     margin-top: 6px;
     width: 40%;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 413, ../sass/_pivot-navigation.scss */
+  /* line 414, ../sass/_pivot-navigation.scss */
   .tp-slim-nav .right {
     width: auto;
   }
 }
-/* line 423, ../sass/_pivot-navigation.scss */
+/* line 424, ../sass/_pivot-navigation.scss */
 .tp-slim-nav .right .title {
   display: inline-block;
   text-align: left;
   margin-right: 5px;
   letter-spacing: 1px;
 }
-/* line 430, ../sass/_pivot-navigation.scss */
+/* line 431, ../sass/_pivot-navigation.scss */
 .tp-slim-nav .right .menu {
   display: inline-block;
   float: none;
 }
-/* line 436, ../sass/_pivot-navigation.scss */
+/* line 437, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu {
   display: none;
 }
 @media all and (min-width: 768px) {
-  /* line 436, ../sass/_pivot-navigation.scss */
+  /* line 437, ../sass/_pivot-navigation.scss */
   .tp-slim-nav #megamenu {
     display: block;
     width: auto;
@@ -4796,7 +4797,7 @@ header .follow-us {
     line-height: 26px;
   }
 }
-/* line 444, ../sass/_pivot-navigation.scss */
+/* line 445, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu li {
   float: left;
   font-size: 17px;
@@ -4808,35 +4809,35 @@ header .follow-us {
   list-style-image: none;
   list-style-type: none;
 }
-/* line 455, ../sass/_pivot-navigation.scss */
+/* line 456, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu li:last-child {
   padding-right: 0;
 }
-/* line 457, ../sass/_pivot-navigation.scss */
+/* line 458, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu li:last-child:after {
   display: none;
 }
-/* line 462, ../sass/_pivot-navigation.scss */
+/* line 463, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu li a {
   position: relative;
   display: block;
 }
-/* line 465, ../sass/_pivot-navigation.scss */
+/* line 466, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu li a:hover {
   text-decoration: none;
 }
-/* line 470, ../sass/_pivot-navigation.scss */
+/* line 471, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu li .mega-content {
   display: none;
   position: absolute;
   top: 53px;
   z-index: 10;
 }
-/* line 476, ../sass/_pivot-navigation.scss */
+/* line 477, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu li .mega-content .mega-content-wrapper {
   padding: 10px;
 }
-/* line 480, ../sass/_pivot-navigation.scss */
+/* line 481, ../sass/_pivot-navigation.scss */
 .tp-slim-nav #megamenu li .mega-content .mega-content-wrapper .menu li {
   float: none;
   width: 100%;
@@ -4845,26 +4846,26 @@ header .follow-us {
 /**
  *	Overrides for the new custom slim nav
  */
-/* line 494, ../sass/_pivot-navigation.scss */
+/* line 495, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation {
   margin-bottom: 0px;
   padding: 10px;
 }
 @media all and (min-width: 768px) {
-  /* line 494, ../sass/_pivot-navigation.scss */
+  /* line 495, ../sass/_pivot-navigation.scss */
   #block-pivot-navigation-pivot-navigation {
-    padding: 10px 0 0 0;
+    padding: 15px 0 0 0;
   }
 }
-/* line 500, ../sass/_pivot-navigation.scss */
+/* line 501, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .tp-slim-nav {
   border: none;
 }
-/* line 503, ../sass/_pivot-navigation.scss */
+/* line 504, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .tp-slim-nav #megamenu {
   padding-left: 10px;
 }
-/* line 508, ../sass/_pivot-navigation.scss */
+/* line 509, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .tp-slim-nav .left .logo {
   max-width: 75px;
   margin-top: 0px;
@@ -4872,13 +4873,13 @@ header .follow-us {
   height: 30px;
 }
 @media all and (min-width: 768px) {
-  /* line 508, ../sass/_pivot-navigation.scss */
+  /* line 509, ../sass/_pivot-navigation.scss */
   #block-pivot-navigation-pivot-navigation .tp-slim-nav .left .logo {
     margin-top: 6px;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 508, ../sass/_pivot-navigation.scss */
+  /* line 509, ../sass/_pivot-navigation.scss */
   #block-pivot-navigation-pivot-navigation .tp-slim-nav .left .logo {
     max-width: none;
     margin-top: 0px;
@@ -4886,30 +4887,30 @@ header .follow-us {
     height: 42px;
   }
 }
-/* line 525, ../sass/_pivot-navigation.scss */
+/* line 526, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .tp-slim-nav .right {
   width: auto;
 }
-/* line 528, ../sass/_pivot-navigation.scss */
+/* line 529, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .tp-slim-nav .right .follow-us {
   display: none;
 }
 @media all and (min-width: 980px) {
-  /* line 528, ../sass/_pivot-navigation.scss */
+  /* line 529, ../sass/_pivot-navigation.scss */
   #block-pivot-navigation-pivot-navigation .tp-slim-nav .right .follow-us {
     display: block;
   }
 }
-/* line 537, ../sass/_pivot-navigation.scss */
+/* line 538, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .megamenu-wrapper {
   margin-top: -3px;
 }
-/* line 540, ../sass/_pivot-navigation.scss */
+/* line 541, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .megamenu-wrapper .mega-item {
-  min-height: 53px;
+  min-height: 52px;
   font-family: "Apercu Regular";
 }
-/* line 545, ../sass/_pivot-navigation.scss */
+/* line 546, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .megamenu-wrapper .mega-item .title a {
   padding: 10px 8px 0;
   text-transform: none;
@@ -4918,23 +4919,23 @@ header .follow-us {
   font-family: "Apercu Bold";
 }
 @media all and (min-width: 980px) {
-  /* line 545, ../sass/_pivot-navigation.scss */
+  /* line 546, ../sass/_pivot-navigation.scss */
   #block-pivot-navigation-pivot-navigation .megamenu-wrapper .mega-item .title a {
     font-family: "Apercu Medium";
     font-size: 18px;
   }
 }
-/* line 560, ../sass/_pivot-navigation.scss */
+/* line 561, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .megamenu-wrapper .second-level {
   border-top: none;
   min-width: 250px;
   box-shadow: 2px 2px 2px #666;
 }
-/* line 567, ../sass/_pivot-navigation.scss */
+/* line 568, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .megamenu-wrapper .second-level .mega-content-wrapper {
   padding: 20px !important;
 }
-/* line 571, ../sass/_pivot-navigation.scss */
+/* line 572, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .megamenu-wrapper .second-level .mega-content-wrapper li a {
   text-transform: none;
   font-weight: bold;
@@ -4942,42 +4943,42 @@ header .follow-us {
   font-size: 14px;
   line-height: 30px;
 }
-/* line 578, ../sass/_pivot-navigation.scss */
+/* line 579, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .megamenu-wrapper .second-level .mega-content-wrapper li a:hover {
   text-decoration: underline;
 }
-/* line 585, ../sass/_pivot-navigation.scss */
+/* line 586, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .megamenu-wrapper .second-level .mega-content-wrapper a:hover {
   text-decoration: underline;
 }
-/* line 594, ../sass/_pivot-navigation.scss */
+/* line 595, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .menu-toggle {
   margin-top: 10px;
   height: 15px;
   width: 21px;
   border-color: #fff;
 }
-/* line 601, ../sass/_pivot-navigation.scss */
+/* line 602, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .left {
   float: none;
 }
-/* line 604, ../sass/_pivot-navigation.scss */
+/* line 605, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .left > div {
   float: left;
 }
-/* line 609, ../sass/_pivot-navigation.scss */
+/* line 610, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .right > div {
   float: left;
 }
-/* line 612, ../sass/_pivot-navigation.scss */
+/* line 613, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .right > div:not(.block-tp-custom-nav) {
   margin-right: 10px;
 }
-/* line 617, ../sass/_pivot-navigation.scss */
+/* line 618, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .right-more {
   position: relative;
 }
-/* line 619, ../sass/_pivot-navigation.scss */
+/* line 620, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .right-more:after {
   content: "\25BB";
   font-family: "SSGizmo";
@@ -4988,12 +4989,12 @@ header .follow-us {
   height: 1.428571429em;
 }
 
-/* line 633, ../sass/_pivot-navigation.scss */
+/* line 634, ../sass/_pivot-navigation.scss */
 .tp_slim_nav_wrapper #block-tp4-support-tp4-mobile-menu-header .title {
   margin-right: 10px;
 }
 
-/* line 639, ../sass/_pivot-navigation.scss */
+/* line 640, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation-collab {
   margin-bottom: 0;
   width: 140px;
@@ -5003,18 +5004,18 @@ header .follow-us {
   margin-top: -7px;
   margin-right: 0 !important;
 }
-/* line 648, ../sass/_pivot-navigation.scss */
+/* line 649, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation-collab .focus-state {
   line-height: 15px;
 }
-/* line 652, ../sass/_pivot-navigation.scss */
+/* line 653, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation-collab a {
   text-decoration: none;
   color: #fff;
   font-weight: 500;
 }
 @media all and (min-width: 768px) {
-  /* line 659, ../sass/_pivot-navigation.scss */
+  /* line 660, ../sass/_pivot-navigation.scss */
   #block-pivot-navigation-pivot-navigation-collab:before {
     content: '|';
     padding-right: 10px;
@@ -5024,12 +5025,12 @@ header .follow-us {
   }
 }
 
-/* line 674, ../sass/_pivot-navigation.scss */
+/* line 675, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .follow-us, .pivot-nav-theme.follow-us {
   margin-right: 25px !important;
   margin-top: 6px;
 }
-/* line 679, ../sass/_pivot-navigation.scss */
+/* line 680, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .follow-us .title, .pivot-nav-theme.follow-us .title {
   margin-left: 10px;
   text-transform: uppercase;
@@ -5041,7 +5042,7 @@ header .follow-us {
   float: left;
   color: #CCC;
 }
-/* line 692, ../sass/_pivot-navigation.scss */
+/* line 693, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .follow-us li a, .pivot-nav-theme.follow-us li a {
   margin-left: 7px;
   overflow: hidden;
@@ -5052,7 +5053,7 @@ header .follow-us {
   height: 30px;
   width: 30px;
 }
-/* line 701, ../sass/_pivot-navigation.scss */
+/* line 702, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .follow-us li a:before, .pivot-nav-theme.follow-us li a:before {
   overflow: visible;
   padding: 7px;
@@ -5061,54 +5062,54 @@ header .follow-us {
   color: #fff;
   display: block;
 }
-/* line 710, ../sass/_pivot-navigation.scss */
+/* line 711, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .follow-us li a:hover:before, .pivot-nav-theme.follow-us li a:hover:before {
   text-decoration: none;
   color: #000;
   background-color: #FFF;
 }
-/* line 721, ../sass/_pivot-navigation.scss */
+/* line 722, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme #block-tp4-support-tp4-mobile-menu-header {
   border-color: #9c9c9c;
 }
-/* line 726, ../sass/_pivot-navigation.scss */
+/* line 727, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .tpsLogin {
   margin-top: 7px;
 }
-/* line 729, ../sass/_pivot-navigation.scss */
+/* line 730, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .tpsLogin .tp_login {
   background: transparent;
   padding: 10px 0;
   margin-top: -10px;
 }
-/* line 734, ../sass/_pivot-navigation.scss */
+/* line 735, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .tpsLogin .tp_login a {
   background-color: transparent;
 }
-/* line 739, ../sass/_pivot-navigation.scss */
+/* line 740, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .tpsLogin .tp_login .user_image,
 .pivot-nav-theme .tpsLogin .tp_login .user_image:hover {
   color: #018b73 !important;
 }
-/* line 743, ../sass/_pivot-navigation.scss */
+/* line 744, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .tpsLogin .tp_login .dropdown-menu {
   margin-top: 10px;
   box-shadow: 2px 2px 2px;
 }
 
-/* line 755, ../sass/_pivot-navigation.scss */
+/* line 756, ../sass/_pivot-navigation.scss */
 body .snap-drawer-left #block-menu-menu-megamenu li a {
   border-color: #9c9c9c;
   font-family: 'Apercu Regular';
   font-size: 16px;
 }
-/* line 761, ../sass/_pivot-navigation.scss */
+/* line 762, ../sass/_pivot-navigation.scss */
 body .snap-drawer-left #block-menu-menu-megamenu li.level-0 {
   font-size: 24px;
   font-weight: bold;
 }
 
-/* line 774, ../sass/_pivot-navigation.scss */
+/* line 775, ../sass/_pivot-navigation.scss */
 body.tploggedin .pivot-nav-theme .tpsLogin .user_image,
 body.tploggedin .pivot-nav-theme .tpsLogin .user_image:hover {
   color: #01bf9e;
@@ -5117,58 +5118,74 @@ body.tploggedin .pivot-nav-theme .tpsLogin .user_image:hover {
 /*************
 * Custom Overrides on the Pivot side
 *************/
-/* line 785, ../sass/_pivot-navigation.scss */
+/* line 786, ../sass/_pivot-navigation.scss */
 #megamenu .mega-item .first-level a {
   color: white;
   font-weight: 100;
 }
 
-/* line 790, ../sass/_pivot-navigation.scss */
+/* line 791, ../sass/_pivot-navigation.scss */
 .tpsLogin {
   margin-top: 7px;
 }
-/* line 793, ../sass/_pivot-navigation.scss */
+/* line 794, ../sass/_pivot-navigation.scss */
 .tpsLogin .tp_login {
   background: transparent;
   padding: 10px 0;
   margin-top: -10px;
 }
-/* line 798, ../sass/_pivot-navigation.scss */
+/* line 799, ../sass/_pivot-navigation.scss */
 .tpsLogin .tp_login a {
   background-color: transparent;
 }
-/* line 803, ../sass/_pivot-navigation.scss */
+/* line 804, ../sass/_pivot-navigation.scss */
 .tpsLogin .tp_login .user_image,
 .tpsLogin .tp_login .user_image:hover {
   color: #018b73 !important;
 }
-/* line 807, ../sass/_pivot-navigation.scss */
+/* line 808, ../sass/_pivot-navigation.scss */
 .tpsLogin .tp_login .dropdown-menu {
   margin-top: 14px;
 }
 
-/* line 812, ../sass/_pivot-navigation.scss */
-#megamenu .mega-item:hover .first-level a {
-  color: black;
-}
-
-/* line 816, ../sass/_pivot-navigation.scss */
-#megamenu li.mega-item:hover {
-  background: white;
-}
-/* line 818, ../sass/_pivot-navigation.scss */
-#megamenu li.mega-item:hover a {
-  color: black;
-}
-/* line 822, ../sass/_pivot-navigation.scss */
+/* line 815, ../sass/_pivot-navigation.scss */
 #megamenu .second-level {
   background: white;
 }
+/* line 817, ../sass/_pivot-navigation.scss */
+#megamenu .second-level a {
+  color: black;
+}
 
-/* line 827, ../sass/_pivot-navigation.scss */
+/* line 823, ../sass/_pivot-navigation.scss */
 .tp-slim-nav-wrapper a.important {
   background-color: #0084aa;
   line-height: 14px;
+}
+@media all and (min-width: 980px) {
+  /* line 823, ../sass/_pivot-navigation.scss */
+  .tp-slim-nav-wrapper a.important {
+    width: 207px;
+    text-align: center;
+  }
+}
+
+/* line 831, ../sass/_pivot-navigation.scss */
+.selector {
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid white;
+  margin: 0 auto;
+  margin-top: -10px;
+  margin-bottom: -1px;
+  display: none;
+}
+
+/* line 842, ../sass/_pivot-navigation.scss */
+.mega-item:hover .selector {
+  display: block;
 }
 
 /* line 1, ../sass/_pivot-snap-drawers.scss */

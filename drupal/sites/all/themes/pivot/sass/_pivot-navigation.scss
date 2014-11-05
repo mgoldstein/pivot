@@ -4,6 +4,7 @@
   width: 100%;
   margin: 0;
   background: black;
+  border-bottom: 1px solid #0084aa;
 }
 @media (max-width: 786px) {
   .hamburger{
@@ -495,7 +496,7 @@ header {
   margin-bottom: 0px;
   padding: 10px;
   @include breakpoint($breakpoint-tablet){
-    padding: 10px 0 0 0;
+    padding: 15px 0 0 0;
   }
   .tp-slim-nav {
     border: none;
@@ -538,7 +539,7 @@ header {
     margin-top: -3px;
 
     .mega-item {
-      min-height: 53px; //add the margin-top
+      min-height: 52px; //add the margin-top
       font-family: "Apercu Regular";
 
       .title {
@@ -809,22 +810,35 @@ body.tploggedin {
     }
   }
 }
-#megamenu .mega-item:hover .first-level a{
-  color: black;
-}
+
 #megamenu{
-  li.mega-item:hover{
-    background: white;
+  .second-level{
+    background:white;
     a{
       color: black;
     }
-  }
-  .second-level{
-    background:white;
   }
 }
 
 .tp-slim-nav-wrapper a.important{
   background-color: #0084aa;
   line-height: 14px;
+  @include breakpoint($breakpoint-desktop) {
+    width: 207px;
+    text-align: center;
+  }
+}
+.selector{
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid white;
+  margin: 0 auto;
+  margin-top: -10px;
+  margin-bottom: -1px;
+  display: none;
+}
+.mega-item:hover .selector{
+  display: block;
 }

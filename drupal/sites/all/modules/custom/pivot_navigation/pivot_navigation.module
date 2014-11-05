@@ -181,7 +181,7 @@ function _pivot_navigation_menu_handler($menu = NULL) {
 
     //adds into array for items
     $items[] = array(
-      'data' => $title . (!empty($bottom_menu) ? $link_mega_wrapper : ''),
+      'data' => $title . '<div class="selector"></div>'. (!empty($bottom_menu) ? $link_mega_wrapper : ''),
       'class' => array("mega-item ". $link['link']['mlid'])
     );
   }
