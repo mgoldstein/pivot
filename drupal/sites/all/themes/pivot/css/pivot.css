@@ -4416,7 +4416,7 @@ header .follow-us {
   }
 }
 /* line 136, ../sass/_pivot-navigation.scss */
-.search-toggle #search-block-form.active #edit-submit {
+.search-toggle #search-block-form.active .form-submit {
   background: url('../images/search-black.png?1414703576') no-repeat center center;
   background-color: #FFF;
 }
