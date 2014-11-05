@@ -4946,7 +4946,7 @@ header .follow-us {
   text-transform: none;
   font-weight: bold;
   font-family: 'Apercu Medium';
-  font-size: 14px;
+  font-size: 15px;
   line-height: 30px;
 }
 /* line 579, ../sass/_pivot-navigation.scss */
@@ -4983,24 +4983,28 @@ header .follow-us {
 /* line 618, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .right-more {
   position: relative;
+  font-size: 15px !important;
+  text-transform: uppercase !important;
+  font-family: 'Apercu Medium', sans-serif !important;
+  line-height: 30px;
 }
-/* line 620, ../sass/_pivot-navigation.scss */
+/* line 625, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .right-more:after {
-  content: "\25BB";
-  font-family: "SSGizmo";
-  font-weight: bold;
+  content: ' ';
+  background: url('../images/slim-nav-arrow.png?1415225160') 2px 0px no-repeat;
   display: inline-block;
   font-size: 14px;
-  width: 2.142857143em;
-  height: 1.428571429em;
+  width: 12px;
+  height: 18px;
+  vertical-align: middle;
 }
 
-/* line 634, ../sass/_pivot-navigation.scss */
+/* line 639, ../sass/_pivot-navigation.scss */
 .tp_slim_nav_wrapper #block-tp4-support-tp4-mobile-menu-header .title {
   margin-right: 10px;
 }
 
-/* line 640, ../sass/_pivot-navigation.scss */
+/* line 645, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation-collab {
   margin-bottom: 0;
   width: 140px;
@@ -5010,18 +5014,18 @@ header .follow-us {
   margin-top: -7px;
   margin-right: 0 !important;
 }
-/* line 649, ../sass/_pivot-navigation.scss */
+/* line 654, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation-collab .focus-state {
   line-height: 15px;
 }
-/* line 653, ../sass/_pivot-navigation.scss */
+/* line 658, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation-collab a {
   text-decoration: none;
   color: #fff;
   font-weight: 500;
 }
 @media all and (min-width: 768px) {
-  /* line 660, ../sass/_pivot-navigation.scss */
+  /* line 665, ../sass/_pivot-navigation.scss */
   #block-pivot-navigation-pivot-navigation-collab:before {
     content: '|';
     padding-right: 10px;
@@ -5031,12 +5035,12 @@ header .follow-us {
   }
 }
 
-/* line 675, ../sass/_pivot-navigation.scss */
+/* line 680, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .follow-us, .pivot-nav-theme.follow-us {
   margin-right: 25px !important;
   margin-top: 6px;
 }
-/* line 680, ../sass/_pivot-navigation.scss */
+/* line 685, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .follow-us .title, .pivot-nav-theme.follow-us .title {
   margin-left: 10px;
   text-transform: uppercase;
@@ -5048,7 +5052,7 @@ header .follow-us {
   float: left;
   color: #CCC;
 }
-/* line 693, ../sass/_pivot-navigation.scss */
+/* line 698, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .follow-us li a, .pivot-nav-theme.follow-us li a {
   margin-left: 7px;
   overflow: hidden;
@@ -5059,7 +5063,7 @@ header .follow-us {
   height: 30px;
   width: 30px;
 }
-/* line 702, ../sass/_pivot-navigation.scss */
+/* line 707, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .follow-us li a:before, .pivot-nav-theme.follow-us li a:before {
   overflow: visible;
   padding: 7px;
@@ -5068,54 +5072,54 @@ header .follow-us {
   color: #fff;
   display: block;
 }
-/* line 711, ../sass/_pivot-navigation.scss */
+/* line 716, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .follow-us li a:hover:before, .pivot-nav-theme.follow-us li a:hover:before {
   text-decoration: none;
   color: #000;
   background-color: #FFF;
 }
-/* line 722, ../sass/_pivot-navigation.scss */
+/* line 727, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme #block-tp4-support-tp4-mobile-menu-header {
   border-color: #9c9c9c;
 }
-/* line 727, ../sass/_pivot-navigation.scss */
+/* line 732, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .tpsLogin {
   margin-top: 7px;
 }
-/* line 730, ../sass/_pivot-navigation.scss */
+/* line 735, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .tpsLogin .tp_login {
   background: transparent;
   padding: 10px 0;
   margin-top: -10px;
 }
-/* line 735, ../sass/_pivot-navigation.scss */
+/* line 740, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .tpsLogin .tp_login a {
   background-color: transparent;
 }
-/* line 740, ../sass/_pivot-navigation.scss */
+/* line 745, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .tpsLogin .tp_login .user_image,
 .pivot-nav-theme .tpsLogin .tp_login .user_image:hover {
   color: #018b73 !important;
 }
-/* line 744, ../sass/_pivot-navigation.scss */
+/* line 749, ../sass/_pivot-navigation.scss */
 .pivot-nav-theme .tpsLogin .tp_login .dropdown-menu {
   margin-top: 10px;
   box-shadow: 2px 2px 2px;
 }
 
-/* line 756, ../sass/_pivot-navigation.scss */
+/* line 761, ../sass/_pivot-navigation.scss */
 body .snap-drawer-left #block-menu-menu-megamenu li a {
   border-color: #9c9c9c;
   font-family: 'Apercu Regular';
   font-size: 16px;
 }
-/* line 762, ../sass/_pivot-navigation.scss */
+/* line 767, ../sass/_pivot-navigation.scss */
 body .snap-drawer-left #block-menu-menu-megamenu li.level-0 {
   font-size: 24px;
   font-weight: bold;
 }
 
-/* line 775, ../sass/_pivot-navigation.scss */
+/* line 780, ../sass/_pivot-navigation.scss */
 body.tploggedin .pivot-nav-theme .tpsLogin .user_image,
 body.tploggedin .pivot-nav-theme .tpsLogin .user_image:hover {
   color: #01bf9e;
@@ -5124,59 +5128,59 @@ body.tploggedin .pivot-nav-theme .tpsLogin .user_image:hover {
 /*************
 * Custom Overrides on the Pivot side
 *************/
-/* line 786, ../sass/_pivot-navigation.scss */
+/* line 791, ../sass/_pivot-navigation.scss */
 #megamenu .mega-item .first-level a {
   color: white;
   font-weight: 100;
 }
 
-/* line 791, ../sass/_pivot-navigation.scss */
+/* line 796, ../sass/_pivot-navigation.scss */
 .tpsLogin {
   margin-top: 7px;
 }
-/* line 794, ../sass/_pivot-navigation.scss */
+/* line 799, ../sass/_pivot-navigation.scss */
 .tpsLogin .tp_login {
   background: transparent;
   padding: 10px 0;
   margin-top: -10px;
 }
-/* line 799, ../sass/_pivot-navigation.scss */
+/* line 804, ../sass/_pivot-navigation.scss */
 .tpsLogin .tp_login a {
   background-color: transparent;
 }
-/* line 804, ../sass/_pivot-navigation.scss */
+/* line 809, ../sass/_pivot-navigation.scss */
 .tpsLogin .tp_login .user_image,
 .tpsLogin .tp_login .user_image:hover {
   color: #018b73 !important;
 }
-/* line 808, ../sass/_pivot-navigation.scss */
+/* line 813, ../sass/_pivot-navigation.scss */
 .tpsLogin .tp_login .dropdown-menu {
   margin-top: 14px;
 }
 
-/* line 815, ../sass/_pivot-navigation.scss */
+/* line 820, ../sass/_pivot-navigation.scss */
 #megamenu .second-level {
   background: white;
 }
-/* line 817, ../sass/_pivot-navigation.scss */
+/* line 822, ../sass/_pivot-navigation.scss */
 #megamenu .second-level a {
   color: black;
 }
 
-/* line 823, ../sass/_pivot-navigation.scss */
+/* line 828, ../sass/_pivot-navigation.scss */
 .tp-slim-nav-wrapper a.important {
   background-color: #0084aa;
   line-height: 14px;
 }
 @media all and (min-width: 980px) {
-  /* line 823, ../sass/_pivot-navigation.scss */
+  /* line 828, ../sass/_pivot-navigation.scss */
   .tp-slim-nav-wrapper a.important {
     width: 207px;
     text-align: center;
   }
 }
 
-/* line 831, ../sass/_pivot-navigation.scss */
+/* line 836, ../sass/_pivot-navigation.scss */
 .selector {
   width: 0;
   height: 0;
@@ -5189,7 +5193,7 @@ body.tploggedin .pivot-nav-theme .tpsLogin .user_image:hover {
   display: none;
 }
 
-/* line 842, ../sass/_pivot-navigation.scss */
+/* line 847, ../sass/_pivot-navigation.scss */
 .mega-item:hover .selector {
   display: block;
 }

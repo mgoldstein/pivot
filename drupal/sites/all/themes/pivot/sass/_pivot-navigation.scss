@@ -573,7 +573,7 @@ header {
             text-transform: none;
             font-weight: bold;
             font-family: 'Apercu Medium';
-            font-size: 14px;
+            font-size: 15px;
             line-height: 30px;
 
             &:hover {
@@ -615,18 +615,23 @@ header {
     }
   }
 
-  .right-more {
-    position: relative;
+	.right-more {
+		position: relative;
+		font-size: 15px !important;
+		text-transform: uppercase !important;
+		font-family: 'Apercu Medium', sans-serif !important;
+		line-height: 30px;
+		
     &:after {
-      content: "\25BB";
-      font-family: "SSGizmo";
-      font-weight: bold;
+			content: ' ';
+      background: image-url('slim-nav-arrow.png') 2px 0px no-repeat;
       display: inline-block;
-      font-size: 14px;
-      width: 2.142857143em; // 30px/14px
-      height: 1.428571429em; // 20px/14px
+			font-size: 14px;
+      width: 12px; // 30px/14px
+      height: 18px; // 20px/14px
+      vertical-align: middle;
     }
-  }
+	}
 }
 
 .tp_slim_nav_wrapper {
