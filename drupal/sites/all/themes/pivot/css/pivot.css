@@ -3663,6 +3663,11 @@ body.front #content > .primary {
   max-width: 640px;
 }
 
+/* line 3183, ../sass/_pivot-global.scss */
+.jwplayer {
+  overflow: hidden;
+}
+
 /**
  * BxSlider v4.1.2 - Fully loaded, responsive content slider
  * http://bxslider.com
