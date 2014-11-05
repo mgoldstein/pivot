@@ -581,7 +581,12 @@ input[type=email] {
 		}
 
 	}
-
+        .footer-participant-nav {
+            .headline {
+                position: relative;
+                top: 15px;
+            }
+        }
 	.footer-main-nav {
 		float: none;
 		margin: 1em auto 1.25em;
