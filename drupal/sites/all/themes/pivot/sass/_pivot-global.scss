@@ -554,17 +554,19 @@ input[type=email] {
 		.menu,
 		.menu li {
 			display: inline-block; *display: inline; *zoom: 1;
-			vertical-align: middle;
+			vertical-align: top;
 			font-size: 13px;
 		}
 
 		.headline {
 			display: inline-block; *display: inline; *zoom: 1;
 			margin: 0;
-			font-size: 13px;
-			line-height: 45px;
-			font-family: "Apercu Mono Regular", monospace;
+			font-size: 14px;
+			line-height: 100%;
+			font-family: "Apercu Regular", Calibri, sans-serif;
 			text-transform: uppercase;
+                        position: relative;
+                        top: 10px;
 		}
 
 		.menu {
@@ -592,7 +594,11 @@ input[type=email] {
 			vertical-align: top;
 			margin: 0 10px 5px;
 
-			a { padding: 5px; }
+			a {
+                            font-family: 'Apercu Regular', Calibri, sans-serif;
+                            font-size: 13px;
+                            padding: 5px; 
+                        }
 		}
 	}
 
@@ -657,6 +663,8 @@ input[type=email] {
 			text-indent: 100%;
 			overflow: hidden;
 			background-repeat: no-repeat;
+                        font-family: 'Apercu Regular', Calibri, sans-serif;
+                        font-size: 12px;
 		}
 
 		.participant-media {
@@ -664,6 +672,7 @@ input[type=email] {
 			width: 113px;
 			height: 31px;
 			vertical-align: middle;
+                        margin-right: 11px;
 		}
 
 		.takepart {
@@ -671,6 +680,7 @@ input[type=email] {
 			width: 83px;
 			height: 20px;
 			vertical-align: middle;
+                         margin-right: 5px;
 		}
 
 		.pivot {
@@ -1705,7 +1715,6 @@ input[type=email] {
 		color: #0084a9;
 		font-family: 'Apercu Bold Italic', sans-serif;
 		margin: 0;
-		letter-spacing: -2px;
 		line-height: 26px;
 		font-style: italic;
 	}
@@ -3132,13 +3141,14 @@ body.node-type-video{
 		
 		.views-row {
 			display: inline-block;
-			margin: 0 10px;
+			margin: 0 10px 24px 0;
 			font-size: 12px;
 			text-align: center;
 			
 			.views-field-title {
 				text-transform: uppercase;
-				font-size: 12px;
+				font-size: 13px;
+                                font-family: 'Apercu Regular', Calibri, sans-serif;
 				letter-spacing: 0.5px;
 				
 				p {
@@ -3151,7 +3161,8 @@ body.node-type-video{
 				margin-top: 5px;
 				
 				.field-content {
-					font-size: 23px;
+					font-size: 24px;
+                                        font-family: 'Apercu Regular', Calibri, sans-serif;
 					letter-spacing: -0.4px;
 				}
 			}
