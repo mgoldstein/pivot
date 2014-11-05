@@ -1965,9 +1965,9 @@ a.important .pivot {
 	text-transform: capitalize; 
 	font-weight: bold;
 	font-style: italic;
-	padding: 5px 25px 0 10px;
+	padding: 0;
 	position: relative;
-	text-align: right;
+  text-align: left;
 	white-space: nowrap;
 	color: #fff;
         font-family: "Apercu Regular", sans-serif;
@@ -1990,6 +1990,7 @@ a.important .pivot {
 .upcoming .times .item {
 	display: table-cell;
 	vertical-align: middle;
+  text-align: left;
 }
 
 .upcoming #upcoming-times ul {
@@ -2007,7 +2008,6 @@ a.important .pivot {
 
 .upcoming .times .inner {
 	display: table;
-	margin: auto;
 }
 
 .upcoming .times .item:before {
@@ -2046,9 +2046,10 @@ a.important .pivot {
 }
 
 .upcoming .full-schedule {
-	padding: 0 5px;
-        font-family: "Apercu Regular", sans-serif;
-        font-size: 16px;
+	padding-left: 5px;
+    font-family: "Apercu Regular", sans-serif;
+    font-size: 16px;
+    text-align: right;
 }
 
 /* Upcoming Bar */

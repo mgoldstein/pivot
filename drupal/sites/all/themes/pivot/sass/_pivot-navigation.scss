@@ -379,25 +379,13 @@ header {
   padding: 13px 8px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .tp-slim-nav {
   height: auto;
   position: relative;
   overflow: visible;
   z-index: 101;
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 960px;
   color: $dark-gray;
   border-bottom: 2px solid #000;
   @include breakpoint($breakpoint-tablet) {
