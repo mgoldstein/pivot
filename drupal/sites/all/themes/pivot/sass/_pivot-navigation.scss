@@ -132,7 +132,7 @@ header {
     
     //active state
     &.active {
-      #edit-submit {
+      .form-submit {
         background: image-url('search-black.png') no-repeat center center;
         background-color: #FFF;
       }
