@@ -1143,7 +1143,7 @@ input[type=email] {
 #block-dfp-pivot-ros-leaderboard-728x90 {
   margin: 0;
   text-align: center;
-  background: #424242 url(../images/secondary-background.gif) left top repeat;
+  background: black url(../images/secondary-background.gif) left top repeat;
   padding: 1px 0;
 }
 /* line 721, ../sass/_pivot-global.scss */
@@ -3926,15 +3926,6 @@ body .bx-wrapper .bx-controls .bx-pager-item a {
 body .bx-wrapper .bx-controls .bx-pager-item a.active, body .bx-wrapper .bx-controls .bx-pager-item a:hover {
   background-color: #FFF;
 }
-@media (max-width: 480px) {
-  /* line 216, ../sass/_bxslider.scss */
-  body .bx-wrapper .bx-controls .bx-pager-item a {
-    margin: 0 auto;
-    width: 26px;
-    height: 26px;
-    border-radius: 26px;
-  }
-}
 
 /*
  * Homepage Styles for Pivot.tv
@@ -4877,7 +4868,7 @@ header .follow-us {
 @media all and (min-width: 768px) {
   /* line 495, ../sass/_pivot-navigation.scss */
   #block-pivot-navigation-pivot-navigation {
-    padding: 15px 0 0 0;
+    padding: 20px 0 10px 0;
   }
 }
 /* line 501, ../sass/_pivot-navigation.scss */
@@ -4945,7 +4936,7 @@ header .follow-us {
   /* line 546, ../sass/_pivot-navigation.scss */
   #block-pivot-navigation-pivot-navigation .megamenu-wrapper .mega-item .title a {
     font-family: "Apercu Medium";
-    font-size: 18px;
+    font-size: 20px;
   }
 }
 /* line 561, ../sass/_pivot-navigation.scss */

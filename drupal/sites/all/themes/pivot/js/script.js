@@ -602,6 +602,8 @@
             mode: window.sliderMode,
             infiniteLoop: false,
             hideControlOnEnd: true,
+            swipeThreshold: 100,
+            oneToOneTouch : false,
             onSlideAfter: function(){
               jwplayer().stop();
             }

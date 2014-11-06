@@ -496,7 +496,7 @@ header {
   margin-bottom: 0px;
   padding: 10px;
   @include breakpoint($breakpoint-tablet){
-    padding: 15px 0 0 0;
+    padding: 20px 0 10px 0;
   }
   .tp-slim-nav {
     border: none;
@@ -551,7 +551,7 @@ header {
           font-family: "Apercu Bold";
           @include breakpoint($breakpoint-desktop){
             font-family: "Apercu Medium";
-            font-size: 18px;
+            font-size: 20px;
           }
         }
       }
