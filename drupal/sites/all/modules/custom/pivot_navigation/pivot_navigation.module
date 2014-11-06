@@ -136,37 +136,10 @@ function _pivot_navigation_menu_handler($menu = NULL) {
     //left menu curation
     $left_menu = render(menu_tree_output($bottom_menu));
 
-    //only add if there is a second level
-    if (!empty($link['below'])) {
-      //return more link
-      if (isset($link['link']['options']['attributes']['name'])) {
-        $see_more = l(
-          $link['link']['options']['attributes']['name'],
-          $path,
-          array(
-            'attributes' => array(
-              'class' => array('right-more')
-            )
-          )
-        );
-      }
-      else {
-        $see_more = l(
-          'See More '. $link['link']['link_title'],
-          $path,
-          array(
-            'attributes' => array(
-              'class' => array('right-more')
-            )
-          )
-        );
-      }
-    }
-
     $mega_content_wrapper = theme('html_tag', array(
       'element' => array(
         '#tag' => 'div',
-        '#value' => $left_menu . $see_more,
+        '#value' => $left_menu,
         '#attributes' => array(
           'class' => 'mega-content-wrapper',
         ))));
