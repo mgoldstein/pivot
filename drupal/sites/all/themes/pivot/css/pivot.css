@@ -3972,7 +3972,11 @@ body.front {
   font-style: italic;
   font-size: 24px;
 }
-/* line 47, ../sass/_pivot-homepage.scss */
+/* line 46, ../sass/_pivot-homepage.scss */
+.front .panel-col-top .node-video.node-teaser h1.headline {
+  margin-top: 15px;
+}
+/* line 50, ../sass/_pivot-homepage.scss */
 .front .panel-col-top .node-video.node-teaser .field-name-body {
   font-size: 15px;
   font-family: "Apercu Regular", monospace;
