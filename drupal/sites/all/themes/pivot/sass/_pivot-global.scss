@@ -3164,6 +3164,10 @@ body.node-type-video{
 			font-size: 12px;
 			text-align: center;
 			
+			&.views-row-last {
+				margin-bottom: 0;
+			}
+			
 			.views-field-title {
 				text-transform: uppercase;
 				font-size: 13px;
