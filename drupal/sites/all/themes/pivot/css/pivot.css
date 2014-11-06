@@ -3448,7 +3448,7 @@ iframe.media-youtube-player {
 /* line 3004, ../sass/_pivot-global.scss */
 .pm-jwplayer.loading {
   width: 100%;
-  background: url('../images/video-loading.gif?1412981611');
+  background: url('../images/video-loading.gif?1390350395');
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3457,7 +3457,7 @@ iframe.media-youtube-player {
 /* line 3011, ../sass/_pivot-global.scss */
 .pm-jwplayer.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1412981611') no-repeat center center;
+  background: url('../images/video-blocked.gif?1390350395') no-repeat center center;
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3641,7 +3641,7 @@ body.node-type-video .site-wrapper:after {
 /* line 3161, ../sass/_pivot-global.scss */
 #block-views-pivot-channels-pivot-channels .view-pivot-channels .views-row {
   display: inline-block;
-  margin: 0 10px 24px 0;
+  margin: 0 24px 24px 0;
   font-size: 12px;
   text-align: center;
 }
@@ -4395,7 +4395,7 @@ header .follow-us {
 }
 /* line 85, ../sass/_pivot-navigation.scss */
 .search-toggle #search-block-form .form-submit {
-  background: url('../images/search_black.jpg?1415146150') no-repeat center center;
+  background: url('../images/search_black.jpg?1414704647') no-repeat center center;
   background-color: transparent;
   border: 0;
   text-indent: 9999px;
@@ -4447,7 +4447,7 @@ header .follow-us {
 }
 /* line 136, ../sass/_pivot-navigation.scss */
 .search-toggle #search-block-form.active .form-submit {
-  background: url('../images/search-black.png?1415146150') no-repeat center center;
+  background: url('../images/search-black.png?1414703576') no-repeat center center;
   background-color: #FFF;
 }
 /* line 141, ../sass/_pivot-navigation.scss */
@@ -5015,7 +5015,7 @@ header .follow-us {
 /* line 625, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .right-more:after {
   content: ' ';
-  background: url('../images/slim-nav-arrow.png?1415225459') 2px 0px no-repeat;
+  background: url('../images/slim-nav-arrow.png?1415234563') 2px 0px no-repeat;
   display: inline-block;
   font-size: 14px;
   width: 12px;
