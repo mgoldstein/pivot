@@ -471,7 +471,7 @@ header {
       .mega-content {
         display: none;
         position: absolute;
-        top: 53px; //this is the same as the min-height for the mega-item
+        top: 52px; //this is the same as the min-height for the mega-item
         z-index: 10;
 
         .mega-content-wrapper {
@@ -817,6 +817,12 @@ body.tploggedin {
 }
 
 #megamenu{
+  .mega-item:hover{
+    background: white;
+    a{
+      color: black;
+    }
+  }
   .second-level{
     background:white;
     a{
@@ -829,21 +835,7 @@ body.tploggedin {
   background-color: #0084aa;
   line-height: 14px;
   @include breakpoint($breakpoint-desktop) {
-    width: 207px;
+    width: 205px;
     text-align: center;
   }
-}
-.selector{
-  width: 0;
-  height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-bottom: 12px solid white;
-  margin: 0 auto;
-  margin-top: -10px;
-  margin-bottom: -1px;
-  display: none;
-}
-.mega-item:hover .selector{
-  display: block;
 }
