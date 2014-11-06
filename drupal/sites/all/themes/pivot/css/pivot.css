@@ -3964,18 +3964,20 @@ body.front {
 }
 /* line 37, ../sass/_pivot-homepage.scss */
 .front .panel-col-top .node-video.node-teaser .headline {
-  font-size: 1.2em;
-  margin-bottom: 15px;
-  text-transform: uppercase;
-  font-family: "Apercu Bold Italic";
+  color: #0084a9;
+  font-family: 'Apercu Bold Italic', sans-serif;
+  margin: 0;
+  margin-top: 15px;
+  line-height: 26px;
   font-style: italic;
   font-size: 24px;
-  color: #0084a9;
 }
 /* line 47, ../sass/_pivot-homepage.scss */
 .front .panel-col-top .node-video.node-teaser .field-name-body {
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 15px;
+  font-family: "Apercu Regular", monospace;
+  line-height: 20px;
+  margin-top: 6px;
 }
 
 @media (max-width: 1000px) {
