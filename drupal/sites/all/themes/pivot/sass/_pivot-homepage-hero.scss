@@ -11,8 +11,9 @@ body.tp_ad_takeover header{
   background-position: center center;
   background-repeat: no-repeat;
   padding-bottom: 30px;
-  @include breakpoint($breakpoint-tablet){
-    padding-bottom: 10px;
+  
+  @media (max-width: 767px) {
+    //padding-bottom: 10px;
   }
 }
 .hero-slider .bxslider-container{
