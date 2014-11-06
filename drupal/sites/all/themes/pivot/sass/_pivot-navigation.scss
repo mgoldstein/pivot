@@ -834,14 +834,14 @@ body.tploggedin {
 .tp-slim-nav-wrapper a.important{
   background-color: #0084aa;
   line-height: 14px;
-  &:after{
-    right: 49px;
-  }
-  &:hover:after{
-    right: 39px;
-  }
   @include breakpoint($breakpoint-desktop) {
     width: 205px;
     text-align: center;
+    &:after{
+      right: 49px;
+    }
+    &:hover:after{
+      right: 39px;
+    }
   }
 }

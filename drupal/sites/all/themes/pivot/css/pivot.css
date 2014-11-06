@@ -4011,18 +4011,23 @@ body.front {
   }
 }
 /* line 1, ../sass/_pivot-homepage-hero.scss */
+#block-pivot-hpslider-hpslider.block {
+  margin-bottom: 20px;
+}
+
+/* line 4, ../sass/_pivot-homepage-hero.scss */
 .slider ul {
   margin: 0;
   padding: 0;
 }
 
-/* line 5, ../sass/_pivot-homepage-hero.scss */
+/* line 8, ../sass/_pivot-homepage-hero.scss */
 body.tp_ad_takeover header {
   max-width: 980px;
   margin: 0 auto;
 }
 
-/* line 9, ../sass/_pivot-homepage-hero.scss */
+/* line 12, ../sass/_pivot-homepage-hero.scss */
 .slider-wrapper {
   background-size: cover;
   background-position: center center;
@@ -4030,31 +4035,31 @@ body.tp_ad_takeover header {
   padding-bottom: 36px;
 }
 
-/* line 19, ../sass/_pivot-homepage-hero.scss */
+/* line 22, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .bxslider-container {
   max-width: 980px;
   margin: 0 auto;
   position: relative;
 }
 
-/* line 24, ../sass/_pivot-homepage-hero.scss */
+/* line 27, ../sass/_pivot-homepage-hero.scss */
 .hero-slider ul {
   padding: 0;
 }
 
-/* line 27, ../sass/_pivot-homepage-hero.scss */
+/* line 30, ../sass/_pivot-homepage-hero.scss */
 .hero-slider img {
   width: 100%;
   max-width: 940px;
 }
 
-/* line 31, ../sass/_pivot-homepage-hero.scss */
+/* line 34, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .field-name-field-video-media {
   max-width: 755px;
   margin: 0 auto;
 }
 
-/* line 35, ../sass/_pivot-homepage-hero.scss */
+/* line 38, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .slider-title {
   font-family: "Apercu Bold", sans-serif;
   color: white;
@@ -4062,7 +4067,7 @@ body.tp_ad_takeover header {
   text-transform: uppercase;
 }
 
-/* line 41, ../sass/_pivot-homepage-hero.scss */
+/* line 44, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .slider-content {
   max-width: 77%;
   /* 755/980 */
@@ -4072,13 +4077,13 @@ body.tp_ad_takeover header {
   margin-top: 25px;
 }
 
-/* line 48, ../sass/_pivot-homepage-hero.scss */
+/* line 51, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .slider-navigation {
   max-width: 980px;
   margin: 0 auto;
 }
 
-/* line 52, ../sass/_pivot-homepage-hero.scss */
+/* line 55, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .slider-text {
   color: white;
   font-size: 15px;
@@ -4089,13 +4094,13 @@ body.tp_ad_takeover header {
   float: left;
 }
 @media (max-width: 767px) {
-  /* line 52, ../sass/_pivot-homepage-hero.scss */
+  /* line 55, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-text {
     margin-top: 20px;
   }
 }
 
-/* line 65, ../sass/_pivot-homepage-hero.scss */
+/* line 68, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .slider-cta {
   float: right;
   margin-top: 12px;
@@ -4103,30 +4108,30 @@ body.tp_ad_takeover header {
   display: block;
 }
 @media (max-width: 767px) {
-  /* line 65, ../sass/_pivot-homepage-hero.scss */
+  /* line 68, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-cta {
     margin-top: 20px;
   }
 }
 
-/* line 75, ../sass/_pivot-homepage-hero.scss */
+/* line 78, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .slider-cta a.important {
   float: right;
   background: #0084A9;
 }
 
-/* line 79, ../sass/_pivot-homepage-hero.scss */
+/* line 82, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .nav-arrow {
   display: none;
 }
 @media all and (min-width: 768px) {
-  /* line 79, ../sass/_pivot-homepage-hero.scss */
+  /* line 82, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .nav-arrow {
     display: block;
   }
 }
 
-/* line 85, ../sass/_pivot-homepage-hero.scss */
+/* line 88, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .nav-arrow a {
   display: block;
   position: absolute;
@@ -4134,69 +4139,69 @@ body.tp_ad_takeover header {
   height: 58px;
   width: 27px;
 }
-/* line 91, ../sass/_pivot-homepage-hero.scss */
+/* line 94, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .nav-arrow a:focus {
   outline: none;
 }
 
-/* line 96, ../sass/_pivot-homepage-hero.scss */
+/* line 99, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .prev-slide a {
   left: 20px;
   background: url(../images/slide_nav_left.png) no-repeat;
 }
 @media all and (min-width: 980px) {
-  /* line 96, ../sass/_pivot-homepage-hero.scss */
+  /* line 99, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .prev-slide a {
     left: 35px;
   }
 }
 
-/* line 104, ../sass/_pivot-homepage-hero.scss */
+/* line 107, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .next-slide a {
   right: 20px;
   background: url(../images/slide_nav_right.png) no-repeat;
 }
 @media all and (min-width: 980px) {
-  /* line 104, ../sass/_pivot-homepage-hero.scss */
+  /* line 107, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .next-slide a {
     right: 35px;
   }
 }
 
-/* line 112, ../sass/_pivot-homepage-hero.scss */
+/* line 115, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .prev-slide a:hover {
   background: url(../images/slide_nav_left_active.png) no-repeat;
 }
 
-/* line 116, ../sass/_pivot-homepage-hero.scss */
+/* line 119, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .next-slide a:hover {
   background: url(../images/slide_nav_right_active.png) no-repeat;
 }
 
-/* line 120, ../sass/_pivot-homepage-hero.scss */
+/* line 123, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .prev-slide a.disabled, .hero-slider .prev-slide a.disabled:hover {
   background: url(../images/slide_nav_left_disabled.png) no-repeat;
   cursor: default;
 }
 
-/* line 125, ../sass/_pivot-homepage-hero.scss */
+/* line 128, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .next-slide a.disabled, .hero-slider .next-slide a.disabled:hover {
   background: url(../images/slide_nav_right_disabled.png) no-repeat;
   cursor: default;
 }
 
 /* Upcoming */
-/* line 133, ../sass/_pivot-homepage-hero.scss */
+/* line 136, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .primetime a.important {
   color: black;
   background: white;
 }
-/* line 136, ../sass/_pivot-homepage-hero.scss */
+/* line 139, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .primetime a.important:after {
   background-image: url(../images/full_schedule_arrow.png);
 }
 
-/* line 141, ../sass/_pivot-homepage-hero.scss */
+/* line 144, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .upcoming {
   background: transparent;
   box-shadow: none;
@@ -4205,19 +4210,19 @@ body.tp_ad_takeover header {
   margin: 0 auto;
 }
 
-/* line 148, ../sass/_pivot-homepage-hero.scss */
+/* line 151, ../sass/_pivot-homepage-hero.scss */
 .hero-slider .upcoming #upcoming-times {
   display: none;
 }
 @media all and (min-width: 768px) {
-  /* line 148, ../sass/_pivot-homepage-hero.scss */
+  /* line 151, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .upcoming #upcoming-times {
     display: table-cell;
   }
 }
 
 @media (max-width: 767px) {
-  /* line 155, ../sass/_pivot-homepage-hero.scss */
+  /* line 158, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-content {
     max-width: 100%;
     padding: 10px;
@@ -4225,7 +4230,7 @@ body.tp_ad_takeover header {
     padding-top: 15px;
   }
 
-  /* line 161, ../sass/_pivot-homepage-hero.scss */
+  /* line 164, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-text {
     max-width: 100%;
     width: 100%;
@@ -4233,55 +4238,55 @@ body.tp_ad_takeover header {
     margin-top: 5px;
   }
 
-  /* line 167, ../sass/_pivot-homepage-hero.scss */
+  /* line 170, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-cta {
     max-width: 100%;
     width: 100%;
   }
 
-  /* line 171, ../sass/_pivot-homepage-hero.scss */
+  /* line 174, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-cta a.important {
     float: none;
     display: block;
     margin: 0;
   }
 
-  /* line 176, ../sass/_pivot-homepage-hero.scss */
+  /* line 179, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .primetime a.important {
     width: 100%;
   }
 }
 @media (max-width: 480px) {
-  /* line 181, ../sass/_pivot-homepage-hero.scss */
+  /* line 184, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-cta a.important {
     text-align: center;
   }
 
-  /* line 184, ../sass/_pivot-homepage-hero.scss */
+  /* line 187, ../sass/_pivot-homepage-hero.scss */
   .hero-slider .slider-title {
     font-size: 30px;
   }
 }
-/* line 188, ../sass/_pivot-homepage-hero.scss */
+/* line 191, ../sass/_pivot-homepage-hero.scss */
 .media {
   width: 100%;
   padding: 0 10px;
   padding-top: 10px;
 }
 @media all and (min-width: 980px) {
-  /* line 188, ../sass/_pivot-homepage-hero.scss */
+  /* line 191, ../sass/_pivot-homepage-hero.scss */
   .media {
     padding: 0 20px;
   }
 }
 
-/* line 196, ../sass/_pivot-homepage-hero.scss */
+/* line 199, ../sass/_pivot-homepage-hero.scss */
 .media.video {
   max-width: 755px;
   width: 100%;
   margin: 0 auto;
 }
-/* line 200, ../sass/_pivot-homepage-hero.scss */
+/* line 203, ../sass/_pivot-homepage-hero.scss */
 .media.video .field-name-field-video-media {
   padding-bottom: 56.49867%;
   height: 0;
@@ -5204,19 +5209,19 @@ body.tploggedin .pivot-nav-theme .tpsLogin .user_image:hover {
   background-color: #0084aa;
   line-height: 14px;
 }
-/* line 837, ../sass/_pivot-navigation.scss */
-.tp-slim-nav-wrapper a.important:after {
-  right: 49px;
-}
-/* line 840, ../sass/_pivot-navigation.scss */
-.tp-slim-nav-wrapper a.important:hover:after {
-  right: 39px;
-}
 @media all and (min-width: 980px) {
   /* line 834, ../sass/_pivot-navigation.scss */
   .tp-slim-nav-wrapper a.important {
     width: 205px;
     text-align: center;
+  }
+  /* line 840, ../sass/_pivot-navigation.scss */
+  .tp-slim-nav-wrapper a.important:after {
+    right: 49px;
+  }
+  /* line 843, ../sass/_pivot-navigation.scss */
+  .tp-slim-nav-wrapper a.important:hover:after {
+    right: 39px;
   }
 }
 
