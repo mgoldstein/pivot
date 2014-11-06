@@ -25,6 +25,7 @@ body.tp_ad_takeover header{
 }
 .hero-slider img{
   width: 100%;
+  max-width: 940px;
 }
 .hero-slider .field-name-field-video-media{
   max-width: 755px;
@@ -175,7 +176,14 @@ body.tp_ad_takeover header{
     font-size: 30px;
   }
 }
-
+.media{
+  width: 100%;
+  padding: 0 10px;
+  padding-top: 10px;
+  @include breakpoint($breakpoint-desktop){
+    padding: 0 20px;
+  }
+}
 .media.video{
   max-width: 755px;
   width: 100%;
