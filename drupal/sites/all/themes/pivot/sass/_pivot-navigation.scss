@@ -120,9 +120,9 @@ header {
       input {
         border: 1px solid #CCC;
         border-radius: 0;
-        font-size: 14px;
+        font-size: 15px;
         font-family: 'Apercu Regular';
-        color: #999;
+        color: #5a5a5a;
         width: 100%;
         
         @include breakpoint($breakpoint-tablet) {

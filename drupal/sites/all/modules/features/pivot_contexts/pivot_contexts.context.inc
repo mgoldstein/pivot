@@ -241,6 +241,12 @@ function pivot_contexts_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'menu-menu-primary' => array(
+          'module' => 'menu',
+          'delta' => 'menu-primary',
+          'region' => 'left_drawer',
+          'weight' => '-10',
+        ),
         'dfp-pivot_ros_leaderboard_728x90' => array(
           'module' => 'dfp',
           'delta' => 'pivot_ros_leaderboard_728x90',

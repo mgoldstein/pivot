@@ -1873,6 +1873,16 @@ h2.other-movies.block-title {
 			line-height: 2;
 		}
 	}
+	
+	@media (max-width: 480px) {
+		#search-form {
+			.form-type-textfield {
+				input {
+					width: 100%;
+				}
+			}
+		}
+	}
 }
 
 /* ============================================================
@@ -2074,6 +2084,7 @@ a.important .pivot {
 
 	.upcoming .full-schedule .important {
 		white-space: normal;
+		padding: 10px 39px 10px 19px;
 	}
 }
 @media (max-width: 767px) { /* iPad vertical */
@@ -3177,8 +3188,7 @@ body.node-type-video{
 			}
 			
 			@media (max-width: 480px) {
-				display: block;
-				clear: both;
+				margin: 20px 15px;
 			}
 		}
 	}

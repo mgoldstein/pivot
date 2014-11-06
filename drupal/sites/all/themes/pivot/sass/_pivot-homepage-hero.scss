@@ -11,8 +11,9 @@ body.tp_ad_takeover header{
   background-position: center center;
   background-repeat: no-repeat;
   padding-bottom: 30px;
-  @include breakpoint($breakpoint-tablet){
-    padding-bottom: 10px;
+  
+  @media (max-width: 767px) {
+    //padding-bottom: 10px;
   }
 }
 .hero-slider .bxslider-container{
@@ -53,15 +54,23 @@ body.tp_ad_takeover header{
   font-size: 15px;
   line-height: 22px;
   font-family: "Apercu Regular", sans-serif;
-  margin-top: 20px;
+  margin-top: 12px;
   width: 50%;
   float: left;
+
+  @media (max-width: 767px) {
+    margin-top: 20px;
+  }
 }
 .hero-slider .slider-cta{
   float: right;
-  margin-top: 20px;
+  margin-top: 12px;
   width: 50%;
   display: block;
+  
+  @media (max-width: 767px) {
+    margin-top: 20px;
+  }
 }
 .hero-slider .slider-cta a.important{
   float: right;
