@@ -3448,7 +3448,7 @@ iframe.media-youtube-player {
 /* line 3004, ../sass/_pivot-global.scss */
 .pm-jwplayer.loading {
   width: 100%;
-  background: url('../images/video-loading.gif?1412981611');
+  background: url('../images/video-loading.gif?1390350395');
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3457,7 +3457,7 @@ iframe.media-youtube-player {
 /* line 3011, ../sass/_pivot-global.scss */
 .pm-jwplayer.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1412981611') no-repeat center center;
+  background: url('../images/video-blocked.gif?1390350395') no-repeat center center;
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -4407,7 +4407,7 @@ header .follow-us {
 }
 /* line 85, ../sass/_pivot-navigation.scss */
 .search-toggle #search-block-form .form-submit {
-  background: url('../images/search_black.jpg?1415146150') no-repeat center center;
+  background: url('../images/search_black.jpg?1414704647') no-repeat center center;
   background-color: transparent;
   border: 0;
   text-indent: 9999px;
@@ -4459,7 +4459,7 @@ header .follow-us {
 }
 /* line 136, ../sass/_pivot-navigation.scss */
 .search-toggle #search-block-form.active .form-submit {
-  background: url('../images/search-black.png?1415146150') no-repeat center center;
+  background: url('../images/search-black.png?1414703576') no-repeat center center;
   background-color: #FFF;
 }
 /* line 141, ../sass/_pivot-navigation.scss */
@@ -5027,7 +5027,7 @@ header .follow-us {
 /* line 625, ../sass/_pivot-navigation.scss */
 #block-pivot-navigation-pivot-navigation .right-more:after {
   content: ' ';
-  background: url('../images/slim-nav-arrow.png?1415225459') 2px 0px no-repeat;
+  background: url('../images/slim-nav-arrow.png?1415234563') 2px 0px no-repeat;
   display: inline-block;
   font-size: 14px;
   width: 12px;
@@ -5240,7 +5240,12 @@ html, body {
   height: 100%;
 }
 
-/* line 8, ../sass/_pivot-snap-drawers.scss */
+/* line 7, ../sass/_pivot-snap-drawers.scss */
+body.snapjs-left {
+  overflow: hidden;
+}
+
+/* line 10, ../sass/_pivot-snap-drawers.scss */
 .snap-content {
   position: absolute;
   top: 0;
@@ -5259,7 +5264,7 @@ html, body {
   transform: translate3d(0, 0, 0);
 }
 
-/* line 26, ../sass/_pivot-snap-drawers.scss */
+/* line 28, ../sass/_pivot-snap-drawers.scss */
 .snap-drawers {
   position: absolute;
   top: 0;
@@ -5270,17 +5275,17 @@ html, body {
   height: auto;
 }
 
-/* line 35, ../sass/_pivot-snap-drawers.scss */
+/* line 37, ../sass/_pivot-snap-drawers.scss */
 .drawers {
   display: none;
 }
 
-/* line 38, ../sass/_pivot-snap-drawers.scss */
+/* line 40, ../sass/_pivot-snap-drawers.scss */
 body.snapjs-left .drawers, body.snapjs-right .drawers {
   display: block;
 }
 
-/* line 42, ../sass/_pivot-snap-drawers.scss */
+/* line 44, ../sass/_pivot-snap-drawers.scss */
 .snap-drawer {
   position: absolute;
   top: 0;
@@ -5298,32 +5303,32 @@ body.snapjs-left .drawers, body.snapjs-right .drawers {
   transition: width 0.3s ease;
 }
 
-/* line 59, ../sass/_pivot-snap-drawers.scss */
+/* line 61, ../sass/_pivot-snap-drawers.scss */
 .snap-drawer-left {
   left: 0;
   z-index: 0;
 }
 
-/* line 64, ../sass/_pivot-snap-drawers.scss */
+/* line 66, ../sass/_pivot-snap-drawers.scss */
 .snap-drawer-right {
   right: 0;
   z-index: 0;
 }
 
-/* line 70, ../sass/_pivot-snap-drawers.scss */
+/* line 72, ../sass/_pivot-snap-drawers.scss */
 .snapjs-left .snap-drawer-right,
 .snapjs-right .snap-drawer-left {
   display: none;
 }
 
-/* line 75, ../sass/_pivot-snap-drawers.scss */
+/* line 77, ../sass/_pivot-snap-drawers.scss */
 .snapjs-expand-left .snap-drawer-left,
 .snapjs-expand-right .snap-drawer-right {
   width: 100%;
 }
 
 /* Show "Left" drawer for the "Right" drawer in the demo */
-/* line 80, ../sass/_pivot-snap-drawers.scss */
+/* line 82, ../sass/_pivot-snap-drawers.scss */
 .snapjs-right .snap-drawer-left {
   display: block;
   right: 0;
@@ -5331,13 +5336,13 @@ body.snapjs-left .drawers, body.snapjs-right .drawers {
 }
 
 /* Hide the actual "Right" drawer in the demo */
-/* line 87, ../sass/_pivot-snap-drawers.scss */
+/* line 89, ../sass/_pivot-snap-drawers.scss */
 .snapjs-right .snap-drawer-right {
   display: none;
 }
 
 /* Styles for fading out the drawer content in the "Expanding" demo */
-/* line 92, ../sass/_pivot-snap-drawers.scss */
+/* line 94, ../sass/_pivot-snap-drawers.scss */
 .drawer-inner {
   -webkit-transition: opacity 0.3s ease;
   -moz-transition: opacity 0.3s ease;
@@ -5346,51 +5351,51 @@ body.snapjs-left .drawers, body.snapjs-right .drawers {
   transition: opacity 0.3s ease;
 }
 
-/* line 101, ../sass/_pivot-snap-drawers.scss */
+/* line 103, ../sass/_pivot-snap-drawers.scss */
 .snapjs-expand-left .drawer-inner,
 .snapjs-expand-right .drawer-inner {
   opacity: 0;
 }
 
 /* Default demo styles */
-/* line 106, ../sass/_pivot-snap-drawers.scss */
+/* line 108, ../sass/_pivot-snap-drawers.scss */
 .snap-content {
   background: #BFC7D8;
 }
 
-/* line 110, ../sass/_pivot-snap-drawers.scss */
+/* line 112, ../sass/_pivot-snap-drawers.scss */
 .snap-drawers {
   background: #616161;
 }
 
-/* line 114, ../sass/_pivot-snap-drawers.scss */
+/* line 116, ../sass/_pivot-snap-drawers.scss */
 .snap-drawer {
   background: #616161;
   color: #eee;
 }
 
-/* line 119, ../sass/_pivot-snap-drawers.scss */
+/* line 121, ../sass/_pivot-snap-drawers.scss */
 .snap-drawer h3 {
   font-size: 36px;
   font-weight: normal;
   margin: 15px;
 }
 
-/* line 125, ../sass/_pivot-snap-drawers.scss */
+/* line 127, ../sass/_pivot-snap-drawers.scss */
 .snap-drawer h4 {
   padding: 15px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 0;
 }
 
-/* line 131, ../sass/_pivot-snap-drawers.scss */
+/* line 133, ../sass/_pivot-snap-drawers.scss */
 .snap-drawer ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
 }
 
-/* line 137, ../sass/_pivot-snap-drawers.scss */
+/* line 139, ../sass/_pivot-snap-drawers.scss */
 .snap-drawer li > a {
   display: block;
   font-family: "Apercu Regular";
@@ -5402,25 +5407,25 @@ body.snapjs-left .drawers, body.snapjs-right .drawers {
   text-decoration: none;
   color: #fff;
 }
-/* line 147, ../sass/_pivot-snap-drawers.scss */
+/* line 149, ../sass/_pivot-snap-drawers.scss */
 .snap-drawer li > a:hover {
   background: #333;
 }
 
 /* Overrides */
-/* line 153, ../sass/_pivot-snap-drawers.scss */
+/* line 155, ../sass/_pivot-snap-drawers.scss */
 .snap-drawer p {
   opacity: 0.5;
   padding: 15px;
   font-size: 12px;
 }
 
-/* line 158, ../sass/_pivot-snap-drawers.scss */
+/* line 160, ../sass/_pivot-snap-drawers.scss */
 .snap-drawer li {
   margin: 0;
 }
 
-/* line 161, ../sass/_pivot-snap-drawers.scss */
+/* line 163, ../sass/_pivot-snap-drawers.scss */
 #megamenu .item-list ul {
   margin: 0;
   padding: 0;
