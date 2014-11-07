@@ -380,6 +380,12 @@ header {
   padding: 13px 8px;
 }
 
+body.not-front .tp-slim-nav {
+  @include breakpoint($breakpoint-desktop) {
+    padding: 0;
+  }
+}
+
 .tp-slim-nav {
   height: auto;
   position: relative;
@@ -392,7 +398,7 @@ header {
   @include breakpoint($breakpoint-tablet) {
     padding: 0 10px;
   }
-
+  
   .left {
     @include breakpoint($breakpoint-desktop) {
       padding-left: 10px;
