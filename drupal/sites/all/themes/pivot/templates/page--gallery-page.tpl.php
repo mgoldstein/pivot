@@ -1,8 +1,7 @@
 <div class="drawers">
-	<div class="snap-drawer snap-drawer-left">
-		<?php render($page['left_drawer']); ?>
-		<?php dpm($page, 'page'); ?>
-	</div>
+  <div class="snap-drawer snap-drawer-left">
+    <?php print render($page['left_drawer']); ?>
+  </div>
 </div>
 <div id="page">
 
