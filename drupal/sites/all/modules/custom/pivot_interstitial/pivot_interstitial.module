@@ -46,3 +46,16 @@ function pivot_interstitial_theme(){
 function pivot_interstitial_init(){
 	drupal_add_library('system', 'jquery.cookie');
 }
+
+/**
+ *	Implements hook_preprocess_html().
+ */
+function pivot_interstitial_preprocess_html(&$vars) {
+	//only does this on interstitial channel finder page
+	if (arg(0) == 'interstitial' && arg(1) == 'channelFinder') {
+		//changes s.t to s.tl as it's provided from sitecatalyst
+		$tl_version = $vars['page']['page_bottom']['sitecatalyst']['footer']['#markup'];
+		$tl_version = str_replace('s.t(', 's.tl(', $tl_version);
+		$vars['page']['page_bottom']['sitecatalyst']['footer']['#markup'] = $tl_version;
+	}
+}
