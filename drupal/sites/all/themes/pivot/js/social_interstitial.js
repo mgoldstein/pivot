@@ -3,7 +3,11 @@
         attach: function(context, settings) {
             // INTERSTITIALS
             $('body').once('interstitial_init', function() {
-                interstitial_init();
+                var pathname = window.location.pathname;
+                path = pathname.split('/');
+                if (path[1] != 'iframe') {
+                    interstitial_init();    
+                }
             });
 
             function GetQueryStringParams(sParam) {
