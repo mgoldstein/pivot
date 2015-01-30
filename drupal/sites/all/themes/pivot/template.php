@@ -133,6 +133,7 @@ function pivot_preprocess_html(&$variables, $hook) {
   // webfonts config
   drupal_add_js("WebFontConfig = { fontdeck: { id: '50424' } };", array('type' => 'inline', 'scope'=> 'footer', 'weight' => 10));
   drupal_add_js('//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js', array('type' => 'external', 'scope' => 'footer', 'weight' => 11));
+  drupal_add_js('//connect.facebook.com/en_US/sdk.js', array('type' => 'external', 'scope' => 'footer', 'weight' => 12));
 
   // Include Facebook JS SDK
   // The fb-root <div> is in html.tpl.php
@@ -140,7 +141,6 @@ function pivot_preprocess_html(&$variables, $hook) {
 window.fbAsyncInit = function() {
   FB.init({
     appId      : '1395504993999657', // App ID
-    channelUrl : '//www.pivot.tv/channel.php',
     status     : true, // check login status
     cookie     : true, // enable cookies to allow the server to access the session
     xfbml      : true  // parse XFBML
@@ -152,7 +152,7 @@ window.fbAsyncInit = function() {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = '//connect.facebook.net/en_US/all.js#xfbml=1';
+  js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1395504993999657&version=v2.0';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 ", array('type' => 'inline', 'scope' => 'footer'));
