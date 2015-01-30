@@ -87,47 +87,6 @@ function pivot_contexts_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'campaign_dml';
-  $context->description = '';
-  $context->tag = '';
-  $context->conditions = array(
-    'error' => array(
-      'values' => array(
-        1 => '1',
-      ),
-    ),
-    'path' => array(
-      'values' => array(
-        'campaigns/eyes-wide-open' => 'campaigns/eyes-wide-open',
-        'campaigns/eyes-wide-open/*' => 'campaigns/eyes-wide-open/*',
-        '~campaigns/eyes-wide-open/quiz' => '~campaigns/eyes-wide-open/quiz',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'pivot_campaign-pivot_campaign_hero' => array(
-          'module' => 'pivot_campaign',
-          'delta' => 'pivot_campaign_hero',
-          'region' => 'preface',
-          'weight' => '-9',
-        ),
-        'block-10' => array(
-          'module' => 'block',
-          'delta' => '10',
-          'region' => 'right_sidebar',
-          'weight' => '-9',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 1;
-  $export['campaign_dml'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'campaign_pivot';
   $context->description = '';
   $context->tag = '';
