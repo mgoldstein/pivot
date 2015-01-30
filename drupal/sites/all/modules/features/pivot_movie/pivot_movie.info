@@ -41,7 +41,6 @@ features[field_instance][] = node-movie-field_schedule_listing_title
 features[field_instance][] = node-movie-field_schedule_name
 features[field_instance][] = node-movie-field_show_uuid
 features[node][] = movie
-features[panelizer_defaults][] = node:movie:default:default
 features[variable][] = comment_anonymous_movie
 features[variable][] = comment_default_mode_movie
 features[variable][] = comment_default_per_page_movie

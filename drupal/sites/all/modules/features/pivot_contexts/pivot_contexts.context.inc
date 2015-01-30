@@ -286,12 +286,6 @@ function pivot_contexts_context_default_contexts() {
           'module' => 'pivot_dynamic_blocks',
           'delta' => 'pivot_promo_blocks_block_1',
           'region' => 'right_sidebar',
-          'weight' => '-8',
-        ),
-        'newsletter_campaign-1' => array(
-          'module' => 'newsletter_campaign',
-          'delta' => '1',
-          'region' => 'right_sidebar',
           'weight' => '-7',
         ),
         'pivot_global-pivot_twitter_widget' => array(
@@ -299,6 +293,12 @@ function pivot_contexts_context_default_contexts() {
           'delta' => 'pivot_twitter_widget',
           'region' => 'right_sidebar',
           'weight' => '-6',
+        ),
+        'newsletter_campaign-1' => array(
+          'module' => 'newsletter_campaign',
+          'delta' => '1',
+          'region' => 'right_sidebar',
+          'weight' => '-8',
         ),
         'dfp-pivot_ros_background_1x1' => array(
           'module' => 'dfp',

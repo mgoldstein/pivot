@@ -17,7 +17,6 @@ features[features_api][] = api:2
 features[feeds_importer][] = feed
 features[field_instance][] = node-feed-field_section_ref
 features[node][] = feed
-features[panelizer_defaults][] = node:feed:default:default
 features[variable][] = comment_anonymous_feed
 features[variable][] = comment_default_mode_feed
 features[variable][] = comment_default_per_page_feed

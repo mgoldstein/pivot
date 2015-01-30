@@ -30,5 +30,6 @@ function pivot_feature_campaign_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

@@ -21,7 +21,6 @@ features[field_instance][] = node-blog-field_promo_headline
 features[field_instance][] = node-blog-field_promo_image
 features[field_instance][] = node-blog-field_section_ref
 features[node][] = blog
-features[panelizer_defaults][] = node:blog:default:default
 features[variable][] = auto_entitylabel_node_blog
 features[variable][] = auto_entitylabel_pattern_node_blog
 features[variable][] = auto_entitylabel_php_node_blog

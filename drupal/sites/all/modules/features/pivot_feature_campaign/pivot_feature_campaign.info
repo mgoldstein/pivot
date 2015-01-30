@@ -30,7 +30,6 @@ features[field_instance][] = node-campaign-field_promo_headline
 features[field_instance][] = node-campaign-field_promo_image
 features[field_instance][] = node-campaign-field_show_uuid
 features[node][] = campaign
-features[panelizer_defaults][] = node:campaign:default:default
 features[variable][] = comment_anonymous_campaign
 features[variable][] = comment_campaign
 features[variable][] = comment_default_mode_campaign

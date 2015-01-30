@@ -45,4 +45,3 @@ features[ctools][] = context:context:3
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_instance][] = node-article-field_section_ref
-mtime = 1415326534
