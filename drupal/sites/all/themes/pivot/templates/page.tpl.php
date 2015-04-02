@@ -58,7 +58,7 @@
 
     <div id="corporate_logos">
         <div id="logos_wrapper">
-            <a href="http://www.pivot.tv" class="logos-pivot" target="_blank"><img src="/sites/all/themes/pivot/images/pivot_footer.png" alt="Pivot" /></a>
+            <a href="http://www.pivot.tv" class="logos-pivot"><img src="/sites/all/themes/pivot/images/pivot_footer.png" alt="Pivot" /></a>
             <a href="http://www.participantmedia.com" class="logos-participantmedia" target="_blank"><img src="/sites/all/themes/pivot/images/pm_footer.png" alt="Participant Media" /></a>
             <a href="http://www.takepart.com" class="logos-takepart" target="_blank"><img src="/sites/all/themes/pivot/images/takepart_footer.png" alt="TakePart" /></a>
         </div>
