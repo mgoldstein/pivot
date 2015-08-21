@@ -17,12 +17,8 @@
 # http://www.sxw.org.uk/computing/robots/check.html
 
 User-agent: *
-Crawl-delay: 10
 # Directories
 Disallow: /includes/
-Disallow: /misc/
-Disallow: /modules/
-Disallow: /profiles/
 Disallow: /scripts/
 Disallow: /themes/
 # Files
