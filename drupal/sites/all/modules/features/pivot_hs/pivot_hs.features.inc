@@ -50,7 +50,7 @@ function pivot_hs_fe_nodequeue_export_fields() {
 function pivot_hs_node_info() {
   $items = array(
     'homepage_slide' => array(
-      'name' => t('Homepage Slide'),
+      'name' => t('Homepage Slider'),
       'base' => 'node_content',
       'description' => t('A slide for the homepage slideshow'),
       'has_title' => '1',
