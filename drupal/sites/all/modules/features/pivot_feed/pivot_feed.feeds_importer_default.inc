@@ -24,6 +24,8 @@ function pivot_feed_feeds_importer_default() {
         'use_pubsubhubbub' => 0,
         'designated_hub' => '',
         'request_timeout' => NULL,
+        'auto_scheme' => 'http',
+        'accept_invalid_cert' => FALSE,
       ),
     ),
     'parser' => array(
@@ -69,7 +71,7 @@ function pivot_feed_feeds_importer_default() {
           ),
           6 => array(
             'source' => 'description',
-            'target' => 'field_promo_image',
+            'target' => 'field_promo_image:uri',
             'unique' => FALSE,
           ),
           7 => array(
@@ -87,6 +89,7 @@ function pivot_feed_feeds_importer_default() {
         'author' => 0,
         'authorize' => 1,
         'skip_hash_check' => 0,
+        'update_non_existent' => 'skip',
       ),
     ),
     'content_type' => 'feed',

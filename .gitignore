@@ -19,3 +19,6 @@ DEADJOE
 # Local Development Modules
 /drupal/sites/all/modules/contrib/stage_file_proxy
 
+/drupal/sites/all/modules/contrib/diff/
+/drupal/sites/all/modules/contrib/devel_themer/
+/drupal/sites/all/modules/contrib/devel/

@@ -10,7 +10,8 @@
 function pivot_show_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'field_collection_item-field_cast_crew-field_cast_role_ref'
+  // Exported field_instance:
+  // 'field_collection_item-field_cast_crew-field_cast_role_ref'
   $field_instances['field_collection_item-field_cast_crew-field_cast_role_ref'] = array(
     'bundle' => 'field_cast_crew',
     'default_value' => NULL,
@@ -43,7 +44,8 @@ function pivot_show_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_cast_crew-field_character_name'
+  // Exported field_instance:
+  // 'field_collection_item-field_cast_crew-field_character_name'
   $field_instances['field_collection_item-field_cast_crew-field_character_name'] = array(
     'bundle' => 'field_cast_crew',
     'default_value' => NULL,
@@ -79,7 +81,8 @@ function pivot_show_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_cast_crew-field_person_ref'
+  // Exported field_instance:
+  // 'field_collection_item-field_cast_crew-field_person_ref'
   $field_instances['field_collection_item-field_cast_crew-field_person_ref'] = array(
     'bundle' => 'field_cast_crew',
     'default_value' => NULL,
