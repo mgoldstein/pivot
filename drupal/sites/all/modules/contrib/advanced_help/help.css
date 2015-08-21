@@ -6,14 +6,6 @@
   padding: .4em;
 }
 
-.advanced-help-topic p.bob {
-  background: #f1f1f1;
-  border: 1px solid #ccc;
-  display: block;
-  margin: 1em;
-  padding: .4em;
-}
-
 .advanced-help-topic pre.readme {
   background: white;
   border: none;
@@ -46,10 +38,6 @@
   float: left; /* LTR */
   text-align: left;
   width: 42%;
-}
-
-.help-leftalign {
-  text-align: left;
 }
 
 .help-up {

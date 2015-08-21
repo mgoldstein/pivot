@@ -116,9 +116,10 @@ div#breadcrumb .breadcrumb {
   padding: 0;
 }
 
+code,
 pre {
   background: #f1f1f1;
-  border: 1px solid #ccc;
+  border: 1px solid #444;
   display: block;
   margin: 1em;
   padding: .2em;

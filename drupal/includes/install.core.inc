@@ -362,8 +362,7 @@ function install_run_tasks(&$install_state) {
  * Runs an individual installation task.
  *
  * @param $task
- *   An array of information about the task to be run as returned by
- *   hook_install_tasks().
+ *   An array of information about the task to be run.
  * @param $install_state
  *   An array of information about the current installation state. This is
  *   passed in by reference so that it can be modified by the task.
@@ -479,15 +478,11 @@ function install_run_task($task, &$install_state) {
  * the page request evolves (for example, if an installation profile hasn't
  * been selected yet, we don't yet know which profile tasks need to be run).
  *
- * You can override this using hook_install_tasks() or
- * hook_install_tasks_alter().
- *
  * @param $install_state
  *   An array of information about the current installation state.
  *
  * @return
- *   A list of tasks to be performed, with associated metadata as returned by
- *   hook_install_tasks().
+ *   A list of tasks to be performed, with associated metadata.
  */
 function install_tasks_to_perform($install_state) {
   // Start with a list of all currently available tasks.

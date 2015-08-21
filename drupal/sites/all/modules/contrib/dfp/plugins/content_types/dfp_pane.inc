@@ -24,9 +24,7 @@ function dfp_dfp_pane_render($subtype, $conf, $panel_args, $context) {
   $content = array();
 
   foreach ($conf['dfp_ads'] as $key => $ad) {
-    if (!empty($ad)) {
-      $content[$key] = dfp_tag($ad);
-    }
+    $content[$key] = dfp_tag($ad);
   }
 
   $block = new stdClass();

@@ -26,7 +26,7 @@ function filefield_source_imce_info() {
     'process' => 'filefield_source_imce_process',
     'value' => 'filefield_source_imce_value',
     'weight' => -1,
-    'file' => 'sources/imce.inc',
+    'file' => 'includes/imce.inc',
   );
   return $source;
 }
@@ -140,7 +140,7 @@ function filefield_source_imce_process($element, &$form_state, $form) {
     '#attributes' => array('style' => 'display: none;'),
     '#ajax' => array(
       'path' => 'file/ajax/' . implode('/', $element['#array_parents']) . '/' . $form['form_build_id']['#value'],
-      'wrapper' => $element['upload_button']['#ajax']['wrapper'],
+      'wrapper' => $element['#id'] . '-ajax-wrapper',
       'method' => 'replace',
       'effect' => 'fade',
     ),
