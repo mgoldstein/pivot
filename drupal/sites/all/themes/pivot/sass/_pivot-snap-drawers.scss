@@ -60,12 +60,12 @@ body.snapjs-left .drawers, body.snapjs-right .drawers{
 
 .snap-drawer-left {
   left: 0;
-  z-index: 0;
+  z-index: 10;
 }
 
 .snap-drawer-right {
   right: 0;
-  z-index: 0;
+  z-index: 10;
 }
 
 .snapjs-left .snap-drawer-right,
