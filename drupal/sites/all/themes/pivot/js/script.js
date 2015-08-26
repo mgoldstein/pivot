@@ -718,9 +718,43 @@
     }
   };
 
-
-
-
+	//Behavoir that fires on front
+  Drupal.behaviors.front_pane_row_height = {
+    attach: function(context, settings) {
+			//only continue if the width is greater then 680 as anything less is single column
+			if ($(window).width() < 680) {
+				return;
+			}
+			
+			//declares variable
+			var pane_left_heights = [];
+			var pane_right_heights = [];
+			
+			//left side
+			$('body.front .panel-pivot-curated .panel-col-first .panel-pane.pane-node').each(function() {
+				pane_left_heights.push($(this).height());
+			});
+			
+			//right side
+			$('body.front .panel-pivot-curated .panel-col-last .panel-pane.pane-node').each(function() {
+				pane_right_heights.push($(this).height());
+			});
+			
+			//compare the left side to right side
+			pane_left_heights.forEach(function (value, key) {
+				var row_height = value;
+				
+				//if the right side is greater then update the row height
+				if (row_height < pane_right_heights[key]) {
+					row_height = pane_right_heights[key];
+				}
+				
+				//update the height of the pane based on the row height
+				$('body.front .panel-pivot-curated .panel-col-first .panel-pane.pane-node:nth(' + key + ')').height(row_height);
+				$('body.front .panel-pivot-curated .panel-col-last .panel-pane.pane-node:nth(' + key + ')').height(row_height);
+			});
+		}
+	};
 
 
 })(jQuery, Drupal, this, this.document);
