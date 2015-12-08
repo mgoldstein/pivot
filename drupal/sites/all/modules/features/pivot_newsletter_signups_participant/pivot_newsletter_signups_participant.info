@@ -1,0 +1,10 @@
+name = Pivot Newsletter Signups Participant
+description = Signup endpoints for newsletters through Participant sailthru
+core = 7.x
+package = Signups
+version = 7.x-1.0
+project = pivot_newsletter_signups_participant
+dependencies[] = pm_signup
+features[features_api][] = api:2
+features[pm_signup_endpoint][] = mentor_strong
+features[pm_signup_endpoint][] = pivot_newsletter
