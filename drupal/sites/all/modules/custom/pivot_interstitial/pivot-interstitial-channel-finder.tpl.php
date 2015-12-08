@@ -6,6 +6,6 @@
 		Click here to find Pivot in your area
 	</div>
 	<div class="interstitial-dont-show">
-<!--		<a href="#" class="tpmodal_close interstitial_modal_close">Don't Show Me This Again</a>-->
+		<a href="#" class="tpmodal_close">Don't Show Me This Again</a>
 	</div>
 </div>
