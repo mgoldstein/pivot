@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * The TakeAction Button Integeration Module
@@ -68,6 +69,15 @@ function pm_takeaction_admin_form($form, &$form_state) {
     '#required' => TRUE,
     '#element_validate' => array('pm_takeaction_validate_url'),
     '#default_value' => variable_get('pm_takeaction_button_js_url', ''),
+  );
+  
+$form['pm_takeaction_embed_js_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Banner v2 Embed JavaScript URL'),
+    '#description' => t('The absolute URL to the v2 Banner JavaScript file.'),
+    '#required' => TRUE,
+    '#element_validate' => array('pm_takeaction_validate_url'),
+    '#default_value' => variable_get('pm_takeaction_embed_js_url', ''),
   );
 
   $form['pm_takeaction_button_pub_id'] = array(
@@ -149,6 +159,20 @@ function pm_takeaction_init() {
         'weight' => 0,
       ));
     }
+    
+    // v2 TAP embed JS
+    $banner_embed_url = variable_get('pm_takeaction_embed_js_url', '');
+    $tap_pub_id = variable_get('pm_takeaction_button_pub_id', '');
+    if (!empty($banner_embed_url) && !empty($tap_pub_id)) {
+	 $embed_url = $banner_embed_url . '?publisher=' . $tap_pub_id;
+	 drupal_add_js($embed_url, array(
+        'type' => 'external',
+        'group' => JS_LIBRARY,
+        'every_page' => TRUE,
+        'weight' => 0,
+      ));
+    }
+    
   }
 }
 

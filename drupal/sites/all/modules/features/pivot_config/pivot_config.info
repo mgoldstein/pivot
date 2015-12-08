@@ -33,6 +33,7 @@ features[variable][] = pathauto_ignore_words
 features[variable][] = pathauto_reduce_ascii
 features[variable][] = pm_takeaction_button_js_location
 features[variable][] = pm_takeaction_button_js_url
+features[variable][] = pm_takeaction_embed_js_url
 features[variable][] = pm_takeaction_button_pub_id
 features[variable][] = redirect_auto_redirect
 features[variable][] = search_active_modules
