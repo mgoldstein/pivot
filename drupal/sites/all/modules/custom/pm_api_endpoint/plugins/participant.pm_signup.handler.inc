@@ -37,7 +37,8 @@ class ParticipantSignupHandler {
         ? $this->configuration['account'] : NULL;
 
       $response = ParticipantAPIWrapper::Api($account)->addUpdateSubscriber($data,
-        $this->configuration['lists'], $this->configuration['source']);
+        $this->configuration['lists'], $this->configuration['source'],
+	   $this->configuration['user_vars']);
 
       //Need to check for a type of response
       if (!is_array($response)) {

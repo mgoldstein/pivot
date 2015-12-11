@@ -30,10 +30,11 @@ class ParticipantAPIWrapper {
     $this->lib = new ParticipantAPI($api_domain, $api_key);
   }
 
-  public function addUpdateSubscriber($data, $lists, $source) {
+  public function addUpdateSubscriber($data, $lists, $source, $user_vars) {
 
     //Construct data array to send to api
-    $data = array('email' => $data['email'], 'lists' => $lists, 'source' => $source);
+    $data = array('email' => $data['email'], 'lists' => $lists, 'source' => $source,
+	 'user_vars' => $user_vars);
 
     if (variable_get('pm_signup_log', FALSE)) {
       db_insert('pm_signup_log')
