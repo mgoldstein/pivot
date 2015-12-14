@@ -36,7 +36,10 @@ function pivot_newsletter_signups_participant_pm_signup_endpoint_defaults() {
         'enabled' => TRUE,
         'configuration' => array(
           'lists' => array(
-            'Webform', 'PIVOT',
+            'PIVOT',
+          ),
+		'user_vars' => array(
+            'pivot',
           ),
           'source' => 'signup',
         ),
