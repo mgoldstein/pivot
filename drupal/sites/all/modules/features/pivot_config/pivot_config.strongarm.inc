@@ -82,6 +82,13 @@ iframe/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pm_takeaction_embed_js_url';
+  $strongarm->value = 'https://tapembed.takepart.com/embed.js';
+  $export['pm_takeaction_embed_js_url'] = $strongarm;
+  
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pm_takeaction_button_pub_id';
   $strongarm->value = '4d243fc45c4332cd8a6f28f6575765dd';
   $export['pm_takeaction_button_pub_id'] = $strongarm;

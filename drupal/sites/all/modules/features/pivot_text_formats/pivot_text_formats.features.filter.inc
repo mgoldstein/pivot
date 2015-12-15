@@ -95,6 +95,16 @@ function pivot_text_formats_filter_default_formats() {
     ),
   );
 
+  // Exported format: No Filters.
+  $formats['no_filters'] = array(
+    'format' => 'no_filters',
+    'name' => 'No Filters',
+    'cache' => 1,
+    'status' => 1,
+    'weight' => 0,
+    'filters' => array(),
+  );
+
   // Exported format: Plain text.
   $formats['plain_text'] = array(
     'format' => 'plain_text',
