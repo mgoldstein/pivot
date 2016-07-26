@@ -41,18 +41,20 @@ function hpslider_block_content(){
 	/* Use the correct node display and add additional markup for the slides */
 	$slides = array();
 	foreach($nodes as $node){
-		$node_view = node_view($node, $view_mode = 'teaser', $langcode = NULL);
-		$node_view = drupal_render($node_view);
+		if(isset($node->nid) && !empty($node->nid)) {
+			$node_view = node_view($node, $view_mode = 'teaser', $langcode = NULL);
+			$node_view = drupal_render($node_view);
 
-		/* Add any slide markup for the slider */
-		$slides[] = theme('hpslider_slide', array('node' => $node_view));
+			/* Add any slide markup for the slider */
+			$slides[] = theme('hpslider_slide', array('node' => $node_view));
+		}
 	}
 	$slides = implode('', $slides);
 
 	//adds the css into the body as it gets removed on the frontend element on resize
 	$node_count = count($nodes);
 	$slider_width = 100 / $node_count;
-	
+
 	//remove the max-width if they want to auto adjust for all screen size
 	drupal_add_css(
 		'@media all and (max-width: 480px) {
