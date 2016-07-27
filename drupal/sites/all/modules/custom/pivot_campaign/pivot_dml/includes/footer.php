@@ -5,14 +5,15 @@
     Drupal.behaviors.facebookSDK = {
       attach: function () {
         window.fbAsyncInit = function() {
-      		FB.init({
-      	 		appId: 545435132181638,
-      	 		status: true,
-      	 		cookie: true,
-      	 		xfbml: true
+          FB.init({
+            appId     : '545435132181638',
+            status    : true,
+            cookie    : true,
+            version   : 'v2.6',
+            xfbml     : true
       	  	});
       	};
-      	//Load the SDK asynchronously
+      	// Load the SDK asynchronously
       	(function() {
       	  var e = document.createElement('script');
       	  e.async = true;
